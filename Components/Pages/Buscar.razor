@@ -1,0 +1,67 @@
+@page "/buscar"
+@inject FormulaService Fs
+@inject NavigationManager Nav
+
+<div style="padding:12px 16px 8px">
+    <div class="section-title" style="font-family:var(--font-display);font-size:22px;margin-bottom:12px">Buscar</div>
+    <div style="position:relative">
+        <span class="search-icon" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted)">⊕</span>
+        <input class="search-input"
+               type="search"
+               placeholder="Buscar por nome, criador, categoria…"
+               @bind="_query"
+               @bind:event="oninput"
+               @bind:after="FilterResults" />
+    </div>
+</div>
+
+@if (string.IsNullOrWhiteSpace(_query))
+{
+    <div class="empty-state">
+        <div class="empty-icon">⊕</div>
+        <div class="empty-title">Busque qualquer equação</div>
+        <div class="empty-sub">Digite o nome da fórmula, criador, categoria ou qualquer termo relacionado.</div>
+    </div>
+}
+else if (!_results.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">∅</div>
+        <div class="empty-title">Nenhum resultado</div>
+        <div class="empty-sub">Tente termos mais simples como "Newton", "integral" ou "probabilidade".</div>
+    </div>
+}
+else
+{
+    <div style="padding: 4px 16px 8px">
+        <span style="font-size:12px;color:var(--text-muted)">@_results.Count resultado(s) para "<span style="color:var(--gold)">@_query</span>"</span>
+    </div>
+    <div class="formula-list">
+        @foreach (var f in _results)
+        {
+            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
+                <div class="formula-card-top">
+                    <div class="formula-icon">@f.Icone</div>
+                    <div class="formula-meta">
+                        <div class="formula-name">@f.Nome</div>
+                        <div class="formula-author">@f.Criador</div>
+                    </div>
+                </div>
+                <div class="formula-expr">@f.ExprTexto</div>
+                <div class="formula-tag">@f.Categoria</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    string _query = "";
+    List<Formula> _results = [];
+
+    void FilterResults()
+    {
+        _results = string.IsNullOrWhiteSpace(_query)
+            ? []
+            : Fs.Buscar(_query).Take(30).ToList();
+    }
+}

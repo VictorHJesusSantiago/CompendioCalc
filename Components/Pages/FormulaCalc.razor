@@ -1,0 +1,304 @@
+@page "/formula/{FormulaId}"
+@inject FormulaService Fs
+@inject CalculadoraService Calc
+@inject NavigationManager Nav
+
+@if (_formula == null)
+{
+    <div class="empty-state">
+        <div class="empty-icon">∅</div>
+        <div class="empty-title">Fórmula não encontrada</div>
+        <button @onclick='() => Nav.NavigateTo("/categorias")'
+                style="margin-top:16px;padding:10px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;color:var(--text-primary);cursor:pointer">
+            Ver categorias
+        </button>
+    </div>
+    return;
+}
+
+<div class="calc-page">
+
+    <!-- Header -->
+    <div class="calc-header">
+        <div class="calc-breadcrumb">
+            <span class="link" @onclick='() => Nav.NavigateTo("/categorias")'>Categorias</span>
+            <span class="sep">›</span>
+            <span class="link" @onclick='() => Nav.NavigateTo($"/categorias/{Uri.EscapeDataString(_formula.Categoria)}")'>
+                @_formula.Categoria
+            </span>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:8px">
+            <button style="background:none;border:none;cursor:pointer;color:var(--text-secondary);font-size:24px;padding:0;margin-top:2px"
+                    @onclick="GoBack">←</button>
+            <div style="flex:1">
+                <div class="calc-title">@_formula.Nome</div>
+                <div class="calc-author">@_formula.Criador @(string.IsNullOrEmpty(_formula.AnoOrigin) ? "" : $"· {_formula.AnoOrigin}")</div>
+            </div>
+            <button class="formula-fav-btn @(_formula.Favorita ? "active" : "")"
+                    @onclick="ToggleFav"
+                    style="font-size:22px;margin-top:2px">
+                @(_formula.Favorita ? "★" : "☆")
+            </button>
+        </div>
+
+        <div class="calc-expr-box">
+            <div class="calc-expr-text">@_formula.ExprTexto</div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="info-tabs">
+        @foreach (var tab in _tabs)
+        {
+            <button class="info-tab @(_activeTab == tab ? "active" : "")"
+                    @onclick="() => _activeTab = tab">@tab</button>
+        }
+    </div>
+
+    <!-- Tab Content -->
+    @if (_activeTab == "Calcular")
+    {
+        <div class="calc-panel">
+            <div class="calc-inputs">
+                @foreach (var v in _formula.Variaveis)
+                {
+                    <div class="input-group">
+                        <label class="input-label">
+                            <span class="input-symbol">@v.Simbolo</span>
+                            <span>@v.Nome</span>
+                            @if (!string.IsNullOrEmpty(v.Unidade))
+                            {
+                                <span class="input-desc">(em @v.Unidade)</span>
+                            }
+                        </label>
+                        @if (!string.IsNullOrEmpty(v.Descricao))
+                        {
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:2px">@v.Descricao</div>
+                        }
+                        <input class="input-field"
+                               type="number"
+                               step="any"
+                               value="@GetInput(v.Simbolo)"
+                               @onchange="(e) => SetInput(v.Simbolo, e.Value?.ToString())" />
+                    </div>
+                }
+            </div>
+
+            <button class="calc-btn" @onclick="Calcular">
+                ⊜ Calcular
+            </button>
+
+            @if (_calculado)
+            {
+                @if (double.IsNaN(_resultado))
+                {
+                    <div class="result-box">
+                        <div class="result-nan">⚠ Resultado inválido ou fora do domínio para os valores inseridos.</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="result-box">
+                        <div class="result-label">
+                            RESULTADO
+                            <span class="result-variable">→ @_formula.VariavelResultado</span>
+                        </div>
+                        <div class="result-value-wrap">
+                            <span class="result-value">@FormatNum(_resultado)</span>
+                            @if (!string.IsNullOrEmpty(_formula.UnidadeResultado))
+                            {
+                                <span class="result-unit">@_formula.UnidadeResultado</span>
+                            }
+                        </div>
+                    </div>
+
+                    @if (HasExtraResult())
+                    {
+                        <div style="margin-top:10px">
+                            @RenderExtraResult()
+                        </div>
+                    }
+                }
+            }
+        </div>
+    }
+    else if (_activeTab == "Descrição")
+    {
+        <div class="info-panel">
+            <div class="info-section">
+                <div class="info-label">O que é</div>
+                <div class="info-text">@_formula.Descricao</div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(_formula.ExemploPratico))
+            {
+                <div class="info-section">
+                    <div class="info-label">Exemplo Prático</div>
+                    <div class="info-highlight">@_formula.ExemploPratico</div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(_formula.Unidades))
+            {
+                <div class="info-section">
+                    <div class="info-label">Unidades</div>
+                    <div class="info-text">@_formula.Unidades</div>
+                </div>
+            }
+        </div>
+    }
+    else if (_activeTab == "Variáveis")
+    {
+        <div class="info-panel">
+            <div class="info-section" style="padding:0;overflow:hidden">
+                <table class="var-table">
+                    <thead>
+                        <tr>
+                            <th>Símbolo</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var v in _formula.Variaveis)
+                        {
+                            <tr>
+                                <td><span class="var-symbol">@v.Simbolo</span></td>
+                                <td>@v.Nome</td>
+                                <td>@(!string.IsNullOrEmpty(v.Descricao) ? v.Descricao : "—")</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><span class="var-symbol" style="color:var(--gold)">→</span></td>
+                            <td style="color:var(--gold)">@_formula.VariavelResultado</td>
+                            <td style="color:var(--text-muted)">Resultado calculado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else if (_activeTab == "Origem")
+    {
+        <div class="info-panel">
+            <div class="info-section">
+                <div class="info-label">Criador(es)</div>
+                <div class="info-text" style="font-size:15px;color:var(--text-primary)">@_formula.Criador</div>
+            </div>
+            @if (!string.IsNullOrEmpty(_formula.AnoOrigin))
+            {
+                <div class="info-section">
+                    <div class="info-label">Período</div>
+                    <div class="info-text">@_formula.AnoOrigin</div>
+                </div>
+            }
+            <div class="info-section">
+                <div class="info-label">Área do Conhecimento</div>
+                <div class="info-text">@_formula.Categoria → @_formula.SubCategoria</div>
+            </div>
+            <div class="info-section">
+                <div class="info-label">Fórmula Completa</div>
+                <div style="font-family:var(--font-mono);font-size:14px;color:var(--teal);line-height:1.8">
+                    @_formula.Expressao
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="height:8px"></div>
+</div>
+
+@code {
+    [Parameter] public string? FormulaId { get; set; }
+
+    Formula? _formula;
+    Dictionary<string, double> _inputs = new();
+    double _resultado = 0;
+    bool _calculado = false;
+    string _activeTab = "Calcular";
+    readonly string[] _tabs = ["Calcular", "Descrição", "Variáveis", "Origem"];
+
+    protected override void OnParametersSet()
+    {
+        _formula = FormulaId != null ? Fs.ObterPorId(FormulaId) : null;
+        if (_formula != null)
+        {
+            _inputs = _formula.Variaveis.ToDictionary(v => v.Simbolo, v => v.ValorPadrao);
+            _calculado = false;
+        }
+    }
+
+    double GetInput(string sym) => _inputs.TryGetValue(sym, out var v) ? v : 0;
+
+    void SetInput(string sym, string? raw)
+    {
+        if (double.TryParse(raw, System.Globalization.NumberStyles.Any,
+            System.Globalization.CultureInfo.InvariantCulture, out var d))
+            _inputs[sym] = d;
+        _calculado = false;
+    }
+
+    void Calcular()
+    {
+        if (_formula == null) return;
+        _resultado = Calc.Calcular(_formula, _inputs);
+        _calculado = true;
+    }
+
+    void GoBack()
+    {
+        if (_formula != null)
+            Nav.NavigateTo($"/categorias/{Uri.EscapeDataString(_formula.Categoria)}");
+        else
+            Nav.NavigateTo("/categorias");
+    }
+
+    void ToggleFav()
+    {
+        if (_formula != null) Fs.ToggleFavorita(_formula.Id);
+    }
+
+    bool HasExtraResult() => _formula?.Id == "alg001" && _calculado && !double.IsNaN(_resultado);
+
+    RenderFragment RenderExtraResult()
+    {
+        if (_formula?.Id == "alg001")
+        {
+            var a = GetInput("a"); var b = GetInput("b"); var c = GetInput("c");
+            var delta = _resultado;
+            return @<div>
+                <div class="result-box">
+                    <div class="result-label">RAÍZES DA EQUAÇÃO</div>
+                    <div style="padding:14px 16px;font-family:var(--font-mono)">
+                        @if (delta < 0)
+                        {
+                            <div style="color:var(--red)">Δ &lt; 0 → Raízes complexas (sem solução real)</div>
+                        }
+                        else if (delta == 0)
+                        {
+                            <div style="color:var(--gold)">x = @FormatNum(-b / (2 * a)) (raiz dupla)</div>
+                        }
+                        else
+                        {
+                            <div style="color:var(--gold-light)">x₁ = @FormatNum((-b + Math.Sqrt(delta)) / (2 * a))</div>
+                            <div style="color:var(--gold-light);margin-top:6px">x₂ = @FormatNum((-b - Math.Sqrt(delta)) / (2 * a))</div>
+                        }
+                    </div>
+                </div>
+            </div>;
+        }
+        return @<span></span>;
+    }
+
+    static string FormatNum(double v)
+    {
+        if (double.IsNaN(v)) return "N/A";
+        if (double.IsInfinity(v)) return v > 0 ? "+∞" : "−∞";
+        if (Math.Abs(v) >= 1e12 || (Math.Abs(v) < 0.0001 && v != 0))
+            return v.ToString("E4");
+        if (Math.Abs(v) >= 1000)
+            return v.ToString("N2");
+        return v.ToString("G6");
+    }
+}

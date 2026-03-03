@@ -1,0 +1,51 @@
+@inherits LayoutComponentBase
+@inject NavigationManager Nav
+
+<div class="app-shell">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-logo">∑</div>
+        <div>
+            <div class="top-bar-title">Compêndio</div>
+            <div class="top-bar-sub">Volume I · Equações</div>
+        </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="main-content">
+        @Body
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item @(IsActive("/") ? "active" : "")" @onclick='() => Go("/")'>
+            <span class="nav-icon">⌂</span>
+            <span class="nav-label">Início</span>
+        </button>
+        <button class="nav-item @(IsActive("/categorias") ? "active" : "")" @onclick='() => Go("/categorias")'>
+            <span class="nav-icon">⊞</span>
+            <span class="nav-label">Categorias</span>
+        </button>
+        <button class="nav-item @(IsActive("/buscar") ? "active" : "")" @onclick='() => Go("/buscar")'>
+            <span class="nav-icon">⊕</span>
+            <span class="nav-label">Buscar</span>
+        </button>
+        <button class="nav-item @(IsActive("/favoritos") ? "active" : "")" @onclick='() => Go("/favoritos")'>
+            <span class="nav-icon">★</span>
+            <span class="nav-label">Favoritos</span>
+        </button>
+        <button class="nav-item @(IsActive("/historico") ? "active" : "")" @onclick='() => Go("/historico")'>
+            <span class="nav-icon">◷</span>
+            <span class="nav-label">Histórico</span>
+        </button>
+    </nav>
+</div>
+
+@code {
+    bool IsActive(string path) {
+        var uri = new Uri(Nav.Uri).PathAndQuery;
+        return path == "/" ? uri == "/" : uri.StartsWith(path);
+    }
+
+    void Go(string path) => Nav.NavigateTo(path);
+}

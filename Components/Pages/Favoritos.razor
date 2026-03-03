@@ -1,0 +1,50 @@
+@page "/favoritos"
+@inject FormulaService Fs
+@inject NavigationManager Nav
+
+<div class="section-header">
+    <div class="section-title">Favoritos</div>
+    <div class="section-sub">Suas fórmulas salvas</div>
+</div>
+
+@{
+    var favs = Fs.ObterFavoritas().ToList();
+}
+
+@if (!favs.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">☆</div>
+        <div class="empty-title">Nenhum favorito ainda</div>
+        <div class="empty-sub">Toque na estrela ☆ em qualquer fórmula para adicioná-la aqui.</div>
+    </div>
+}
+else
+{
+    <div class="formula-list">
+        @foreach (var f in favs)
+        {
+            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
+                <div class="formula-card-top">
+                    <div class="formula-icon">@f.Icone</div>
+                    <div class="formula-meta">
+                        <div class="formula-name">@f.Nome</div>
+                        <div class="formula-author">@f.Criador</div>
+                    </div>
+                    <button class="formula-fav-btn active"
+                            @onclick:stopPropagation="true"
+                            @onclick="() => Remove(f)">★</button>
+                </div>
+                <div class="formula-expr">@f.ExprTexto</div>
+                <div class="formula-tag">@f.Categoria</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    void Remove(Formula f) {
+        Fs.ToggleFavorita(f.Id);
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,73 @@
+@page "/historico"
+@inject CalculadoraService Calc
+@inject NavigationManager Nav
+@implements IDisposable
+
+<div class="section-header" style="display:flex;align-items:center;justify-content:space-between">
+    <div>
+        <div class="section-title">Histórico</div>
+        <div class="section-sub">Últimos cálculos realizados</div>
+    </div>
+    @if (Calc.Historico.Any())
+    {
+        <button @onclick="LimparHistorico"
+                style="background:rgba(224,92,92,0.1);border:1px solid rgba(224,92,92,0.2);border-radius:8px;padding:6px 12px;color:var(--red);font-size:12px;cursor:pointer">
+            Limpar
+        </button>
+    }
+</div>
+
+@{
+    var items = Calc.Historico.ToList();
+}
+
+@if (!items.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">◷</div>
+        <div class="empty-title">Nenhum cálculo ainda</div>
+        <div class="empty-sub">Abra uma fórmula e use a calculadora para ver o histórico aqui.</div>
+    </div>
+}
+else
+{
+    <div class="hist-list">
+        @foreach (var item in items)
+        {
+            <div class="hist-item" @onclick='() => Nav.NavigateTo($"/formula/{item.FormulaId}")' style="cursor:pointer">
+                <div class="hist-meta">
+                    <div class="hist-name">@item.FormulaNome</div>
+                    <div class="hist-time">@item.Timestamp.ToString("HH:mm:ss")</div>
+                </div>
+                <div>
+                    <div class="hist-result">
+                        @FormatNum(item.Resultado)
+                        @if (!string.IsNullOrEmpty(item.UnidadeResultado))
+                        {
+                            <span style="font-size:11px;color:var(--text-secondary);margin-left:4px">@item.UnidadeResultado</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    protected override void OnInitialized()
+        => Calc.OnHistoricoChanged += Refresh;
+
+    void Refresh() => InvokeAsync(StateHasChanged);
+    void LimparHistorico() => Calc.LimparHistorico();
+
+    static string FormatNum(double v)
+    {
+        if (double.IsNaN(v)) return "N/A";
+        if (double.IsInfinity(v)) return "∞";
+        if (Math.Abs(v) >= 1e9 || (Math.Abs(v) < 0.001 && v != 0))
+            return v.ToString("E3");
+        return v.ToString("G6");
+    }
+
+    public void Dispose() => Calc.OnHistoricoChanged -= Refresh;
+}

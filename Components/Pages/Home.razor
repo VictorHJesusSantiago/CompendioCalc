@@ -1,0 +1,93 @@
+@page "/"
+@inject FormulaService Fs
+@inject NavigationManager Nav
+
+<div class="page-section" style="padding:0">
+
+    <!-- Hero Banner -->
+    <div class="home-hero">
+        <div class="home-greeting">Volume I · @DateTime.Now.ToString("MMM yyyy")</div>
+        <div class="home-title">Equações<br/><span>Fundamentais</span></div>
+        <div class="home-sub">@_total fórmulas de matemática, física, estatística, engenharia e muito mais.</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">@_total</div>
+            <div class="stat-label">Fórmulas</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">@_cats</div>
+            <div class="stat-label">Categorias</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">@_favs</div>
+            <div class="stat-label">Favoritas</div>
+        </div>
+    </div>
+
+    <!-- Quick categories -->
+    <div style="padding:16px 16px 0">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Acesso Rápido</div>
+    </div>
+    <div class="quick-grid">
+        @foreach (var cat in _topCats)
+        {
+            <div class="quick-card" @onclick='() => Nav.NavigateTo($"/categorias/{Uri.EscapeDataString(cat.Nome)}")'>
+                <div class="quick-icon" style="@($"color:{cat.Cor};background:color-mix(in srgb,{cat.Cor} 12%,transparent)")">
+                    @cat.Icone
+                </div>
+                <div class="quick-info">
+                    <div class="quick-name">@cat.Nome</div>
+                    <div class="quick-cat">@cat.TotalFormulas fórmulas</div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Featured formulas -->
+    <div style="padding:16px 16px 0">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Destaques</div>
+    </div>
+    <div class="formula-list">
+        @foreach (var f in _featured)
+        {
+            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
+                <div class="formula-card-top">
+                    <div class="formula-icon">@f.Icone</div>
+                    <div class="formula-meta">
+                        <div class="formula-name">@f.Nome</div>
+                        <div class="formula-author">@f.Criador</div>
+                    </div>
+                </div>
+                <div class="formula-expr">@f.ExprTexto</div>
+                <div class="formula-desc">@f.Descricao</div>
+                <div class="formula-tag">@f.Categoria</div>
+            </div>
+        }
+    </div>
+
+    <div style="height:16px"></div>
+</div>
+
+@code {
+    int _total, _cats, _favs;
+    List<CategoriaInfo> _topCats = [];
+    List<Formula> _featured = [];
+
+    protected override void OnInitialized()
+    {
+        _total = Fs.ObterTodas().Count();
+        _cats  = Fs.ObterCategorias().Count();
+        _favs  = Fs.ObterFavoritas().Count();
+        _topCats = Fs.ObterCategorias().OrderByDescending(c => c.TotalFormulas).Take(6).ToList();
+        _featured = new[] { "mec001", "alg005", "prob001", "cal004", "elet002", "bio004" }
+            .Select(id => Fs.ObterPorId(id))
+            .Where(f => f != null)
+            .Cast<Formula>()
+            .ToList();
+        if (_featured.Count < 4)
+            _featured = Fs.ObterTodas().Take(6).ToList();
+    }
+}

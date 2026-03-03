@@ -1,0 +1,75 @@
+@page "/categorias"
+@page "/categorias/{CatName}"
+@inject FormulaService Fs
+@inject NavigationManager Nav
+
+@if (string.IsNullOrEmpty(CatName))
+{
+    <!-- All categories -->
+    <div class="section-header">
+        <div class="section-title">Categorias</div>
+        <div class="section-sub">@Fs.ObterCategorias().Count() áreas do conhecimento · @Fs.ObterTodas().Count() fórmulas</div>
+    </div>
+
+    <div class="cat-grid" style="padding:12px 16px">
+        @foreach (var cat in Fs.ObterCategorias())
+        {
+            <div class="cat-card"
+                 style="--cat-color: @cat.Cor"
+                 @onclick='() => Nav.NavigateTo($"/categorias/{Uri.EscapeDataString(cat.Nome)}")'>
+                <div class="cat-icon">@cat.Icone</div>
+                <div class="cat-name">@cat.Nome</div>
+                <div class="cat-count">@cat.TotalFormulas fórmulas</div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <!-- Formulas in category -->
+    var decoded = Uri.UnescapeDataString(CatName);
+    var formulas = Fs.ObterPorCategoria(decoded).ToList();
+    var catInfo  = Fs.ObterCategorias().FirstOrDefault(c => c.Nome == decoded);
+
+    <div style="padding:12px 16px 4px; display:flex; align-items:center; gap:10px">
+        <button style="background:none;border:none;cursor:pointer;color:var(--text-secondary);font-size:20px;padding:4px"
+                @onclick='() => Nav.NavigateTo("/categorias")'>←</button>
+        <div>
+            <div style="font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--text-primary)">
+                @(catInfo != null ? catInfo.Icone + " " : "")@decoded
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary)">@formulas.Count fórmulas</div>
+        </div>
+    </div>
+
+    <div class="formula-list">
+        @foreach (var f in formulas)
+        {
+            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
+                <div class="formula-card-top">
+                    <div class="formula-icon">@f.Icone</div>
+                    <div class="formula-meta">
+                        <div class="formula-name">@f.Nome</div>
+                        <div class="formula-author">@f.Criador</div>
+                    </div>
+                    <button class="formula-fav-btn @(f.Favorita ? "active" : "")"
+                            @onclick:stopPropagation="true"
+                            @onclick="() => ToggleFav(f)">
+                        @(f.Favorita ? "★" : "☆")
+                    </button>
+                </div>
+                <div class="formula-expr">@f.ExprTexto</div>
+                <div class="formula-desc">@f.Descricao</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public string? CatName { get; set; }
+
+    void ToggleFav(Formula f) {
+        Fs.ToggleFavorita(f.Id);
+        StateHasChanged();
+    }
+}
