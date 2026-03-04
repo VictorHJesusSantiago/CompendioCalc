@@ -1,0 +1,768 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 6 — FRONTEIRAS FINAIS (Seções 21-25)
+    // ═══════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 21. VISÃO COMPUTACIONAL AVANÇADA E ROBÓTICA PROBABILÍSTICA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarVisaoComputacional()
+    {
+        _formulas.AddRange([
+            // 21.1 Geometria de Câmera
+            new Formula
+            {
+                Id = "6_vc01", Nome = "Modelo Pinhole (Projeção)", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "[u,v,1]ᵀ ~ K[R|t][X,Y,Z,1]ᵀ;  K = matriz intrínseca 3×3",
+                ExprTexto = "Projeção pinhole: ponto 3D → pixel 2D via K[R|t]",
+                Icone = "📷",
+                Descricao = "Modelo pinhole de câmera: projeção perspectiva de ponto 3D no mundo para coordenada 2D na imagem. K contém parâmetros intrínsecos (focal, principal point), [R|t] pose extrínseca.",
+                Criador = "Brunelleschi / Euler",
+                AnoOrigin = "1400",
+            },
+            new Formula
+            {
+                Id = "6_vc02", Nome = "Matriz Intrínseca K", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "K = [[fx, s, cx], [0, fy, cy], [0, 0, 1]];  fx,fy = focal em pixels",
+                ExprTexto = "K: fx,fy = distância focal; cx,cy = principal point; s = skew",
+                Icone = "K",
+                Descricao = "Matriz de calibração intrínseca 3×3. fx,fy: distância focal em pixels; cx,cy: ponto principal (centro óptico projetado); s: coeficiente de skew (usualmente 0).",
+                Criador = "Roger Tsai",
+                AnoOrigin = "1987",
+            },
+            new Formula
+            {
+                Id = "6_vc03", Nome = "Distorção Radial", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "x_d = x(1 + k₁r² + k₂r⁴ + k₃r⁶);  r² = x² + y²",
+                ExprTexto = "Distorção radial: barrel/pincushion; k1,k2,k3 coeficientes",
+                Icone = "⊙",
+                Descricao = "Modelo de distorção radial da lente. Coeficientes k₁,k₂,k₃ modelam distorção barrel (k<0) ou pincushion (k>0). Essencial para calibração precisa de câmeras.",
+                Criador = "Duane C. Brown",
+                AnoOrigin = "1966",
+            },
+            new Formula
+            {
+                Id = "6_vc04", Nome = "Calibração de Zhang", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "H = K[r₁, r₂, t];  homografia plano calibração → imagem",
+                ExprTexto = "Zhang: H de padrão planar estima K via constraints de ortogonalidade",
+                Icone = "⊞",
+                Descricao = "Método de calibração de Zhang: usa padrão planar (tabuleiro) em múltiplas poses. Homografia H relaciona plano-imagem; constraints r₁ᵀr₂=0, ||r₁||=||r₂|| estimam K.",
+                Criador = "Zhengyou Zhang",
+                AnoOrigin = "2000",
+            },
+            new Formula
+            {
+                Id = "6_vc05", Nome = "Matriz Essencial E", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "E = R[t]ₓ;  x'ᵀEx = 0;  decompõe em R, t  (5 pontos)",
+                ExprTexto = "E codifica rotação e translação entre duas câmeras calibradas",
+                Icone = "E",
+                Descricao = "Matriz essencial relaciona pontos correspondentes em câmeras calibradas. Satisfaz constraint epipolar x'ᵀEx=0. Decomposição SVD fornece R,t (até escala). Requer 5 pontos mínimos.",
+                Criador = "H. Christopher Longuet-Higgins",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_vc06", Nome = "Matriz Fundamental F", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "F = K'⁻ᵀEK⁻¹;  p'ᵀFp = 0;  linha epipolar l' = Fp",
+                ExprTexto = "F = versão de E para câmeras não calibradas; epipolar geometry",
+                Icone = "F",
+                Descricao = "Matriz fundamental F para câmeras não calibradas. p'ᵀFp=0 é constraint epipolar. Linha epipolar l'=Fp restringe busca de correspondência. 8-point algorithm ou RANSAC.",
+                Criador = "Quang-Tuan Luong",
+                AnoOrigin = "1992",
+            },
+            new Formula
+            {
+                Id = "6_vc07", Nome = "Homografia H (4 pontos)", Categoria = "Visão Computacional e SLAM", SubCategoria = "Geometria de Câmera",
+                Expressao = "p' = Hp;  H 3×3 (8 DOF);  4 pontos → DLT solution",
+                ExprTexto = "Homografia: transformação projetiva plano→plano; 4 correspondências",
+                Icone = "H",
+                Descricao = "Homografia H mapeia pontos entre planos (ou câmeras com cena planar). Matriz 3×3 com 8 graus de liberdade. DLT (Direct Linear Transform) com 4+ correspondências de pontos.",
+                Criador = "O. Faugeras / R. Hartley",
+                AnoOrigin = "1993",
+            },
+
+            // 21.2 SLAM e Bundle Adjustment
+            new Formula
+            {
+                Id = "6_slam01", Nome = "EKF-SLAM (Estado)", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "x = [pose; landmarks];  Σ ∈ ℝ^{(3+2n)×(3+2n)}  (custo quadrático)",
+                ExprTexto = "EKF-SLAM: estado = pose + landmarks; covariância cresce quadráticamente",
+                Icone = "Σ",
+                Descricao = "EKF-SLAM: filtro de Kalman estendido para Localização e Mapeamento Simultâneos. Estado inclui pose do robô e posição de landmarks. Covariância é quadrática no número de landmarks.",
+                Criador = "Randall Smith / Matthew Self / Peter Cheeseman",
+                AnoOrigin = "1990",
+            },
+            new Formula
+            {
+                Id = "6_slam02", Nome = "Predição EKF-SLAM", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "x̄ = f(x, u);  P̄ = FPFᵀ + Q",
+                ExprTexto = "Predição: propaga estado via modelo de movimento + ruído de processo Q",
+                Icone = "→",
+                Descricao = "Etapa de predição do EKF: estado previsto x̄ via modelo de movimento f; covariância propagada via Jacobiana F e ruído de processo Q. F=∂f/∂x linearização.",
+                Criador = "Rudolf Kálmán",
+                AnoOrigin = "1960",
+            },
+            new Formula
+            {
+                Id = "6_slam03", Nome = "Atualização EKF-SLAM", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "K = P̄Hᵀ(HP̄Hᵀ+R)⁻¹;  x = x̄+K(z-h(x̄));  P = (I-KH)P̄",
+                ExprTexto = "Atualização: ganho de Kalman K corrige estado com observação z",
+                Icone = "K",
+                Descricao = "Etapa de atualização do EKF: ganho de Kalman K pondera inovação (z-h(x̄)). H=∂h/∂x Jacobiana da observação, R ruído de medição. Funde predição com medida.",
+                Criador = "Rudolf Kálmán",
+                AnoOrigin = "1960",
+            },
+            new Formula
+            {
+                Id = "6_slam04", Nome = "FastSLAM (Particle Filter)", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "p(x₁:t, m | z₁:t, u₁:t) ≈ Σ wⁱ δ(x₁:t - x₁:tⁱ) · Π p(mⱼ | xⁱ, z)",
+                ExprTexto = "FastSLAM: N partículas para rota; mapa Gaussiano por landmark por partícula",
+                Icone = "◆",
+                Descricao = "FastSLAM usa filtro de partículas para trajetória e EKF independente por landmark por partícula. Reduz complexidade de O(n²) para O(n·log n). Rao-Blackwellized particle filter.",
+                Criador = "Michael Montemerlo / Sebastian Thrun",
+                AnoOrigin = "2002",
+            },
+            new Formula
+            {
+                Id = "6_slam05", Nome = "Bundle Adjustment", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "min Σᵢⱼ ||pᵢⱼ - π(Rⱼ, tⱼ, Xᵢ)||²  (câmeras + pontos 3D)",
+                ExprTexto = "BA: otimiza conjuntamente poses de câmera e pontos 3D (mínimos quadrados)",
+                Icone = "BA",
+                Descricao = "Bundle Adjustment: otimização não-linear que refina simultaneamente poses de câmera (Rⱼ,tⱼ) e pontos 3D (Xᵢ) minimizando erro de reprojeção. Estrutura esparsa explorável.",
+                Criador = "Bill Triggs",
+                AnoOrigin = "2000",
+            },
+            new Formula
+            {
+                Id = "6_slam06", Nome = "Levenberg-Marquardt para BA", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "Δx = -(JᵀJ + λI)⁻¹Jᵀr;  λ controla Gauss-Newton ↔ gradiente",
+                ExprTexto = "LM: interpola entre Gauss-Newton (λ→0) e gradiente descendente (λ→∞)",
+                Icone = "LM",
+                Descricao = "Algoritmo Levenberg-Marquardt para Bundle Adjustment: combina Gauss-Newton (convergência rápida perto do mínimo) com gradient descent (robustez longe). Parâmetro λ de damping adaptativo.",
+                Criador = "Kenneth Levenberg / Donald Marquardt",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "6_slam07", Nome = "Graph-SLAM", Categoria = "Visão Computacional e SLAM", SubCategoria = "SLAM",
+                Expressao = "min Σ eᵢⱼᵀ Ωᵢⱼ eᵢⱼ;  nós = poses;  arestas = constraints",
+                ExprTexto = "Graph-SLAM: otimiza grafo de poses; arestas = odometria + loop closures",
+                Icone = "⊞",
+                Descricao = "Graph-SLAM formula SLAM como otimização de grafos. Nós representam poses, arestas codificam constraints (odometria, observações). Minimiza erro quadrático ponderado por informação Ω. Detecção de loop closure essencial.",
+                Criador = "Edwin Olson / Michael Kaess",
+                AnoOrigin = "2006",
+            },
+        ]);
+    }
+
+
+    // ─────────────────────────────────────────────────────
+    // 22. VERIFICAÇÃO FORMAL, SISTEMAS CYBER-FÍSICOS E TEMPO REAL
+    // ─────────────────────────────────────────────────────
+    private void AdicionarVerificacaoFormal()
+    {
+        _formulas.AddRange([
+            // 22.1 Verificação Formal e Model Checking
+            new Formula
+            {
+                Id = "6_vf01", Nome = "CTL Model Checking", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "M, s ⊨ φ;  algoritmo fixpoint O(|M|·|φ|)",
+                ExprTexto = "Model checking CTL: verifica se modelo M satisfaz fórmula φ em estado s",
+                Icone = "✓",
+                Descricao = "Model checking para CTL (Computation Tree Logic): verifica automaticamente se sistema de transição M satisfaz propriedade temporal φ. Complexidade linear no produto |M|·|φ|.",
+                Criador = "Edmund Clarke / E. Allen Emerson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_vf02", Nome = "EF φ (Eventualmente)", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "EF φ = μZ.(φ ∨ EX Z)  (mínimo ponto fixo)",
+                ExprTexto = "EF φ: existe caminho onde φ é alcançável; computa como menor fixpoint",
+                Icone = "μ",
+                Descricao = "Operador EF (exists finally) em CTL: existe um caminho onde φ eventualmente vale. Computado como menor ponto fixo μZ.(φ∨EX Z) iterando até estabilizar.",
+                Criador = "Edmund Clarke / E. Allen Emerson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_vf03", Nome = "AG φ (Sempre em Todos)", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "AG φ = νZ.(φ ∧ AX Z)  (máximo ponto fixo)",
+                ExprTexto = "AG φ: em todos os caminhos, φ vale sempre; computa como maior fixpoint",
+                Icone = "ν",
+                Descricao = "Operador AG (always globally) em CTL: φ vale em todos os estados de todos os caminhos. Computado como maior ponto fixo νZ.(φ∧AX Z). Propriedade de segurança (safety).",
+                Criador = "Edmund Clarke / E. Allen Emerson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_vf04", Nome = "CEGAR (Abstraction-Refinement)", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "Loop: abstrai M→M̂ → model check M̂ → se falso: refina com counterex.",
+                ExprTexto = "CEGAR: abstrai, verifica, refina iterativamente com contraexemplos",
+                Icone = "↻",
+                Descricao = "Counterexample-Guided Abstraction Refinement: abstrai sistema para reduzir espaço de estados, verifica abstração; se contraexemplo espúrio, refina abstração. Converge ou encontra bug real.",
+                Criador = "Edmund Clarke / Orna Grumberg / Somesh Jha / Yuan Lu / Helmut Veith",
+                AnoOrigin = "2000",
+            },
+            new Formula
+            {
+                Id = "6_vf05", Nome = "Bounded Model Checking (CBMC)", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "unfold loops k vezes → SAT encoding → SAT solver verifica",
+                ExprTexto = "BMC: desdobra programa k passos; codifica como SAT; verifica propriedade",
+                Icone = "k",
+                Descricao = "Bounded Model Checking: desdobra loops até profundidade k, codifica programa e propriedade como fórmula SAT/SMT. SAT solver busca contraexemplo. CBMC para programas C.",
+                Criador = "Armin Biere / Alessandro Cimatti / Edmund Clarke",
+                AnoOrigin = "1999",
+            },
+            new Formula
+            {
+                Id = "6_vf06", Nome = "Especificação Z", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "Schema: {declarações | predicados};  ΔState = antes/depois;  ΞState = sem mudança",
+                ExprTexto = "Z: especificação formal com schemas; declarações + constraints lógicas",
+                Icone = "Z",
+                Descricao = "Linguagem de especificação formal Z: usa schemas com declarações de variáveis e predicados lógicos. Δ indica mudança de estado, Ξ preservação. Base em teoria de conjuntos e lógica de primeira ordem.",
+                Criador = "Jean-Raymond Abrial",
+                AnoOrigin = "1977",
+            },
+            new Formula
+            {
+                Id = "6_vf07", Nome = "CSP (Process Algebra)", Categoria = "Verificação Formal e CPS", SubCategoria = "Verificação Formal",
+                Expressao = "P ∥ Q;  P;Q;  P□Q (ext choice);  P⊓Q (int choice);  μX.P (recursão)",
+                ExprTexto = "CSP: álgebra de processos comunicantes; composição paralela e escolha",
+                Icone = "∥",
+                Descricao = "Communicating Sequential Processes (CSP): álgebra de processos para modelar concorrência. Operadores: composição paralela ∥, sequência ;, escolha externa □, interna ⊓, recursão μX.",
+                Criador = "C. A. R. Hoare",
+                AnoOrigin = "1978",
+            },
+
+            // 22.2 Sistemas Cyber-Físicos
+            new Formula
+            {
+                Id = "6_cps01", Nome = "Autômato Híbrido", Categoria = "Verificação Formal e CPS", SubCategoria = "Sistemas Cyber-Físicos",
+                Expressao = "(Q, X, f, Init, D, E, G, R);  modos discretos + fluxo contínuo ẋ = f(x)",
+                ExprTexto = "Autômato híbrido: estados discretos (modos) + dinâmica contínua por modo",
+                Icone = "⊕",
+                Descricao = "Autômato híbrido modela sistemas cyber-físicos: modos discretos Q com dinâmicas contínuas ẋ=f_q(x). Transições por guardas G, resets R. Combina controle discreto e física contínua.",
+                Criador = "Rajeev Alur / Thomas Henzinger / Costas Courcoubetis",
+                AnoOrigin = "1993",
+            },
+            new Formula
+            {
+                Id = "6_cps02", Nome = "Condição de Zeno", Categoria = "Verificação Formal e CPS", SubCategoria = "Sistemas Cyber-Físicos",
+                Expressao = "Zeno: Σᵢ τᵢ < ∞  com infinitas transições;  τᵢ = tempo entre eventos",
+                ExprTexto = "Zeno: infinitas transições em tempo finito; patologia a evitar",
+                Icone = "∞",
+                Descricao = "Comportamento de Zeno em sistemas híbridos: sequência infinita de transições discretas em tempo finito. Modelo irreal (chattering). Regularização: guard com ε-delay ou semântica não-Zeno.",
+                Criador = "Rajeev Alur / Thomas Henzinger",
+                AnoOrigin = "1993",
+            },
+            new Formula
+            {
+                Id = "6_cps03", Nome = "Barrier Certificate", Categoria = "Verificação Formal e CPS", SubCategoria = "Sistemas Cyber-Físicos",
+                Expressao = "B(x) ≥ 0 (safe);  B(x) < 0 (unsafe);  dB/dt ≤ 0 na fronteira",
+                ExprTexto = "Barrier: B≥0 em safe set, B<0 em unsafe; derivada ≤0 garante segurança",
+                Icone = "B",
+                Descricao = "Certificado de barreira para segurança de sistemas dinâmicos: função B(x)≥0 na região segura, B<0 na insegura, ḂB≤0 na fronteira. Garante que trajetória nunca entra em região insegura.",
+                Criador = "Stephen Prajna / Ali Jadbabaie",
+                AnoOrigin = "2004",
+            },
+            new Formula
+            {
+                Id = "6_cps04", Nome = "Control Barrier Function (CBF)", Categoria = "Verificação Formal e CPS", SubCategoria = "Sistemas Cyber-Físicos",
+                Expressao = "ḣ(x,u) + α(h(x)) ≥ 0  garante  h(x(t)) ≥ 0  ∀t",
+                ExprTexto = "CBF: constraint sobre controle u garantindo forward invariance de h≥0",
+                Icone = "h",
+                Descricao = "Control Barrier Function: generaliza barrier certificate para sistemas com controle. Constraint ḣ+α(h)≥0 garante que h(x)≥0 é forward invariant. α é função classe-K estendida.",
+                Criador = "Aaron Ames / Xiangru Xu / Jessy Grizzle / Paulo Tabuada",
+                AnoOrigin = "2017",
+            },
+            new Formula
+            {
+                Id = "6_cps05", Nome = "CLF+CBF QP (Safety-Critical)", Categoria = "Verificação Formal e CPS", SubCategoria = "Sistemas Cyber-Físicos",
+                Expressao = "min_u ||u-u_des||²;  s.t. L_fV+L_gVu ≤ -α₁V  AND  L_fh+L_ghu ≥ -α₂h",
+                ExprTexto = "QP: minimiza esforço de controle sujeito a CLF (estabilidade) + CBF (segurança)",
+                Icone = "QP",
+                Descricao = "Quadratic Program unificando CLF (Control Lyapunov Function, estabilidade) e CBF (segurança). Resolve online: u mais próximo do desejado satisfazendo ambas constraints. Safety-critical control.",
+                Criador = "Aaron Ames",
+                AnoOrigin = "2014",
+            },
+
+            // 22.3 Sistemas de Tempo Real
+            new Formula
+            {
+                Id = "6_rts01", Nome = "Rate Monotonic (RM)", Categoria = "Verificação Formal e CPS", SubCategoria = "Tempo Real",
+                Expressao = "U = Σ(Cᵢ/Tᵢ) ≤ n(2^{1/n}-1) → escalável;  lim n→∞: ln2 ≈ 0.693",
+                ExprTexto = "RM: prioridade por período; utilização ≤ n(2^(1/n)-1) garante escalonamento",
+                Icone = "RM",
+                Descricao = "Rate Monotonic Scheduling: atribui prioridade inversamente proporcional ao período. Ótimo entre prioridades fixas. Condição suficiente: utilização total ≤ n(2^(1/n)-1). Limite assintótico: ln2≈69.3%.",
+                Criador = "C. L. Liu / James Layland",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_rts02", Nome = "Earliest Deadline First (EDF)", Categoria = "Verificação Formal e CPS", SubCategoria = "Tempo Real",
+                Expressao = "prioridade por deadline absoluta;  U = Σ(Cᵢ/Tᵢ) ≤ 1 → escalável",
+                ExprTexto = "EDF: prioridade dinâmica por deadline; ótimo se U≤100%",
+                Icone = "EDF",
+                Descricao = "Earliest Deadline First: escalonamento com prioridade dinâmica pela deadline mais próxima. Ótimo para sistemas uniprocessador: escalável se e somente se utilização total ≤ 1 (100%).",
+                Criador = "C. L. Liu / James Layland",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_rts03", Nome = "WCET (Worst-Case Execution Time)", Categoria = "Verificação Formal e CPS", SubCategoria = "Tempo Real",
+                Expressao = "WCET = max_{all paths} Σ t_instr;  análise estática + timing HW",
+                ExprTexto = "WCET: pior caso de tempo; análise de caminho + modelo de hardware",
+                Icone = "⌛",
+                Descricao = "Worst-Case Execution Time: limite superior garantido do tempo de execução. Combina análise de caminho (IPET, tree-based) com modelo de timing de hardware (cache, pipeline). Essencial para hard real-time.",
+                Criador = "Reinhard Wilhelm / Christian Ferdinand",
+                AnoOrigin = "1997",
+            },
+            new Formula
+            {
+                Id = "6_rts04", Nome = "Análise de Tempo de Resposta (TDA)", Categoria = "Verificação Formal e CPS", SubCategoria = "Tempo Real",
+                Expressao = "Rᵢ = Cᵢ + Σⱼ∈hp(i) ⌈Rᵢ/Tⱼ⌉·Cⱼ;  iteração até convergência",
+                ExprTexto = "TDA: tempo de resposta Rᵢ inclui interferência de tarefas de maior prioridade",
+                Icone = "R",
+                Descricao = "Time Demand Analysis: calcula tempo de resposta Rᵢ iterativamente. Inclui execução Cᵢ mais interferência de todas as tarefas de maior prioridade hp(i). Escalável se Rᵢ≤Dᵢ (deadline).",
+                Criador = "Neil Audsley / Alan Burns",
+                AnoOrigin = "1993",
+            },
+        ]);
+    }
+
+
+    // ─────────────────────────────────────────────────────
+    // 23. COMPUTAÇÃO QUÂNTICA AVANÇADA: VANTAGEM E COMPLEXIDADE
+    // ─────────────────────────────────────────────────────
+    private void AdicionarComputacaoQuanticaAvancadaV2()
+    {
+        _formulas.AddRange([
+            // 23.1 Complexidade Quântica
+            new Formula
+            {
+                Id = "6_qcx01", Nome = "BQP (Bounded-Error Quantum Poly)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "BQP: problemas com QTM em tempo polinomial com erro ≤ 1/3",
+                ExprTexto = "BQP: classe de problemas eficientemente resolvíveis em computador quântico",
+                Icone = "BQP",
+                Descricao = "BQP (Bounded-error Quantum Polynomial time): classe de problemas decidíveis por máquina de Turing quântica em tempo polinomial com probabilidade de erro ≤ 1/3. Contém fatoração (Shor).",
+                Criador = "Ethan Bernstein / Umesh Vazirani",
+                AnoOrigin = "1993",
+            },
+            new Formula
+            {
+                Id = "6_qcx02", Nome = "BQP vs PH (Oracular)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "PP ⊇ BQP;  BQP ⊄ PH (relativo a oráculos);  PH ⊄ BQP provável",
+                ExprTexto = "PP contém BQP; separação BQP-PH existente em modelo de oráculo",
+                Icone = "⊇",
+                Descricao = "Relações entre BQP e hierarquia polinomial: PP⊇BQP. Existem oráculos onde BQP⊄PH e PH⊄BQP. Separação Raz-Tal (2018) mostra BQP não está na PH relativamente a oráculo.",
+                Criador = "Ran Raz / Avishay Tal",
+                AnoOrigin = "2018",
+            },
+            new Formula
+            {
+                Id = "6_qcx03", Nome = "Query Complexity Quântica", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "Q(f) = nº mínimo de queries quânticas para f;  Q(f) ≤ R(f) (clássico)",
+                ExprTexto = "Query complexity: número de consultas ao oráculo; quântico ≤ clássico",
+                Icone = "Q(f)",
+                Descricao = "Complexidade de consulta quântica: número mínimo de queries quânticas a oráculo para computar f. Separação: Grover dá √N vs N; Simon dá O(n) vs Ω(2^{n/2}). Bounded error.",
+                Criador = "Richard Beals / Harry Buhrman / Richard Cleve",
+                AnoOrigin = "1998",
+            },
+            new Formula
+            {
+                Id = "6_qcx04", Nome = "Adversary Method (Lower Bound)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "Q(f) ≥ max_{X,Y: f(X)≠f(Y)} ||Γ||/max_i||Γ∘Dᵢ||",
+                ExprTexto = "Adversary: lower bound em Q(f) via relação adversarial X vs Y",
+                Icone = "Adv",
+                Descricao = "Método do adversário para lower bounds em query complexity quântica. Generaliza método de Ambainis. Adversary bound é tight (Reichardt 2009): Q(f)=Θ(Adv±(f)).",
+                Criador = "Andris Ambainis",
+                AnoOrigin = "2000",
+            },
+            new Formula
+            {
+                Id = "6_qcx05", Nome = "Random Circuit Sampling (Sycamore)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "XEB fidelity: F = 2ⁿ⟨p(x)⟩_x - 1;  F > 0 indica vantagem quântica",
+                ExprTexto = "RCS: amostra de circuitos aleatórios; XEB mede fidelidade da amostragem",
+                Icone = "XEB",
+                Descricao = "Random Circuit Sampling: benchmark de vantagem quântica. Google Sycamore (53 qubits, 2019). XEB (cross-entropy benchmark) mede se amostras seguem distribuição quântica vs uniforme.",
+                Criador = "Frank Arute et al. (Google AI Quantum)",
+                AnoOrigin = "2019",
+            },
+            new Formula
+            {
+                Id = "6_qcx06", Nome = "Boson Sampling", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Complexidade Quântica",
+                Expressao = "P(S) = |Perm(U_S)|²/Π sᵢ!;  Perm é #P-hard classicamente",
+                ExprTexto = "Boson sampling: fótons em interferômetro; distribuição ligada ao permanente",
+                Icone = "BS",
+                Descricao = "Boson Sampling de Aaronson-Arkhipov: fótons indistinguíveis em interferômetro linear. Distribuição de saída envolve permanentes de matrizes (#P-hard). Evidência de vantagem quântica sem universalidade.",
+                Criador = "Scott Aaronson / Alex Arkhipov",
+                AnoOrigin = "2011",
+            },
+
+            // 23.2 Quantum ML e Síntese de Circuitos
+            new Formula
+            {
+                Id = "6_qml01", Nome = "Quantum Kernel", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "k(x,x') = |⟨φ(x)|φ(x')⟩|²;  φ(x) = estado quântico de x",
+                ExprTexto = "Quantum kernel: produto interno de feature maps quânticos; SVM quântica",
+                Icone = "⟨⟩",
+                Descricao = "Quantum kernel: mede similaridade via overlap de estados quânticos. Feature map φ codifica dados clássicos em estados quânticos. Usado em SVM quântica. Pode ter vantagem em certos problemas.",
+                Criador = "Vojtěch Havlíček et al.",
+                AnoOrigin = "2019",
+            },
+            new Formula
+            {
+                Id = "6_qml02", Nome = "PQC (Parameterized Quantum Circuit)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "U(θ) = Π Uₖ(θₖ) = Π Rz(θₖ)·CNOT;  otimiza θ por parameter shift",
+                ExprTexto = "PQC: circuito variacional com parâmetros treináveis θ",
+                Icone = "U(θ)",
+                Descricao = "Parameterized Quantum Circuit (variational circuit): sequência de gates paramétricos U(θ). Treinado via gradiente usando parameter shift rule. Base de VQE, QAOA e quantum neural networks.",
+                Criador = "Alberto Peruzzo et al.",
+                AnoOrigin = "2014",
+            },
+            new Formula
+            {
+                Id = "6_qml03", Nome = "Parameter Shift Rule", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "∂⟨O⟩/∂θ = (⟨O⟩_{θ+π/2} - ⟨O⟩_{θ-π/2}) / 2",
+                ExprTexto = "Parameter shift: gradiente exato via duas avaliações com shift ±π/2",
+                Icone = "∂/∂θ",
+                Descricao = "Parameter shift rule: calcula gradiente exato de observável quântico em relação a parâmetro θ. Requer apenas duas avaliações do circuito com θ±π/2. Válido para gates da forma e^{-iθG/2}.",
+                Criador = "Kosuke Mitarai / Keisuke Fujii",
+                AnoOrigin = "2018",
+            },
+            new Formula
+            {
+                Id = "6_qml04", Nome = "Barren Plateaus", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "Var[∂L/∂θ] ∝ exp(-n);  gradientes exponencialmente pequenos em n qubits",
+                ExprTexto = "Barren plateaus: variância do gradiente decai exponencialmente com profundidade",
+                Icone = "∝e⁻ⁿ",
+                Descricao = "Barren plateaus em PQCs: para circuitos profundos e aleatórios, variância dos gradientes decai exponencialmente com número de qubits. Torna treinamento impraticável. Mitigações: estrutura local, warm-start.",
+                Criador = "Jarrod McClean et al.",
+                AnoOrigin = "2018",
+            },
+            new Formula
+            {
+                Id = "6_qml05", Nome = "Síntese de Circuitos (ZX-calculus)", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "U → sequência de universais;  CNOT count ~ O(n²);  ZX simplificação",
+                ExprTexto = "Síntese: decompõe unitário em gates universais; ZX otimiza contagem",
+                Icone = "ZX",
+                Descricao = "Síntese de circuitos quânticos: decompõe unitário arbitrário em conjunto universal (CNOT+rotações). CNOT count O(4^n) geral, O(n²) com estrutura. ZX-calculus: linguagem diagramática para simplificação.",
+                Criador = "Bob Coecke / Ross Duncan",
+                AnoOrigin = "2009",
+            },
+            new Formula
+            {
+                Id = "6_qml06", Nome = "Limite de Landauer", Categoria = "Computação Quântica Avançada v2", SubCategoria = "Quantum ML",
+                Expressao = "E_min = kB T ln 2  por bit apagado;  computação reversível evita custo",
+                ExprTexto = "Landauer: apagar 1 bit dissipa ≥ kBT ln2; reversibilidade contorna",
+                Icone = "kT",
+                Descricao = "Princípio de Landauer: apagar informação tem custo termodinâmico mínimo kBT ln2 por bit. Computação reversível (Toffoli, Fredkin) evita dissipação. Conexão fundamental entre informação e termodinâmica.",
+                Criador = "Rolf Landauer",
+                AnoOrigin = "1961",
+            },
+        ]);
+    }
+
+
+    // ─────────────────────────────────────────────────────
+    // 24. PLASMA CONFINADO E FÍSICA DE TOKAMAK
+    // ─────────────────────────────────────────────────────
+    private void AdicionarPlasmaTokamak()
+    {
+        _formulas.AddRange([
+            // 24.1 Equilíbrio MHD em Tokamak
+            new Formula
+            {
+                Id = "6_tk01", Nome = "Equação de Grad-Shafranov", Categoria = "Plasma e Tokamak", SubCategoria = "Equilíbrio MHD",
+                Expressao = "Δ*ψ = -μ₀R² dp/dψ - F dF/dψ",
+                ExprTexto = "Grad-Shafranov: equilíbrio MHD axissimétrico; ψ = fluxo poloidal",
+                Icone = "ψ",
+                Descricao = "Equação de Grad-Shafranov para equilíbrio MHD em geometria toroidal axissimétrica. ψ é fluxo poloidal, p(ψ) pressão, F(ψ)=RBφ. Solução define superfícies magnéticas de equilíbrio.",
+                Criador = "Harold Grad / Vitalii Shafranov",
+                AnoOrigin = "1958",
+            },
+            new Formula
+            {
+                Id = "6_tk02", Nome = "Operador Δ* (Grad-Shafranov)", Categoria = "Plasma e Tokamak", SubCategoria = "Equilíbrio MHD",
+                Expressao = "Δ*ψ = R ∂/∂R(1/R · ∂ψ/∂R) + ∂²ψ/∂Z²",
+                ExprTexto = "Δ*: operador elíptico de Grad-Shafranov em coordenadas (R,Z)",
+                Icone = "Δ*",
+                Descricao = "Operador de Grad-Shafranov Δ* em coordenadas cilíndricas (R,Z). Operador elíptico tipo Laplaciano modificado. Não é simétrico em R. Soluções numéricas via elementos finitos ou diferenças finitas.",
+                Criador = "Harold Grad / Vitalii Shafranov",
+                AnoOrigin = "1958",
+            },
+            new Formula
+            {
+                Id = "6_tk03", Nome = "Safety Factor q", Categoria = "Plasma e Tokamak", SubCategoria = "Equilíbrio MHD",
+                Expressao = "q = RBφ/(rBθ);  q < 1 instável;  q(a) = 2-5 típico",
+                ExprTexto = "q: número de voltas toroidais por volta poloidal; q=1 superfície ressonante",
+                Icone = "q",
+                Descricao = "Safety factor q: razão de pitch das linhas de campo magnético. q < 1 no centro dispara instabilidade kink interna (sawtooth). q(a) na borda tipicamente 2-5. Perfil q(r) crucial para estabilidade.",
+                Criador = "Vitalii Shafranov",
+                AnoOrigin = "1956",
+            },
+            new Formula
+            {
+                Id = "6_tk04", Nome = "Fator de Amplificação Q", Categoria = "Plasma e Tokamak", SubCategoria = "Equilíbrio MHD",
+                Expressao = "Q = P_fusion / P_heating;  Q = 1 → breakeven;  Q = ∞ → ignição",
+                ExprTexto = "Q: razão potência de fusão / aquecimento externo; breakeven em Q=1",
+                Icone = "Q",
+                Descricao = "Fator Q de amplificação de fusão: razão entre potência de fusão produzida e potência de aquecimento injetada. Q=1 é breakeven (JET atingiu Q≈0.67). Q=∞ é ignição (plasma auto-sustentado).",
+                Criador = "John Lawson",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "6_tk05", Nome = "Critério de Lawson", Categoria = "Plasma e Tokamak", SubCategoria = "Equilíbrio MHD",
+                Expressao = "n τ_E T > 3×10²¹ m⁻³ s keV  (DT a ~10 keV)",
+                ExprTexto = "Lawson: produto triplo nτT para ignição; n=densidade, τE=confinamento, T=temperatura",
+                Icone = "nτT",
+                Descricao = "Critério de Lawson para fusão: produto triplo de densidade n, tempo de confinamento τE e temperatura T deve exceder ~3×10²¹ m⁻³·s·keV para deutério-trítio. Define condição mínima para ignição.",
+                Criador = "John Lawson",
+                AnoOrigin = "1957",
+            },
+
+            // 24.2 Instabilidades MHD
+            new Formula
+            {
+                Id = "6_tk06", Nome = "Modo de Tearing", Categoria = "Plasma e Tokamak", SubCategoria = "Instabilidades MHD",
+                Expressao = "ψ ~ e^{γt + imθ - inφ};  m/n = q na superfície ressonante",
+                ExprTexto = "Tearing: reconexão magnética em superfície ressonante q=m/n",
+                Icone = "≈",
+                Descricao = "Instabilidade tearing: reconexão magnética resistiva em superfícies racionais onde q=m/n. Forma ilhas magnéticas. Taxa de crescimento γ∝η^{3/5}. Degradação de confinamento em tokamaks.",
+                Criador = "Harold Furth / John Killeen / Marshall Rosenbluth",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "6_tk07", Nome = "Parâmetro Δ' (Tearing)", Categoria = "Plasma e Tokamak", SubCategoria = "Instabilidades MHD",
+                Expressao = "Δ' = [dψ'/ψ]_{r_s⁻}^{r_s⁺};  instável se Δ' > 0",
+                ExprTexto = "Δ': descontinuidade logarítmica de ψ na superfície ressonante; driving term",
+                Icone = "Δ'",
+                Descricao = "Parâmetro Δ' (delta-prime): mede descontinuidade da derivada logarítmica de ψ na superfície ressonante. Δ'>0 é condição necessária para instabilidade tearing. Depende do perfil de corrente.",
+                Criador = "Harold Furth / John Killeen / Marshall Rosenbluth",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "6_tk08", Nome = "NTM (Neoclassical Tearing Mode)", Categoria = "Plasma e Tokamak", SubCategoria = "Instabilidades MHD",
+                Expressao = "dw/dt ∝ Δ'w + a_bs·j_bs/w - a_pol/w³",
+                ExprTexto = "NTM: tearing alimentado por corrente bootstrap; island width w cresce",
+                Icone = "NTM",
+                Descricao = "Modo tearing neoclássico: corrente bootstrap (proporcional a ∇p) é perturbada por ilhas magnéticas, retroalimentando crescimento. Principal limitação de desempenho em H-mode. Estabilização por ECCD localizado.",
+                Criador = "Richard Carrera / Richard Hazeltine / M. Kotschenreuther",
+                AnoOrigin = "1986",
+            },
+            new Formula
+            {
+                Id = "6_tk09", Nome = "ELMs (Edge Localized Modes)", Categoria = "Plasma e Tokamak", SubCategoria = "Instabilidades MHD",
+                Expressao = "ELM Tipo I: ΔW_ELM ~5-15% W_ped;  f_ELM ~10-100 Hz",
+                ExprTexto = "ELMs: colapso periódico do pedestal H-mode; erosão do divertor",
+                Icone = "⚡",
+                Descricao = "Edge Localized Modes: instabilidades MHD periódicas na borda do pedestal em modo H. Tipo I: peeling-ballooning. Ejeção de plasma e energia para divertor. Mitigação por RMP, pellets, ELM-free regimes.",
+                Criador = "F. Wagner / ASDEX Team",
+                AnoOrigin = "1982",
+            },
+            new Formula
+            {
+                Id = "6_tk10", Nome = "Disruption (Tokamak)", Categoria = "Plasma e Tokamak", SubCategoria = "Instabilidades MHD",
+                Expressao = "thermal quench (~ms) → current quench (~10ms) → runaway electrons",
+                ExprTexto = "Disruption: perda súbita de confinamento; corrente de halo; VDE; runaways",
+                Icone = "⚠",
+                Descricao = "Disruption em tokamak: perda catastrófica de confinamento. Thermal quench (energia em ~ms), current quench (corrente decai em ~10ms), forças eletromagnéticas e correntes de halo. Geração de elétrons runaway. Principal desafio para ITER.",
+                Criador = "ASDEX / JET Teams",
+                AnoOrigin = "1980",
+            },
+        ]);
+    }
+
+
+    // ─────────────────────────────────────────────────────
+    // 25. TEORIA CONFORME, SLE E GEOMETRIA DISCRETA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarTeoriaConformeSLE()
+    {
+        _formulas.AddRange([
+            // 25.1 CFT — Teoria Conforme de Campos
+            new Formula
+            {
+                Id = "6_cft01", Nome = "Álgebra de Virasoro", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "[Lm, Ln] = (m-n)L_{m+n} + (c/12)·m(m²-1)δ_{m+n,0}",
+                ExprTexto = "Virasoro: álgebra dos geradores conformes; c = carga central",
+                Icone = "L",
+                Descricao = "Álgebra de Virasoro: extensão central da álgebra de Witt. Geradores Lₙ satisfazem [Lm,Ln]=(m-n)L_{m+n}+c/12·m(m²-1)δ_{m+n,0}. c = carga central, classifica CFTs. Estrutura fundamental de CFT 2D.",
+                Criador = "Miguel Virasoro",
+                AnoOrigin = "1970",
+            },
+            new Formula
+            {
+                Id = "6_cft02", Nome = "Tensor Energia-Momento em CFT", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "T(z) = Σ Lₙ z^{-n-2};  T̄(z̄) = Σ L̄ₙ z̄^{-n-2}",
+                ExprTexto = "T(z): tensor E-M holomórfico; expansão em modos de Virasoro Lₙ",
+                Icone = "T",
+                Descricao = "Tensor energia-momento em CFT 2D: decompõe em parte holomórfica T(z) e anti-holomórfica T̄(z̄). Expansão de Laurent em modos Lₙ. Ward identities geram simetria conforme.",
+                Criador = "Alexander Belavin / Alexander Polyakov / Alexander Zamolodchikov",
+                AnoOrigin = "1984",
+            },
+            new Formula
+            {
+                Id = "6_cft03", Nome = "OPE (Operator Product Expansion)", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "T(z)O(w) ~ hO(w)/(z-w)² + ∂O(w)/(z-w)  (operador primário peso h)",
+                ExprTexto = "OPE: T(z)·O(w) singular em z→w; coeficientes determinam peso h",
+                Icone = "~",
+                Descricao = "Operator Product Expansion em CFT: produto de operadores locais expandido em operadores singulares. OPE de T(z) com operador primário O de peso h determina transformação conforme. Base do bootstrap conforme.",
+                Criador = "Kenneth Wilson",
+                AnoOrigin = "1969",
+            },
+            new Formula
+            {
+                Id = "6_cft04", Nome = "Correspondência Estado-Operador", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "|h⟩ = O(0)|0⟩  (estado ↔ operador inserido na origem)",
+                ExprTexto = "Estado-operador: |h⟩ = O(0)|0⟩; bijeção estados ↔ operadores locais",
+                Icone = "|h⟩",
+                Descricao = "Correspondência estado-operador em CFT: bijeção entre estados no espaço de Hilbert e operadores locais. Operador O de peso h inserido na origem cria estado |h⟩=O(0)|0⟩. Mapa radial quantization.",
+                Criador = "Belavin / Polyakov / Zamolodchikov",
+                AnoOrigin = "1984",
+            },
+            new Formula
+            {
+                Id = "6_cft05", Nome = "Função de Partição CFT", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "Z(τ) = Tr[q^{L₀-c/24} q̄^{L̄₀-c/24}];  q = e^{2πiτ}",
+                ExprTexto = "Z(τ): função de partição no toro; modular invariante; classifica CFTs",
+                Icone = "Z",
+                Descricao = "Função de partição de CFT no toro parametrizado por τ. Modular invariance Z(τ)=Z(τ+1)=Z(-1/τ). Classifica modelos mínimos. Caracteres de Virasoro como building blocks.",
+                Criador = "John Cardy",
+                AnoOrigin = "1986",
+            },
+            new Formula
+            {
+                Id = "6_cft06", Nome = "Bootstrap Conforme", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "⟨σσσσ⟩ satisfaz crossing symmetry;  fixa espectro + coeficientes OPE",
+                ExprTexto = "Bootstrap: crossing de 4-point functions determina dados da CFT",
+                Icone = "⟨⟩",
+                Descricao = "Bootstrap conforme: crossing symmetry de funções de 4 pontos impõe constraints que determinam espectro de operadores e coeficientes OPE. Método numérico (Simmons-Duffin) resolve ilhas permitidas em espaço de parâmetros.",
+                Criador = "Riccardo Rattazzi / Vyacheslav Rychkov / Erik Tonni / Alessandro Vichi",
+                AnoOrigin = "2008",
+            },
+            new Formula
+            {
+                Id = "6_cft07", Nome = "Modelo de Ising CFT (c=1/2)", Categoria = "Teoria Conforme e SLE", SubCategoria = "CFT",
+                Expressao = "c = 1/2;  operadores: I(h=0), σ(h=1/16), ε(h=1/2)",
+                ExprTexto = "Ising 2D no ponto crítico: CFT com c=1/2; três operadores primários",
+                Icone = "σ",
+                Descricao = "Modelo de Ising 2D no ponto crítico descrito por CFT com c=1/2. Três operadores primários: identidade I(h=0), spin σ(h=1/16), energia ε(h=1/2). Modelo mínimo M(3,4). Solução exata por Belavin-Polyakov-Zamolodchikov.",
+                Criador = "Belavin / Polyakov / Zamolodchikov",
+                AnoOrigin = "1984",
+            },
+
+            // 25.2 SLE — Schramm-Loewner Evolution
+            new Formula
+            {
+                Id = "6_sle01", Nome = "SLE_κ (Equação de Loewner)", Categoria = "Teoria Conforme e SLE", SubCategoria = "SLE",
+                Expressao = "dg_t/dt = 2/(g_t(z) - ξ_t);  ξ_t = √κ · W_t  (Browniano)",
+                ExprTexto = "SLE_κ: evolução de Loewner com driving √κ·Browniano; curva aleatória conforme",
+                Icone = "κ",
+                Descricao = "Schramm-Loewner Evolution SLE_κ: equação de Loewner estocástica com driving function ξ_t=√κ·W_t (movimento Browniano). Gera curvas aleatórias conformemente invariantes. κ parametriza rugosidade.",
+                Criador = "Oded Schramm",
+                AnoOrigin = "2000",
+            },
+            new Formula
+            {
+                Id = "6_sle02", Nome = "Fases de SLE por κ", Categoria = "Teoria Conforme e SLE", SubCategoria = "SLE",
+                Expressao = "κ ≤ 4: curva simples;  κ ∈ (4,8): auto-intersecção;  κ ≥ 8: space-filling",
+                ExprTexto = "Fases: κ≤4 simples, 4<κ<8 toca a si mesma, κ≥8 preenche domínio",
+                Icone = "φ",
+                Descricao = "Transições de fase de SLE_κ: para κ≤4 a curva é simples (não toca a si mesma); para 4<κ<8 curva tem auto-interseções; para κ≥8 é space-filling. Dimensão Hausdorff: min(2, 1+κ/8).",
+                Criador = "Steffen Rohde / Oded Schramm",
+                AnoOrigin = "2005",
+            },
+            new Formula
+            {
+                Id = "6_sle03", Nome = "Percolação Crítica (SLE₆)", Categoria = "Teoria Conforme e SLE", SubCategoria = "SLE",
+                Expressao = "Interfaces de cluster na percolação crítica → SLE₆  (κ = 6)",
+                ExprTexto = "Percolação p=pc: interfaces entre clusters convergem para SLE₆",
+                Icone = "pc",
+                Descricao = "Na percolação crítica (p=pc em triangular lattice), as interfaces entre clusters abertos e fechados convergem para SLE₆. Prova de Smirnov (2001) para percolação em triangular. Expoentes críticos derivados.",
+                Criador = "Stanislav Smirnov",
+                AnoOrigin = "2001",
+            },
+            new Formula
+            {
+                Id = "6_sle04", Nome = "Ising Crítico 2D (SLE₃)", Categoria = "Teoria Conforme e SLE", SubCategoria = "SLE",
+                Expressao = "Interfaces spin ↑/↓ no Ising crítico 2D → SLE₃  (κ = 3)",
+                ExprTexto = "Ising T=Tc: interfaces de domínio convergem para SLE₃",
+                Icone = "↑↓",
+                Descricao = "No modelo de Ising 2D na temperatura crítica Tc, as interfaces entre domínios ↑ e ↓ convergem para SLE₃. Confirmado rigorosamente por Chelkak-Smirnov (2012). Relaciona modelo estatístico a SLE via CFT c=1/2.",
+                Criador = "Dmitry Chelkak / Stanislav Smirnov",
+                AnoOrigin = "2012",
+            },
+            new Formula
+            {
+                Id = "6_sle05", Nome = "LERW e Spanning Tree (SLE₂, SLE₈)", Categoria = "Teoria Conforme e SLE", SubCategoria = "SLE",
+                Expressao = "Loop-Erased RW → SLE₂;  Uniform Spanning Tree → SLE₈",
+                ExprTexto = "LERW é SLE₂; UST boundaries são SLE₈; dualidade κ·κ'=16",
+                Icone = "↝",
+                Descricao = "Loop-Erased Random Walk converge para SLE₂ (Lawler-Schramm-Werner 2004). Fronteira da Uniform Spanning Tree converge para SLE₈. Dualidade SLE: κ·(16/κ) = 16 relaciona SLE_κ e SLE_{16/κ}.",
+                Criador = "Gregory Lawler / Oded Schramm / Wendelin Werner",
+                AnoOrigin = "2004",
+            },
+
+            // 25.3 Geometria Discreta e Empacotamento
+            new Formula
+            {
+                Id = "6_gdg01", Nome = "Empacotamento de Esferas em ℝ²", Categoria = "Teoria Conforme e SLE", SubCategoria = "Geometria Discreta",
+                Expressao = "Δ₂ = π/(2√3) ≈ 0.9069  (hexagonal packing; ótimo)",
+                ExprTexto = "Empacotamento 2D: hexagonal é ótimo com densidade π/(2√3)",
+                Icone = "⊚",
+                Descricao = "Empacotamento ótimo de círculos no plano: arranjo hexagonal com densidade π/(2√3)≈90.69%. Provado por Thue (1910), rigorizado por Fejes Tóth (1940). Cada círculo tangente a 6 vizinhos.",
+                Criador = "Axel Thue / László Fejes Tóth",
+                AnoOrigin = "1910",
+            },
+            new Formula
+            {
+                Id = "6_gdg02", Nome = "Conjectura de Kepler (Hales)", Categoria = "Teoria Conforme e SLE", SubCategoria = "Geometria Discreta",
+                Expressao = "Δ₃ = π/(3√2) ≈ 0.7405  (FCC/HCP; empacotamento ótimo em 3D)",
+                ExprTexto = "Kepler: FCC/HCP é ótimo em 3D; provado por Hales (1998, formal 2014)",
+                Icone = "⊛",
+                Descricao = "Conjectura de Kepler (1611): empacotamento mais denso de esferas em ℝ³ é FCC (face-centered cubic) ou HCP, com densidade π/(3√2)≈74.05%. Provada por Thomas Hales (1998), verificação formal Flyspeck (2014).",
+                Criador = "Thomas Hales",
+                AnoOrigin = "1998",
+            },
+            new Formula
+            {
+                Id = "6_gdg03", Nome = "Bound de Hamming (Esferas)", Categoria = "Teoria Conforme e SLE", SubCategoria = "Geometria Discreta",
+                Expressao = "M(n,d) ≤ 2ⁿ / Σₖ₌₀^{⌊(d-1)/2⌋} C(n,k)",
+                ExprTexto = "Hamming: cota superior para códigos; esferas de Hamming não se sobrepõem",
+                Icone = "M",
+                Descricao = "Bound de Hamming (sphere-packing bound): cota superior para tamanho de código binário (n,d). Esferas de raio ⌊(d-1)/2⌋ centradas em codewords não se sobrepõem. Códigos perfeitos atingem igualdade: Hamming, Golay.",
+                Criador = "Richard Hamming",
+                AnoOrigin = "1950",
+            },
+            new Formula
+            {
+                Id = "6_gdg04", Nome = "Teorema de Minkowski (Lattice)", Categoria = "Teoria Conforme e SLE", SubCategoria = "Geometria Discreta",
+                Expressao = "vol(K) > 2ⁿ det(L)  →  K ∩ L ≠ {0};  K convexo simétrico",
+                ExprTexto = "Minkowski: corpo convexo grande o suficiente contém ponto da rede",
+                Icone = "⊞",
+                Descricao = "Teorema do corpo convexo de Minkowski: se K é convexo, simétrico e vol(K)>2ⁿ·det(L), então K contém ponto não-trivial da rede L⊂ℝⁿ. Base da geometria dos números. Aplicações em teoria algébrica de números.",
+                Criador = "Hermann Minkowski",
+                AnoOrigin = "1896",
+            },
+            new Formula
+            {
+                Id = "6_gdg05", Nome = "Politopos Regulares", Categoria = "Teoria Conforme e SLE", SubCategoria = "Geometria Discreta",
+                Expressao = "3D: 5 sólidos platônicos;  4D: 6 politopos regulares (incl. 24-cell)",
+                ExprTexto = "Platônicos: tetraedro, cubo, octaedro, dodecaedro, icosaedro; 4D tem 6",
+                Icone = "⬡",
+                Descricao = "Politopos regulares: em 3D, exatamente 5 sólidos platônicos. Em 4D, 6 politopos regulares convexos incluindo o 24-cell (sem análogo 3D). Em n≥5, apenas 3 (simplex, hipercubo, cross-polytope). Classificação via grupos de Coxeter.",
+                Criador = "Euclides / Ludwig Schläfli",
+                AnoOrigin = "-300",
+            },
+        ]);
+    }
+}

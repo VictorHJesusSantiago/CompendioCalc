@@ -154,6 +154,32 @@ public partial class FormulaService
             new() { Nome = "Computação DNA e Neuromórfica", Icone = "🧬", Cor = "#10B981", Descricao = "DNA computing, CRN, SNN, STDP e neuromórficos" },
             new() { Nome = "Bioquímica Estrutural", Icone = "🔬", Cor = "#A21CAF", Descricao = "Dobramento de proteínas, Ramachandran e dinâmica molecular" },
             new() { Nome = "Hopfield e Ecologia", Icone = "⟲", Cor = "#64748B", Descricao = "Redes de Hopfield, memória associativa e metacomunidades" },
+            // ── Volume 6 ──
+            new() { Nome = "∞-Categorias e Teoria de Tipos", Icone = "∞", Cor = "#7C3AED", Descricao = "Categorias derivadas, ∞-categorias e teoria homotópica de tipos" },
+            new() { Nome = "Sistemas Integráveis e TQFTs", Icone = "τ", Cor = "#DC2626", Descricao = "Equação de KdV, Lax pairs e TQFTs de Witten-Atiyah" },
+            new() { Nome = "Geometria Tropical e Nós", Icone = "⊕", Cor = "#B45309", Descricao = "Geometria tropical, invariantes de nós e combinatória algébrica" },
+            new() { Nome = "Sobolev e Distribuições", Icone = "W", Cor = "#059669", Descricao = "Espaços de Sobolev, distribuições de Schwartz e análise não-standard" },
+            new() { Nome = "Lógica Modal e Computabilidade", Icone = "□", Cor = "#4338CA", Descricao = "Lógica modal, axiomas de ZFC e teoria da computabilidade" },
+            new() { Nome = "Transporte Quântico e Topologia", Icone = "σ", Cor = "#1D4ED8", Descricao = "Landauer, efeito Hall quântico, isolantes topológicos e polârons" },
+            new() { Nome = "Óptica Não-Linear e Atômica", Icone = "χ", Cor = "#B91C1C", Descricao = "Óptica não-linear, física atômica e física de superfícies" },
+            new() { Nome = "Reologia e Biofísica de Membranas", Icone = "η", Cor = "#6D28D9", Descricao = "Reologia, eletrodinâmica em meios e biofísica de membranas" },
+            new() { Nome = "Astrofísica e Gravitação Numérica", Icone = "★", Cor = "#0891B2", Descricao = "Estrelas de nêutrons, mecânica celeste avançada e relatividade numérica" },
+            new() { Nome = "Normalizing Flows e Neural ODEs", Icone = "f⁻¹", Cor = "#16A34A", Descricao = "Normalizing flows, neural ODEs, EBMs e state space models" },
+            new() { Nome = "Flow Matching e Meta-Learning", Icone = "ψ", Cor = "#9333EA", Descricao = "Flow matching, KAN, reservoir computing e meta-learning" },
+            new() { Nome = "Information Bottleneck e Kernels", Icone = "I", Cor = "#EF4444", Descricao = "Information bottleneck, PAC-Bayes e métodos de kernel" },
+            new() { Nome = "Fotônica e MEMS", Icone = "λ", Cor = "#EA580C", Descricao = "Fotônica integrada, MEMS/NEMS e tribologia" },
+            new() { Nome = "Tráfego e Transferência Radiativa", Icone = "L", Cor = "#0E7490", Descricao = "Engenharia de tráfego, transferência radiativa e iluminação" },
+            new() { Nome = "Sísmica e Eletroquímica", Icone = "⚡", Cor = "#78350F", Descricao = "Engenharia sísmica, eletroquímica e confiabilidade" },
+            new() { Nome = "Biologia Sintética e scRNA-seq", Icone = "🧬", Cor = "#10B981", Descricao = "Biologia sintética, scRNA-seq e docking molecular" },
+            new() { Nome = "Radiobiologia e fMRI", Icone = "☢", Cor = "#A21CAF", Descricao = "Radiobiologia, fMRI e cronobiologia" },
+            new() { Nome = "Design de Mecanismos", Icone = "⚖", Cor = "#D97706", Descricao = "Leilões, matching, escolha social e teoria de Myerson" },
+            new() { Nome = "Active Inference e Cognição", Icone = "F", Cor = "#E11D48", Descricao = "Active inference, psicologia computacional e linguística" },
+            new() { Nome = "Geodesia e Ciências da Terra", Icone = "🌍", Cor = "#0284C7", Descricao = "Geodesia, química atmosférica e ciências oceânicas" },
+            new() { Nome = "Visão Computacional e SLAM", Icone = "👁", Cor = "#4F46E5", Descricao = "Visão computacional avançada e robótica probabilística" },
+            new() { Nome = "Verificação Formal e CPS", Icone = "✓", Cor = "#15803D", Descricao = "Verificação formal, sistemas cyber-físicos e tempo real" },
+            new() { Nome = "Computação Quântica Avançada v2", Icone = "Q", Cor = "#6B21A8", Descricao = "Circuitos quânticos, comunicação quântica e memórias" },
+            new() { Nome = "Plasma e Tokamak", Icone = "⊛", Cor = "#CA8A04", Descricao = "Plasma confinado, MHD e física de tokamak" },
+            new() { Nome = "Teoria Conforme e SLE", Icone = "c", Cor = "#64748B", Descricao = "CFT, SLE estocástica e geometria discreta" },
         ]);
     }
 
@@ -280,6 +306,33 @@ public partial class FormulaService
         AdicionarComputacaoDNANeuromorfica();
         AdicionarBioquimicaEstrutural();
         AdicionarHopfieldEcologia();
+
+        // ── Volume 6 ──
+        AdicionarInfCategorias();
+        AdicionarSistemasIntegraveis();
+        AdicionarGeometriaTropicalNos();
+        AdicionarSobolevDistribuicoes();
+        AdicionarLogicaModalComputabilidade();
+        AdicionarTransporteQuanticoTopologia();
+        AdicionarOpticaNaoLinear();
+        AdicionarReologiaBiofisica();
+        AdicionarAstrofisicaGravitacao();
+        AdicionarNormalizingFlows();
+        AdicionarFlowMatchingMeta();
+        AdicionarInfoBottleneckKernels();
+        AdicionarFotonicaMEMS();
+        AdicionarTrafegoRadiativa();
+        AdicionarSismicaEletroquimica();
+        AdicionarBiologiaSintetica();
+        AdicionarRadiobiologiaFMRI();
+        AdicionarDesignMecanismos();
+        AdicionarActiveInference();
+        AdicionarGeodesiaTerrestre();
+        AdicionarVisaoComputacional();
+        AdicionarVerificacaoFormal();
+        AdicionarComputacaoQuanticaAvancadaV2();
+        AdicionarPlasmaTokamak();
+        AdicionarTeoriaConformeSLE();
 
         // Update category counts
         foreach (var cat in _categorias)

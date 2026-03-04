@@ -1,0 +1,542 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 6 — PARTE VI: CIÊNCIAS SOCIAIS & COGNIÇÃO (Seções 18-20)
+    // ═══════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 18. DESIGN DE MECANISMOS (LEILÕES, MATCHING, ESCOLHA SOCIAL)
+    // ─────────────────────────────────────────────────────
+    private void AdicionarDesignMecanismos()
+    {
+        _formulas.AddRange([
+            // 18.1 Leilões e VCG
+            new Formula
+            {
+                Id = "6_gs01", Nome = "Leilão de Vickrey (Segundo Preço)", Categoria = "Design de Mecanismos", SubCategoria = "Leilões e VCG",
+                Expressao = "pᵢ = max_{j≠i} bⱼ (se i vence);  estratégia dominante: bᵢ = vᵢ",
+                ExprTexto = "Vickrey: vencedor paga segundo maior lance; bid = valor = ótimo",
+                Icone = "2º",
+                Descricao = "Leilão de Vickrey (segundo preço): estratégia dominante é revelar valor verdadeiro. Vencedor paga segundo maior lance. Truthful, eficiente, mas não maximiza receita.",
+                Criador = "William Vickrey",
+                AnoOrigin = "1961",
+            },
+            new Formula
+            {
+                Id = "6_gs02", Nome = "Mecanismo VCG", Categoria = "Design de Mecanismos", SubCategoria = "Leilões e VCG",
+                Expressao = "pᵢ = Σⱼ≠ᵢ vⱼ(k*₋ᵢ) - Σⱼ≠ᵢ vⱼ(k*);  k* = alocação ótima social",
+                ExprTexto = "VCG: pᵢ = externalidade de i = SW sem i − SW dos outros com i",
+                Icone = "VCG",
+                Descricao = "Mecanismo Vickrey-Clarke-Groves: cada agente paga a externalidade que impõe aos outros. Truthful, eficiente em estratégia dominante. Generaliza Vickrey para múltiplos itens.",
+                Criador = "William Vickrey / Edward Clarke / Theodore Groves",
+                AnoOrigin = "1971",
+            },
+            new Formula
+            {
+                Id = "6_gs03", Nome = "Revenue Equivalence Theorem", Categoria = "Design de Mecanismos", SubCategoria = "Leilões e VCG",
+                Expressao = "E[Revenue] = E[v₍₁₎] - ∫₀^{v₍₁₎} F^{n-1}(v) dv (para qualquer leilão padrão)",
+                ExprTexto = "Revenue equivalence: leilões padrão com mesma alocação geram mesma receita esperada",
+                Icone = "RE",
+                Descricao = "Teorema de equivalência de receita: sob IPV, qualquer leilão simétrico eficiente com pagamento zero p/ tipo mínimo gera a mesma receita esperada (Inglês = Holandês = Vickrey = 1º preço).",
+                Criador = "William Vickrey / Roger Myerson / John Riley / William Samuelson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_gs04", Nome = "Leilão de Primeiro Preço (BNE)", Categoria = "Design de Mecanismos", SubCategoria = "Leilões e VCG",
+                Expressao = "b(v) = v - ∫₀ᵛ F(t)^{n-1}/F(v)^{n-1} dt (equilíbrio simétrico)",
+                ExprTexto = "1º preço: b(v) = v − ∫F(t)^{n−1}/F(v)^{n−1} dt; bid shading ótimo",
+                Icone = "1º",
+                Descricao = "Leilão de primeiro preço: no BNE simétrico, cada bidder reduz lance abaixo do valor (bid shading). Redução ≈ 1/(n−1) do gap esperado ao segundo valor. n bidders uniformes: b=(n-1)v/n.",
+                Criador = "Roger Myerson / John Riley / William Samuelson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_gs05", Nome = "Leilão Ótimo de Myerson", Categoria = "Design de Mecanismos", SubCategoria = "Leilões e VCG",
+                Expressao = "φ(v) = v - (1-F(v))/f(v);  alocar a quem tem max φ(vᵢ) ≥ 0",
+                ExprTexto = "Myerson: valor virtual φ(v)=v−(1−F(v))/f(v); aloca ao max φ ≥ 0",
+                Icone = "φ",
+                Descricao = "Leilão ótimo de Myerson: maximiza receita usando valores virtuais φ(v). Aloca ao maior φ≥0 (preço de reserva implícito). Revolutionou teoria de leilões (Nobel 2007).",
+                Criador = "Roger Myerson",
+                AnoOrigin = "1981",
+            },
+
+            // 18.2 Matching e Escolha Social
+            new Formula
+            {
+                Id = "6_sd01", Nome = "Algoritmo Gale-Shapley", Categoria = "Design de Mecanismos", SubCategoria = "Matching e Escolha Social",
+                Expressao = "Deferred Acceptance: propositor propõe; receptor aceita/rejeita;  resultado = matching estável",
+                ExprTexto = "Gale-Shapley: propositor propõe em ordem; receptor fica com melhor → estável",
+                Icone = "GS",
+                Descricao = "Algoritmo de aceitação diferida: resolve matching estável (sem par bloqueador). Propositor-ótimo/receptor-pior entre estáveis. O(n²). Base de residências médicas, transplantes.",
+                Criador = "David Gale / Lloyd Shapley",
+                AnoOrigin = "1962",
+            },
+            new Formula
+            {
+                Id = "6_sd02", Nome = "Teorema da Impossibilidade de Arrow", Categoria = "Design de Mecanismos", SubCategoria = "Matching e Escolha Social",
+                Expressao = "¬∃ f: L(A)^n → L(A) satisfazendo U,IIA,ND simultâneamente (|A|≥3)",
+                ExprTexto = "Arrow: nenhuma regra de votação satisfaz unanimidade+IIA+não-ditadura (≥3 alt.)",
+                Icone = "⊥",
+                Descricao = "Teorema de Arrow: com ≥3 alternativas, nenhuma função de bem-estar social satisfaz simultaneamente unanimidade (Pareto), IIA e não-ditadura. Resultado fundamental em escolha social.",
+                Criador = "Kenneth Arrow",
+                AnoOrigin = "1951",
+            },
+            new Formula
+            {
+                Id = "6_sd03", Nome = "Teorema de Gibbard-Satterthwaite", Categoria = "Design de Mecanismos", SubCategoria = "Matching e Escolha Social",
+                Expressao = "∀ SCF sobrejetiva com |Im(f)|≥3: f é à prova de manipulação ⟺ f é ditatorial",
+                ExprTexto = "G-S: única SCF strategy-proof com ≥3 resultados é ditadura",
+                Icone = "GS",
+                Descricao = "Gibbard-Satterthwaite: qualquer função de escolha social com ≥3 alternativas que é à prova de manipulação estratégica deve ser ditatorial. Limita mecanismos sem transferências.",
+                Criador = "Allan Gibbard / Mark Satterthwaite",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_sd04", Nome = "Valor de Shapley", Categoria = "Design de Mecanismos", SubCategoria = "Matching e Escolha Social",
+                Expressao = "φᵢ(v) = Σ_{S⊆N\\{i}} |S|!(n-|S|-1)!/n! · [v(S∪{i})-v(S)]",
+                ExprTexto = "Shapley: φᵢ = média das contribuições marginais sobre todas as ordens",
+                Icone = "φ",
+                Descricao = "Valor de Shapley: divisão justa do valor de coalizão. Média da contribuição marginal de i sobre todas as permutações de jogadores. Axiomas: eficiência, simetria, linearidade, nulo.",
+                Criador = "Lloyd Shapley",
+                AnoOrigin = "1953",
+            },
+            new Formula
+            {
+                Id = "6_sd05", Nome = "Índice de Poder de Banzhaf", Categoria = "Design de Mecanismos", SubCategoria = "Matching e Escolha Social",
+                Expressao = "β_i = |{S: i é pivotal em S}| / Σⱼ |{S: j é pivotal em S}|",
+                ExprTexto = "Banzhaf: βᵢ = #coalizões onde i é pivotal / total de pivotais",
+                Icone = "β",
+                Descricao = "Índice de Banzhaf: mede poder de voto pelo número de coalizões onde o jogador i é pivotal (swing). Difere de Shapley por não ponderar por tamanho. Conselho de segurança da ONU.",
+                Criador = "John Banzhaf III",
+                AnoOrigin = "1965",
+            },
+
+            // 18.3 Teoria de Myerson
+            new Formula
+            {
+                Id = "6_my01", Nome = "Lemma de Myerson (Payoff Equivalence)", Categoria = "Design de Mecanismos", SubCategoria = "Teoria de Myerson",
+                Expressao = "Uᵢ(vᵢ) = Uᵢ(v̲) + ∫_{v̲}^{vᵢ} qᵢ(s) ds;  q = prob. alocação",
+                ExprTexto = "Myerson lemma: Ui(v) = Ui(v̲)+∫q(s)ds; utilidade determinada pela alocação",
+                Icone = "U",
+                Descricao = "Lemma de Myerson (revenue equivalence generalizado): em mecanismo truthful, a utilidade de um tipo é determinada pela regra de alocação q(·) a menos de constante. Pagamento segue.",
+                Criador = "Roger Myerson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_my02", Nome = "Princípio de Revelação", Categoria = "Design de Mecanismos", SubCategoria = "Teoria de Myerson",
+                Expressao = "∀ mecanismo M com eq. BNE σ*: ∃ mecanismo direto truthful equivalente",
+                ExprTexto = "Revelação: qualquer BNE é implementável por mecanismo direto truthful",
+                Icone = "DR",
+                Descricao = "Princípio de revelação: para qualquer mecanismo com equilíbrio BNE, existe mecanismo direto (agentes reportam tipo) onde reportar verdade é equilíbrio. Simplifica design.",
+                Criador = "Roger Myerson",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_my03", Nome = "AGV Mechanism (Expected Externality)", Categoria = "Design de Mecanismos", SubCategoria = "Teoria de Myerson",
+                Expressao = "tᵢ(θ) = E_{θ₋ᵢ}[Σⱼ≠ᵢ vⱼ(k*(θ),θⱼ)] + hᵢ(θ₋ᵢ)",
+                ExprTexto = "AGV: tᵢ = externalidade esperada; truthful em BNE, eficiente, budget-balanced",
+                Icone = "AGV",
+                Descricao = "Mecanismo AGV (Arrow-d'Aspremont-Gérard-Varet): transferências = externalidade esperada. Truthful em BNE, eficiente ex-post e budget-balanced ex-ante. Viola individual rationality.",
+                Criador = "Claude d'Aspremont / Louis-André Gérard-Varet",
+                AnoOrigin = "1979",
+            },
+            new Formula
+            {
+                Id = "6_my04", Nome = "Teorema de Myerson-Satterthwaite", Categoria = "Design de Mecanismos", SubCategoria = "Teoria de Myerson",
+                Expressao = "¬∃ mecanismo BIC + IR + eficiente + BB quando [a,b]_comprador ∩ [a,b]_vendedor ≠ ∅",
+                ExprTexto = "M-S: impossível ser eficiente+BB+IR+truthful em bilateral trade com overlap de valores",
+                Icone = "MS",
+                Descricao = "Myerson-Satterthwaite: impossível projetar mecanismo para troca bilateral que seja simultaneamente BIC, individualmente racional, eficiente e orçamento-balanceado quando valores se sobrepõem.",
+                Criador = "Roger Myerson / Mark Satterthwaite",
+                AnoOrigin = "1983",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 19. ACTIVE INFERENCE, PSICOLOGIA COMPUTACIONAL E LINGUÍSTICA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarActiveInference()
+    {
+        _formulas.AddRange([
+            // 19.1 Active Inference
+            new Formula
+            {
+                Id = "6_ai01", Nome = "Free Energy (Variational)", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "F = E_q[log q(s) - log p(o,s)] = -ELBO = KL(q‖p(s|o)) - log p(o)",
+                ExprTexto = "F = KL(q‖p(s|o)) − log p(o); minimizar F ≈ maximizar evidência",
+                Icone = "F",
+                Descricao = "Energia livre variacional: upper bound de −log p(o). Minimizar F = reduzir surpresa (percepção) ou buscar dados esperados (ação). Framework de Friston para cognição.",
+                Criador = "Karl Friston",
+                AnoOrigin = "2006",
+            },
+            new Formula
+            {
+                Id = "6_ai02", Nome = "Expected Free Energy (EFE)", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "G(π) = E_q[log q(s_τ|π) - log p(o_τ,s_τ|π)] ≈ -info_gain - pragmatic_value",
+                ExprTexto = "EFE: G = −information_gain − pragmatic_value; seleção de ação explorar/explotar",
+                Icone = "G",
+                Descricao = "Expected free energy: guia seleção de políticas em active inference. Decompõe em information gain (exploração epistêmica) + pragmatic value (exploração pragmática). Trade-off explore/exploit.",
+                Criador = "Karl Friston / Thomas Parr",
+                AnoOrigin = "2015",
+            },
+            new Formula
+            {
+                Id = "6_ai03", Nome = "Predictive Coding", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "ε = o - g(μ);  dμ/dt = ε · ∂g/∂μ - (μ-μ_prior)/σ²_prior",
+                ExprTexto = "Pred. Coding: ε = erro predição; dμ/dt ∝ ε·∂g/∂μ − prior; hierárquico",
+                Icone = "ε",
+                Descricao = "Predictive coding: cérebro minimiza erros de predição ε=o−g(μ) atualizando crenças μ via gradiente. Hierarquia cortical: cada nível prediz o abaixo. Implementação neural do Free Energy.",
+                Criador = "Rajesh Rao / Dana Ballard (original) / Karl Friston (FEP)",
+                AnoOrigin = "1999",
+            },
+            new Formula
+            {
+                Id = "6_ai04", Nome = "Modelo Generativo POMDP", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "p(o,s,π) = p(o|s)·p(s|s_{t-1},π)·p(s₀)·p(π);  σ(−G) = softmax sobre π",
+                ExprTexto = "Active Inf POMDP: p(o,s,π) = likelihood·transition·prior; π ~ softmax(−G)",
+                Icone = "π",
+                Descricao = "POMDP em active inference: modelo generativo com observações, estados ocultos e políticas. Seleção de política via softmax da EFE. Unifica percepção, aprendizagem e decisão.",
+                Criador = "Karl Friston / Thomas Parr / Giovanni Pezzulo",
+                AnoOrigin = "2017",
+            },
+            new Formula
+            {
+                Id = "6_ai05", Nome = "Precision Weighting", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "F = Σ_l (εₗᵀ Πₗ εₗ + log|Πₗ⁻¹|);  Πₗ = precisão do nível l",
+                ExprTexto = "Precision: F = Σ εᵀΠε + log|Π⁻¹|; precisão Π pondera erros por nível",
+                Icone = "Π",
+                Descricao = "Precision weighting: erros de predição ponderados pela precisão Π (inverso da variância esperada). Alta precisão sensorial → atenção (bottom-up). Baixa → hallucination. Base de atenção neural.",
+                Criador = "Karl Friston",
+                AnoOrigin = "2009",
+            },
+            new Formula
+            {
+                Id = "6_ai06", Nome = "Allostasis e Interoceptive Inference", Categoria = "Active Inference e Cognição", SubCategoria = "Active Inference",
+                Expressao = "F_int = E_q[log q(s_body) - log p(o_int, s_body)];  homeostase = min F_int via ação",
+                ExprTexto = "Alostase: F_interoceptivo; corpo minimiza free energy via regulação autonômica",
+                Icone = "♡",
+                Descricao = "Inferência interoceptiva: active inference aplicada ao corpo. Predições viscerais geram errros interoceptivos → ação autonômica (homeostase/alostase). Modelo de emoção como inferência.",
+                Criador = "Anil Seth / Karl Friston / Lisa Feldman Barrett",
+                AnoOrigin = "2015",
+            },
+
+            // 19.2 Psicologia Computacional
+            new Formula
+            {
+                Id = "6_dd01", Nome = "Drift-Diffusion Model (DDM)", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "dx = v·dt + σ·dW;  decisão quando x atinge ±a;  RT ~ Inverse Gaussian",
+                ExprTexto = "DDM: dx = v·dt + σ·dW; decisão em x=±a; RT ~ Inv. Gaussian",
+                Icone = "DDM",
+                Descricao = "Drift-diffusion model: acumula evidência ruidosa (drift v) até limiar ±a. RT = tempo de reação, separado em não-decisão + difusão. Modelo padrão de decisão perceptual.",
+                Criador = "Roger Ratcliff",
+                AnoOrigin = "1978",
+            },
+            new Formula
+            {
+                Id = "6_dd02", Nome = "Rescorla-Wagner (Aprendizagem)", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "V_{n+1} = Vₙ + α·(λ - Vₙ);  δ = λ - V (prediction error)",
+                ExprTexto = "R-W: V ← V + α·(λ−V); atualização por erro de predição δ = λ−V",
+                Icone = "δ",
+                Descricao = "Modelo Rescorla-Wagner: aprendizagem associativa com erro de predição δ = (reforço real − esperado). Taxa α. Base de TD-learning, dopamina como δ, e RL moderno.",
+                Criador = "Robert Rescorla / Allan Wagner",
+                AnoOrigin = "1972",
+            },
+            new Formula
+            {
+                Id = "6_dd03", Nome = "Prospect Theory (Kahneman-Tversky)", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "V(x) = { x^α se x≥0; -λ(-x)^β se x<0 };  w(p) = p^γ/(p^γ+(1-p)^γ)^{1/γ}",
+                ExprTexto = "Prospect: V(x) = xᵅ (ganho), −λ(−x)^β (perda); w(p) pesos não-lineares",
+                Icone = "PT",
+                Descricao = "Prospect theory: valor em relação a referência (não absoluto), perda pesa mais (λ≈2.25), função de valor côncava em ganhos / convexa em perdas. Pesos probabilísticos distorcem p.",
+                Criador = "Daniel Kahneman / Amos Tversky",
+                AnoOrigin = "1979",
+            },
+            new Formula
+            {
+                Id = "6_dd04", Nome = "Softmax (Choice Rule)", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "P(a) = exp(βQ(a)) / Σ_b exp(βQ(b));  β = 1/temperatura",
+                ExprTexto = "Softmax: P(a) = exp(β·Q(a))/Σ exp(β·Q(b)); β controla exploração",
+                Icone = "σ",
+                Descricao = "Regra de escolha softmax: probabilidade de ação a proporcional a exp(βQ). β→∞ greedy, β→0 aleatório. Modelo padrão em psicologia computacional e RL.",
+                Criador = "R. Duncan Luce (choice axiom) / Sutton & Barto (RL)",
+                AnoOrigin = "1959",
+            },
+            new Formula
+            {
+                Id = "6_dd05", Nome = "Temporal Discounting Hiperbólico", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "V(t) = A/(1+kD);  k = taxa de desconto, D = delay",
+                ExprTexto = "Hiperbólico: V = A/(1+kD); desconto temporal não-exponencial",
+                Icone = "k",
+                Descricao = "Desconto hiperbólico: humanos descontam valor futuro hiperbolicamente (não exponencialmente). Gera inversão de preferência (impulsividade). k = taxa de desconto individual.",
+                Criador = "George Ainslie / Richard Herrnstein / George Loewenstein / Drazen Prelec",
+                AnoOrigin = "1975",
+            },
+            new Formula
+            {
+                Id = "6_dd06", Nome = "Signal Detection Theory (d')", Categoria = "Active Inference e Cognição", SubCategoria = "Psicologia Computacional",
+                Expressao = "d' = z(Hit) - z(FA);  c = -(z(Hit)+z(FA))/2",
+                ExprTexto = "SDT: d' = z(Hit)−z(FA); sensibilidade. c = critério de resposta",
+                Icone = "d'",
+                Descricao = "Teoria de detecção de sinal: separa sensibilidade d' (distância entre distribuições sinal/ruído) do critério c (viés liberal/conservador). ROC curve. Psicofísica e diagnóstico.",
+                Criador = "Wilson Tanner / John Swets / David Green",
+                AnoOrigin = "1954",
+            },
+
+            // 19.3 Linguística Computacional
+            new Formula
+            {
+                Id = "6_lc01", Nome = "Surprisal (Teoria da Informação Linguística)", Categoria = "Active Inference e Cognição", SubCategoria = "Linguística Computacional",
+                Expressao = "S(wₜ) = -log₂ P(wₜ|w₁...w_{t-1});  RT ∝ S(wₜ)",
+                ExprTexto = "Surprisal: S(wt) = −log P(wt|contexto); tempo de leitura ∝ surprisal",
+                Icone = "S",
+                Descricao = "Surprisal: dificuldade de processamento linguístico proporcional a −log P(palavra|contexto). Prediz tempos de leitura e fixações oculares. Link entre teoria da informação e psicolinguística.",
+                Criador = "John Hale / Roger Levy",
+                AnoOrigin = "2001",
+            },
+            new Formula
+            {
+                Id = "6_lc02", Nome = "Perplexidade de Modelo de Linguagem", Categoria = "Active Inference e Cognição", SubCategoria = "Linguística Computacional",
+                Expressao = "PPL = exp(-(1/N)Σ log P(wₜ|w₁...w_{t-1})) = 2^H",
+                ExprTexto = "PPL = exp(−(1/N)Σ log P(wt|ctx)); menor PPL = melhor modelo",
+                Icone = "PPL",
+                Descricao = "Perplexidade: medida padrão de qualidade de modelo de linguagem. PPL = 2^H onde H = entropia cruzada. PPL=k equivale a incerteza de k escolhas uniformes por token.",
+                Criador = "Claude Shannon (entropia) / Fred Jelinek (NLP)",
+                AnoOrigin = "1977",
+            },
+            new Formula
+            {
+                Id = "6_lc03", Nome = "Zipf's Law", Categoria = "Active Inference e Cognição", SubCategoria = "Linguística Computacional",
+                Expressao = "f(r) ∝ 1/r^α;  rank r vs. frequência f;  α ≈ 1 para línguas naturais",
+                ExprTexto = "Zipf: f ∝ 1/r; frequência inversamente proporcional ao rank",
+                Icone = "Zf",
+                Descricao = "Lei de Zipf: frequência de palavra é inversamente proporcional ao seu rank. 'the' (rank 1) ~2× mais frequente que 'of' (rank 2). Universal em línguas. Expoente α≈1.",
+                Criador = "George Kingsley Zipf",
+                AnoOrigin = "1935",
+            },
+            new Formula
+            {
+                Id = "6_lc04", Nome = "Pointwise Mutual Information (PMI)", Categoria = "Active Inference e Cognição", SubCategoria = "Linguística Computacional",
+                Expressao = "PMI(x,y) = log(P(x,y)/(P(x)P(y)));  PMI>0 → associação positiva",
+                ExprTexto = "PMI = log(P(x,y)/(P(x)·P(y))); associação entre palavras co-ocorrentes",
+                Icone = "PMI",
+                Descricao = "PMI: mede associação entre palavras pela razão de co-ocorrência observada vs esperada. PPMI (parte positiva) base de word embeddings clássicos. Word2Vec implicitamente fatoriza PPMI.",
+                Criador = "Kenneth Church / Patrick Hanks (NLP aplicação)",
+                AnoOrigin = "1990",
+            },
+            new Formula
+            {
+                Id = "6_lc05", Nome = "BPE (Byte Pair Encoding)", Categoria = "Active Inference e Cognição", SubCategoria = "Linguística Computacional",
+                Expressao = "merge pair (a,b) → ab com max freq;  vocab V = V₀ ∪ {merges}",
+                ExprTexto = "BPE: iterativamente junta par mais frequente; tokenização subword",
+                Icone = "BPE",
+                Descricao = "BPE: algoritmo de tokenização subword. Iterativamente funde par de tokens mais frequente. Balanceia vocabulário (compacto) vs cobertura (raro → subwords). Usado em GPT, LLaMA.",
+                Criador = "Philip Gage (original) / Rico Sennrich et al. (NLP)",
+                AnoOrigin = "2016",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 20. GEODESIA, QUÍMICA ATMOSFÉRICA E CIÊNCIAS DA TERRA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarGeodesiaTerrestre()
+    {
+        _formulas.AddRange([
+            // 20.1 Geodesia
+            new Formula
+            {
+                Id = "6_gd01", Nome = "Geoide e Anomalia de Gravidade", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "N = T/γ₀ (ondulação geoidal);  Δg = -∂T/∂r - (2/r)T",
+                ExprTexto = "Geoide: N = T/γ₀; Δg = −∂T/∂r−2T/r; anomalia de gravidade",
+                Icone = "N",
+                Descricao = "Ondulação geoidal N: diferença entre geoide e elipsoide. Anomalia de gravidade Δg via potencial perturbador T. Equação de Bruns liga T ao N. Base de geodesia física.",
+                Criador = "Gabriel Stokes / Heinrich Bruns",
+                AnoOrigin = "1849",
+            },
+            new Formula
+            {
+                Id = "6_gd02", Nome = "Harmônicos Esféricos (Potencial)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "U(r,θ,λ) = (GM/r)Σ_{n=0}^∞ (a/r)^n Σ_{m=0}^n [Cnm cos mλ + Snm sin mλ] Pnm(cosθ)",
+                ExprTexto = "U = (GM/r)Σ(a/r)ⁿΣ[Cnm·cosmλ+Snm·sinmλ]·Pnm; campo gravitacional",
+                Icone = "Ylm",
+                Descricao = "Expansão em harmônicos esféricos do potencial gravitacional. Cnm, Snm = coeficientes (medidos por satélite GRACE/GOCE). n=2: achatamento da Terra. Resolução grau~2000.",
+                Criador = "Pierre-Simon Laplace / GRACE/GOCE missions",
+                AnoOrigin = "1782",
+            },
+            new Formula
+            {
+                Id = "6_gd03", Nome = "Fórmula de Vincenty (Distância Geodésica)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "tan σ = √((cosU₂ sinλ)²+(cosU₁ sinU₂-sinU₁ cosU₂ cosλ)²)/(sinU₁ sinU₂+cosU₁ cosU₂ cosλ)",
+                ExprTexto = "Vincenty: distância geodésica no elipsoide por iteração; precisão ~0.5mm",
+                Icone = "dg",
+                Descricao = "Fórmula de Vincenty: calcula distância geodésica e azimute no elipsoide por iteração. Precisão ~0.5mm para qualquer distância. Padrão em GPS e cartografia.",
+                Criador = "Thaddeus Vincenty",
+                AnoOrigin = "1975",
+            },
+            new Formula
+            {
+                Id = "6_gd04", Nome = "Projeção UTM", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "E = 500000 + k₀ N(A + A³/6(1-T+C) + ...);  fator escala k₀=0.9996",
+                ExprTexto = "UTM: E = 500km + k₀·f(lat,lon); Mercator transversa em fusos de 6°",
+                Icone = "UTM",
+                Descricao = "UTM: projeção Mercator transversa em fusos de 6°. Coordenadas E (easting), N (northing) em metros. Fator de escala k₀=0.9996 no meridiano central. Padrão militar e civil.",
+                Criador = "US Army / Gauss / Krüger",
+                AnoOrigin = "1947",
+            },
+            new Formula
+            {
+                Id = "6_gd05", Nome = "GNSS Pseudorange", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "ρ = c(t_r - t_s) = |r_r - r_s| + c·δt_r - c·δt_s + I + T + ε",
+                ExprTexto = "ρ = c·Δt = distância + erros relógio + ionosfera + troposfera + ruído",
+                Icone = "GPS",
+                Descricao = "Pseudorange GNSS: medida de distância sat-receptor via tempo de voo × c. Inclui erros de relógio (δt), ionosfera (I), troposfera (T). 4 satélites → solução 3D+tempo.",
+                Criador = "Ivan Getting / Bradford Parkinson / Roger Easton (GPS)",
+                AnoOrigin = "1978",
+            },
+            new Formula
+            {
+                Id = "6_gd06", Nome = "Isostasia de Airy", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Geodesia",
+                Expressao = "h·ρ_c = r·(ρ_m - ρ_c);  raiz r = h·ρ_c/(ρ_m-ρ_c)",
+                ExprTexto = "Airy: r = h·ρc/(ρm−ρc); raiz crustal proporcional à elevação",
+                Icone = "Ai",
+                Descricao = "Isostasia de Airy: montanhas têm raízes crustais profundas. h = elevação, r = profundidade da raiz. Crosta (ρc≈2.7) flutua no manto (ρm≈3.3). Explica anomalias gravimétricas.",
+                Criador = "George Biddell Airy",
+                AnoOrigin = "1855",
+            },
+
+            // 20.2 Química Atmosférica
+            new Formula
+            {
+                Id = "6_ac01", Nome = "Lei de Henry (Solubilidade de Gás)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "c = kH · p;  kH dependente de T: kH(T) = kH₀ exp(-ΔH_sol/R(1/T-1/T₀))",
+                ExprTexto = "Henry: c = kH·p; concentração dissolvida ∝ pressão parcial",
+                Icone = "kH",
+                Descricao = "Lei de Henry: concentração de gás dissolvido proporcional à sua pressão parcial. kH depende de T. Governa CO₂ oceânico, O₂ dissolvido, chuva ácida.",
+                Criador = "William Henry",
+                AnoOrigin = "1803",
+            },
+            new Formula
+            {
+                Id = "6_ac02", Nome = "Chapman Cycle (Ozônio)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "O₂ + hν → 2O;  O + O₂ + M → O₃;  O₃ + hν → O₂ + O;  O₃ + O → 2O₂",
+                ExprTexto = "Chapman: O₂→2O→O₃; O₃→O₂+O; ciclo de formação/destruição do ozônio",
+                Icone = "O₃",
+                Descricao = "Ciclo de Chapman: formação e destruição do ozônio estratosférico por fotólise UV. Produção: O₂→2O→O₃. Destruição: O₃→O₂+O e O₃+O→2O₂. Estado estacionário natural.",
+                Criador = "Sydney Chapman",
+                AnoOrigin = "1930",
+            },
+            new Formula
+            {
+                Id = "6_ac03", Nome = "Forçamento Radiativo (CO₂)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "ΔF = 5.35 · ln(C/C₀) [W/m²];  C = concentração CO₂ atual",
+                ExprTexto = "ΔF = 5.35·ln(C/C₀) W/m²; forçamento radiativo por CO₂",
+                Icone = "ΔF",
+                Descricao = "Forçamento radiativo do CO₂: aumento logarítmico com concentração. Dobrar CO₂ → ΔF≈3.7 W/m² → aquecimento ~3°C (sensibilidade climática). IPCC standard.",
+                Criador = "Svante Arrhenius (conceito) / Myhre et al. (formula)",
+                AnoOrigin = "1998",
+            },
+            new Formula
+            {
+                Id = "6_ac04", Nome = "Potencial de Aquecimento Global (GWP)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "GWP_x = ∫₀ᴴ aₓ·Cₓ(t) dt / ∫₀ᴴ a_CO₂·C_CO₂(t) dt",
+                ExprTexto = "GWP = ∫ ax·Cx dt / ∫ aCO₂·CCO₂ dt; potência relativa ao CO₂ em H anos",
+                Icone = "GWP",
+                Descricao = "GWP: potencial de efeito estufa de um gás x relativo ao CO₂ em horizonte H (geralmente 100 anos). CH₄: GWP≈28, N₂O: GWP≈265. Usado no Protocolo de Kyoto.",
+                Criador = "IPCC (Donald Wuebbles)",
+                AnoOrigin = "1990",
+            },
+            new Formula
+            {
+                Id = "6_ac05", Nome = "Deposição Ácida (pH de Chuva)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "pH = -log₁₀[H⁺];  SO₂+H₂O→H₂SO₃;  2NO₂+H₂O→HNO₃+HNO₂",
+                ExprTexto = "Chuva ácida: SO₂/NOx → H₂SO₄/HNO₃; pH<5.6 = chuva ácida",
+                Icone = "pH",
+                Descricao = "Deposição ácida: SO₂ e NOₓ oxidam na atmosfera e produzem H₂SO₄ e HNO₃. pH natural da chuva ≈5.6 (equilíbrio CO₂). Chuva ácida pH<5.6 danifica ecossistemas.",
+                Criador = "Robert Angus Smith (descoberta)",
+                AnoOrigin = "1872",
+            },
+            new Formula
+            {
+                Id = "6_ac06", Nome = "Tempo de Residência Atmosférico", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Química Atmosférica",
+                Expressao = "τ = M/F;  M = massa total na atmosfera, F = fluxo de remoção",
+                ExprTexto = "τ = M/F; tempo médio de permanência; CO₂~100a, CH₄~12a, N₂O~114a",
+                Icone = "τ",
+                Descricao = "Tempo de residência: tempo médio de permanência de espécie na atmosfera. τ=M/F onde F=taxa de remoção. CO₂~100+anos, CH₄~12 anos. Determina impacto de emissões.",
+                Criador = "Christian Junge",
+                AnoOrigin = "1963",
+            },
+
+            // 20.3 Mineralogia e Oceanografia
+            new Formula
+            {
+                Id = "6_mn01", Nome = "Lei de Bragg (Difração de Raios-X)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "nλ = 2d sin θ;  d = espaçamento interplanar",
+                ExprTexto = "Bragg: nλ = 2d·sinθ; difração construtiva em cristais",
+                Icone = "Bragg",
+                Descricao = "Lei de Bragg: condição de difração construtiva em cristais. d = distância entre planos cristalinos. Base de XRD para identificação mineral e determinação de estrutura cristalina.",
+                Criador = "William Henry Bragg / William Lawrence Bragg",
+                AnoOrigin = "1913",
+            },
+            new Formula
+            {
+                Id = "6_mn02", Nome = "Mohs → Vickers (Dureza)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "HV ≈ 10^{0.36·Mohs+0.88} (aproximação empírica)",
+                ExprTexto = "Conversão Mohs→Vickers: HV ≈ 10^{0.36·M+0.88}; escala não-linear",
+                Icone = "Hv",
+                Descricao = "Relação empírica entre dureza Mohs (1-10, relativa) e Vickers (GPa, quantitativa). Mohs logarítmica: diamante (10) = 70GPa, quartzo (7) ≈ 9GPa. Identificação mineral.",
+                Criador = "Friedrich Mohs (escala) / Robert Smith & George Sandland (Vickers)",
+                AnoOrigin = "1812",
+            },
+            new Formula
+            {
+                Id = "6_mn03", Nome = "Equação de Estado da Água do Mar (TEOS-10)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "ρ = ρ(SA, Θ, p);  SA = salinidade absoluta, Θ = temperatura conservativa",
+                ExprTexto = "TEOS-10: ρ = f(SA, Θ, p); equação de estado termodinâmica da água do mar",
+                Icone = "ρw",
+                Descricao = "TEOS-10: equação termodinâmica do mar. Relaciona densidade ρ à salinidade absoluta SA, temperatura conservativa Θ e pressão p. Substitui EOS-80. Padrão IOC/UNESCO.",
+                Criador = "IOC/SCOR/IAPSO (Rainer Feistel, Trevor McDougall)",
+                AnoOrigin = "2010",
+            },
+            new Formula
+            {
+                Id = "6_ow01", Nome = "Ondas de Gravidade de Superfície", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "ω² = gk tanh(kh);  águas profundas: c = √(g/k);  rasas: c = √(gh)",
+                ExprTexto = "Dispersão: ω²=gk·tanh(kh); águas profundas c=√(g/k), rasas c=√(gh)",
+                Icone = "🌊",
+                Descricao = "Relação de dispersão de ondas de gravidade de superfície. Águas profundas (kh≫1): dispersivas, c∝√λ. Águas rasas (kh≪1): não-dispersivas, c=√(gh). Tsunami = onda rasa.",
+                Criador = "George Airy / Joseph Boussinesq",
+                AnoOrigin = "1845",
+            },
+            new Formula
+            {
+                Id = "6_ow02", Nome = "Circulação Termohalina (Sverdrup)", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "βV = curl_z(τ)/ρ₀;  V = transporte meridional de Sverdrup",
+                ExprTexto = "Sverdrup: βV = curl(τ)/ρ₀; transporte oceânico ∝ rotacional do vento",
+                Icone = "Sv",
+                Descricao = "Balanço de Sverdrup: transporte meridional no interior oceânico determinado pelo rotacional do estresse do vento e efeito beta (variação de Coriolis). Explica gyres oceânicos.",
+                Criador = "Harald Sverdrup",
+                AnoOrigin = "1947",
+            },
+            new Formula
+            {
+                Id = "6_ow03", Nome = "Espiral de Ekman", Categoria = "Geodesia e Ciências da Terra", SubCategoria = "Mineralogia e Oceanografia",
+                Expressao = "u(z) = V₀ exp(z/D_E) cos(π/4+z/D_E);  D_E = √(2ν/(f))",
+                ExprTexto = "Ekman: u∝exp(z/DE)·cos(π/4+z/DE); corrente deflecte com profundidade",
+                Icone = "Ek",
+                Descricao = "Espiral de Ekman: vento gera corrente superficial a 45° (NH direita). Corrente rotaciona e decai com profundidade. Profundidade de Ekman DE = √(2ν/f). Transporte 90° do vento.",
+                Criador = "Vagn Walfrid Ekman",
+                AnoOrigin = "1905",
+            },
+        ]);
+    }
+}

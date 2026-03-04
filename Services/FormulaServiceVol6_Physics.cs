@@ -1,0 +1,898 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 6 — PARTE II: FÍSICA AVANÇADA (Seções 6-9)
+    // ═══════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 6. TRANSPORTE QUÂNTICO, TOPOLOGIA EM MATÉRIA CONDENSADA E POLÂRONS
+    // ─────────────────────────────────────────────────────
+    private void AdicionarTransporteQuanticoTopologia()
+    {
+        _formulas.AddRange([
+            // 6.1 Transporte Quântico
+            new Formula
+            {
+                Id = "6_qt01", Nome = "Fórmula de Landauer", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "G = (e²/h) Σₙ Tₙ",
+                ExprTexto = "G = (e²/h)·Σ Tₙ; condutância quantizada por transmissão",
+                Icone = "G",
+                Descricao = "Fórmula de Landauer: condutância de um condutor mesoscópico expressa como soma de coeficientes de transmissão quânticos. Quantum de condutância G₀=e²/h.",
+                Criador = "Rolf Landauer",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "6_qt02", Nome = "Fórmula de Landauer-Büttiker", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "Iₚ = (e²/h) Σ_q [Tₚq Vq - Tqp Vp]",
+                ExprTexto = "Iₚ = (e²/h)·Σ_q [Tₚq·Vq − Tqp·Vp] (multi-terminal)",
+                Icone = "LB",
+                Descricao = "Fórmula de Landauer-Büttiker: generalização multi-terminal. Corrente no terminal p depende de transmissões para todos os outros terminais.",
+                Criador = "Markus Büttiker",
+                AnoOrigin = "1986",
+            },
+            new Formula
+            {
+                Id = "6_qt03", Nome = "Condutância Quantizada em QPC", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "G = n·(2e²/h);  n = 1,2,3,...",
+                ExprTexto = "G = n·2e²/h (platôs de condutância em quantum point contact)",
+                Icone = "QPC",
+                Descricao = "Quantização de condutância: em quantum point contacts, G sobe em platôs de 2e²/h (spin degenerado). Evidência direta de modos de transporte discretos.",
+                Criador = "Bart van Wees / Michael Pepper",
+                AnoOrigin = "1988",
+            },
+            new Formula
+            {
+                Id = "6_qt04", Nome = "Fórmula de Kubo (Condutividade)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "σ(ω) = (i/ω) [Π^R(ω) - Π^R(0)];  Π = correlação corrente-corrente",
+                ExprTexto = "σ(ω) = resposta linear corrente-corrente (Kubo)",
+                Icone = "σ",
+                Descricao = "Fórmula de Kubo para condutividade: resposta linear do sistema a um campo elétrico. Conecta condutividade à função de correlação corrente-corrente retardada.",
+                Criador = "Ryogo Kubo",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "6_qt05", Nome = "Efeito Aharonov-Bohm", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "Δφ = (e/ℏ) ∮ A·dl = 2πΦ/Φ₀;  Φ₀ = h/e",
+                ExprTexto = "Δφ = 2π·Φ/Φ₀; fase quântica por fluxo magnético",
+                Icone = "AB",
+                Descricao = "Efeito Aharonov-Bohm: elétron adquire fase proporcional ao fluxo magnético encerrado, mesmo sem campo local. Demonstra natureza topológica do potencial vetor.",
+                Criador = "Yakir Aharonov / David Bohm",
+                AnoOrigin = "1959",
+            },
+            new Formula
+            {
+                Id = "6_qt06", Nome = "Localização de Anderson", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Transporte Quântico",
+                Expressao = "|ψ(r)| ~ e^{-|r-r₀|/ξ};  ξ = comprimento de localização",
+                ExprTexto = "|ψ(r)| ∝ exp(−|r−r₀|/ξ); ξ = comprimento de localização",
+                Icone = "ξ",
+                Descricao = "Localização de Anderson: desordem suficientemente forte localiza estados eletrônicos exponencialmente. Transição metal-isolante. ξ diverge no limiar.",
+                Criador = "Philip Anderson",
+                AnoOrigin = "1958",
+            },
+
+            // 6.2 Efeito Hall Quântico
+            new Formula
+            {
+                Id = "6_qh01", Nome = "Efeito Hall Quântico Inteiro (IQHE)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Efeito Hall Quântico",
+                Expressao = "σ_xy = ν·(e²/h);  ν = 1,2,3,...",
+                ExprTexto = "σ_xy = ν·e²/h; condutância Hall quantizada em inteiros",
+                Icone = "ν",
+                Descricao = "Efeito Hall quântico inteiro: condutância Hall quantizada em múltiplos inteiros de e²/h. Níveis de Landau preenchidos. Topologicamente protegido.",
+                Criador = "Klaus von Klitzing",
+                AnoOrigin = "1980",
+            },
+            new Formula
+            {
+                Id = "6_qh02", Nome = "Número de Chern (TKNN)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Efeito Hall Quântico",
+                Expressao = "ν = (1/2π) ∫_BZ F₁₂ d²k;  F = curvatura de Berry",
+                ExprTexto = "ν = (1/2π)·∫ curvatura de Berry sobre zona de Brillouin",
+                Icone = "C₁",
+                Descricao = "Fórmula TKNN: condutância Hall = número de Chern da banda. Integral da curvatura de Berry sobre a zona de Brillouin. Invariante topológico inteiro.",
+                Criador = "Thouless / Kohmoto / Nightingale / den Nijs",
+                AnoOrigin = "1982",
+            },
+            new Formula
+            {
+                Id = "6_qh03", Nome = "Efeito Hall Quântico Fracionário", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Efeito Hall Quântico",
+                Expressao = "σ_xy = (p/q)·(e²/h);  ν = 1/3, 2/5, 5/2,...",
+                ExprTexto = "σ_xy = (p/q)·e²/h frações, ex: ν=1/3",
+                Icone = "FQH",
+                Descricao = "Efeito Hall quântico fracionário: platôs em frações de e²/h. Estado coletivo fortemente correlacionado com quasipartículas aniônicas de carga fracionária.",
+                Criador = "Daniel Tsui / Horst Störmer / Robert Laughlin",
+                AnoOrigin = "1982",
+            },
+            new Formula
+            {
+                Id = "6_qh04", Nome = "Função de Onda de Laughlin", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Efeito Hall Quântico",
+                Expressao = "Ψ_m = ∏_{i<j} (z_i-z_j)^m · e^{-Σ|z_i|²/4ℓ²}",
+                ExprTexto = "Ψₘ = ∏(zᵢ−zⱼ)ᵐ·exp(−Σ|zᵢ|²/4ℓ²); m ímpar",
+                Icone = "Ψ",
+                Descricao = "Função de onda de Laughlin: ansatz variacional para o estado ν=1/m. Zeros de ordem m entre pares de elétrons. Descreve o FQHE com precisão notável.",
+                Criador = "Robert Laughlin",
+                AnoOrigin = "1983",
+            },
+            new Formula
+            {
+                Id = "6_qh05", Nome = "Estados de Borda (Bulk-Edge)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Efeito Hall Quântico",
+                Expressao = "N_edge = C₁(bulk);  correspondência bulk-edge",
+                ExprTexto = "Nº de modos de borda = invariante topológico do bulk",
+                Icone = "⟷",
+                Descricao = "Correspondência bulk-edge: número de modos quirais de borda é igual ao invariante topológico bulk (número de Chern). Princípio central da matéria topológica.",
+                Criador = "Yasuhiro Hatsugai",
+                AnoOrigin = "1993",
+            },
+
+            // 6.3 Isolantes Topológicos
+            new Formula
+            {
+                Id = "6_to01", Nome = "Invariante Z₂ (2D)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "ν = (1/2π) [∮_∂(½BZ) A·dk - ∫_{½BZ} F d²k] mod 2",
+                ExprTexto = "ν ∈ {0,1}: invariante Z₂ sobre metade da zona de Brillouin",
+                Icone = "Z₂",
+                Descricao = "Invariante Z₂ para isolantes topológicos 2D com simetria time-reversal. ν=1 indica isolante topológico não-trivial com estados de borda de spin helicoidais.",
+                Criador = "Charles Kane / Eugene Mele",
+                AnoOrigin = "2005",
+            },
+            new Formula
+            {
+                Id = "6_to02", Nome = "Modelo de Kane-Mele", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "H = t Σ c†ᵢcⱼ + iλ_SO Σ νᵢⱼ σ_z c†ᵢcⱼ",
+                ExprTexto = "H = hopping + spin-órbita em grafeno (Kane-Mele)",
+                Icone = "KM",
+                Descricao = "Modelo de Kane-Mele: grafeno com acoplamento spin-órbita. Dois cópias do modelo de Haldane (spin up e down). Primeiro modelo de isolante topológico Z₂.",
+                Criador = "Charles Kane / Eugene Mele",
+                AnoOrigin = "2005",
+            },
+            new Formula
+            {
+                Id = "6_to03", Nome = "Isolante Topológico 3D", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "(ν₀; ν₁ν₂ν₃) ∈ Z₂⁴;  ν₀ = 1 → IT forte",
+                ExprTexto = "4 invariantes Z₂ em 3D; ν₀=1 = isolante topológico forte",
+                Icone = "3D",
+                Descricao = "Isolante topológico 3D: classificado por 4 invariantes Z₂. ν₀=1 indica isolante forte com cone de Dirac na superfície. Bi₂Se₃ é exemplo canônico.",
+                Criador = "Liang Fu / Charles Kane / Eugene Mele",
+                AnoOrigin = "2007",
+            },
+            new Formula
+            {
+                Id = "6_to04", Nome = "Hamiltoniano de Superfície do IT", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "H_surf = ℏv_F (σ×k)·ẑ = ℏv_F(σ_x k_y - σ_y k_x)",
+                ExprTexto = "H_surf = ℏvF(σ×k)·ẑ; cone de Dirac com spin-momentum locking",
+                Icone = "D",
+                Descricao = "Hamiltoniano de superfície de isolante topológico: cone de Dirac único com acoplamento spin-momento. Férmions de Dirac sem massa protegidos topologicamente.",
+                Criador = "Liang Fu / Charles Kane",
+                AnoOrigin = "2007",
+            },
+            new Formula
+            {
+                Id = "6_to05", Nome = "Classificação de Altland-Zirnbauer", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "10 classes de simetria × dimensão d → tabela periódica topológica",
+                ExprTexto = "10 classes (T,C,S) × d → Z, Z₂, 2Z ou trivial",
+                Icone = "AZ",
+                Descricao = "Classificação topológica de Altland-Zirnbauer: 10 classes de simetria (reversão temporal T, partícula-buraco C, quiralidade S) determinam invariantes em cada dimensão.",
+                Criador = "Alexei Kitaev / Shinsei Ryu / Andreas Schnyder",
+                AnoOrigin = "2008",
+            },
+            new Formula
+            {
+                Id = "6_to06", Nome = "Modelo de Haldane", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "H = t₁Σ c†ᵢcⱼ + t₂ e^{iφ} Σ c†ᵢcⱼ + M Σ εᵢ c†ᵢcᵢ",
+                ExprTexto = "Haldane: grafeno com hopping complexo e massa alternada",
+                Icone = "Hd",
+                Descricao = "Modelo de Haldane: Chern insulator sem campo magnético líquido. Hopping de segundo vizinho complexo quebra T. Primeiro modelo de efeito Hall quântico anômalo.",
+                Criador = "F. Duncan M. Haldane",
+                AnoOrigin = "1988",
+            },
+            new Formula
+            {
+                Id = "6_to07", Nome = "Semimetal de Weyl", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Isolantes Topológicos",
+                Expressao = "H = ℏv_F σ·k;  nós de Weyl em pares ±χ com carga topológica",
+                ExprTexto = "H_Weyl = ℏvF·σ·k; carga quiral χ=±1",
+                Icone = "W",
+                Descricao = "Semimetal de Weyl: bandas cruzam em nós (Weyl points) com quiralidade ±1. Arcos de Fermi na superfície. Efeito quiral anômalo no transporte.",
+                Criador = "Xiangang Wan / Ashvin Vishwanath",
+                AnoOrigin = "2011",
+            },
+
+            // 6.4 Polârons
+            new Formula
+            {
+                Id = "6_po01", Nome = "Polâron de Fröhlich", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Polârons",
+                Expressao = "H = p²/2m + Σ_q ℏω_LO a†_q a_q + Σ_q (V_q a_q e^{iq·r} + h.c.)",
+                ExprTexto = "H_Fröhlich = cinético + fônons + acoplamento elétron-fônon",
+                Icone = "Fr",
+                Descricao = "Hamiltoniano de polâron de Fröhlich: elétron acoplado a fônons ópticos longitudinais. Constante α = acoplamento. Massa efetiva m* > m.",
+                Criador = "Herbert Fröhlich",
+                AnoOrigin = "1954",
+            },
+            new Formula
+            {
+                Id = "6_po02", Nome = "Energia do Polâron (Acoplamento Fraco)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Polârons",
+                Expressao = "E ≈ -αℏω_LO;  m* = m/(1-α/6)",
+                ExprTexto = "E ≈ −α·ℏωLO; m* = m/(1−α/6) (perturbação)",
+                Icone = "α",
+                Descricao = "Energia do polâron em acoplamento fraco: deslocamento de energia proporcional a α e renormalização de massa. Resultado perturbativo para α≪1.",
+                Criador = "Herbert Fröhlich",
+                AnoOrigin = "1954",
+            },
+            new Formula
+            {
+                Id = "6_po03", Nome = "Polâron de Holstein", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Polârons",
+                Expressao = "H = -t Σ c†ᵢcⱼ + g Σ nᵢ(b†ᵢ+bᵢ) + ω₀ Σ b†ᵢbᵢ",
+                ExprTexto = "Holstein: tight-binding + acoplamento local elétron-fônon",
+                Icone = "Ho",
+                Descricao = "Modelo de Holstein: polâron em rede com acoplamento local. Transição de grande a pequeno polâron conforme g/t aumenta. Modelo canônico de localização polarônica.",
+                Criador = "Theodore Holstein",
+                AnoOrigin = "1959",
+            },
+            new Formula
+            {
+                Id = "6_po04", Nome = "Polâron de Pekar (Acoplamento Forte)", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Polârons",
+                Expressao = "E_Pekar = -C·α²·ℏω_LO;  C ≈ 0.1085",
+                ExprTexto = "E ≈ −0.1085·α²·ℏωLO (acoplamento forte)",
+                Icone = "Pk",
+                Descricao = "Energia de Pekar: limite de acoplamento forte do polâron. Elétron auto-preso pela deformação da rede. Energia escala como α².",
+                Criador = "Solomon Pekar",
+                AnoOrigin = "1946",
+            },
+            new Formula
+            {
+                Id = "6_po05", Nome = "Bipolâron", Categoria = "Transporte Quântico e Topologia", SubCategoria = "Polârons",
+                Expressao = "E_bp < 2E_p - U_C;  U_C = repulsão Coulomb",
+                ExprTexto = "Bipolâron estável se atração polarônica > repulsão Coulomb",
+                Icone = "BP",
+                Descricao = "Bipolâron: par de elétrons ligado pela interação com a rede vencendo a repulsão Coulomb. Possível mecanismo de supercondutividade em certos materiais.",
+                Criador = "Viktor Vinetskii / Maya Giterman",
+                AnoOrigin = "1957",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 7. ÓPTICA NÃO-LINEAR, FÍSICA ATÔMICA E FÍSICA DE SUPERFÍCIES
+    // ─────────────────────────────────────────────────────
+    private void AdicionarOpticaNaoLinear()
+    {
+        _formulas.AddRange([
+            // 7.1 Óptica Não-Linear
+            new Formula
+            {
+                Id = "6_nl01", Nome = "Polarização Não-Linear", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "P = ε₀(χ⁽¹⁾E + χ⁽²⁾E² + χ⁽³⁾E³ + ...)",
+                ExprTexto = "P = ε₀(χ¹E + χ²E² + χ³E³ + ...)",
+                Icone = "P",
+                Descricao = "Polarização não-linear: expansão em série de potências do campo. χ⁽²⁾ gera SHG, SFG; χ⁽³⁾ gera efeito Kerr, THG, FWM.",
+                Criador = "Nicolaas Bloembergen",
+                AnoOrigin = "1962",
+            },
+            new Formula
+            {
+                Id = "6_nl02", Nome = "Geração de Segundo Harmônico", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "I₂ω ∝ |χ⁽²⁾|² I²_ω L² sinc²(ΔkL/2)",
+                ExprTexto = "I(2ω) ∝ χ²·I(ω)²·L²·sinc²(ΔkL/2)",
+                Icone = "2ω",
+                Descricao = "SHG: conversão de frequência ω→2ω em cristais não-centrossimétricos. Eficiência máxima com phase matching Δk=0. Base de lasers verdes.",
+                Criador = "Peter Franken",
+                AnoOrigin = "1961",
+            },
+            new Formula
+            {
+                Id = "6_nl03", Nome = "Efeito Kerr Óptico", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "n = n₀ + n₂I;  n₂ = 3χ⁽³⁾/(4n₀²ε₀c)",
+                ExprTexto = "n = n₀ + n₂·I; índice de refração depende da intensidade",
+                Icone = "n₂",
+                Descricao = "Efeito Kerr óptico: índice de refração depende da intensidade. n₂ é o coeficiente não-linear. Causa autofocalização, SPM e formação de sólitons.",
+                Criador = "John Kerr",
+                AnoOrigin = "1875",
+            },
+            new Formula
+            {
+                Id = "6_nl04", Nome = "Automodulação de Fase (SPM)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "φ_NL = n₂ωL|E|²/c = γPL;  γ = n₂ω/(cA_eff)",
+                ExprTexto = "φ_NL = γ·P·L; fase não-linear acumulada",
+                Icone = "SPM",
+                Descricao = "Automodulação de fase: pulso intenso adquire fase proporcional à própria intensidade. Gera chirp e alargamento espectral. Essencial em supercontinuum.",
+                Criador = "Robert Stolen / Chinlon Lin",
+                AnoOrigin = "1978",
+            },
+            new Formula
+            {
+                Id = "6_nl05", Nome = "Sóliton Óptico", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "i∂A/∂z - (β₂/2)∂²A/∂T² + γ|A|²A = 0",
+                ExprTexto = "NLSE: i·∂A/∂z − (β₂/2)·∂²A/∂T² + γ|A|²A = 0",
+                Icone = "sol",
+                Descricao = "Sóliton óptico: equilíbrio entre dispersão (β₂) e não-linearidade Kerr (γ). Pulso que propaga sem deformação em fibras. Base de comunicações sóliton.",
+                Criador = "Akira Hasegawa / Frederick Tappert",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_nl06", Nome = "Mistura de Quatro Ondas (FWM)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "ω₄ = ω₁ + ω₂ - ω₃;  Δk = k₁+k₂-k₃-k₄ = 0",
+                ExprTexto = "ω₄ = ω₁+ω₂−ω₃ com phase matching Δk=0",
+                Icone = "FWM",
+                Descricao = "Mistura de quatro ondas: processo χ⁽³⁾ gerando nova frequência por interação de três campos. Phase matching necessário. Amplificação paramétrica em fibras.",
+                Criador = "Robert Boyd",
+                AnoOrigin = "1977",
+            },
+            new Formula
+            {
+                Id = "6_nl07", Nome = "Oscilação Paramétrica Óptica", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "ωp = ωs + ωi;  kp = ks + ki (phase matching)",
+                ExprTexto = "ωp = ωs + ωi; conservação de energia e momento",
+                Icone = "OPO",
+                Descricao = "OPO: oscilador paramétrico óptico converte pump em signal+idler via χ⁽²⁾. Fonte sintonizável do UV ao infravermelho. Phase matching por birrefringência ou QPM.",
+                Criador = "Joseph Giordmaine / Robert Miller",
+                AnoOrigin = "1965",
+            },
+            new Formula
+            {
+                Id = "6_nl08", Nome = "Geração de Altos Harmônicos (HHG)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Óptica Não-Linear",
+                Expressao = "E_cutoff = Ip + 3.17Up;  Up = e²E₀²/(4mω²)",
+                ExprTexto = "Ecutoff = Ip + 3.17·Up; Up = energia ponderomotiva",
+                Icone = "HHG",
+                Descricao = "HHG: laser intenso ioniza átomo → elétron acelera → recombina emitindo harmônico alto. Modelo de 3 passos. Fonte de attossegundos no XUV.",
+                Criador = "Paul Corkum",
+                AnoOrigin = "1993",
+            },
+
+            // 7.2 Física Atômica
+            new Formula
+            {
+                Id = "6_at01", Nome = "Resfriamento Doppler", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "F = -βv;  β = 8ℏk²sδ/Γ(1+s+(2δ/Γ)²)²",
+                ExprTexto = "F = −βv; força viscosa de fótons contra-propagantes",
+                Icone = "β",
+                Descricao = "Resfriamento Doppler: lasers contra-propagantes dessintonizados para o vermelho criam força viscosa. Limite Doppler T_D = ℏΓ/(2k_B).",
+                Criador = "Theodor Hänsch / Arthur Schawlow",
+                AnoOrigin = "1975",
+            },
+            new Formula
+            {
+                Id = "6_at02", Nome = "Armadilha Magneto-Óptica (MOT)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "F = -βv - κr;  6 feixes laser + gradiente magnético",
+                ExprTexto = "MOT: F = −βv−κr; resfriamento + confinamento espacial",
+                Icone = "MOT",
+                Descricao = "MOT: combina resfriamento Doppler com gradiente magnético para confinar e resfriar átomos. 6 feixes laser. Temperaturas de ~100 μK, 10⁸ átomos.",
+                Criador = "Steven Chu / Jean Dalibard",
+                AnoOrigin = "1987",
+            },
+            new Formula
+            {
+                Id = "6_at03", Nome = "Condensado de Bose-Einstein (BEC)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "T_c = (2πℏ²/(mk_B))(n/ζ(3/2))^{2/3}",
+                ExprTexto = "Tc = (2πℏ²/mkB)·(n/ζ(3/2))^{2/3}",
+                Icone = "BEC",
+                Descricao = "Condensado de Bose-Einstein: abaixo de Tc, fração macroscópica de bósons ocupa o estado fundamental. Superfluidez e coerência macroscópica.",
+                Criador = "Satyendra Nath Bose / Albert Einstein",
+                AnoOrigin = "1924",
+            },
+            new Formula
+            {
+                Id = "6_at04", Nome = "Equação de Gross-Pitaevskii", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "iℏ ∂ψ/∂t = [-ℏ²∇²/(2m) + V + g|ψ|²]ψ;  g = 4πℏ²a_s/m",
+                ExprTexto = "iℏ·∂ψ/∂t = (−ℏ²∇²/2m + V + g|ψ|²)ψ",
+                Icone = "GP",
+                Descricao = "Equação de Gross-Pitaevskii: EDP não-linear para BEC diluído. Campo médio com interação de contato g∝a_s. Descreve vórtices, sólitons e modos coletivos.",
+                Criador = "Eugene Gross / Lev Pitaevskii",
+                AnoOrigin = "1961",
+            },
+            new Formula
+            {
+                Id = "6_at05", Nome = "Rede Óptica", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "V(x) = V₀ sin²(kx);  Hamiltoniano de Bose-Hubbard: -J Σ b†ᵢbⱼ + (U/2)Σnᵢ(nᵢ-1)",
+                ExprTexto = "Rede óptica V₀·sin²(kx) → modelo de Bose-Hubbard",
+                Icone = "OL",
+                Descricao = "Rede óptica: potencial periódico criado por ondas estacionárias de laser. Átomos frios simulam modelos de Hubbard. Transição superfluido-Mott insulator.",
+                Criador = "Markus Greiner",
+                AnoOrigin = "2002",
+            },
+            new Formula
+            {
+                Id = "6_at06", Nome = "Ressonância de Feshbach", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "a(B) = a_bg(1 - Δ/(B - B₀))",
+                ExprTexto = "a(B) = a_bg·(1 − Δ/(B−B₀)); comprimento de espalhamento sintonizável",
+                Icone = "FR",
+                Descricao = "Ressonância de Feshbach: comprimento de espalhamento a(B) diverge no campo magnético B₀. Permite sintonizar interações de repulsivas a atrativas.",
+                Criador = "Herman Feshbach",
+                AnoOrigin = "1958",
+            },
+            new Formula
+            {
+                Id = "6_at07", Nome = "Limite de Recoil e Resfriamento Sub-Doppler", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física Atômica",
+                Expressao = "T_R = ℏ²k²/(mk_B);  T_sub-Doppler via Sísyfo: bombeamento óptico em gradiente de polarização",
+                ExprTexto = "T_recoil = ℏ²k²/(mkB); resfriamento de Sísyfo vai abaixo de T_Doppler",
+                Icone = "TR",
+                Descricao = "Resfriamento sub-Doppler (Sísyfo): gradiente de polarização + bombeamento óptico. Átomo sobe colina de potencial e é rebombeado no vale. T abaixo do limite Doppler.",
+                Criador = "Jean Dalibard / Claude Cohen-Tannoudji",
+                AnoOrigin = "1989",
+            },
+
+            // 7.3 Física de Superfícies
+            new Formula
+            {
+                Id = "6_sf01", Nome = "Adsorção de Langmuir", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "θ = KP/(1 + KP);  K = k_ads/k_des",
+                ExprTexto = "θ = KP/(1+KP); cobertura de monocamada",
+                Icone = "θ",
+                Descricao = "Isoterma de Langmuir: fração de cobertura θ da superfície em função da pressão P. Modelo de monocamada com sítios equivalentes e sem interação lateral.",
+                Criador = "Irving Langmuir",
+                AnoOrigin = "1918",
+            },
+            new Formula
+            {
+                Id = "6_sf02", Nome = "Isoterma BET", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "V = V_m·cx / [(1-x)(1-x+cx)];  x = P/P₀",
+                ExprTexto = "V/Vm = cx/[(1−x)(1−x+cx)]; x=P/P₀ (multicamada)",
+                Icone = "BET",
+                Descricao = "Isoterma BET: extensão de Langmuir para adsorção em multicamadas. V_m = volume de monocamada, c = constante de energia. Mede área superficial.",
+                Criador = "Stephen Brunauer / Paul Emmett / Edward Teller",
+                AnoOrigin = "1938",
+            },
+            new Formula
+            {
+                Id = "6_sf03", Nome = "Difração LEED", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "d·sinθ = nλ;  λ = h/√(2mE)",
+                ExprTexto = "LEED: d·sinθ = nλ; difração de elétrons lentos na superfície",
+                Icone = "LD",
+                Descricao = "LEED (Low Energy Electron Diffraction): difração de elétrons lentos (20-200 eV) revela estrutura cristalina da superfície. Padrão de difração 2D.",
+                Criador = "Clinton Davisson / Lester Germer",
+                AnoOrigin = "1927",
+            },
+            new Formula
+            {
+                Id = "6_sf04", Nome = "STM (Microscópio de Tunelamento)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "I_t ∝ e^{-2κd};  κ = √(2mφ)/ℏ",
+                ExprTexto = "I ∝ exp(−2κd); corrente de tunelamento decai exponencialmente com distância",
+                Icone = "STM",
+                Descricao = "STM: corrente de tunelamento entre ponta e amostra varia exponencialmente com a distância d. φ = barreira de trabalho. Resolução atômica de superfícies.",
+                Criador = "Gerd Binnig / Heinrich Rohrer",
+                AnoOrigin = "1981",
+            },
+            new Formula
+            {
+                Id = "6_sf05", Nome = "Energia de Superfície", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "γ = (∂G/∂A)_{T,P};  Young: γ_SG = γ_SL + γ_LG cosθ_c",
+                ExprTexto = "γ = dG/dA; Young: γ_SG = γ_SL + γ_LG·cosθ",
+                Icone = "γ",
+                Descricao = "Energia de superfície: trabalho por unidade de área para criar superfície. Equação de Young relaciona ângulo de contato com energias de superfície sólido-líquido-gás.",
+                Criador = "Thomas Young",
+                AnoOrigin = "1805",
+            },
+            new Formula
+            {
+                Id = "6_sf06", Nome = "XPS (Espectroscopia de Fotoelétrons)", Categoria = "Óptica Não-Linear e Atômica", SubCategoria = "Física de Superfícies",
+                Expressao = "E_k = hν - E_B - φ;  profundidade ~ 3λ",
+                ExprTexto = "Ek = hν − EB − φ; identificação química pela energia de ligação",
+                Icone = "XPS",
+                Descricao = "XPS: fótons de raios X ejetam elétrons com energia cinética que revela a energia de ligação. Identifica composição e estado químico das primeiras camadas (~10 nm).",
+                Criador = "Kai Siegbahn",
+                AnoOrigin = "1967",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 8. REOLOGIA, ELETRODINÂMICA EM MEIOS E BIOFÍSICA DE MEMBRANAS
+    // ─────────────────────────────────────────────────────
+    private void AdicionarReologiaBiofisica()
+    {
+        _formulas.AddRange([
+            // 8.1 Reologia
+            new Formula
+            {
+                Id = "6_rh01", Nome = "Fluido Newtoniano", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "σ = η · γ̇",
+                ExprTexto = "σ = η·γ̇; tensão proporcional à taxa de cisalhamento",
+                Icone = "η",
+                Descricao = "Lei de Newton da viscosidade: tensão de cisalhamento σ proporcional à taxa de deformação γ̇. η = viscosidade (Pa·s). Base de toda reologia.",
+                Criador = "Isaac Newton",
+                AnoOrigin = "1687",
+            },
+            new Formula
+            {
+                Id = "6_rh02", Nome = "Modelo de Maxwell", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "σ + (η/G)dσ/dt = η·dγ/dt;  τ = η/G",
+                ExprTexto = "σ + τ·dσ/dt = η·dγ/dt; τ = tempo de relaxação",
+                Icone = "Mx",
+                Descricao = "Modelo de Maxwell: viscoelástico linear com mola (G) e amortecedor (η) em série. Tempo de relaxação τ=η/G. Descreve fluidos viscoelásticos.",
+                Criador = "James Clerk Maxwell",
+                AnoOrigin = "1867",
+            },
+            new Formula
+            {
+                Id = "6_rh03", Nome = "Modelo de Kelvin-Voigt", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "σ = Gγ + ηγ̇",
+                ExprTexto = "σ = G·γ + η·γ̇; mola e amortecedor em paralelo",
+                Icone = "KV",
+                Descricao = "Modelo de Kelvin-Voigt: mola e amortecedor em paralelo. Descreve sólidos viscoelásticos com deformação retardada (creep). Não relaxa tensão.",
+                Criador = "Lord Kelvin / Woldemar Voigt",
+                AnoOrigin = "1890",
+            },
+            new Formula
+            {
+                Id = "6_rh04", Nome = "Lei de Potência (Power Law)", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "σ = K·γ̇ⁿ;  n<1 pseudoplástico, n>1 dilatante",
+                ExprTexto = "σ = K·γ̇ⁿ; n<1 shear-thinning, n>1 shear-thickening",
+                Icone = "PL",
+                Descricao = "Fluido de lei de potência: viscosidade aparente η_app = Kγ̇^{n-1}. n<1: pseudoplástico (tintas, polímeros). n>1: dilatante (suspensões concentradas).",
+                Criador = "Wolfgang Ostwald / Armand de Waele",
+                AnoOrigin = "1929",
+            },
+            new Formula
+            {
+                Id = "6_rh05", Nome = "Equação de Cross", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "(η-η_∞)/(η₀-η_∞) = 1/(1 + (λγ̇)^m)",
+                ExprTexto = "Cross: η interpolação entre η₀ (baixo γ̇) e η_∞ (alto γ̇)",
+                Icone = "Cr",
+                Descricao = "Modelo de Cross: viscosidade interpola entre platô newtoniano η₀ (baixo cisalhamento) e η_∞ (alto cisalhamento). λ = tempo característico, m = expoente.",
+                Criador = "Malcolm Cross",
+                AnoOrigin = "1965",
+            },
+            new Formula
+            {
+                Id = "6_rh06", Nome = "Módulos G' e G''", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "G*(ω) = G'(ω) + iG''(ω);  tanδ = G''/G'",
+                ExprTexto = "G* = G' + iG''; G' = armazenamento, G'' = perda",
+                Icone = "G*",
+                Descricao = "Módulo complexo: G' (armazenamento/elástico) e G'' (perda/viscoso) em oscilação. tanδ = razão de perda. Caracterização completa da viscoelasticidade.",
+                Criador = "Herbert Leaderman",
+                AnoOrigin = "1943",
+            },
+            new Formula
+            {
+                Id = "6_rh07", Nome = "Equação Constitutiva de Oldroyd-B", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Reologia",
+                Expressao = "σ + λ₁ σ̊ = η₀(γ̇ + λ₂ γ̊̇);  σ̊ = derivada convectada superior",
+                ExprTexto = "Oldroyd-B: σ + λ₁·D̊σ = η₀(γ̇ + λ₂·D̊γ̇)",
+                Icone = "OB",
+                Descricao = "Modelo de Oldroyd-B: fluido viscoelástico com derivada convectada superior. Generaliza Maxwell para grandes deformações. Prevê tensão normal mas viscosidade constante.",
+                Criador = "James Oldroyd",
+                AnoOrigin = "1950",
+            },
+
+            // 8.2 Eletrodinâmica em Meios
+            new Formula
+            {
+                Id = "6_em01", Nome = "Modelo de Drude", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "ε(ω) = 1 - ω_p²/(ω² + iγω);  ω_p = √(ne²/ε₀m)",
+                ExprTexto = "ε(ω) = 1 − ωp²/(ω²+iγω); ωp = frequência de plasma",
+                Icone = "Dr",
+                Descricao = "Modelo de Drude: resposta dielétrica de metais com elétrons livres. ω_p = frequência de plasma, γ = taxa de amortecimento. Base de plasmônica.",
+                Criador = "Paul Drude",
+                AnoOrigin = "1900",
+            },
+            new Formula
+            {
+                Id = "6_em02", Nome = "Oscilador de Lorentz", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "ε(ω) = 1 + Σⱼ fⱼω_pⱼ²/(ω₀ⱼ² - ω² - iγⱼω)",
+                ExprTexto = "ε(ω) = 1 + Σ fⱼωpⱼ²/(ω₀ⱼ²−ω²−iγⱼω)",
+                Icone = "Lo",
+                Descricao = "Modelo de oscilador de Lorentz: resposta dielétrica de isolantes com ressonâncias. Cada oscilador j tem frequência ω₀ⱼ e amortecimento γⱼ.",
+                Criador = "Hendrik Lorentz",
+                AnoOrigin = "1878",
+            },
+            new Formula
+            {
+                Id = "6_em03", Nome = "Relações de Kramers-Kronig", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "Re ε(ω) = 1 + (2/π)P∫₀^∞ ω'Im ε(ω')/(ω'²-ω²) dω'",
+                ExprTexto = "Re ε e Im ε relacionados por integral de Kramers-Kronig",
+                Icone = "KK",
+                Descricao = "Relações de Kramers-Kronig: parte real e imaginária de qualquer função resposta causal são relacionadas por transformadas de Hilbert. Verificação de consistência de dados ópticos.",
+                Criador = "Hendrik Kramers / Ralph Kronig",
+                AnoOrigin = "1926",
+            },
+            new Formula
+            {
+                Id = "6_em04", Nome = "Ressonância de Plasmon de Superfície", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "k_SPP = (ω/c)√(ε_m·ε_d/(ε_m+ε_d))",
+                ExprTexto = "kSPP = (ω/c)·√(εm·εd/(εm+εd)); plasmon de superfície",
+                Icone = "SPR",
+                Descricao = "Plasmon de superfície: onda eletromagnética confinada à interface metal-dielétrico. Vetor de onda > luz livre, necessita acoplamento por prisma ou grade.",
+                Criador = "Rufus Ritchie",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "6_em05", Nome = "Metamaterial (Índice Negativo)", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "n = -√(ε·μ)  quando  ε<0 e μ<0 simultaneamente",
+                ExprTexto = "n = −√(εμ) quando ε<0, μ<0 (material duplamente negativo)",
+                Icone = "n<0",
+                Descricao = "Metamaterial com índice negativo: ε e μ ambos negativos simultaneamente. Refração negativa, lente perfeita de Veselago-Pendry. Estruturas artificiais sub-λ.",
+                Criador = "Viktor Veselago / John Pendry",
+                AnoOrigin = "1968",
+            },
+            new Formula
+            {
+                Id = "6_em06", Nome = "Fórmula de Clausius-Mossotti", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "(ε-1)/(ε+2) = nα/(3ε₀)",
+                ExprTexto = "(ε−1)/(ε+2) = nα/(3ε₀); campo local",
+                Icone = "CM",
+                Descricao = "Relação de Clausius-Mossotti: conecta constante dielétrica macroscópica ε à polarizabilidade molecular α e densidade n. Inclui correção de campo local.",
+                Criador = "Rudolf Clausius / Ottaviano-Fabrizio Mossotti",
+                AnoOrigin = "1850",
+            },
+            new Formula
+            {
+                Id = "6_em07", Nome = "Efeito Casimir", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Eletrodinâmica em Meios",
+                Expressao = "F/A = -π²ℏc/(240d⁴)",
+                ExprTexto = "F/A = −π²ℏc/(240d⁴); força atrativa entre placas",
+                Icone = "Cas",
+                Descricao = "Efeito Casimir: força atrativa entre placas condutoras paralelas devida a flutuações quânticas do vácuo. F ∝ 1/d⁴. Medido experimentalmente em 1997.",
+                Criador = "Hendrik Casimir",
+                AnoOrigin = "1948",
+            },
+
+            // 8.3 Biofísica de Membranas
+            new Formula
+            {
+                Id = "6_bm01", Nome = "Energia de Curvatura de Helfrich", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "F = ∫[(κ/2)(2H-c₀)² + κ_G K] dA",
+                ExprTexto = "F = ∫[(κ/2)(2H−c₀)² + κG·K]dA; energia de curvatura",
+                Icone = "κ",
+                Descricao = "Hamiltoniana de Helfrich: energia de curvatura de membranas lipídicas. κ = rigidez de bending, H = curvatura média, K = gaussiana, c₀ = curvatura espontânea.",
+                Criador = "Wolfgang Helfrich",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_bm02", Nome = "Equação de Forma da Vesícula", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "δF/δH = 0:  κ∇²(2H) + κ(2H)(2H²-c₀H-2K) + ΔpH = 0",
+                ExprTexto = "Equação de forma: κ·∇²(2H)+termos cúbicos+ΔpH=0",
+                Icone = "δF",
+                Descricao = "Equação de forma de Helfrich: condição de equilíbrio variacional da vesícula. Determina formas de equilíbrio: esfera, disco córneo, estomatócito, etc.",
+                Criador = "Ou-Yang Zhong-Can / Wolfgang Helfrich",
+                AnoOrigin = "1987",
+            },
+            new Formula
+            {
+                Id = "6_bm03", Nome = "Espectro de Flutuações Térmicas", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "⟨|u_q|²⟩ = k_BT/(κq⁴ + σq²);  σ = tensão",
+                ExprTexto = "⟨|uq|²⟩ = kBT/(κq⁴+σq²); flutuações de membrana",
+                Icone = "⟨u²⟩",
+                Descricao = "Espectro de flutuações de membrana: modo q amortecido por rigidez κq⁴ e tensão σq². Medido por micropipeta ou análise de contorno por microscopia.",
+                Criador = "Wolfgang Helfrich",
+                AnoOrigin = "1973",
+            },
+            new Formula
+            {
+                Id = "6_bm04", Nome = "Equação de Saffman-Delbrück", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "D = k_BT/(4πη_m h) [ln(η_m h/(η_w a)) - γ_E]",
+                ExprTexto = "D = kBT/(4πηmh)·[ln(ηmh/(ηwa))−0.5772]",
+                Icone = "D",
+                Descricao = "Difusão de Saffman-Delbrück: coeficiente de difusão de proteínas na membrana. Depende logaritmicamente do raio a. η_m, h = viscosidade e espessura da membrana.",
+                Criador = "Philip Saffman / Max Delbrück",
+                AnoOrigin = "1975",
+            },
+            new Formula
+            {
+                Id = "6_bm05", Nome = "Modelo de Singer-Nicolson", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "Membrana = bicamada lipídica + proteínas integrais e periféricas (mosaico fluido)",
+                ExprTexto = "Mosaico fluido: bicamada lipídica fluida com proteínas inseridas",
+                Icone = "MF",
+                Descricao = "Modelo do mosaico fluido: membrana biológica como bicamada lipídica bidimensional fluida com proteínas embebidas. Base de toda biofísica de membranas.",
+                Criador = "S. Jonathan Singer / Garth Nicolson",
+                AnoOrigin = "1972",
+            },
+            new Formula
+            {
+                Id = "6_bm06", Nome = "Transição de Fase Lipídica", Categoria = "Reologia e Biofísica de Membranas", SubCategoria = "Biofísica de Membranas",
+                Expressao = "L_β (gel) →^{T_m} L_α (fluido);  ΔH = calor latente",
+                ExprTexto = "Gel (Lβ) → Fluido (Lα) em T_m com ΔH",
+                Icone = "Tm",
+                Descricao = "Transição gel-fluido: membranas lipídicas transitam de fase gel ordenada (Lβ) para líquido-desordenada (Lα) a Tm. Comprimento de cadeia e insaturação afetam Tm.",
+                Criador = "John Chapman",
+                AnoOrigin = "1967",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 9. ASTROFÍSICA, ESTRELAS DE NÊUTRONS E GRAVITAÇÃO NUMÉRICA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarAstrofisicaGravitacao()
+    {
+        _formulas.AddRange([
+            // 9.1 Estrelas de Nêutrons
+            new Formula
+            {
+                Id = "6_ne01", Nome = "Equação TOV", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "dP/dr = -G(ρ+P/c²)(m+4πr³P/c²) / [r(r-2Gm/c²)]",
+                ExprTexto = "dP/dr = −G(ρ+P/c²)(m+4πr³P/c²)/[r(r−2Gm/c²)]",
+                Icone = "TOV",
+                Descricao = "Equação de Tolman-Oppenheimer-Volkoff: equilíbrio hidrostático em relatividade geral. Determina estrutura de estrelas de nêutrons dada equação de estado P(ρ).",
+                Criador = "Robert Oppenheimer / George Volkoff",
+                AnoOrigin = "1939",
+            },
+            new Formula
+            {
+                Id = "6_ne02", Nome = "Limite de Massa de Chandrasekhar", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "M_Ch = 5.83 μ_e^{-2} M_☉ ≈ 1.44 M_☉",
+                ExprTexto = "M_Ch ≈ 1.44·M☉; massa máxima de anã branca",
+                Icone = "MCh",
+                Descricao = "Limite de Chandrasekhar: massa máxima suportada por pressão de degenerescência eletrônica. Acima disso → colapso para estrela de nêutrons ou buraco negro.",
+                Criador = "Subrahmanyan Chandrasekhar",
+                AnoOrigin = "1931",
+            },
+            new Formula
+            {
+                Id = "6_ne03", Nome = "Equação de Estado Nuclear", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "P(ρ) = K ρ^Γ (politrópica);  EOS real: tabelas de Lattimer-Swesty, Shen",
+                ExprTexto = "P(ρ) = Kρ^Γ politrópica; EOS nucleares para nêutrons densos",
+                Icone = "EOS",
+                Descricao = "Equação de estado nuclear: relação P(ρ) para matéria nuclear ultra-densa. Determina massa máxima e raio de estrelas de nêutrons. Constrangida por GW170817.",
+                Criador = "James Lattimer / Madappa Prakash",
+                AnoOrigin = "1991",
+            },
+            new Formula
+            {
+                Id = "6_ne04", Nome = "Frequência de Pulsar", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "Ė = -B²R⁶Ω⁴/(6c³);  P = 2π/Ω,  Ṗ>0",
+                ExprTexto = "Ė = −B²R⁶Ω⁴/(6c³); perda de energia por radiação de dipolo magnético",
+                Icone = "P",
+                Descricao = "Spin-down de pulsar: perda de energia rotacional por radiação de dipolo magnético. Ṗ e P determinam campo magnético e idade. Pulsares de milissegundo reciclados.",
+                Criador = "Thomas Gold / Franco Pacini",
+                AnoOrigin = "1968",
+            },
+            new Formula
+            {
+                Id = "6_ne05", Nome = "Glitch de Pulsar", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "ΔΩ/Ω ~ 10⁻⁹ a 10⁻⁶ (aumento súbito de frequência)",
+                ExprTexto = "ΔΩ/Ω ~ 10⁻⁹–10⁻⁶; transferência de momento angular do superfluido",
+                Icone = "gl",
+                Descricao = "Glitch: aumento súbito na frequência de rotação do pulsar. Causado por transferência de momento angular do interior superfluido para a crosta. Sonda interior da estrela.",
+                Criador = "V. Radhakrishnan / Richard Manchester",
+                AnoOrigin = "1969",
+            },
+            new Formula
+            {
+                Id = "6_ne06", Nome = "Ondas Gravitacionais de Merger", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "h ~ (4G/c⁴)(μ/D)(πfGM)^{2/3};  chirp mass M_c = (m₁m₂)^{3/5}/(m₁+m₂)^{1/5}",
+                ExprTexto = "h ∝ M_c^{5/3}·f^{2/3}/D; chirp mass determina amplitude",
+                Icone = "GW",
+                Descricao = "Ondas gravitacionais de coalescência: amplitude h escala com chirp mass e frequência. GW170817: primeiro evento BNS detectado, com contrapartida EM.",
+                Criador = "LIGO/Virgo",
+                AnoOrigin = "2017",
+            },
+            new Formula
+            {
+                Id = "6_ne07", Nome = "Efeito Shapiro (Atraso Gravitacional)", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Estrelas de Nêutrons",
+                Expressao = "Δt = -(2GM/c³) ln(1 - sinι);  mede massa do pulsar",
+                ExprTexto = "Δt = −(2GM/c³)·ln(1−sinι); atraso temporal por curvatura",
+                Icone = "Sh",
+                Descricao = "Atraso de Shapiro: pulso de rádio de pulsar binário sofre atraso gravitacional ao passar perto da companheira. Permite medida precisa de massa (ex: J0740+6620, 2.14M☉).",
+                Criador = "Irwin Shapiro",
+                AnoOrigin = "1964",
+            },
+
+            // 9.2 Mecânica Celeste Avançada
+            new Formula
+            {
+                Id = "6_cm01", Nome = "Perturbação Secular", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "⟨da/dt⟩ = 0;  dϖ/dt = f(e,i,a);  média sobre anomalia",
+                ExprTexto = "Evolução secular: média sobre órbita retém termos lentos",
+                Icone = "sec",
+                Descricao = "Teoria de perturbação secular: média das equações sobre uma órbita, retendo apenas variações lentas de e, i, ω, Ω. Determina evolução de longo prazo de sistemas planetários.",
+                Criador = "Joseph-Louis Lagrange / Pierre-Simon Laplace",
+                AnoOrigin = "1780",
+            },
+            new Formula
+            {
+                Id = "6_cm02", Nome = "Mecanismo de Kozai-Lidov", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "L_z = √(1-e²)·cosι = const;  e ↔ ι oscilam",
+                ExprTexto = "Kozai-Lidov: √(1−e²)·cosι = cte; troca excentricidade ↔ inclinação",
+                Icone = "KL",
+                Descricao = "Oscilação de Kozai-Lidov: em sistema hierárquico, excentricidade e inclinação trocam periodicamente. Importante para migração de hot Jupiters e binárias compactas.",
+                Criador = "Yoshihide Kozai / Mikhail Lidov",
+                AnoOrigin = "1962",
+            },
+            new Formula
+            {
+                Id = "6_cm03", Nome = "Ressonância de Movimento Médio", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "p·n₁ ≈ q·n₂;  ângulo ressonante θ = pλ₂ - qλ₁ - (p-q)ϖ",
+                ExprTexto = "p:q ressonância quando p·n₁ ≈ q·n₂; θ libra",
+                Icone = "p:q",
+                Descricao = "Ressonância de movimento médio: períodos orbitais em razão de inteiros p:q. Ângulo ressonante θ libra (oscila). Lacunas de Kirkwood, ressonância de Plutão 3:2.",
+                Criador = "Pierre-Simon Laplace",
+                AnoOrigin = "1799",
+            },
+            new Formula
+            {
+                Id = "6_cm04", Nome = "Problema de N-Corpos (Integradores Simpléticos)", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "H = T(p) + V(q);  Leapfrog: q_{n+1/2}=q_n+(h/2)∂T/∂p, p_{n+1}=p_n-h·∂V/∂q",
+                ExprTexto = "Leapfrog simplético: preserva estrutura hamiltoniana",
+                Icone = "LF",
+                Descricao = "Integrador simplético leapfrog/Störmer-Verlet: preserva a estrutura simplética do espaço de fase. Erro em energia limitado, ideal para integrações longas.",
+                Criador = "Ruth / Yoshida / Wisdom / Holman",
+                AnoOrigin = "1991",
+            },
+            new Formula
+            {
+                Id = "6_cm05", Nome = "Migração Planetária Tipo I", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "da/dt = -C·(M_p/M_*)²·(Σa²/M_*)·(a/h)² · a·Ω",
+                ExprTexto = "ȧ/a ∝ −(Mp/M*)²·Σa²·Ω/h²; migração por torque de Lindblad",
+                Icone = "MI",
+                Descricao = "Migração tipo I: planeta de baixa massa em disco gera ondas de densidade. Torque diferencial de Lindblad causa migração radial. Escala de tempo ~ 10⁵ anos.",
+                Criador = "William Ward",
+                AnoOrigin = "1997",
+            },
+            new Formula
+            {
+                Id = "6_cm06", Nome = "Esfera de Hill", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Mecânica Celeste Avançada",
+                Expressao = "R_H = a·(M_p/(3M_*))^{1/3}",
+                ExprTexto = "R_Hill = a·(Mp/(3M*))^{1/3}; raio de influência gravitacional",
+                Icone = "RH",
+                Descricao = "Raio de Hill: região ao redor do planeta onde sua gravidade domina sobre a estrela. Satélites estáveis dentro de ~R_H/3. Define zona de acreção.",
+                Criador = "George William Hill",
+                AnoOrigin = "1878",
+            },
+
+            // 9.3 Relatividade Numérica
+            new Formula
+            {
+                Id = "6_nr01", Nome = "Formalismo ADM 3+1", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "ds² = -α²dt² + γᵢⱼ(dxⁱ+βⁱdt)(dxʲ+βʲdt)",
+                ExprTexto = "ADM: ds² = −α²dt² + γij(dxⁱ+βⁱdt)(dxʲ+βʲdt)",
+                Icone = "ADM",
+                Descricao = "Decomposição ADM 3+1: espaço-tempo foliado em hipersuperfícies espaciais. α = lapse (avanço temporal), βⁱ = shift (coordenadas espaciais), γᵢⱼ = métrica 3D.",
+                Criador = "Richard Arnowitt / Stanley Deser / Charles Misner",
+                AnoOrigin = "1962",
+            },
+            new Formula
+            {
+                Id = "6_nr02", Nome = "Equação de Evolução BSSN", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "∂ₜγ̃ᵢⱼ = -2αÃᵢⱼ + ...;  ∂ₜÃᵢⱼ = (αR̃ᵢⱼ - ...)^{TF} + ...",
+                ExprTexto = "BSSN: evolução de γ̃ij, Ãij, φ, K, Γ̃ⁱ (variáveis conformal)",
+                Icone = "BSSN",
+                Descricao = "Formalismo BSSN: reescrita conformal das equações ADM para estabilidade numérica. Variáveis: fator conformal φ, métrica conformal γ̃, traço K, Ãij. Padrão em NR.",
+                Criador = "Thomas Baumgarte / Stuart Shapiro / Masaru Shibata / Takashi Nakamura",
+                AnoOrigin = "1999",
+            },
+            new Formula
+            {
+                Id = "6_nr03", Nome = "Gauge 1+log e Gamma-Freezing", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "∂ₜα = -2αK;  ∂ₜβⁱ = (3/4)B̃ⁱ",
+                ExprTexto = "Gauge: ∂ₜα = −2αK (1+log); ∂ₜβⁱ = ¾B̃ⁱ (Gamma-driver)",
+                Icone = "1+log",
+                Descricao = "Condições de gauge padrão em NR: '1+log' slicing evita colapso do lapse; Gamma-driver shift combate distorção de coordenadas. Estáveis para buracos negros.",
+                Criador = "Miguel Alcubierre / Bernd Brügmann",
+                AnoOrigin = "2003",
+            },
+            new Formula
+            {
+                Id = "6_nr04", Nome = "Horizon Finder (Superfície Aparente)", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "Θ₊ = ∇ᵢsⁱ + Kᵢⱼsⁱsʲ - K = 0;  sⁱ = normal externa",
+                ExprTexto = "Θ₊ = 0: expansão nula de raios saindo = superfície aparente",
+                Icone = "AH",
+                Descricao = "Horizonte aparente: superfície 2D onde a expansão de raios de luz normais de saída é zero. Diagnostico de buracos negros em simulações. Resolvido como equação elíptica.",
+                Criador = "Roger Penrose / Stephen Hawking",
+                AnoOrigin = "1965",
+            },
+            new Formula
+            {
+                Id = "6_nr05", Nome = "Extração de Ondas Gravitacionais (ψ₄)", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "ψ₄ = -C_{αβγδ} nᵅ m̄ᵝ nᵞ m̄ᵟ;  h₊ - ih₍ = ∫∫ ψ₄ dt²",
+                ExprTexto = "ψ₄ = escalar de Weyl; h = ∫∫ψ₄ dt² (extração de GW)",
+                Icone = "ψ₄",
+                Descricao = "Extração de ondas gravitacionais: escalar de Weyl ψ₄ na tetrada de Newman-Penrose representa a radiação gravitacional saindo. Dupla integração temporal dá h₊,h₍.",
+                Criador = "Ezra Newman / Roger Penrose",
+                AnoOrigin = "1962",
+            },
+            new Formula
+            {
+                Id = "6_nr06", Nome = "Puncture (Buraco Negro Móvel)", Categoria = "Astrofísica e Gravitação Numérica", SubCategoria = "Relatividade Numérica",
+                Expressao = "ψ = 1 + Σᵢ mᵢ/(2|r-rᵢ|);  singularidade em puncture, gauge move",
+                ExprTexto = "Puncture: ψ = 1 + Σ mᵢ/(2|r−rᵢ|); BH como singularidade factorizada",
+                Icone = "•",
+                Descricao = "Método de puncture: dados iniciais com singularidades (punctures) representando buracos negros. Moving puncture com gauge 1+log/Gamma-driver: breakthrough de 2005.",
+                Criador = "Manuela Campanelli / Carlos Lousto / Yosef Zlochower / Frans Pretorius",
+                AnoOrigin = "2005",
+            },
+        ]);
+    }
+}
