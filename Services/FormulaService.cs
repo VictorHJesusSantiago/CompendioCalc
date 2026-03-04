@@ -101,6 +101,32 @@ public partial class FormulaService
             new() { Nome = "Ciências do Clima", Icone = "🌡", Cor = "#0891B2", Descricao = "Equações primitivas, carbono e ENSO" },
             new() { Nome = "Bioinformática", Icone = "🔬", Cor = "#059669", Descricao = "Alinhamento, filogenética e biologia de sistemas" },
             new() { Nome = "Acústica e Vibroacústica", Icone = "♪", Cor = "#9333EA", Descricao = "Ondas sonoras, acústica de salas e vibrações" },
+            // ── Volume 4 ──
+            new() { Nome = "Geometria Simplética", Icone = "ω", Cor = "#7C3AED", Descricao = "Formas simpléticas, Poisson e quantização geométrica" },
+            new() { Nome = "Topologia Algébrica Avançada", Icone = "⟹", Cor = "#DC2626", Descricao = "Sequências espectrais, K-teoria e álgebra homológica" },
+            new() { Nome = "Formas Modulares", Icone = "τ", Cor = "#B45309", Descricao = "Grupo modular, Eisenstein, funções L e Riemann" },
+            new() { Nome = "Teoria Ergódica", Icone = "μ", Cor = "#059669", Descricao = "Sistemas ergódicos, mixing e entropia de Kolmogorov" },
+            new() { Nome = "Análise p-Ádica", Icone = "ℚₚ", Cor = "#4338CA", Descricao = "Números p-ádicos, Hensel e funções zeta p-ádicas" },
+            new() { Nome = "Renormalização e SUSY", Icone = "β", Cor = "#9333EA", Descricao = "Renormalização, grupo de Wilson e supersimetria" },
+            new() { Nome = "AdS/CFT e Holografia", Icone = "∂", Cor = "#1D4ED8", Descricao = "Correspondência holográfica, Maldacena e Ryu-Takayanagi" },
+            new() { Nome = "Cosmologia Inflacionária", Icone = "Λ", Cor = "#B91C1C", Descricao = "Inflação, slow-roll, matéria e energia escuras" },
+            new() { Nome = "Gravidade Quântica e Cordas", Icone = "𝒮", Cor = "#6D28D9", Descricao = "LQG, redes de spin, cordas e T-dualidade" },
+            new() { Nome = "Aprendizado por Reforço", Icone = "π*", Cor = "#16A34A", Descricao = "MDP, Bellman, Q-learning, policy gradient e PPO" },
+            new() { Nome = "GNN e Geometria Profunda", Icone = "◎", Cor = "#7C3AED", Descricao = "GCN, GAT, equivariância e gradiente natural" },
+            new() { Nome = "Transporte Ótimo e TDA", Icone = "W₂", Cor = "#0891B2", Descricao = "Wasserstein, wavelets e homologia persistente" },
+            new() { Nome = "Inferência Causal", Icone = "do", Cor = "#CA8A04", Descricao = "Do-cálculo de Pearl, DiD, RDD e econometria" },
+            new() { Nome = "Alta Dimensionalidade", Icone = "‖β‖", Cor = "#6366F1", Descricao = "LASSO, compressed sensing e matrizes aleatórias" },
+            new() { Nome = "Controle Não-Linear e Ótimo", Icone = "V̇", Cor = "#15803D", Descricao = "Lyapunov, SMC, backstepping, LQR e Pontryagin" },
+            new() { Nome = "Dispositivos Semicondutores", Icone = "⚡", Cor = "#EA580C", Descricao = "Junção p-n, MOSFET, BJT e drift-difusão" },
+            new() { Nome = "Codificação e Comunicações", Icone = "C", Cor = "#0E7490", Descricao = "Capacidade, LDPC, turbo, polar e OFDM" },
+            new() { Nome = "Hidrologia e Combustão", Icone = "🔥", Cor = "#78350F", Descricao = "Saint-Venant, plasticidade, Arrhenius e chama" },
+            new() { Nome = "Morfogênese e Turing", Icone = "∂u", Cor = "#10B981", Descricao = "Reação-difusão, Turing, Gray-Scott e Wilson-Cowan" },
+            new() { Nome = "Imagem Médica", Icone = "CT", Cor = "#A21CAF", Descricao = "CT, PET, retroprojeção e biomecânica de tecidos" },
+            new() { Nome = "Psicometria e IRT", Icone = "θ", Cor = "#E11D48", Descricao = "Rasch, 2PL, 3PL, CFA e modelos SEM" },
+            new() { Nome = "Teoria dos Jogos", Icone = "⚖", Cor = "#D97706", Descricao = "Nash, minimax, Bayesiano, Shapley e leilões" },
+            new() { Nome = "Redes Complexas", Icone = "🕸", Cor = "#0284C7", Descricao = "Scale-free, small-world, PageRank e propagação" },
+            new() { Nome = "Criptografia Pós-Quântica", Icone = "🔒", Cor = "#4F46E5", Descricao = "Reticulados, LWE, Kyber, Dilithium e SPHINCS+" },
+            new() { Nome = "Informação Quântica Avançada", Icone = "ρ", Cor = "#6B21A8", Descricao = "Canais quânticos, Holevo, estabilizadores e tórico" },
         ]);
     }
 
@@ -172,6 +198,33 @@ public partial class FormulaService
         AdicionarCienciasClima();
         AdicionarBioinformatica();
         AdicionarAcustica();
+
+        // ── Volume 4 ──
+        AdicionarGeometriaSipletica();
+        AdicionarTopologiaAlgebricaAvancada();
+        AdicionarFormasModulares();
+        AdicionarTeoriaErgodica();
+        AdicionarAnalisePAdica();
+        AdicionarRenormalizacaoSUSY();
+        AdicionarAdSCFT();
+        AdicionarCosmologiaInflacionaria();
+        AdicionarGravidadeQuanticaCordas();
+        AdicionarAprendizadoReforco();
+        AdicionarGNNGeometriaProfunda();
+        AdicionarTransporteOtimoTDA();
+        AdicionarInferenciaCausal();
+        AdicionarAltaDimensionalidade();
+        AdicionarControleNaoLinearOtimo();
+        AdicionarDispositivosSemicondutores();
+        AdicionarCodificacaoComunicacoes();
+        AdicionarHidrologiaCombustao();
+        AdicionarMorfogeneseTuring();
+        AdicionarImagemMedica();
+        AdicionarPsicometriaIRT();
+        AdicionarTeoriaDosJogos();
+        AdicionarRedesComplexas();
+        AdicionarCriptografiaPosQuantica();
+        AdicionarInfoQuanticaAvancada();
 
         // Update category counts
         foreach (var cat in _categorias)

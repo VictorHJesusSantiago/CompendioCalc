@@ -19,6 +19,7 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 
     <!-- Android -->
+    <AndroidSdkDirectory Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">$(LOCALAPPDATA)\Android\Sdk</AndroidSdkDirectory>
     <AndroidMinSdkVersion>24</AndroidMinSdkVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 
