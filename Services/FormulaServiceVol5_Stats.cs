@@ -1,0 +1,479 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 5 — PARTE III: ESTATÍSTICA E DADOS (Seções 9-11)
+    // ═══════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 9. PROCESSOS GAUSSIANOS, GAM E BOOTSTRAP
+    // ─────────────────────────────────────────────────────
+    private void AdicionarProcessosGaussianos()
+    {
+        _formulas.AddRange([
+            // 9.1 Processos Gaussianos
+            new Formula
+            {
+                Id = "5_gp01", Nome = "Definição de GP", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "f ~ GP(m(x), k(x,x'));  m=média, k=kernel",
+                ExprTexto = "f ~ GP(m(x), k(x,x'))",
+                Icone = "GP",
+                Descricao = "Processo Gaussiano: distribuição sobre funções. Qualquer subconjunto finito de avaliações tem distribuição normal multivariada. Definido por média e kernel.",
+            },
+            new Formula
+            {
+                Id = "5_gp02", Nome = "Modelo de Observações", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "y = f(X) + ε;  ε ~ N(0, σ²I)",
+                ExprTexto = "y = f(X)+ε; ε~N(0,σ²I)",
+                Icone = "y",
+                Descricao = "Modelo com ruído gaussiano: observações y = função latente f mais ruído i.i.d. gaussiano com variância σ².",
+            },
+            new Formula
+            {
+                Id = "5_gp03", Nome = "Distribuição Posterior GP", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "f*|X,y,X* ~ N(μ*, Σ*)",
+                ExprTexto = "f*|dados ~ N(μ*,Σ*)",
+                Icone = "N",
+                Descricao = "Posterior do GP: distribuição preditiva nos pontos de teste X*. Gaussiana com média μ* e covariância Σ* dados por fórmulas fechadas.",
+            },
+            new Formula
+            {
+                Id = "5_gp04", Nome = "Média Posterior GP", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "μ* = m(X*) + K*ᵀ(K + σ²I)⁻¹(y - m(X))",
+                ExprTexto = "μ* = m(X*)+K*ᵀ(K+σ²I)⁻¹(y-m)",
+                Icone = "μ*",
+                Descricao = "Média posterior: predição ótima (MMSE). Combinação linear dos dados ponderada pela covariância kernel. K*=kernel(X*,X).",
+            },
+            new Formula
+            {
+                Id = "5_gp05", Nome = "Covariância Posterior GP", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "Σ* = K** − K*ᵀ(K + σ²I)⁻¹K*",
+                ExprTexto = "Σ* = K** - K*ᵀ(K+σ²I)⁻¹K*",
+                Icone = "Σ*",
+                Descricao = "Covariância posterior: incerteza preditiva diminui onde há dados. K**=kernel(X*,X*). Custo: O(n³) pela inversão matricial.",
+            },
+            new Formula
+            {
+                Id = "5_gp06", Nome = "Kernel RBF", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "k(x,x') = σf²·exp(-‖x-x'‖²/(2l²))",
+                ExprTexto = "k = σf²·exp(-|x-x'|²/2l²)",
+                Icone = "RBF",
+                Descricao = "Kernel RBF (Radial Basis Function / Squared Exponential): suave, estacionário, isotrópico. σf=amplitude, l=comprimento característico.",
+            },
+            new Formula
+            {
+                Id = "5_gp07", Nome = "Kernel Matérn 5/2", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "k = (1 + √5r/l + 5r²/(3l²))·exp(-√5r/l);  r = ‖x-x'‖",
+                ExprTexto = "k = (1+√5r/l+5r²/3l²)exp(-√5r/l)",
+                Icone = "M",
+                Descricao = "Kernel Matérn ν=5/2: 2-vezes diferenciável. Mais flexível que RBF (infinitamente suave). Muito usado em GP para dados reais.",
+            },
+            new Formula
+            {
+                Id = "5_gp08", Nome = "Log-Verossimilhança Marginal", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "log p(y|X,θ) = -½yᵀK̃⁻¹y - ½log|K̃| - n/2·log(2π)",
+                ExprTexto = "logp = -½yᵀK̃⁻¹y - ½log|K̃| - n/2 log2π",
+                Icone = "ℓ",
+                Descricao = "Log-verossimilhança marginal para otimização de hiperparâmetros do kernel. K̃=K+σ²I. Balanço automático entre ajuste e complexidade.",
+            },
+            new Formula
+            {
+                Id = "5_gp09", Nome = "Expected Improvement (BO)", Categoria = "Processos Gaussianos", SubCategoria = "Processos Gaussianos",
+                Expressao = "EI(x) = E[max(f(x) - f*, 0)]",
+                ExprTexto = "EI(x) = E[max(f(x)-f*,0)]",
+                Icone = "EI",
+                Descricao = "Otimização bayesiana: critério de aquisição Expected Improvement. Balança exploração (incerteza alta) e exploração (μ alta). Usa GP como surrogate.",
+            },
+
+            // 9.2 GAM e Splines
+            new Formula
+            {
+                Id = "5_ga01", Nome = "Modelo Aditivo Generalizado (GAM)", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "g(μ) = α + f₁(x₁) + f₂(x₂) + ... + fₚ(xₚ)",
+                ExprTexto = "g(μ) = α + Σfⱼ(xⱼ)",
+                Icone = "GAM",
+                Descricao = "GAM: extensão de GLM com funções suaves não-paramétricas fⱼ para cada preditor. g = link function. Flexível e interpretável.",
+            },
+            new Formula
+            {
+                Id = "5_ga02", Nome = "Spline Cúbica Natural", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "min Σ(yᵢ - f(xᵢ))² + λ∫(f'')² dx",
+                ExprTexto = "min Σ(y-f(x))² + λ∫f''²dx",
+                Icone = "λ",
+                Descricao = "Spline cúbica natural: solução do problema de suavização penalizada. λ controla tradeoff ajuste/suavidade. λ→0: interpolação. λ→∞: reta.",
+            },
+            new Formula
+            {
+                Id = "5_ga03", Nome = "P-Spline", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "Penaliza Σ(Δᵈβⱼ)²;  d = ordem das diferenças",
+                ExprTexto = "Pen = Σ(Δᵈβⱼ)²",
+                Icone = "P",
+                Descricao = "P-splines: B-splines com penalização nas diferenças dos coeficientes. Computacionalmente eficiente. d=2 tipicamente (suavidade de 2ª derivada).",
+            },
+            new Formula
+            {
+                Id = "5_ga04", Nome = "LOESS", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "Regressão local ponderada;  pesos = kernel tri-cubo",
+                ExprTexto = "LOESS: regressão local com kernel tri-cubo",
+                Icone = "L",
+                Descricao = "LOESS (LOcally Estimated Scatterplot Smoothing): regressão polinomial local em vizinhança ponderada. Não-paramétrico, adaptativo.",
+            },
+            new Formula
+            {
+                Id = "5_ga05", Nome = "Graus de Liberdade Efetivos", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "df = tr(H);  H = hat matrix suavizadora",
+                ExprTexto = "df = tr(H)",
+                Icone = "df",
+                Descricao = "Graus de liberdade efetivos: traço da hat matrix. Mede complexidade efetiva do suavizador. 1=reta, n=interpolação. Controla overfitting.",
+            },
+            new Formula
+            {
+                Id = "5_ga06", Nome = "GCV (Validação Cruzada Generalizada)", Categoria = "Processos Gaussianos", SubCategoria = "GAM e Splines",
+                Expressao = "GCV(λ) = RSS / (n(1 - tr(H)/n)²)",
+                ExprTexto = "GCV = RSS/(n(1-df/n)²)",
+                Icone = "GCV",
+                Descricao = "GCV: critério para escolher λ ótimo. Invariante rotacional. Aproximação eficiente do leave-one-out CV sem reajustar n vezes.",
+            },
+
+            // 9.3 Bootstrap e Métodos Não-Paramétricos
+            new Formula
+            {
+                Id = "5_bp01", Nome = "Bootstrap", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "B* = amostra com reposição de X;  θ̂*_b = T(B*)",
+                ExprTexto = "B*~X com reposição; θ̂*=T(B*)",
+                Icone = "B*",
+                Descricao = "Bootstrap: reamostrar com reposição para estimar distribuição amostral de uma estatística. B repetições geram θ̂*₁,...,θ̂*_B.",
+                Criador = "Bradley Efron",
+                AnoOrigin = "1979",
+            },
+            new Formula
+            {
+                Id = "5_bp02", Nome = "Variância Bootstrap", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "V̂(θ̂) = (1/(B-1)) Σ_b (θ̂*_b - θ̄*)²",
+                ExprTexto = "V̂ = Σ(θ̂*-θ̄*)²/(B-1)",
+                Icone = "V̂",
+                Descricao = "Variância bootstrap: estimativa da variância do estimador usando a variância das réplicas bootstrap. Não-paramétrica.",
+            },
+            new Formula
+            {
+                Id = "5_bp03", Nome = "IC Bootstrap Percentil", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "[θ̂*(α/2), θ̂*(1-α/2)]",
+                ExprTexto = "IC = [θ̂*(α/2), θ̂*(1-α/2)]",
+                Icone = "IC",
+                Descricao = "Intervalo de confiança bootstrap percentil: usa quantis da distribuição bootstrap. Simples mas pode ser enviesado.",
+            },
+            new Formula
+            {
+                Id = "5_bp04", Nome = "IC Bootstrap BCa", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "BCa: corrigido para viés (z₀) e aceleração (a)",
+                ExprTexto = "BCa: ajuste viés z₀ + aceleração a",
+                Icone = "BCa",
+                Descricao = "Bootstrap BCa (bias-corrected and accelerated): ajusta os quantis para viés e assimetria. Mais preciso que percentil simples.",
+            },
+            new Formula
+            {
+                Id = "5_bp05", Nome = "Jackknife", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "θ̂_{-i} = T(X\\{i});  V̂ = ((n-1)/n) Σ(θ̂_{-i} - θ̄)²",
+                ExprTexto = "V̂ = (n-1)/n Σ(θ̂_{-i}-θ̄)²",
+                Icone = "JK",
+                Descricao = "Jackknife: remove uma observação por vez. Estima viés e variância. Precursor do bootstrap. Exato para funcionais lineares.",
+                Criador = "Maurice Quenouille / John Tukey",
+            },
+            new Formula
+            {
+                Id = "5_bp06", Nome = "Teste de Wilcoxon (Signed-Rank)", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "W = Σ rank_i · sign(Xᵢ - μ₀)",
+                ExprTexto = "W = Σ rankᵢ·sign(Xᵢ-μ₀)",
+                Icone = "W",
+                Descricao = "Teste de Wilcoxon signed-rank: teste não-paramétrico de localização para amostras pareadas. Alternativa ao t-test sem normalidade.",
+                Criador = "Frank Wilcoxon",
+                AnoOrigin = "1945",
+            },
+            new Formula
+            {
+                Id = "5_bp07", Nome = "Teste de Mann-Whitney", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "U = Σᵢ Σⱼ 1{Xᵢ > Yⱼ};  H₀: distribuições iguais",
+                ExprTexto = "U = ΣΣ1{Xᵢ>Yⱼ}",
+                Icone = "U",
+                Descricao = "Teste de Mann-Whitney U: comparação não-paramétrica de duas amostras independentes. Conta inversões. Alternativa ao t-test de 2 amostras.",
+            },
+            new Formula
+            {
+                Id = "5_bp08", Nome = "Teste de Kolmogorov-Smirnov", Categoria = "Processos Gaussianos", SubCategoria = "Bootstrap e Não-Paramétricos",
+                Expressao = "Dₙ = sup|Fₙ(x) - F₀(x)|;  P(√n·Dₙ>x) → 2Σ(-1)^{k+1}e^{-2k²x²}",
+                ExprTexto = "Dₙ = sup|Fₙ(x)-F₀(x)|",
+                Icone = "KS",
+                Descricao = "Teste de Kolmogorov-Smirnov: compara distribuição empírica com teórica usando distância supremo. Distribution-free sob H₀.",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 10. OTIMIZAÇÃO CONVEXA COMPLETA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarOtimizacaoConvexa()
+    {
+        _formulas.AddRange([
+            // 10.1 Teoria de Convexidade
+            new Formula
+            {
+                Id = "5_oc01", Nome = "Função Convexa", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "f(λx+(1-λ)y) ≤ λf(x)+(1-λ)f(y)  ∀λ∈[0,1]",
+                ExprTexto = "f(λx+(1-λ)y) ≤ λf(x)+(1-λ)f(y)",
+                Icone = "∪",
+                Descricao = "Definição de convexidade: epígrafo é conjunto convexo. Todo mínimo local é global. Propriedade fundamental para otimização tratável.",
+            },
+            new Formula
+            {
+                Id = "5_oc02", Nome = "Conjugada de Fenchel", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "f*(y) = sup_x(⟨y,x⟩ - f(x))",
+                ExprTexto = "f*(y) = sup(⟨y,x⟩-f(x))",
+                Icone = "f*",
+                Descricao = "Conjugada de Fenchel (transformada de Legendre): dualidade fundamental em análise convexa. Codifica informação de f em espaço dual.",
+            },
+            new Formula
+            {
+                Id = "5_oc03", Nome = "Biconjugada f** = f", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "f** = f  se f fechada convexa própria",
+                ExprTexto = "f** = f (f fechada convexa)",
+                Icone = "**",
+                Descricao = "Teorema de Fenchel-Moreau: a biconjugada recupera f se f é convexa, fechada (lsc) e própria. Involução no espaço de funções convexas.",
+            },
+            new Formula
+            {
+                Id = "5_oc04", Nome = "Subgradiente", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "g ∈ ∂f(x) se f(y) ≥ f(x) + ⟨g, y-x⟩  ∀y",
+                ExprTexto = "g∈∂f(x): f(y)≥f(x)+⟨g,y-x⟩",
+                Icone = "∂",
+                Descricao = "Subgradiente: generalização do gradiente para funções convexas não-diferenciáveis. ∂f(x) é convexo compacto. Gradiente∈∂f quando f é C¹.",
+            },
+            new Formula
+            {
+                Id = "5_oc05", Nome = "Condições KKT", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "∇f + Σλᵢ∇gᵢ + Σμⱼ∇hⱼ = 0;  μⱼ≥0;  μⱼhⱼ=0",
+                ExprTexto = "∇f+Σλ∇g+Σμ∇h=0; μ≥0; μh=0",
+                Icone = "KKT",
+                Descricao = "Condições de Karush-Kuhn-Tucker: condições necessárias (e suficientes sob convexidade) de otimalidade com restrições. Complementaridade: μⱼhⱼ=0.",
+            },
+            new Formula
+            {
+                Id = "5_oc06", Nome = "Dualidade Forte (Slater)", Categoria = "Otimização Convexa", SubCategoria = "Teoria de Convexidade",
+                Expressao = "p* = d*  (se condição de Slater: ∃x estritamente viável)",
+                ExprTexto = "p*=d* se Slater (∃x int. viável)",
+                Icone = "p*",
+                Descricao = "Dualidade forte: valor ótimo primal = dual sob condição de Slater (existência de ponto interior viável). Gap de dualidade = 0.",
+            },
+
+            // 10.2 Métodos de Otimização
+            new Formula
+            {
+                Id = "5_oc07", Nome = "Gradiente Projetado", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "x_{k+1} = Proj_C(x_k - α_k ∇f(x_k))",
+                ExprTexto = "x←ProjC(x-α∇f(x))",
+                Icone = "PG",
+                Descricao = "Gradiente projetado: passo de gradiente seguido de projeção no conjunto viável C. Convergência O(1/k) para f convexa suave.",
+            },
+            new Formula
+            {
+                Id = "5_oc08", Nome = "Método do Subgradiente", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "x_{k+1} = x_k - α_k g_k;  g_k ∈ ∂f(x_k);  α=1/√k",
+                ExprTexto = "x←x-αg; g∈∂f; α=1/√k",
+                Icone = "SG",
+                Descricao = "Método do subgradiente: para funções convexas não-suaves. Passo decrescente α_k=1/√k garante convergência O(1/√k).",
+            },
+            new Formula
+            {
+                Id = "5_oc09", Nome = "ADMM", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "min f(x)+g(z)  s.t. Ax+Bz=c  (direções alternadas)",
+                ExprTexto = "ADMM: min f(x)+g(z) s.t. Ax+Bz=c",
+                Icone = "AD",
+                Descricao = "ADMM (Alternating Direction Method of Multipliers): divide problema em subproblemas mais fáceis. Combina decomposição dual com método aumentado.",
+            },
+            new Formula
+            {
+                Id = "5_oc10", Nome = "Ponto Interior (Barreira)", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "Barreira logarítmica + passo Newton centralizado",
+                ExprTexto = "min f - (1/t)Σlog(-hⱼ); Newton",
+                Icone = "IP",
+                Descricao = "Método de ponto interior: transforma restrições em barreira logarítmica. Convergência em O(√m·log(1/ε)) iterações de Newton. Revolucionou otimização.",
+            },
+            new Formula
+            {
+                Id = "5_oc11", Nome = "Programação Semidefinida (SDP)", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "min cᵀx  s.t. F₀ + Σ xᵢFᵢ ⪰ 0",
+                ExprTexto = "min cᵀx s.t. F₀+ΣxᵢFᵢ ⪰ 0",
+                Icone = "SDP",
+                Descricao = "SDP: otimização linear com restrição de matriz semidefinida positiva. Generaliza LP. Resolve relaxações de problemas combinatórios, controle robusto.",
+            },
+            new Formula
+            {
+                Id = "5_oc12", Nome = "Programação Cônica (SOCP)", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "min cᵀx  s.t. ‖Aᵢx + bᵢ‖ ≤ cᵢᵀx + dᵢ",
+                ExprTexto = "min cᵀx s.t. ‖Ax+b‖≤cᵀx+d",
+                Icone = "SO",
+                Descricao = "SOCP (Second-Order Cone Program): restrições cônicas de 2ª ordem. Entre LP e SDP em poder. Inclui LP, QP, QCQP como casos especiais.",
+            },
+            new Formula
+            {
+                Id = "5_oc13", Nome = "Aceleração de Nesterov", Categoria = "Otimização Convexa", SubCategoria = "Métodos de Otimização",
+                Expressao = "y_k = x_k + ((k-1)/(k+2))(x_k - x_{k-1});  convergência O(1/k²)",
+                ExprTexto = "y=x+(k-1)/(k+2)(x-x₋₁); O(1/k²)",
+                Icone = "N",
+                Descricao = "Aceleração de Nesterov: momentum ótimo que acelera gradiente de O(1/k) para O(1/k²). Taxa ótima para funções convexas suaves de 1ª ordem.",
+                Criador = "Yurii Nesterov",
+                AnoOrigin = "1983",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 11. ICA, MODELOS DE MISTURA E ESTIMAÇÃO DE DENSIDADE
+    // ─────────────────────────────────────────────────────
+    private void AdicionarICAMisturas()
+    {
+        _formulas.AddRange([
+            // 11.1 ICA
+            new Formula
+            {
+                Id = "5_ic01", Nome = "Modelo ICA", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "x = As;  s = componentes independentes;  A = matriz de mistura",
+                ExprTexto = "x = As; s independentes",
+                Icone = "ICA",
+                Descricao = "ICA: decompor sinais misturados em fontes independentes. Modelo generativo linear: observação = mistura de fontes latentes.",
+            },
+            new Formula
+            {
+                Id = "5_ic02", Nome = "Critério de Não-Gaussianidade", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "Maximize neguentropia: J(y) = H(y_gauss) - H(y)",
+                ExprTexto = "J(y) = H(ygauss)-H(y) (neguentropia)",
+                Icone = "J",
+                Descricao = "Neguentropia: mede afastamento de gaussianidade. CLT implica que componentes independentes são maximamente não-gaussianas (exceto no máximo uma).",
+            },
+            new Formula
+            {
+                Id = "5_ic03", Nome = "Aproximação da Neguentropia", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "J(y) ≈ [E{G(y)} - E{G(ν)}]²  (ν gaussiano)",
+                ExprTexto = "J(y) ≈ (E[G(y)]-E[G(ν)])²",
+                Icone = "≈",
+                Descricao = "Aproximação prática da neguentropia usando função não-linear G (ex: G(u)=log cosh u). ν=variável gaussiana de referência.",
+            },
+            new Formula
+            {
+                Id = "5_ic04", Nome = "FastICA", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "w ← E{x·G'(wᵀx)} - E{G''(wᵀx)}·w;  normaliza; itera",
+                ExprTexto = "w ← E{xG'(wᵀx)}-E{G''(wᵀx)}w",
+                Icone = "FI",
+                Descricao = "FastICA: algoritmo eficiente de ponto fixo para ICA. Convergência cúbica. G = função não-linear (log cosh, exp, ...).",
+                Criador = "Aapo Hyvärinen",
+                AnoOrigin = "1999",
+            },
+            new Formula
+            {
+                Id = "5_ic05", Nome = "Infomax (Bell-Sejnowski)", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "max I(s;x) ≡ max log|det(∂s/∂x)|",
+                ExprTexto = "max log|det(∂s/∂x)|",
+                Icone = "IM",
+                Descricao = "Infomax: maximizar informação mútua entre saída e entrada. Equivalente a maximizar log-det do jacobiano. Abordagem de teoria da informação.",
+                Criador = "Anthony Bell / Terrence Sejnowski",
+                AnoOrigin = "1995",
+            },
+            new Formula
+            {
+                Id = "5_ic06", Nome = "Ambiguidades ICA", Categoria = "ICA e Misturas", SubCategoria = "Análise de Componentes Independentes",
+                Expressao = "Ordem e escala de s não determinadas",
+                ExprTexto = "ICA: ordem e escala indeterminadas",
+                Icone = "?",
+                Descricao = "Ambiguidades intrínsecas: ICA não determina a ordem nem a escala (incluindo sinal) das componentes independentes. Permutação e escala livres.",
+            },
+
+            // 11.2 GMM e EM
+            new Formula
+            {
+                Id = "5_gm01", Nome = "Modelo de Mistura Gaussiana (GMM)", Categoria = "ICA e Misturas", SubCategoria = "Modelos de Mistura e EM",
+                Expressao = "p(x) = Σₖ πₖ N(x; μₖ, Σₖ);  Σπₖ = 1",
+                ExprTexto = "p(x) = Σπₖ N(x;μₖ,Σₖ)",
+                Icone = "GMM",
+                Descricao = "GMM: mistura de K gaussianas com pesos πₖ, médias μₖ e covariâncias Σₖ. Modelo universal de densidade. Ajustado via EM.",
+            },
+            new Formula
+            {
+                Id = "5_gm02", Nome = "E-Step (EM)", Categoria = "ICA e Misturas", SubCategoria = "Modelos de Mistura e EM",
+                Expressao = "r_{nk} = πₖN(xₙ;μₖ,Σₖ) / Σⱼ πⱼN(xₙ;μⱼ,Σⱼ)",
+                ExprTexto = "rnk = πkN(xn;μk,Σk)/Σ πjN(xn;μj,Σj)",
+                Icone = "E",
+                Descricao = "E-step: calcula responsabilidades r_{nk} = probabilidade posterior de xₙ pertencer à componente k. Pesos soft para cada observação.",
+            },
+            new Formula
+            {
+                Id = "5_gm03", Nome = "M-Step (EM)", Categoria = "ICA e Misturas", SubCategoria = "Modelos de Mistura e EM",
+                Expressao = "Nₖ=Σr_{nk};  πₖ=Nₖ/N;  μₖ=(1/Nₖ)Σr_{nk}xₙ;  Σₖ=...",
+                ExprTexto = "πk=Nk/N; μk=Σrnkxn/Nk; Σk=...",
+                Icone = "M",
+                Descricao = "M-step: atualiza parâmetros usando responsabilidades. Pesos=fração efetiva, média=média ponderada, covariância=covariância ponderada.",
+            },
+            new Formula
+            {
+                Id = "5_gm04", Nome = "Log-Verossimilhança (GMM)", Categoria = "ICA e Misturas", SubCategoria = "Modelos de Mistura e EM",
+                Expressao = "L = Σₙ log(Σₖ πₖ N(xₙ; μₖ, Σₖ))",
+                ExprTexto = "L = Σlog(ΣπkN(xn;μk,Σk))",
+                Icone = "ℓ",
+                Descricao = "Log-verossimilhança do GMM: cada iteração EM garante L não-decresça (convergência monótona). Pode convergir para máximo local.",
+            },
+            new Formula
+            {
+                Id = "5_gm05", Nome = "Seleção de K (BIC/AIC)", Categoria = "ICA e Misturas", SubCategoria = "Modelos de Mistura e EM",
+                Expressao = "BIC = -2logL + k·logn;  AIC = -2logL + 2k",
+                ExprTexto = "BIC=-2logL+k·logn; AIC=-2logL+2k",
+                Icone = "BIC",
+                Descricao = "Critérios de seleção de modelo: BIC penaliza mais (consistente), AIC menos (eficiente). k=número de parâmetros, n=observações.",
+            },
+
+            // 11.3 KDE
+            new Formula
+            {
+                Id = "5_kd01", Nome = "Estimador de Parzen-Rosenblatt (KDE)", Categoria = "ICA e Misturas", SubCategoria = "Estimação de Densidade por Kernel",
+                Expressao = "f̂(x) = (1/(nh)) Σᵢ K((x - xᵢ)/h)",
+                ExprTexto = "f̂(x) = (1/nh)ΣK((x-xᵢ)/h)",
+                Icone = "KDE",
+                Descricao = "KDE: estimador não-paramétrico de densidade. K=kernel (função simétrica positiva), h=bandwidth. Suavização de histograma.",
+            },
+            new Formula
+            {
+                Id = "5_kd02", Nome = "Kernel Gaussiano", Categoria = "ICA e Misturas", SubCategoria = "Estimação de Densidade por Kernel",
+                Expressao = "K(u) = exp(-u²/2) / √(2π)",
+                ExprTexto = "K(u) = exp(-u²/2)/√(2π)",
+                Icone = "φ",
+                Descricao = "Kernel gaussiano: o mais popular em KDE. Suporte infinito, infinitamente suave. Boa escolha default, embora não ótimo em MISE.",
+            },
+            new Formula
+            {
+                Id = "5_kd03", Nome = "Kernel de Epanechnikov", Categoria = "ICA e Misturas", SubCategoria = "Estimação de Densidade por Kernel",
+                Expressao = "K(u) = ¾(1-u²)·1{|u|≤1}",
+                ExprTexto = "K(u) = ¾(1-u²) se |u|≤1",
+                Icone = "Ep",
+                Descricao = "Kernel de Epanechnikov: ótimo em termos de MISE (minimiza erro integrado quadrático médio). Suporte compacto [-1,1]. Parábola invertida.",
+            },
+            new Formula
+            {
+                Id = "5_kd04", Nome = "Bandwidth Ótimo (Silverman)", Categoria = "ICA e Misturas", SubCategoria = "Estimação de Densidade por Kernel",
+                Expressao = "h* = (4σ⁵/(3n))^{1/5}",
+                ExprTexto = "h* = (4σ⁵/3n)^(1/5)",
+                Icone = "h*",
+                Descricao = "Regra de Silverman para bandwidth ótimo com kernel gaussiano assumindo dados gaussianos. Rápida e razoável. σ estimado por desvio-padrão ou IQR.",
+                Criador = "Bernard Silverman",
+                AnoOrigin = "1986",
+            },
+            new Formula
+            {
+                Id = "5_kd05", Nome = "MISE", Categoria = "ICA e Misturas", SubCategoria = "Estimação de Densidade por Kernel",
+                Expressao = "MISE = E∫(f̂(x) - f(x))² dx = viés² + variância",
+                ExprTexto = "MISE = ∫(viés²+var)dx",
+                Icone = "MSE",
+                Descricao = "Mean Integrated Squared Error: critério de qualidade global do KDE. Tradeoff viés-variância controlado por h: h↑ suave (viés), h↓ ruidoso (var).",
+            },
+        ]);
+    }
+}

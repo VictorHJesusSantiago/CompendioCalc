@@ -127,6 +127,33 @@ public partial class FormulaService
             new() { Nome = "Redes Complexas", Icone = "🕸", Cor = "#0284C7", Descricao = "Scale-free, small-world, PageRank e propagação" },
             new() { Nome = "Criptografia Pós-Quântica", Icone = "🔒", Cor = "#4F46E5", Descricao = "Reticulados, LWE, Kyber, Dilithium e SPHINCS+" },
             new() { Nome = "Informação Quântica Avançada", Icone = "ρ", Cor = "#6B21A8", Descricao = "Canais quânticos, Holevo, estabilizadores e tórico" },
+            // ── Volume 5 ──
+            new() { Nome = "Teoria de Lie", Icone = "𝔤", Cor = "#7C3AED", Descricao = "Álgebras de Lie semissimples, raízes e representações" },
+            new() { Nome = "Números Algébricos", Icone = "𝒪", Cor = "#B45309", Descricao = "Anéis de inteiros, ideais, classes e reciprocidade" },
+            new() { Nome = "Geometria Riemanniana", Icone = "Ric", Cor = "#0891B2", Descricao = "Curvatura, Hodge, Ricci flow e variedades Einstein" },
+            new() { Nome = "Análise Harmônica", Icone = "Ĝ", Cor = "#DC2626", Descricao = "Haar, Fourier em grupos e dualidade de Pontryagin" },
+            new() { Nome = "Geometria Não-Comutativa", Icone = "⋆", Cor = "#4F46E5", Descricao = "C*-álgebras, von Neumann, Moyal e geometria espectral" },
+            new() { Nome = "Mecânica Celeste", Icone = "☾", Cor = "#1D4ED8", Descricao = "KAM, problema de 3 corpos e mecânica orbital" },
+            new() { Nome = "Magnetismo e Matéria Mole", Icone = "🧲", Cor = "#B91C1C", Descricao = "Ferromagnetismo, Josephson, polímeros e líquido-cristalinos" },
+            new() { Nome = "Cristalografia", Icone = "💎", Cor = "#6D28D9", Descricao = "Bravais, Bragg, fator de estrutura e difração" },
+            new() { Nome = "Processos Gaussianos", Icone = "GP", Cor = "#059669", Descricao = "GP, kernels, GAM, splines e bootstrap" },
+            new() { Nome = "Otimização Convexa", Icone = "∇f", Cor = "#D97706", Descricao = "Convexidade, KKT, ADMM, SDP e Nesterov" },
+            new() { Nome = "ICA e Misturas", Icone = "⊥", Cor = "#9333EA", Descricao = "ICA, GMM, EM e estimação de densidade por kernel" },
+            new() { Nome = "Algoritmos de Aproximação", Icone = "ρ", Cor = "#EF4444", Descricao = "Set Cover, TSP, PCP e complexidade de circuitos" },
+            new() { Nome = "Redes de Computadores", Icone = "🌐", Cor = "#0EA5E9", Descricao = "TCP, CUBIC, BBR, OSPF, BGP e SDN" },
+            new() { Nome = "Compiladores e Autômatos", Icone = "⊢", Cor = "#78350F", Descricao = "Chomsky, LL/LR, autômatos e gramáticas formais" },
+            new() { Nome = "Computação Paralela", Icone = "‖", Cor = "#15803D", Descricao = "Amdahl, BSP, MapReduce, Paxos e BFT" },
+            new() { Nome = "Macroeconomia DSGE", Icone = "Yₜ", Cor = "#CA8A04", Descricao = "RBC, New Keynesian, Taylor e microeconomia avançada" },
+            new() { Nome = "Econofísica", Icone = "📈", Cor = "#E11D48", Descricao = "Pareto, volatilidade, modelos de opinião e Bass" },
+            new() { Nome = "Genética Quantitativa", Icone = "h²", Cor = "#16A34A", Descricao = "Herdabilidade, GWAS, BLUP e score poligênico" },
+            new() { Nome = "Imunologia Computacional", Icone = "🛡", Cor = "#0369A1", Descricao = "Modelo HIV de Perelson e resposta imune adaptativa" },
+            new() { Nome = "Privacidade Diferencial", Icone = "ε", Cor = "#7C2D12", Descricao = "DP, Laplace, Gaussiano, Rényi e aprendizado federado" },
+            new() { Nome = "Blockchain e Consenso", Icone = "⛓", Cor = "#4338CA", Descricao = "PoW, PoS, Merkle, smart contracts e ZK-SNARK" },
+            new() { Nome = "Computação Quântica Topológica", Icone = "τ", Cor = "#6B21A8", Descricao = "Anyons, Majoranas, Kitaev e CNOT topológico" },
+            new() { Nome = "IA Explicável", Icone = "φ", Cor = "#EA580C", Descricao = "SHAP, LIME, Grad-CAM e Integrated Gradients" },
+            new() { Nome = "Computação DNA e Neuromórfica", Icone = "🧬", Cor = "#10B981", Descricao = "DNA computing, CRN, SNN, STDP e neuromórficos" },
+            new() { Nome = "Bioquímica Estrutural", Icone = "🔬", Cor = "#A21CAF", Descricao = "Dobramento de proteínas, Ramachandran e dinâmica molecular" },
+            new() { Nome = "Hopfield e Ecologia", Icone = "⟲", Cor = "#64748B", Descricao = "Redes de Hopfield, memória associativa e metacomunidades" },
         ]);
     }
 
@@ -225,6 +252,34 @@ public partial class FormulaService
         AdicionarRedesComplexas();
         AdicionarCriptografiaPosQuantica();
         AdicionarInfoQuanticaAvancada();
+
+        // ── Volume 5 ──
+        AdicionarTeoriaDeLie();
+        AdicionarNumerosAlgebricos();
+        AdicionarGeometriaRiemanniana();
+        AdicionarAnaliseHarmonica();
+        AdicionarGeometriaNaoComutativa();
+        AdicionarMecanicaCeleste();
+        AdicionarMagnetismoMateriaMole();
+        AdicionarCristalografia();
+        AdicionarProcessosGaussianos();
+        AdicionarOtimizacaoConvexa();
+        AdicionarICAMisturas();
+        AdicionarAlgoritmosAproximacao();
+        AdicionarRedesComputadores();
+        AdicionarCompiladoresAutomatos();
+        AdicionarComputacaoParalela();
+        AdicionarMacroeconomiaDSGE();
+        AdicionarEconofisica();
+        AdicionarGeneticaQuantitativa();
+        AdicionarImunologiaComputacional();
+        AdicionarPrivacidadeDiferencial();
+        AdicionarBlockchainConsenso();
+        AdicionarComputacaoQuanticaTopologica();
+        AdicionarIAExplicavel();
+        AdicionarComputacaoDNANeuromorfica();
+        AdicionarBioquimicaEstrutural();
+        AdicionarHopfieldEcologia();
 
         // Update category counts
         foreach (var cat in _categorias)
