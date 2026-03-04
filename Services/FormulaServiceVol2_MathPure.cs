@@ -1,0 +1,1066 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═════════════════════════════════════════════════════════════
+    //  VOLUME 2 — PARTE I: MATEMÁTICA PURA
+    // ═════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 1. ÁLGEBRA ABSTRATA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarAlgebraAbstrata()
+    {
+        _formulas.AddRange([
+            // 1.1 Grupos
+            new Formula
+            {
+                Id = "aa_g01", Nome = "Axiomas de Grupo (G,·)", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "(G,·): fechamento, associatividade, identidade e, e⁻¹",
+                ExprTexto = "(G,·): fechamento, associatividade, identidade e, e⁻¹",
+                Icone = "⊕",
+                Descricao = "Um grupo é um conjunto G com operação · satisfazendo: fechamento (a·b∈G), associatividade ((a·b)·c=a·(b·c)), identidade (∃e: a·e=e·a=a) e inversos (∀a ∃a⁻¹: a·a⁻¹=e).",
+                Criador = "Évariste Galois / Arthur Cayley",
+                AnoOrigin = "1830-1854",
+            },
+            new Formula
+            {
+                Id = "aa_g02", Nome = "Ordem do Grupo |G|", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "|G| = número de elementos do grupo",
+                ExprTexto = "|G| = número de elementos do grupo",
+                Icone = "⊕",
+                Descricao = "A ordem de um grupo é a cardinalidade do conjunto subjacente. Pode ser finita ou infinita.",
+                Criador = "Arthur Cayley",
+                AnoOrigin = "~1854",
+            },
+            new Formula
+            {
+                Id = "aa_g03", Nome = "Ordem de um Elemento", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "aⁿ = e → ord(a) = n",
+                ExprTexto = "aⁿ = e → ord(a) = n",
+                Icone = "⊕",
+                Descricao = "A ordem de um elemento a é o menor inteiro positivo n tal que aⁿ=e (identidade). Se não existir tal n, o elemento tem ordem infinita.",
+                Criador = "Teoria de grupos clássica",
+                Variaveis = [
+                    new() { Simbolo = "a", Nome = "Base (a)", Descricao = "Elemento do grupo (numérico)", ValorPadrao = 2 },
+                    new() { Simbolo = "n", Nome = "Módulo (n)", Descricao = "Ordem do grupo cíclico ℤₙ", ValorPadrao = 7, ValorMin = 1 },
+                ],
+                VariavelResultado = "ord(a) em ℤₙ",
+                Calcular = vars => {
+                    int a = (int)vars["a"], n = (int)vars["n"];
+                    if (n <= 0) return double.NaN;
+                    int val = 1;
+                    for (int k = 1; k <= n; k++) { val = (val * a) % n; if (val == 1) return k; }
+                    return double.NaN;
+                }
+            },
+            new Formula
+            {
+                Id = "aa_g04", Nome = "Teorema de Lagrange", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "|H| | |G|  (H subgrupo de G)",
+                ExprTexto = "|H| divide |G| (H subgrupo de G)",
+                Icone = "⊕",
+                Descricao = "Se H é subgrupo de um grupo finito G, então |H| divide |G|. Consequência: a ordem de todo elemento divide |G|.",
+                Criador = "Joseph-Louis Lagrange",
+                AnoOrigin = "1770",
+                Variaveis = [
+                    new() { Simbolo = "G", Nome = "|G| (ordem do grupo)", ValorPadrao = 12, ValorMin = 1 },
+                    new() { Simbolo = "H", Nome = "|H| (ordem do subgrupo)", ValorPadrao = 4, ValorMin = 1 },
+                ],
+                VariavelResultado = "|H| divide |G|?  (1=sim, 0=não)",
+                Calcular = vars => ((int)vars["G"] % (int)vars["H"] == 0) ? 1 : 0
+            },
+            new Formula
+            {
+                Id = "aa_g05", Nome = "Índice de Subgrupo [G:H]", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "[G:H] = |G|/|H|",
+                ExprTexto = "[G:H] = |G| / |H|",
+                Icone = "⊕",
+                Descricao = "O índice de H em G é o número de classes laterais de H em G, igual a |G|/|H| pelo Teorema de Lagrange.",
+                Criador = "Teoria de grupos clássica",
+                Variaveis = [
+                    new() { Simbolo = "G", Nome = "|G|", ValorPadrao = 12, ValorMin = 1 },
+                    new() { Simbolo = "H", Nome = "|H|", ValorPadrao = 4, ValorMin = 1 },
+                ],
+                VariavelResultado = "[G:H]",
+                Calcular = vars => vars["G"] / vars["H"]
+            },
+            new Formula
+            {
+                Id = "aa_g06", Nome = "Grupo Quociente G/N", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G/N: grupo quociente (N normal: gNg⁻¹=N)",
+                ExprTexto = "G/N: conjunto de classes laterais de N em G",
+                Icone = "⊕",
+                Descricao = "Se N é subgrupo normal de G (gNg⁻¹=N ∀g∈G), então as classes laterais gN formam grupo com operação (gN)(hN)=(gh)N. |G/N| = [G:N].",
+                Criador = "Évariste Galois / Camille Jordan",
+                AnoOrigin = "~1870",
+            },
+            new Formula
+            {
+                Id = "aa_g07", Nome = "1º Teorema do Isomorfismo", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G/ker(φ) ≅ Im(φ)",
+                ExprTexto = "G / ker(φ) ≅ Im(φ)",
+                Icone = "⊕",
+                Descricao = "Se φ:G→H é homomorfismo de grupos, então G/ker(φ) é isomorfo à imagem Im(φ). Fundamental em teoria de grupos.",
+                Criador = "Emmy Noether (formalização)",
+                AnoOrigin = "1927",
+            },
+            new Formula
+            {
+                Id = "aa_g08", Nome = "Teorema de Cayley", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G ≅ subgrupo de S_{|G|}",
+                ExprTexto = "Todo grupo G é isomorfo a um subgrupo de S_{|G|}",
+                Icone = "⊕",
+                Descricao = "Todo grupo G é isomorfo a um subgrupo do grupo simétrico S_{|G|} via a representação regular à esquerda: g↦Lₘ onde Lₘ(x)=gx.",
+                Criador = "Arthur Cayley",
+                AnoOrigin = "1854",
+            },
+            new Formula
+            {
+                Id = "aa_g09", Nome = "Grupo Cíclico", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G = ⟨g⟩ = {gⁿ : n∈ℤ}",
+                ExprTexto = "G = ⟨g⟩ = {gⁿ : n ∈ ℤ}",
+                Icone = "⊕",
+                Descricao = "Grupo gerado por um único elemento g. Todo grupo cíclico de ordem n é isomorfo a ℤ/nℤ. Todo grupo cíclico infinito é isomorfo a ℤ.",
+                Criador = "Teoria de grupos clássica",
+            },
+            new Formula
+            {
+                Id = "aa_g10", Nome = "Grupo Abeliano", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "ab = ba  ∀a,b∈G",
+                ExprTexto = "ab = ba  ∀a, b ∈ G",
+                Icone = "⊕",
+                Descricao = "Grupo onde a operação é comutativa. Nomeado em homenagem a Niels Henrik Abel. Todo subgrupo de grupo abeliano é normal.",
+                Criador = "Niels Henrik Abel",
+                AnoOrigin = "~1824",
+            },
+            new Formula
+            {
+                Id = "aa_g11", Nome = "Produto Direto G×H", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G×H = {(g,h): g∈G, h∈H}",
+                ExprTexto = "G × H = {(g,h) : g ∈ G, h ∈ H}",
+                Icone = "⊕",
+                Descricao = "O produto direto G×H é o conjunto de pares com operação componente a componente: (g₁,h₁)·(g₂,h₂) = (g₁g₂, h₁h₂). |G×H| = |G|·|H|.",
+                Criador = "Teoria de grupos",
+                Variaveis = [
+                    new() { Simbolo = "G", Nome = "|G|", ValorPadrao = 3, ValorMin = 1 },
+                    new() { Simbolo = "H", Nome = "|H|", ValorPadrao = 4, ValorMin = 1 },
+                ],
+                VariavelResultado = "|G×H|",
+                Calcular = vars => vars["G"] * vars["H"]
+            },
+            new Formula
+            {
+                Id = "aa_g12", Nome = "Teorema de Sylow", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "pᵏ | |G| ⟹ ∃ subgrupo de ordem pᵏ",
+                ExprTexto = "Se pᵏ divide |G|, existe subgrupo de ordem pᵏ",
+                Icone = "⊕",
+                Descricao = "Se p é primo e pᵏ divide |G|, existe subgrupo de G com ordem pᵏ (p-subgrupo de Sylow). O número de p-subgrupos de Sylow ≡1 mod p e divide |G|.",
+                Criador = "Peter Ludwig Mejdell Sylow",
+                AnoOrigin = "1872",
+            },
+            new Formula
+            {
+                Id = "aa_g13", Nome = "Grupos Simples", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "G simples: sem subgrupos normais próprios não triviais",
+                ExprTexto = "G simples ↔ N ⊴ G ⟹ N={e} ou N=G",
+                Icone = "⊕",
+                Descricao = "Grupo simples: não possui subgrupos normais além de {e} e G. São os 'blocos fundamentais' dos grupos finitos (classificação completa em ~2004).",
+                Criador = "Classificação: ~100 matemáticos, 1955-2004",
+            },
+            new Formula
+            {
+                Id = "aa_g14", Nome = "GL(n,F) e SL(n,F)", Categoria = "Álgebra Abstrata", SubCategoria = "Grupos",
+                Expressao = "GL(n,F): matrizes n×n invertíveis; SL(n,F): det=1",
+                ExprTexto = "GL(n,F) = {A ∈ Mₙ(F) : det(A) ≠ 0}; SL(n,F) = {A : det(A) = 1}",
+                Icone = "⊕",
+                Descricao = "GL(n,F) é o grupo linear geral (matrizes invertíveis n×n sobre corpo F). SL(n,F) é o grupo linear especial (determinante 1), subgrupo normal de GL.",
+                Criador = "Teoria de grupos de Lie",
+            },
+
+            // 1.2 Anéis
+            new Formula
+            {
+                Id = "aa_r01", Nome = "Axiomas de Anel", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "(R,+,·): grupo abeliano (R,+), semigrupo (R,·), distributividade",
+                ExprTexto = "(R,+,·): grupo abeliano para + e semigrupo para ·",
+                Icone = "⊕",
+                Descricao = "Anel é um conjunto R com duas operações: (R,+) é grupo abeliano, (R,·) é semigrupo, e vale a distributividade: a(b+c)=ab+ac e (a+b)c=ac+bc.",
+                Criador = "David Hilbert / Emmy Noether",
+                AnoOrigin = "~1920",
+            },
+            new Formula
+            {
+                Id = "aa_r02", Nome = "Domínio Integral", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "ab=0 ⟹ a=0 ou b=0",
+                ExprTexto = "ab = 0 ⟹ a = 0 ou b = 0 (sem divisores de zero)",
+                Icone = "⊕",
+                Descricao = "Domínio integral: anel comutativo com unidade sem divisores de zero. Ex: ℤ, ℤ[i], K[x] (K corpo). Todo corpo é domínio integral.",
+                Criador = "Teoria de anéis clássica",
+            },
+            new Formula
+            {
+                Id = "aa_r03", Nome = "Ideal de um Anel", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "I⊂R: r·i∈I e i·r∈I ∀r∈R, i∈I",
+                ExprTexto = "I ⊂ R tal que r·i ∈ I e i·r ∈ I ∀r∈R, i∈I",
+                Icone = "⊕",
+                Descricao = "Ideal I de R: subanel que 'absorve' multiplicação por R. Permite construir anéis quocientes R/I. Ideal gerado por a: (a)={ra: r∈R}.",
+                Criador = "Ernst Kummer / Richard Dedekind",
+                AnoOrigin = "~1847",
+            },
+            new Formula
+            {
+                Id = "aa_r04", Nome = "Ideal Primo", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "P primo: ab∈P ⟹ a∈P ou b∈P",
+                ExprTexto = "P é primo: ab ∈ P ⟹ a ∈ P ou b ∈ P",
+                Icone = "⊕",
+                Descricao = "Ideal primo P: generaliza noção de número primo. R/P é domínio integral. Em ℤ, ideais primos são (0) e (p) para p primo.",
+                Criador = "Dedekind",
+            },
+            new Formula
+            {
+                Id = "aa_r05", Nome = "Ideal Maximal", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "M maximal: R/M é corpo",
+                ExprTexto = "M é maximal ↔ R/M é corpo",
+                Icone = "⊕",
+                Descricao = "Ideal maximal M: não está contido em nenhum outro ideal próprio. R/M é corpo. Todo ideal maximal é primo.",
+                Criador = "Álgebra comutativa clássica",
+            },
+            new Formula
+            {
+                Id = "aa_r06", Nome = "Anel Quociente R/I", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "R/I: classes laterais sob +/·",
+                ExprTexto = "R/I: classes a+I com operações (a+I)+(b+I) = (a+b)+I",
+                Icone = "⊕",
+                Descricao = "O anel quociente R/I é formado pelas classes laterais a+I com operações naturais. Ex: ℤ/nℤ = {0̄,1̄,...,(n-1)̄}.",
+                Criador = "Emmy Noether",
+            },
+            new Formula
+            {
+                Id = "aa_r07", Nome = "Anel de Polinômios R[x]", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "R[x] = {Σ aᵢxⁱ : aᵢ∈R}",
+                ExprTexto = "R[x] = {Σ aᵢxⁱ : aᵢ ∈ R}",
+                Icone = "⊕",
+                Descricao = "Anel de polinômios sobre R: polinômios com coeficientes em R com soma e multiplicação usuais. Se R é DFU, então R[x] também (Teorema de Gauss).",
+                Criador = "Teoria de anéis",
+            },
+            new Formula
+            {
+                Id = "aa_r08", Nome = "Domínio de Fatoração Única (DFU)", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "DFU: todo elemento admite fatoração única em irredutíveis",
+                ExprTexto = "DFU: todo irreducível é primo, fatoração essencialmente única",
+                Icone = "⊕",
+                Descricao = "Em DFU, todo elemento não-nulo não-unidade se fatora como produto de irredutíveis de forma única (a menos de ordem e unidades). Ex: ℤ, K[x].",
+                Criador = "Ernst Kummer / Dedekind",
+            },
+            new Formula
+            {
+                Id = "aa_r09", Nome = "Algoritmo da Divisão em R[x]", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "f = q·g + r, deg(r) < deg(g)",
+                ExprTexto = "f = q · g + r, com deg(r) < deg(g)",
+                Icone = "⊕",
+                Descricao = "Para f,g∈K[x] com g≠0 (K corpo), existem únicos q (quociente) e r (resto) tais que f=qg+r e deg(r)<deg(g). Base do algoritmo de Euclides para polinômios.",
+                Criador = "Euclides (adaptado para polinômios)",
+            },
+            new Formula
+            {
+                Id = "aa_r10", Nome = "Teorema do Isomorfismo de Anéis", Categoria = "Álgebra Abstrata", SubCategoria = "Anéis",
+                Expressao = "R/ker(φ) ≅ φ(R)",
+                ExprTexto = "R / ker(φ) ≅ Im(φ)",
+                Icone = "⊕",
+                Descricao = "Se φ:R→S é homomorfismo de anéis, então R/ker(φ) é isomorfo à imagem φ(R). Análogo ao 1º teorema do isomorfismo para grupos.",
+                Criador = "Emmy Noether",
+                AnoOrigin = "1927",
+            },
+
+            // 1.3 Corpos (Campos)
+            new Formula
+            {
+                Id = "aa_f01", Nome = "Definição de Corpo", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "Corpo F: anel comutativo c/ todo a≠0 invertível",
+                ExprTexto = "Corpo F: anel comutativo onde ∀a≠0, ∃a⁻¹",
+                Icone = "⊕",
+                Descricao = "Corpo (ou campo) é um anel comutativo com unidade onde todo elemento não-nulo possui inverso multiplicativo. Ex: ℚ, ℝ, ℂ, 𝔽_p.",
+                Criador = "Richard Dedekind / Heinrich Weber",
+                AnoOrigin = "1893",
+            },
+            new Formula
+            {
+                Id = "aa_f02", Nome = "Característica de um Corpo", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "Char(F) = menor p>0: p·1=0 (ou 0)",
+                ExprTexto = "Char(F) = menor p > 0 tal que p · 1 = 0 (ou 0 se não existir)",
+                Icone = "⊕",
+                Descricao = "A característica de F é o menor inteiro positivo p tal que 1+1+...+1 (p vezes) = 0. Se não existir, Char(F)=0. A característica é sempre 0 ou um primo.",
+                Criador = "Teoria de corpos",
+            },
+            new Formula
+            {
+                Id = "aa_f03", Nome = "Corpo Finito de Galois 𝔽_q", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "|𝔽_q| = pⁿ (q potência de primo)",
+                ExprTexto = "|𝔽_q| = pⁿ (q = potência de primo)",
+                Icone = "⊕",
+                Descricao = "Todo corpo finito tem pⁿ elementos (p primo, n≥1). Para cada potência de primo q, existe (a menos de isomorfismo) um único corpo 𝔽_q. Aplicações: criptografia, códigos corretores.",
+                Criador = "Évariste Galois",
+                AnoOrigin = "1830",
+                Variaveis = [
+                    new() { Simbolo = "p", Nome = "Primo p", ValorPadrao = 2, ValorMin = 2 },
+                    new() { Simbolo = "n", Nome = "Expoente n", ValorPadrao = 8, ValorMin = 1 },
+                ],
+                VariavelResultado = "q = pⁿ (ordem do corpo)",
+                Calcular = vars => Math.Pow(vars["p"], vars["n"])
+            },
+            new Formula
+            {
+                Id = "aa_f04", Nome = "Corpo Primo 𝔽_p = ℤ/pℤ", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "𝔽_p = ℤ/pℤ (p primo)",
+                ExprTexto = "𝔽_p = ℤ/pℤ = {0,1,...,p−1}",
+                Icone = "⊕",
+                Descricao = "Para p primo, ℤ/pℤ é corpo com p elementos. As operações são aritmética módulo p. É o subcorpo primo de todo corpo de característica p.",
+                Criador = "Gauss / Galois",
+            },
+            new Formula
+            {
+                Id = "aa_f05", Nome = "Grau de Extensão [E:F]", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "[E:F] = dim_F(E)",
+                ExprTexto = "[E:F] = dimₘ(E) como espaço vetorial sobre F",
+                Icone = "⊕",
+                Descricao = "O grau da extensão E/F é a dimensão de E como espaço vetorial sobre F. Ex: [ℂ:ℝ]=2, [ℝ:ℚ]=∞.",
+                Criador = "Teoria de extensões de corpos",
+            },
+            new Formula
+            {
+                Id = "aa_f06", Nome = "Teorema do Elemento Primitivo", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "E = F(α) se E/F separável e finita",
+                ExprTexto = "E = F(α) para algum α ∈ E, se E/F separável finita",
+                Icone = "⊕",
+                Descricao = "Toda extensão separável finita E/F é simples: E=F(α) para algum α. Ex: ℚ(√2,√3)=ℚ(√2+√3).",
+                Criador = "Ernst Steinitz",
+                AnoOrigin = "1910",
+            },
+            new Formula
+            {
+                Id = "aa_f07", Nome = "Grupo de Galois", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "Gal(E/F) = {σ∈Aut(E): σ|_F = id}",
+                ExprTexto = "Gal(E/F) = {automorfismos de E fixando F}",
+                Icone = "⊕",
+                Descricao = "O grupo de Galois de E/F é o grupo dos automorfismos de E que fixam cada elemento de F. Conecta teoria de corpos com teoria de grupos.",
+                Criador = "Évariste Galois",
+                AnoOrigin = "1832",
+            },
+            new Formula
+            {
+                Id = "aa_f08", Nome = "|Gal(E/F)| = [E:F]", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "|Gal(E/F)| = [E:F] para extensão de Galois",
+                ExprTexto = "|Gal(E/F)| = [E:F] se E/F é extensão de Galois",
+                Icone = "⊕",
+                Descricao = "Para extensão de Galois (normal e separável), a ordem do grupo de Galois é igual ao grau da extensão.",
+                Criador = "Teoria de Galois",
+            },
+            new Formula
+            {
+                Id = "aa_f09", Nome = "Teorema Fundamental de Galois", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "Bijeção: subgrupos de Gal(E/F) ↔ subcorpos intermediários",
+                ExprTexto = "H ≤ Gal(E/F) ↔ F ⊆ E^H ⊆ E (correspondência de Galois)",
+                Icone = "⊕",
+                Descricao = "Existe bijeção inversora de ordem entre subgrupos de Gal(E/F) e corpos intermediários F⊆K⊆E. H↦E^H (corpo fixo) e K↦Gal(E/K).",
+                Criador = "Évariste Galois",
+                AnoOrigin = "1832",
+            },
+            new Formula
+            {
+                Id = "aa_f10", Nome = "Critério de Eisenstein", Categoria = "Álgebra Abstrata", SubCategoria = "Corpos",
+                Expressao = "p|aᵢ (i<n), p∤aₙ, p²∤a₀ ⟹ f irredutível",
+                ExprTexto = "Se p|aᵢ (i<n), p∤aₙ, p²∤a₀ → f(x) irredutível sobre ℚ",
+                Icone = "⊕",
+                Descricao = "Critério para decidir irredutibilidade de polinômios sobre ℚ. Se existe primo p dividindo todos os coeficientes exceto o líder, e p² não divide o termo independente, então f é irredutível.",
+                Criador = "Gotthold Eisenstein / Theodor Schönemann",
+                AnoOrigin = "1850",
+            },
+
+            // 1.4 Homomorfismos e Estruturas
+            new Formula
+            {
+                Id = "aa_h01", Nome = "Homomorfismo", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "φ(ab) = φ(a)φ(b)",
+                ExprTexto = "φ(a · b) = φ(a) · φ(b)",
+                Icone = "⊕",
+                Descricao = "Homomorfismo: função entre grupos/anéis que preserva a operação. Estrutura algébrica é mapeada para estrutura algébrica.",
+                Criador = "Teoria de álgebra abstrata",
+            },
+            new Formula
+            {
+                Id = "aa_h02", Nome = "Isomorfismo", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "Isomorfismo: homomorfismo bijetivo",
+                ExprTexto = "φ bijetivo e φ(ab) = φ(a)φ(b) → isomorfismo",
+                Icone = "⊕",
+                Descricao = "Isomorfismo: homomorfismo bijetivo. Estruturas isomorfas são 'algebricamente iguais'; G ≅ H significa que G e H têm mesma estrutura.",
+                Criador = "Teoria de álgebra abstrata",
+            },
+            new Formula
+            {
+                Id = "aa_h03", Nome = "Automorfismo", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "Automorfismo: isomorfismo G → G",
+                ExprTexto = "Aut(G) = {isomorfismos G → G}",
+                Icone = "⊕",
+                Descricao = "Automorfismo: isomorfismo de G para si mesmo. O conjunto Aut(G) forma grupo sob composição. Ex: Aut(ℤ/nℤ) ≅ (ℤ/nℤ)×.",
+                Criador = "Teoria de grupos",
+            },
+            new Formula
+            {
+                Id = "aa_h04", Nome = "Kernel (Núcleo)", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "ker(φ) = {g∈G: φ(g)=e}",
+                ExprTexto = "ker(φ) = {g ∈ G : φ(g) = e_H}",
+                Icone = "⊕",
+                Descricao = "Núcleo de homomorfismo: conjunto de elementos mapeados à identidade. ker(φ) é sempre subgrupo normal de G. φ injetivo ↔ ker(φ)={e}.",
+                Criador = "Teoria de homomorfismos",
+            },
+            new Formula
+            {
+                Id = "aa_h05", Nome = "Imagem Im(φ)", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "Im(φ) = {φ(g): g∈G}",
+                ExprTexto = "Im(φ) = {φ(g) : g ∈ G} ⊆ H",
+                Icone = "⊕",
+                Descricao = "Imagem de homomorfismo: conjunto dos valores atingidos. Im(φ) é sempre subgrupo de H. φ sobrejetivo ↔ Im(φ)=H.",
+                Criador = "Teoria de homomorfismos",
+            },
+            new Formula
+            {
+                Id = "aa_h06", Nome = "Módulo sobre Anel", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "M módulo sobre R: generalização de espaço vetorial",
+                ExprTexto = "R-módulo M: r·(m+n)=rm+rn; (r+s)·m=rm+sm; (rs)·m=r(sm); 1·m=m",
+                Icone = "⊕",
+                Descricao = "Módulo: generalização de espaço vetorial onde os 'escalares' formam anel (não necessariamente corpo). Ex: ℤ-módulos = grupos abelianos.",
+                Criador = "Emmy Noether",
+            },
+            new Formula
+            {
+                Id = "aa_h07", Nome = "Álgebra sobre Corpo", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "Álgebra A: espaço vetorial + multiplicação bilinear",
+                ExprTexto = "A é F-álgebra: espaço vetorial sobre F com multiplicação bilinear",
+                Icone = "⊕",
+                Descricao = "Álgebra: espaço vetorial sobre corpo F com operação de multiplicação bilinear compatível com a estrutura vetorial. Ex: Mₙ(F), ℍ (quaternions).",
+                Criador = "Teoria de álgebras",
+            },
+            new Formula
+            {
+                Id = "aa_h08", Nome = "Álgebra de Lie", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "[X,Y] = XY - YX (colchete de Lie)",
+                ExprTexto = "[X,Y] = XY − YX",
+                Icone = "⊕",
+                Descricao = "Álgebra de Lie: espaço vetorial com operação bilinear [·,·] (colchete) que é antissimétrica ([X,X]=0) e satisfaz Jacobi. Conexão com grupos de Lie.",
+                Criador = "Sophus Lie / Wilhelm Killing",
+                AnoOrigin = "~1870",
+            },
+            new Formula
+            {
+                Id = "aa_h09", Nome = "Identidade de Jacobi", Categoria = "Álgebra Abstrata", SubCategoria = "Homomorfismos",
+                Expressao = "[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0",
+                ExprTexto = "[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0",
+                Icone = "⊕",
+                Descricao = "Identidade fundamental em álgebras de Lie. Junto com bilinearidade e anti-comutatividade, define a estrutura de álgebra de Lie.",
+                Criador = "Carl Gustav Jacob Jacobi",
+                AnoOrigin = "~1840",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 2. TOPOLOGIA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarTopologia()
+    {
+        _formulas.AddRange([
+            // 2.1 Espaços Métricos
+            new Formula { Id = "top_m01", Nome = "Axiomas de Métrica", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "d(x,y)≥0; d(x,y)=0↔x=y; d(x,y)=d(y,x); d(x,z)≤d(x,y)+d(y,z)",
+                ExprTexto = "d(x,y) ≥ 0; d=0↔x=y; simetria; desigualdade triangular", Icone = "τ",
+                Descricao = "Métrica d satisfaz: positividade, identidade dos indiscerníveis, simetria e desigualdade triangular. Define noção de distância em um conjunto." },
+            new Formula { Id = "top_m02", Nome = "Distância Euclidiana", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "d(x,y) = √(Σ(xᵢ-yᵢ)²)",
+                ExprTexto = "d(x,y) = √(Σᵢ (xᵢ − yᵢ)²)", Icone = "τ",
+                Descricao = "Distância euclidiana em ℝⁿ. Generalização do teorema de Pitágoras.",
+                Variaveis = [
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 0 }, new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 3 },
+                    new() { Simbolo = "x2", Nome = "x₂", ValorPadrao = 0 }, new() { Simbolo = "y2", Nome = "y₂", ValorPadrao = 4 },
+                ],
+                VariavelResultado = "d(x,y)",
+                Calcular = vars => Math.Sqrt(Math.Pow(vars["x1"]-vars["y1"],2)+Math.Pow(vars["x2"]-vars["y2"],2)) },
+            new Formula { Id = "top_m03", Nome = "Distância do Supremo d∞", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "d∞(x,y) = max|xᵢ-yᵢ|", ExprTexto = "d∞(x,y) = max |xᵢ − yᵢ|", Icone = "τ",
+                Descricao = "Distância de Chebyshev (supremo). Em ℝ², induz 'bolas' quadradas.",
+                Variaveis = [
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1 }, new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 4 },
+                    new() { Simbolo = "x2", Nome = "x₂", ValorPadrao = 2 }, new() { Simbolo = "y2", Nome = "y₂", ValorPadrao = 5 },
+                ],
+                VariavelResultado = "d∞(x,y)",
+                Calcular = vars => Math.Max(Math.Abs(vars["x1"]-vars["y1"]),Math.Abs(vars["x2"]-vars["y2"])) },
+            new Formula { Id = "top_m04", Nome = "Distância de Manhattan d₁", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "d₁(x,y) = Σ|xᵢ-yᵢ|", ExprTexto = "d₁(x,y) = Σᵢ |xᵢ − yᵢ|", Icone = "τ",
+                Descricao = "Distância de Manhattan (L¹/taxicab). Soma das diferenças absolutas coordenada a coordenada.",
+                Variaveis = [
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1 }, new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 4 },
+                    new() { Simbolo = "x2", Nome = "x₂", ValorPadrao = 2 }, new() { Simbolo = "y2", Nome = "y₂", ValorPadrao = 6 },
+                ],
+                VariavelResultado = "d₁(x,y)",
+                Calcular = vars => Math.Abs(vars["x1"]-vars["y1"])+Math.Abs(vars["x2"]-vars["y2"]) },
+            new Formula { Id = "top_m05", Nome = "Bola Aberta B(x,r)", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "B(x,r) = {y: d(x,y) < r}", ExprTexto = "B(x,r) = {y ∈ X : d(x,y) < r}", Icone = "τ",
+                Descricao = "Bola aberta de centro x e raio r: conjunto de pontos cuja distância a x é menor que r. Gera a topologia métrica." },
+            new Formula { Id = "top_m06", Nome = "Sequência de Cauchy", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "∀ε>0 ∃N: m,n>N ⟹ d(xₘ,xₙ)<ε", ExprTexto = "∀ε>0, ∃N: m,n>N ⟹ d(xₘ,xₙ) < ε", Icone = "τ",
+                Descricao = "Sequência cujos termos ficam arbitrariamente próximos entre si. Em espaço completo, toda sequência de Cauchy converge." },
+            new Formula { Id = "top_m07", Nome = "Completude", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "Completo: toda seq. Cauchy converge no espaço", ExprTexto = "X é completo ↔ toda sequência de Cauchy em X converge", Icone = "τ",
+                Descricao = "Espaço métrico completo: toda sequência de Cauchy tem limite no espaço. ℝ é completo, ℚ não. Completação de ℚ = ℝ." },
+            new Formula { Id = "top_m08", Nome = "Teorema do Ponto Fixo de Banach", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "T contração ⟹ ∃!x: T(x)=x", ExprTexto = "d(T(x),T(y)) ≤ c·d(x,y), c<1 ⟹ ∃! ponto fixo", Icone = "τ",
+                Descricao = "Se T é contração em espaço métrico completo (d(Tx,Ty)≤c·d(x,y), 0≤c<1), existe único ponto fixo x*=T(x*). Iteração xₙ₊₁=T(xₙ) converge.",
+                Criador = "Stefan Banach", AnoOrigin = "1922" },
+            new Formula { Id = "top_m09", Nome = "Compacidade", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "Compacto: toda cobertura aberta tem subcobertura finita", ExprTexto = "X compacto ↔ toda cobertura aberta admite subcobertura finita", Icone = "τ",
+                Descricao = "Compacidade: generalização de ser 'fechado e limitado' (em ℝⁿ, Heine-Borel). Propriedade topológica fundamental." },
+            new Formula { Id = "top_m10", Nome = "Teorema de Heine-Cantor", Categoria = "Topologia", SubCategoria = "Espaços Métricos",
+                Expressao = "f contínua em compacto ⟹ uniformemente contínua", ExprTexto = "f:K→Y contínua, K compacto ⟹ f uniformemente contínua", Icone = "τ",
+                Descricao = "Função contínua definida em compacto é automaticamente uniformemente contínua.",
+                Criador = "Eduard Heine / Georg Cantor", AnoOrigin = "~1872" },
+
+            // 2.2 Espaços Topológicos
+            new Formula { Id = "top_p01", Nome = "Axiomas de Topologia", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "τ: ∅,X∈τ; uniões∈τ; interseções finitas∈τ", ExprTexto = "τ ⊆ P(X): ∅,X∈τ; ∪ arbitrária∈τ; ∩ finita∈τ", Icone = "τ",
+                Descricao = "Topologia τ em X: coleção de subconjuntos (abertos) contendo ∅ e X, fechada sob uniões arbitrárias e interseções finitas." },
+            new Formula { Id = "top_p02", Nome = "Espaço de Hausdorff (T₂)", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "∀x≠y ∃ abertos disjuntos U∋x, V∋y", ExprTexto = "T₂: pontos distintos têm vizinhanças disjuntas", Icone = "τ",
+                Descricao = "Espaço de Hausdorff: pontos distintos podem ser separados por abertos disjuntos. Garante unicidade de limites.",
+                Criador = "Felix Hausdorff", AnoOrigin = "1914" },
+            new Formula { Id = "top_p03", Nome = "Homeomorfismo", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "f: X→Y bijeção contínua, f⁻¹ contínua", ExprTexto = "f homeomorfismo ↔ f bijeção contínua com inversa contínua", Icone = "τ",
+                Descricao = "Homeomorfismo: equivalência topológica. Se f:X→Y é homeomorfismo, X e Y são topologicamente 'iguais'. Ex: caneca≅rosquinha." },
+            new Formula { Id = "top_p04", Nome = "Invariante Topológica", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "Propriedade preservada por homeomorfismos", ExprTexto = "P invariante ↔ X≅Y ⟹ P(X) = P(Y)", Icone = "τ",
+                Descricao = "Invariante topológica: propriedade que não muda sob homeomorfismo. Ex: conexidade, compacidade, grupo fundamental." },
+            new Formula { Id = "top_p05", Nome = "Conexidade", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "X conexo: não se particiona em 2 abertos disjuntos", ExprTexto = "X conexo ↔ X ≠ A∪B com A,B abertos disjuntos não vazios", Icone = "τ",
+                Descricao = "Espaço conexo: não pode ser escrito como união de dois abertos disjuntos não-vazios. Teorema do Valor Intermediário usa conexidade de ℝ." },
+            new Formula { Id = "top_p06", Nome = "Grupo Fundamental π₁(X,x₀)", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "π₁(X,x₀) = {laços em x₀}/homotopia", ExprTexto = "π₁(X,x₀) = classes de homotopia de laços baseados em x₀", Icone = "τ",
+                Descricao = "Grupo fundamental: grupo de classes de equivalência (por homotopia) de caminhos fechados baseados em x₀. Detecta 'buracos' no espaço.",
+                Criador = "Henri Poincaré", AnoOrigin = "1895" },
+            new Formula { Id = "top_p07", Nome = "π₁(S¹) = ℤ, π₁(Sⁿ) = 0", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "π₁(S¹)=ℤ; π₁(Sⁿ)=0 para n≥2", ExprTexto = "π₁(S¹) ≅ ℤ; π₁(Sⁿ) = 0 para n ≥ 2", Icone = "τ",
+                Descricao = "O círculo S¹ tem grupo fundamental ℤ (laços enrolam inteiro vezes). Esferas Sⁿ com n≥2 são simplesmente conexas (π₁=0)." },
+            new Formula { Id = "top_p08", Nome = "π₁(T²) = ℤ×ℤ", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "π₁(T²) = ℤ × ℤ", ExprTexto = "π₁(Toro) ≅ ℤ × ℤ", Icone = "τ",
+                Descricao = "O toro T²=S¹×S¹ tem grupo fundamental ℤ×ℤ (dois geradores independentes: laço horizontal e vertical)." },
+            new Formula { Id = "top_p09", Nome = "Homologia Hₙ(X)", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "Hₙ(X) = ker∂ₙ / Im∂ₙ₊₁", ExprTexto = "Hₙ(X) = ker(∂ₙ) / Im(∂ₙ₊₁)", Icone = "τ",
+                Descricao = "n-ésimo grupo de homologia: ciclos módulo bordos. Detecta 'buracos' n-dimensionais. H₀ = componentes conexas, H₁ ≈ laços, H₂ ≈ cavidades.",
+                Criador = "Henri Poincaré / Emmy Noether" },
+            new Formula { Id = "top_p10", Nome = "Característica de Euler χ(X)", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "χ = Σ(-1)ⁿ rank(Hₙ(X))", ExprTexto = "χ(X) = Σₙ (−1)ⁿ rank(Hₙ(X))", Icone = "τ",
+                Descricao = "Invariante topológica alternada das dimensões dos grupos de homologia. Para poliedros: χ=V-E+F (vértices-arestas+faces).",
+                Criador = "Leonhard Euler", AnoOrigin = "1758",
+                Variaveis = [
+                    new() { Simbolo = "V", Nome = "Vértices V", ValorPadrao = 8, ValorMin = 0 },
+                    new() { Simbolo = "E", Nome = "Arestas E", ValorPadrao = 12, ValorMin = 0 },
+                    new() { Simbolo = "F", Nome = "Faces F", ValorPadrao = 6, ValorMin = 0 },
+                ],
+                VariavelResultado = "χ = V − E + F",
+                Calcular = vars => vars["V"] - vars["E"] + vars["F"] },
+            new Formula { Id = "top_p11", Nome = "χ de Superfícies", Categoria = "Topologia", SubCategoria = "Espaços Topológicos",
+                Expressao = "χ(S²)=2; χ(T²)=0; χ(gênero g)=2-2g", ExprTexto = "χ(superfície de gênero g) = 2 − 2g", Icone = "τ",
+                Descricao = "Esfera: χ=2 (gênero 0). Toro: χ=0 (gênero 1). Bitoro: χ=-2 (gênero 2). Classifica superfícies orientáveis compactas.",
+                Variaveis = [ new() { Simbolo = "g", Nome = "Gênero g", ValorPadrao = 1, ValorMin = 0 } ],
+                VariavelResultado = "χ",
+                Calcular = vars => 2 - 2 * vars["g"] },
+
+            // 2.3 Teoremas de Brouwer e Resultados Clássicos
+            new Formula { Id = "top_b01", Nome = "Teorema do Ponto Fixo de Brouwer", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "f:Dⁿ→Dⁿ contínua ⟹ ∃x: f(x)=x", ExprTexto = "f : Dⁿ → Dⁿ contínua ⟹ ∃x: f(x) = x", Icone = "τ",
+                Descricao = "Toda função contínua do disco fechado n-dimensional nele mesmo possui ao menos um ponto fixo. Generalização do TVI.",
+                Criador = "L.E.J. Brouwer", AnoOrigin = "1911" },
+            new Formula { Id = "top_b02", Nome = "Teorema de Borsuk-Ulam", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "f:Sⁿ→ℝⁿ contínua ⟹ ∃x: f(x)=f(-x)", ExprTexto = "f:Sⁿ→ℝⁿ contínua ⟹ ∃ pontos antípodas com mesma imagem", Icone = "τ",
+                Descricao = "Para toda função contínua da esfera n-dimensional em ℝⁿ, existem pontos antípodas com mesma imagem. 'Existem dois pontos opostos na Terra com mesma temperatura e pressão.'",
+                Criador = "Karol Borsuk / Stanislaw Ulam", AnoOrigin = "1933" },
+            new Formula { Id = "top_b03", Nome = "Invariância de Domínio", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "f:U⊂ℝⁿ→ℝⁿ injetiva contínua ⟹ f(U) aberto", ExprTexto = "Injeção contínua de aberto de ℝⁿ em ℝⁿ tem imagem aberta", Icone = "τ",
+                Descricao = "Se f:U→ℝⁿ é injetiva e contínua (U aberto em ℝⁿ), então f(U) é aberto. Consequência: ℝⁿ≅ℝᵐ ⟹ n=m.",
+                Criador = "L.E.J. Brouwer", AnoOrigin = "1912" },
+            new Formula { Id = "top_b04", Nome = "Teorema da Curva de Jordan", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "Curva de Jordan divide ℝ² em 2 componentes", ExprTexto = "γ:S¹→ℝ² simples fechada ⟹ ℝ²\\γ tem 2 componentes (interior+exterior)", Icone = "τ",
+                Descricao = "Toda curva fechada simples (homeomorfa a S¹) no plano divide ℝ² em exatamente duas componentes conexas: interior (limitado) e exterior.",
+                Criador = "Camille Jordan / Oswald Veblen", AnoOrigin = "1887" },
+            new Formula { Id = "top_b05", Nome = "Teorema de Extensão de Tietze", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "f:C⊂X→ℝ contínua, C fechado ⟹ extensão a X", ExprTexto = "f contínua em fechado C ⊂ X normal ⟹ ∃ extensão contínua F:X→ℝ", Icone = "τ",
+                Descricao = "Em espaço normal, toda função contínua real definida em fechado pode ser estendida a todo o espaço preservando continuidade.",
+                Criador = "Heinrich Tietze", AnoOrigin = "1915" },
+            new Formula { Id = "top_b06", Nome = "Lema de Urysohn", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "X normal, A,B fechados disjuntos ⟹ ∃f:X→[0,1]", ExprTexto = "∃f contínua: f|_A=0, f|_B=1 em espaço normal", Icone = "τ",
+                Descricao = "Em espaço normal, dois fechados disjuntos podem ser separados por função contínua com valores em [0,1].",
+                Criador = "Pavel Urysohn", AnoOrigin = "1925" },
+            new Formula { Id = "top_b07", Nome = "Teorema de Seifert-Van Kampen", Categoria = "Topologia", SubCategoria = "Teoremas Clássicos",
+                Expressao = "π₁(A∪B) = π₁(A) *_{π₁(A∩B)} π₁(B)", ExprTexto = "π₁(A∪B) ≅ π₁(A) *_{π₁(A∩B)} π₁(B)", Icone = "τ",
+                Descricao = "Calcula o grupo fundamental de união de espaços abertos via produto livre amalgamado. Ferramenta fundamental em topologia algébrica.",
+                Criador = "Herbert Seifert / Egbert van Kampen", AnoOrigin = "1933" },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 3. GEOMETRIA DIFERENCIAL
+    // ─────────────────────────────────────────────────────
+    private void AdicionarGeometriaDiferencial()
+    {
+        _formulas.AddRange([
+            // 3.1 Curvas no Espaço
+            new Formula { Id = "gd_c01", Nome = "Parametrização por Comprimento de Arco", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "α(s): |α'(s)|=1", ExprTexto = "α(s) parametrizada por arco: |α'(s)| = 1", Icone = "κ",
+                Descricao = "Parametrização natural de curva onde o parâmetro s é o comprimento de arco. O vetor tangente tem norma 1 em todo ponto." },
+            new Formula { Id = "gd_c02", Nome = "Curvatura κ", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "κ = |α''(s)|", ExprTexto = "κ = |α''(s)|", Icone = "κ",
+                Descricao = "Curvatura: taxa de variação da direção tangente. κ=0 → reta. κ=1/R para círculo de raio R.",
+                Variaveis = [ new() { Simbolo = "R", Nome = "Raio R do círculo osculador", ValorPadrao = 5, ValorMin = 0.001 } ],
+                VariavelResultado = "κ = 1/R",
+                Calcular = vars => 1.0 / vars["R"] },
+            new Formula { Id = "gd_c03", Nome = "Vetor Tangente T", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "T = α'(s)", ExprTexto = "T = α'(s) (vetor tangente unitário)", Icone = "κ",
+                Descricao = "Vetor tangente unitário à curva na parametrização por arco. Primeiro vetor do triedro de Frenet." },
+            new Formula { Id = "gd_c04", Nome = "Vetor Normal Principal N", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "N = T'/|T'|", ExprTexto = "N = T'/|T'| (vetor normal principal)", Icone = "κ",
+                Descricao = "Normal principal: direção em que a curva 'gira'. Aponta para o centro de curvatura. Segundo vetor de Frenet." },
+            new Formula { Id = "gd_c05", Nome = "Vetor Binormal B", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "B = T × N", ExprTexto = "B = T × N (vetor binormal)", Icone = "κ",
+                Descricao = "Binormal: produto vetorial de T e N. Completa o triedro de Frenet {T,N,B}. B mede a torção da curva." },
+            new Formula { Id = "gd_c06", Nome = "Fórmulas de Frenet-Serret", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "T'=κN; N'=-κT+τB; B'=-τN", ExprTexto = "T'=κN; N'=−κT+τB; B'=−τN", Icone = "κ",
+                Descricao = "Sistema de EDOs que descreve evolução do triedro {T,N,B} ao longo da curva em função da curvatura κ e torção τ.",
+                Criador = "Jean Frédéric Frenet / Joseph Alfred Serret", AnoOrigin = "1847-1851" },
+            new Formula { Id = "gd_c07", Nome = "Torção τ", Categoria = "Geometria Diferencial", SubCategoria = "Curvas",
+                Expressao = "τ = -(dB/ds)·N", ExprTexto = "τ = −(dB/ds) · N", Icone = "κ",
+                Descricao = "Torção: mede quanto a curva sai do plano osculador. τ=0 ↔ curva plana. Hélice circular: τ constante." },
+
+            // 3.2 Superfícies — 1ª Forma Fundamental
+            new Formula { Id = "gd_s01", Nome = "Parametrização de Superfície", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "r(u,v): parametrização de superfície", ExprTexto = "r : U ⊂ ℝ² → ℝ³, (u,v) ↦ r(u,v)", Icone = "κ",
+                Descricao = "Superfície regular: mapa r(u,v) com rᵤ×rᵥ≠0. Ex: esfera r(θ,φ)=(sinθcosφ, sinθsinφ, cosθ)." },
+            new Formula { Id = "gd_s02", Nome = "Coeficientes da 1ª Forma Fundamental", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "E=rᵤ·rᵤ; F=rᵤ·rᵥ; G=rᵥ·rᵥ", ExprTexto = "E = rᵤ·rᵤ; F = rᵤ·rᵥ; G = rᵥ·rᵥ", Icone = "κ",
+                Descricao = "Coeficientes E, F, G da 1ª forma fundamental determinam o comprimento de curvas, ângulos e áreas na superfície." },
+            new Formula { Id = "gd_s03", Nome = "1ª Forma Fundamental (Métrica)", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "ds² = E du² + 2F du dv + G dv²", ExprTexto = "ds² = E du² + 2F du dv + G dv²", Icone = "κ",
+                Descricao = "Métrica da superfície: define comprimentos, ângulos e áreas intrinsecamente (sem referência ao espaço ambiente)." },
+            new Formula { Id = "gd_s04", Nome = "Elemento de Área dA", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "dA = √(EG-F²) du dv", ExprTexto = "dA = |rᵤ×rᵥ| du dv = √(EG−F²) du dv", Icone = "κ",
+                Descricao = "Elemento de área na superfície em termos dos coeficientes da 1ª forma fundamental." },
+            new Formula { Id = "gd_s05", Nome = "Normal Unitária n̂", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "n̂ = (rᵤ×rᵥ)/|rᵤ×rᵥ|", ExprTexto = "n̂ = (rᵤ × rᵥ) / |rᵤ × rᵥ|", Icone = "κ",
+                Descricao = "Vetor normal unitário à superfície no ponto. Define a 'orientação' local da superfície." },
+
+            // 3.3 2ª Forma e Curvatura
+            new Formula { Id = "gd_s06", Nome = "Coeficientes da 2ª Forma Fundamental", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "e=rᵤᵤ·n̂; f=rᵤᵥ·n̂; g=rᵥᵥ·n̂", ExprTexto = "e = rᵤᵤ·n̂; f = rᵤᵥ·n̂; g = rᵥᵥ·n̂", Icone = "κ",
+                Descricao = "Coeficientes da 2ª forma fundamental medem como a superfície se curva no espaço (curvatura extrínseca)." },
+            new Formula { Id = "gd_s07", Nome = "2ª Forma Fundamental", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "II = e du² + 2f du dv + g dv²", ExprTexto = "II = e du² + 2f du dv + g dv²", Icone = "κ",
+                Descricao = "A 2ª forma fundamental mede a curvatura da superfície: como a normal varia ao longo da superfície." },
+            new Formula { Id = "gd_s08", Nome = "Curvaturas Principais κ₁, κ₂", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "κ₁,κ₂ = raízes de det(II - κ·I)=0", ExprTexto = "κ₁, κ₂ são autovalores do operador de Weingarten", Icone = "κ",
+                Descricao = "Curvaturas principais: máxima e mínima curvatura normal em um ponto. São autovalores da forma de Weingarten (dN)." },
+            new Formula { Id = "gd_s09", Nome = "Curvatura de Gauss K", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "K = κ₁·κ₂ = (eg-f²)/(EG-F²)", ExprTexto = "K = κ₁κ₂ = (eg−f²)/(EG−F²)", Icone = "κ",
+                Descricao = "Curvatura de Gauss (Gaussiana): produto das curvaturas principais. K>0 (elíptico), K=0 (parabólico), K<0 (hiperbólico).",
+                Criador = "Carl Friedrich Gauss", AnoOrigin = "1827",
+                Variaveis = [
+                    new() { Simbolo = "k1", Nome = "κ₁", ValorPadrao = 2 },
+                    new() { Simbolo = "k2", Nome = "κ₂", ValorPadrao = 3 },
+                ],
+                VariavelResultado = "K",
+                Calcular = vars => vars["k1"] * vars["k2"] },
+            new Formula { Id = "gd_s10", Nome = "Curvatura Média H", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "H = (κ₁+κ₂)/2 = (eG-2fF+gE)/(2(EG-F²))", ExprTexto = "H = (κ₁+κ₂)/2", Icone = "κ",
+                Descricao = "Curvatura média: média aritmética das curvaturas principais. H=0 define superfícies mínimas (catenóide, helicoide).",
+                Variaveis = [
+                    new() { Simbolo = "k1", Nome = "κ₁", ValorPadrao = 2 },
+                    new() { Simbolo = "k2", Nome = "κ₂", ValorPadrao = 4 },
+                ],
+                VariavelResultado = "H",
+                Calcular = vars => (vars["k1"] + vars["k2"]) / 2.0 },
+            new Formula { Id = "gd_s11", Nome = "Superfície Mínima (H=0)", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "H = 0 → superfície mínima", ExprTexto = "H = 0 (ex: catenóide, helicoide)", Icone = "κ",
+                Descricao = "Superfície mínima: curvatura média zero em todo ponto. Minimiza área localmente. Ex: catenóide, helicoide, superfície de Costa." },
+            new Formula { Id = "gd_s12", Nome = "Theorema Egregium de Gauss", Categoria = "Geometria Diferencial", SubCategoria = "Superfícies",
+                Expressao = "K é invariante intrínseco", ExprTexto = "K depende apenas da 1ª forma fundamental (métrica intrínseca)", Icone = "κ",
+                Descricao = "Resultado 'notável' de Gauss: a curvatura de Gauss K pode ser determinada apenas pela métrica (1ª forma), sem referência ao espaço ambiente.",
+                Criador = "Carl Friedrich Gauss", AnoOrigin = "1827" },
+
+            // 3.4 Variedades e Conexão
+            new Formula { Id = "gd_v01", Nome = "Variedade Diferencial M^n", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "M^n: localmente homeomorfo a ℝⁿ", ExprTexto = "M^n: espaço topológico localmente homeomorfo a ℝⁿ com atlas C∞", Icone = "κ",
+                Descricao = "Variedade n-dimensional: espaço que localmente 'parece' ℝⁿ. Ex: S² (esfera), T² (toro), SO(3) (rotações 3D).",
+                Criador = "Bernhard Riemann", AnoOrigin = "1854" },
+            new Formula { Id = "gd_v02", Nome = "Tensor Métrico gᵢⱼ", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "gᵢⱼ = ∂r/∂xⁱ · ∂r/∂xʲ", ExprTexto = "gᵢⱼ = ⟨∂/∂xⁱ, ∂/∂xʲ⟩", Icone = "κ",
+                Descricao = "Tensor métrico: generaliza a métrica para variedades. Define comprimentos, ângulos e volumes. É simétrico e positivo-definido." },
+            new Formula { Id = "gd_v03", Nome = "Símbolo de Christoffel (Levi-Civita)", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "Γᵏᵢⱼ = ½gᵏˡ(∂ᵢgⱼˡ+∂ⱼgᵢˡ-∂ˡgᵢⱼ)", ExprTexto = "Γᵏᵢⱼ = ½gᵏˡ(∂ᵢgⱼˡ + ∂ⱼgᵢˡ − ∂ˡgᵢⱼ)", Icone = "κ",
+                Descricao = "Conexão de Levi-Civita: única conexão compatível com métrica e sem torção. Símbolos de Christoffel não são tensores.",
+                Criador = "Tullio Levi-Civita / Elwin Bruno Christoffel", AnoOrigin = "~1869" },
+            new Formula { Id = "gd_v04", Nome = "Derivada Covariante", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "∇ᵢVʲ = ∂ᵢVʲ + ΓʲᵢₖVᵏ", ExprTexto = "∇ᵢVʲ = ∂ᵢVʲ + ΓʲᵢₖVᵏ", Icone = "κ",
+                Descricao = "Derivada covariante: generaliza derivada direcional para espaços curvos. Transporte paralelo de vetores ao longo de curvas." },
+            new Formula { Id = "gd_v05", Nome = "Equação da Geodésica", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "d²xᵏ/ds² + Γᵏᵢⱼ(dxⁱ/ds)(dxʲ/ds) = 0", ExprTexto = "d²xᵏ/ds² + Γᵏᵢⱼ (dxⁱ/ds)(dxʲ/ds) = 0", Icone = "κ",
+                Descricao = "Geodésica: curva de menor comprimento entre dois pontos (generaliza retas em espaço curvo). Em Relatividade, partículas livres seguem geodésicas." },
+            new Formula { Id = "gd_v06", Nome = "Tensor de Riemann", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "Rᵈᵢⱼₖ = ∂ⱼΓᵈᵢₖ - ∂ₖΓᵈᵢⱼ + ΓᵈⱼˡΓˡᵢₖ - ΓᵈₖˡΓˡᵢⱼ", ExprTexto = "Rᵈᵢⱼₖ = ∂ⱼΓᵈᵢₖ − ∂ₖΓᵈᵢⱼ + ΓᵈⱼˡΓˡᵢₖ − ΓᵈₖˡΓˡᵢⱼ", Icone = "κ",
+                Descricao = "Tensor de Riemann: mede a curvatura intrínseca completa de uma variedade. R=0 ↔ espaço plano (localmente euclidiano).",
+                Criador = "Bernhard Riemann", AnoOrigin = "1854" },
+            new Formula { Id = "gd_v07", Nome = "Tensor de Ricci", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "Rᵢⱼ = Rᵏᵢₖⱼ", ExprTexto = "Rᵢⱼ = Rᵏᵢₖⱼ (contração do tensor de Riemann)", Icone = "κ",
+                Descricao = "Tensor de Ricci: contração do tensor de Riemann. Aparece nas equações de Einstein. Mede deformação de volume por curvatura.",
+                Criador = "Gregorio Ricci-Curbastro", AnoOrigin = "~1892" },
+            new Formula { Id = "gd_v08", Nome = "Escalar de Ricci R", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "R = gⁱʲRᵢⱼ", ExprTexto = "R = gⁱʲRᵢⱼ (contração do tensor de Ricci)", Icone = "κ",
+                Descricao = "Escalar de Ricci: único invariante escalar linear da curvatura. Curvatura 'total' num ponto. Para superfícies: R=2K." },
+            new Formula { Id = "gd_v09", Nome = "Teorema de Gauss-Bonnet", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "∫∫_M K dA = 2π·χ(M)", ExprTexto = "∫∫_M K dA = 2πχ(M)", Icone = "κ",
+                Descricao = "Conecta geometria (curvatura de Gauss integrada) com topologia (característica de Euler). Resultado profundíssimo.",
+                Criador = "Gauss / Bonnet / Chern", AnoOrigin = "1848" },
+            new Formula { Id = "gd_v10", Nome = "Forma Diferencial (1-forma)", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "ω = Σ aᵢdxⁱ", ExprTexto = "ω = Σᵢ aᵢ(x) dxⁱ (1-forma diferencial)", Icone = "κ",
+                Descricao = "1-forma diferencial: campo de covectores na variedade. Pode ser integrada ao longo de curvas. Base do cálculo em variedades." },
+            new Formula { Id = "gd_v11", Nome = "Derivada Exterior", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "d(fω) = df∧ω + f dω", ExprTexto = "d(fω) = df ∧ ω + f dω; d² = 0", Icone = "κ",
+                Descricao = "Derivada exterior: generaliza gradiente, rotacional e divergência. Propriedade fundamental: d²=0 (derivada exterior nula da derivada exterior)." },
+            new Formula { Id = "gd_v12", Nome = "Teorema de Stokes Geral", Categoria = "Geometria Diferencial", SubCategoria = "Variedades",
+                Expressao = "∫_M dω = ∫_∂M ω", ExprTexto = "∫_M dω = ∫_∂M ω", Icone = "κ",
+                Descricao = "Unifica todos os teoremas integrais: Green, Gauss (divergência) e Stokes clássico como casos particulares. Integração da derivada no interior ↔ integral no bordo." },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 4. CÁLCULO DE VARIAÇÕES
+    // ─────────────────────────────────────────────────────
+    private void AdicionarCalculoVariacoes()
+    {
+        _formulas.AddRange([
+            // 4.1 Funcional e Extremais
+            new Formula { Id = "cv_01", Nome = "Funcional J[y]", Categoria = "Cálculo de Variações", SubCategoria = "Funcional",
+                Expressao = "J[y] = ∫ₐᵇ L(x, y, y') dx", ExprTexto = "J[y] = ∫ₐᵇ L(x, y, y') dx", Icone = "δ",
+                Descricao = "Funcional: mapa que associa um número real a uma função. Cálculo de variações busca funções que extremizam J.",
+                Criador = "Euler / Lagrange", AnoOrigin = "~1744" },
+            new Formula { Id = "cv_02", Nome = "Condição de Extremo δJ=0", Categoria = "Cálculo de Variações", SubCategoria = "Funcional",
+                Expressao = "δJ = 0", ExprTexto = "δJ = 0 (variação do funcional nula)", Icone = "δ",
+                Descricao = "Condição necessária para extremo do funcional: a primeira variação é nula. Análogo de f'(x)=0 para funções." },
+            new Formula { Id = "cv_03", Nome = "Equação de Euler-Lagrange", Categoria = "Cálculo de Variações", SubCategoria = "Funcional",
+                Expressao = "∂L/∂y - d/dx(∂L/∂y') = 0", ExprTexto = "∂L/∂y − d/dx(∂L/∂y') = 0", Icone = "δ",
+                Descricao = "Equação fundamental do cálculo de variações. Toda extremal de J[y]=∫L dx satisfaz esta EDO. Base da mecânica analítica.",
+                Criador = "Leonhard Euler / Joseph-Louis Lagrange", AnoOrigin = "1744/1755" },
+            new Formula { Id = "cv_04", Nome = "Geodésica Plana (comprimento de arco)", Categoria = "Cálculo de Variações", SubCategoria = "Funcional",
+                Expressao = "L = √(1+y'²) → geodésica: y(x) = ax+b (reta)", ExprTexto = "L(y') = √(1+y'²) ⟹ solução: reta y = ax + b", Icone = "δ",
+                Descricao = "Minimizar comprimento de arco ∫√(1+y'²)dx leva à equação de Euler-Lagrange cujas soluções são retas (geodésicas do plano)." },
+            new Formula { Id = "cv_05", Nome = "Braquistócrona (ciclóide)", Categoria = "Cálculo de Variações", SubCategoria = "Funcional",
+                Expressao = "L = √((1+y'²)/y) → solução: ciclóide", ExprTexto = "Minimizar tempo de descida ⟹ ciclóide", Icone = "δ",
+                Descricao = "Curva de descida mais rápida sob gravidade: ciclóide. Problema histórico proposto por Johann Bernoulli (1696). x=R(θ-sinθ), y=R(1-cosθ).",
+                Criador = "Johann Bernoulli", AnoOrigin = "1696" },
+
+            // 4.2 Múltiplas Variáveis e Restrições
+            new Formula { Id = "cv_06", Nome = "Funcional Multivariável", Categoria = "Cálculo de Variações", SubCategoria = "Restrições",
+                Expressao = "J[y₁,...,yₙ] = ∫ L(x, y₁,...,yₙ, y₁',...,yₙ') dx", ExprTexto = "J[y₁,...,yₙ] = ∫ L(x, yᵢ, yᵢ') dx", Icone = "δ",
+                Descricao = "Funcional de várias funções incógnitas. Sistema de equações de Euler-Lagrange acopladas." },
+            new Formula { Id = "cv_07", Nome = "EL para Múltiplas Variáveis", Categoria = "Cálculo de Variações", SubCategoria = "Restrições",
+                Expressao = "∂L/∂yᵢ - d/dx(∂L/∂yᵢ') = 0  (cada i)", ExprTexto = "∂L/∂yᵢ − d/dx(∂L/∂yᵢ') = 0 para cada i", Icone = "δ",
+                Descricao = "Sistema de equações de Euler-Lagrange para n funções incógnitas y₁,...,yₙ." },
+            new Formula { Id = "cv_08", Nome = "Lagrangiano com Restrição (multiplicadores)", Categoria = "Cálculo de Variações", SubCategoria = "Restrições",
+                Expressao = "L* = L + λg  (restrição g=0)", ExprTexto = "L* = L + λ(x)·g(x,y,y')", Icone = "δ",
+                Descricao = "Método de multiplicadores de Lagrange para funcionais com restrição g(x,y,y')=0. Generaliza multiplicadores do cálculo." },
+            new Formula { Id = "cv_09", Nome = "Condição de Legendre", Categoria = "Cálculo de Variações", SubCategoria = "Restrições",
+                Expressao = "∂²L/∂y'² > 0 (condição de mínimo)", ExprTexto = "∂²L/∂y'² > 0 → mínimo (condição suficiente fraca)", Icone = "δ",
+                Descricao = "Condição necessária de 2ª ordem: para mínimo, ∂²L/∂y'²>0 ao longo da extremal. Análoga a f''>0.",
+                Criador = "Adrien-Marie Legendre" },
+            new Formula { Id = "cv_10", Nome = "Condição de Weierstrass", Categoria = "Cálculo de Variações", SubCategoria = "Restrições",
+                Expressao = "E(x,y,y',Y') ≥ 0 (condição suficiente forte)", ExprTexto = "E = L(x,y,Y') − L(x,y,y') − (Y'−y')Ly'(x,y,y') ≥ 0", Icone = "δ",
+                Descricao = "Condição suficiente forte para mínimo: a função excesso de Weierstrass E é não-negativa.",
+                Criador = "Karl Weierstrass" },
+
+            // 4.3 Mecânica Variacional
+            new Formula { Id = "cv_11", Nome = "Ação S", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "S = ∫ₜ₁ᵗ² L(q,q̇,t) dt", ExprTexto = "S = ∫ₜ₁ᵗ² L(q, q̇, t) dt", Icone = "δ",
+                Descricao = "Ação: integral do Lagrangiano ao longo da trajetória. O princípio variacional δS=0 gera as equações de movimento.",
+                Criador = "Pierre-Louis Moreau de Maupertuis / Hamilton", AnoOrigin = "1744/1834" },
+            new Formula { Id = "cv_12", Nome = "Princípio de Hamilton", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "δS = 0", ExprTexto = "δS = δ∫L dt = 0", Icone = "δ",
+                Descricao = "Princípio variacional: dentre todas as trajetórias possíveis, a trajetória real extremiza a ação. Fundamenta toda mecânica analítica.",
+                Criador = "William Rowan Hamilton", AnoOrigin = "1834" },
+            new Formula { Id = "cv_13", Nome = "Equação de Lagrange (Mecânica)", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "d/dt(∂L/∂q̇ᵢ) - ∂L/∂qᵢ = 0", ExprTexto = "d/dt(∂L/∂q̇ᵢ) − ∂L/∂qᵢ = 0", Icone = "δ",
+                Descricao = "Equações de Euler-Lagrange aplicadas à mecânica: dadas coordenadas generalizadas qᵢ e L=T-V, produzem equações de Newton generalizadas." },
+            new Formula { Id = "cv_14", Nome = "L = T - V", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "L = T - V (cinética - potencial)", ExprTexto = "L = T − V", Icone = "δ",
+                Descricao = "Lagrangiano: diferença entre energia cinética T e potencial V. Ponto de partida da mecânica analítica." },
+            new Formula { Id = "cv_15", Nome = "Hamiltoniano H (Legendre)", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "H = Σ pᵢq̇ᵢ - L", ExprTexto = "H = Σᵢ pᵢq̇ᵢ − L (transformada de Legendre)", Icone = "δ",
+                Descricao = "Hamiltoniano: transformada de Legendre do Lagrangiano. Para sistemas conservativos, H=T+V (energia total).",
+                Criador = "William Rowan Hamilton", AnoOrigin = "1835" },
+            new Formula { Id = "cv_16", Nome = "Equações de Hamilton", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "q̇ᵢ=∂H/∂pᵢ; ṗᵢ=-∂H/∂qᵢ", ExprTexto = "q̇ᵢ = ∂H/∂pᵢ ; ṗᵢ = −∂H/∂qᵢ", Icone = "δ",
+                Descricao = "Equações canônicas de Hamilton: sistema de 2n EDOs de 1ª ordem equivalentes às n equações de Lagrange de 2ª ordem." },
+            new Formula { Id = "cv_17", Nome = "Colchete de Poisson", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "{f,g} = Σ(∂f/∂qᵢ·∂g/∂pᵢ - ∂f/∂pᵢ·∂g/∂qᵢ)", ExprTexto = "{f,g} = Σᵢ (∂f/∂qᵢ ∂g/∂pᵢ − ∂f/∂pᵢ ∂g/∂qᵢ)", Icone = "δ",
+                Descricao = "Colchete de Poisson: operação bilinear no espaço de fase. Dá estrutura simpléctica à mecânica hamiltoniana.",
+                Criador = "Siméon Denis Poisson", AnoOrigin = "1809" },
+            new Formula { Id = "cv_18", Nome = "Teorema de Noether", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "Simetria contínua ↔ lei de conservação", ExprTexto = "Simetria contínua da ação ↔ quantidade conservada", Icone = "δ",
+                Descricao = "Conexão profunda: translação temporal ↔ energia, translação espacial ↔ momento linear, rotação ↔ momento angular.",
+                Criador = "Emmy Noether", AnoOrigin = "1918" },
+            new Formula { Id = "cv_19", Nome = "Relações Canônicas de Poisson", Categoria = "Cálculo de Variações", SubCategoria = "Mecânica Variacional",
+                Expressao = "{qᵢ,pⱼ}=δᵢⱼ; {qᵢ,qⱼ}=0; {pᵢ,pⱼ}=0", ExprTexto = "{qᵢ,pⱼ}=δᵢⱼ; {qᵢ,qⱼ}=0; {pᵢ,pⱼ}=0", Icone = "δ",
+                Descricao = "Relações fundamentais de Poisson: definem a estrutura simpléctica do espaço de fase. Análogos clássicos dos comutadores quânticos [q̂,p̂]=iℏ." },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 5. FUNÇÕES ESPECIAIS
+    // ─────────────────────────────────────────────────────
+    private void AdicionarFuncoesEspeciais()
+    {
+        _formulas.AddRange([
+            // 5.1 Gamma e Beta
+            new Formula { Id = "fe_sp01", Nome = "Função Gamma Γ(z)", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "Γ(z) = ∫₀^∞ t^(z-1) e^(-t) dt", ExprTexto = "Γ(z) = ∫₀^∞ t^(z−1) e^(−t) dt  (Re z > 0)", Icone = "Γ",
+                Descricao = "Generalização do fatorial para números reais/complexos. Γ(n+1)=n! para inteiros.",
+                Criador = "Leonhard Euler", AnoOrigin = "1729",
+                Variaveis = [ new() { Simbolo = "z", Nome = "z (argumento)", ValorPadrao = 5, ValorMin = 0.001 } ],
+                VariavelResultado = "Γ(z)",
+                Calcular = vars => { double z = vars["z"]; if (z == Math.Floor(z) && z > 0) { double r=1; for(int i=2;i<(int)z;i++) r*=i; return r; } return double.NaN; } },
+            new Formula { Id = "fe_sp02", Nome = "Γ(n+1) = n!", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "Γ(n+1) = n! para n inteiro ≥ 0", ExprTexto = "Γ(n+1) = n!", Icone = "Γ",
+                Descricao = "Relação fundamental entre Gamma e fatorial. Γ(1)=0!=1, Γ(2)=1!=1, Γ(3)=2!=2, Γ(4)=3!=6.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5, ValorMin = 0 } ],
+                VariavelResultado = "n!",
+                Calcular = vars => Fatorial((int)vars["n"]) },
+            new Formula { Id = "fe_sp03", Nome = "Recorrência Γ(z+1) = z·Γ(z)", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "Γ(z+1) = z·Γ(z)", ExprTexto = "Γ(z+1) = z · Γ(z)", Icone = "Γ",
+                Descricao = "Relação funcional da Gamma. Permite calcular Γ para qualquer argumento a partir de um intervalo [0,1) ou [1,2)." },
+            new Formula { Id = "fe_sp04", Nome = "Γ(1/2) = √π", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "Γ(1/2) = √π ≈ 1.7724538509", ExprTexto = "Γ(1/2) = √π", Icone = "Γ",
+                Descricao = "Valor especial da Gamma: Γ(1/2)=√π. Conecta fatorial com π via integral gaussiana ∫₋∞^∞ e^(-x²)dx=√π." },
+            new Formula { Id = "fe_sp05", Nome = "Fórmula de Reflexão de Euler", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "Γ(z)·Γ(1-z) = π/sin(πz)", ExprTexto = "Γ(z) · Γ(1−z) = π / sin(πz)", Icone = "Γ",
+                Descricao = "Conecta valores de Γ em z e 1-z via função seno. Permite calcular Γ para argumentos negativos.",
+                Criador = "Leonhard Euler" },
+            new Formula { Id = "fe_sp06", Nome = "Fórmula de Stirling", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "n! ≈ √(2πn)·(n/e)ⁿ", ExprTexto = "n! ≈ √(2πn) · (n/e)ⁿ", Icone = "Γ",
+                Descricao = "Aproximação assintótica do fatorial. Excelente para n grande. Erro relativo ~1/(12n).",
+                Criador = "James Stirling / Abraham de Moivre", AnoOrigin = "1730",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 10, ValorMin = 1 } ],
+                VariavelResultado = "n! (aprox. Stirling)",
+                Calcular = vars => { double n=vars["n"]; return Math.Sqrt(2*Math.PI*n)*Math.Pow(n/Math.E,n); } },
+            new Formula { Id = "fe_sp07", Nome = "Função Beta B(x,y)", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "B(x,y) = Γ(x)Γ(y)/Γ(x+y) = ∫₀¹ t^(x-1)(1-t)^(y-1)dt", ExprTexto = "B(x,y) = Γ(x)Γ(y)/Γ(x+y)", Icone = "Γ",
+                Descricao = "Função Beta: relacionada à Gamma e à distribuição Beta. Simétrica: B(x,y)=B(y,x). Fundamental em estatística bayesiana.",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "x", ValorPadrao = 2, ValorMin = 0.001 },
+                    new() { Simbolo = "y", Nome = "y", ValorPadrao = 3, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "B(x,y)",
+                Calcular = vars => { double x=vars["x"],y=vars["y"]; return Fatorial((int)(x-1))*Fatorial((int)(y-1))/Fatorial((int)(x+y-1)); } },
+            new Formula { Id = "fe_sp08", Nome = "Simetria B(x,y) = B(y,x)", Categoria = "Funções Especiais", SubCategoria = "Gamma e Beta",
+                Expressao = "B(x,y) = B(y,x)", ExprTexto = "B(x,y) = B(y,x) (simétrica)", Icone = "Γ",
+                Descricao = "A função Beta é simétrica em seus argumentos: B(x,y)=B(y,x). Segue da substituição t→1-t na integral." },
+
+            // 5.2 Funções de Bessel
+            new Formula { Id = "fe_bs01", Nome = "Equação de Bessel", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "x²y'' + xy' + (x²-ν²)y = 0", ExprTexto = "x²y'' + xy' + (x² − ν²)y = 0", Icone = "Γ",
+                Descricao = "Equação diferencial de Bessel de ordem ν. Aparece em problemas com simetria cilíndrica: membranas circulares, difusão de calor, eletromagnetismo.",
+                Criador = "Friedrich Bessel", AnoOrigin = "1824" },
+            new Formula { Id = "fe_bs02", Nome = "Bessel 1ª Espécie Jᵥ(x)", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "Jᵥ(x) = Σ (-1)ᵐ/(m!Γ(m+ν+1)) · (x/2)^(2m+ν)", ExprTexto = "Jᵥ(x) = Σₘ₌₀^∞ (−1)ᵐ(x/2)^(2m+ν) / (m! Γ(m+ν+1))", Icone = "Γ",
+                Descricao = "Função de Bessel de 1ª espécie: solução regular (limitada) da equação de Bessel na origem. J₀(0)=1, Jₙ(0)=0 para n≥1." },
+            new Formula { Id = "fe_bs03", Nome = "J_{-n}(x) = (-1)ⁿJₙ(x)", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "J_{-n}(x) = (-1)ⁿ Jₙ(x) para n inteiro", ExprTexto = "J₋ₙ(x) = (−1)ⁿ Jₙ(x)", Icone = "Γ",
+                Descricao = "Para ordem inteira, J_{-n}(x) = (-1)ⁿ Jₙ(x). J₋ₙ não é linearmente independente de Jₙ (daí Y_ν ser necessária)." },
+            new Formula { Id = "fe_bs04", Nome = "Bessel 2ª Espécie Yᵥ (Neumann)", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "Yᵥ(x) = (Jᵥcos(νπ)-J_{-ν})/sin(νπ)", ExprTexto = "Yᵥ(x) = (Jᵥ cos(νπ) − J₋ᵥ) / sin(νπ)", Icone = "Γ",
+                Descricao = "Função de Neumann (Bessel 2ª espécie): segunda solução linearmente independente. Singular na origem (Yᵥ(x)→-∞ quando x→0⁺)." },
+            new Formula { Id = "fe_bs05", Nome = "Funções de Hankel", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "Hᵥ⁽¹⁾ = Jᵥ + iYᵥ; Hᵥ⁽²⁾ = Jᵥ - iYᵥ", ExprTexto = "Hᵥ⁽¹⁾ = Jᵥ + iYᵥ; Hᵥ⁽²⁾ = Jᵥ − iYᵥ", Icone = "Γ",
+                Descricao = "Funções de Hankel: combinações complexas das funções de Bessel. Representam ondas cilíndricas saindo/entrando." },
+            new Formula { Id = "fe_bs06", Nome = "Recorrência de Bessel", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "Jᵥ₋₁(x) + Jᵥ₊₁(x) = (2ν/x)Jᵥ(x)", ExprTexto = "Jᵥ₋₁(x) + Jᵥ₊₁(x) = (2ν/x) Jᵥ(x)", Icone = "Γ",
+                Descricao = "Relação de recorrência das funções de Bessel. Permite calcular Bessel de ordem alta a partir de ordens baixas." },
+            new Formula { Id = "fe_bs07", Nome = "Ortogonalidade de Bessel", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "∫₀ᵃ xJᵥ(αx)Jᵥ(βx)dx = 0 (α≠β zeros de Jᵥ)", ExprTexto = "∫₀ᵃ x Jᵥ(αx)Jᵥ(βx) dx = 0 se α ≠ β (zeros)", Icone = "Γ",
+                Descricao = "Ortogonalidade das funções de Bessel com peso x. Base para séries de Fourier-Bessel em domínios circulares." },
+            new Formula { Id = "fe_bs08", Nome = "Valores Especiais J₀, J₁", Categoria = "Funções Especiais", SubCategoria = "Bessel",
+                Expressao = "J₀(0)=1; J₁(0)=0; J₀'(x)=-J₁(x)", ExprTexto = "J₀(0)=1; J₁(0)=0; J₀' = −J₁", Icone = "Γ",
+                Descricao = "Valores especiais e relação diferencial entre J₀ e J₁. J₀ é par e J₁ é ímpar." },
+
+            // 5.3 Polinômios de Legendre
+            new Formula { Id = "fe_lg01", Nome = "Equação de Legendre", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "(1-x²)y'' - 2xy' + n(n+1)y = 0", ExprTexto = "(1−x²)y'' − 2xy' + n(n+1)y = 0", Icone = "Γ",
+                Descricao = "Equação diferencial de Legendre. Aparece na separação de variáveis da equação de Laplace em coordenadas esféricas.",
+                Criador = "Adrien-Marie Legendre", AnoOrigin = "1782" },
+            new Formula { Id = "fe_lg02", Nome = "Fórmula de Rodrigues (Legendre)", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "Pₙ(x) = 1/(2ⁿn!) dⁿ/dxⁿ [(x²-1)ⁿ]", ExprTexto = "Pₙ(x) = (1/2ⁿn!) dⁿ/dxⁿ [(x²−1)ⁿ]", Icone = "Γ",
+                Descricao = "Fórmula de Rodrigues: representação explícita dos polinômios de Legendre via derivadas.",
+                Criador = "Olinde Rodrigues", AnoOrigin = "1816" },
+            new Formula { Id = "fe_lg03", Nome = "Primeiros Polinômios de Legendre", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "P₀=1; P₁=x; P₂=(3x²-1)/2; P₃=(5x³-3x)/2", ExprTexto = "P₀=1; P₁=x; P₂=(3x²−1)/2; P₃=(5x³−3x)/2", Icone = "Γ",
+                Descricao = "Primeiros polinômios de Legendre. Pₙ é polinômio de grau n, par se n par, ímpar se n ímpar.",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "x", ValorPadrao = 0.5, ValorMin = -1, ValorMax = 1 },
+                    new() { Simbolo = "n", Nome = "n (0,1,2,3)", ValorPadrao = 2, ValorMin = 0, ValorMax = 3 },
+                ],
+                VariavelResultado = "Pₙ(x)",
+                Calcular = vars => { double x=vars["x"]; int n=(int)vars["n"];
+                    return n switch { 0=>1, 1=>x, 2=>(3*x*x-1)/2, 3=>(5*x*x*x-3*x)/2, _=>double.NaN }; } },
+            new Formula { Id = "fe_lg04", Nome = "Recorrência de Bonnet", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "(n+1)Pₙ₊₁ = (2n+1)xPₙ - nPₙ₋₁", ExprTexto = "(n+1)Pₙ₊₁(x) = (2n+1)x·Pₙ(x) − n·Pₙ₋₁(x)", Icone = "Γ",
+                Descricao = "Recorrência de três termos para calcular polinômios de Legendre de ordem alta a partir de P₀ e P₁." },
+            new Formula { Id = "fe_lg05", Nome = "Ortogonalidade de Legendre", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "∫₋₁¹ Pₙ(x)Pₘ(x)dx = 2/(2n+1)·δₙₘ", ExprTexto = "∫₋₁¹ Pₙ Pₘ dx = 2δₙₘ/(2n+1)", Icone = "Γ",
+                Descricao = "Polinômios de Legendre são ortogonais em [-1,1] com peso 1. Base para expansão em séries de Legendre." },
+            new Formula { Id = "fe_lg06", Nome = "Valores Especiais de Pₙ", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "Pₙ(1)=1; Pₙ(-1)=(-1)ⁿ", ExprTexto = "Pₙ(1)=1; Pₙ(−1)=(−1)ⁿ", Icone = "Γ",
+                Descricao = "Pₙ(1)=1 sempre. Pₙ(-1)=(-1)ⁿ. P₂ₙ(0)=(-1)ⁿC(2n,n)/4ⁿ. P₂ₙ₊₁(0)=0." },
+            new Formula { Id = "fe_lg07", Nome = "Funções Associadas de Legendre", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "Pₙˡ(x) = (-1)ˡ(1-x²)^(l/2) dˡPₙ/dxˡ", ExprTexto = "Pₙˡ(x) = (−1)ˡ (1−x²)^(l/2) dˡPₙ/dxˡ", Icone = "Γ",
+                Descricao = "Generalizações dos polinômios de Legendre. Aparece em harmônicos esféricos Yₗₘ(θ,φ). l=0,...,n." },
+            new Formula { Id = "fe_lg08", Nome = "Harmônicos Esféricos Yₗᵐ", Categoria = "Funções Especiais", SubCategoria = "Legendre",
+                Expressao = "Yₗᵐ(θ,φ) = NₗₘPₗᵐ(cosθ)eⁱᵐᵠ", ExprTexto = "Yₗᵐ(θ,φ) = Nₗₘ · Pₗᵐ(cos θ) · eⁱᵐᵠ", Icone = "Γ",
+                Descricao = "Base ortogonal em S²: autovetores do operador de Laplace-Beltrami na esfera. Fundamentais em mecânica quântica (orbitais atômicos), geofísica, computação gráfica." },
+
+            // 5.4 Hermite e Laguerre
+            new Formula { Id = "fe_hm01", Nome = "Equação de Hermite", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "y'' - 2xy' + 2ny = 0", ExprTexto = "y'' − 2xy' + 2ny = 0", Icone = "Γ",
+                Descricao = "Equação diferencial de Hermite. Soluções polinomiais para n inteiro. Aparece no oscilador harmônico quântico.",
+                Criador = "Charles Hermite", AnoOrigin = "~1864" },
+            new Formula { Id = "fe_hm02", Nome = "Rodrigues para Hermite", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "Hₙ(x) = (-1)ⁿ eˣ² dⁿ/dxⁿ [e^(-x²)]", ExprTexto = "Hₙ(x) = (−1)ⁿ eˣ² dⁿ/dxⁿ [e^(−x²)]", Icone = "Γ",
+                Descricao = "Fórmula de Rodrigues para polinômios de Hermite. Gera a sequência H₀, H₁, H₂, ..." },
+            new Formula { Id = "fe_hm03", Nome = "Primeiros Polinômios de Hermite", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "H₀=1; H₁=2x; H₂=4x²-2; H₃=8x³-12x", ExprTexto = "H₀=1; H₁=2x; H₂=4x²−2; H₃=8x³−12x", Icone = "Γ",
+                Descricao = "Primeiros polinômios de Hermite (convenção do físico).",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 },
+                    new() { Simbolo = "n", Nome = "n (0,1,2,3)", ValorPadrao = 2, ValorMin = 0, ValorMax = 3 },
+                ],
+                VariavelResultado = "Hₙ(x)",
+                Calcular = vars => { double x=vars["x"]; int n=(int)vars["n"];
+                    return n switch { 0=>1, 1=>2*x, 2=>4*x*x-2, 3=>8*x*x*x-12*x, _=>double.NaN }; } },
+            new Formula { Id = "fe_hm04", Nome = "Recorrência de Hermite", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "Hₙ₊₁ = 2xHₙ - 2nHₙ₋₁", ExprTexto = "Hₙ₊₁(x) = 2x·Hₙ(x) − 2n·Hₙ₋₁(x)", Icone = "Γ",
+                Descricao = "Relação de recorrência de três termos para o cálculo dos polinômios de Hermite." },
+            new Formula { Id = "fe_hm05", Nome = "Ortogonalidade de Hermite", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "∫₋∞^∞ Hₙ Hₘ e^(-x²)dx = 2ⁿn!√π·δₙₘ", ExprTexto = "∫₋∞^∞ Hₙ(x)Hₘ(x) e^(−x²) dx = 2ⁿn!√π δₙₘ", Icone = "Γ",
+                Descricao = "Ortogonalidade dos polinômios de Hermite com peso gaussiano e^(-x²). Base para funções de onda do oscilador harmônico." },
+            new Formula { Id = "fe_la01", Nome = "Equação de Laguerre", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "xy'' + (1-x)y' + ny = 0", ExprTexto = "xy'' + (1−x)y' + ny = 0", Icone = "Γ",
+                Descricao = "Equação diferencial de Laguerre. Soluções polinomiais para n inteiro. Aparece na mecânica quântica do átomo de hidrogênio.",
+                Criador = "Edmond Laguerre", AnoOrigin = "1879" },
+            new Formula { Id = "fe_la02", Nome = "Rodrigues para Laguerre", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "Lₙ(x) = eˣ dⁿ/dxⁿ[xⁿe^(-x)]/n!", ExprTexto = "Lₙ(x) = (eˣ/n!) dⁿ/dxⁿ [xⁿ e^(−x)]", Icone = "Γ",
+                Descricao = "Fórmula de Rodrigues para polinômios de Laguerre." },
+            new Formula { Id = "fe_la03", Nome = "Primeiros Polinômios de Laguerre", Categoria = "Funções Especiais", SubCategoria = "Hermite e Laguerre",
+                Expressao = "L₀=1; L₁=1-x; L₂=(x²-4x+2)/2", ExprTexto = "L₀=1; L₁=1−x; L₂=(x²−4x+2)/2", Icone = "Γ",
+                Descricao = "Primeiros polinômios de Laguerre.",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 },
+                    new() { Simbolo = "n", Nome = "n (0,1,2)", ValorPadrao = 1, ValorMin = 0, ValorMax = 2 },
+                ],
+                VariavelResultado = "Lₙ(x)",
+                Calcular = vars => { double x=vars["x"]; int n=(int)vars["n"];
+                    return n switch { 0=>1, 1=>1-x, 2=>(x*x-4*x+2)/2, _=>double.NaN }; } },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 6. ANÁLISE COMPLEXA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarAnaliseComplexa()
+    {
+        _formulas.AddRange([
+            // 6.1 Funções Analíticas
+            new Formula { Id = "ac_01", Nome = "Número Complexo z", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "z = x + iy; |z|=√(x²+y²); arg(z)=arctan(y/x)", ExprTexto = "z = x + iy; |z| = √(x²+y²)", Icone = "ℂ",
+                Descricao = "Representação de número complexo. Módulo |z| e argumento arg(z).",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "Parte real x", ValorPadrao = 3 },
+                    new() { Simbolo = "y", Nome = "Parte imaginária y", ValorPadrao = 4 },
+                ],
+                VariavelResultado = "|z|",
+                Calcular = vars => Math.Sqrt(vars["x"]*vars["x"]+vars["y"]*vars["y"]) },
+            new Formula { Id = "ac_02", Nome = "Conjugado z̄", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "z̄ = x - iy", ExprTexto = "z̄ = x − iy (conjugado complexo)", Icone = "ℂ",
+                Descricao = "Conjugado de z=x+iy: reflete sobre eixo real. z·z̄ = |z|². Re(z)=(z+z̄)/2, Im(z)=(z-z̄)/(2i)." },
+            new Formula { Id = "ac_03", Nome = "Fórmula de Euler", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "e^(iθ) = cosθ + i sinθ", ExprTexto = "e^(iθ) = cos θ + i sin θ", Icone = "ℂ",
+                Descricao = "Fórmula de Euler: conecta exponencial com funções trigonométricas no plano complexo. Base da representação polar z=|z|e^(iθ).",
+                Criador = "Leonhard Euler", AnoOrigin = "1748" },
+            new Formula { Id = "ac_04", Nome = "Identidade de Euler", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "e^(iπ) + 1 = 0", ExprTexto = "e^(iπ) + 1 = 0", Icone = "ℂ",
+                Descricao = "A identidade mais bela da matemática: relaciona e, i, π, 1 e 0 em uma única equação.",
+                Criador = "Leonhard Euler", AnoOrigin = "1748" },
+            new Formula { Id = "ac_05", Nome = "Equações de Cauchy-Riemann", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "∂u/∂x=∂v/∂y; ∂u/∂y=-∂v/∂x", ExprTexto = "∂u/∂x = ∂v/∂y e ∂u/∂y = −∂v/∂x", Icone = "ℂ",
+                Descricao = "Condições necessárias e suficientes (com condições adicionais) para f=u+iv ser holomorfa (analítica complexa).",
+                Criador = "Cauchy / Riemann", AnoOrigin = "~1814/1851" },
+            new Formula { Id = "ac_06", Nome = "Derivada Complexa", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "f'(z) = ∂u/∂x + i∂v/∂x", ExprTexto = "f'(z) = ∂u/∂x + i∂v/∂x = ∂v/∂y − i∂u/∂y", Icone = "ℂ",
+                Descricao = "Derivada complexa em termos das partes real u e imaginária v. Usa Cauchy-Riemann." },
+            new Formula { Id = "ac_07", Nome = "Equação de Laplace (harmônica)", Categoria = "Análise Complexa", SubCategoria = "Funções Analíticas",
+                Expressao = "∂²u/∂x²+∂²u/∂y²=0", ExprTexto = "∇²u = ∂²u/∂x² + ∂²u/∂y² = 0 (u harmônica)", Icone = "ℂ",
+                Descricao = "Se f=u+iv é analítica, u e v são funções harmônicas (satisfazem Laplace). Aplicações em fluidodinâmica e eletrostática 2D." },
+
+            // 6.2 Integrais de Contorno e Cauchy
+            new Formula { Id = "ac_08", Nome = "Teorema de Cauchy-Goursat", Categoria = "Análise Complexa", SubCategoria = "Cauchy",
+                Expressao = "∮_C f(z)dz = 0 (f analítica em D simplesmente conexo)", ExprTexto = "∮_C f(z) dz = 0 (f analítica, D simpl. conexo)", Icone = "ℂ",
+                Descricao = "Se f é analítica em domínio simplesmente conexo D, a integral de contorno fechado é zero.",
+                Criador = "Augustin-Louis Cauchy / Édouard Goursat", AnoOrigin = "1825" },
+            new Formula { Id = "ac_09", Nome = "Fórmula Integral de Cauchy", Categoria = "Análise Complexa", SubCategoria = "Cauchy",
+                Expressao = "f(a) = (1/2πi)∮_C f(z)/(z-a) dz", ExprTexto = "f(a) = (1/2πi) ∮_C f(z)/(z−a) dz", Icone = "ℂ",
+                Descricao = "Fórmula integral de Cauchy: o valor de f em qualquer ponto interior é determinado pelos valores no contorno. Resultado central da análise complexa.",
+                Criador = "Augustin-Louis Cauchy", AnoOrigin = "1831" },
+            new Formula { Id = "ac_10", Nome = "Fórmula de Cauchy para Derivadas", Categoria = "Análise Complexa", SubCategoria = "Cauchy",
+                Expressao = "f⁽ⁿ⁾(a) = n!/(2πi) ∮ f(z)/(z-a)^(n+1) dz", ExprTexto = "f⁽ⁿ⁾(a) = n!/(2πi) ∮_C f(z)/(z−a)^(n+1) dz", Icone = "ℂ",
+                Descricao = "Derivadas de todas as ordens de f analítica são determinadas pela integral de contorno. Consequência: funções analíticas são C∞." },
+            new Formula { Id = "ac_11", Nome = "Teorema de Liouville", Categoria = "Análise Complexa", SubCategoria = "Cauchy",
+                Expressao = "f inteira e limitada ⟹ f constante", ExprTexto = "f holomorfa em ℂ e |f| limitada ⟹ f constante", Icone = "ℂ",
+                Descricao = "Toda função holomorfa limitada em todo ℂ é constante. Consequência: o Teorema Fundamental da Álgebra.",
+                Criador = "Joseph Liouville (prova via Cauchy)", AnoOrigin = "1847" },
+            new Formula { Id = "ac_12", Nome = "Teorema Fundamental da Álgebra", Categoria = "Análise Complexa", SubCategoria = "Cauchy",
+                Expressao = "p(z) grau n≥1 ⟹ n raízes em ℂ", ExprTexto = "Todo polinômio de grau n ≥ 1 tem exatamente n raízes em ℂ", Icone = "ℂ",
+                Descricao = "Todo polinômio não-constante com coeficientes complexos tem ao menos uma raiz em ℂ (contando multiplicidades: exatamente n raízes).",
+                Criador = "Gauss (1ª prova)", AnoOrigin = "1799" },
+
+            // 6.3 Série de Laurent e Resíduos
+            new Formula { Id = "ac_13", Nome = "Série de Laurent", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "f(z) = Σ aₙ(z-a)ⁿ (n=-∞..∞)", ExprTexto = "f(z) = Σₙ₌₋∞^∞ aₙ(z−a)ⁿ", Icone = "ℂ",
+                Descricao = "Série de Laurent: generalização da série de Taylor com potências negativas. Expandida em anel de convergência em torno de singularidade." },
+            new Formula { Id = "ac_14", Nome = "Coeficientes de Laurent", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "aₙ = (1/2πi) ∮ f(z)/(z-a)^(n+1) dz", ExprTexto = "aₙ = (1/2πi) ∮ f(z)/(z−a)^(n+1) dz", Icone = "ℂ",
+                Descricao = "Fórmula integral para os coeficientes da série de Laurent. Em particular, a₋₁ = Res(f,a)." },
+            new Formula { Id = "ac_15", Nome = "Resíduo Res(f,a)", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "Res(f,a) = a₋₁ (coeficiente de (z-a)⁻¹)", ExprTexto = "Res(f,a) = a₋₁ (coef. de (z−a)⁻¹ na série de Laurent)", Icone = "ℂ",
+                Descricao = "Resíduo de f no ponto a: coeficiente a₋₁ da série de Laurent. Crucial para calcular integrais de contorno." },
+            new Formula { Id = "ac_16", Nome = "Resíduo de Polo Simples", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "Res(f,a) = lim_{z→a} (z-a)f(z)", ExprTexto = "Res(f,a) = lim(z→a) (z−a)·f(z) [polo simples]", Icone = "ℂ",
+                Descricao = "Para polo simples (ordem 1), o resíduo é calculado multiplicando por (z-a) e tomando limite." },
+            new Formula { Id = "ac_17", Nome = "Resíduo de Polo de Ordem m", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "Res = lim (1/(m-1)!) d^(m-1)/dz^(m-1) [(z-a)^m f(z)]", ExprTexto = "Res(f,a) = lim(z→a) [1/(m−1)!] d^(m−1)/dz^(m−1) [(z−a)ᵐ f(z)]", Icone = "ℂ",
+                Descricao = "Fórmula para resíduo em polo de ordem m. Para m=1 reduz-se à fórmula simples." },
+            new Formula { Id = "ac_18", Nome = "Teorema dos Resíduos", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "∮_C f(z)dz = 2πi·Σ Res(f,aₖ)", ExprTexto = "∮_C f(z)dz = 2πi · Σₖ Res(f,aₖ)", Icone = "ℂ",
+                Descricao = "Integral de contorno = 2πi × soma dos resíduos das singularidades dentro de C. Ferramenta fundamental para calcular integrais.",
+                Criador = "Augustin-Louis Cauchy", AnoOrigin = "~1826" },
+            new Formula { Id = "ac_19", Nome = "Integral Real via Resíduos", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "∫₋∞^∞ f(x)dx = 2πi·Σ Res(f, semiplano sup.)", ExprTexto = "∫₋∞^∞ f(x)dx = 2πi · Σ Res(f, polos com Im > 0)", Icone = "ℂ",
+                Descricao = "Método poderoso para calcular integrais reais impróprias: fechar contorno no semiplano superior e usar teorema dos resíduos." },
+            new Formula { Id = "ac_20", Nome = "Integral de Mellin-Barnes", Categoria = "Análise Complexa", SubCategoria = "Resíduos",
+                Expressao = "∫₀^∞ x^(s-1) f(x) dx via Mellin-Barnes", ExprTexto = "Transformada de Mellin: M{f}(s) = ∫₀^∞ x^(s−1) f(x) dx", Icone = "ℂ",
+                Descricao = "Integrais do tipo ∫x^(s-1)f(x)dx via representação de Mellin-Barnes no plano complexo. Conexão com funções Gamma e funções especiais." },
+        ]);
+    }
+}

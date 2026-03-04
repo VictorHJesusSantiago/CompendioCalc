@@ -2,7 +2,7 @@ using CompendioCalc.Models;
 
 namespace CompendioCalc.Services;
 
-public class FormulaService
+public partial class FormulaService
 {
     private readonly List<Formula> _formulas = [];
     private readonly List<CategoriaInfo> _categorias = [];
@@ -53,6 +53,30 @@ public class FormulaService
             new() { Nome = "Engenharia", Icone = "⚙", Cor = "#84CC16", Descricao = "Estruturas e circuitos" },
             new() { Nome = "Biologia Matemática", Icone = "🧬", Cor = "#22C55E", Descricao = "Modelos populacionais e dinâmica" },
             new() { Nome = "Computação", Icone = "O", Cor = "#64748B", Descricao = "Complexidade e algoritmos" },
+            // ── Volume 2 ──
+            new() { Nome = "Álgebra Abstrata", Icone = "⊕", Cor = "#9333EA", Descricao = "Grupos, anéis, corpos e homomorfismos" },
+            new() { Nome = "Topologia", Icone = "τ", Cor = "#DC2626", Descricao = "Espaços métricos, topológicos e teoremas clássicos" },
+            new() { Nome = "Geometria Diferencial", Icone = "κ", Cor = "#0891B2", Descricao = "Curvas, superfícies, variedades e conexões" },
+            new() { Nome = "Cálculo de Variações", Icone = "δ", Cor = "#B45309", Descricao = "Funcionais, Euler-Lagrange e mecânica variacional" },
+            new() { Nome = "Funções Especiais", Icone = "Γ", Cor = "#7C3AED", Descricao = "Gamma, Beta, Bessel, Legendre, Hermite e Laguerre" },
+            new() { Nome = "Análise Complexa", Icone = "ℂ", Cor = "#4F46E5", Descricao = "Funções analíticas, resíduos e séries de Laurent" },
+            new() { Nome = "Mecânica Analítica", Icone = "ℒ", Cor = "#B91C1C", Descricao = "Lagrangiano, Hamiltoniano e colchetes de Poisson" },
+            new() { Nome = "Mecânica Estatística", Icone = "Z", Cor = "#BE185D", Descricao = "Ensembles, estatísticas quânticas e transições de fase" },
+            new() { Nome = "Teoria Quântica de Campos", Icone = "ψ", Cor = "#6D28D9", Descricao = "QFT, QED, QCD e Modelo Padrão" },
+            new() { Nome = "Relatividade Geral", Icone = "G", Cor = "#1D4ED8", Descricao = "Geometria curva, Einstein e soluções clássicas" },
+            new() { Nome = "Séries Temporais", Icone = "Xₜ", Cor = "#92400E", Descricao = "ARIMA, GARCH e modelos de volatilidade" },
+            new() { Nome = "Análise Multivariada", Icone = "Σ", Cor = "#047857", Descricao = "PCA, LDA, análise fatorial e clustering" },
+            new() { Nome = "Estatística Bayesiana", Icone = "θ", Cor = "#7E22CE", Descricao = "Inferência bayesiana, MCMC e processos estocásticos" },
+            new() { Nome = "Teoria dos Grafos", Icone = "⊙", Cor = "#C2410C", Descricao = "Grafos, coloração, caminhos e fluxos" },
+            new() { Nome = "Processamento de Sinais", Icone = "~", Cor = "#0E7490", Descricao = "DFT, FFT, filtros digitais e Nyquist" },
+            new() { Nome = "Deep Learning", Icone = "🧠", Cor = "#4338CA", Descricao = "CNN, RNN, LSTM, Transformers e GANs" },
+            new() { Nome = "Computação Quântica", Icone = "Q", Cor = "#6B21A8", Descricao = "Qubits, portas quânticas e algoritmos quânticos" },
+            new() { Nome = "Controle Automático", Icone = "⊗", Cor = "#15803D", Descricao = "PID, estabilidade e resposta de sistemas" },
+            new() { Nome = "Processamento de Imagem", Icone = "▦", Cor = "#A21CAF", Descricao = "Filtros, morfologia e segmentação" },
+            new() { Nome = "Antenas e Telecom", Icone = "📡", Cor = "#EA580C", Descricao = "Antenas, linhas de transmissão e micro-ondas" },
+            new() { Nome = "Epidemiologia", Icone = "🦠", Cor = "#16A34A", Descricao = "SIR, Lotka-Volterra e dinâmica de populações" },
+            new() { Nome = "Farmacocinética", Icone = "💊", Cor = "#E11D48", Descricao = "Modelos compartimentais e farmacodinâmica" },
+            new() { Nome = "Neurociência Computacional", Icone = "⚡", Cor = "#0369A1", Descricao = "Hodgkin-Huxley, Integrate-and-Fire e redes neurais biológicas" },
         ]);
     }
 
@@ -74,6 +98,31 @@ public class FormulaService
         AdicionarEngenharia();
         AdicionarBiologiaMatematica();
         AdicionarComputacao();
+
+        // ── Volume 2 ──
+        AdicionarAlgebraAbstrata();
+        AdicionarTopologia();
+        AdicionarGeometriaDiferencial();
+        AdicionarCalculoVariacoes();
+        AdicionarFuncoesEspeciais();
+        AdicionarAnaliseComplexa();
+        AdicionarMecanicaAnalitica();
+        AdicionarMecanicaEstatistica();
+        AdicionarTeoriaQuanticaCampos();
+        AdicionarRelatividadeGeral();
+        AdicionarSeriesTemporais();
+        AdicionarAnaliseMultivariada();
+        AdicionarEstatisticaBayesiana();
+        AdicionarTeoriaGrafos();
+        AdicionarProcessamentoSinais();
+        AdicionarDeepLearning();
+        AdicionarComputacaoQuantica();
+        AdicionarControleAutomatico();
+        AdicionarProcessamentoImagem();
+        AdicionarAntenaseTelecom();
+        AdicionarEpidemiologia();
+        AdicionarFarmacocinetica();
+        AdicionarNeurocienciaComputacional();
 
         // Update category counts
         foreach (var cat in _categorias)
