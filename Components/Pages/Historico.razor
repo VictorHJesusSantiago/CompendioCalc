@@ -6,13 +6,13 @@
 <div class="section-header" style="display:flex;align-items:center;justify-content:space-between">
     <div>
         <div class="section-title">Histórico</div>
-        <div class="section-sub">Últimos cálculos realizados</div>
+        <div class="section-sub">@Calc.TotalHistorico cálculo(s) persistido(s)</div>
     </div>
     @if (Calc.Historico.Any())
     {
         <button @onclick="LimparHistorico"
                 style="background:rgba(224,92,92,0.1);border:1px solid rgba(224,92,92,0.2);border-radius:8px;padding:6px 12px;color:var(--red);font-size:12px;cursor:pointer">
-            Limpar
+            Limpar tudo
         </button>
     }
 </div>
@@ -34,38 +34,134 @@ else
     <div class="hist-list">
         @foreach (var item in items)
         {
-            <div class="hist-item" @onclick='() => Nav.NavigateTo($"/formula/{item.FormulaId}")' style="cursor:pointer">
-                <div class="hist-meta">
-                    <div class="hist-name">@item.FormulaNome</div>
-                    <div class="hist-time">@item.Timestamp.ToString("HH:mm:ss")</div>
-                </div>
-                <div>
-                    <div class="hist-result">
-                        @FormatNum(item.Resultado)
-                        @if (!string.IsNullOrEmpty(item.UnidadeResultado))
-                        {
-                            <span style="font-size:11px;color:var(--text-secondary);margin-left:4px">@item.UnidadeResultado</span>
-                        }
+            var isExpanded = _expanded == item;
+            <div class="hist-card @(isExpanded ? "expanded" : "")">
+                <!-- Cabeçalho clicável -->
+                <div class="hist-item" @onclick="() => ToggleExpand(item)" style="cursor:pointer">
+                    <div class="hist-meta">
+                        <div class="hist-name">@item.FormulaNome</div>
+                        <div class="hist-time">
+                            @item.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")
+                            @if (!string.IsNullOrEmpty(item.Categoria))
+                            {
+                                <span style="margin-left:6px;opacity:0.7">· @item.Categoria</span>
+                            }
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="hist-result">
+                            @FormatNum(item.Resultado)
+                            @if (!string.IsNullOrEmpty(item.UnidadeResultado))
+                            {
+                                <span style="font-size:11px;color:var(--text-secondary);margin-left:4px">@item.UnidadeResultado</span>
+                            }
+                        </div>
+                        <span class="hist-chevron @(isExpanded ? "open" : "")">▾</span>
                     </div>
                 </div>
+
+                <!-- Painel de detalhes expandido -->
+                @if (isExpanded)
+                {
+                    <div class="hist-detail">
+                        @if (!string.IsNullOrEmpty(item.ExprTexto))
+                        {
+                            <div class="hist-detail-expr">@item.ExprTexto</div>
+                        }
+
+                        <div class="hist-detail-title">Valores utilizados</div>
+                        <div class="hist-detail-grid">
+                            @if (item.EntradasDetalhe != null && item.EntradasDetalhe.Any())
+                            {
+                                @foreach (var d in item.EntradasDetalhe)
+                                {
+                                    <div class="hist-detail-row">
+                                        <span class="hist-detail-sym">@d.Simbolo</span>
+                                        <span class="hist-detail-name">@d.Nome</span>
+                                        <span class="hist-detail-val">
+                                            @FormatNum(d.Valor)
+                                            @if (!string.IsNullOrEmpty(d.Unidade))
+                                            {
+                                                <span class="hist-detail-unit">@d.Unidade</span>
+                                            }
+                                        </span>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                @* Fallback para histórico antigo sem EntradasDetalhe *@
+                                @foreach (var kv in item.Entradas)
+                                {
+                                    <div class="hist-detail-row">
+                                        <span class="hist-detail-sym">@kv.Key</span>
+                                        <span class="hist-detail-name">—</span>
+                                        <span class="hist-detail-val">@FormatNum(kv.Value)</span>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                        <div class="hist-detail-result-row">
+                            <span>→ @(string.IsNullOrEmpty(item.VariavelResultado) ? "Resultado" : item.VariavelResultado)</span>
+                            <span class="hist-detail-result-val">
+                                @FormatNum(item.Resultado)
+                                @if (!string.IsNullOrEmpty(item.UnidadeResultado))
+                                {
+                                    <span class="hist-detail-unit">@item.UnidadeResultado</span>
+                                }
+                            </span>
+                        </div>
+
+                        <div class="hist-detail-actions">
+                            <button class="hist-btn-recalc" @onclick="() => RecalcularFormula(item)" @onclick:stopPropagation>
+                                ⊜ Recalcular
+                            </button>
+                            <button class="hist-btn-remove" @onclick="() => RemoverItem(item)" @onclick:stopPropagation>
+                                ✕ Remover
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
         }
     </div>
 }
 
 @code {
+    HistoricoItem? _expanded;
+
     protected override void OnInitialized()
         => Calc.OnHistoricoChanged += Refresh;
 
     void Refresh() => InvokeAsync(StateHasChanged);
-    void LimparHistorico() => Calc.LimparHistorico();
+
+    void ToggleExpand(HistoricoItem item)
+        => _expanded = _expanded == item ? null : item;
+
+    void LimparHistorico()
+    {
+        _expanded = null;
+        Calc.LimparHistorico();
+    }
+
+    void RemoverItem(HistoricoItem item)
+    {
+        if (_expanded == item) _expanded = null;
+        Calc.RemoverItem(item);
+    }
+
+    void RecalcularFormula(HistoricoItem item)
+        => Nav.NavigateTo($"/formula/{item.FormulaId}");
 
     static string FormatNum(double v)
     {
         if (double.IsNaN(v)) return "N/A";
-        if (double.IsInfinity(v)) return "∞";
-        if (Math.Abs(v) >= 1e9 || (Math.Abs(v) < 0.001 && v != 0))
-            return v.ToString("E3");
+        if (double.IsInfinity(v)) return v > 0 ? "+∞" : "−∞";
+        if (Math.Abs(v) >= 1e12 || (Math.Abs(v) < 0.0001 && v != 0))
+            return v.ToString("E4");
+        if (Math.Abs(v) >= 1000)
+            return v.ToString("N2");
         return v.ToString("G6");
     }
 

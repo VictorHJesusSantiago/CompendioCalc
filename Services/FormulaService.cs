@@ -180,6 +180,65 @@ public partial class FormulaService
             new() { Nome = "Computação Quântica Avançada v2", Icone = "Q", Cor = "#6B21A8", Descricao = "Circuitos quânticos, comunicação quântica e memórias" },
             new() { Nome = "Plasma e Tokamak", Icone = "⊛", Cor = "#CA8A04", Descricao = "Plasma confinado, MHD e física de tokamak" },
             new() { Nome = "Teoria Conforme e SLE", Icone = "c", Cor = "#64748B", Descricao = "CFT, SLE estocástica e geometria discreta" },
+
+            // ═══ VOLUME 7 — Novas categorias ═══
+            // PARTE I — Matemática Elementar
+            new() { Nome = "Matemática Elementar", Icone = "➕", Cor = "#2563EB", Descricao = "Operações fundamentais, porcentagem, regra de três e progressões" },
+            // PARTE II — Saúde
+            new() { Nome = "Farmácia", Icone = "💊", Cor = "#DC2626", Descricao = "Farmacocinética, diluições e dosagens" },
+            new() { Nome = "Medicina", Icone = "🏥", Cor = "#B91C1C", Descricao = "Fisiologia, hemodinâmica e índices clínicos" },
+            new() { Nome = "Medicina Veterinária", Icone = "🐾", Cor = "#92400E", Descricao = "Dosagem veterinária e taxa metabólica" },
+            new() { Nome = "Nutrição", Icone = "🥗", Cor = "#16A34A", Descricao = "Metabolismo basal, IMC e gasto energético" },
+            new() { Nome = "Física Médica", Icone = "☢", Cor = "#7C3AED", Descricao = "Dosimetria, radioterapia e decaimento radioativo" },
+            new() { Nome = "Imagiologia", Icone = "📡", Cor = "#0891B2", Descricao = "Raios X, ultrassom e ressonância magnética" },
+            // PARTE III — Agro-Ambiente
+            new() { Nome = "Agronomia", Icone = "🌾", Cor = "#65A30D", Descricao = "Irrigação, evapotranspiração e correção de solo" },
+            new() { Nome = "Ciências Florestais", Icone = "🌲", Cor = "#166534", Descricao = "Volume de madeira, biomassa e crescimento florestal" },
+            new() { Nome = "Engenharia Ambiental", Icone = "♻", Cor = "#059669", Descricao = "Qualidade da água, DBO e tratamento de efluentes" },
+            // PARTE IV — Engenharia
+            new() { Nome = "Engenharia Civil", Icone = "🏗", Cor = "#78716C", Descricao = "Estruturas, concreto armado e geotecnia" },
+            new() { Nome = "Engenharia Elétrica", Icone = "⚡", Cor = "#EAB308", Descricao = "Circuitos, potência e máquinas elétricas" },
+            new() { Nome = "Engenharia Mecânica", Icone = "⚙", Cor = "#57534E", Descricao = "Resistência dos materiais, mecanismos e fadiga" },
+            new() { Nome = "Engenharia Química", Icone = "⚗", Cor = "#A21CAF", Descricao = "Reatores, transferência de massa e catálise" },
+            new() { Nome = "Engenharia Aeroespacial", Icone = "✈", Cor = "#1D4ED8", Descricao = "Aerodinâmica, propulsão e órbitas" },
+            new() { Nome = "Engenharia Naval", Icone = "🚢", Cor = "#0369A1", Descricao = "Flutuabilidade, estabilidade e resistência ao avanço" },
+            new() { Nome = "Engenharia de Controle", Icone = "🎛", Cor = "#6D28D9", Descricao = "PID, estabilidade e funções de transferência" },
+            new() { Nome = "Fenômenos de Transporte", Icone = "↹", Cor = "#0D9488", Descricao = "Transferência de calor, massa e momento" },
+            new() { Nome = "Energia Renovável", Icone = "🌿", Cor = "#4D7C0F", Descricao = "Solar, eólica, biomassa e eficiência energética" },
+            new() { Nome = "Mecânica das Vibrações", Icone = "〰", Cor = "#B45309", Descricao = "Sistemas vibratórios, amortecimento e ressonância" },
+            // PARTE V — Economia e Finanças
+            new() { Nome = "Economia", Icone = "📈", Cor = "#0F766E", Descricao = "PIB, inflação, oferta e demanda" },
+            new() { Nome = "Ciência Atuarial", Icone = "📋", Cor = "#4338CA", Descricao = "Reservas, anuidades e tábuas de mortalidade" },
+            new() { Nome = "Microeconomia", Icone = "🏪", Cor = "#0E7490", Descricao = "Elasticidade, utilidade e equilíbrio de mercado" },
+            new() { Nome = "Macroeconomia", Icone = "🏛", Cor = "#1E40AF", Descricao = "Multiplicador fiscal, IS-LM e política monetária" },
+            // PARTE VI — Terra e Física
+            new() { Nome = "Química Analítica", Icone = "🧪", Cor = "#9333EA", Descricao = "Titulação, espectrofotometria e cromatografia" },
+            new() { Nome = "Geodésia e Topografia", Icone = "📏", Cor = "#0284C7", Descricao = "Levantamento, projeções e coordenadas geográficas" },
+            new() { Nome = "Astronomia", Icone = "🔭", Cor = "#1E3A5F", Descricao = "Leis de Kepler, magnitudes e cosmologia observacional" },
+            new() { Nome = "Geofísica", Icone = "🌋", Cor = "#9A3412", Descricao = "Sismologia, gravimetria e magnetismo terrestre" },
+            new() { Nome = "Geoquímica", Icone = "Gq", Cor = "#78350F", Descricao = "Isótopos, datação radiométrica e geocronologia" },
+            new() { Nome = "Oceanografia", Icone = "🌊", Cor = "#0E7490", Descricao = "Marés, correntes e salinidade oceânica" },
+            new() { Nome = "Eletroquímica", Icone = "🔌", Cor = "#D97706", Descricao = "Células galvânicas, eletrólise e equação de Nernst" },
+            new() { Nome = "Ciência dos Materiais", Icone = "🔩", Cor = "#475569", Descricao = "Propriedades mecânicas, cristalografia e difusão" },
+            // PARTE VII — Bio-Comp-IA
+            new() { Nome = "Ciências Esportivas", Icone = "🏃", Cor = "#059669", Descricao = "VO₂máx, gasto energético e fisiologia do exercício" },
+            new() { Nome = "Biomecânica", Icone = "🦴", Cor = "#78716C", Descricao = "Torque articular, centro de massa e análise de marcha" },
+            new() { Nome = "Bioestatística", Icone = "📊", Cor = "#7C3AED", Descricao = "Odds ratio, tamanho amostral e testes de hipótese" },
+            new() { Nome = "Ecologia", Icone = "🌿", Cor = "#166534", Descricao = "Diversidade, cadeias tróficas e modelos populacionais" },
+            new() { Nome = "Teoria das Redes", Icone = "🕸", Cor = "#4338CA", Descricao = "Grafos, redes complexas e mundos pequenos" },
+            new() { Nome = "Psicofísica", Icone = "ψ", Cor = "#BE185D", Descricao = "Percepção sensorial, Weber-Fechner e Stevens" },
+            new() { Nome = "Metrologia", Icone = "📐", Cor = "#64748B", Descricao = "Incerteza de medição, calibração e rastreabilidade" },
+            new() { Nome = "Sistemas Complexos", Icone = "🔄", Cor = "#9333EA", Descricao = "Caos, fractais, Lyapunov e dinâmica não-linear" },
+            new() { Nome = "Inteligência Artificial", Icone = "🤖", Cor = "#2563EB", Descricao = "Redes neurais, gradiente descendente e classificação" },
+            // PARTE VIII + IX — Artes, Jogos, Foto
+            new() { Nome = "Artesanato e Ofícios", Icone = "✂", Cor = "#D97706", Descricao = "Costura, marcenaria, cerâmica, culinária e ofícios" },
+            new() { Nome = "Jogos e Recreação", Icone = "🎲", Cor = "#DC2626", Descricao = "Probabilidade em jogos, Elo, apostas e recreação" },
+            new() { Nome = "Fotografia", Icone = "📸", Cor = "#1E40AF", Descricao = "Exposição, profundidade de campo e óptica fotográfica" },
+            // PARTE X — Tecnologias Emergentes
+            new() { Nome = "Criptografia", Icone = "🔐", Cor = "#4338CA", Descricao = "Cifras, RSA, curvas elípticas e entropia" },
+            new() { Nome = "Computação Gráfica", Icone = "💡", Cor = "#7C3AED", Descricao = "Iluminação, transformações e interpolação" },
+            new() { Nome = "Balística", Icone = "🎯", Cor = "#78350F", Descricao = "Trajetória de projéteis e coeficiente balístico" },
+            new() { Nome = "Tecnologias Emergentes", Icone = "🔬", Cor = "#059669", Descricao = "5G, energia, blockchain, impressão 3D, CRISPR e quântica" },
         ]);
     }
 
@@ -333,6 +392,17 @@ public partial class FormulaService
         AdicionarComputacaoQuanticaAvancadaV2();
         AdicionarPlasmaTokamak();
         AdicionarTeoriaConformeSLE();
+
+        // ═══ VOLUME 7 ═══
+        AdicionarVol7MatematicaElementar();
+        AdicionarVol7Saude();
+        AdicionarVol7AgroAmbiente();
+        AdicionarVol7Engenharia();
+        AdicionarVol7EconFinancas();
+        AdicionarVol7TerraFisica();
+        AdicionarVol7BioCompIA();
+        AdicionarVol7Artesanato();
+        AdicionarVol7TechEmergente();
 
         // Update category counts
         foreach (var cat in _categorias)

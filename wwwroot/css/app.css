@@ -1004,10 +1004,18 @@ body {
     padding: 8px 16px;
 }
 
-.hist-item {
+.hist-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+.hist-card.expanded {
+    border-color: var(--gold);
+}
+
+.hist-item {
     padding: 12px 14px;
     display: flex;
     align-items: center;
@@ -1015,7 +1023,7 @@ body {
 }
 
 .hist-meta { flex: 1; min-width: 0; }
-.hist-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.hist-name { font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hist-time { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .hist-result {
     font-family: var(--font-mono);
@@ -1024,6 +1032,150 @@ body {
     color: var(--gold);
     white-space: nowrap;
 }
+
+.hist-chevron {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+}
+.hist-chevron.open {
+    transform: rotate(180deg);
+    color: var(--gold);
+}
+
+/* ─── Historico Detail Panel ─────────────────────── */
+.hist-detail {
+    border-top: 1px solid var(--border);
+    padding: 14px;
+    background: rgba(0,0,0,0.15);
+    animation: hist-slide 0.15s ease-out;
+}
+
+@keyframes hist-slide {
+    from { opacity: 0; max-height: 0; }
+    to   { opacity: 1; max-height: 600px; }
+}
+
+.hist-detail-expr {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+    background: rgba(0,0,0,0.2);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.hist-detail-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.hist-detail-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.hist-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.hist-detail-sym {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal);
+    min-width: 32px;
+}
+
+.hist-detail-name {
+    flex: 1;
+    font-size: 12px;
+    color: var(--text-secondary);
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hist-detail-val {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.hist-detail-unit {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-left: 3px;
+    font-weight: 400;
+}
+
+.hist-detail-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: rgba(218,165,32,0.08);
+    border: 1px solid rgba(218,165,32,0.18);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.hist-detail-result-val {
+    font-family: var(--font-mono);
+    font-size: 15px;
+}
+
+.hist-detail-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.hist-btn-recalc {
+    flex: 1;
+    padding: 8px 0;
+    background: rgba(218,165,32,0.10);
+    border: 1px solid rgba(218,165,32,0.25);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.hist-btn-recalc:hover { background: rgba(218,165,32,0.18); }
+
+.hist-btn-remove {
+    padding: 8px 14px;
+    background: rgba(224,92,92,0.08);
+    border: 1px solid rgba(224,92,92,0.20);
+    border-radius: 8px;
+    color: var(--red);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.hist-btn-remove:hover { background: rgba(224,92,92,0.15); }
 
 /* ─── Empty State ────────────────────────────────── */
 .empty-state {

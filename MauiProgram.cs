@@ -17,7 +17,12 @@ public static class MauiProgram
 
         builder.Services.AddMauiBlazorWebView();
         builder.Services.AddSingleton<FormulaService>();
-        builder.Services.AddSingleton<CalculadoraService>();
+        builder.Services.AddSingleton<CalculadoraService>(sp =>
+        {
+            var calc = new CalculadoraService();
+            calc.CarregarHistorico();
+            return calc;
+        });
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();

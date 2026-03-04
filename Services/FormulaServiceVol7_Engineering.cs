@@ -1,0 +1,898 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 7 — PARTE IV: ENGENHARIAS (46 fórmulas)
+    // ═══════════════════════════════════════════════════════════════
+
+    private void AdicionarVol7Engenharia()
+    {
+        _formulas.AddRange([
+            // ═══ ENGENHARIA CIVIL (6 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_ecv01", Nome = "Tensão Normal (σ = F/A)", Categoria = "Engenharia Civil",
+                Expressao = "σ = F / A",
+                ExprTexto = "σ = Força / Área da seção transversal",
+                Icone = "σ",
+                Descricao = "Tensão normal: força axial dividida pela área da seção transversal. Base do dimensionamento estrutural em aço e concreto.",
+                Criador = "Augustin-Louis Cauchy (1822)",
+                AnoOrigin = "1822",
+                ExemploPratico = "Pilar: F=500 kN, A=0,04 m²: σ = 500/0,04 = 12.500 kPa = 12,5 MPa",
+                Variaveis = [
+                    new() { Simbolo = "F", Nome = "Força axial (kN)", ValorPadrao = 500 },
+                    new() { Simbolo = "A", Nome = "Área da seção (m²)", ValorPadrao = 0.04, ValorMin = 0.0001 },
+                ],
+                VariavelResultado = "σ (kPa)",
+                UnidadeResultado = "kPa",
+                Calcular = vars => vars["F"] / vars["A"]
+            },
+            new Formula
+            {
+                Id = "7_ecv02", Nome = "Momento Fletor Máximo (Viga Biapoiada)", Categoria = "Engenharia Civil",
+                Expressao = "M_max = q·L² / 8",
+                ExprTexto = "Mmáx = q × L² / 8  (carga distribuída uniforme)",
+                Icone = "M",
+                Descricao = "Momento fletor máximo no meio do vão de viga simplesmente apoiada com carga distribuída uniforme q. Caso fundamental da resistência dos materiais.",
+                Criador = "Euler-Bernoulli; teoria de vigas",
+                AnoOrigin = "1750",
+                ExemploPratico = "Viga L=6m, q=10 kN/m: Mmax = 10×36/8 = 45 kN·m",
+                Variaveis = [
+                    new() { Simbolo = "q", Nome = "Carga distribuída (kN/m)", ValorPadrao = 10 },
+                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 6 },
+                ],
+                VariavelResultado = "M_max (kN·m)",
+                UnidadeResultado = "kN·m",
+                Calcular = vars => vars["q"] * vars["L"] * vars["L"] / 8.0
+            },
+            new Formula
+            {
+                Id = "7_ecv03", Nome = "Lei de Hooke", Categoria = "Engenharia Civil",
+                Expressao = "σ = E · ε",
+                ExprTexto = "σ = E × ε  (tensão = módulo × deformação)",
+                Icone = "E",
+                Descricao = "Relação linear entre tensão e deformação no regime elástico. E = módulo de Young (aço ≈ 200 GPa, concreto ≈ 25-40 GPa).",
+                Criador = "Robert Hooke (1676); Thomas Young (módulo, 1807)",
+                AnoOrigin = "1676",
+                ExemploPratico = "Aço E=200 GPa, ε=0,001: σ = 200.000×0,001 = 200 MPa",
+                Variaveis = [
+                    new() { Simbolo = "E", Nome = "Módulo de Young (MPa)", ValorPadrao = 200000 },
+                    new() { Simbolo = "eps", Nome = "Deformação (ε)", Descricao = "Adimensional", ValorPadrao = 0.001 },
+                ],
+                VariavelResultado = "σ (MPa)",
+                UnidadeResultado = "MPa",
+                Calcular = vars => vars["E"] * vars["eps"]
+            },
+            new Formula
+            {
+                Id = "7_ecv04", Nome = "Capacidade de Carga (Terzaghi)", Categoria = "Engenharia Civil",
+                Expressao = "q_ult = c·Nc + q·Nq + 0.5·γ·B·Nγ",
+                ExprTexto = "qult = c×Nc + q×Nq + 0,5×γ×B×Nγ",
+                Icone = "q_u",
+                Descricao = "Capacidade de carga última de fundação superficial (Terzaghi). c=coesão, q=sobrecarga, γ=peso específico, B=largura. Nc, Nq, Nγ = fatores de capacidade.",
+                Criador = "Karl Terzaghi (1943)",
+                AnoOrigin = "1943",
+                ExemploPratico = "Solo: c=20 kPa, q=18 kPa, γ=18 kN/m³, B=2m, Nc=14,8, Nq=6,4, Nγ=5,4: qult = 296+115+97 = 508 kPa",
+                Variaveis = [
+                    new() { Simbolo = "c", Nome = "Coesão (kPa)", ValorPadrao = 20 },
+                    new() { Simbolo = "Nc", Nome = "Fator Nc", ValorPadrao = 14.8 },
+                    new() { Simbolo = "q", Nome = "Sobrecarga (kPa)", ValorPadrao = 18 },
+                    new() { Simbolo = "Nq", Nome = "Fator Nq", ValorPadrao = 6.4 },
+                    new() { Simbolo = "gamma", Nome = "Peso específico γ (kN/m³)", ValorPadrao = 18 },
+                    new() { Simbolo = "B", Nome = "Largura B (m)", ValorPadrao = 2 },
+                ],
+                VariavelResultado = "q_ult (kPa)",
+                UnidadeResultado = "kPa",
+                Calcular = vars => vars["c"] * vars["Nc"] + vars["q"] * vars["Nq"] + 0.5 * vars["gamma"] * vars["B"] * 5.4
+            },
+            new Formula
+            {
+                Id = "7_ecv05", Nome = "Dosagem de Concreto (fck)", Categoria = "Engenharia Civil",
+                Expressao = "fck = fcm − 1.65·Sd",
+                ExprTexto = "fck = fcm − 1,65 × Sd",
+                Icone = "fck",
+                Descricao = "Resistência característica do concreto à compressão. fcm = resistência média, Sd = desvio padrão. Quantil 5% (95% de confiança).",
+                Criador = "NBR 6118; normas de concreto armado",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "fcm=35 MPa, Sd=4 MPa: fck = 35−1,65×4 = 28,4 MPa → classe C30",
+                Variaveis = [
+                    new() { Simbolo = "fcm", Nome = "Resistência média (MPa)", ValorPadrao = 35 },
+                    new() { Simbolo = "Sd", Nome = "Desvio padrão (MPa)", ValorPadrao = 4 },
+                ],
+                VariavelResultado = "fck (MPa)",
+                UnidadeResultado = "MPa",
+                Calcular = vars => vars["fcm"] - 1.65 * vars["Sd"]
+            },
+            new Formula
+            {
+                Id = "7_ecv06", Nome = "Flecha Máxima (Viga Biapoiada)", Categoria = "Engenharia Civil",
+                Expressao = "δ = 5·q·L⁴ / (384·E·I)",
+                ExprTexto = "δ = 5qL⁴ / (384EI)",
+                Icone = "δ",
+                Descricao = "Deslocamento máximo no meio do vão de viga biapoiada com carga distribuída. E=módulo de elasticidade, I=momento de inércia.",
+                Criador = "Euler-Bernoulli; teoria de vigas",
+                AnoOrigin = "1750",
+                ExemploPratico = "L=5m, q=20 kN/m, E=25 GPa, I=0,003 m⁴: δ = 5×20×625/(384×25e6×0,003) ≈ 2,2 mm",
+                Variaveis = [
+                    new() { Simbolo = "q", Nome = "Carga (kN/m)", ValorPadrao = 20 },
+                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 5 },
+                    new() { Simbolo = "E", Nome = "Módulo E (kPa)", ValorPadrao = 25000000 },
+                    new() { Simbolo = "I", Nome = "Momento de inércia (m⁴)", ValorPadrao = 0.003, ValorMin = 0.00001 },
+                ],
+                VariavelResultado = "δ (m)",
+                UnidadeResultado = "m",
+                Calcular = vars => 5 * vars["q"] * Math.Pow(vars["L"], 4) / (384 * vars["E"] * vars["I"])
+            },
+
+            // ═══ ENGENHARIA ELÉTRICA (5 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_eel01", Nome = "Lei de Ohm", Categoria = "Engenharia Elétrica",
+                Expressao = "V = R · I",
+                ExprTexto = "V = R × I",
+                Icone = "Ω",
+                Descricao = "Tensão é proporcional à corrente pelo fator de resistência. Lei fundamental dos circuitos elétricos resistivos.",
+                Criador = "Georg Simon Ohm (1827)",
+                AnoOrigin = "1827",
+                ExemploPratico = "R=100Ω, I=0,5A: V = 100×0,5 = 50 V",
+                Variaveis = [
+                    new() { Simbolo = "R", Nome = "Resistência (Ω)", ValorPadrao = 100 },
+                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 0.5 },
+                ],
+                VariavelResultado = "V (Volts)",
+                UnidadeResultado = "V",
+                Calcular = vars => vars["R"] * vars["I"]
+            },
+            new Formula
+            {
+                Id = "7_eel02", Nome = "Potência Elétrica", Categoria = "Engenharia Elétrica",
+                Expressao = "P = V · I",
+                ExprTexto = "P = V × I  (ou P = I²R ou P = V²/R)",
+                Icone = "W",
+                Descricao = "Potência dissipada ou gerada em um circuito. Para corrente alternada: P = V·I·cosφ (fator de potência).",
+                Criador = "James Watt (conceito de potência); Joule (lei de Joule)",
+                AnoOrigin = "Séc. XIX",
+                ExemploPratico = "Chuveiro: V=220V, I=30A: P = 220×30 = 6600 W = 6,6 kW",
+                Variaveis = [
+                    new() { Simbolo = "V", Nome = "Tensão (V)", ValorPadrao = 220 },
+                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 30 },
+                ],
+                VariavelResultado = "P (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => vars["V"] * vars["I"]
+            },
+            new Formula
+            {
+                Id = "7_eel03", Nome = "Impedância RL/RC", Categoria = "Engenharia Elétrica",
+                Expressao = "Z = √(R² + (X_L − X_C)²)",
+                ExprTexto = "Z = √(R² + (XL − XC)²)",
+                Icone = "Z",
+                Descricao = "Impedância total de circuito RLC série. XL = ωL (reatância indutiva), XC = 1/(ωC) (reatância capacitiva).",
+                Criador = "Oliver Heaviside; Steinmetz (método fasorial)",
+                AnoOrigin = "1893",
+                ExemploPratico = "R=30Ω, XL=50Ω, XC=10Ω: Z = √(900+1600) = 50Ω",
+                Variaveis = [
+                    new() { Simbolo = "R", Nome = "Resistência R (Ω)", ValorPadrao = 30 },
+                    new() { Simbolo = "XL", Nome = "Reatância indutiva XL (Ω)", ValorPadrao = 50 },
+                    new() { Simbolo = "XC", Nome = "Reatância capacitiva XC (Ω)", ValorPadrao = 10 },
+                ],
+                VariavelResultado = "Z (Ω)",
+                UnidadeResultado = "Ω",
+                Calcular = vars => Math.Sqrt(vars["R"] * vars["R"] + Math.Pow(vars["XL"] - vars["XC"], 2))
+            },
+            new Formula
+            {
+                Id = "7_eel04", Nome = "Transformador Ideal", Categoria = "Engenharia Elétrica",
+                Expressao = "V₂/V₁ = N₂/N₁",
+                ExprTexto = "V₂ = V₁ × (N₂ / N₁)",
+                Icone = "N₂/N₁",
+                Descricao = "Relação de transformação: tensão proporcional ao número de espiras. Princípio da indução eletromagnética (Faraday).",
+                Criador = "Michael Faraday (1831); transformador prático por Gaulard & Gibbs (1882)",
+                AnoOrigin = "1831",
+                ExemploPratico = "V₁=13.800V, N₁=1000, N₂=15: V₂ = 13.800×15/1000 = 207 V",
+                Variaveis = [
+                    new() { Simbolo = "V1", Nome = "Tensão primária (V₁)", ValorPadrao = 13800 },
+                    new() { Simbolo = "N1", Nome = "Espiras primário (N₁)", ValorPadrao = 1000, ValorMin = 1 },
+                    new() { Simbolo = "N2", Nome = "Espiras secundário (N₂)", ValorPadrao = 15 },
+                ],
+                VariavelResultado = "V₂ (V)",
+                UnidadeResultado = "V",
+                Calcular = vars => vars["V1"] * vars["N2"] / vars["N1"]
+            },
+            new Formula
+            {
+                Id = "7_eel05", Nome = "Rendimento de Motor Elétrico", Categoria = "Engenharia Elétrica",
+                Expressao = "η = P_saída / P_entrada × 100",
+                ExprTexto = "η = Potência de saída / Potência de entrada × 100%",
+                Icone = "η",
+                Descricao = "Eficiência de conversão eletromecânica. Motores IE3 (premium): η>92%. Perdas = joule + ferro + mecânicas + dispersas.",
+                Criador = "Engenharia elétrica; classificação IEC 60034-30",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "Motor 5 cv: P_entrada=4,2 kW, P_saída=3,73 kW: η = 3,73/4,2×100 = 88,8%",
+                Variaveis = [
+                    new() { Simbolo = "Pout", Nome = "Potência de saída (kW)", ValorPadrao = 3.73 },
+                    new() { Simbolo = "Pin", Nome = "Potência de entrada (kW)", ValorPadrao = 4.2, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "η (%)",
+                UnidadeResultado = "%",
+                Calcular = vars => (vars["Pout"] / vars["Pin"]) * 100
+            },
+
+            // ═══ ENGENHARIA MECÂNICA (6 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_emc01", Nome = "Tensão de Cisalhamento", Categoria = "Engenharia Mecânica",
+                Expressao = "τ = V / A",
+                ExprTexto = "τ = Força cortante / Área",
+                Icone = "τ",
+                Descricao = "Tensão tangencial: força paralela à seção dividida pela área. Fundamental para dimensionamento de parafusos, rebites e solda.",
+                Criador = "Cauchy (1822); teoria da elasticidade",
+                AnoOrigin = "1822",
+                ExemploPratico = "Parafuso: V=20 kN, A=0,000201 m² (⌀16mm): τ = 99,5 MPa",
+                Variaveis = [
+                    new() { Simbolo = "V", Nome = "Força cortante (kN)", ValorPadrao = 20 },
+                    new() { Simbolo = "A", Nome = "Área de cisalhamento (m²)", ValorPadrao = 0.000201, ValorMin = 0.000001 },
+                ],
+                VariavelResultado = "τ (kPa)",
+                UnidadeResultado = "kPa",
+                Calcular = vars => vars["V"] / vars["A"]
+            },
+            new Formula
+            {
+                Id = "7_emc02", Nome = "Torque", Categoria = "Engenharia Mecânica",
+                Expressao = "T = F · d · sin(θ)",
+                ExprTexto = "T = F × d × sen(θ)",
+                Icone = "T",
+                Descricao = "Momento de força (torque): produto da força pelo braço de alavanca e pelo seno do ângulo. Base da transmissão de potência mecânica.",
+                Criador = "Arquimedes (princípio da alavanca); formalizado por Euler",
+                AnoOrigin = "~250 a.C.",
+                ExemploPratico = "Chave de roda: F=200N, d=0,3m, θ=90°: T = 200×0,3×1 = 60 N·m",
+                Variaveis = [
+                    new() { Simbolo = "F", Nome = "Força (N)", ValorPadrao = 200 },
+                    new() { Simbolo = "d", Nome = "Braço de alavanca (m)", ValorPadrao = 0.3 },
+                    new() { Simbolo = "theta", Nome = "Ângulo θ (graus)", ValorPadrao = 90 },
+                ],
+                VariavelResultado = "T (N·m)",
+                UnidadeResultado = "N·m",
+                Calcular = vars => vars["F"] * vars["d"] * Math.Sin(vars["theta"] * Math.PI / 180.0)
+            },
+            new Formula
+            {
+                Id = "7_emc03", Nome = "Potência Mecânica Rotacional", Categoria = "Engenharia Mecânica",
+                Expressao = "P = T · ω = T · 2π·n/60",
+                ExprTexto = "P = T × 2π × n / 60  (W)",
+                Icone = "Pω",
+                Descricao = "Potência transmitida por eixo rotativo. T em N·m, n em rpm. 1 cv = 745,7 W.",
+                Criador = "James Watt (conceito de cavalo-vapor, 1782)",
+                AnoOrigin = "1782",
+                ExemploPratico = "Motor: T=50 N·m, n=1750 rpm: P = 50×2π×1750/60 = 9163 W ≈ 12,3 cv",
+                Variaveis = [
+                    new() { Simbolo = "T", Nome = "Torque (N·m)", ValorPadrao = 50 },
+                    new() { Simbolo = "n", Nome = "Rotação (rpm)", ValorPadrao = 1750 },
+                ],
+                VariavelResultado = "P (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => vars["T"] * 2 * Math.PI * vars["n"] / 60.0
+            },
+            new Formula
+            {
+                Id = "7_emc04", Nome = "Rendimento de Carnot", Categoria = "Engenharia Mecânica",
+                Expressao = "η_Carnot = 1 − T_frio/T_quente",
+                ExprTexto = "η_Carnot = 1 − Tfrio/Tquente  (em Kelvin)",
+                Icone = "η_C",
+                Descricao = "Máxima eficiência teórica de uma máquina térmica operando entre duas temperaturas. Nenhum motor real supera o rendimento de Carnot.",
+                Criador = "Sadi Carnot (1824)",
+                AnoOrigin = "1824",
+                ExemploPratico = "Motor: T_quente=600K, T_frio=300K: η = 1−300/600 = 50%",
+                Variaveis = [
+                    new() { Simbolo = "Tq", Nome = "Temp. quente (K)", ValorPadrao = 600, ValorMin = 1 },
+                    new() { Simbolo = "Tf", Nome = "Temp. fria (K)", ValorPadrao = 300 },
+                ],
+                VariavelResultado = "η_Carnot",
+                Calcular = vars => 1 - vars["Tf"] / vars["Tq"]
+            },
+            new Formula
+            {
+                Id = "7_emc05", Nome = "Coeficiente de Segurança", Categoria = "Engenharia Mecânica",
+                Expressao = "CS = σ_adm / σ_trab",
+                ExprTexto = "CS = Tensão admissível / Tensão de trabalho",
+                Icone = "CS",
+                Descricao = "Fator de segurança: razão entre resistência do material e solicitação. CS > 1 garante segurança. Valores típicos: 1,5-4,0.",
+                Criador = "Engenharia mecânica; normas de projeto",
+                AnoOrigin = "Séc. XIX",
+                ExemploPratico = "Aço: σ_adm=250 MPa, σ_trab=100 MPa: CS = 2,5 (seguro)",
+                Variaveis = [
+                    new() { Simbolo = "sigma_adm", Nome = "Tensão admissível (MPa)", ValorPadrao = 250 },
+                    new() { Simbolo = "sigma_trab", Nome = "Tensão de trabalho (MPa)", ValorPadrao = 100, ValorMin = 0.01 },
+                ],
+                VariavelResultado = "CS",
+                Calcular = vars => vars["sigma_adm"] / vars["sigma_trab"]
+            },
+            new Formula
+            {
+                Id = "7_emc06", Nome = "Vida em Fadiga (S-N)", Categoria = "Engenharia Mecânica",
+                Expressao = "N = (Se / σa)^(1/b)",
+                ExprTexto = "N = (Se/σa)^(1/b)  ciclos até falha",
+                Icone = "S-N",
+                Descricao = "Estimativa de vida em fadiga pela curva S-N (Wöhler). Se = limite de endurance, σa = tensão alternada, b = expoente de fadiga.",
+                Criador = "August Wöhler (1860)",
+                AnoOrigin = "1860",
+                ExemploPratico = "Se=300 MPa, σa=200 MPa, b=−0,1: N = (300/200)^(1/−0,1) ≈ 57.665 ciclos",
+                Variaveis = [
+                    new() { Simbolo = "Se", Nome = "Limite de endurance (MPa)", ValorPadrao = 300 },
+                    new() { Simbolo = "sa", Nome = "Tensão alternada σa (MPa)", ValorPadrao = 200, ValorMin = 0.01 },
+                    new() { Simbolo = "b", Nome = "Expoente de fadiga (b)", Descricao = "Negativo, tipicamente −0,05 a −0,12", ValorPadrao = -0.1 },
+                ],
+                VariavelResultado = "N (ciclos)",
+                UnidadeResultado = "ciclos",
+                Calcular = vars => Math.Pow(vars["Se"] / vars["sa"], 1.0 / vars["b"])
+            },
+
+            // ═══ ENGENHARIA QUÍMICA (7 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_eqm01", Nome = "Equação de Arrhenius", Categoria = "Engenharia Química",
+                Expressao = "k = A · e^(−Ea/(R·T))",
+                ExprTexto = "k = A × e^(−Ea/RT)",
+                Icone = "k(T)",
+                Descricao = "Constante de velocidade de reação em função da temperatura. Ea = energia de ativação, R = 8,314 J/(mol·K).",
+                Criador = "Svante Arrhenius (1889)",
+                AnoOrigin = "1889",
+                ExemploPratico = "A=10¹³ s⁻¹, Ea=75 kJ/mol, T=300K: k = 10¹³×e^(−75000/(8,314×300)) ≈ 9,4×10⁻¹ s⁻¹",
+                Variaveis = [
+                    new() { Simbolo = "Af", Nome = "Fator pré-exponencial (A)", ValorPadrao = 1e13 },
+                    new() { Simbolo = "Ea", Nome = "Energia de ativação (J/mol)", ValorPadrao = 75000 },
+                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 300, ValorMin = 1 },
+                ],
+                VariavelResultado = "k",
+                Calcular = vars => vars["Af"] * Math.Exp(-vars["Ea"] / (8.314 * vars["T"]))
+            },
+            new Formula
+            {
+                Id = "7_eqm02", Nome = "Balanço de Massa (CSTR)", Categoria = "Engenharia Química",
+                Expressao = "V = F_A0 · X / (−r_A)",
+                ExprTexto = "V = FA₀ × X / (−rA)  para CSTR",
+                Icone = "CSTR",
+                Descricao = "Volume de um reator CSTR (mistura perfeita) para conversão X. FA₀ = vazão molar de entrada, rA = taxa de reação.",
+                Criador = "Engenharia de reatores; Levenspiel (1962)",
+                AnoOrigin = "1962",
+                ExemploPratico = "FA₀=5 mol/s, X=0,8, −rA=0,5 mol/(L·s): V = 5×0,8/0,5 = 8 L",
+                Variaveis = [
+                    new() { Simbolo = "FA0", Nome = "Vazão molar entrada (mol/s)", ValorPadrao = 5 },
+                    new() { Simbolo = "X", Nome = "Conversão (X)", Descricao = "0 a 1", ValorPadrao = 0.8 },
+                    new() { Simbolo = "rA", Nome = "Taxa de reação (−rA, mol/L·s)", ValorPadrao = 0.5, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "V (L)",
+                UnidadeResultado = "L",
+                Calcular = vars => vars["FA0"] * vars["X"] / vars["rA"]
+            },
+            new Formula
+            {
+                Id = "7_eqm03", Nome = "Número de Reynolds", Categoria = "Engenharia Química",
+                Expressao = "Re = ρ·v·D / μ",
+                ExprTexto = "Re = ρvD / μ",
+                Icone = "Re",
+                Descricao = "Razão entre forças inerciais e viscosas. Re<2100: laminar, Re>4000: turbulento. Fundamental para transferência de calor e massa.",
+                Criador = "Osborne Reynolds (1883)",
+                AnoOrigin = "1883",
+                ExemploPratico = "Água: ρ=1000, v=2 m/s, D=0,05m, μ=0,001 Pa·s: Re = 100.000 (turbulento)",
+                Variaveis = [
+                    new() { Simbolo = "rho", Nome = "Densidade (kg/m³)", ValorPadrao = 1000 },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 2 },
+                    new() { Simbolo = "D", Nome = "Diâmetro (m)", ValorPadrao = 0.05 },
+                    new() { Simbolo = "mu", Nome = "Viscosidade μ (Pa·s)", ValorPadrao = 0.001, ValorMin = 0.000001 },
+                ],
+                VariavelResultado = "Re",
+                Calcular = vars => vars["rho"] * vars["v"] * vars["D"] / vars["mu"]
+            },
+            new Formula
+            {
+                Id = "7_eqm04", Nome = "Lei de Raoult", Categoria = "Engenharia Química",
+                Expressao = "pᵢ = xᵢ · P°ᵢ",
+                ExprTexto = "pᵢ = xᵢ × P°ᵢ  (pressão parcial)",
+                Icone = "pᵢ",
+                Descricao = "Pressão parcial do componente i = fração molar × pressão de vapor do puro. Válida para soluções ideais. Base de destilação.",
+                Criador = "François-Marie Raoult (1887)",
+                AnoOrigin = "1887",
+                ExemploPratico = "Etanol x=0,4, P°=5,95 kPa: p = 0,4×5,95 = 2,38 kPa",
+                Variaveis = [
+                    new() { Simbolo = "x", Nome = "Fração molar (xᵢ)", ValorPadrao = 0.4 },
+                    new() { Simbolo = "Psat", Nome = "Pressão de vapor P°ᵢ (kPa)", ValorPadrao = 5.95 },
+                ],
+                VariavelResultado = "pᵢ (kPa)",
+                UnidadeResultado = "kPa",
+                Calcular = vars => vars["x"] * vars["Psat"]
+            },
+            new Formula
+            {
+                Id = "7_eqm05", Nome = "Equação de Clausius-Clapeyron", Categoria = "Engenharia Química",
+                Expressao = "ln(P₂/P₁) = −ΔHvap/R · (1/T₂ − 1/T₁)",
+                ExprTexto = "ln(P₂/P₁) = −ΔHvap/R × (1/T₂ − 1/T₁)",
+                Icone = "C-C",
+                Descricao = "Relaciona pressão de vapor e temperatura. ΔHvap = entalpia de vaporização. R = 8,314 J/(mol·K). Para estimar T de ebulição sob pressão.",
+                Criador = "Clausius (1850) / Clapeyron (1834)",
+                AnoOrigin = "1834",
+                ExemploPratico = "Água: ΔH=40.700 J/mol, T₁=373K, P₁=101,3 kPa, T₂=353K → P₂ ≈ 47 kPa",
+                Variaveis = [
+                    new() { Simbolo = "P1", Nome = "Pressão ref. P₁ (kPa)", ValorPadrao = 101.3 },
+                    new() { Simbolo = "T1", Nome = "Temperatura ref. T₁ (K)", ValorPadrao = 373, ValorMin = 1 },
+                    new() { Simbolo = "T2", Nome = "Temperatura alvo T₂ (K)", ValorPadrao = 353, ValorMin = 1 },
+                    new() { Simbolo = "dH", Nome = "ΔHvap (J/mol)", ValorPadrao = 40700 },
+                ],
+                VariavelResultado = "P₂ (kPa)",
+                UnidadeResultado = "kPa",
+                Calcular = vars => vars["P1"] * Math.Exp(-vars["dH"] / 8.314 * (1.0 / vars["T2"] - 1.0 / vars["T1"]))
+            },
+            new Formula
+            {
+                Id = "7_eqm06", Nome = "Número de Pratos Teóricos (McCabe-Thiele)", Categoria = "Engenharia Química",
+                Expressao = "N_min = ln[(xD/xB)·(1−xB)/(1−xD)] / ln(α)",
+                ExprTexto = "Nmin = ln[(xD(1−xB))/(xB(1−xD))] / ln(α)  (Fenske)",
+                Icone = "N_p",
+                Descricao = "Número mínimo de estágios teóricos em coluna de destilação (equação de Fenske). α = volatilidade relativa.",
+                Criador = "Fenske (1932); McCabe & Thiele (método gráfico, 1925)",
+                AnoOrigin = "1932",
+                ExemploPratico = "xD=0,95, xB=0,05, α=2,5: Nmin = ln[(0,95×0,95)/(0,05×0,05)]/ln(2,5) ≈ 6,4 estágios",
+                Variaveis = [
+                    new() { Simbolo = "xD", Nome = "Fração destilado (xD)", ValorPadrao = 0.95 },
+                    new() { Simbolo = "xB", Nome = "Fração resíduo (xB)", ValorPadrao = 0.05, ValorMin = 0.001 },
+                    new() { Simbolo = "alpha", Nome = "Volatilidade relativa (α)", ValorPadrao = 2.5, ValorMin = 1.001 },
+                ],
+                VariavelResultado = "N_min",
+                UnidadeResultado = "estágios",
+                Calcular = vars => Math.Log((vars["xD"] / vars["xB"]) * ((1 - vars["xB"]) / (1 - vars["xD"]))) / Math.Log(vars["alpha"])
+            },
+            new Formula
+            {
+                Id = "7_eqm07", Nome = "Coeficiente Global de Troca Térmica", Categoria = "Engenharia Química",
+                Expressao = "Q = U · A · ΔTLM",
+                ExprTexto = "Q = U × A × ΔTLM",
+                Icone = "UA",
+                Descricao = "Taxa de transferência de calor em trocador. U = coef. global, A = área, ΔTLM = diferença média logarítmica de temperatura.",
+                Criador = "Engenharia de processos; Kern (1950)",
+                AnoOrigin = "1950",
+                ExemploPratico = "U=500 W/m²K, A=10 m², ΔTLM=30 K: Q = 500×10×30 = 150 kW",
+                Variaveis = [
+                    new() { Simbolo = "U", Nome = "Coef. global U (W/m²K)", ValorPadrao = 500 },
+                    new() { Simbolo = "A", Nome = "Área de troca (m²)", ValorPadrao = 10 },
+                    new() { Simbolo = "DTLM", Nome = "ΔTLM (K)", ValorPadrao = 30 },
+                ],
+                VariavelResultado = "Q (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => vars["U"] * vars["A"] * vars["DTLM"]
+            },
+
+            // ═══ ENGENHARIA AEROESPACIAL (4 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_eae01", Nome = "Sustentação Aeronáutica", Categoria = "Engenharia Aeroespacial",
+                Expressao = "L = 0.5 · ρ · v² · S · C_L",
+                ExprTexto = "L = ½ρv²SC_L",
+                Icone = "✈",
+                Descricao = "Força de sustentação na asa. ρ = densidade do ar, v = velocidade, S = área alar, CL = coeficiente de sustentação.",
+                Criador = "Ludwig Prandtl (1904); teoria da asa",
+                AnoOrigin = "1904",
+                ExemploPratico = "ρ=1,225 kg/m³, v=70 m/s, S=20 m², CL=1,5: L = 0,5×1,225×4900×20×1,5 = 90.037 N ≈ 9,2 tonf",
+                Variaveis = [
+                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225 },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 70 },
+                    new() { Simbolo = "S", Nome = "Área alar (m²)", ValorPadrao = 20 },
+                    new() { Simbolo = "CL", Nome = "Coef. sustentação (CL)", ValorPadrao = 1.5 },
+                ],
+                VariavelResultado = "L (N)",
+                UnidadeResultado = "N",
+                Calcular = vars => 0.5 * vars["rho"] * vars["v"] * vars["v"] * vars["S"] * vars["CL"]
+            },
+            new Formula
+            {
+                Id = "7_eae02", Nome = "Equação de Tsiolkovsky", Categoria = "Engenharia Aeroespacial",
+                Expressao = "Δv = ve · ln(m₀/mf)",
+                ExprTexto = "Δv = ve × ln(m₀/mf)",
+                Icone = "🚀",
+                Descricao = "Equação fundamental dos foguetes: variação de velocidade em função da velocidade de escape e razão de massas. Base da exploração espacial.",
+                Criador = "Konstantin Tsiolkovsky (1903)",
+                AnoOrigin = "1903",
+                ExemploPratico = "ve=3000 m/s, m₀=100 ton, mf=20 ton: Δv = 3000×ln(5) = 4828 m/s",
+                Variaveis = [
+                    new() { Simbolo = "ve", Nome = "Vel. de escape (m/s)", ValorPadrao = 3000 },
+                    new() { Simbolo = "m0", Nome = "Massa inicial (kg)", ValorPadrao = 100000 },
+                    new() { Simbolo = "mf", Nome = "Massa final (kg)", ValorPadrao = 20000, ValorMin = 1 },
+                ],
+                VariavelResultado = "Δv (m/s)",
+                UnidadeResultado = "m/s",
+                Calcular = vars => vars["ve"] * Math.Log(vars["m0"] / vars["mf"])
+            },
+            new Formula
+            {
+                Id = "7_eae03", Nome = "Número de Mach", Categoria = "Engenharia Aeroespacial",
+                Expressao = "Ma = v / a",
+                ExprTexto = "Ma = velocidade / velocidade do som",
+                Icone = "Ma",
+                Descricao = "Razão entre velocidade do objeto e velocidade do som local. Ma<1: subsônico, Ma=1: sônico, Ma>1: supersônico, Ma>5: hipersônico.",
+                Criador = "Ernst Mach (1887)",
+                AnoOrigin = "1887",
+                ExemploPratico = "Avião a 850 km/h (236 m/s), som a 340 m/s: Ma = 236/340 = 0,69 (subsônico)",
+                Variaveis = [
+                    new() { Simbolo = "v", Nome = "Velocidade do objeto (m/s)", ValorPadrao = 236 },
+                    new() { Simbolo = "a", Nome = "Velocidade do som (m/s)", ValorPadrao = 340, ValorMin = 1 },
+                ],
+                VariavelResultado = "Ma",
+                Calcular = vars => vars["v"] / vars["a"]
+            },
+            new Formula
+            {
+                Id = "7_eae04", Nome = "Impulso Específico", Categoria = "Engenharia Aeroespacial",
+                Expressao = "Isp = F / (ṁ · g₀)",
+                ExprTexto = "Isp = Empuxo / (vazão mássica × g)",
+                Icone = "Isp",
+                Descricao = "Eficiência de um motor de foguete: tempo em que 1 kg de propelente gera 1 N de empuxo. Maior Isp = mais eficiente.",
+                Criador = "Engenharia de propulsão; usado desde os V-2 (1940s)",
+                AnoOrigin = "1940s",
+                ExemploPratico = "F=2MN, ṁ=750 kg/s: Isp = 2.000.000/(750×9,81) = 272 s",
+                Variaveis = [
+                    new() { Simbolo = "F", Nome = "Empuxo (N)", ValorPadrao = 2000000 },
+                    new() { Simbolo = "mdot", Nome = "Vazão mássica (kg/s)", ValorPadrao = 750, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "Isp (s)",
+                UnidadeResultado = "s",
+                Calcular = vars => vars["F"] / (vars["mdot"] * 9.80665)
+            },
+
+            // ═══ ENGENHARIA NAVAL (2 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_env01", Nome = "Princípio de Arquimedes (Empuxo)", Categoria = "Engenharia Naval",
+                Expressao = "E = ρ_fluido · g · V_deslocado",
+                ExprTexto = "E = ρ × g × V  (empuxo)",
+                Icone = "🚢",
+                Descricao = "Força de empuxo = peso do fluido deslocado. Para flutuação: empuxo ≥ peso do navio. Base da arquitetura naval e estabilidade.",
+                Criador = "Arquimedes de Siracusa (~250 a.C.)",
+                AnoOrigin = "~250 a.C.",
+                ExemploPratico = "Navio V=5000 m³ em água do mar (1025 kg/m³): E = 1025×9,81×5000 ≈ 50.276 kN",
+                Variaveis = [
+                    new() { Simbolo = "rho", Nome = "Densidade do fluido (kg/m³)", ValorPadrao = 1025 },
+                    new() { Simbolo = "V", Nome = "Volume deslocado (m³)", ValorPadrao = 5000 },
+                ],
+                VariavelResultado = "E (N)",
+                UnidadeResultado = "N",
+                Calcular = vars => vars["rho"] * 9.80665 * vars["V"]
+            },
+            new Formula
+            {
+                Id = "7_env02", Nome = "Número de Froude", Categoria = "Engenharia Naval",
+                Expressao = "Fr = v / √(g · L)",
+                ExprTexto = "Fr = v / √(gL)",
+                Icone = "Fr",
+                Descricao = "Razão entre forças inerciais e gravitacionais. Caracteriza regime de ondas de embarcações. Velocidade de casco: Fr ≈ 0,40.",
+                Criador = "William Froude (1861)",
+                AnoOrigin = "1861",
+                ExemploPratico = "Navio v=8 m/s, L=100m: Fr = 8/√(9,81×100) = 8/31,3 = 0,256",
+                Variaveis = [
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 8 },
+                    new() { Simbolo = "L", Nome = "Comprimento na linha d'água (m)", ValorPadrao = 100, ValorMin = 0.1 },
+                ],
+                VariavelResultado = "Fr",
+                Calcular = vars => vars["v"] / Math.Sqrt(9.80665 * vars["L"])
+            },
+
+            // ═══ ENGENHARIA DE CONTROLE (5 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_ect01", Nome = "Controlador PID", Categoria = "Engenharia de Controle",
+                Expressao = "u(t) = Kp·e(t) + Ki·∫e(t)dt + Kd·de/dt",
+                ExprTexto = "u(t) = Kp·e + Ki·∫e·dt + Kd·de/dt",
+                Icone = "PID",
+                Descricao = "Sinal de controle PID: proporcional + integral + derivativo do erro. Controlador mais usado na indústria (>90% dos laços de controle).",
+                Criador = "Nicolas Minorsky (1922); Ziegler & Nichols (sintonização, 1942)",
+                AnoOrigin = "1922",
+                ExemploPratico = "Kp=2, Ki=0,5, Kd=0,1, erro=5, integral=10, derivada=−2: u = 10+5−0,2 = 14,8",
+                Variaveis = [
+                    new() { Simbolo = "Kp", Nome = "Ganho proporcional (Kp)", ValorPadrao = 2 },
+                    new() { Simbolo = "Ki", Nome = "Ganho integral (Ki)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "Kd", Nome = "Ganho derivativo (Kd)", ValorPadrao = 0.1 },
+                    new() { Simbolo = "e", Nome = "Erro atual e(t)", ValorPadrao = 5 },
+                    new() { Simbolo = "intE", Nome = "Integral do erro ∫e·dt", ValorPadrao = 10 },
+                    new() { Simbolo = "dedt", Nome = "Derivada do erro de/dt", ValorPadrao = -2 },
+                ],
+                VariavelResultado = "u(t)",
+                Calcular = vars => vars["Kp"] * vars["e"] + vars["Ki"] * vars["intE"] + vars["Kd"] * vars["dedt"]
+            },
+            new Formula
+            {
+                Id = "7_ect02", Nome = "Função de Transferência 1ª Ordem", Categoria = "Engenharia de Controle",
+                Expressao = "G(s) = K / (τs + 1)",
+                ExprTexto = "y(t) = K·u·(1 − e^(−t/τ))  resposta ao degrau",
+                Icone = "G(s)",
+                Descricao = "Sistema de 1ª ordem: ganho K e constante de tempo τ. Após 3τ atinge 95% do valor final. Modelo básico de processos industriais.",
+                Criador = "Teoria de controle; Heaviside (1893)",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "K=2, τ=5s, degrau u=10, t=10s: y = 2×10×(1−e⁻²) = 17,3",
+                Variaveis = [
+                    new() { Simbolo = "K", Nome = "Ganho estático (K)", ValorPadrao = 2 },
+                    new() { Simbolo = "tau", Nome = "Constante de tempo τ (s)", ValorPadrao = 5, ValorMin = 0.01 },
+                    new() { Simbolo = "u", Nome = "Amplitude do degrau", ValorPadrao = 10 },
+                    new() { Simbolo = "t", Nome = "Tempo (s)", ValorPadrao = 10 },
+                ],
+                VariavelResultado = "y(t)",
+                Calcular = vars => vars["K"] * vars["u"] * (1 - Math.Exp(-vars["t"] / vars["tau"]))
+            },
+            new Formula
+            {
+                Id = "7_ect03", Nome = "Critério de Estabilidade (Routh)", Categoria = "Engenharia de Controle",
+                Expressao = "Estável ⟺ todos os coeficientes da 1ª coluna de Routh > 0",
+                ExprTexto = "Polinômio aₙsⁿ + ... + a₁s + a₀: monta tabela de Routh",
+                Icone = "⊕",
+                Descricao = "Critério de Routh-Hurwitz: sistema estável se todos os elementos da primeira coluna da tabela de Routh são positivos. Sem calcular raízes.",
+                Criador = "Edward Routh (1877) / Adolf Hurwitz (1895)",
+                AnoOrigin = "1877",
+                ExemploPratico = "s³+3s²+3s+1: col.1=[1,3,8/3,1] → todos positivos → estável",
+                Variaveis = [
+                    new() { Simbolo = "a3", Nome = "Coef. s³", ValorPadrao = 1 },
+                    new() { Simbolo = "a2", Nome = "Coef. s²", ValorPadrao = 3, ValorMin = 0.001 },
+                    new() { Simbolo = "a1", Nome = "Coef. s¹", ValorPadrao = 3 },
+                    new() { Simbolo = "a0", Nome = "Coef. s⁰", ValorPadrao = 1 },
+                ],
+                VariavelResultado = "b₁ (1ª coluna, linha 3)",
+                Calcular = vars => (vars["a2"] * vars["a1"] - vars["a3"] * vars["a0"]) / vars["a2"]
+            },
+            new Formula
+            {
+                Id = "7_ect04", Nome = "Margem de Ganho e Fase", Categoria = "Engenharia de Controle",
+                Expressao = "MG = 1/|G(jωpc)|;  MF = 180° + ∠G(jωgc)",
+                ExprTexto = "Margem de Ganho (dB) e Margem de Fase (graus)",
+                Icone = "MG",
+                Descricao = "MG: margem de ganho no cruzamento de fase (180°). MF: margem de fase no cruzamento de ganho (0 dB). Ambos positivos = sistema estável.",
+                Criador = "Hendrik Bode (1945); diagrama de Bode",
+                AnoOrigin = "1945",
+                ExemploPratico = "|G|=0,5 na freq. fase-180°: MG = 1/0,5 = 2 → 6 dB de margem",
+                Variaveis = [
+                    new() { Simbolo = "Gpc", Nome = "|G(jωpc)|", Descricao = "Módulo na freq. cruzamento de fase", ValorPadrao = 0.5, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "MG (dB)",
+                UnidadeResultado = "dB",
+                Calcular = vars => 20 * Math.Log10(1.0 / vars["Gpc"])
+            },
+            new Formula
+            {
+                Id = "7_ect05", Nome = "Erro em Regime Permanente", Categoria = "Engenharia de Controle",
+                Expressao = "ess = 1 / (1 + Kp)",
+                ExprTexto = "ess = 1/(1 + Kp)  para degrau unitário (tipo 0)",
+                Icone = "ess",
+                Descricao = "Erro estacionário para entrada degrau em sistema tipo 0. Kp = ganho estático de posição = lim(s→0) G(s). Tipo 1+: ess=0 para degrau.",
+                Criador = "Teoria de controle clássico",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "G(s) com Kp=9: ess = 1/(1+9) = 0,1 = 10% de erro",
+                Variaveis = [
+                    new() { Simbolo = "Kp", Nome = "Ganho de posição (Kp)", ValorPadrao = 9 },
+                ],
+                VariavelResultado = "ess",
+                Calcular = vars => 1.0 / (1 + vars["Kp"])
+            },
+
+            // ═══ FENÔMENOS DE TRANSPORTE (4 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_ftr01", Nome = "Lei de Fourier (Condução Térmica)", Categoria = "Fenômenos de Transporte",
+                Expressao = "q = −k · dT/dx",
+                ExprTexto = "q = −k × ΔT / Δx  (fluxo de calor)",
+                Icone = "q🔥",
+                Descricao = "Fluxo de calor proporcional ao gradiente de temperatura. k = condutividade térmica (W/m·K). Negativo indica sentido do quente para frio.",
+                Criador = "Joseph Fourier (1822)",
+                AnoOrigin = "1822",
+                ExemploPratico = "Parede: k=0,5 W/mK, ΔT=20°C, Δx=0,2m: q = 0,5×20/0,2 = 50 W/m²",
+                Variaveis = [
+                    new() { Simbolo = "k", Nome = "Condutividade térmica (W/m·K)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "dT", Nome = "Diferença de temperatura (°C)", ValorPadrao = 20 },
+                    new() { Simbolo = "dx", Nome = "Espessura (m)", ValorPadrao = 0.2, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "q (W/m²)",
+                UnidadeResultado = "W/m²",
+                Calcular = vars => vars["k"] * vars["dT"] / vars["dx"]
+            },
+            new Formula
+            {
+                Id = "7_ftr02", Nome = "Lei de Fick (Difusão)", Categoria = "Fenômenos de Transporte",
+                Expressao = "J = −D · dC/dx",
+                ExprTexto = "J = −D × ΔC / Δx  (fluxo de massa)",
+                Icone = "J",
+                Descricao = "Fluxo difusivo proporcional ao gradiente de concentração. D = coeficiente de difusão (m²/s). Análogo à lei de Fourier para massa.",
+                Criador = "Adolf Fick (1855)",
+                AnoOrigin = "1855",
+                ExemploPratico = "D=1,5×10⁻⁹ m²/s, ΔC=0,5 mol/L, Δx=0,001m: J = 7,5×10⁻⁷ mol/(m²·s)",
+                Variaveis = [
+                    new() { Simbolo = "D", Nome = "Coef. difusão (m²/s)", ValorPadrao = 1.5e-9 },
+                    new() { Simbolo = "dC", Nome = "Diferença de concentração", ValorPadrao = 500 },
+                    new() { Simbolo = "dx", Nome = "Distância (m)", ValorPadrao = 0.001, ValorMin = 0.00001 },
+                ],
+                VariavelResultado = "J (mol/m²·s)",
+                UnidadeResultado = "mol/(m²·s)",
+                Calcular = vars => vars["D"] * vars["dC"] / vars["dx"]
+            },
+            new Formula
+            {
+                Id = "7_ftr03", Nome = "Lei de Newton (Resfriamento convectivo)", Categoria = "Fenômenos de Transporte",
+                Expressao = "q = h · (T_s − T_∞)",
+                ExprTexto = "q = h × (Ts − T∞)",
+                Icone = "h",
+                Descricao = "Fluxo de calor convectivo entre superfície e fluido. h = coef. de convecção (W/m²K). h depende do regime de escoamento e geometria.",
+                Criador = "Isaac Newton (1701)",
+                AnoOrigin = "1701",
+                ExemploPratico = "h=50 W/m²K, Ts=80°C, T∞=20°C: q = 50×60 = 3000 W/m²",
+                Variaveis = [
+                    new() { Simbolo = "hc", Nome = "Coef. convecção h (W/m²K)", ValorPadrao = 50 },
+                    new() { Simbolo = "Ts", Nome = "Temp. superfície (°C)", ValorPadrao = 80 },
+                    new() { Simbolo = "Tinf", Nome = "Temp. fluido (°C)", ValorPadrao = 20 },
+                ],
+                VariavelResultado = "q (W/m²)",
+                UnidadeResultado = "W/m²",
+                Calcular = vars => vars["hc"] * (vars["Ts"] - vars["Tinf"])
+            },
+            new Formula
+            {
+                Id = "7_ftr04", Nome = "Lei de Stefan-Boltzmann (Radiação)", Categoria = "Fenômenos de Transporte",
+                Expressao = "q = ε · σ · T⁴",
+                ExprTexto = "q = ε × σ × T⁴  (σ = 5,67×10⁻⁸ W/m²K⁴)",
+                Icone = "σT⁴",
+                Descricao = "Fluxo de calor emitido por radiação. ε = emissividade (0-1), σ = constante de Stefan-Boltzmann. Para troca entre superfícies: q = εσ(T₁⁴−T₂⁴).",
+                Criador = "Josef Stefan (1879) / Ludwig Boltzmann (1884)",
+                AnoOrigin = "1884",
+                ExemploPratico = "ε=0,9, T=500K: q = 0,9×5,67e-8×500⁴ = 3189 W/m²",
+                Variaveis = [
+                    new() { Simbolo = "eps", Nome = "Emissividade (ε)", Descricao = "0 a 1", ValorPadrao = 0.9 },
+                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 500 },
+                ],
+                VariavelResultado = "q (W/m²)",
+                UnidadeResultado = "W/m²",
+                Calcular = vars => vars["eps"] * 5.670374419e-8 * Math.Pow(vars["T"], 4)
+            },
+
+            // ═══ ENERGIA RENOVÁVEL (5 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_enr01", Nome = "Potência Solar Fotovoltaica", Categoria = "Energia Renovável",
+                Expressao = "P = η · A · G",
+                ExprTexto = "P = η × A × G  (potência gerada)",
+                Icone = "☀",
+                Descricao = "Potência elétrica de painel solar. η = eficiência (~15-22%), A = área do painel, G = irradiância solar (W/m², típico 1000 W/m² no pico).",
+                Criador = "Tecnologia fotovoltaica; Chapin, Fuller & Pearson (Bell Labs, 1954)",
+                AnoOrigin = "1954",
+                ExemploPratico = "η=0,20, A=10 m², G=800 W/m²: P = 0,20×10×800 = 1600 W = 1,6 kWp",
+                Variaveis = [
+                    new() { Simbolo = "eta", Nome = "Eficiência (η)", Descricao = "0 a 1", ValorPadrao = 0.20 },
+                    new() { Simbolo = "A", Nome = "Área do painel (m²)", ValorPadrao = 10 },
+                    new() { Simbolo = "G", Nome = "Irradiância (W/m²)", ValorPadrao = 800 },
+                ],
+                VariavelResultado = "P (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => vars["eta"] * vars["A"] * vars["G"]
+            },
+            new Formula
+            {
+                Id = "7_enr02", Nome = "Potência Eólica (Betz)", Categoria = "Energia Renovável",
+                Expressao = "P = 0.5 · ρ · A · v³ · Cp",
+                ExprTexto = "P = ½ρAv³Cp  (Cp ≤ 16/27 ≈ 0,593)",
+                Icone = "🌬",
+                Descricao = "Potência extraída do vento. Cp = coeficiente de potência (máx. teórico de Betz = 59,3%). Potência cresce com o cubo da velocidade.",
+                Criador = "Albert Betz (1919)",
+                AnoOrigin = "1919",
+                ExemploPratico = "ρ=1,225, rotor ⌀80m (A=5027m²), v=12 m/s, Cp=0,45: P = 0,5×1,225×5027×1728×0,45 ≈ 2,39 MW",
+                Variaveis = [
+                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225 },
+                    new() { Simbolo = "A", Nome = "Área do rotor (m²)", ValorPadrao = 5027 },
+                    new() { Simbolo = "v", Nome = "Velocidade do vento (m/s)", ValorPadrao = 12 },
+                    new() { Simbolo = "Cp", Nome = "Coef. de potência (Cp)", Descricao = "≤ 0,593", ValorPadrao = 0.45 },
+                ],
+                VariavelResultado = "P (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => 0.5 * vars["rho"] * vars["A"] * Math.Pow(vars["v"], 3) * vars["Cp"]
+            },
+            new Formula
+            {
+                Id = "7_enr03", Nome = "Potência Hidrelétrica", Categoria = "Energia Renovável",
+                Expressao = "P = η · ρ · g · Q · H",
+                ExprTexto = "P = η × ρ × g × Q × H",
+                Icone = "💧",
+                Descricao = "Potência de usina hidrelétrica. Q = vazão, H = queda (altura), η = rendimento da turbina-gerador (~85-95%).",
+                Criador = "Engenharia hidráulica; turbina: Benoît Fourneyron (1827)",
+                AnoOrigin = "Séc. XIX",
+                ExemploPratico = "η=0,9, Q=100 m³/s, H=50m: P = 0,9×1000×9,81×100×50 = 44.145 kW ≈ 44 MW",
+                Variaveis = [
+                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.9 },
+                    new() { Simbolo = "Q", Nome = "Vazão (m³/s)", ValorPadrao = 100 },
+                    new() { Simbolo = "H", Nome = "Queda/Altura (m)", ValorPadrao = 50 },
+                ],
+                VariavelResultado = "P (W)",
+                UnidadeResultado = "W",
+                Calcular = vars => vars["eta"] * 1000 * 9.80665 * vars["Q"] * vars["H"]
+            },
+            new Formula
+            {
+                Id = "7_enr04", Nome = "Energia de Biomassa (PCI)", Categoria = "Energia Renovável",
+                Expressao = "E = m · PCI · η",
+                ExprTexto = "E = massa × Poder Calorífico Inferior × rendimento",
+                Icone = "🪵",
+                Descricao = "Energia útil obtida da queima de biomassa. PCI = poder calorífico inferior (descontando a água). η = eficiência da caldeira.",
+                Criador = "Engenharia de biomassa e bioenergia",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "1 ton bagaço (PCI=7.500 kJ/kg), η=0,75: E = 1000×7500×0,75 = 5.625.000 kJ = 1.563 kWh",
+                Variaveis = [
+                    new() { Simbolo = "m", Nome = "Massa de biomassa (kg)", ValorPadrao = 1000 },
+                    new() { Simbolo = "PCI", Nome = "PCI (kJ/kg)", ValorPadrao = 7500 },
+                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.75 },
+                ],
+                VariavelResultado = "E (kJ)",
+                UnidadeResultado = "kJ",
+                Calcular = vars => vars["m"] * vars["PCI"] * vars["eta"]
+            },
+            new Formula
+            {
+                Id = "7_enr05", Nome = "Fator de Capacidade", Categoria = "Energia Renovável",
+                Expressao = "FC = E_real / (P_nom · T)",
+                ExprTexto = "FC = Energia real gerada / (Potência nominal × Tempo total)",
+                Icone = "FC",
+                Descricao = "Razão entre energia efetivamente gerada e o máximo teórico. Eólica: FC~30-45%, Solar: FC~15-25%, Nuclear: FC~90%.",
+                Criador = "Engenharia de energia; indicador de desempenho",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "Eólica 2 MW gera 5.256 MWh/ano: FC = 5256/(2×8760) = 30%",
+                Variaveis = [
+                    new() { Simbolo = "Ereal", Nome = "Energia gerada (MWh)", ValorPadrao = 5256 },
+                    new() { Simbolo = "Pnom", Nome = "Potência nominal (MW)", ValorPadrao = 2 },
+                    new() { Simbolo = "T", Nome = "Período (horas)", Descricao = "8760h = 1 ano", ValorPadrao = 8760, ValorMin = 1 },
+                ],
+                VariavelResultado = "FC",
+                Calcular = vars => vars["Ereal"] / (vars["Pnom"] * vars["T"])
+            },
+
+            // ═══ MECÂNICA DAS VIBRAÇÕES (2 fórmulas) ═══
+
+            new Formula
+            {
+                Id = "7_mvb01", Nome = "Frequência Natural (Massa-Mola)", Categoria = "Mecânica das Vibrações",
+                Expressao = "fn = (1/2π) · √(k/m)",
+                ExprTexto = "fn = √(k/m) / (2π)  (Hz)",
+                Icone = "fn",
+                Descricao = "Frequência natural de vibração de sistema massa-mola sem amortecimento. Ressonância quando frequência de excitação = fn.",
+                Criador = "Robert Hooke / Isaac Newton; formalizado por Euler",
+                AnoOrigin = "Séc. XVIII",
+                ExemploPratico = "k=1000 N/m, m=10 kg: fn = √(100)/(2π) = 10/6,28 ≈ 1,59 Hz",
+                Variaveis = [
+                    new() { Simbolo = "k", Nome = "Rigidez da mola (N/m)", ValorPadrao = 1000 },
+                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "fn (Hz)",
+                UnidadeResultado = "Hz",
+                Calcular = vars => Math.Sqrt(vars["k"] / vars["m"]) / (2 * Math.PI)
+            },
+            new Formula
+            {
+                Id = "7_mvb02", Nome = "Fator de Amortecimento", Categoria = "Mecânica das Vibrações",
+                Expressao = "ζ = c / (2·√(k·m))",
+                ExprTexto = "ζ = c / (2√(km))  (amortecimento crítico)",
+                Icone = "ζ",
+                Descricao = "Razão de amortecimento: ζ<1 subamortecido (oscila), ζ=1 crítico, ζ>1 superamortecido. Define comportamento transitório de vibrações.",
+                Criador = "Teoria de vibrações; Den Hartog (1934)",
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "c=20 N·s/m, k=1000 N/m, m=10 kg: ζ = 20/(2×√10000) = 20/200 = 0,1 (pouco amortecido)",
+                Variaveis = [
+                    new() { Simbolo = "c", Nome = "Coef. amortecimento (N·s/m)", ValorPadrao = 20 },
+                    new() { Simbolo = "k", Nome = "Rigidez (N/m)", ValorPadrao = 1000 },
+                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001 },
+                ],
+                VariavelResultado = "ζ",
+                Calcular = vars => vars["c"] / (2 * Math.Sqrt(vars["k"] * vars["m"]))
+            },
+        ]);
+    }
+}
