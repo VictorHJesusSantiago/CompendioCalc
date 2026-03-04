@@ -77,6 +77,30 @@ public partial class FormulaService
             new() { Nome = "Epidemiologia", Icone = "🦠", Cor = "#16A34A", Descricao = "SIR, Lotka-Volterra e dinâmica de populações" },
             new() { Nome = "Farmacocinética", Icone = "💊", Cor = "#E11D48", Descricao = "Modelos compartimentais e farmacodinâmica" },
             new() { Nome = "Neurociência Computacional", Icone = "⚡", Cor = "#0369A1", Descricao = "Hodgkin-Huxley, Integrate-and-Fire e redes neurais biológicas" },
+            // ── Volume 3 ──
+            new() { Nome = "Análise Funcional", Icone = "∥", Cor = "#8B5CF6", Descricao = "Espaços de Banach, Hilbert e teoria espectral" },
+            new() { Nome = "Teoria da Medida", Icone = "μ", Cor = "#B91C1C", Descricao = "σ-álgebras, integral de Lebesgue e Radon-Nikodym" },
+            new() { Nome = "Teoria das Categorias", Icone = "⇒", Cor = "#059669", Descricao = "Funtores, transformações naturais e construções universais" },
+            new() { Nome = "Análise Numérica", Icone = "≈", Cor = "#D97706", Descricao = "Interpolação, integração numérica e elementos finitos" },
+            new() { Nome = "Geometria Algébrica", Icone = "∩", Cor = "#7C2D12", Descricao = "Variedades algébricas e curvas elípticas" },
+            new() { Nome = "Lógica Matemática", Icone = "⊢", Cor = "#4338CA", Descricao = "Lógica de 1ª ordem, incompletude de Gödel e modelos" },
+            new() { Nome = "Matéria Condensada", Icone = "⬡", Cor = "#6D28D9", Descricao = "Bandas, supercondutividade BCS e fônons" },
+            new() { Nome = "Caos e Fractais", Icone = "∞", Cor = "#DC2626", Descricao = "Sistemas dinâmicos, atratores de Lorenz e fractais" },
+            new() { Nome = "Física de Plasmas", Icone = "☀", Cor = "#EAB308", Descricao = "Debye, Vlasov e magnetohidrodinâmica" },
+            new() { Nome = "Física Nuclear", Icone = "⚛", Cor = "#EF4444", Descricao = "Estrutura nuclear, fissão, fusão e reatores" },
+            new() { Nome = "Óptica Quântica", Icone = "ℏ", Cor = "#8B5CF6", Descricao = "Campo quantizado, lasers e emaranhamento" },
+            new() { Nome = "Análise de Sobrevivência", Icone = "Ŝ", Cor = "#10B981", Descricao = "Kaplan-Meier, Cox e funções de risco" },
+            new() { Nome = "Valores Extremos e Cópulas", Icone = "∧", Cor = "#BE123C", Descricao = "GEV, GPD, VaR e cópulas" },
+            new() { Nome = "Geoestatística", Icone = "🌍", Cor = "#0D9488", Descricao = "Variograma, Kriging e covariância espacial" },
+            new() { Nome = "Mecânica da Fratura", Icone = "⚒", Cor = "#78350F", Descricao = "LEFM, fadiga e propagação de trincas" },
+            new() { Nome = "CFD e Turbulência", Icone = "▽", Cor = "#0284C7", Descricao = "Navier-Stokes, RANS, LES e volumes finitos" },
+            new() { Nome = "Robótica", Icone = "🤖", Cor = "#7C3AED", Descricao = "Cinemática, dinâmica e controle de manipuladores" },
+            new() { Nome = "Sistemas de Potência", Icone = "🔌", Cor = "#CA8A04", Descricao = "Fluxo de carga, curto-circuito e estabilidade" },
+            new() { Nome = "Finanças Quantitativas", Icone = "$", Cor = "#16A34A", Descricao = "Markowitz, CAPM, Black-Scholes e risco" },
+            new() { Nome = "Pesquisa Operacional", Icone = "⊿", Cor = "#6366F1", Descricao = "Programação linear, inteira e teoria das filas" },
+            new() { Nome = "Ciências do Clima", Icone = "🌡", Cor = "#0891B2", Descricao = "Equações primitivas, carbono e ENSO" },
+            new() { Nome = "Bioinformática", Icone = "🔬", Cor = "#059669", Descricao = "Alinhamento, filogenética e biologia de sistemas" },
+            new() { Nome = "Acústica e Vibroacústica", Icone = "♪", Cor = "#9333EA", Descricao = "Ondas sonoras, acústica de salas e vibrações" },
         ]);
     }
 
@@ -123,6 +147,31 @@ public partial class FormulaService
         AdicionarEpidemiologia();
         AdicionarFarmacocinetica();
         AdicionarNeurocienciaComputacional();
+
+        // ── Volume 3 ──
+        AdicionarAnaliseFuncional();
+        AdicionarTeoriaMedida();
+        AdicionarTeoriaCategorias();
+        AdicionarAnaliseNumerica();
+        AdicionarGeometriaAlgebrica();
+        AdicionarLogicaMatematica();
+        AdicionarMateriaCondensada();
+        AdicionarCaosFractais();
+        AdicionarFisicaPlasmas();
+        AdicionarFisicaNuclear();
+        AdicionarOpticaQuantica();
+        AdicionarAnaliseSobrevivencia();
+        AdicionarValoresExtremos();
+        AdicionarGeoestatistica();
+        AdicionarMecanicaFratura();
+        AdicionarCFDTurbulencia();
+        AdicionarRobotica();
+        AdicionarSistemasPotencia();
+        AdicionarFinancasQuantitativas();
+        AdicionarPesquisaOperacional();
+        AdicionarCienciasClima();
+        AdicionarBioinformatica();
+        AdicionarAcustica();
 
         // Update category counts
         foreach (var cat in _categorias)

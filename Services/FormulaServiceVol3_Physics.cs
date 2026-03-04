@@ -1,0 +1,954 @@
+using CompendioCalc.Models;
+
+namespace CompendioCalc.Services;
+
+public partial class FormulaService
+{
+    // ═══════════════════════════════════════════════════════════════
+    //  VOLUME 3 — PARTE II: FÍSICA AVANÇADA
+    // ═══════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────
+    // 7. FÍSICA DA MATÉRIA CONDENSADA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarMateriaCondensada()
+    {
+        _formulas.AddRange([
+            // 7.1 Teoria de Bandas e Sólidos
+            new Formula
+            {
+                Id = "3_mc01", Nome = "Teorema de Bloch", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "ψₙₖ(r) = uₙₖ(r)·eⁱᵏ·ʳ",
+                ExprTexto = "ψₙₖ(r) = uₙₖ(r)·eⁱᵏ·ʳ",
+                Icone = "ψ",
+                Descricao = "Em cristal periódico, a função de onda é uma onda plana modulada por função com periodicidade da rede. Base de toda teoria de bandas em sólidos.",
+                Criador = "Felix Bloch",
+                AnoOrigin = "1929",
+            },
+            new Formula
+            {
+                Id = "3_mc02", Nome = "Periodicidade de Banda", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "Eₙ(k+G) = Eₙ(k)  (G = vetor de rede recíproca)",
+                ExprTexto = "Eₙ(k+G) = Eₙ(k)",
+                Icone = "E(k)",
+                Descricao = "A relação de dispersão E(k) tem a periodicidade da rede recíproca. Basta conhecer E(k) na 1ª zona de Brillouin.",
+                Criador = "Léon Brillouin",
+                AnoOrigin = "1930",
+            },
+            new Formula
+            {
+                Id = "3_mc03", Nome = "Dispersão de Elétron Livre", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "E = ℏ²k²/(2m)",
+                ExprTexto = "E = ℏ²k²/(2m)",
+                Icone = "E(k)",
+                Descricao = "Relação de dispersão parabólica para elétrons livres. Boa aproximação no fundo/topo de bandas. Desvios definem a massa efetiva.",
+                Criador = "Mecânica quântica clássica",
+                Variaveis = [
+                    new() { Simbolo = "hbar", Nome = "ℏ (J·s)", ValorPadrao = 1.0546e-34 },
+                    new() { Simbolo = "k", Nome = "k (m⁻¹)", Descricao = "Vetor de onda", ValorPadrao = 1e10 },
+                    new() { Simbolo = "m", Nome = "m (kg)", Descricao = "Massa do elétron", ValorPadrao = 9.109e-31 },
+                ],
+                VariavelResultado = "E (J)",
+                UnidadeResultado = "J",
+                Calcular = v => v["hbar"] * v["hbar"] * v["k"] * v["k"] / (2 * v["m"])
+            },
+            new Formula
+            {
+                Id = "3_mc04", Nome = "Massa Efetiva", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "1/m* = (1/ℏ²)·∂²E/∂k²",
+                ExprTexto = "1/m* = (1/ℏ²)·d²E/dk²",
+                Icone = "m*",
+                Descricao = "A curvatura da banda define a massa efetiva. m* < m (banda larga) → alta mobilidade. m* pode ser negativa (topo de banda = buraco).",
+                Criador = "Franco Rasetti / Teoria de bandas",
+                AnoOrigin = "~1930",
+            },
+            new Formula
+            {
+                Id = "3_mc05", Nome = "Densidade de Estados 3D", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "g(E) = (1/2π²)(2m/ℏ²)^(3/2)·√E",
+                ExprTexto = "g(E) = (1/2π²)(2m/ℏ²)^(3/2)·√E",
+                Icone = "g(E)",
+                Descricao = "Número de estados por unidade de energia em 3D. Cresce como √E para elétrons livres. Determina propriedades termodinâmicas e de transporte.",
+                Criador = "Teoria de bandas",
+            },
+            new Formula
+            {
+                Id = "3_mc06", Nome = "Zona de Brillouin", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "Célula de Wigner-Seitz no espaço recíproco",
+                ExprTexto = "1ª ZB = Wigner-Seitz no espaço k",
+                Icone = "ZB",
+                Descricao = "Região no espaço recíproco que contém toda a informação das bandas eletrônicas. Para rede FCC: é um octaedro truncado.",
+                Criador = "Léon Brillouin",
+                AnoOrigin = "1930",
+            },
+            new Formula
+            {
+                Id = "3_mc07", Nome = "Modelo de Drude (DC)", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "σ = ne²τ/m",
+                ExprTexto = "σ = ne²τ/m",
+                Icone = "σ",
+                Descricao = "Condutividade de Drude: elétrons livres com tempo de relaxação τ e densidade n. Modelo clássico que explica Lei de Ohm microscopicamente.",
+                Criador = "Paul Drude",
+                AnoOrigin = "1900",
+                Variaveis = [
+                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28 },
+                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19 },
+                    new() { Simbolo = "tau", Nome = "τ (s)", Descricao = "Tempo de relaxação", ValorPadrao = 2.5e-14 },
+                    new() { Simbolo = "m", Nome = "m (kg)", ValorPadrao = 9.109e-31 },
+                ],
+                VariavelResultado = "σ (S/m)",
+                UnidadeResultado = "S/m",
+                Calcular = v => v["n"] * v["e"] * v["e"] * v["tau"] / v["m"]
+            },
+            new Formula
+            {
+                Id = "3_mc08", Nome = "Drude AC", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "σ(ω) = σ₀/(1-iωτ)",
+                ExprTexto = "σ(ω) = σ₀/(1−iωτ)",
+                Icone = "σ(ω)",
+                Descricao = "Resposta óptica do metal: condutividade complexa com polo lorentziano. Explica reflexão metálica e frequência de plasma.",
+                Criador = "Paul Drude",
+                AnoOrigin = "1900",
+            },
+            new Formula
+            {
+                Id = "3_mc09", Nome = "Coeficiente de Hall", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "R_H = -1/(ne)",
+                ExprTexto = "R_H = −1/(ne)",
+                Icone = "Hall",
+                Descricao = "Efeito Hall clássico: campo magnético + corrente → tensão transversal. O sinal de R_H revela o tipo de portador (elétron ou buraco).",
+                Criador = "Edwin Hall",
+                AnoOrigin = "1879",
+                Variaveis = [
+                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28 },
+                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19 },
+                ],
+                VariavelResultado = "R_H (m³/C)",
+                UnidadeResultado = "m³/C",
+                Calcular = v => -1.0 / (v["n"] * v["e"])
+            },
+            new Formula
+            {
+                Id = "3_mc10", Nome = "Efeito Hall Quântico Inteiro (IQHE)", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "σ_xy = n·e²/h  (n inteiro)",
+                ExprTexto = "σ_xy = n·e²/h",
+                Icone = "QHE",
+                Descricao = "Em 2D e campo magnético forte, a condutividade Hall é quantizada em múltiplos inteiros de e²/h. Precisão de 10⁻⁹ — usado como padrão de resistência.",
+                Criador = "Klaus von Klitzing",
+                AnoOrigin = "1980",
+            },
+            new Formula
+            {
+                Id = "3_mc11", Nome = "Fator de Preenchimento", Categoria = "Matéria Condensada", SubCategoria = "Teoria de Bandas",
+                Expressao = "ν = nh/(eB)",
+                ExprTexto = "ν = nh/(eB)",
+                Icone = "ν",
+                Descricao = "Número de níveis de Landau preenchidos. Plateaus em IQHE ocorrem para ν inteiro. Efeito Hall fracionário: ν = p/q com q ímpar.",
+                Criador = "Von Klitzing / Laughlin",
+                AnoOrigin = "1980-1983",
+            },
+            // 7.2 Supercondutividade BCS
+            new Formula
+            {
+                Id = "3_sc01", Nome = "Temperatura Crítica BCS", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "kBTc ≈ 1.13ℏωD·exp(-1/(N(0)V))",
+                ExprTexto = "kBTc ≈ 1.13ℏωD·e^(−1/(N(0)V))",
+                Icone = "Tc",
+                Descricao = "Temperatura abaixo da qual o material torna-se supercondutor. Depende exponencialmente da interação elétron-fônon N(0)V.",
+                Criador = "Bardeen, Cooper, Schrieffer",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "3_sc02", Nome = "Gap BCS", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "Δ(0) = 2ℏωD·exp(-1/(N(0)V));  2Δ(0)≈3.52kBTc",
+                ExprTexto = "2Δ(0) ≈ 3.52kBTc",
+                Icone = "Δ",
+                Descricao = "Gap de energia supercondutora a T=0. A razão 2Δ/(kBTc)≈3.52 é previsão universal da teoria BCS, confirmada experimentalmente.",
+                Criador = "Bardeen, Cooper, Schrieffer",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "3_sc03", Nome = "Par de Cooper", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "(k↑, -k↓): dois elétrons ligados via fônon",
+                ExprTexto = "(k↑, −k↓) ligados por interação fônon",
+                Icone = "↑↓",
+                Descricao = "Dois elétrons com momentos e spins opostos formam um estado ligado (bóson) via troca de fônon. Condensam no mesmo estado quântico → supercondutividade.",
+                Criador = "Leon Cooper",
+                AnoOrigin = "1956",
+            },
+            new Formula
+            {
+                Id = "3_sc04", Nome = "Equações de London", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "∇×(Λj) = -B;  j = -(nse²/mc)A",
+                ExprTexto = "∇×(Λj⃗) = −B⃗;  j⃗ = −(nse²/mc)A⃗",
+                Icone = "λL",
+                Descricao = "Descrevem o efeito Meissner: campo magnético é expulso do supercondutor. Decaimento exponencial do campo com comprimento de penetração λL.",
+                Criador = "Fritz e Heinz London",
+                AnoOrigin = "1935",
+            },
+            new Formula
+            {
+                Id = "3_sc05", Nome = "Comprimento de Penetração de London", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "λL = √(mc²/(4πnse²))",
+                ExprTexto = "λL = √(mc²/(4πnse²))",
+                Icone = "λL",
+                Descricao = "Profundidade até a qual o campo magnético penetra no supercondutor. Tipicamente 50-500 nm. B(x) = B₀·exp(-x/λL).",
+                Criador = "Fritz e Heinz London",
+                AnoOrigin = "1935",
+            },
+            new Formula
+            {
+                Id = "3_sc06", Nome = "Comprimento de Coerência", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "ξ = ℏvF/(πΔ)",
+                ExprTexto = "ξ = ℏvF/(πΔ)",
+                Icone = "ξ",
+                Descricao = "Tamanho do par de Cooper; distância sobre a qual o parâmetro de ordem Δ pode variar. Tipo I: ξ>λ; Tipo II: ξ<λ (vórtices).",
+                Criador = "Teoria BCS",
+                AnoOrigin = "1957",
+            },
+            new Formula
+            {
+                Id = "3_sc07", Nome = "Quantum de Fluxo (Fluxóide)", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "Φ = nΦ₀;  Φ₀ = h/(2e) = 2.07×10⁻¹⁵ Wb",
+                ExprTexto = "Φ₀ = h/(2e) ≈ 2.07×10⁻¹⁵ Wb",
+                Icone = "Φ₀",
+                Descricao = "O fluxo magnético em um supercondutor é quantizado em múltiplos de Φ₀. O fator 2e reflete a carga do par de Cooper.",
+                Criador = "Fritz London / Deaver & Fairbank",
+                AnoOrigin = "1950/1961",
+            },
+            new Formula
+            {
+                Id = "3_sc08", Nome = "Equação de Ginzburg-Landau", Categoria = "Matéria Condensada", SubCategoria = "Supercondutividade BCS",
+                Expressao = "α|ψ|² + β|ψ|⁴ + (1/4m)(-iℏ∇-2eA/c)²ψ = 0",
+                ExprTexto = "αψ + β|ψ|²ψ + (−iℏ∇−2eA)²ψ/(4m) = 0",
+                Icone = "GL",
+                Descricao = "Equação para o parâmetro de ordem ψ(r) perto de Tc. Descreve vórtices, junções Josephson e transição tipo I/II (parâmetro κ=λ/ξ).",
+                Criador = "Vitaly Ginzburg / Lev Landau",
+                AnoOrigin = "1950",
+            },
+            // 7.3 Fônons e Vibrações de Rede
+            new Formula
+            {
+                Id = "3_ph01", Nome = "Modelo de Einstein (Calor Específico)", Categoria = "Matéria Condensada", SubCategoria = "Fônons",
+                Expressao = "Cv = 3NkB(ℏω/kBT)²·e^(ℏω/kBT)/(e^(ℏω/kBT)-1)²",
+                ExprTexto = "Cv = 3NkB(θE/T)²·eᶿᴱ/ᵀ/(eᶿᴱ/ᵀ−1)²",
+                Icone = "Cv",
+                Descricao = "Todos os átomos vibram com mesma frequência ω. Correto qualitativamente (Cv→0 para T→0, Cv→3NkB para T alto), mas falha em T baixo.",
+                Criador = "Albert Einstein",
+                AnoOrigin = "1907",
+            },
+            new Formula
+            {
+                Id = "3_ph02", Nome = "Modelo de Debye (Calor Específico)", Categoria = "Matéria Condensada", SubCategoria = "Fônons",
+                Expressao = "Cv = 9NkB(T/θD)³∫₀^(θD/T) x⁴eˣ/(eˣ-1)²dx",
+                ExprTexto = "Cv = 9NkB(T/θD)³∫₀^(θD/T) x⁴eˣ/(eˣ−1)²dx",
+                Icone = "Cv",
+                Descricao = "Modelo com espectro de frequências contínuo até ωD. Reproduz lei T³ a baixas temperaturas e Dulong-Petit a altas. Muito melhor que Einstein.",
+                Criador = "Peter Debye",
+                AnoOrigin = "1912",
+            },
+            new Formula
+            {
+                Id = "3_ph03", Nome = "Temperatura de Debye", Categoria = "Matéria Condensada", SubCategoria = "Fônons",
+                Expressao = "θD = ℏωD/kB;  ωD = (6π²N/V)^(1/3)·vs",
+                ExprTexto = "θD = ℏωD/kB",
+                Icone = "θD",
+                Descricao = "Temperatura característica do sólido. Acima de θD os fônons são clássicos (Cv≈3NkB). Ex.: Cu θD=343K, diamante θD=2230K.",
+                Criador = "Peter Debye",
+                AnoOrigin = "1912",
+            },
+            new Formula
+            {
+                Id = "3_ph04", Nome = "Lei T³ de Debye", Categoria = "Matéria Condensada", SubCategoria = "Fônons",
+                Expressao = "Cv ≈ (12π⁴/5)NkB(T/θD)³  (T≪θD)",
+                ExprTexto = "Cv ≈ (12π⁴/5)NkB(T/θD)³",
+                Icone = "T³",
+                Descricao = "A baixas temperaturas, o calor específico segue lei cúbica em T. Confirmação experimental extraordinária do modelo de Debye e da quantização de vibrações.",
+                Criador = "Peter Debye",
+                AnoOrigin = "1912",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 8. DINÂMICA NÃO-LINEAR, CAOS E FRACTAIS
+    // ─────────────────────────────────────────────────────
+    private void AdicionarCaosFractais()
+    {
+        _formulas.AddRange([
+            // 8.1 Sistemas Dinâmicos
+            new Formula
+            {
+                Id = "3_ca01", Nome = "Sistema Dinâmico Autônomo", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "ẋ = f(x);  x ∈ ℝⁿ",
+                ExprTexto = "dx/dt = f(x);  x ∈ ℝⁿ",
+                Icone = "∞",
+                Descricao = "Equação diferencial autônoma (f não depende de t explicitamente). O espaço de fase ℝⁿ contém todas as trajetórias possíveis.",
+                Criador = "Henri Poincaré",
+                AnoOrigin = "~1890",
+            },
+            new Formula
+            {
+                Id = "3_ca02", Nome = "Ponto de Equilíbrio", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "f(x*) = 0  (ponto fixo)",
+                ExprTexto = "f(x*) = 0",
+                Icone = "•",
+                Descricao = "Estado estacionário onde o sistema não evolui. A estabilidade é determinada pela linearização (Jacobiano) avaliada em x*.",
+                Criador = "Henri Poincaré / Aleksandr Lyapunov",
+                AnoOrigin = "~1892",
+            },
+            new Formula
+            {
+                Id = "3_ca03", Nome = "Análise de Estabilidade Linear", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "J = Df(x*): autovalores determinam estabilidade",
+                ExprTexto = "J = ∂f/∂x|_{x*}; λᵢ = autovalores de J",
+                Icone = "λ",
+                Descricao = "Jacobiano em x*: Re(λ)<0 todos → estável; algum Re(λ)>0 → instável; Im≠0 → oscilação; comportamento espiral, nó ou sela.",
+                Criador = "Aleksandr Lyapunov",
+                AnoOrigin = "1892",
+            },
+            new Formula
+            {
+                Id = "3_ca04", Nome = "Classificação por Autovalores", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "Re(λ)<0: estável; Re(λ)>0: instável; Im≠0: espiral",
+                ExprTexto = "Re(λ)<0: estável; Re(λ)>0: instável; Im(λ)≠0: espiral",
+                Icone = "λ",
+                Descricao = "Em 2D: nó estável/instável, espiral, sela, centro. A parte real determina convergência/divergência; a imaginária, oscilação.",
+                Criador = "Poincaré / Lyapunov",
+            },
+            new Formula
+            {
+                Id = "3_ca05", Nome = "Bifurcação de Hopf", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "Par de autovalores cruza o eixo imaginário ⟹ ciclo limite nasce",
+                ExprTexto = "Re(λ(μ₀))=0, d/dμ Re(λ)|_{μ₀}≠0",
+                Icone = "⊙",
+                Descricao = "Quando autovalores complexos cruzam o eixo imaginário, um equilíbrio perde estabilidade e nasce um ciclo limite (oscilação periódica).",
+                Criador = "Eberhard Hopf",
+                AnoOrigin = "1942",
+            },
+            new Formula
+            {
+                Id = "3_ca06", Nome = "Bifurcação Pitchfork", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "ẋ = μx - x³;  μ=0: bifurcação",
+                ExprTexto = "ẋ = μx − x³",
+                Icone = "⋔",
+                Descricao = "Em μ<0: um equilíbrio estável. Em μ>0: equilíbrio instável + 2 novos estáveis em ±√μ. Modelo de quebra de simetria.",
+                Criador = "Teoria de bifurcações",
+            },
+            new Formula
+            {
+                Id = "3_ca07", Nome = "Mapa Logístico", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "xₙ₊₁ = r·xₙ(1-xₙ)",
+                ExprTexto = "xₙ₊₁ = r·xₙ(1−xₙ)",
+                Icone = "∞",
+                Descricao = "Modelo discreto mais simples que exibe caos. r<3: ponto fixo; r≈3.45: período 4; r≈3.57: caos. Período-dobramento via diagrama de bifurcação.",
+                Criador = "Robert May",
+                AnoOrigin = "1976",
+                Variaveis = [
+                    new() { Simbolo = "r", Nome = "r (parâmetro)", ValorPadrao = 3.7, ValorMin = 0, ValorMax = 4 },
+                    new() { Simbolo = "xn", Nome = "xₙ (estado atual)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 },
+                ],
+                VariavelResultado = "xₙ₊₁",
+                Calcular = v => v["r"] * v["xn"] * (1 - v["xn"])
+            },
+            new Formula
+            {
+                Id = "3_ca08", Nome = "Diagrama de Bifurcação", Categoria = "Caos e Fractais", SubCategoria = "Sistemas Dinâmicos",
+                Expressao = "Gráfico r vs xₙ (longo prazo) — revela estrutura do caos",
+                ExprTexto = "r vs x* (atratores de longo prazo)",
+                Icone = "∞",
+                Descricao = "Visualização de como o comportamento assintótico muda com o parâmetro r. Mostra cascata de duplicação de período, janelas de estabilidade e universalidade de Feigenbaum.",
+                Criador = "Mitchell Feigenbaum / Robert May",
+                AnoOrigin = "1976-1978",
+            },
+            // 8.2 Atratores de Lorenz
+            new Formula
+            {
+                Id = "3_lz01", Nome = "Lorenz — Equação para x", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "ẋ = σ(y-x)  (σ=10)",
+                ExprTexto = "dx/dt = σ(y−x)",
+                Icone = "🦋",
+                Descricao = "Primeira equação de Lorenz: difusão convectiva. σ (Prandtl) controla a razão difusão térmica/viscosidade. σ=10 é valor canônico.",
+                Criador = "Edward Lorenz",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_lz02", Nome = "Lorenz — Equação para y", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "ẏ = x(ρ-z) - y  (ρ=28)",
+                ExprTexto = "dy/dt = x(ρ−z) − y",
+                Icone = "🦋",
+                Descricao = "Segunda equação: ρ (Rayleigh) controla a convecção. Para ρ>24.74 com σ=10, β=8/3, o sistema exibe caos determinístico.",
+                Criador = "Edward Lorenz",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_lz03", Nome = "Lorenz — Equação para z", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "ż = xy - βz  (β=8/3)",
+                ExprTexto = "dz/dt = xy − βz",
+                Icone = "🦋",
+                Descricao = "Terceira equação: z é proporcional à distorção do perfil de temperatura. β controla o amortecimento vertical.",
+                Criador = "Edward Lorenz",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_lz04", Nome = "Sensibilidade às Condições Iniciais", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "Caos: sensibilidade exponencial — 'efeito borboleta'",
+                ExprTexto = "δ(t) ∼ δ₀·eᵏᵗ para k>0",
+                Icone = "🦋",
+                Descricao = "Duas condições iniciais arbitrariamente próximas divergem exponencialmente. O sistema é determinístico mas imprevisível a longo prazo — caos.",
+                Criador = "Edward Lorenz",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_lz05", Nome = "Expoente de Lyapunov", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "δ(t) = δ₀·e^(λt);  λ>0 ⟹ caos",
+                ExprTexto = "δ(t) = δ₀·eᵏᵗ;  λ>0 ⟹ caos",
+                Icone = "λ",
+                Descricao = "Taxa média de separação exponencial de trajetórias vizinhas. λ>0 é a definição quantitativa de caos. Lorenz: λ₁≈0.906.",
+                Criador = "Aleksandr Lyapunov / Oseledets",
+                AnoOrigin = "1892/1968",
+            },
+            new Formula
+            {
+                Id = "3_lz06", Nome = "Espectro de Lyapunov (Lorenz)", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "λ₁>0>λ₂>λ₃;  Σλᵢ = -(σ+1+β) < 0",
+                ExprTexto = "λ₁>0>λ₂>λ₃;  Σλᵢ<0 (dissipativo)",
+                Icone = "λᵢ",
+                Descricao = "3 expoentes: 1 positivo (caos), 1 zero (fluxo), 1 muito negativo (contração). Soma negativa → sistema dissipativo, volume no espaço de fase diminui.",
+                Criador = "Lorenz / Oseledets",
+            },
+            new Formula
+            {
+                Id = "3_lz07", Nome = "Dimensão de Kaplan-Yorke", Categoria = "Caos e Fractais", SubCategoria = "Atrator de Lorenz",
+                Expressao = "dKY = j + Σᵢ₌₁ʲ λᵢ / |λⱼ₊₁|",
+                ExprTexto = "dKY = j + (λ₁+...+λⱼ)/|λⱼ₊₁|",
+                Icone = "dim",
+                Descricao = "Estimativa da dimensão fractal do atrator a partir dos expoentes de Lyapunov. Lorenz: dKY≈2.06 (atrator fractal entre 2D e 3D).",
+                Criador = "James Kaplan / James Yorke",
+                AnoOrigin = "1979",
+            },
+            // 8.3 Fractais
+            new Formula
+            {
+                Id = "3_fr01", Nome = "Dimensão de Hausdorff", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "dH = lim(log N(ε) / log(1/ε))",
+                ExprTexto = "dH = lim_{ε→0} log N(ε) / log(1/ε)",
+                Icone = "dim",
+                Descricao = "Generaliza dimensão para conjuntos fractais. N(ε) = mínimo de bolas de raio ε para cobrir o conjunto. Pode ser não-inteira.",
+                Criador = "Felix Hausdorff",
+                AnoOrigin = "1918",
+            },
+            new Formula
+            {
+                Id = "3_fr02", Nome = "Conjunto de Cantor", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "dH = log2/log3 ≈ 0.631",
+                ExprTexto = "dH = log 2 / log 3 ≈ 0.631",
+                Icone = "···",
+                Descricao = "Remove o terço médio iterativamente de [0,1]. Conjunto resultante é não-enumerável mas tem medida de Lebesgue 0. Dimensão entre 0 (ponto) e 1 (segmento).",
+                Criador = "Georg Cantor",
+                AnoOrigin = "1883",
+            },
+            new Formula
+            {
+                Id = "3_fr03", Nome = "Curva de Koch", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "dH = log4/log3 ≈ 1.262",
+                ExprTexto = "dH = log 4 / log 3 ≈ 1.262",
+                Icone = "❄",
+                Descricao = "Substitui cada segmento por 4 de tamanho 1/3. Comprimento infinito em área finita. O 'floco de neve' de Koch tem área finita mas perímetro infinito.",
+                Criador = "Helge von Koch",
+                AnoOrigin = "1904",
+            },
+            new Formula
+            {
+                Id = "3_fr04", Nome = "Triângulo de Sierpinski", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "dH = log3/log2 ≈ 1.585",
+                ExprTexto = "dH = log 3 / log 2 ≈ 1.585",
+                Icone = "△",
+                Descricao = "Remove triângulo central iterativamente. 3 cópias de escala 1/2. Dimensão entre 1 (linha) e 2 (área). Área zero mas dimensão >1.",
+                Criador = "Wacław Sierpiński",
+                AnoOrigin = "1915",
+            },
+            new Formula
+            {
+                Id = "3_fr05", Nome = "Conjunto de Mandelbrot", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "zₙ₊₁ = zₙ² + c;  c∈M se |zₙ|≤2 ∀n",
+                ExprTexto = "zₙ₊₁ = zₙ²+c;  c∈M ⟺ |zₙ| limitado",
+                Icone = "M",
+                Descricao = "O fractal mais famoso: conjunto de c∈ℂ para os quais a iteração z↦z²+c (z₀=0) não diverge. Fronteira tem dimensão exatamente 2.",
+                Criador = "Benoît B. Mandelbrot",
+                AnoOrigin = "1980",
+                Variaveis = [
+                    new() { Simbolo = "zr", Nome = "Re(zₙ)", ValorPadrao = 0 },
+                    new() { Simbolo = "zi", Nome = "Im(zₙ)", ValorPadrao = 0 },
+                    new() { Simbolo = "cr", Nome = "Re(c)", ValorPadrao = -0.5 },
+                    new() { Simbolo = "ci", Nome = "Im(c)", ValorPadrao = 0.5 },
+                ],
+                VariavelResultado = "|zₙ₊₁|",
+                Calcular = v => {
+                    double zr2 = v["zr"] * v["zr"] - v["zi"] * v["zi"] + v["cr"];
+                    double zi2 = 2 * v["zr"] * v["zi"] + v["ci"];
+                    return Math.Sqrt(zr2 * zr2 + zi2 * zi2);
+                }
+            },
+            new Formula
+            {
+                Id = "3_fr06", Nome = "Autossimilaridade (IFS)", Categoria = "Caos e Fractais", SubCategoria = "Fractais",
+                Expressao = "F = ∪ᵢ fᵢ(F);  fᵢ contrações",
+                ExprTexto = "F = ⋃ᵢ fᵢ(F)",
+                Icone = "∞",
+                Descricao = "Fractal como ponto fixo de sistema de funções iteradas (IFS). Cada fᵢ é uma contração e F é a união de suas cópias reduzidas. Teorema de Hutchinson.",
+                Criador = "John Hutchinson / Michael Barnsley",
+                AnoOrigin = "1981-1988",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 9. FÍSICA DE PLASMAS
+    // ─────────────────────────────────────────────────────
+    private void AdicionarFisicaPlasmas()
+    {
+        _formulas.AddRange([
+            // 9.1 Fundamentos
+            new Formula
+            {
+                Id = "3_pl01", Nome = "Comprimento de Debye", Categoria = "Física de Plasmas", SubCategoria = "Fundamentos",
+                Expressao = "λD = √(ε₀kBT/(ne²))",
+                ExprTexto = "λD = √(ε₀kBT/(ne²))",
+                Icone = "λD",
+                Descricao = "Distância sobre a qual o campo de uma carga é blindado pelo plasma. Abaixo de λD, efeitos de carga individual; acima, comportamento coletivo.",
+                Criador = "Peter Debye / Erich Hückel",
+                AnoOrigin = "1923",
+                Variaveis = [
+                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12 },
+                    new() { Simbolo = "kB", Nome = "kB (J/K)", ValorPadrao = 1.381e-23 },
+                    new() { Simbolo = "T", Nome = "T (K)", ValorPadrao = 1e6 },
+                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18 },
+                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19 },
+                ],
+                VariavelResultado = "λD (m)",
+                UnidadeResultado = "m",
+                Calcular = v => Math.Sqrt(v["eps0"] * v["kB"] * v["T"] / (v["n"] * v["e"] * v["e"]))
+            },
+            new Formula
+            {
+                Id = "3_pl02", Nome = "Parâmetro de Plasma", Categoria = "Física de Plasmas", SubCategoria = "Fundamentos",
+                Expressao = "Λ = n·λD³ ≫ 1  (plasma ideal)",
+                ExprTexto = "Λ = nλD³ ≫ 1",
+                Icone = "Λ",
+                Descricao = "Número de partículas na esfera de Debye. Λ≫1 significa comportamento coletivo domina sobre colisões individuais — plasma fracamente acoplado.",
+                Criador = "Teoria de plasmas",
+            },
+            new Formula
+            {
+                Id = "3_pl03", Nome = "Frequência de Plasma", Categoria = "Física de Plasmas", SubCategoria = "Fundamentos",
+                Expressao = "ωp = √(ne²/(ε₀me))",
+                ExprTexto = "ωp = √(ne²/(ε₀mₑ))",
+                Icone = "ωp",
+                Descricao = "Frequência natural de oscilação eletrônica. Ondas EM com ω<ωp não propagam (reflexão). Ionosfera: ωp determina faixa de rádio refletida.",
+                Criador = "Irving Langmuir / Lev Tonks",
+                AnoOrigin = "1929",
+                Variaveis = [
+                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18 },
+                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19 },
+                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12 },
+                    new() { Simbolo = "me", Nome = "mₑ (kg)", ValorPadrao = 9.109e-31 },
+                ],
+                VariavelResultado = "ωp (rad/s)",
+                UnidadeResultado = "rad/s",
+                Calcular = v => Math.Sqrt(v["n"] * v["e"] * v["e"] / (v["eps0"] * v["me"]))
+            },
+            new Formula
+            {
+                Id = "3_pl04", Nome = "Condições de Plasma", Categoria = "Física de Plasmas", SubCategoria = "Fundamentos",
+                Expressao = "L ≫ λD;  τ ≫ 1/ωp;  Λ ≫ 1",
+                ExprTexto = "L ≫ λD; τ ≫ 1/ωp; Λ ≫ 1",
+                Icone = "≫",
+                Descricao = "Três critérios para um gás ionizado ser plasma: tamanho muito maior que λD, escala temporal maior que 1/ωp, muitas partículas na esfera de Debye.",
+                Criador = "Definição clássica de plasma",
+            },
+            new Formula
+            {
+                Id = "3_pl05", Nome = "Equação de Vlasov", Categoria = "Física de Plasmas", SubCategoria = "Fundamentos",
+                Expressao = "∂f/∂t + v·∇f + (q/m)(E+v×B)·∇ᵥf = 0",
+                ExprTexto = "∂f/∂t + v⃗·∇f + (q/m)(E⃗+v⃗×B⃗)·∇ᵥf = 0",
+                Icone = "f(x,v)",
+                Descricao = "Equação cinética sem colisões para a função de distribuição f(x,v,t). Fundamento teórico do plasma: descreve evolução no espaço de fase 6D.",
+                Criador = "Anatoly Vlasov",
+                AnoOrigin = "1938",
+            },
+            // 9.2 MHD
+            new Formula
+            {
+                Id = "3_mh01", Nome = "Continuidade (MHD)", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "∂ρ/∂t + ∇·(ρv) = 0",
+                ExprTexto = "∂ρ/∂t + ∇·(ρv⃗) = 0",
+                Icone = "MHD",
+                Descricao = "Conservação de massa no fluido condutivo. Idêntica à equação de continuidade da mecânica dos fluidos.",
+                Criador = "Equações clássicas / Hannes Alfvén",
+                AnoOrigin = "1942",
+            },
+            new Formula
+            {
+                Id = "3_mh02", Nome = "Momento (MHD)", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "ρ(∂v/∂t + v·∇v) = -∇p + J×B",
+                ExprTexto = "ρDv⃗/Dt = −∇p + J⃗×B⃗",
+                Icone = "MHD",
+                Descricao = "Navier-Stokes com força de Lorentz J×B. O acoplamento com o campo magnético distingue MHD da hidrodinâmica comum.",
+                Criador = "Hannes Alfvén",
+                AnoOrigin = "1942",
+            },
+            new Formula
+            {
+                Id = "3_mh03", Nome = "Indução Magnética (MHD)", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "∂B/∂t = ∇×(v×B) + η∇²B",
+                ExprTexto = "∂B⃗/∂t = ∇×(v⃗×B⃗) + η∇²B⃗",
+                Icone = "MHD",
+                Descricao = "Evolução do campo magnético: 1º termo = advecção (campo 'congelado' no fluido); 2º = difusão resistiva. Rm=Lv/η grande → campo congelado.",
+                Criador = "Hannes Alfvén",
+                AnoOrigin = "1942",
+            },
+            new Formula
+            {
+                Id = "3_mh04", Nome = "Lei de Ampère (MHD)", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "J = (1/μ₀)∇×B",
+                ExprTexto = "J⃗ = (1/μ₀)∇×B⃗",
+                Icone = "MHD",
+                Descricao = "Corrente relacionada ao rotacional do campo magnético. Aproximação quase-estática (ignora corrente de deslocamento ∂D/∂t).",
+                Criador = "André-Marie Ampère",
+            },
+            new Formula
+            {
+                Id = "3_mh05", Nome = "Velocidade de Alfvén", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "vA = B/√(μ₀ρ)",
+                ExprTexto = "vA = B/√(μ₀ρ)",
+                Icone = "vA",
+                Descricao = "Velocidade de propagação de perturbações ao longo das linhas de campo magnético. Análoga a velocidade do som para ondas magnéticas.",
+                Criador = "Hannes Alfvén",
+                AnoOrigin = "1942",
+                Variaveis = [
+                    new() { Simbolo = "B", Nome = "B (T)", Descricao = "Campo magnético", ValorPadrao = 1e-3 },
+                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6 },
+                    new() { Simbolo = "rho", Nome = "ρ (kg/m³)", ValorPadrao = 1e-12 },
+                ],
+                VariavelResultado = "vA (m/s)",
+                UnidadeResultado = "m/s",
+                Calcular = v => v["B"] / Math.Sqrt(v["mu0"] * v["rho"])
+            },
+            new Formula
+            {
+                Id = "3_mh06", Nome = "Número de Lundquist", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "S = L·vA/η",
+                ExprTexto = "S = LvA/η",
+                Icone = "S",
+                Descricao = "Razão entre escalas temporal resistiva e de Alfvén. S grande → campo magnético quase 'congelado'. S~10⁶-10¹² em plasmas astrofísicos.",
+                Criador = "Hannes Alfvén",
+            },
+            new Formula
+            {
+                Id = "3_mh07", Nome = "Beta do Plasma", Categoria = "Física de Plasmas", SubCategoria = "Magnetohidrodinâmica",
+                Expressao = "β = 2μ₀p/B²",
+                ExprTexto = "β = 2μ₀p/B²",
+                Icone = "β",
+                Descricao = "Razão entre pressão cinética do plasma e pressão magnética. β≪1: dominado por campos magnéticos. β≫1: plasma domina (alta pressão).",
+                Criador = "Física de plasmas",
+                Variaveis = [
+                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6 },
+                    new() { Simbolo = "p", Nome = "p (Pa)", Descricao = "Pressão do plasma", ValorPadrao = 1e3 },
+                    new() { Simbolo = "B", Nome = "B (T)", ValorPadrao = 1 },
+                ],
+                VariavelResultado = "β",
+                Calcular = v => 2 * v["mu0"] * v["p"] / (v["B"] * v["B"])
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 10. FÍSICA NUCLEAR
+    // ─────────────────────────────────────────────────────
+    private void AdicionarFisicaNuclear()
+    {
+        _formulas.AddRange([
+            // 10.1 Estrutura Nuclear
+            new Formula
+            {
+                Id = "3_nu01", Nome = "Raio Nuclear", Categoria = "Física Nuclear", SubCategoria = "Estrutura Nuclear",
+                Expressao = "R = R₀·A^(1/3);  R₀ ≈ 1.2 fm",
+                ExprTexto = "R = R₀·A^(1/3)",
+                Icone = "⚛",
+                Descricao = "Raio nuclear proporcional à raiz cúbica do número de massa A. Implica densidade nuclear constante (~2.3×10¹⁷ kg/m³ = 'matéria nuclear incompressível').",
+                Criador = "Experimentos de espalhamento de elétrons",
+                AnoOrigin = "~1950",
+                Variaveis = [
+                    new() { Simbolo = "R0", Nome = "R₀ (fm)", ValorPadrao = 1.2 },
+                    new() { Simbolo = "A", Nome = "A (número de massa)", ValorPadrao = 56, ValorMin = 1 },
+                ],
+                VariavelResultado = "R (fm)",
+                UnidadeResultado = "fm",
+                Calcular = v => v["R0"] * Math.Pow(v["A"], 1.0 / 3.0)
+            },
+            new Formula
+            {
+                Id = "3_nu02", Nome = "Fórmula de Bethe-Weizsäcker (Semi-empírica)", Categoria = "Física Nuclear", SubCategoria = "Estrutura Nuclear",
+                Expressao = "B(Z,A) = avA - asA^(2/3) - acZ(Z-1)/A^(1/3) - aa(A-2Z)²/A ± δ",
+                ExprTexto = "B = avA − asA²ᐟ³ − acZ(Z−1)/A¹ᐟ³ − aa(A−2Z)²/A ± δ",
+                Icone = "B",
+                Descricao = "Energia de ligação nuclear: termos de volume, superfície, Coulomb, assimetria e emparelhamento. Modelo da gota líquida nuclear.",
+                Criador = "Carl Friedrich von Weizsäcker",
+                AnoOrigin = "1935",
+            },
+            new Formula
+            {
+                Id = "3_nu03", Nome = "Termos da Fórmula de Massa", Categoria = "Física Nuclear", SubCategoria = "Estrutura Nuclear",
+                Expressao = "av≈15.85; as≈18.34; ac≈0.71; aa≈23.2 MeV",
+                ExprTexto = "av≈15.85, as≈18.34, ac≈0.71, aa≈23.2 MeV",
+                Icone = "MeV",
+                Descricao = "Valores empíricos dos coeficientes: volume (atração nuclear forte), superfície (nucleons na borda), Coulomb (repulsão protônica), assimetria (diferença N-Z).",
+                Criador = "Weizsäcker / Bethe",
+                AnoOrigin = "1935",
+            },
+            new Formula
+            {
+                Id = "3_nu04", Nome = "Termo de Emparelhamento δ", Categoria = "Física Nuclear", SubCategoria = "Estrutura Nuclear",
+                Expressao = "δ = +ap/√A (par-par); 0 (ímpar); -ap/√A (ímpar-ímpar)",
+                ExprTexto = "δ: +ap/√A | 0 | −ap/√A",
+                Icone = "δ",
+                Descricao = "Energia de emparelhamento: núcleos par-par são mais estáveis (todos os nucleons em pares). ap≈12 MeV. Explica por que há mais isótopos estáveis par-par.",
+                Criador = "Modelo de gota líquida",
+            },
+            new Formula
+            {
+                Id = "3_nu05", Nome = "Energia de Ligação por Nucleon", Categoria = "Física Nuclear", SubCategoria = "Estrutura Nuclear",
+                Expressao = "B/A vs A → máximo em Fe-56 (~8.8 MeV)",
+                ExprTexto = "B/A máx. ≈ 8.8 MeV em ⁵⁶Fe",
+                Icone = "B/A",
+                Descricao = "Curva B/A: cresce até Fe-56, depois decresce. Fissão de pesados e fusão de leves liberam energia (ambos caminham para Fe).",
+                Criador = "Francis Aston / Weizsäcker",
+                AnoOrigin = "~1927-1935",
+            },
+            // 10.2 Reações e Decaimentos
+            new Formula
+            {
+                Id = "3_nu06", Nome = "Q-Valor de Reação", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "Q = (Σmᵢ - Σmf)c²",
+                ExprTexto = "Q = (mᵢ − mf)c²",
+                Icone = "Q",
+                Descricao = "Energia liberada (Q>0) ou absorvida (Q<0) numa reação nuclear. Diferença de massa repouso entre reagentes e produtos vezes c².",
+                Criador = "Física nuclear clássica",
+                Variaveis = [
+                    new() { Simbolo = "mi", Nome = "Σm_inicial (u)", ValorPadrao = 236.0526 },
+                    new() { Simbolo = "mf", Nome = "Σm_final (u)", ValorPadrao = 235.8397 },
+                ],
+                VariavelResultado = "Q (MeV)",
+                UnidadeResultado = "MeV",
+                Calcular = v => (v["mi"] - v["mf"]) * 931.494
+            },
+            new Formula
+            {
+                Id = "3_nu07", Nome = "Fissão Nuclear (²³⁵U)", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "²³⁵U + n → ²³⁶U* → produtos + 2-3n + ~200 MeV",
+                ExprTexto = "²³⁵U + n → fragmentos + 2–3n + ∼200 MeV",
+                Icone = "⚛",
+                Descricao = "Nêutron térmico é absorvido pelo U-235, formando U-236 excitado que fissiona em dois fragmentos, liberando nêutrons e ~200 MeV. Base de reatores e armas nucleares.",
+                Criador = "Otto Hahn / Lise Meitner / Fritz Strassmann",
+                AnoOrigin = "1938",
+            },
+            new Formula
+            {
+                Id = "3_nu08", Nome = "Fusão D-T", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "²H + ³H → ⁴He + n + 17.6 MeV",
+                ExprTexto = "D + T → ⁴He + n + 17.6 MeV",
+                Icone = "☀",
+                Descricao = "Reação de fusão mais acessível: deutério + trítio → hélio-4 + nêutron + 17.6 MeV. Fonte de energia em estrelas e futuros reatores de fusão (ITER).",
+                Criador = "Hans Bethe / Tokamak (ITER)",
+                AnoOrigin = "1938/2025",
+            },
+            new Formula
+            {
+                Id = "3_nu09", Nome = "Seção de Choque", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "N_reações = σ·I·n·L  (σ em barns = 10⁻²⁸ m²)",
+                ExprTexto = "N = σ·I·n·L;  1 barn = 10⁻²⁸ m²",
+                Icone = "σ",
+                Descricao = "Probabilidade efetiva de reação: área efetiva σ × intensidade I × densidade n × espessura L. Unidade: barn (área 'do tamanho de um celeiro' para partículas).",
+                Criador = "Ernest Rutherford / Terminology Manhattan Project",
+                AnoOrigin = "~1911/1942",
+            },
+            new Formula
+            {
+                Id = "3_nu10", Nome = "Fator de Gamow (Tunelamento)", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "P_tunnel ∝ exp(-2πη);  η = Z₁Z₂e²/(ℏv)",
+                ExprTexto = "P ∝ e^(−2πη);  η = Z₁Z₂e²/(ℏv)",
+                Icone = "G",
+                Descricao = "Probabilidade de tunelamento pela barreira de Coulomb na fusão. Decresce exponencialmente com Z₁Z₂ / velocidade. Controla taxas de reações estelares.",
+                Criador = "George Gamow",
+                AnoOrigin = "1928",
+            },
+            new Formula
+            {
+                Id = "3_nu11", Nome = "Equação de Criticidade (Reator)", Categoria = "Física Nuclear", SubCategoria = "Reações Nucleares",
+                Expressao = "k_eff = k∞/(1+L²B²);  k_eff=1 → crítico",
+                ExprTexto = "keff = k∞/(1+L²B²) = 1 (crítico)",
+                Icone = "keff",
+                Descricao = "k_eff = nêutrons produzidos/absorvidos por geração. k<1 subcrítico, k=1 crítico (estado estacionário), k>1 supercrítico. L=comprimento de difusão, B=buckling geométrico.",
+                Criador = "Enrico Fermi / teoria de reatores",
+                AnoOrigin = "1942",
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 11. ÓPTICA QUÂNTICA
+    // ─────────────────────────────────────────────────────
+    private void AdicionarOpticaQuantica()
+    {
+        _formulas.AddRange([
+            // 11.1 Campo Eletromagnético Quantizado
+            new Formula
+            {
+                Id = "3_oq01", Nome = "Campo Elétrico Quantizado", Categoria = "Óptica Quântica", SubCategoria = "Campo Quantizado",
+                Expressao = "E = Σₖ √(ℏωₖ/2ε₀V)(aₖ+aₖ†)·eₖ",
+                ExprTexto = "Ê = Σₖ √(ℏωₖ/(2ε₀V))(âₖ+â†ₖ)·ε̂ₖ",
+                Icone = "ℏ",
+                Descricao = "O campo elétrico é soma de modos, cada um com operadores de criação a† e destruição a. Flutuações do vácuo (ponto zero) estão incluídas.",
+                Criador = "Paul Dirac",
+                AnoOrigin = "1927",
+            },
+            new Formula
+            {
+                Id = "3_oq02", Nome = "Relações de Comutação Bosônicas", Categoria = "Óptica Quântica", SubCategoria = "Campo Quantizado",
+                Expressao = "[aₖ, aₖ†] = 1",
+                ExprTexto = "[â, â†] = 1",
+                Icone = "[,]",
+                Descricao = "Relação de comutação canônica para fótons (bósons). Garante que número de partículas é inteiro e não-negativo. Base de toda QED.",
+                Criador = "Paul Dirac",
+                AnoOrigin = "1927",
+            },
+            new Formula
+            {
+                Id = "3_oq03", Nome = "Hamiltoniano do Campo EM", Categoria = "Óptica Quântica", SubCategoria = "Campo Quantizado",
+                Expressao = "H = Σₖ ℏωₖ(nₖ+½);  nₖ = aₖ†aₖ",
+                ExprTexto = "Ĥ = Σₖ ℏωₖ(n̂ₖ+½)",
+                Icone = "ℏ",
+                Descricao = "Cada modo do campo é um oscilador harmônico quântico com energia mínima ½ℏω (ponto zero). O espectro de energia é discreto: nℏω (n fótons).",
+                Criador = "Paul Dirac / Max Planck",
+                AnoOrigin = "1927",
+            },
+            new Formula
+            {
+                Id = "3_oq04", Nome = "Estados de Fock |n⟩", Categoria = "Óptica Quântica", SubCategoria = "Campo Quantizado",
+                Expressao = "|n⟩ = (a†)ⁿ|0⟩/√n!;  a†|n⟩=√(n+1)|n+1⟩;  a|n⟩=√n|n-1⟩",
+                ExprTexto = "|n⟩ = (â†)ⁿ|0⟩/√n!",
+                Icone = "|n⟩",
+                Descricao = "Estados com número exato de fótons. a† cria um fóton, a destrói um. |0⟩ é o vácuo. Base natural do espaço de Fock para cada modo do campo.",
+                Criador = "Vladimir Fock / Paul Dirac",
+                AnoOrigin = "1927-1932",
+            },
+            // 11.2 Estados Coerentes e Laser
+            new Formula
+            {
+                Id = "3_oq05", Nome = "Estado Coerente |α⟩", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "a|α⟩ = α|α⟩;  |α⟩ = e^(-|α|²/2) Σ αⁿ/√n! |n⟩",
+                ExprTexto = "â|α⟩ = α|α⟩;  |α⟩ = e^(−|α|²/2) Σₙ αⁿ/√n! |n⟩",
+                Icone = "|α⟩",
+                Descricao = "Autoestado do operador de destruição. Mais próximo do campo clássico: flutuações mínimas (Heisenberg saturado), distribuição poissoniana de fótons.",
+                Criador = "Roy Glauber",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_oq06", Nome = "Estatísticas do Estado Coerente", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "⟨n⟩ = |α|²;  Δn = |α|  (Poisson)",
+                ExprTexto = "⟨n⟩ = |α|²;  Δn = √⟨n⟩",
+                Icone = "⟨n⟩",
+                Descricao = "Número médio de fótons = |α|². Flutuação = √⟨n⟩ (distribuição de Poisson). Relação sinal/ruído = √⟨n⟩, melhora com intensidade.",
+                Criador = "Roy Glauber",
+                AnoOrigin = "1963",
+            },
+            new Formula
+            {
+                Id = "3_oq07", Nome = "Equações de Taxa do Laser (N₂)", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "dN₂/dt = Rp - N₂/τ - c·σ·N₂·φ",
+                ExprTexto = "dN₂/dt = Rp − N₂/τ − cσN₂φ",
+                Icone = "N₂",
+                Descricao = "Evolução da inversão de população: bombeamento Rp, emissão espontânea N₂/τ, emissão estimulada cσN₂φ. Equilíbrio define limiar do laser.",
+                Criador = "Albert Einstein (emissão estimulada) / Schawlow-Townes",
+                AnoOrigin = "1917/1958",
+            },
+            new Formula
+            {
+                Id = "3_oq08", Nome = "Equações de Taxa do Laser (fótons)", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "dφ/dt = c·σ·N₂·φ - φ/τc + β·N₂/τ",
+                ExprTexto = "dφ/dt = cσN₂φ − φ/τc + βN₂/τ",
+                Icone = "φ",
+                Descricao = "Evolução do número de fótons na cavidade: ganho estimulado, perdas na cavidade (τc), emissão espontânea no modo (fator β). Acoplada com a equação de N₂.",
+                Criador = "Teoria de laser semiclássica",
+            },
+            new Formula
+            {
+                Id = "3_oq09", Nome = "Inversão de População (Condição Laser)", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "N₂ - N₁ > 0  (inversão necessária para amplificação)",
+                ExprTexto = "N₂ − N₁ > 0 ⟹ ganho",
+                Icone = "ΔN",
+                Descricao = "Equilíbrio térmico sempre tem N₂<N₁ (Boltzmann). Laser exige inverter populações por bombeamento (óptico, elétrico, químico). Sistemas de 3 ou 4 níveis.",
+                Criador = "Charles Townes / Arthur Schawlow",
+                AnoOrigin = "1958",
+            },
+            new Formula
+            {
+                Id = "3_oq10", Nome = "Perfil de Ganho do Laser", Categoria = "Óptica Quântica", SubCategoria = "Laser e Estados Coerentes",
+                Expressao = "g(ν) = g₀/(1+(ν-ν₀)²/Δν²) · 1/(1+I/Isat)",
+                ExprTexto = "g(ν) = g₀·L(ν)/(1+I/Isat)",
+                Icone = "g(ν)",
+                Descricao = "Ganho com perfil lorentziano centrado em ν₀, saturado pela intensidade I. Acima do limiar, g(ν)=perdas (operação em estado estacionário).",
+                Criador = "Teoria semiclássica de laser",
+            },
+            // 11.3 Emaranhamento e Informação Quântica Óptica
+            new Formula
+            {
+                Id = "3_oq11", Nome = "Estado de Bell Óptico", Categoria = "Óptica Quântica", SubCategoria = "Informação Quântica Óptica",
+                Expressao = "|Φ⁺⟩ = (|HH⟩+|VV⟩)/√2",
+                ExprTexto = "|Φ⁺⟩ = (|HH⟩+|VV⟩)/√2",
+                Icone = "Φ⁺",
+                Descricao = "Máximo emaranhamento entre dois fótons via polarização. Produzido por conversão paramétrica descendente (SPDC). Base de telecomunicações quânticas.",
+                Criador = "John Bell / Alain Aspect",
+                AnoOrigin = "1964/1982",
+            },
+            new Formula
+            {
+                Id = "3_oq12", Nome = "Desigualdade CHSH (Bell)", Categoria = "Óptica Quântica", SubCategoria = "Informação Quântica Óptica",
+                Expressao = "|E(a,b)-E(a,b')|+|E(a',b)+E(a',b')| ≤ 2",
+                ExprTexto = "|E(a,b)−E(a,b')|+|E(a',b)+E(a',b')| ≤ 2",
+                Icone = "≤2",
+                Descricao = "Limite clássico (variáveis ocultas locais). Correlações clássicas satisfazem S≤2. Mecânica quântica permite violação até 2√2.",
+                Criador = "Clauser, Horne, Shimony, Holt",
+                AnoOrigin = "1969",
+            },
+            new Formula
+            {
+                Id = "3_oq13", Nome = "Violação Quântica (Bound de Tsirelson)", Categoria = "Óptica Quântica", SubCategoria = "Informação Quântica Óptica",
+                Expressao = "S_max = 2√2 > 2  (Tsirelson)",
+                ExprTexto = "S_max = 2√2 ≈ 2.828",
+                Icone = "2√2",
+                Descricao = "A mecânica quântica viola a desigualdade de Bell por até fator √2. Experimentalmente confirmado (Aspect 1982, loophole-free Bell tests 2015). Prova não-localidade.",
+                Criador = "Boris Tsirelson / Alain Aspect",
+                AnoOrigin = "1980/1982",
+            },
+            new Formula
+            {
+                Id = "3_oq14", Nome = "Teleportação Quântica", Categoria = "Óptica Quântica", SubCategoria = "Informação Quântica Óptica",
+                Expressao = "|ψ⟩ = α|0⟩+β|1⟩ transferido via par Bell + 2 bits clássicos",
+                ExprTexto = "|ψ⟩ teleportado via emaranhamento + 2 bits clássicos",
+                Icone = "⇝",
+                Descricao = "Transferência do estado quântico usando emaranhamento pré-compartilhado e comunicação clássica (2 bits). Não viola causalidade (precisa de bits). Demonstrada com fótons em 1997.",
+                Criador = "Bennett, Brassard, Crépeau, Jozsa, Peres, Wootters",
+                AnoOrigin = "1993",
+            },
+        ]);
+    }
+}
