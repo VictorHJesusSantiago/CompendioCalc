@@ -1,23 +1,59 @@
 @inject IJSRuntime JS
 @inject AccessibilityService AccessibilityService
-@implements IAsyncDisposable
+@implements IDisposable
 
 @code {
-    private IJSObjectReference? _module;
+    private bool _isInitialized = false;
+    private int _retryCount = 0;
+    private const int MaxRetries = 5;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            // Aguarda o JavaScript carregar completamente
+            await Task.Delay(200);
+            
+            // Tenta inicializar com retry
+            await InitializeWithRetry();
+        }
+    }
+
+    private async Task InitializeWithRetry()
+    {
+        while (_retryCount < MaxRetries && !_isInitialized)
+        {
             try
             {
-                _module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/accessibility-manager.js");
-                await ApplySettings();
+                // Verifica se o accessibilityManager está disponível
+                var isReady = await JS.InvokeAsync<bool>("eval", 
+                    "typeof window.accessibilityManager !== 'undefined' && typeof window.accessibilityManager.isReady === 'function' && window.accessibilityManager.isReady()");
+                
+                if (isReady)
+                {
+                    Console.WriteLine($"[Accessibility] JavaScript pronto! Aplicando configurações...");
+                    await ApplySettings();
+                    _isInitialized = true;
+                    return;
+                }
+                else
+                {
+                    _retryCount++;
+                    Console.WriteLine($"[Accessibility] JavaScript não pronto. Tentativa {_retryCount}/{MaxRetries}");
+                    await Task.Delay(500);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao carregar módulo de acessibilidade: {ex.Message}");
+                _retryCount++;
+                Console.WriteLine($"[Accessibility] Erro na tentativa {_retryCount}: {ex.Message}");
+                await Task.Delay(500);
             }
+        }
+        
+        if (!_isInitialized)
+        {
+            Console.WriteLine($"[Accessibility] FALHA: Não foi possível inicializar após {MaxRetries} tentativas");
         }
     }
 
@@ -28,34 +64,42 @@
 
     private async void OnSettingsChanged()
     {
-        await ApplySettings();
-        StateHasChanged();
+        if (_isInitialized)
+        {
+            await ApplySettings();
+            StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine("[Accessibility] Settings changed mas ainda não inicializado");
+        }
     }
 
     private async Task ApplySettings()
     {
-        if (_module == null) return;
-
         try
         {
             var classes = AccessibilityService.GetAccessibilityCssClass();
             var fontSize = AccessibilityService.CurrentSettings.FontSizePercentage;
             
-            await _module.InvokeVoidAsync("accessibilityManager.applyAll", classes, fontSize);
+            Console.WriteLine($"[Accessibility] ===== APLICANDO CONFIGURAÇÕES =====");
+            Console.WriteLine($"[Accessibility] Classes: {classes}");
+            Console.WriteLine($"[Accessibility] FontSize: {fontSize}%");
+            
+            // Chama função JavaScript global diretamente
+            await JS.InvokeVoidAsync("window.accessibilityManager.applyAll", classes, fontSize);
+            
+            Console.WriteLine($"[Accessibility] Configurações aplicadas com sucesso!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Erro ao aplicar configurações de acessibilidade: {ex.Message}");
+            Console.WriteLine($"[Accessibility] ❌ ERRO ao aplicar configurações: {ex.Message}");
+            Console.WriteLine($"[Accessibility] Stack: {ex.StackTrace}");
         }
     }
 
-    async ValueTask IAsyncDisposable.DisposeAsync()
+    public void Dispose()
     {
         AccessibilityService.OnSettingsChanged -= OnSettingsChanged;
-        
-        if (_module != null)
-        {
-            await _module.DisposeAsync();
-        }
     }
 }
