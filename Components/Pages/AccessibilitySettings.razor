@@ -84,7 +84,7 @@
                     <span class="setting-label">Alto Contraste</span>
                     <span class="setting-hint">Aumenta o contraste entre cores para melhor legibilidade</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetHighContrast((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetHighContrast(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.HighContrast"
                        aria-label="Ativar modo de alto contraste" />
             </div>
@@ -95,7 +95,7 @@
                     <span class="setting-label">Contraste Reforçado</span>
                     <span class="setting-hint">Aumenta ainda mais o contraste (requer Alto Contraste)</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetEnhancedContrast((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetEnhancedContrast(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.EnhancedContrast"
                        disabled="@(!AccessibilityService.CurrentSettings.HighContrast)"
                        aria-label="Ativar contraste reforçado" />
@@ -107,7 +107,7 @@
                     <span class="setting-label">Modo Escuro</span>
                     <span class="setting-hint">Reduz o cansaço visual em ambientes com pouca luz</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetDarkMode((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetDarkMode(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.DarkMode"
                        aria-label="Ativar modo escuro" />
             </div>
@@ -118,7 +118,7 @@
                     <span class="setting-label">Leitor de Tela</span>
                     <span class="setting-hint">Ativa suporte para leitores de tela como NVDA ou JAWS</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetScreenReaderEnabled((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetScreenReaderEnabled(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ScreenReaderEnabled"
                        aria-label="Ativar leitor de tela" />
             </div>
@@ -129,7 +129,7 @@
                     <span class="setting-label">Reduzir Movimento</span>
                     <span class="setting-hint">Remove animações para pessoas sensíveis a movimento</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetReduceMotion((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetReduceMotion(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ReduceMotion"
                        aria-label="Ativar redução de movimento" />
             </div>
@@ -145,7 +145,7 @@
                     <span class="setting-label">Feedback Visual</span>
                     <span class="setting-hint">Mostra avisos visuais em vez de sons</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetVisualFeedback((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetVisualFeedback(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.VisualFeedback"
                        aria-label="Ativar feedback visual" />
             </div>
@@ -156,7 +156,7 @@
                     <span class="setting-label">Legendas e Transcrições</span>
                     <span class="setting-hint">Mostra legendas de áudio e transcrições de vídeos</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetCaptions((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetCaptions(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.CaptionsEnabled"
                        aria-label="Ativar legendas" />
             </div>
@@ -167,7 +167,7 @@
                     <span class="setting-label">Piscar de Tela para Alertas</span>
                     <span class="setting-hint">A tela pisca quando há alertas importantes</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetScreenFlashAlerts((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetScreenFlashAlerts(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ScreenFlashAlerts"
                        aria-label="Ativar piscar de tela para alertas" />
             </div>
@@ -183,7 +183,7 @@
                     <span class="setting-label">Botões Maiores</span>
                     <span class="setting-hint">Aumenta o tamanho dos botões e áreas clicáveis</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetLargerButtons((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetLargerButtons(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.LargerButtons"
                        aria-label="Ativar botões maiores" />
             </div>
@@ -194,7 +194,7 @@
                     <span class="setting-label">Navegação Apenas por Teclado</span>
                     <span class="setting-hint">Permite usar TAB, ENTER e setas para navegar</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetKeyboardNavigation((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetKeyboardNavigation(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.KeyboardNavigationOnly"
                        aria-label="Ativar navegação apenas por teclado" />
             </div>
@@ -205,7 +205,7 @@
                     <span class="setting-label">Gestos Simplificados</span>
                     <span class="setting-hint">Reduz gestos complexos (sem arrastar, pinçar, etc)</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetSimplifiedGestures((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetSimplifiedGestures(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.SimplifiedGestures"
                        aria-label="Ativar gestos simplificados" />
             </div>
@@ -217,7 +217,7 @@
                     <span class="setting-hint">Aumenta o tempo para confirmar ações</span>
                 </label>
                 <div class="input-group">
-                    <input type="range" min="2" max="15" @onchange='e => SetInteractionTimeout(int.Parse(e.Value.ToString()))'
+                    <input type="range" min="2" max="15" @onchange='e => { if (e.Value?.ToString() is string str && int.TryParse(str, out int val)) SetInteractionTimeout(val); }'
                            value="@AccessibilityService.CurrentSettings.InteractionTimeoutSeconds"
                            aria-label="Tempo limite para interações em segundos" />
                     <span>@AccessibilityService.CurrentSettings.InteractionTimeoutSeconds segundos</span>
@@ -235,7 +235,7 @@
                     <span class="setting-label">Modo Simplificado</span>
                     <span class="setting-hint">Remove opções avançadas, mostrando apenas o essencial</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetSimplifiedMode((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetSimplifiedMode(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.SimplifiedMode"
                        aria-label="Ativar modo simplificado" />
             </div>
@@ -246,7 +246,7 @@
                     <span class="setting-label">Instruções Passo a Passo</span>
                     <span class="setting-hint">Guia detalhado de como usar cada funcionalidade</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetStepByStep((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetStepByStep(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ShowStepByStepInstructions"
                        aria-label="Ativar instruções passo a passo" />
             </div>
@@ -257,7 +257,7 @@
                     <span class="setting-label">Linguagem Simplificada</span>
                     <span class="setting-hint">Usa palavras e frases mais simples</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetSimplifiedLanguage((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetSimplifiedLanguage(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.SimplifiedLanguage"
                        aria-label="Ativar linguagem simplificada" />
             </div>
@@ -268,7 +268,7 @@
                     <span class="setting-label">Reduzir Notificações</span>
                     <span class="setting-hint">Mostra apenas notificações essenciais</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetReduceNotifications((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetReduceNotifications(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ReduceNotifications"
                        aria-label="Ativar redução de notificações" />
             </div>
@@ -279,7 +279,7 @@
                     <span class="setting-label">Mostrar Dicas e Tutoriais</span>
                     <span class="setting-hint">Exibe ajuda contextual enquanto você usa o app</span>
                 </label>
-                <input type="checkbox" @onchange='e => SetShowHints((bool)e.Value)'
+                <input type="checkbox" @onchange='e => SetShowHints(e.Value is bool value && value)'
                        checked="@AccessibilityService.CurrentSettings.ShowHints"
                        aria-label="Ativar dicas e tutoriais" />
             </div>
