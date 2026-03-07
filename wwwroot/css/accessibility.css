@@ -224,17 +224,22 @@ body.larger-buttons .nav-item {
 /* ========== SKIP LINKS (para leitores de tela) ==========*/
 .skip-to-main {
     position: absolute;
-    top: -40px;
-    left: 0;
+    top: -9999px;
+    left: -9999px;
     background: var(--color-accent);
     color: var(--color-bg-primary);
     padding: 8px;
     text-decoration: none;
     z-index: 100;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .skip-to-main:focus {
     top: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* ========== VISIBILIDADE PARA ACESSIBILIDADE ==========*/

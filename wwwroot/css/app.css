@@ -63,6 +63,19 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Ocultar elementos de debug e barras indesejadas */
+body::before,
+body > *:not(#app):not(#blazor-error-ui):not(script),
+[role="complementary"],
+.debug-bar,
+.dev-bar {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
 html, body {
     height: 100%;
     overflow: hidden;
@@ -195,13 +208,6 @@ body {
     color: var(--text-primary);
     flex: 1;
     letter-spacing: 0.02em;
-}
-
-.top-bar-sub {
-    font-size: 11px;
-    color: var(--text-secondary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
 }
 
 .top-bar-actions {
