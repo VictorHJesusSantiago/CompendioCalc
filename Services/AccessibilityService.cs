@@ -244,7 +244,12 @@ public class AccessibilityService
             if (File.Exists(filePath))
             {
                 var json = File.ReadAllText(filePath);
-                return JsonSerializer.Deserialize<AccessibilitySettings>(json) ?? new AccessibilitySettings();
+                var settings = JsonSerializer.Deserialize<AccessibilitySettings>(json) ?? new AccessibilitySettings();
+                
+                // Força dark mode desligado (correção temporária)
+                settings.DarkMode = false;
+                
+                return settings;
             }
         }
         catch (Exception ex)
