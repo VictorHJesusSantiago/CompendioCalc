@@ -204,6 +204,41 @@ body {
     text-transform: uppercase;
 }
 
+.top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.theme-toggle-btn,
+.accessibility-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.theme-toggle-btn:hover,
+.accessibility-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--gold);
+    transform: translateY(-1px);
+}
+
+.theme-toggle-btn:active,
+.accessibility-btn:active {
+    transform: translateY(0);
+}
+
 /* ─── Search Bar ─────────────────────────────────── */
 .search-wrapper {
     flex-shrink: 0;

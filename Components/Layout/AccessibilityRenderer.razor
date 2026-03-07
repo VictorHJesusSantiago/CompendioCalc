@@ -1,0 +1,61 @@
+@inject IJSRuntime JS
+@inject AccessibilityService AccessibilityService
+@implements IAsyncDisposable
+
+@code {
+    private IJSObjectReference? _module;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                _module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/accessibility-manager.js");
+                await ApplySettings();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao carregar módulo de acessibilidade: {ex.Message}");
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        AccessibilityService.OnSettingsChanged += OnSettingsChanged;
+    }
+
+    private async void OnSettingsChanged()
+    {
+        await ApplySettings();
+        StateHasChanged();
+    }
+
+    private async Task ApplySettings()
+    {
+        if (_module == null) return;
+
+        try
+        {
+            var classes = AccessibilityService.GetAccessibilityCssClass();
+            var fontSize = AccessibilityService.CurrentSettings.FontSizePercentage;
+            
+            await _module.InvokeVoidAsync("accessibilityManager.applyAll", classes, fontSize);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao aplicar configurações de acessibilidade: {ex.Message}");
+        }
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        AccessibilityService.OnSettingsChanged -= OnSettingsChanged;
+        
+        if (_module != null)
+        {
+            await _module.DisposeAsync();
+        }
+    }
+}

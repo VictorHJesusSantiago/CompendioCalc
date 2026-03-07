@@ -3,7 +3,9 @@
 @inject NavigationManager Nav
 @inject AccessibilityService AccessibilityService
 
-<div class="app-shell @AccessibilityService.GetAccessibilityCssClass()" style="@GetAccessibilityStyles()">
+<AccessibilityRenderer />
+
+<div class="app-shell">
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-logo">∑</div>
@@ -12,6 +14,18 @@
             <div class="top-bar-sub">Volume I · Equações</div>
         </div>
         <div class="top-bar-actions">
+            <button class="theme-toggle-btn" @onclick="ToggleDarkMode" 
+                    aria-label="Alternar entre modo claro e escuro" 
+                    title="Alternar tema">
+                @if (AccessibilityService.CurrentSettings.DarkMode)
+                {
+                    <span>☀️</span>
+                }
+                else
+                {
+                    <span>🌙</span>
+                }
+            </button>
             <button class="accessibility-btn" @onclick='() => Go("/acessibilidade")' 
                     aria-label="Abrir configurações de acessibilidade" 
                     title="Acessibilidade (Alt+Shift+A)">
@@ -58,11 +72,10 @@
 
     void Go(string path) => Nav.NavigateTo(path);
 
-    string GetAccessibilityStyles()
+    void ToggleDarkMode()
     {
         var settings = AccessibilityService.CurrentSettings;
-        var scale = settings.FontSizePercentage / 100.0;
-        return $"--font-scale-factor: {scale};";
+        AccessibilityService.SetDarkMode(!settings.DarkMode);
     }
 
     protected override void OnInitialized()

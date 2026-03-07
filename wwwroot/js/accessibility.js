@@ -161,12 +161,8 @@ function detectSystemPreferences() {
         document.body.classList.add('high-contrast');
     }
 
-    // Respeitar preferências de esquema de cores
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.add('light-mode');
-    }
+    // Respeitar preferências de esquema de cores - sempre inicia com dark-mode
+    document.body.classList.add('dark-mode');
 
     // Respeitar preferências de movimento reduzido
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

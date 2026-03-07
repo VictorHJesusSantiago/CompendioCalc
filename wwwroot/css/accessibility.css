@@ -51,20 +51,71 @@ body {
 
 /* ========== MODO ESCURO ==========*/
 body.dark-mode {
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    --bg-base: #0D1117;
+    --bg-surface: #161B22;
+    --bg-card: #1C2130;
+    --bg-input: #21262D;
+    --bg-hover: #262C3A;
+    --text-primary: #E6EDF3;
+    --text-secondary: #8B949E;
+    --text-muted: #484F58;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
 }
 
 /* ========== MODO CLARO ==========*/
 body.light-mode {
-    background-color: var(--light-bg-primary);
-    color: var(--light-text-primary);
+    --bg-base: #FFFFFF;
+    --bg-surface: #F8F9FA;
+    --bg-card: #FFFFFF;
+    --bg-input: #F1F3F5;
+    --bg-hover: #E9ECEF;
+    --text-primary: #212529;
+    --text-secondary: #6C757D;
+    --text-muted: #ADB5BD;
+    --border: rgba(0,0,0,0.1);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+}
+
+body.light-mode .app-shell {
+    background-color: var(--bg-base);
+}
+
+body.light-mode .top-bar,
+body.light-mode .bottom-nav {
+    background-color: var(--bg-surface);
+    border-color: var(--border);
 }
 
 body.light-mode .card,
-body.light-mode .nav-item {
-    background-color: var(--light-bg-secondary);
-    color: var(--light-text-primary);
+body.light-mode .nav-item,
+body.light-mode .theme-toggle-btn,
+body.light-mode .accessibility-btn {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+body.light-mode .nav-item:hover,
+body.light-mode .theme-toggle-btn:hover,
+body.light-mode .accessibility-btn:hover {
+    background-color: var(--bg-hover);
+}
+
+body.light-mode .formula-card,
+body.light-mode .category-card {
+    background-color: var(--bg-card);
+    border-color: var(--border);
+}
+
+body.light-mode .search-input {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+}
+
+body.light-mode .empty-state {
+    color: var(--text-secondary);
 }
 
 /* ========== ALTO CONTRASTE ==========*/
