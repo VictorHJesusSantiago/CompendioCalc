@@ -34,7 +34,7 @@ public class AccessibilityService
         public bool HighContrast { get; set; } = false;
 
         /// <summary>Ativa modo escuro</summary>
-        public bool DarkMode { get; set; } = true;
+        public bool DarkMode { get; set; } = false;
 
         /// <summary>Remove animações e transições (melhor para pessoas com sensibilidade a movimento)</summary>
         public bool ReduceMotion { get; set; } = false;

@@ -75,30 +75,6 @@
     
     console.log('[Accessibility] window.accessibilityManager criado e pronto!');
     console.log('[Accessibility] Testando acesso ao body:', document.body ? 'OK' : 'FALHOU');
-    
-    // Aplica dark-mode inicial quando DOM estiver pronto
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('[Accessibility] DOM carregado via DOMContentLoaded');
-            if (document.body) {
-                document.body.classList.add('dark-mode');
-                console.log('[Accessibility] dark-mode aplicado no DOMContentLoaded');
-            }
-        });
-    } else {
-        console.log('[Accessibility] DOM já está pronto');
-        if (document.body) {
-            document.body.classList.add('dark-mode');
-            console.log('[Accessibility] dark-mode aplicado imediatamente');
-        } else {
-            setTimeout(function() {
-                if (document.body) {
-                    document.body.classList.add('dark-mode');
-                    console.log('[Accessibility] dark-mode aplicado após timeout');
-                }
-            }, 100);
-        }
-    }
 })();
 
 // Exporta para debug no console
