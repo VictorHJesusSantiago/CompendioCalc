@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Repressilador: circuito sintético com 3 repressores em anel → oscilações. Hill function α/(1+(p/K)^n) modela repressão cooperativa. Base da biologia sintética.",
                 Criador = "Michael Elowitz / Stanislas Leibler",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Toggle switch genético: dois genes mutuamente repressivos criam biestabilidade. Chave booleana fundamental em circuitos genéticos sintéticos. Controle externo por indutor.",
                 Criador = "Timothy Gardner / Charles Cantor / James Collins",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Função de Hill: modela regulação gênica cooperativa. n = coeficiente de Hill (cooperatividade), K = concentração de meia-ativação. Base de circuitos genetic logic.",
                 Criador = "Archibald Hill",
                 AnoOrigin = "1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Cinética de CRISPR-Cas9: formação do complexo (kon/koff), corte do DNA (kcut) e reparo (krep). Eficiência depende de concentração, afinidade do gRNA e acessibilidade do locus.",
                 Criador = "Jennifer Doudna / Emmanuelle Charpentier / Feng Zhang",
                 AnoOrigin = "2012",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "kon", Nome = "kon", ValorPadrao = 2 }, new() { Simbolo = "Cas9", Nome = "Cas9", ValorPadrao = 3 }, new() { Simbolo = "gRNA", Nome = "gRNA", ValorPadrao = 4 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["kon"] * vars["Cas9"] * vars["gRNA"]
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Gibson Assembly: montagem isotérmica de fragmentos de DNA com overhangs. Combina exonuclease + polimerase + ligase. Eficiência depende de overlap (≥20bp) e Tm.",
                 Criador = "Daniel Gibson",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo de Gillespie (SSA): simula master equation estocástica exatamente. Tempo até próxima reação exponencial, tipo de reação proporcional à propensidade. Ruído gênico.",
                 Criador = "Daniel Gillespie",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 16.2 scRNA-seq
@@ -86,6 +116,11 @@ public partial class FormulaService
                 Descricao = "Counts per million: normalização básica de scRNA-seq dividindo contagens pelo total da célula. Remove viés de profundidade de sequenciamento. Aplicado antes de log-transform.",
                 Criador = "Comunidade bioinformática",
                 AnoOrigin = "2014",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "SCTransform: regulariza scRNA-seq via GLM Negative Binomial regredido em profundidade. Pearson residuals estabilizam variância. Melhor que log(CPM+1) para PCA/clustering.",
                 Criador = "Christoph Hafemeister / Rahul Satija",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "UMAP: redução de dimensionalidade via cross-entropy fuzzy-simplicial. Preserva estrutura local e global de single-cell data. Mais rápido que tSNE, diferenciável.",
                 Criador = "Leland McInnes / John Healy / James Melville",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo de Leiden: clustering por maximização de modularidade em grafo kNN. Melhoria do Louvain com garantia de comunidades conexas. Padrão em single-cell.",
                 Criador = "V.A. Traag / L. Waltman / N.J. van Eck",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "RNA velocity: infere direção de diferenciação celular pela razão spliced/unspliced mRNA. Estima derivada temporal da expressão. Visualiza trajetórias em UMAP.",
                 Criador = "Gioele La Manno / Velocyto team",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "α", Nome = "α", ValorPadrao = 10 }, new() { Simbolo = "βs", Nome = "βs", ValorPadrao = 5 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["α"] - vars["βs"]
             },
             new Formula
             {
@@ -136,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Diffusion pseudotime: ordena células ao longo de trajetórias de diferenciação usando distância de difusão no espaço de expressão. Baseado em eigenvectors do grafo.",
                 Criador = "Laleh Haghverdi / Maren Büttner / Fabian Theis",
                 AnoOrigin = "2016",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -146,6 +206,11 @@ public partial class FormulaService
                 Descricao = "CellChat: infere comunicação célula-célula de scRNA-seq via expressão de ligante L, receptor R e co-fatores. Probabilidade segue Hill function. Network de sinalização.",
                 Criador = "Suoqin Jin / Qing Nie",
                 AnoOrigin = "2021",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -156,6 +221,11 @@ public partial class FormulaService
                 Descricao = "Scrublet: detecta doublets simulando combinações e comparando vizinhanças kNN. Score alto = célula provavelmente é doublet artificial. QC essencial em scRNA-seq.",
                 Criador = "Samuel Wolock / Romain Lopez / Allon Klein",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
 
             // 16.3 Docking Molecular
@@ -168,6 +238,11 @@ public partial class FormulaService
                 Descricao = "Scoring function de docking: estima energia livre de ligação como soma de termos van der Waals, hydrogen bonds, eletrostática, dessolvatação e entropia torsional.",
                 Criador = "Arthur Olson / Garrett Morris",
                 AnoOrigin = "1998",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "vdW", Nome = "vdW", ValorPadrao = 10 }, new() { Simbolo = "H", Nome = "H", ValorPadrao = 5 } ],
+                VariavelResultado = "ΔG",
+                UnidadeResultado = "",
+                Calcular = vars => vars["vdW"] + vars["H"]
             },
             new Formula
             {
@@ -178,6 +253,11 @@ public partial class FormulaService
                 Descricao = "RMSD de pose: mede qualidade do docking molecular comparando posição atômica predita vs cristalográfica. RMSD<2Å = pose correta. Métrica padrão de validação.",
                 Criador = "Comunidade de docking molecular",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -188,6 +268,11 @@ public partial class FormulaService
                 Descricao = "Potencial de Lennard-Jones: modela interação van der Waals (atração r⁻⁶) e repulsão de Pauli (r⁻¹²). ε = profundidade do poço, σ = diâmetro efetivo. Base de MD e docking.",
                 Criador = "John Lennard-Jones",
                 AnoOrigin = "1924",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -198,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Constante de inibição Ki: derivada da energia livre de ligação. Equação de Cheng-Prusoff relaciona IC₅₀ experimental ao Ki. Menor Ki = maior afinidade do inibidor.",
                 Criador = "Yung-Chi Cheng / William Prusoff",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
         ]);
     }
@@ -218,6 +308,11 @@ public partial class FormulaService
                 Descricao = "Modelo LQ de radiobiologia: fração de sobrevivência celular após dose D de radiação. α = dano letal simples, β = dano subletal reparável. Base do fracionamento.",
                 Criador = "Douglas Lea / K.H. Chadwick / H.P. Leenhouts",
                 AnoOrigin = "1946",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -228,6 +323,11 @@ public partial class FormulaService
                 Descricao = "Dose biológica efetiva: compara esquemas de fracionamento. n frações de dose d. EQD2 converte para equivalente em 2Gy/fração. Planejamento de radioterapia.",
                 Criador = "Jack Fowler",
                 AnoOrigin = "1989",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5 }, new() { Simbolo = "d", Nome = "d", ValorPadrao = 3 } ],
+                VariavelResultado = "BED",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n"] * vars["d"]
             },
             new Formula
             {
@@ -238,6 +338,11 @@ public partial class FormulaService
                 Descricao = "TCP: probabilidade de que nenhuma célula tumoral sobreviva. Modelo Poissoniano: N₀ células iniciais × sobrevivência S(D). Objetivo: TCP>90% com dose tolerável.",
                 Criador = "Jack Fowler / Søren Bentzen",
                 AnoOrigin = "1992",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -248,6 +353,11 @@ public partial class FormulaService
                 Descricao = "NTCP Lyman: probabilidade de complicação em tecido normal. Sigmoidal centrada em TD₅₀ (dose 50% complicação). Parâmetro m = inclinação. Limita dose de tratamento.",
                 Criador = "John Lyman",
                 AnoOrigin = "1985",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -258,6 +368,11 @@ public partial class FormulaService
                 Descricao = "4Rs da radioterapia fracionada: Reparo (dano subletal entre frações), Redistribuição (células em fases sensíveis), Reoxigenação (tumor reoxigena), Repopulação (tumor cresce).",
                 Criador = "H.R. Withers",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
 
             // 17.2 fMRI e Neuroimagem
@@ -270,6 +385,11 @@ public partial class FormulaService
                 Descricao = "Sinal BOLD: atividade neural → aumento de fluxo sanguíneo → mais oxi-Hb → aumento de T₂* → sinal MRI mais brilhante. Efeito indireto de ~1-5% ΔS/S a 3T.",
                 Criador = "Seiji Ogawa",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -280,6 +400,11 @@ public partial class FormulaService
                 Descricao = "HRF canonical: modela resposta BOLD como double-gamma. Pico em ~5-6s, undershoot em ~15-16s. Convolução com estímulo para modelar sinal BOLD esperado (GLM).",
                 Criador = "Gary Glover / Karl Friston / SPM",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -290,6 +415,11 @@ public partial class FormulaService
                 Descricao = "GLM de fMRI: modelo linear geral com design matrix X = estímulos convoluídos com HRF. Inferência sobre contraste cᵀβ por estatística t. Correção FWE/FDR para múltiplas comparações.",
                 Criador = "Karl Friston / Keith Worsley",
                 AnoOrigin = "1995",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Xβ", Nome = "Xβ", ValorPadrao = 10 }, new() { Simbolo = "ε", Nome = "ε", ValorPadrao = 5 } ],
+                VariavelResultado = "Y",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Xβ"] + vars["ε"]
             },
             new Formula
             {
@@ -300,6 +430,11 @@ public partial class FormulaService
                 Descricao = "DCM: modela conectividade efetiva entre regiões cerebrais. A = conectividade fixa, Bj = modulação por tarefa, C = input externo. Estimado por variational Bayes.",
                 Criador = "Karl Friston / Lee Harrison / Will Penny",
                 AnoOrigin = "2003",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -310,6 +445,11 @@ public partial class FormulaService
                 Descricao = "Equação de Bloch: dinâmica da magnetização nuclear em MRI. Precessão em B₀+gradientes, relaxação T₁ (spin-lattice) e T₂ (spin-spin). Gera contraste de tecidos.",
                 Criador = "Felix Bloch",
                 AnoOrigin = "1946",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "γM", Nome = "γM", ValorPadrao = 5 }, new() { Simbolo = "B", Nome = "B", ValorPadrao = 3 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["γM"] * vars["B"]
             },
             new Formula
             {
@@ -320,6 +460,11 @@ public partial class FormulaService
                 Descricao = "DTI: mede difusão direcional da água no cérebro. Tensor D (6 componentes). FA = anisotropia fracionária (0=isotrópico, 1=anisotrópico). Rastreia tratos de substância branca.",
                 Criador = "Peter Basser / James Mattiello / Denis Le Bihan",
                 AnoOrigin = "1994",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S₀", Nome = "S₀", ValorPadrao = 5 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3 } ],
+                VariavelResultado = "S",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S₀"] * vars["exp"]
             },
 
             // 17.3 Cronobiologia
@@ -332,6 +477,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Goodwin: circuito de feedback negativo com 3 variáveis (mRNA, proteína, repressor). Gera oscilações quando cooperatividade n≥8. Modelo mínimo de ritmo circadiano.",
                 Criador = "Brian Goodwin",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -342,6 +492,11 @@ public partial class FormulaService
                 Descricao = "PRC: curva que mapeia quando um estímulo (luz, fármaco) adianta ou atrasa o relógio circadiano. Tipo 0 (forte) vs Tipo 1 (fraco). Essencial para tratar jet lag.",
                 Criador = "Colin Pittendrigh",
                 AnoOrigin = "1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -352,6 +507,11 @@ public partial class FormulaService
                 Descricao = "Modelo de entrainment: oscilador circadiano (ω) se sincroniza ao zeitgeber externo (Ω) se K suficiente e |ω−Ω| pequeno. Região de Arnold tongue para captura de fase.",
                 Criador = "Arthur Winfree / Steven Strogatz",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ω", Nome = "ω", ValorPadrao = 10 }, new() { Simbolo = "K", Nome = "K", ValorPadrao = 5 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ω"] + vars["K"]
             },
             new Formula
             {
@@ -362,6 +522,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Borbély: processo S (homeostático) acumula pressão de sono na vigília e decai no sono. Processo C (circadiano) modula limiar. Sono ocorre quando S>C.",
                 Criador = "Alexander Borbély",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
         ]);
     }

@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Modelo pinhole de câmera: projeção perspectiva de ponto 3D no mundo para coordenada 2D na imagem. K contém parâmetros intrínsecos (focal, principal point), [R|t] pose extrínseca.",
                 Criador = "Brunelleschi / Euler",
                 AnoOrigin = "1400",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Matriz de calibração intrínseca 3×3. fx,fy: distância focal em pixels; cx,cy: ponto principal (centro óptico projetado); s: coeficiente de skew (usualmente 0).",
                 Criador = "Roger Tsai",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Modelo de distorção radial da lente. Coeficientes k₁,k₂,k₃ modelam distorção barrel (k<0) ou pincushion (k>0). Essencial para calibração precisa de câmeras.",
                 Criador = "Duane C. Brown",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Método de calibração de Zhang: usa padrão planar (tabuleiro) em múltiplas poses. Homografia H relaciona plano-imagem; constraints r₁ᵀr₂=0, ||r₁||=||r₂|| estimam K.",
                 Criador = "Zhengyou Zhang",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Matriz essencial relaciona pontos correspondentes em câmeras calibradas. Satisfaz constraint epipolar x'ᵀEx=0. Decomposição SVD fornece R,t (até escala). Requer 5 pontos mínimos.",
                 Criador = "H. Christopher Longuet-Higgins",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Matriz fundamental F para câmeras não calibradas. p'ᵀFp=0 é constraint epipolar. Linha epipolar l'=Fp restringe busca de correspondência. 8-point algorithm ou RANSAC.",
                 Criador = "Quang-Tuan Luong",
                 AnoOrigin = "1992",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -84,6 +114,11 @@ public partial class FormulaService
                 Descricao = "Homografia H mapeia pontos entre planos (ou câmeras com cena planar). Matriz 3×3 com 8 graus de liberdade. DLT (Direct Linear Transform) com 4+ correspondências de pontos.",
                 Criador = "O. Faugeras / R. Hartley",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 21.2 SLAM e Bundle Adjustment
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "EKF-SLAM: filtro de Kalman estendido para Localização e Mapeamento Simultâneos. Estado inclui pose do robô e posição de landmarks. Covariância é quadrática no número de landmarks.",
                 Criador = "Randall Smith / Matthew Self / Peter Cheeseman",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Etapa de predição do EKF: estado previsto x̄ via modelo de movimento f; covariância propagada via Jacobiana F e ruído de processo Q. F=∂f/∂x linearização.",
                 Criador = "Rudolf Kálmán",
                 AnoOrigin = "1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Etapa de atualização do EKF: ganho de Kalman K pondera inovação (z-h(x̄)). H=∂h/∂x Jacobiana da observação, R ruído de medição. Funde predição com medida.",
                 Criador = "Rudolf Kálmán",
                 AnoOrigin = "1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "FastSLAM usa filtro de partículas para trajetória e EKF independente por landmark por partícula. Reduz complexidade de O(n²) para O(n·log n). Rao-Blackwellized particle filter.",
                 Criador = "Michael Montemerlo / Sebastian Thrun",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -136,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Bundle Adjustment: otimização não-linear que refina simultaneamente poses de câmera (Rⱼ,tⱼ) e pontos 3D (Xᵢ) minimizando erro de reprojeção. Estrutura esparsa explorável.",
                 Criador = "Bill Triggs",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -146,6 +206,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo Levenberg-Marquardt para Bundle Adjustment: combina Gauss-Newton (convergência rápida perto do mínimo) com gradient descent (robustez longe). Parâmetro λ de damping adaptativo.",
                 Criador = "Kenneth Levenberg / Donald Marquardt",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -156,6 +221,11 @@ public partial class FormulaService
                 Descricao = "Graph-SLAM formula SLAM como otimização de grafos. Nós representam poses, arestas codificam constraints (odometria, observações). Minimiza erro quadrático ponderado por informação Ω. Detecção de loop closure essencial.",
                 Criador = "Edwin Olson / Michael Kaess",
                 AnoOrigin = "2006",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -177,6 +247,11 @@ public partial class FormulaService
                 Descricao = "Model checking para CTL (Computation Tree Logic): verifica automaticamente se sistema de transição M satisfaz propriedade temporal φ. Complexidade linear no produto |M|·|φ|.",
                 Criador = "Edmund Clarke / E. Allen Emerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "CTL", Nome = "CTL", ValorPadrao = 1 }, new() { Simbolo = "se", Nome = "se", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CTL"] + vars["se"]
             },
             new Formula
             {
@@ -187,6 +262,11 @@ public partial class FormulaService
                 Descricao = "Operador EF (exists finally) em CTL: existe um caminho onde φ eventualmente vale. Computado como menor ponto fixo μZ.(φ∨EX Z) iterando até estabilizar.",
                 Criador = "Edmund Clarke / E. Allen Emerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "EF", Nome = "EF", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["EF"] + vars["phi"]
             },
             new Formula
             {
@@ -197,6 +277,11 @@ public partial class FormulaService
                 Descricao = "Operador AG (always globally) em CTL: φ vale em todos os estados de todos os caminhos. Computado como maior ponto fixo νZ.(φ∧AX Z). Propriedade de segurança (safety).",
                 Criador = "Edmund Clarke / E. Allen Emerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "AG", Nome = "AG", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["AG"] + vars["phi"]
             },
             new Formula
             {
@@ -207,6 +292,11 @@ public partial class FormulaService
                 Descricao = "Counterexample-Guided Abstraction Refinement: abstrai sistema para reduzir espaço de estados, verifica abstração; se contraexemplo espúrio, refina abstração. Converge ou encontra bug real.",
                 Criador = "Edmund Clarke / Orna Grumberg / Somesh Jha / Yuan Lu / Helmut Veith",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -217,6 +307,11 @@ public partial class FormulaService
                 Descricao = "Bounded Model Checking: desdobra loops até profundidade k, codifica programa e propriedade como fórmula SAT/SMT. SAT solver busca contraexemplo. CBMC para programas C.",
                 Criador = "Armin Biere / Alessandro Cimatti / Edmund Clarke",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "BMC", Nome = "BMC", ValorPadrao = 1 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["BMC"] + vars["k"]
             },
             new Formula
             {
@@ -227,6 +322,11 @@ public partial class FormulaService
                 Descricao = "Linguagem de especificação formal Z: usa schemas com declarações de variáveis e predicados lógicos. Δ indica mudança de estado, Ξ preservação. Base em teoria de conjuntos e lógica de primeira ordem.",
                 Criador = "Jean-Raymond Abrial",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Z", Nome = "Z", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Z"]
             },
             new Formula
             {
@@ -237,6 +337,11 @@ public partial class FormulaService
                 Descricao = "Communicating Sequential Processes (CSP): álgebra de processos para modelar concorrência. Operadores: composição paralela ∥, sequência ;, escolha externa □, interna ⊓, recursão μX.",
                 Criador = "C. A. R. Hoare",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "CSP", Nome = "CSP", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CSP"] + vars["de"]
             },
 
             // 22.2 Sistemas Cyber-Físicos
@@ -249,6 +354,11 @@ public partial class FormulaService
                 Descricao = "Autômato híbrido modela sistemas cyber-físicos: modos discretos Q com dinâmicas contínuas ẋ=f_q(x). Transições por guardas G, resets R. Combina controle discreto e física contínua.",
                 Criador = "Rajeev Alur / Thomas Henzinger / Costas Courcoubetis",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -259,6 +369,11 @@ public partial class FormulaService
                 Descricao = "Comportamento de Zeno em sistemas híbridos: sequência infinita de transições discretas em tempo finito. Modelo irreal (chattering). Regularização: guard com ε-delay ou semântica não-Zeno.",
                 Criador = "Rajeev Alur / Thomas Henzinger",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -269,6 +384,11 @@ public partial class FormulaService
                 Descricao = "Certificado de barreira para segurança de sistemas dinâmicos: função B(x)≥0 na região segura, B<0 na insegura, ḂB≤0 na fronteira. Garante que trajetória nunca entra em região insegura.",
                 Criador = "Stephen Prajna / Ali Jadbabaie",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["B"] + vars["em"]
             },
             new Formula
             {
@@ -279,6 +399,11 @@ public partial class FormulaService
                 Descricao = "Control Barrier Function: generaliza barrier certificate para sistemas com controle. Constraint ḣ+α(h)≥0 garante que h(x)≥0 é forward invariant. α é função classe-K estendida.",
                 Criador = "Aaron Ames / Xiangru Xu / Jessy Grizzle / Paulo Tabuada",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "CBF", Nome = "CBF", ValorPadrao = 1 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CBF"] + vars["u"]
             },
             new Formula
             {
@@ -289,6 +414,11 @@ public partial class FormulaService
                 Descricao = "Quadratic Program unificando CLF (Control Lyapunov Function, estabilidade) e CBF (segurança). Resolve online: u mais próximo do desejado satisfazendo ambas constraints. Safety-critical control.",
                 Criador = "Aaron Ames",
                 AnoOrigin = "2014",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "QP", Nome = "QP", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["QP"] + vars["de"]
             },
 
             // 22.3 Sistemas de Tempo Real
@@ -301,6 +431,11 @@ public partial class FormulaService
                 Descricao = "Rate Monotonic Scheduling: atribui prioridade inversamente proporcional ao período. Ótimo entre prioridades fixas. Condição suficiente: utilização total ≤ n(2^(1/n)-1). Limite assintótico: ln2≈69.3%.",
                 Criador = "C. L. Liu / James Layland",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "RM", Nome = "RM", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["RM"] + vars["n"]
             },
             new Formula
             {
@@ -311,6 +446,11 @@ public partial class FormulaService
                 Descricao = "Earliest Deadline First: escalonamento com prioridade dinâmica pela deadline mais próxima. Ótimo para sistemas uniprocessador: escalável se e somente se utilização total ≤ 1 (100%).",
                 Criador = "C. L. Liu / James Layland",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "EDF", Nome = "EDF", ValorPadrao = 1 }, new() { Simbolo = "se", Nome = "se", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["EDF"] + vars["se"]
             },
             new Formula
             {
@@ -321,6 +461,11 @@ public partial class FormulaService
                 Descricao = "Worst-Case Execution Time: limite superior garantido do tempo de execução. Combina análise de caminho (IPET, tree-based) com modelo de timing de hardware (cache, pipeline). Essencial para hard real-time.",
                 Criador = "Reinhard Wilhelm / Christian Ferdinand",
                 AnoOrigin = "1997",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"]
             },
             new Formula
             {
@@ -331,6 +476,11 @@ public partial class FormulaService
                 Descricao = "Time Demand Analysis: calcula tempo de resposta Rᵢ iterativamente. Inclui execução Cᵢ mais interferência de todas as tarefas de maior prioridade hp(i). Escalável se Rᵢ≤Dᵢ (deadline).",
                 Criador = "Neil Audsley / Alan Burns",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "TDA", Nome = "TDA", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["TDA"] + vars["de"]
             },
         ]);
     }
@@ -352,6 +502,11 @@ public partial class FormulaService
                 Descricao = "BQP (Bounded-error Quantum Polynomial time): classe de problemas decidíveis por máquina de Turing quântica em tempo polinomial com probabilidade de erro ≤ 1/3. Contém fatoração (Shor).",
                 Criador = "Ethan Bernstein / Umesh Vazirani",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -362,6 +517,11 @@ public partial class FormulaService
                 Descricao = "Relações entre BQP e hierarquia polinomial: PP⊇BQP. Existem oráculos onde BQP⊄PH e PH⊄BQP. Separação Raz-Tal (2018) mostra BQP não está na PH relativamente a oráculo.",
                 Criador = "Ran Raz / Avishay Tal",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -372,6 +532,11 @@ public partial class FormulaService
                 Descricao = "Complexidade de consulta quântica: número mínimo de queries quânticas a oráculo para computar f. Separação: Grover dá √N vs N; Simon dá O(n) vs Ω(2^{n/2}). Bounded error.",
                 Criador = "Richard Beals / Harry Buhrman / Richard Cleve",
                 AnoOrigin = "1998",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -382,6 +547,11 @@ public partial class FormulaService
                 Descricao = "Método do adversário para lower bounds em query complexity quântica. Generaliza método de Ambainis. Adversary bound é tight (Reichardt 2009): Q(f)=Θ(Adv±(f)).",
                 Criador = "Andris Ambainis",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -392,6 +562,11 @@ public partial class FormulaService
                 Descricao = "Random Circuit Sampling: benchmark de vantagem quântica. Google Sycamore (53 qubits, 2019). XEB (cross-entropy benchmark) mede se amostras seguem distribuição quântica vs uniforme.",
                 Criador = "Frank Arute et al. (Google AI Quantum)",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -402,6 +577,11 @@ public partial class FormulaService
                 Descricao = "Boson Sampling de Aaronson-Arkhipov: fótons indistinguíveis em interferômetro linear. Distribuição de saída envolve permanentes de matrizes (#P-hard). Evidência de vantagem quântica sem universalidade.",
                 Criador = "Scott Aaronson / Alex Arkhipov",
                 AnoOrigin = "2011",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 23.2 Quantum ML e Síntese de Circuitos
@@ -414,6 +594,11 @@ public partial class FormulaService
                 Descricao = "Quantum kernel: mede similaridade via overlap de estados quânticos. Feature map φ codifica dados clássicos em estados quânticos. Usado em SVM quântica. Pode ter vantagem em certos problemas.",
                 Criador = "Vojtěch Havlíček et al.",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -424,6 +609,11 @@ public partial class FormulaService
                 Descricao = "Parameterized Quantum Circuit (variational circuit): sequência de gates paramétricos U(θ). Treinado via gradiente usando parameter shift rule. Base de VQE, QAOA e quantum neural networks.",
                 Criador = "Alberto Peruzzo et al.",
                 AnoOrigin = "2014",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -434,6 +624,11 @@ public partial class FormulaService
                 Descricao = "Parameter shift rule: calcula gradiente exato de observável quântico em relação a parâmetro θ. Requer apenas duas avaliações do circuito com θ±π/2. Válido para gates da forma e^{-iθG/2}.",
                 Criador = "Kosuke Mitarai / Keisuke Fujii",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -444,6 +639,11 @@ public partial class FormulaService
                 Descricao = "Barren plateaus em PQCs: para circuitos profundos e aleatórios, variância dos gradientes decai exponencialmente com número de qubits. Torna treinamento impraticável. Mitigações: estrutura local, warm-start.",
                 Criador = "Jarrod McClean et al.",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -454,6 +654,11 @@ public partial class FormulaService
                 Descricao = "Síntese de circuitos quânticos: decompõe unitário arbitrário em conjunto universal (CNOT+rotações). CNOT count O(4^n) geral, O(n²) com estrutura. ZX-calculus: linguagem diagramática para simplificação.",
                 Criador = "Bob Coecke / Ross Duncan",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -464,6 +669,11 @@ public partial class FormulaService
                 Descricao = "Princípio de Landauer: apagar informação tem custo termodinâmico mínimo kBT ln2 por bit. Computação reversível (Toffoli, Fredkin) evita dissipação. Conexão fundamental entre informação e termodinâmica.",
                 Criador = "Rolf Landauer",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -485,6 +695,11 @@ public partial class FormulaService
                 Descricao = "Equação de Grad-Shafranov para equilíbrio MHD em geometria toroidal axissimétrica. ψ é fluxo poloidal, p(ψ) pressão, F(ψ)=RBφ. Solução define superfícies magnéticas de equilíbrio.",
                 Criador = "Harold Grad / Vitalii Shafranov",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "MHD", Nome = "MHD", ValorPadrao = 1 }, new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["MHD"] + vars["psi"]
             },
             new Formula
             {
@@ -495,6 +710,11 @@ public partial class FormulaService
                 Descricao = "Operador de Grad-Shafranov Δ* em coordenadas cilíndricas (R,Z). Operador elíptico tipo Laplaciano modificado. Não é simétrico em R. Soluções numéricas via elementos finitos ou diferenças finitas.",
                 Criador = "Harold Grad / Vitalii Shafranov",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["de"]
             },
             new Formula
             {
@@ -505,6 +725,11 @@ public partial class FormulaService
                 Descricao = "Safety factor q: razão de pitch das linhas de campo magnético. q < 1 no centro dispara instabilidade kink interna (sawtooth). q(a) na borda tipicamente 2-5. Perfil q(r) crucial para estabilidade.",
                 Criador = "Vitalii Shafranov",
                 AnoOrigin = "1956",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["q"] + vars["de"]
             },
             new Formula
             {
@@ -515,6 +740,11 @@ public partial class FormulaService
                 Descricao = "Fator Q de amplificação de fusão: razão entre potência de fusão produzida e potência de aquecimento injetada. Q=1 é breakeven (JET atingiu Q≈0.67). Q=∞ é ignição (plasma auto-sustentado).",
                 Criador = "John Lawson",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Q", Nome = "Q", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Q"] + vars["de"]
             },
             new Formula
             {
@@ -525,6 +755,11 @@ public partial class FormulaService
                 Descricao = "Critério de Lawson para fusão: produto triplo de densidade n, tempo de confinamento τE e temperatura T deve exceder ~3×10²¹ m⁻³·s·keV para deutério-trítio. Define condição mínima para ignição.",
                 Criador = "John Lawson",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n"] + vars["tau"]
             },
 
             // 24.2 Instabilidades MHD
@@ -537,6 +772,11 @@ public partial class FormulaService
                 Descricao = "Instabilidade tearing: reconexão magnética resistiva em superfícies racionais onde q=m/n. Forma ilhas magnéticas. Taxa de crescimento γ∝η^{3/5}. Degradação de confinamento em tokamaks.",
                 Criador = "Harold Furth / John Killeen / Marshall Rosenbluth",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "m", Nome = "m", ValorPadrao = 10 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "q",
+                UnidadeResultado = "",
+                Calcular = vars => vars["m"] / vars["n"]
             },
             new Formula
             {
@@ -547,6 +787,11 @@ public partial class FormulaService
                 Descricao = "Parâmetro Δ' (delta-prime): mede descontinuidade da derivada logarítmica de ψ na superfície ressonante. Δ'>0 é condição necessária para instabilidade tearing. Depende do perfil de corrente.",
                 Criador = "Harold Furth / John Killeen / Marshall Rosenbluth",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -557,6 +802,11 @@ public partial class FormulaService
                 Descricao = "Modo tearing neoclássico: corrente bootstrap (proporcional a ∇p) é perturbada por ilhas magnéticas, retroalimentando crescimento. Principal limitação de desempenho em H-mode. Estabilização por ECCD localizado.",
                 Criador = "Richard Carrera / Richard Hazeltine / M. Kotschenreuther",
                 AnoOrigin = "1986",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "NTM", Nome = "NTM", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["NTM"] + vars["w"]
             },
             new Formula
             {
@@ -567,6 +817,11 @@ public partial class FormulaService
                 Descricao = "Edge Localized Modes: instabilidades MHD periódicas na borda do pedestal em modo H. Tipo I: peeling-ballooning. Ejeção de plasma e energia para divertor. Mitigação por RMP, pellets, ELM-free regimes.",
                 Criador = "F. Wagner / ASDEX Team",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "do", Nome = "do", ValorPadrao = 1 }, new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["do"] + vars["H"]
             },
             new Formula
             {
@@ -577,6 +832,11 @@ public partial class FormulaService
                 Descricao = "Disruption em tokamak: perda catastrófica de confinamento. Thermal quench (energia em ~ms), current quench (corrente decai em ~10ms), forças eletromagnéticas e correntes de halo. Geração de elétrons runaway. Principal desafio para ITER.",
                 Criador = "ASDEX / JET Teams",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 }, new() { Simbolo = "VDE", Nome = "VDE", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"] + vars["VDE"]
             },
         ]);
     }
@@ -598,6 +858,11 @@ public partial class FormulaService
                 Descricao = "Álgebra de Virasoro: extensão central da álgebra de Witt. Geradores Lₙ satisfazem [Lm,Ln]=(m-n)L_{m+n}+c/12·m(m²-1)δ_{m+n,0}. c = carga central, classifica CFTs. Estrutura fundamental de CFT 2D.",
                 Criador = "Miguel Virasoro",
                 AnoOrigin = "1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "c", Nome = "c", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["c"]
             },
             new Formula
             {
@@ -608,6 +873,11 @@ public partial class FormulaService
                 Descricao = "Tensor energia-momento em CFT 2D: decompõe em parte holomórfica T(z) e anti-holomórfica T̄(z̄). Expansão de Laurent em modos Lₙ. Ward identities geram simetria conforme.",
                 Criador = "Alexander Belavin / Alexander Polyakov / Alexander Zamolodchikov",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 }, new() { Simbolo = "z", Nome = "z", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] + vars["z"]
             },
             new Formula
             {
@@ -618,6 +888,11 @@ public partial class FormulaService
                 Descricao = "Operator Product Expansion em CFT: produto de operadores locais expandido em operadores singulares. OPE de T(z) com operador primário O de peso h determina transformação conforme. Base do bootstrap conforme.",
                 Criador = "Kenneth Wilson",
                 AnoOrigin = "1969",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "OPE", Nome = "OPE", ValorPadrao = 1 }, new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["OPE"] + vars["T"]
             },
             new Formula
             {
@@ -628,6 +903,11 @@ public partial class FormulaService
                 Descricao = "Correspondência estado-operador em CFT: bijeção entre estados no espaço de Hilbert e operadores locais. Operador O de peso h inserido na origem cria estado |h⟩=O(0)|0⟩. Mapa radial quantization.",
                 Criador = "Belavin / Polyakov / Zamolodchikov",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1 }, new() { Simbolo = "O", Nome = "O", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["h"] + vars["O"]
             },
             new Formula
             {
@@ -638,6 +918,11 @@ public partial class FormulaService
                 Descricao = "Função de partição de CFT no toro parametrizado por τ. Modular invariance Z(τ)=Z(τ+1)=Z(-1/τ). Classifica modelos mínimos. Caracteres de Virasoro como building blocks.",
                 Criador = "John Cardy",
                 AnoOrigin = "1986",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Z", Nome = "Z", ValorPadrao = 1 }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Z"] + vars["tau"]
             },
             new Formula
             {
@@ -648,6 +933,11 @@ public partial class FormulaService
                 Descricao = "Bootstrap conforme: crossing symmetry de funções de 4 pontos impõe constraints que determinam espectro de operadores e coeficientes OPE. Método numérico (Simmons-Duffin) resolve ilhas permitidas em espaço de parâmetros.",
                 Criador = "Riccardo Rattazzi / Vyacheslav Rychkov / Erik Tonni / Alessandro Vichi",
                 AnoOrigin = "2008",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 }, new() { Simbolo = "da", Nome = "da", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"] + vars["da"]
             },
             new Formula
             {
@@ -658,6 +948,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Ising 2D no ponto crítico descrito por CFT com c=1/2. Três operadores primários: identidade I(h=0), spin σ(h=1/16), energia ε(h=1/2). Modelo mínimo M(3,4). Solução exata por Belavin-Polyakov-Zamolodchikov.",
                 Criador = "Belavin / Polyakov / Zamolodchikov",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "2", Nome = "2", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "c",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] / vars["2"]
             },
 
             // 25.2 SLE — Schramm-Loewner Evolution
@@ -670,6 +965,11 @@ public partial class FormulaService
                 Descricao = "Schramm-Loewner Evolution SLE_κ: equação de Loewner estocástica com driving function ξ_t=√κ·W_t (movimento Browniano). Gera curvas aleatórias conformemente invariantes. κ parametriza rugosidade.",
                 Criador = "Oded Schramm",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -680,6 +980,11 @@ public partial class FormulaService
                 Descricao = "Transições de fase de SLE_κ: para κ≤4 a curva é simples (não toca a si mesma); para 4<κ<8 curva tem auto-interseções; para κ≥8 é space-filling. Dimensão Hausdorff: min(2, 1+κ/8).",
                 Criador = "Steffen Rohde / Oded Schramm",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1 }, new() { Simbolo = "si", Nome = "si", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["a"] + vars["si"]
             },
             new Formula
             {
@@ -690,6 +995,11 @@ public partial class FormulaService
                 Descricao = "Na percolação crítica (p=pc em triangular lattice), as interfaces entre clusters abertos e fechados convergem para SLE₆. Prova de Smirnov (2001) para percolação em triangular. Expoentes críticos derivados.",
                 Criador = "Stanislav Smirnov",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "pc", Nome = "pc", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["pc"]
             },
             new Formula
             {
@@ -700,6 +1010,11 @@ public partial class FormulaService
                 Descricao = "No modelo de Ising 2D na temperatura crítica Tc, as interfaces entre domínios ↑ e ↓ convergem para SLE₃. Confirmado rigorosamente por Chelkak-Smirnov (2012). Relaciona modelo estatístico a SLE via CFT c=1/2.",
                 Criador = "Dmitry Chelkak / Stanislav Smirnov",
                 AnoOrigin = "2012",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 }, new() { Simbolo = "Tc", Nome = "Tc", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] + vars["Tc"]
             },
             new Formula
             {
@@ -710,6 +1025,11 @@ public partial class FormulaService
                 Descricao = "Loop-Erased Random Walk converge para SLE₂ (Lawler-Schramm-Werner 2004). Fronteira da Uniform Spanning Tree converge para SLE₈. Dualidade SLE: κ·(16/κ) = 16 relaciona SLE_κ e SLE_{16/κ}.",
                 Criador = "Gregory Lawler / Oded Schramm / Wendelin Werner",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "UST", Nome = "UST", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["UST"]
             },
 
             // 25.3 Geometria Discreta e Empacotamento
@@ -722,6 +1042,11 @@ public partial class FormulaService
                 Descricao = "Empacotamento ótimo de círculos no plano: arranjo hexagonal com densidade π/(2√3)≈90.69%. Provado por Thue (1910), rigorizado por Fejes Tóth (1940). Cada círculo tangente a 6 vizinhos.",
                 Criador = "Axel Thue / László Fejes Tóth",
                 AnoOrigin = "1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -732,6 +1057,11 @@ public partial class FormulaService
                 Descricao = "Conjectura de Kepler (1611): empacotamento mais denso de esferas em ℝ³ é FCC (face-centered cubic) ou HCP, com densidade π/(3√2)≈74.05%. Provada por Thomas Hales (1998), verificação formal Flyspeck (2014).",
                 Criador = "Thomas Hales",
                 AnoOrigin = "1998",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "FCC", Nome = "FCC", ValorPadrao = 1 }, new() { Simbolo = "HCP", Nome = "HCP", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["FCC"] + vars["HCP"]
             },
             new Formula
             {
@@ -742,6 +1072,11 @@ public partial class FormulaService
                 Descricao = "Bound de Hamming (sphere-packing bound): cota superior para tamanho de código binário (n,d). Esferas de raio ⌊(d-1)/2⌋ centradas em codewords não se sobrepõem. Códigos perfeitos atingem igualdade: Hamming, Golay.",
                 Criador = "Richard Hamming",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 }, new() { Simbolo = "se", Nome = "se", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"] + vars["se"]
             },
             new Formula
             {
@@ -752,6 +1087,11 @@ public partial class FormulaService
                 Descricao = "Teorema do corpo convexo de Minkowski: se K é convexo, simétrico e vol(K)>2ⁿ·det(L), então K contém ponto não-trivial da rede L⊂ℝⁿ. Base da geometria dos números. Aplicações em teoria algébrica de números.",
                 Criador = "Hermann Minkowski",
                 AnoOrigin = "1896",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "o", Nome = "o", ValorPadrao = 1 }, new() { Simbolo = "da", Nome = "da", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["o"] + vars["da"]
             },
             new Formula
             {
@@ -762,6 +1102,11 @@ public partial class FormulaService
                 Descricao = "Politopos regulares: em 3D, exatamente 5 sólidos platônicos. Em 4D, 6 politopos regulares convexos incluindo o 24-cell (sem análogo 3D). Em n≥5, apenas 3 (simplex, hipercubo, cross-polytope). Classificação via grupos de Coxeter.",
                 Criador = "Euclides / Ludwig Schläfli",
                 AnoOrigin = "-300",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "tem", Nome = "tem", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["tem"]
             },
         ]);
     }

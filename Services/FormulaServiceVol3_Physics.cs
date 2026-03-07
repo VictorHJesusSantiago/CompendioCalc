@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Em cristal periódico, a função de onda é uma onda plana modulada por função com periodicidade da rede. Base de toda teoria de bandas em sólidos.",
                 Criador = "Felix Bloch",
                 AnoOrigin = "1929",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["psi"] + vars["r"]
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "A relação de dispersão E(k) tem a periodicidade da rede recíproca. Basta conhecer E(k) na 1ª zona de Brillouin.",
                 Criador = "Léon Brillouin",
                 AnoOrigin = "1930",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 }, new() { Simbolo = "G", Nome = "G", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["k"] + vars["G"]
             },
             new Formula
             {
@@ -61,6 +71,11 @@ public partial class FormulaService
                 Descricao = "A curvatura da banda define a massa efetiva. m* < m (banda larga) → alta mobilidade. m* pode ser negativa (topo de banda = buraco).",
                 Criador = "Franco Rasetti / Teoria de bandas",
                 AnoOrigin = "~1930",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "m", Nome = "m", ValorPadrao = 1 }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["m"] + vars["hbar"]
             },
             new Formula
             {
@@ -70,6 +85,11 @@ public partial class FormulaService
                 Icone = "g(E)",
                 Descricao = "Número de estados por unidade de energia em 3D. Cresce como √E para elétrons livres. Determina propriedades termodinâmicas e de transporte.",
                 Criador = "Teoria de bandas",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -80,6 +100,11 @@ public partial class FormulaService
                 Descricao = "Região no espaço recíproco que contém toda a informação das bandas eletrônicas. Para rede FCC: é um octaedro truncado.",
                 Criador = "Léon Brillouin",
                 AnoOrigin = "1930",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "ZB", Nome = "ZB", ValorPadrao = 1 }, new() { Simbolo = "no", Nome = "no", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ZB"] + vars["no"]
             },
             new Formula
             {
@@ -109,6 +134,11 @@ public partial class FormulaService
                 Descricao = "Resposta óptica do metal: condutividade complexa com polo lorentziano. Explica reflexão metálica e frequência de plasma.",
                 Criador = "Paul Drude",
                 AnoOrigin = "1900",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sigma"] + vars["omega"]
             },
             new Formula
             {
@@ -136,6 +166,11 @@ public partial class FormulaService
                 Descricao = "Em 2D e campo magnético forte, a condutividade Hall é quantizada em múltiplos inteiros de e²/h. Precisão de 10⁻⁹ — usado como padrão de resistência.",
                 Criador = "Klaus von Klitzing",
                 AnoOrigin = "1980",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5 }, new() { Simbolo = "e²", Nome = "e²", ValorPadrao = 3 } ],
+                VariavelResultado = "σ_xy",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n"] * vars["e²"]
             },
             new Formula
             {
@@ -146,6 +181,11 @@ public partial class FormulaService
                 Descricao = "Número de níveis de Landau preenchidos. Plateaus em IQHE ocorrem para ν inteiro. Efeito Hall fracionário: ν = p/q com q ímpar.",
                 Criador = "Von Klitzing / Laughlin",
                 AnoOrigin = "1980-1983",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1 }, new() { Simbolo = "nh", Nome = "nh", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["nu"] + vars["nh"]
             },
             // 7.2 Supercondutividade BCS
             new Formula
@@ -157,6 +197,11 @@ public partial class FormulaService
                 Descricao = "Temperatura abaixo da qual o material torna-se supercondutor. Depende exponencialmente da interação elétron-fônon N(0)V.",
                 Criador = "Bardeen, Cooper, Schrieffer",
                 AnoOrigin = "1957",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -167,6 +212,11 @@ public partial class FormulaService
                 Descricao = "Gap de energia supercondutora a T=0. A razão 2Δ/(kBTc)≈3.52 é previsão universal da teoria BCS, confirmada experimentalmente.",
                 Criador = "Bardeen, Cooper, Schrieffer",
                 AnoOrigin = "1957",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"]
             },
             new Formula
             {
@@ -177,6 +227,11 @@ public partial class FormulaService
                 Descricao = "Dois elétrons com momentos e spins opostos formam um estado ligado (bóson) via troca de fônon. Condensam no mesmo estado quântico → supercondutividade.",
                 Criador = "Leon Cooper",
                 AnoOrigin = "1956",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["k"]
             },
             new Formula
             {
@@ -187,6 +242,11 @@ public partial class FormulaService
                 Descricao = "Descrevem o efeito Meissner: campo magnético é expulso do supercondutor. Decaimento exponencial do campo com comprimento de penetração λL.",
                 Criador = "Fritz e Heinz London",
                 AnoOrigin = "1935",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1 }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Lambda"] + vars["j"]
             },
             new Formula
             {
@@ -197,6 +257,11 @@ public partial class FormulaService
                 Descricao = "Profundidade até a qual o campo magnético penetra no supercondutor. Tipicamente 50-500 nm. B(x) = B₀·exp(-x/λL).",
                 Criador = "Fritz e Heinz London",
                 AnoOrigin = "1935",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -207,6 +272,11 @@ public partial class FormulaService
                 Descricao = "Tamanho do par de Cooper; distância sobre a qual o parâmetro de ordem Δ pode variar. Tipo I: ξ>λ; Tipo II: ξ<λ (vórtices).",
                 Criador = "Teoria BCS",
                 AnoOrigin = "1957",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "xi", Nome = "xi", ValorPadrao = 1 }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["xi"] + vars["hbar"]
             },
             new Formula
             {
@@ -217,6 +287,11 @@ public partial class FormulaService
                 Descricao = "O fluxo magnético em um supercondutor é quantizado em múltiplos de Φ₀. O fator 2e reflete a carga do par de Cooper.",
                 Criador = "Fritz London / Deaver & Fairbank",
                 AnoOrigin = "1950/1961",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1 }, new() { Simbolo = "Wb", Nome = "Wb", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["h"] + vars["Wb"]
             },
             new Formula
             {
@@ -227,6 +302,11 @@ public partial class FormulaService
                 Descricao = "Equação para o parâmetro de ordem ψ(r) perto de Tc. Descreve vórtices, junções Josephson e transição tipo I/II (parâmetro κ=λ/ξ).",
                 Criador = "Vitaly Ginzburg / Lev Landau",
                 AnoOrigin = "1950",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 }, new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["alpha"] + vars["psi"]
             },
             // 7.3 Fônons e Vibrações de Rede
             new Formula
@@ -238,6 +318,11 @@ public partial class FormulaService
                 Descricao = "Todos os átomos vibram com mesma frequência ω. Correto qualitativamente (Cv→0 para T→0, Cv→3NkB para T alto), mas falha em T baixo.",
                 Criador = "Albert Einstein",
                 AnoOrigin = "1907",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Cv"] + vars["theta"]
             },
             new Formula
             {
@@ -248,6 +333,11 @@ public partial class FormulaService
                 Descricao = "Modelo com espectro de frequências contínuo até ωD. Reproduz lei T³ a baixas temperaturas e Dulong-Petit a altas. Muito melhor que Einstein.",
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -258,6 +348,11 @@ public partial class FormulaService
                 Descricao = "Temperatura característica do sólido. Acima de θD os fônons são clássicos (Cv≈3NkB). Ex.: Cu θD=343K, diamante θD=2230K.",
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "ℏωD", Nome = "ℏωD", ValorPadrao = 10 }, new() { Simbolo = "kB", Nome = "kB", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "θD",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ℏωD"] / vars["kB"]
             },
             new Formula
             {
@@ -268,6 +363,11 @@ public partial class FormulaService
                 Descricao = "A baixas temperaturas, o calor específico segue lei cúbica em T. Confirmação experimental extraordinária do modelo de Debye e da quantização de vibrações.",
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Cv"] + vars["pi"]
             },
         ]);
     }
@@ -288,6 +388,11 @@ public partial class FormulaService
                 Descricao = "Equação diferencial autônoma (f não depende de t explicitamente). O espaço de fase ℝⁿ contém todas as trajetórias possíveis.",
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1890",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dx"] + vars["dt"]
             },
             new Formula
             {
@@ -298,6 +403,11 @@ public partial class FormulaService
                 Descricao = "Estado estacionário onde o sistema não evolui. A estabilidade é determinada pela linearização (Jacobiano) avaliada em x*.",
                 Criador = "Henri Poincaré / Aleksandr Lyapunov",
                 AnoOrigin = "~1892",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Variável física x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["x"]
             },
             new Formula
             {
@@ -308,6 +418,11 @@ public partial class FormulaService
                 Descricao = "Jacobiano em x*: Re(λ)<0 todos → estável; algum Re(λ)>0 → instável; Im≠0 → oscilação; comportamento espiral, nó ou sela.",
                 Criador = "Aleksandr Lyapunov",
                 AnoOrigin = "1892",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"] + vars["f"]
             },
             new Formula
             {
@@ -317,6 +432,11 @@ public partial class FormulaService
                 Icone = "λ",
                 Descricao = "Em 2D: nó estável/instável, espiral, sela, centro. A parte real determina convergência/divergência; a imaginária, oscilação.",
                 Criador = "Poincaré / Lyapunov",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Re"] + vars["lambda_"]
             },
             new Formula
             {
@@ -327,6 +447,11 @@ public partial class FormulaService
                 Descricao = "Quando autovalores complexos cruzam o eixo imaginário, um equilíbrio perde estabilidade e nasce um ciclo limite (oscilação periódica).",
                 Criador = "Eberhard Hopf",
                 AnoOrigin = "1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Re"] + vars["lambda_"]
             },
             new Formula
             {
@@ -336,6 +461,11 @@ public partial class FormulaService
                 Icone = "⋔",
                 Descricao = "Em μ<0: um equilíbrio estável. Em μ>0: equilíbrio instável + 2 novos estáveis em ±√μ. Modelo de quebra de simetria.",
                 Criador = "Teoria de bifurcações",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "μx", Nome = "μx", ValorPadrao = 10 }, new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 5 } ],
+                VariavelResultado = "ẋ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["μx"] - vars["x³"]
             },
             new Formula
             {
@@ -362,6 +492,11 @@ public partial class FormulaService
                 Descricao = "Visualização de como o comportamento assintótico muda com o parâmetro r. Mostra cascata de duplicação de período, janelas de estabilidade e universalidade de Feigenbaum.",
                 Criador = "Mitchell Feigenbaum / Robert May",
                 AnoOrigin = "1976-1978",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 }, new() { Simbolo = "vs", Nome = "vs", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["r"] + vars["vs"]
             },
             // 8.2 Atratores de Lorenz
             new Formula
@@ -373,6 +508,11 @@ public partial class FormulaService
                 Descricao = "Primeira equação de Lorenz: difusão convectiva. σ (Prandtl) controla a razão difusão térmica/viscosidade. σ=10 é valor canônico.",
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dx"] + vars["dt"]
             },
             new Formula
             {
@@ -383,6 +523,11 @@ public partial class FormulaService
                 Descricao = "Segunda equação: ρ (Rayleigh) controla a convecção. Para ρ>24.74 com σ=10, β=8/3, o sistema exibe caos determinístico.",
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "dy", Nome = "dy", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dy"] + vars["dt"]
             },
             new Formula
             {
@@ -393,6 +538,11 @@ public partial class FormulaService
                 Descricao = "Terceira equação: z é proporcional à distorção do perfil de temperatura. β controla o amortecimento vertical.",
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "xy", Nome = "xy", ValorPadrao = 10 }, new() { Simbolo = "βz", Nome = "βz", ValorPadrao = 5 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["xy"] - vars["βz"]
             },
             new Formula
             {
@@ -403,6 +553,11 @@ public partial class FormulaService
                 Descricao = "Duas condições iniciais arbitrariamente próximas divergem exponencialmente. O sistema é determinístico mas imprevisível a longo prazo — caos.",
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["delta"] + vars["t"]
             },
             new Formula
             {
@@ -413,6 +568,11 @@ public partial class FormulaService
                 Descricao = "Taxa média de separação exponencial de trajetórias vizinhas. λ>0 é a definição quantitativa de caos. Lorenz: λ₁≈0.906.",
                 Criador = "Aleksandr Lyapunov / Oseledets",
                 AnoOrigin = "1892/1968",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["delta"] + vars["t"]
             },
             new Formula
             {
@@ -422,6 +582,11 @@ public partial class FormulaService
                 Icone = "λᵢ",
                 Descricao = "3 expoentes: 1 positivo (caos), 1 zero (fluxo), 1 muito negativo (contração). Soma negativa → sistema dissipativo, volume no espaço de fase diminui.",
                 Criador = "Lorenz / Oseledets",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["lambda_"]
             },
             new Formula
             {
@@ -432,6 +597,11 @@ public partial class FormulaService
                 Descricao = "Estimativa da dimensão fractal do atrator a partir dos expoentes de Lyapunov. Lorenz: dKY≈2.06 (atrator fractal entre 2D e 3D).",
                 Criador = "James Kaplan / James Yorke",
                 AnoOrigin = "1979",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "dKY", Nome = "dKY", ValorPadrao = 1 }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dKY"] + vars["j"]
             },
             // 8.3 Fractais
             new Formula
@@ -443,6 +613,11 @@ public partial class FormulaService
                 Descricao = "Generaliza dimensão para conjuntos fractais. N(ε) = mínimo de bolas de raio ε para cobrir o conjunto. Pode ser não-inteira.",
                 Criador = "Felix Hausdorff",
                 AnoOrigin = "1918",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -453,6 +628,11 @@ public partial class FormulaService
                 Descricao = "Remove o terço médio iterativamente de [0,1]. Conjunto resultante é não-enumerável mas tem medida de Lebesgue 0. Dimensão entre 0 (ponto) e 1 (segmento).",
                 Criador = "Georg Cantor",
                 AnoOrigin = "1883",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -463,6 +643,11 @@ public partial class FormulaService
                 Descricao = "Substitui cada segmento por 4 de tamanho 1/3. Comprimento infinito em área finita. O 'floco de neve' de Koch tem área finita mas perímetro infinito.",
                 Criador = "Helge von Koch",
                 AnoOrigin = "1904",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -473,6 +658,11 @@ public partial class FormulaService
                 Descricao = "Remove triângulo central iterativamente. 3 cópias de escala 1/2. Dimensão entre 1 (linha) e 2 (área). Área zero mas dimensão >1.",
                 Criador = "Wacław Sierpiński",
                 AnoOrigin = "1915",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -505,6 +695,11 @@ public partial class FormulaService
                 Descricao = "Fractal como ponto fixo de sistema de funções iteradas (IFS). Cada fᵢ é uma contração e F é a união de suas cópias reduzidas. Teorema de Hutchinson.",
                 Criador = "John Hutchinson / Michael Barnsley",
                 AnoOrigin = "1981-1988",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["F"]
             },
         ]);
     }
@@ -544,6 +739,11 @@ public partial class FormulaService
                 Icone = "Λ",
                 Descricao = "Número de partículas na esfera de Debye. Λ≫1 significa comportamento coletivo domina sobre colisões individuais — plasma fracamente acoplado.",
                 Criador = "Teoria de plasmas",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Lambda"] + vars["n"]
             },
             new Formula
             {
@@ -572,6 +772,11 @@ public partial class FormulaService
                 Icone = "≫",
                 Descricao = "Três critérios para um gás ionizado ser plasma: tamanho muito maior que λD, escala temporal maior que 1/ωp, muitas partículas na esfera de Debye.",
                 Criador = "Definição clássica de plasma",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["L"] + vars["lambda_"]
             },
             new Formula
             {
@@ -582,6 +787,11 @@ public partial class FormulaService
                 Descricao = "Equação cinética sem colisões para a função de distribuição f(x,v,t). Fundamento teórico do plasma: descreve evolução no espaço de fase 6D.",
                 Criador = "Anatoly Vlasov",
                 AnoOrigin = "1938",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["t"]
             },
             // 9.2 MHD
             new Formula
@@ -593,6 +803,11 @@ public partial class FormulaService
                 Descricao = "Conservação de massa no fluido condutivo. Idêntica à equação de continuidade da mecânica dos fluidos.",
                 Criador = "Equações clássicas / Hannes Alfvén",
                 AnoOrigin = "1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["t"]
             },
             new Formula
             {
@@ -603,6 +818,11 @@ public partial class FormulaService
                 Descricao = "Navier-Stokes com força de Lorentz J×B. O acoplamento com o campo magnético distingue MHD da hidrodinâmica comum.",
                 Criador = "Hannes Alfvén",
                 AnoOrigin = "1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["Dv"]
             },
             new Formula
             {
@@ -613,6 +833,11 @@ public partial class FormulaService
                 Descricao = "Evolução do campo magnético: 1º termo = advecção (campo 'congelado' no fluido); 2º = difusão resistiva. Rm=Lv/η grande → campo congelado.",
                 Criador = "Hannes Alfvén",
                 AnoOrigin = "1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["B"] + vars["t"]
             },
             new Formula
             {
@@ -622,6 +847,11 @@ public partial class FormulaService
                 Icone = "MHD",
                 Descricao = "Corrente relacionada ao rotacional do campo magnético. Aproximação quase-estática (ignora corrente de deslocamento ∂D/∂t).",
                 Criador = "André-Marie Ampère",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"] + vars["mu"]
             },
             new Formula
             {
@@ -649,6 +879,11 @@ public partial class FormulaService
                 Icone = "S",
                 Descricao = "Razão entre escalas temporal resistiva e de Alfvén. S grande → campo magnético quase 'congelado'. S~10⁶-10¹² em plasmas astrofísicos.",
                 Criador = "Hannes Alfvén",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "LvA", Nome = "LvA", ValorPadrao = 10 }, new() { Simbolo = "η", Nome = "η", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "S",
+                UnidadeResultado = "",
+                Calcular = vars => vars["LvA"] / vars["η"]
             },
             new Formula
             {
@@ -702,6 +937,11 @@ public partial class FormulaService
                 Descricao = "Energia de ligação nuclear: termos de volume, superfície, Coulomb, assimetria e emparelhamento. Modelo da gota líquida nuclear.",
                 Criador = "Carl Friedrich von Weizsäcker",
                 AnoOrigin = "1935",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -712,6 +952,11 @@ public partial class FormulaService
                 Descricao = "Valores empíricos dos coeficientes: volume (atração nuclear forte), superfície (nucleons na borda), Coulomb (repulsão protônica), assimetria (diferença N-Z).",
                 Criador = "Weizsäcker / Bethe",
                 AnoOrigin = "1935",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -721,6 +966,11 @@ public partial class FormulaService
                 Icone = "δ",
                 Descricao = "Energia de emparelhamento: núcleos par-par são mais estáveis (todos os nucleons em pares). ap≈12 MeV. Explica por que há mais isótopos estáveis par-par.",
                 Criador = "Modelo de gota líquida",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -731,6 +981,11 @@ public partial class FormulaService
                 Descricao = "Curva B/A: cresce até Fe-56, depois decresce. Fissão de pesados e fusão de leves liberam energia (ambos caminham para Fe).",
                 Criador = "Francis Aston / Weizsäcker",
                 AnoOrigin = "~1927-1935",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 10.2 Reações e Decaimentos
             new Formula
@@ -758,6 +1013,11 @@ public partial class FormulaService
                 Descricao = "Nêutron térmico é absorvido pelo U-235, formando U-236 excitado que fissiona em dois fragmentos, liberando nêutrons e ~200 MeV. Base de reatores e armas nucleares.",
                 Criador = "Otto Hahn / Lise Meitner / Fritz Strassmann",
                 AnoOrigin = "1938",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -768,6 +1028,11 @@ public partial class FormulaService
                 Descricao = "Reação de fusão mais acessível: deutério + trítio → hélio-4 + nêutron + 17.6 MeV. Fonte de energia em estrelas e futuros reatores de fusão (ITER).",
                 Criador = "Hans Bethe / Tokamak (ITER)",
                 AnoOrigin = "1938/2025",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -778,6 +1043,11 @@ public partial class FormulaService
                 Descricao = "Probabilidade efetiva de reação: área efetiva σ × intensidade I × densidade n × espessura L. Unidade: barn (área 'do tamanho de um celeiro' para partículas).",
                 Criador = "Ernest Rutherford / Terminology Manhattan Project",
                 AnoOrigin = "~1911/1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "σ", Nome = "σ", ValorPadrao = 2 }, new() { Simbolo = "I", Nome = "I", ValorPadrao = 3 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 4 } ],
+                VariavelResultado = "N",
+                UnidadeResultado = "",
+                Calcular = vars => vars["σ"] * vars["I"] * vars["n"]
             },
             new Formula
             {
@@ -788,6 +1058,11 @@ public partial class FormulaService
                 Descricao = "Probabilidade de tunelamento pela barreira de Coulomb na fusão. Decresce exponencialmente com Z₁Z₂ / velocidade. Controla taxas de reações estelares.",
                 Criador = "George Gamow",
                 AnoOrigin = "1928",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -798,6 +1073,11 @@ public partial class FormulaService
                 Descricao = "k_eff = nêutrons produzidos/absorvidos por geração. k<1 subcrítico, k=1 crítico (estado estacionário), k>1 supercrítico. L=comprimento de difusão, B=buckling geométrico.",
                 Criador = "Enrico Fermi / teoria de reatores",
                 AnoOrigin = "1942",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -818,6 +1098,11 @@ public partial class FormulaService
                 Descricao = "O campo elétrico é soma de modos, cada um com operadores de criação a† e destruição a. Flutuações do vácuo (ponto zero) estão incluídas.",
                 Criador = "Paul Dirac",
                 AnoOrigin = "1927",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -828,6 +1113,11 @@ public partial class FormulaService
                 Descricao = "Relação de comutação canônica para fótons (bósons). Garante que número de partículas é inteiro e não-negativo. Base de toda QED.",
                 Criador = "Paul Dirac",
                 AnoOrigin = "1927",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -838,6 +1128,11 @@ public partial class FormulaService
                 Descricao = "Cada modo do campo é um oscilador harmônico quântico com energia mínima ½ℏω (ponto zero). O espectro de energia é discreto: nℏω (n fótons).",
                 Criador = "Paul Dirac / Max Planck",
                 AnoOrigin = "1927",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -848,6 +1143,11 @@ public partial class FormulaService
                 Descricao = "Estados com número exato de fótons. a† cria um fóton, a destrói um. |0⟩ é o vácuo. Base natural do espaço de Fock para cada modo do campo.",
                 Criador = "Vladimir Fock / Paul Dirac",
                 AnoOrigin = "1927-1932",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             // 11.2 Estados Coerentes e Laser
             new Formula
@@ -859,6 +1159,11 @@ public partial class FormulaService
                 Descricao = "Autoestado do operador de destruição. Mais próximo do campo clássico: flutuações mínimas (Heisenberg saturado), distribuição poissoniana de fótons.",
                 Criador = "Roy Glauber",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -869,6 +1174,11 @@ public partial class FormulaService
                 Descricao = "Número médio de fótons = |α|². Flutuação = √⟨n⟩ (distribuição de Poisson). Relação sinal/ruído = √⟨n⟩, melhora com intensidade.",
                 Criador = "Roy Glauber",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -879,6 +1189,11 @@ public partial class FormulaService
                 Descricao = "Evolução da inversão de população: bombeamento Rp, emissão espontânea N₂/τ, emissão estimulada cσN₂φ. Equilíbrio define limiar do laser.",
                 Criador = "Albert Einstein (emissão estimulada) / Schawlow-Townes",
                 AnoOrigin = "1917/1958",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "Rp", Nome = "Rp", ValorPadrao = 10 }, new() { Simbolo = "N₂", Nome = "N₂", ValorPadrao = 5 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Rp"] - vars["N₂"]
             },
             new Formula
             {
@@ -888,6 +1203,11 @@ public partial class FormulaService
                 Icone = "φ",
                 Descricao = "Evolução do número de fótons na cavidade: ganho estimulado, perdas na cavidade (τc), emissão espontânea no modo (fator β). Acoplada com a equação de N₂.",
                 Criador = "Teoria de laser semiclássica",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -898,6 +1218,11 @@ public partial class FormulaService
                 Descricao = "Equilíbrio térmico sempre tem N₂<N₁ (Boltzmann). Laser exige inverter populações por bombeamento (óptico, elétrico, químico). Sistemas de 3 ou 4 níveis.",
                 Criador = "Charles Townes / Arthur Schawlow",
                 AnoOrigin = "1958",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -907,6 +1232,11 @@ public partial class FormulaService
                 Icone = "g(ν)",
                 Descricao = "Ganho com perfil lorentziano centrado em ν₀, saturado pela intensidade I. Acima do limiar, g(ν)=perdas (operação em estado estacionário).",
                 Criador = "Teoria semiclássica de laser",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 11.3 Emaranhamento e Informação Quântica Óptica
             new Formula
@@ -918,6 +1248,11 @@ public partial class FormulaService
                 Descricao = "Máximo emaranhamento entre dois fótons via polarização. Produzido por conversão paramétrica descendente (SPDC). Base de telecomunicações quânticas.",
                 Criador = "John Bell / Alain Aspect",
                 AnoOrigin = "1964/1982",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -928,6 +1263,11 @@ public partial class FormulaService
                 Descricao = "Limite clássico (variáveis ocultas locais). Correlações clássicas satisfazem S≤2. Mecânica quântica permite violação até 2√2.",
                 Criador = "Clauser, Horne, Shimony, Holt",
                 AnoOrigin = "1969",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -938,6 +1278,11 @@ public partial class FormulaService
                 Descricao = "A mecânica quântica viola a desigualdade de Bell por até fator √2. Experimentalmente confirmado (Aspect 1982, loophole-free Bell tests 2015). Prova não-localidade.",
                 Criador = "Boris Tsirelson / Alain Aspect",
                 AnoOrigin = "1980/1982",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -948,6 +1293,11 @@ public partial class FormulaService
                 Descricao = "Transferência do estado quântico usando emaranhamento pré-compartilhado e comunicação clássica (2 bits). Não viola causalidade (precisa de bits). Demonstrada com fótons em 1997.",
                 Criador = "Bennett, Brassard, Crépeau, Jozsa, Peres, Wootters",
                 AnoOrigin = "1993",
+                ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }

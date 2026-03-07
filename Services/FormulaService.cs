@@ -1,4 +1,5 @@
 using CompendioCalc.Models;
+using System.Reflection;
 
 namespace CompendioCalc.Services;
 
@@ -11,6 +12,7 @@ public partial class FormulaService
     {
         InicializarCategorias();
         InicializarFormulas();
+        InicializarCodigosCompendio();
     }
 
     public IEnumerable<Formula> ObterTodas() => _formulas;
@@ -257,11 +259,32 @@ public partial class FormulaService
         AdicionarEletromagnetismo();
         AdicionarOptica();
         AdicionarMecanicaFluidos();
-        AdicionarEngenharia();
+            AdicionarEngenharia();
+
+            // ══════════════════════════════════════════════════════════
+            // VOLUME 2 — COMPLETO: Matemática, Física, Stats, Computação, Engenharia, Bio
+            // ══════════════════════════════════════════════════════════
+                AdicionarMatematicaPuraAvancada(); // Álgebra Abstrata, Topologia, Geometria Diferencial, Cálculo de Variações, Funções Especiais, Análise Complexa
+                AdicionarFisicaAvancada(); // Mecânica Lagrangiana/Hamiltoniana, Mecânica Estatística, Relatividade Geral
+            AdicionarSeriesTemporaisCompleta();
+            AdicionarAnaliseMultivariadaCompleta();
+            AdicionarEstatisticaBayesianaCompleta();
+            AdicionarTeoriaGrafosCompleta();
+            AdicionarProcessamentoSinaisCompleto();
+            AdicionarDeepLearningCompleto();
+            AdicionarComputacaoQuanticaCompleto();
+            AdicionarControleAutomaticoCompleto();
+            AdicionarAntenasCompleto();
+            AdicionarProcessamentoImagemCompleto();
+            AdicionarDinamicaPopulacoesCompleta();
+            AdicionarFarmacocineticaCompleta();
+            AdicionarNeurocienciaCompleta();
         AdicionarBiologiaMatematica();
         AdicionarComputacao();
 
-        // ── Volume 2 ──
+        // ══════════════════════════════════════════════════════════
+        // VOLUME 2 — RESTAURAÇÃO: Fórmulas originais detalhadas
+        // ══════════════════════════════════════════════════════════
         AdicionarAlgebraAbstrata();
         AdicionarTopologia();
         AdicionarGeometriaDiferencial();
@@ -286,7 +309,36 @@ public partial class FormulaService
         AdicionarFarmacocinetica();
         AdicionarNeurocienciaComputacional();
 
-        // ── Volume 3 ──
+        // ── Volume 3 (versao calculavel completa) ──
+        AdicionarAnaliseFuncionalCompleta();
+        AdicionarTeoriaMedidaCompleta();
+        AdicionarTeoriaCategoriasCompleta();
+        AdicionarAnaliseNumericaCompleta();
+        AdicionarGeometriaAlgebricaCompleta();
+        AdicionarLogicaMatematicaCompleta();
+        AdicionarMateriaCondensadaCompleta();
+        AdicionarCaosFractaisCompleta();
+        AdicionarFisicaPlasmasCompleta();
+        AdicionarFisicaNuclearCompleta();
+        AdicionarOpticaQuanticaCompleta();
+        AdicionarAnaliseSobrevivenciaCompleta();
+        AdicionarValoresExtremosCompleta();
+        AdicionarGeoestatisticaCompleta();
+        AdicionarMecanicaFraturaCompleta();
+        AdicionarCFDTurbulenciaCompleta();
+        AdicionarRoboticaCompleta();
+        AdicionarSistemasPotenciaCompleta();
+        AdicionarFinancasQuantitativasCompleta();
+        AdicionarPesquisaOperacionalCompleta();
+        AdicionarCienciasClimaCompleta();
+        AdicionarBioinformaticaCompleta();
+        AdicionarAcusticaCompleta();
+        AdicionarVolume3Complementos();
+        AdicionarVolume3FechamentoTotal();
+
+        // ══════════════════════════════════════════════════════════
+        // VOLUME 3 — RESTAURAÇÃO: Fórmulas originais detalhadas
+        // ══════════════════════════════════════════════════════════
         AdicionarAnaliseFuncional();
         AdicionarTeoriaMedida();
         AdicionarTeoriaCategorias();
@@ -355,10 +407,16 @@ public partial class FormulaService
         AdicionarCompiladoresAutomatos();
         AdicionarComputacaoParalela();
         AdicionarMacroeconomiaDSGE();
+        AdicionarDSGEAvancado();
+        AdicionarMicroeconomiaAvancada();
         AdicionarEconofisica();
+        AdicionarSociofisica();
         AdicionarGeneticaQuantitativa();
+        AdicionarGeneticaQuantitativaAvancada();
         AdicionarImunologiaComputacional();
+        AdicionarImunologiaAvancada();
         AdicionarPrivacidadeDiferencial();
+        AdicionarAprendizadoFederado();
         AdicionarBlockchainConsenso();
         AdicionarComputacaoQuanticaTopologica();
         AdicionarIAExplicavel();
@@ -404,11 +462,32 @@ public partial class FormulaService
         AdicionarVol7Artesanato();
         AdicionarVol7TechEmergente();
 
+        // Carrega fórmulas públicas estáticas dos arquivos *_Complete que não entram via métodos Adicionar*.
+        AdicionarFormulasFactoryVol1EVol5();
+
+
         // Update category counts
         foreach (var cat in _categorias)
         {
             cat.TotalFormulas = _formulas.Count(f => f.Categoria == cat.Nome);
         }
+    }
+
+    private void AdicionarFormulasFactoryVol1EVol5()
+    {
+        var formulasFactory = typeof(FormulaService)
+            .GetMethods(BindingFlags.Public | BindingFlags.Static)
+            .Where(m =>
+                m.ReturnType == typeof(Formula)
+                && m.GetParameters().Length == 0
+                && (m.Name.StartsWith("V1_", StringComparison.Ordinal)
+                    || m.Name.StartsWith("V5_", StringComparison.Ordinal)))
+            .OrderBy(m => m.Name, StringComparer.Ordinal)
+            .Select(m => m.Invoke(null, null) as Formula)
+            .Where(f => f is not null)
+            .Cast<Formula>();
+
+        _formulas.AddRange(formulasFactory);
     }
 
     // ─────────────────────────────────────────────────────

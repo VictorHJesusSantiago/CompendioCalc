@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Leilão de Vickrey (segundo preço): estratégia dominante é revelar valor verdadeiro. Vencedor paga segundo maior lance. Truthful, eficiente, mas não maximiza receita.",
                 Criador = "William Vickrey",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "bid", Nome = "bid", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["bid"]
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Mecanismo Vickrey-Clarke-Groves: cada agente paga a externalidade que impõe aos outros. Truthful, eficiente em estratégia dominante. Generaliza Vickrey para múltiplos itens.",
                 Criador = "William Vickrey / Edward Clarke / Theodore Groves",
                 AnoOrigin = "1971",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "VCG", Nome = "VCG", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["VCG"] + vars["de"]
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Teorema de equivalência de receita: sob IPV, qualquer leilão simétrico eficiente com pagamento zero p/ tipo mínimo gera a mesma receita esperada (Inglês = Holandês = Vickrey = 1º preço).",
                 Criador = "William Vickrey / Roger Myerson / John Riley / William Samuelson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Leilão de primeiro preço: no BNE simétrico, cada bidder reduz lance abaixo do valor (bid shading). Redução ≈ 1/(n−1) do gap esperado ao segundo valor. n bidders uniformes: b=(n-1)v/n.",
                 Criador = "Roger Myerson / John Riley / William Samuelson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Leilão ótimo de Myerson: maximiza receita usando valores virtuais φ(v). Aloca ao maior φ≥0 (preço de reserva implícito). Revolutionou teoria de leilões (Nobel 2007).",
                 Criador = "Roger Myerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"] + vars["v"]
             },
 
             // 18.2 Matching e Escolha Social
@@ -76,6 +101,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo de aceitação diferida: resolve matching estável (sem par bloqueador). Propositor-ótimo/receptor-pior entre estáveis. O(n²). Base de residências médicas, transplantes.",
                 Criador = "David Gale / Lloyd Shapley",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["em"]
             },
             new Formula
             {
@@ -86,6 +116,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Arrow: com ≥3 alternativas, nenhuma função de bem-estar social satisfaz simultaneamente unanimidade (Pareto), IIA e não-ditadura. Resultado fundamental em escolha social.",
                 Criador = "Kenneth Arrow",
                 AnoOrigin = "1951",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 }, new() { Simbolo = "IIA", Nome = "IIA", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"] + vars["IIA"]
             },
             new Formula
             {
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "Gibbard-Satterthwaite: qualquer função de escolha social com ≥3 alternativas que é à prova de manipulação estratégica deve ser ditatorial. Limita mecanismos sem transferências.",
                 Criador = "Allan Gibbard / Mark Satterthwaite",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "G", Nome = "G", ValorPadrao = 1 }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["G"] + vars["S"]
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Valor de Shapley: divisão justa do valor de coalizão. Média da contribuição marginal de i sobre todas as permutações de jogadores. Axiomas: eficiência, simetria, linearidade, nulo.",
                 Criador = "Lloyd Shapley",
                 AnoOrigin = "1953",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "as", Nome = "as", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"] + vars["as"]
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Índice de Banzhaf: mede poder de voto pelo número de coalizões onde o jogador i é pivotal (swing). Difere de Shapley por não ponderar por tamanho. Conselho de segurança da ONU.",
                 Criador = "John Banzhaf III",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "beta", Nome = "beta", ValorPadrao = 1 }, new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["beta"] + vars["i"]
             },
 
             // 18.3 Teoria de Myerson
@@ -128,6 +178,11 @@ public partial class FormulaService
                 Descricao = "Lemma de Myerson (revenue equivalence generalizado): em mecanismo truthful, a utilidade de um tipo é determinada pela regra de alocação q(·) a menos de constante. Pagamento segue.",
                 Criador = "Roger Myerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -138,6 +193,11 @@ public partial class FormulaService
                 Descricao = "Princípio de revelação: para qualquer mecanismo com equilíbrio BNE, existe mecanismo direto (agentes reportam tipo) onde reportar verdade é equilíbrio. Simplifica design.",
                 Criador = "Roger Myerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "BNE", Nome = "BNE", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["BNE"]
             },
             new Formula
             {
@@ -148,6 +208,11 @@ public partial class FormulaService
                 Descricao = "Mecanismo AGV (Arrow-d'Aspremont-Gérard-Varet): transferências = externalidade esperada. Truthful em BNE, eficiente ex-post e budget-balanced ex-ante. Viola individual rationality.",
                 Criador = "Claude d'Aspremont / Louis-André Gérard-Varet",
                 AnoOrigin = "1979",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "AGV", Nome = "AGV", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["AGV"] + vars["em"]
             },
             new Formula
             {
@@ -158,6 +223,11 @@ public partial class FormulaService
                 Descricao = "Myerson-Satterthwaite: impossível projetar mecanismo para troca bilateral que seja simultaneamente BIC, individualmente racional, eficiente e orçamento-balanceado quando valores se sobrepõem.",
                 Criador = "Roger Myerson / Mark Satterthwaite",
                 AnoOrigin = "1983",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"] + vars["S"]
             },
         ]);
     }
@@ -178,6 +248,11 @@ public partial class FormulaService
                 Descricao = "Energia livre variacional: upper bound de −log p(o). Minimizar F = reduzir surpresa (percepção) ou buscar dados esperados (ação). Framework de Friston para cognição.",
                 Criador = "Karl Friston",
                 AnoOrigin = "2006",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -188,6 +263,11 @@ public partial class FormulaService
                 Descricao = "Expected free energy: guia seleção de políticas em active inference. Decompõe em information gain (exploração epistêmica) + pragmatic value (exploração pragmática). Trade-off explore/exploit.",
                 Criador = "Karl Friston / Thomas Parr",
                 AnoOrigin = "2015",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "EFE", Nome = "EFE", ValorPadrao = 1 }, new() { Simbolo = "G", Nome = "G", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["EFE"] + vars["G"]
             },
             new Formula
             {
@@ -198,6 +278,11 @@ public partial class FormulaService
                 Descricao = "Predictive coding: cérebro minimiza erros de predição ε=o−g(μ) atualizando crenças μ via gradiente. Hierarquia cortical: cada nível prediz o abaixo. Implementação neural do Free Energy.",
                 Criador = "Rajesh Rao / Dana Ballard (original) / Karl Friston (FEP)",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 }, new() { Simbolo = "d", Nome = "d", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["epsilon"] + vars["d"]
             },
             new Formula
             {
@@ -208,6 +293,11 @@ public partial class FormulaService
                 Descricao = "POMDP em active inference: modelo generativo com observações, estados ocultos e políticas. Seleção de política via softmax da EFE. Unifica percepção, aprendizagem e decisão.",
                 Criador = "Karl Friston / Thomas Parr / Giovanni Pezzulo",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "o", Nome = "o", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["o"]
             },
             new Formula
             {
@@ -218,6 +308,11 @@ public partial class FormulaService
                 Descricao = "Precision weighting: erros de predição ponderados pela precisão Π (inverso da variância esperada). Alta precisão sensorial → atenção (bottom-up). Baixa → hallucination. Base de atenção neural.",
                 Criador = "Karl Friston",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -228,6 +323,11 @@ public partial class FormulaService
                 Descricao = "Inferência interoceptiva: active inference aplicada ao corpo. Predições viscerais geram errros interoceptivos → ação autonômica (homeostase/alostase). Modelo de emoção como inferência.",
                 Criador = "Anil Seth / Karl Friston / Lisa Feldman Barrett",
                 AnoOrigin = "2015",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "via", Nome = "via", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["via"]
             },
 
             // 19.2 Psicologia Computacional
@@ -240,6 +340,11 @@ public partial class FormulaService
                 Descricao = "Drift-diffusion model: acumula evidência ruidosa (drift v) até limiar ±a. RT = tempo de reação, separado em não-decisão + difusão. Modelo padrão de decisão perceptual.",
                 Criador = "Roger Ratcliff",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 5 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 3 } ],
+                VariavelResultado = "dx",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] * vars["dt"]
             },
             new Formula
             {
@@ -250,6 +355,11 @@ public partial class FormulaService
                 Descricao = "Modelo Rescorla-Wagner: aprendizagem associativa com erro de predição δ = (reforço real − esperado). Taxa α. Base de TD-learning, dopamina como δ, e RL moderno.",
                 Criador = "Robert Rescorla / Allan Wagner",
                 AnoOrigin = "1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "λ", Nome = "λ", ValorPadrao = 10 }, new() { Simbolo = "V", Nome = "V", ValorPadrao = 5 } ],
+                VariavelResultado = "δ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["λ"] - vars["V"]
             },
             new Formula
             {
@@ -260,6 +370,11 @@ public partial class FormulaService
                 Descricao = "Prospect theory: valor em relação a referência (não absoluto), perda pesa mais (λ≈2.25), função de valor côncava em ganhos / convexa em perdas. Pesos probabilísticos distorcem p.",
                 Criador = "Daniel Kahneman / Amos Tversky",
                 AnoOrigin = "1979",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["V"] + vars["x"]
             },
             new Formula
             {
@@ -270,6 +385,11 @@ public partial class FormulaService
                 Descricao = "Regra de escolha softmax: probabilidade de ação a proporcional a exp(βQ). β→∞ greedy, β→0 aleatório. Modelo padrão em psicologia computacional e RL.",
                 Criador = "R. Duncan Luce (choice axiom) / Sutton & Barto (RL)",
                 AnoOrigin = "1959",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -280,6 +400,11 @@ public partial class FormulaService
                 Descricao = "Desconto hiperbólico: humanos descontam valor futuro hiperbolicamente (não exponencialmente). Gera inversão de preferência (impulsividade). k = taxa de desconto individual.",
                 Criador = "George Ainslie / Richard Herrnstein / George Loewenstein / Drazen Prelec",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["V"] + vars["A"]
             },
             new Formula
             {
@@ -290,6 +415,11 @@ public partial class FormulaService
                 Descricao = "Teoria de detecção de sinal: separa sensibilidade d' (distância entre distribuições sinal/ruído) do critério c (viés liberal/conservador). ROC curve. Psicofísica e diagnóstico.",
                 Criador = "Wilson Tanner / John Swets / David Green",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "SDT", Nome = "SDT", ValorPadrao = 1 }, new() { Simbolo = "d", Nome = "d", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["SDT"] + vars["d"]
             },
 
             // 19.3 Linguística Computacional
@@ -302,6 +432,11 @@ public partial class FormulaService
                 Descricao = "Surprisal: dificuldade de processamento linguístico proporcional a −log P(palavra|contexto). Prediz tempos de leitura e fixações oculares. Link entre teoria da informação e psicolinguística.",
                 Criador = "John Hale / Roger Levy",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -312,6 +447,11 @@ public partial class FormulaService
                 Descricao = "Perplexidade: medida padrão de qualidade de modelo de linguagem. PPL = 2^H onde H = entropia cruzada. PPL=k equivale a incerteza de k escolhas uniformes por token.",
                 Criador = "Claude Shannon (entropia) / Fred Jelinek (NLP)",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -322,6 +462,11 @@ public partial class FormulaService
                 Descricao = "Lei de Zipf: frequência de palavra é inversamente proporcional ao seu rank. 'the' (rank 1) ~2× mais frequente que 'of' (rank 2). Universal em línguas. Expoente α≈1.",
                 Criador = "George Kingsley Zipf",
                 AnoOrigin = "1935",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["r"]
             },
             new Formula
             {
@@ -332,6 +477,11 @@ public partial class FormulaService
                 Descricao = "PMI: mede associação entre palavras pela razão de co-ocorrência observada vs esperada. PPMI (parte positiva) base de word embeddings clássicos. Word2Vec implicitamente fatoriza PPMI.",
                 Criador = "Kenneth Church / Patrick Hanks (NLP aplicação)",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -342,6 +492,11 @@ public partial class FormulaService
                 Descricao = "BPE: algoritmo de tokenização subword. Iterativamente funde par de tokens mais frequente. Balanceia vocabulário (compacto) vs cobertura (raro → subwords). Usado em GPT, LLaMA.",
                 Criador = "Philip Gage (original) / Rico Sennrich et al. (NLP)",
                 AnoOrigin = "2016",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "BPE", Nome = "BPE", ValorPadrao = 1 }, new() { Simbolo = "par", Nome = "par", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["BPE"] + vars["par"]
             },
         ]);
     }
@@ -362,6 +517,11 @@ public partial class FormulaService
                 Descricao = "Ondulação geoidal N: diferença entre geoide e elipsoide. Anomalia de gravidade Δg via potencial perturbador T. Equação de Bruns liga T ao N. Base de geodesia física.",
                 Criador = "Gabriel Stokes / Heinrich Bruns",
                 AnoOrigin = "1849",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 10 }, new() { Simbolo = "γ₀", Nome = "γ₀", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "N",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] / vars["γ₀"]
             },
             new Formula
             {
@@ -372,6 +532,11 @@ public partial class FormulaService
                 Descricao = "Expansão em harmônicos esféricos do potencial gravitacional. Cnm, Snm = coeficientes (medidos por satélite GRACE/GOCE). n=2: achatamento da Terra. Resolução grau~2000.",
                 Criador = "Pierre-Simon Laplace / GRACE/GOCE missions",
                 AnoOrigin = "1782",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "U", Nome = "U", ValorPadrao = 1 }, new() { Simbolo = "GM", Nome = "GM", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["U"] + vars["GM"]
             },
             new Formula
             {
@@ -382,6 +547,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de Vincenty: calcula distância geodésica e azimute no elipsoide por iteração. Precisão ~0.5mm para qualquer distância. Padrão em GPS e cartografia.",
                 Criador = "Thaddeus Vincenty",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "no", Nome = "no", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["no"]
             },
             new Formula
             {
@@ -392,6 +562,11 @@ public partial class FormulaService
                 Descricao = "UTM: projeção Mercator transversa em fusos de 6°. Coordenadas E (easting), N (northing) em metros. Fator de escala k₀=0.9996 no meridiano central. Padrão militar e civil.",
                 Criador = "US Army / Gauss / Krüger",
                 AnoOrigin = "1947",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "UTM", Nome = "UTM", ValorPadrao = 1 }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["UTM"] + vars["E"]
             },
             new Formula
             {
@@ -402,6 +577,11 @@ public partial class FormulaService
                 Descricao = "Pseudorange GNSS: medida de distância sat-receptor via tempo de voo × c. Inclui erros de relógio (δt), ionosfera (I), troposfera (T). 4 satélites → solução 3D+tempo.",
                 Criador = "Ivan Getting / Bradford Parkinson / Roger Easton (GPS)",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "c", Nome = "c", ValorPadrao = 5 }, new() { Simbolo = "Δt", Nome = "Δt", ValorPadrao = 3 } ],
+                VariavelResultado = "ρ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["c"] * vars["Δt"]
             },
             new Formula
             {
@@ -412,6 +592,11 @@ public partial class FormulaService
                 Descricao = "Isostasia de Airy: montanhas têm raízes crustais profundas. h = elevação, r = profundidade da raiz. Crosta (ρc≈2.7) flutua no manto (ρm≈3.3). Explica anomalias gravimétricas.",
                 Criador = "George Biddell Airy",
                 AnoOrigin = "1855",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 5 }, new() { Simbolo = "ρc", Nome = "ρc", ValorPadrao = 3 } ],
+                VariavelResultado = "r",
+                UnidadeResultado = "",
+                Calcular = vars => vars["h"] * vars["ρc"]
             },
 
             // 20.2 Química Atmosférica
@@ -424,6 +609,11 @@ public partial class FormulaService
                 Descricao = "Lei de Henry: concentração de gás dissolvido proporcional à sua pressão parcial. kH depende de T. Governa CO₂ oceânico, O₂ dissolvido, chuva ácida.",
                 Criador = "William Henry",
                 AnoOrigin = "1803",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "kH", Nome = "kH", ValorPadrao = 5 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 3 } ],
+                VariavelResultado = "c",
+                UnidadeResultado = "",
+                Calcular = vars => vars["kH"] * vars["p"]
             },
             new Formula
             {
@@ -434,6 +624,11 @@ public partial class FormulaService
                 Descricao = "Ciclo de Chapman: formação e destruição do ozônio estratosférico por fotólise UV. Produção: O₂→2O→O₃. Destruição: O₃→O₂+O e O₃+O→2O₂. Estado estacionário natural.",
                 Criador = "Sydney Chapman",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "O", Nome = "O", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["O"] + vars["de"]
             },
             new Formula
             {
@@ -444,6 +639,11 @@ public partial class FormulaService
                 Descricao = "Forçamento radiativo do CO₂: aumento logarítmico com concentração. Dobrar CO₂ → ΔF≈3.7 W/m² → aquecimento ~3°C (sensibilidade climática). IPCC standard.",
                 Criador = "Svante Arrhenius (conceito) / Myhre et al. (formula)",
                 AnoOrigin = "1998",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -454,6 +654,11 @@ public partial class FormulaService
                 Descricao = "GWP: potencial de efeito estufa de um gás x relativo ao CO₂ em horizonte H (geralmente 100 anos). CH₄: GWP≈28, N₂O: GWP≈265. Usado no Protocolo de Kyoto.",
                 Criador = "IPCC (Donald Wuebbles)",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -464,6 +669,11 @@ public partial class FormulaService
                 Descricao = "Deposição ácida: SO₂ e NOₓ oxidam na atmosfera e produzem H₂SO₄ e HNO₃. pH natural da chuva ≈5.6 (equilíbrio CO₂). Chuva ácida pH<5.6 danifica ecossistemas.",
                 Criador = "Robert Angus Smith (descoberta)",
                 AnoOrigin = "1872",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "NOx", Nome = "NOx", ValorPadrao = 1 }, new() { Simbolo = "pH", Nome = "pH", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["NOx"] + vars["pH"]
             },
             new Formula
             {
@@ -474,6 +684,11 @@ public partial class FormulaService
                 Descricao = "Tempo de residência: tempo médio de permanência de espécie na atmosfera. τ=M/F onde F=taxa de remoção. CO₂~100+anos, CH₄~12 anos. Determina impacto de emissões.",
                 Criador = "Christian Junge",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 10 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "τ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"] / vars["F"]
             },
 
             // 20.3 Mineralogia e Oceanografia
@@ -486,6 +701,11 @@ public partial class FormulaService
                 Descricao = "Lei de Bragg: condição de difração construtiva em cristais. d = distância entre planos cristalinos. Base de XRD para identificação mineral e determinação de estrutura cristalina.",
                 Criador = "William Henry Bragg / William Lawrence Bragg",
                 AnoOrigin = "1913",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "2d", Nome = "2d", ValorPadrao = 5 }, new() { Simbolo = "sinθ", Nome = "sinθ", ValorPadrao = 3 } ],
+                VariavelResultado = "nλ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["2d"] * vars["sinθ"]
             },
             new Formula
             {
@@ -496,6 +716,11 @@ public partial class FormulaService
                 Descricao = "Relação empírica entre dureza Mohs (1-10, relativa) e Vickers (GPa, quantitativa). Mohs logarítmica: diamante (10) = 70GPa, quartzo (7) ≈ 9GPa. Identificação mineral.",
                 Criador = "Friedrich Mohs (escala) / Robert Smith & George Sandland (Vickers)",
                 AnoOrigin = "1812",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "HV", Nome = "HV", ValorPadrao = 1 }, new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["HV"] + vars["M"]
             },
             new Formula
             {
@@ -506,6 +731,11 @@ public partial class FormulaService
                 Descricao = "TEOS-10: equação termodinâmica do mar. Relaciona densidade ρ à salinidade absoluta SA, temperatura conservativa Θ e pressão p. Substitui EOS-80. Padrão IOC/UNESCO.",
                 Criador = "IOC/SCOR/IAPSO (Rainer Feistel, Trevor McDougall)",
                 AnoOrigin = "2010",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["f"]
             },
             new Formula
             {
@@ -516,6 +746,11 @@ public partial class FormulaService
                 Descricao = "Relação de dispersão de ondas de gravidade de superfície. Águas profundas (kh≫1): dispersivas, c∝√λ. Águas rasas (kh≪1): não-dispersivas, c=√(gh). Tsunami = onda rasa.",
                 Criador = "George Airy / Joseph Boussinesq",
                 AnoOrigin = "1845",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "gk", Nome = "gk", ValorPadrao = 5 }, new() { Simbolo = "tanh", Nome = "tanh", ValorPadrao = 3 } ],
+                VariavelResultado = "ω²",
+                UnidadeResultado = "",
+                Calcular = vars => vars["gk"] * vars["tanh"]
             },
             new Formula
             {
@@ -526,6 +761,11 @@ public partial class FormulaService
                 Descricao = "Balanço de Sverdrup: transporte meridional no interior oceânico determinado pelo rotacional do estresse do vento e efeito beta (variação de Coriolis). Explica gyres oceânicos.",
                 Criador = "Harald Sverdrup",
                 AnoOrigin = "1947",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "beta", Nome = "beta", ValorPadrao = 1 }, new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["beta"] + vars["V"]
             },
             new Formula
             {
@@ -536,6 +776,11 @@ public partial class FormulaService
                 Descricao = "Espiral de Ekman: vento gera corrente superficial a 45° (NH direita). Corrente rotaciona e decai com profundidade. Profundidade de Ekman DE = √(2ν/f). Transporte 90° do vento.",
                 Criador = "Vagn Walfrid Ekman",
                 AnoOrigin = "1905",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
         ]);
     }

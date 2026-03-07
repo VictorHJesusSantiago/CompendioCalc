@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Retorno esperado da carteira é média ponderada dos retornos esperados dos ativos. Pesos wᵢ somam 1 (ou >1 com alavancagem).",
                 Criador = "Harry Markowitz",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "Rp", Nome = "Rp", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["Rp"]
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Risco da carteira depende das covariâncias (Σ) entre todos os pares. Diversificação reduz risco se correlações < 1. Base da MPT (Modern Portfolio Theory).",
                 Criador = "Harry Markowitz",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sigma"] + vars["w"]
             },
             new Formula
             {
@@ -61,6 +71,11 @@ public partial class FormulaService
                 Descricao = "Conjunto de carteiras que minimizam risco para dado retorno (ou maximizam retorno para dado risco). Solução por multiplicadores de Lagrange → parábola no plano σ-E[R].",
                 Criador = "Harry Markowitz",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sigma"] + vars["s"]
             },
             new Formula
             {
@@ -89,6 +104,11 @@ public partial class FormulaService
                 Descricao = "Generalização do CAPM: múltiplos fatores de risco (inflação, PIB, taxa de juros...). λⱼ = prêmio do fator j. Não assume carteira de mercado eficiente.",
                 Criador = "Stephen Ross",
                 AnoOrigin = "1976",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "Rf", Nome = "Rf", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["Rf"]
             },
             // 19.2 Derivativos e Greeks
             new Formula
@@ -100,6 +120,11 @@ public partial class FormulaService
                 Descricao = "Preço de opção de compra europeia. d₁ = (ln(S/K)+(r+σ²/2)T)/(σ√T). Assume log-normal, sem dividendos, vol constante. Revolução em finanças, Nobel 1997.",
                 Criador = "Fischer Black / Myron Scholes / Robert Merton",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 5 }, new() { Simbolo = "N", Nome = "N", ValorPadrao = 3 } ],
+                VariavelResultado = "C",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] * vars["N"]
             },
             new Formula
             {
@@ -110,6 +135,11 @@ public partial class FormulaService
                 Descricao = "d₁ é Z-score ajustado pelo risco de exercer a opção. d₂ é a probabilidade risk-neutral de exercício. N() = CDF normal padrão.",
                 Criador = "Black-Scholes-Merton",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "d₁", Nome = "d₁", ValorPadrao = 10 }, new() { Simbolo = "σ", Nome = "σ", ValorPadrao = 5 } ],
+                VariavelResultado = "d₂",
+                UnidadeResultado = "",
+                Calcular = vars => vars["d₁"] - vars["σ"]
             },
             new Formula
             {
@@ -120,6 +150,11 @@ public partial class FormulaService
                 Descricao = "Sensibilidade do preço da opção ao preço do ativo subjacente. Δ=0.5 → at-the-money. Mede unidades do ativo para hedge delta-neutro.",
                 Criador = "Black-Scholes-Merton",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["C"]
             },
             new Formula
             {
@@ -129,6 +164,11 @@ public partial class FormulaService
                 Icone = "Γ",
                 Descricao = "Taxa de variação do Delta. Alta perto do strike e vencimento. Gamma alto → Delta muda rápido → rebalanceamento frequente de hedge necessário.",
                 Criador = "Teoria de opções",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -138,6 +178,11 @@ public partial class FormulaService
                 Icone = "Θ",
                 Descricao = "Perda de valor por unidade de tempo (time decay). Sempre negativo para opções compradas. Acelera perto do vencimento. Vendedor de opções: Θ ganha dinheiro se S parado.",
                 Criador = "Teoria de opções",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 }, new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["C"] + vars["T"]
             },
             new Formula
             {
@@ -147,6 +192,11 @@ public partial class FormulaService
                 Icone = "ν",
                 Descricao = "Sensibilidade à volatilidade implícita. Maior para ATM e maturidade longa. Se vol sobe 1% → preço da opção sobe ν unidades. Não é letra grega formalmente.",
                 Criador = "Teoria de opções",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 5 }, new() { Simbolo = "φ", Nome = "φ", ValorPadrao = 3 } ],
+                VariavelResultado = "σ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] * vars["φ"]
             },
             new Formula
             {
@@ -156,6 +206,11 @@ public partial class FormulaService
                 Icone = "ρ",
                 Descricao = "Sensibilidade à taxa de juros. Geralmente o Greek menos importante para equities, mais relevante para renda fixa e swaps de taxa de juros.",
                 Criador = "Teoria de opções",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -166,6 +221,11 @@ public partial class FormulaService
                 Descricao = "Relação de arbitragem para opções europeias. Violação → arbitragem livre de risco. Não depende de modelo (válida para qualquer processo do ativo).",
                 Criador = "Hans Stoll",
                 AnoOrigin = "1969",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 10 }, new() { Simbolo = "Ke", Nome = "Ke", ValorPadrao = 5 } ],
+                VariavelResultado = "P",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] - vars["Ke"]
             },
             // 19.3 Risco
             new Formula
@@ -177,6 +237,11 @@ public partial class FormulaService
                 Descricao = "Perda máxima com confiança α em horizonte h. VaR 99% 1 dia = R$1M → probabilidade 1% de perder mais que R$1M em 1 dia. Basel II/III exige VaR.",
                 Criador = "J.P. Morgan (RiskMetrics)",
                 AnoOrigin = "1994",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] + vars["L"]
             },
             new Formula
             {
@@ -204,6 +269,11 @@ public partial class FormulaService
                 Descricao = "Perda esperada dado que excedeu VaR. Medida coerente (subaditividade). ES ≥ VaR sempre. Basel IV substituiu VaR por ES para capital de mercado.",
                 Criador = "Acerbi / Tasche / Basel IV",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ES", Nome = "ES", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ES"] + vars["alpha"]
             },
             new Formula
             {
@@ -214,6 +284,11 @@ public partial class FormulaService
                 Descricao = "Ajuste no preço de derivativo OTC pelo risco de default da contraparte. EE=exposição esperada, PD=probabilidade de default, R=taxa de recuperação.",
                 Criador = "Basel III / Precificação de crédito",
                 AnoOrigin = "~2010",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
         ]);
     }
@@ -234,6 +309,11 @@ public partial class FormulaService
                 Descricao = "Otimização linear: objetivo linear, restrições lineares. Solução ótima sempre num vértice do poliedro viável. Aplicações: logística, produção, transporte, dieta.",
                 Criador = "George Dantzig / Leonid Kantorovich",
                 AnoOrigin = "1947/1939",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "c", Nome = "c", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["c"] + vars["x"]
             },
             new Formula
             {
@@ -244,6 +324,11 @@ public partial class FormulaService
                 Descricao = "Todo PL tem um dual. Na otiminalidade: c'x* = b'y* (dualidade forte). yᵢ* = preço-sombra da restrição i (valor marginal de relaxar o recurso).",
                 Criador = "George Dantzig / John von Neumann",
                 AnoOrigin = "1947",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "b", Nome = "b", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["b"] + vars["y"]
             },
             new Formula
             {
@@ -254,6 +339,11 @@ public partial class FormulaService
                 Descricao = "Caminha de vértice em vértice do poliedro viável, sempre melhorando. Exponencial no pior caso (Klee-Minty), mas excelente na prática (tipicamente O(m) iterações).",
                 Criador = "George Dantzig",
                 AnoOrigin = "1947",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -264,6 +354,11 @@ public partial class FormulaService
                 Descricao = "Condições necessárias de otimalidade para programação não-linear com restrições. Generalização de Lagrange para desigualdades. Complementaridade: λᵢ·gᵢ=0.",
                 Criador = "Karush / Kuhn-Tucker",
                 AnoOrigin = "1939/1951",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["lambda_"]
             },
             new Formula
             {
@@ -274,6 +369,11 @@ public partial class FormulaService
                 Descricao = "Alternativa ao simplex: caminha pelo interior do poliedro. Polinomial (O(n³·⁵L)). Melhor para problemas muito grandes. Karmarkar (1984) revolucionou a PL.",
                 Criador = "Narendra Karmarkar",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             // 20.2 Programação Inteira e Combinatória
             new Formula
@@ -285,6 +385,11 @@ public partial class FormulaService
                 Descricao = "PL com variáveis inteiras. NP-difícil em geral. Métodos: Branch-and-Bound, Branch-and-Cut, planos de corte. Aplicações: scheduling, network design, facility location.",
                 Criador = "Ralph Gomory / Land & Doig",
                 AnoOrigin = "1958-1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "c", Nome = "c", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["c"] + vars["x"]
             },
             new Formula
             {
@@ -295,6 +400,11 @@ public partial class FormulaService
                 Descricao = "Princípio de otimalidade: solução ótima contém subsoluções ótimas. Equação de Bellman resolve recursivamente. O(estados × ações). Mochila, caminho mínimo, controle ótimo.",
                 Criador = "Richard Bellman",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["V"] + vars["s"]
             },
             new Formula
             {
@@ -305,6 +415,11 @@ public partial class FormulaService
                 Descricao = "Encontrar rota mais curta visitando n cidades exatamente uma vez. NP-difícil: n! rotas. Métodos: Branch-and-Cut, LKH, DP (2ⁿ). Concorde resolve até ~85000 cidades.",
                 Criador = "Problema clássico de combinatória",
                 AnoOrigin = "~1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -314,6 +429,11 @@ public partial class FormulaService
                 Icone = "🎒",
                 Descricao = "Selecionar itens com maior valor total sem exceder capacidade W. NP-hard mas pseudopolinomial por DP em O(nW). Relaxação LP dá bound superior.",
                 Criador = "Problema clássico",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "s", Nome = "s", ValorPadrao = 1 }, new() { Simbolo = "a", Nome = "a", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["s"] + vars["a"]
             },
             new Formula
             {
@@ -324,6 +444,11 @@ public partial class FormulaService
                 Descricao = "Relaxa restrições difíceis com multiplicadores λ. Dual lagrangiano dá bound inferior melhor que LP relaxado (se complicating constraints). Resolve por subgradiente.",
                 Criador = "Marshall Fisher / Held-Karp",
                 AnoOrigin = "1970-1974",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["L"] + vars["lambda_"]
             },
             // 20.3 Teoria de Filas
             new Formula
@@ -354,6 +479,11 @@ public partial class FormulaService
                 Descricao = "Resultado universal: clientes médios = taxa de chegada × tempo médio no sistema. Vale para qualquer sistema estável, não depende da distribuição. Extremamente útil.",
                 Criador = "John Little",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "λ", Nome = "λ", ValorPadrao = 5 }, new() { Simbolo = "W", Nome = "W", ValorPadrao = 3 } ],
+                VariavelResultado = "L",
+                UnidadeResultado = "",
+                Calcular = vars => vars["λ"] * vars["W"]
             },
             new Formula
             {
@@ -380,6 +510,11 @@ public partial class FormulaService
                 Descricao = "c servidores paralelos: fórmula Erlang-C para probabilidade de esperar. Aumentar c diminui espera dramaticamente. Design de call centers: dado SLA, encontrar c mínimo.",
                 Criador = "Agner Krarup Erlang",
                 AnoOrigin = "1917",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] + vars["C"]
             },
             new Formula
             {
@@ -390,6 +525,11 @@ public partial class FormulaService
                 Descricao = "Probabilidade de bloqueio em sistema M/M/c/c (sem fila, c canais). A=λ/μ intensidade de tráfego (Erlangs). Dimensionamento de troncos telefônicos e redes.",
                 Criador = "Agner Krarup Erlang",
                 AnoOrigin = "1917",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1 }, new() { Simbolo = "c", Nome = "c", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["B"] + vars["c"]
             },
         ]);
     }
@@ -410,6 +550,11 @@ public partial class FormulaService
                 Descricao = "Base dos modelos de circulação geral (GCMs): Navier-Stokes em esfera rotativa com efeito de Coriolis, equação de continuidade, equação de estado e termodinâmica.",
                 Criador = "Vilhelm Bjerknes / Lewis Fry Richardson",
                 AnoOrigin = "1904/1922",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 1 }, new() { Simbolo = "Dt", Nome = "Dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Dv"] + vars["Dt"]
             },
             new Formula
             {
@@ -436,6 +581,11 @@ public partial class FormulaService
                 Icone = "vg",
                 Descricao = "Equilíbrio Coriolis-pressão: vento paralelo às isóbaras. Boa aproximação em latitudes médias acima da camada limite. Ventos observados diferem ~10-15% do geostrófico.",
                 Criador = "Meteorologia dinâmica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 }, new() { Simbolo = "g", Nome = "g", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] + vars["g"]
             },
             new Formula
             {
@@ -446,6 +596,11 @@ public partial class FormulaService
                 Descricao = "Evolução da vorticidade absoluta (relativa ζ + planetária f). Conservada em fluido barotropic. Divergência → estiramento de vórtice. Base de modelos de previsão.",
                 Criador = "Carl-Gustaf Rossby / Jule Charney",
                 AnoOrigin = "~1939-1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "D", Nome = "D", ValorPadrao = 1 }, new() { Simbolo = "zeta", Nome = "zeta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["D"] + vars["zeta"]
             },
             new Formula
             {
@@ -456,6 +611,11 @@ public partial class FormulaService
                 Descricao = "Quantidade conservada em escoamento adiabático e sem fricção. 'Mapa' PV diagnóstica toda a dinâmica de larga escala. Unidade: PVU (1 PVU = 10⁻⁶ K m² kg⁻¹ s⁻¹).",
                 Criador = "Hans Ertel",
                 AnoOrigin = "1942",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "PV", Nome = "PV", ValorPadrao = 1 }, new() { Simbolo = "zeta", Nome = "zeta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["PV"] + vars["zeta"]
             },
             new Formula
             {
@@ -465,6 +625,11 @@ public partial class FormulaService
                 Icone = "Ro",
                 Descricao = "Razão inércia/Coriolis. Ro≪1: rotação domina (grande escala, geostrófico). Ro~1: ambos importantes (mesoescala, tornado, ciclone tropical). Ro≫1: fluido não-rotante.",
                 Criador = "Carl-Gustaf Rossby",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Ro", Nome = "Ro", ValorPadrao = 1 }, new() { Simbolo = "U", Nome = "U", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Ro"] + vars["U"]
             },
             new Formula
             {
@@ -474,6 +639,11 @@ public partial class FormulaService
                 Icone = "↕",
                 Descricao = "Na vertical, pressão equilibra gravidade. Válida quando movimentos verticais são muito menores que horizontais (L≫H). Excelente para grande escala, falha em convecção.",
                 Criador = "Meteorologia clássica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "z", Nome = "z", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["z"]
             },
             new Formula
             {
@@ -483,6 +653,11 @@ public partial class FormulaService
                 Icone = "VT",
                 Descricao = "Relação entre cisalhamento vertical do vento geostrófico e gradiente horizontal de temperatura. Jet stream em latitudes médias é consequência do gradiente polo-equador.",
                 Criador = "Meteorologia dinâmica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 }, new() { Simbolo = "g", Nome = "g", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] + vars["g"]
             },
             // 21.2 Modelo de Balanço Energético e Clima
             new Formula
@@ -494,6 +669,11 @@ public partial class FormulaService
                 Descricao = "Modelo de balanço energético 0D: radiação solar absorvida = radiação emitida + forçante + acúmulo. S₀≈1361 W/m², α≈0.3 (albedo), σ Stefan-Boltzmann.",
                 Criador = "Mikhail Budyko / William Sellers",
                 AnoOrigin = "1969",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "dT", Nome = "dT", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dT"] + vars["dt"]
             },
             new Formula
             {
@@ -504,6 +684,11 @@ public partial class FormulaService
                 Descricao = "Aquecimento de equilíbrio por unidade de forçante radiativa. Com feedbacks (vapor d'água, gelo-albedo): ECS = 2.5-4.5 K por dobro de CO₂. IPCC AR6: 3°C melhor estimativa.",
                 Criador = "Svante Arrhenius / Ciência do clima",
                 AnoOrigin = "1896",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "λ", Nome = "λ", ValorPadrao = 5 }, new() { Simbolo = "ΔF", Nome = "ΔF", ValorPadrao = 3 } ],
+                VariavelResultado = "ΔTeq",
+                UnidadeResultado = "",
+                Calcular = vars => vars["λ"] * vars["ΔF"]
             },
             new Formula
             {
@@ -530,6 +715,11 @@ public partial class FormulaService
                 Icone = "f",
                 Descricao = "Feedbacks amplificam (f>0) ou atenuam (f<0) o aquecimento direto ΔT₀. Vapor d'água f≈+0.6; gelo-albedo f≈+0.1; nuvens f≈+0.0-0.3 (maior incerteza).",
                 Criador = "Ciência do sistema climático",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["T"]
             },
             new Formula
             {
@@ -540,6 +730,11 @@ public partial class FormulaService
                 Descricao = "Emissão térmica total de corpo negro/cinza. Terra emite ~240 W/m² (Te≈255K), superfície ~390 W/m² (Ts≈288K). Diferença = efeito estufa.",
                 Criador = "Josef Stefan / Ludwig Boltzmann",
                 AnoOrigin = "1879/1884",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 }, new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["F"] + vars["epsilon"]
             },
             new Formula
             {
@@ -550,6 +745,11 @@ public partial class FormulaService
                 Descricao = "Atmosfera absorve e reemite radiação infravermelha, aquecendo a superfície ~33K acima da temperatura de equilíbrio sem atmosfera. Sem efeito estufa: Terra congelada.",
                 Criador = "Joseph Fourier / Svante Arrhenius",
                 AnoOrigin = "1824/1896",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Ts", Nome = "Ts", ValorPadrao = 1 }, new() { Simbolo = "Te", Nome = "Te", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Ts"] + vars["Te"]
             },
             // 21.3 Ondas Atmosféricas
             new Formula
@@ -561,6 +761,11 @@ public partial class FormulaService
                 Descricao = "Ondas de grande escala devidas ao gradiente de Coriolis (β=df/dy). Propagam para oeste relativamente ao fluxo médio. Dominam a variabilidade meteorológica de latitudes médias.",
                 Criador = "Carl-Gustaf Rossby",
                 AnoOrigin = "1939",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ū", Nome = "ū", ValorPadrao = 10 }, new() { Simbolo = "β", Nome = "β", ValorPadrao = 5 } ],
+                VariavelResultado = "c",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ū"] - vars["β"]
             },
             new Formula
             {
@@ -570,6 +775,11 @@ public partial class FormulaService
                 Icone = "K",
                 Descricao = "Ondas equatoriais aprisionadas que propagam para leste a √(gH). Sem velocidade meridional; decaem exponencialmente com latitude. Papel central no ENSO.",
                 Criador = "Lord Kelvin / Teoria equatorial",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -580,6 +790,11 @@ public partial class FormulaService
                 Descricao = "El Niño-Southern Oscillation: interação oceano-atmosfera no Pacífico tropical. Maior fonte de variabilidade interanual. El Niño aquece; La Niña resfria. Ciclo 2-7 anos.",
                 Criador = "Jacob Bjerknes / Gilbert Walker",
                 AnoOrigin = "1969/1924",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ONI", Nome = "ONI", ValorPadrao = 1 }, new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ONI"] + vars["Delta"]
             },
         ]);
     }
@@ -600,6 +815,11 @@ public partial class FormulaService
                 Descricao = "Alinhamento global ótimo por programação dinâmica. O(nm) tempo e espaço. s(a,b)=score de match/mismatch, d=penalidade de gap. Traceback reconstrói alinhamento.",
                 Criador = "Saul Needleman / Christian Wunsch",
                 AnoOrigin = "1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -610,6 +830,11 @@ public partial class FormulaService
                 Descricao = "Alinhamento local ótimo: permite início e fim em qualquer posição (máximo da matriz F). Identifica domínios conservados dentro de sequências divergentes.",
                 Criador = "Temple Smith / Michael Waterman",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -620,6 +845,11 @@ public partial class FormulaService
                 Descricao = "Basic Local Alignment Search Tool: busca rápida em bancos de dados. Heurística (~1000× mais rápido que S-W). E-value = hits esperados ao acaso. BLAST = ferramenta mais usada em bioinformática.",
                 Criador = "Stephen Altschul et al.",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -630,6 +860,11 @@ public partial class FormulaService
                 Descricao = "Número esperado de alinhamentos com score ≥ S ao acaso. E<10⁻⁵ geralmente significativo. K,λ dependem da matriz de substituição e composição do banco.",
                 Criador = "Karlin & Altschul",
                 AnoOrigin = "1990",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Kmn", Nome = "Kmn", ValorPadrao = 5 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 3 } ],
+                VariavelResultado = "E",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Kmn"] * vars["e"]
             },
             new Formula
             {
@@ -640,6 +875,11 @@ public partial class FormulaService
                 Descricao = "Odds-ratio de frequências observadas vs esperadas de pares de aminoácidos em blocos conservados a 62% identidade. Score positivo = par mais frequente que ao acaso.",
                 Criador = "Steven Henikoff / Jorja Henikoff",
                 AnoOrigin = "1992",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -650,6 +890,11 @@ public partial class FormulaService
                 Descricao = "Modelo de gap afim: abertura d é cara (ex.: -11), extensão e é barata (ex.: -1). Mais biologicamente realista que gap linear (uma deleção longa = um evento).",
                 Criador = "Gotoh (modelo afim)",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "d", Nome = "d", ValorPadrao = 10 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 5 } ],
+                VariavelResultado = "cost",
+                UnidadeResultado = "",
+                Calcular = vars => vars["d"] + vars["e"]
             },
             new Formula
             {
@@ -660,6 +905,11 @@ public partial class FormulaService
                 Descricao = "Alinhar n≥3 sequências simultaneamente. NP-hard exato. ClustalW: guia por árvore (progressivo). MUSCLE/MAFFT: iterativo. Identifica resíduos conservados para análise funcional.",
                 Criador = "ClustalW (Thompson et al.)",
                 AnoOrigin = "1994",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 22.2 Filogenética
             new Formula
@@ -671,6 +921,11 @@ public partial class FormulaService
                 Descricao = "Distância evolutiva corrigida por múltiplas substituições. p = fração de sítios diferentes. Modelo mais simples: todas as substituições têm mesma taxa. Subestima saturação.",
                 Criador = "Thomas Jukes / Charles Cantor",
                 AnoOrigin = "1969",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -681,6 +936,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo O(n³) para construir árvore filogenética a partir de matriz de distâncias. Não assume relógio molecular. Rápido e bom para árvores iniciais.",
                 Criador = "Naruya Saitou / Masatoshi Nei",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -691,6 +951,11 @@ public partial class FormulaService
                 Descricao = "Encontra árvore T e parâmetros θ que maximizam a probabilidade dos dados. Estatisticamente consistente. Computacionalmente caro: O(n²ˢ) por sítio. RAxML, IQ-TREE.",
                 Criador = "Joseph Felsenstein",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -701,6 +966,11 @@ public partial class FormulaService
                 Descricao = "Suporte de bootstrap: % de vezes que clado aparece em 1000+ pseudoréplicas. ≥70% é frequentemente considerado suporte 'bom'. Padrão de fato para confiança em filogenias.",
                 Criador = "Joseph Felsenstein",
                 AnoOrigin = "1985",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 22.3 Dinâmica Evolutiva
             new Formula
@@ -712,6 +982,11 @@ public partial class FormulaService
                 Descricao = "Frequência xᵢ cresce se fitness fᵢ > média f̄. Dinâmica sem mutação. Ligação com teoria dos jogos evolucionária: payoff ↔ fitness.",
                 Criador = "Peter Taylor / Leo Jonker",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -722,6 +997,11 @@ public partial class FormulaService
                 Descricao = "Teorema fundamental de Fisher: taxa de aumento do fitness médio é igual à variância genética de fitness. Mais variação → evolução mais rápida.",
                 Criador = "Ronald A. Fisher",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -732,6 +1012,11 @@ public partial class FormulaService
                 Descricao = "Mudança na média de traço z: seleção (covariância fitness-traço) + transmissão (mudança intra-indivíduo). Unifica seleção, drift, mutação. Muito geral.",
                 Criador = "George R. Price",
                 AnoOrigin = "1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -742,6 +1027,11 @@ public partial class FormulaService
                 Descricao = "Sem seleção, mutação, migração, drift → frequências genotípicas estáveis após 1 geração. Desvios indicam evolução atuando. Base de genética populacional.",
                 Criador = "G.H. Hardy / Wilhelm Weinberg",
                 AnoOrigin = "1908",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -752,6 +1042,11 @@ public partial class FormulaService
                 Descricao = "Em população de tamanho N, frequências alélicas flutuam ao acaso (amostragem binomial). Alelo neutro fixa em ~4N gerações. Drift domina quando s < 1/(2N).",
                 Criador = "Sewall Wright / Ronald Fisher",
                 AnoOrigin = "~1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -762,6 +1057,11 @@ public partial class FormulaService
                 Descricao = "Se taxa de substituição μ é constante, divergência entre sequências é proporcional ao tempo de separação. Calibrado com fósseis. Permite datar divergências sem registro fóssil.",
                 Criador = "Emile Zuckerkandl / Linus Pauling",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 22.4 Biologia de Sistemas
             new Formula
@@ -773,6 +1073,11 @@ public partial class FormulaService
                 Descricao = "Otimização linear para prever fluxos metabólicos no estado estacionário. S = matriz estequiométrica (m×n), v = fluxos. Objetivo típico: maximizar crescimento. Sem parâmetros cinéticos!",
                 Criador = "Bernhard Palsson / Jeremy Edwards",
                 AnoOrigin = "~2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -783,6 +1088,11 @@ public partial class FormulaService
                 Descricao = "Predador-presa: presa x cresce exponencialmente, é reduzida por predação βxy. Predador y cresce com predação δxy, morre γy. Oscilações perpétuas (sem atrito).",
                 Criador = "Alfred Lotka / Vito Volterra",
                 AnoOrigin = "1925/1926",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "αx", Nome = "αx", ValorPadrao = 10 }, new() { Simbolo = "βxy", Nome = "βxy", ValorPadrao = 5 } ],
+                VariavelResultado = "ẋ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["αx"] - vars["βxy"]
             },
             new Formula
             {
@@ -810,6 +1120,11 @@ public partial class FormulaService
                 Descricao = "Dois repressores que se inibem mutuamente formam um interruptor biestável. Modelo de Gardner (2000): epigenética, diferenciação celular, memória celular.",
                 Criador = "Timothy Gardner / James Collins",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -830,6 +1145,11 @@ public partial class FormulaService
                 Descricao = "Equação de onda para pressão acústica p. Linearização das equações de Euler. Válida para pequenas perturbações. c = velocidade do som no meio.",
                 Criador = "Jean le Rond d'Alembert / Leonhard Euler",
                 AnoOrigin = "1747/1757",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -890,6 +1210,11 @@ public partial class FormulaService
                 Icone = "Lw",
                 Descricao = "Propriedade da fonte (independente de distância). Voz normal ~60 dB, avião a jato ~160 dB. Relaciona com Lp pela diretividade e distância.",
                 Criador = "Acústica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "10", Nome = "10", ValorPadrao = 5 }, new() { Simbolo = "log₁₀", Nome = "log₁₀", ValorPadrao = 3 } ],
+                VariavelResultado = "Lw",
+                UnidadeResultado = "",
+                Calcular = vars => vars["10"] * vars["log₁₀"]
             },
             new Formula
             {
@@ -916,6 +1241,11 @@ public partial class FormulaService
                 Icone = "Σ dB",
                 Descricao = "Soma de fontes incoerentes: somar potências (não dB). Duas fontes iguais → +3 dB. 10 fontes iguais → +10 dB. Regra prática: diferença ≥10 dB → fonte menor desprezível.",
                 Criador = "Acústica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "10", Nome = "10", ValorPadrao = 5 }, new() { Simbolo = "log₁₀", Nome = "log₁₀", ValorPadrao = 3 } ],
+                VariavelResultado = "Lp_total",
+                UnidadeResultado = "",
+                Calcular = vars => vars["10"] * vars["log₁₀"]
             },
             new Formula
             {
@@ -925,6 +1255,11 @@ public partial class FormulaService
                 Icone = "dBA",
                 Descricao = "Filtro que simula resposta do ouvido humano: atenua baixas (<500 Hz) e altas (>6 kHz) frequências. dBA é a unidade de medição de ruído ambiental/ocupacional.",
                 Criador = "IEC / ISO",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Lp", Nome = "Lp", ValorPadrao = 10 }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 5 } ],
+                VariavelResultado = "LA",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Lp"] + vars["A"]
             },
             // 23.2 Acústica de Salas
             new Formula
@@ -953,6 +1288,11 @@ public partial class FormulaService
                 Descricao = "Mais precisa que Sabine para salas com alta absorção (ᾱ→1). Para Sabine: ln(1−ᾱ)≈-ᾱ. Converge para Sabine em ᾱ→0. Câmara anecóica: Eyring dá T≈0.",
                 Criador = "Carl F. Eyring",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -962,6 +1302,11 @@ public partial class FormulaService
                 Icone = "dc",
                 Descricao = "Distância onde campo direto = campo reverberante. Dentro de dc: fonte domina (inteligibilidade boa). Fora: reverberação domina. Q = diretividade da fonte.",
                 Criador = "Acústica de salas",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -972,6 +1317,11 @@ public partial class FormulaService
                 Descricao = "Speech Transmission Index: métrica objetiva de inteligibilidade da fala. Considera reverberação e ruído de fundo. Mede degradação do índice de modulação. Salas de aula: STI>0.6.",
                 Criador = "Houtgast & Steeneken",
                 AnoOrigin = "1971-1985",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "STI", Nome = "STI", ValorPadrao = 1 }, new() { Simbolo = "bom", Nome = "bom", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["STI"] + vars["bom"]
             },
             // 23.3 Vibrações Estruturais
             new Formula
@@ -982,6 +1332,11 @@ public partial class FormulaService
                 Icone = "SDOF",
                 Descricao = "Sistema de 1 grau de liberdade (SDOF): massa m, amortecimento c, rigidez k. Modelo fundamental para vibrações. ζ=c/(2√(km)) = razão de amortecimento.",
                 Criador = "Mecânica clássica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "kx", Nome = "kx", ValorPadrao = 1 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["kx"] + vars["F"]
             },
             new Formula
             {
@@ -1021,6 +1376,11 @@ public partial class FormulaService
                 Icone = "MDOF",
                 Descricao = "Sistema de múltiplos graus de liberdade: modos naturais são autovalores (ωₙ²) e autovetores (formas modais φ) do problema generalizado de autovalores.",
                 Criador = "Lord Rayleigh / Teoria de vibrações",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 1 }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["K"] + vars["omega"]
             },
             new Formula
             {
@@ -1030,6 +1390,11 @@ public partial class FormulaService
                 Icone = "FRF",
                 Descricao = "Função de Resposta em Frequência: soma sobre modos (superposição modal). Cada modo contribui com pico na ressonância ωᵣ. Fundamento de análise modal experimental.",
                 Criador = "Análise modal / Teoria de vibrações",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["H"] + vars["omega"]
             },
             new Formula
             {
@@ -1039,6 +1404,11 @@ public partial class FormulaService
                 Icone = "W",
                 Descricao = "Potência sonora de estrutura vibrante: σ_rad = eficiência de radiação (0 a ~1). Depende da frequência, tamanho e condições de contorno. Controle de ruído: reduzir v² ou σ_rad.",
                 Criador = "Vibroacústica / Lord Rayleigh",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "W", Nome = "W", ValorPadrao = 1 }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["W"] + vars["rho"]
             },
         ]);
     }

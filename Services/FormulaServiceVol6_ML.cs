@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de mudança de variáveis para normalizing flows: densidade pr(x) obtida da base p(z) via jacobiano da transformação invertível f.",
                 Criador = "Danilo Rezende / Shakir Mohamed",
                 AnoOrigin = "2015",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "RealNVP: acoplamento afim que divide dados em duas metades. Jacobiano triangular → determinante trivial O(d). Invertível por construção. Base de flows modernos.",
                 Criador = "Laurent Dinh / Jascha Sohl-Dickstein / Samy Bengio",
                 AnoOrigin = "2016",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x₂", Nome = "x₂", ValorPadrao = 5 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3 } ],
+                VariavelResultado = "y₂",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x₂"] * vars["exp"]
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Glow: normalizing flow com convolução 1×1 invertível (substituindo permutação). Permite geração de imagens de alta resolução. Decomposição LU para eficiência.",
                 Criador = "Diederik Kingma / Prafulla Dhariwal",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "CNF: normalizing flow contínuo no tempo via ODE. Evolução da log-densidade pelo traço do jacobiano (equação de continuidade). Não necessita arquitetura invertível.",
                 Criador = "Ricky Chen / Yulia Rubanova / Jesse Bettencourt / David Duvenaud",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Estimador de Hutchinson: aproxima tr(J) via E[vᵀJv] com v aleatório. Evita computar jacobiano completo em CNFs. Complexidade O(d) por amostra.",
                 Criador = "Michael Hutchinson",
                 AnoOrigin = "1989",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Neural spline flow: usa splines racionais-quadráticas monotônicas como transformação elementar. Muito flexível e exata. Jacobiano analítico por segmento.",
                 Criador = "Conor Durkan / Artur Bekasov / Iain Murray / George Papamakarios",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -84,6 +114,11 @@ public partial class FormulaService
                 Descricao = "Dequantização variacional: adiciona ruído u com distribuição aprendida q(u|x) a dados discretos. Melhora log-likelihood de flows em dados inteiros (imagens).",
                 Criador = "Jonathan Ho / Xi Chen / Aravind Srinivas / Yan Duan / Pieter Abbeel",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 10.2 Neural ODEs
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "Neural ODE: camadas de rede neural como ODE contínua. Estado oculto evolui por fθ. Memória O(1) via método adjunto. Profundidade adaptativa pelo solver.",
                 Criador = "Ricky Chen / Yulia Rubanova / Jesse Bettencourt / David Duvenaud",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Método adjunto para gradientes em Neural ODE: integra estado adjunto backward no tempo. Memória O(1) independente da profundidade. Análogo a backprop contínuo.",
                 Criador = "Lev Pontryagin (original) / Chen et al. (neural)",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Augmented Neural ODE: adiciona dimensões extras para permitir que trajetórias se cruzem em projeção. Resolve limitação de bijetividade do espaço original.",
                 Criador = "Emilien Dupont / Arnaud Doucet / Yee Whye Teh",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "Latent ODE: VAE com dinâmica latente via Neural ODE. Encoder RNN produz z₀, ODE evolui no espaço latente, decoder produz observações. Séries temporais irregulares.",
                 Criador = "Yulia Rubanova / Ricky Chen / David Duvenaud",
                 AnoOrigin = "2019",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -136,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Neural SDE: extensão estocástica da Neural ODE. Drift e difusão parametrizados por redes. Modela incerteza e conecta score matching a dinâmicas generativas.",
                 Criador = "Xuechen Li / Ting-Kam Leonard Wong / Ricky Chen / David Duvenaud",
                 AnoOrigin = "2020",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -146,6 +206,11 @@ public partial class FormulaService
                 Descricao = "Neural CDE: equação diferencial controlada pelo caminho de entrada X. Modelo contínuo para séries temporais irregulares. Generaliza RNNs e Neural ODEs.",
                 Criador = "Patrick Kidger / James Morrill / James Foster / Terry Lyons",
                 AnoOrigin = "2020",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
 
             // 10.3 EBMs e State Space Models
@@ -158,6 +223,11 @@ public partial class FormulaService
                 Descricao = "Energy-Based Model: define distribuição via função de energia Eθ. Treinamento por contrastive divergence ou score matching. Z intratável em geral.",
                 Criador = "Yann LeCun / Sumit Chopra / Raia Hadsell",
                 AnoOrigin = "2006",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -168,6 +238,11 @@ public partial class FormulaService
                 Descricao = "Score matching: treina rede sθ para aproximar o score ∇log p(x) sem conhecer Z. Perda envolve traço do jacobiano. Base de modelos de difusão.",
                 Criador = "Aapo Hyvärinen",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -178,6 +253,11 @@ public partial class FormulaService
                 Descricao = "Langevin MCMC: amostra de p(x) via gradiente do log da densidade (score) + ruído gaussiano. Converge para a distribuição alvo quando ε→0.",
                 Criador = "Paul Langevin (original) / Gareth Roberts / Richard Tweedie (MALA)",
                 AnoOrigin = "1996",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -188,6 +268,11 @@ public partial class FormulaService
                 Descricao = "Contrastive divergence: aproxima gradiente da log-likelihood de EBMs executando k passos de MCMC em vez de convergir. CD-1 usado em RBMs.",
                 Criador = "Geoffrey Hinton",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -198,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Structured State Space for Sequences (S4): modelo linear de espaço de estados com matriz A estruturada (HiPPO). Captura dependências de longo alcance eficientemente.",
                 Criador = "Albert Gu / Karan Goel / Christopher Ré",
                 AnoOrigin = "2021",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Cx", Nome = "Cx", ValorPadrao = 10 }, new() { Simbolo = "Du", Nome = "Du", ValorPadrao = 5 } ],
+                VariavelResultado = "y",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Cx"] + vars["Du"]
             },
             new Formula
             {
@@ -208,6 +298,11 @@ public partial class FormulaService
                 Descricao = "Mamba: SSM seletivo onde parâmetros B,C,Δ dependem da entrada. Combina eficiência O(n) de SSMs com seletividade de Transformers. Alternativa competitiva.",
                 Criador = "Albert Gu / Tri Dao",
                 AnoOrigin = "2023",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada x", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "Peso w", ValorPadrao = 0.5 }, new() { Simbolo = "b", Nome = "Bias b", ValorPadrao = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] * vars["x"] + vars["b"]
             },
             new Formula
             {
@@ -218,6 +313,11 @@ public partial class FormulaService
                 Descricao = "Discretização Zero-Order Hold: converte SSM contínuo em recorrência discreta. Ā=exp(ΔA) garante estabilidade. Permite convolução global O(n log n) via FFT.",
                 Criador = "Albert Gu / Karan Goel / Christopher Ré",
                 AnoOrigin = "2021",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
         ]);
     }
@@ -238,6 +338,11 @@ public partial class FormulaService
                 Descricao = "Conditional flow matching: treina campo vetorial vθ para aproximar fluxo condicional ut. Mais simples que score matching; não requer simulação de SDE durante treino.",
                 Criador = "Yaron Lipman / Ricky Chen / Heli Ben-Hamu / Maximilian Nickel",
                 AnoOrigin = "2022",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["v"]
             },
             new Formula
             {
@@ -248,6 +353,11 @@ public partial class FormulaService
                 Descricao = "OT-CFM: flow matching com caminhos de transporte ótimo retilíneos. Interpolação linear entre ruído x₀ e dado x₁. Treinamento estável e rápido.",
                 Criador = "Alexander Tong / Nikolay Malkin / Guillaume Huguet / Yanlei Zhang",
                 AnoOrigin = "2023",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "OT", Nome = "OT", ValorPadrao = 1 }, new() { Simbolo = "CFM", Nome = "CFM", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["OT"] + vars["CFM"]
             },
             new Formula
             {
@@ -258,6 +368,11 @@ public partial class FormulaService
                 Descricao = "Rectified flow: aprende campo vetorial alvo (x₁−x₀) constante ao longo de caminhos retos. Iteração de 'reflow' endireita trajetórias para amostragem em poucos passos.",
                 Criador = "Xingchao Liu / Chengyue Gong / Qiang Liu",
                 AnoOrigin = "2022",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] + vars["theta"]
             },
             new Formula
             {
@@ -268,6 +383,11 @@ public partial class FormulaService
                 Descricao = "Interpolante estocástico: framework unificado para difusão e flow matching. Parâmetros αt, βt, σt generalizam esquemas de ruído. Inclui DDPM e flow matching como casos.",
                 Criador = "Michael Albergo / Nicholas Boffi / Eric Vanden-Eijnden",
                 AnoOrigin = "2023",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "αt", Nome = "αt", ValorPadrao = 5 }, new() { Simbolo = "x₀", Nome = "x₀", ValorPadrao = 3 } ],
+                VariavelResultado = "xt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["αt"] * vars["x₀"]
             },
             new Formula
             {
@@ -278,6 +398,11 @@ public partial class FormulaService
                 Descricao = "Consistency model: mapeia qualquer ponto de uma trajetória de difusão diretamente para a origem. Geração em um passo ou poucos passos sem solver iterativo.",
                 Criador = "Yang Song / Prafulla Dhariwal / Mark Chen / Ilya Sutskever",
                 AnoOrigin = "2023",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["t"]
             },
             new Formula
             {
@@ -288,6 +413,11 @@ public partial class FormulaService
                 Descricao = "Classifier-free guidance: combina modelo condicional e incondicional com peso w para amplificar a influência da condição c. Melhora qualidade/diversidade de geração.",
                 Criador = "Jonathan Ho / Tim Salimans",
                 AnoOrigin = "2022",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "CFG", Nome = "CFG", ValorPadrao = 1 }, new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CFG"] + vars["w"]
             },
 
             // 11.2 KAN e Reservoir Computing
@@ -300,6 +430,11 @@ public partial class FormulaService
                 Descricao = "KAN: rede baseada no teorema de Kolmogorov-Arnold. Funções de ativação aprendíveis (splines) nas arestas em vez de nós fixos. Interpretável e eficiente para EDPs.",
                 Criador = "Ziming Liu / Yixuan Wang / Sachin Vaidya / Max Tegmark",
                 AnoOrigin = "2024",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "KAN", Nome = "KAN", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["KAN"] + vars["f"]
             },
             new Formula
             {
@@ -310,6 +445,11 @@ public partial class FormulaService
                 Descricao = "Teorema de representação de Kolmogorov-Arnold: toda função contínua multivariada é composição de somas e funções contínuas de uma variável. Base teórica das KANs.",
                 Criador = "Andrey Kolmogorov / Vladimir Arnold",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["phi"]
             },
             new Formula
             {
@@ -320,6 +460,11 @@ public partial class FormulaService
                 Descricao = "Echo State Network: reservoir computing com pesos internos W fixos (aleatórios, ρ(W)<1). Apenas W_out é treinado por regressão linear. Eficiente para séries temporais.",
                 Criador = "Herbert Jaeger",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ESN", Nome = "ESN", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ESN"] + vars["x"]
             },
             new Formula
             {
@@ -330,6 +475,11 @@ public partial class FormulaService
                 Descricao = "Echo state property: raio espectral ρ(W)<1 garante que o reservatório esquece condições iniciais. Condição necessária (não suficiente) para estabilidade.",
                 Criador = "Herbert Jaeger",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ESP", Nome = "ESP", ValorPadrao = 1 }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ESP"] + vars["rho"]
             },
             new Formula
             {
@@ -340,6 +490,11 @@ public partial class FormulaService
                 Descricao = "Liquid State Machine: reservoir computing com neurônios spiking (rede recorrente de pulsos). Separação de entradas pelo reservatório + camada de saída treinável.",
                 Criador = "Wolfgang Maass / Thomas Natschläger / Henry Markram",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "LSM", Nome = "LSM", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["LSM"] + vars["de"]
             },
             new Formula
             {
@@ -350,6 +505,11 @@ public partial class FormulaService
                 Descricao = "NGRC: reservoir computing sem reservatório explícito — usa features não-lineares de delays temporais. Treinamento por ridge regression. Simples e eficaz para caos.",
                 Criador = "Daniel Gauthier / Erik Bollt / Aaron Griffith",
                 AnoOrigin = "2021",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 }, new() { Simbolo = "I", Nome = "I", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["alpha"] + vars["I"]
             },
 
             // 11.3 Meta-Learning e RLHF
@@ -362,6 +522,11 @@ public partial class FormulaService
                 Descricao = "MAML: aprende inicialização θ que permite adaptação rápida a novas tarefas com poucos gradientes. Meta-gradiente via diferenciação through inner loop.",
                 Criador = "Chelsea Finn / Pieter Abbeel / Sergey Levine",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["theta"] + vars["alpha"]
             },
             new Formula
             {
@@ -372,6 +537,11 @@ public partial class FormulaService
                 Descricao = "Prototypical Networks: classifica por distância ao protótipo (centróide) de cada classe no espaço de embedding. Simples e eficaz para few-shot classification.",
                 Criador = "Jake Snell / Kevin Swersky / Richard Zemel",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -382,6 +552,11 @@ public partial class FormulaService
                 Descricao = "Reptile: meta-learning de primeira ordem. Média a direção θ̃−θ sobre tarefas. Não requer hessiana como MAML. Aproxima gradiente do meta-objetivo.",
                 Criador = "Alex Nichol / Joshua Achiam / John Schulman",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 }, new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["theta"] + vars["epsilon"]
             },
             new Formula
             {
@@ -392,6 +567,11 @@ public partial class FormulaService
                 Descricao = "In-context learning: LLMs aprendem nova tarefa do prompt com exemplos, sem fine-tuning. Transformer implementa implicitamente algo semelhante a gradient descent.",
                 Criador = "Tom Brown / Benjamin Mann / OpenAI",
                 AnoOrigin = "2020",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ICL", Nome = "ICL", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ICL"] + vars["em"]
             },
             new Formula
             {
@@ -402,6 +582,11 @@ public partial class FormulaService
                 Descricao = "RLHF: treina LLM com feedback humano via reward model + PPO. Penalidade KL impede divergência da política de referência. Alinhamento de ChatGPT, Claude etc.",
                 Criador = "Paul Christiano / Jan Leike / OpenAI / Anthropic",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "beta", Nome = "beta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["beta"]
             },
             new Formula
             {
@@ -412,6 +597,11 @@ public partial class FormulaService
                 Descricao = "DPO: otimiza preferências diretamente no modelo sem reward model separado. Reparametriza RLHF como classificação sobre pares preferidos/rejeitados.",
                 Criador = "Rafael Rafailov / Archit Sharma / Eric Mitchell / Stefano Ermon",
                 AnoOrigin = "2023",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -422,6 +612,11 @@ public partial class FormulaService
                 Descricao = "Constitutional AI: LLM auto-avalia e revisa respostas segundo princípios constitucionais. Feedback de AI substitui parcialmente feedback humano (RLAIF). Escala alinhamento.",
                 Criador = "Yuntao Bai / Saurav Kadavath / Anthropic",
                 AnoOrigin = "2022",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "CAI", Nome = "CAI", ValorPadrao = 1 }, new() { Simbolo = "LLM", Nome = "LLM", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CAI"] + vars["LLM"]
             },
         ]);
     }
@@ -442,6 +637,11 @@ public partial class FormulaService
                 Descricao = "Information bottleneck: encontra representação T que comprime X (baixa I(X;T)) mas preserva informação sobre Y (alta I(T;Y)). β controla trade-off.",
                 Criador = "Naftali Tishby / Fernando Pereira / William Bialek",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -452,6 +652,11 @@ public partial class FormulaService
                 Descricao = "Deep IB: aplica IB a redes profundas usando bound variacional. Relacionado a VAE: encoder comprime, decoder decodifica. β controla regularização informacional.",
                 Criador = "Alexander Alemi / Ian Fischer / Joshua Dillon / Kevin Murphy",
                 AnoOrigin = "2016",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -462,6 +667,11 @@ public partial class FormulaService
                 Descricao = "Curva de informação: fronteira Pareto-ótima no plano compressão vs predição. Cada β gera um ponto. Transições de fase podem ocorrer em β críticos.",
                 Criador = "Naftali Tishby / Fernando Pereira / William Bialek",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -472,6 +682,11 @@ public partial class FormulaService
                 Descricao = "IB como rate-distortion: IB é caso especial de teoria rate-distortion de Shannon com distorção relevante (informação sobre Y perdida). Conecta ML à teoria da informação.",
                 Criador = "Naftali Tishby",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 12.2 PAC-Bayes
@@ -484,6 +699,11 @@ public partial class FormulaService
                 Descricao = "Bound PAC-Bayes: o risco esperado sob ρ é controlado pelo risco empírico mais KL(ρ‖π)/n. π = prior, ρ = posterior. Bound mais apertado que VC para redes.",
                 Criador = "David McAllester",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -494,6 +714,11 @@ public partial class FormulaService
                 Descricao = "PAC-Bayes-kl: versão mais apertada usando divergência kl binomial. Permite bounds não-vacuosos para redes neurais com compressão de pesos.",
                 Criador = "Andreas Maurer",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -504,6 +729,11 @@ public partial class FormulaService
                 Descricao = "PAC-Bayes Gaussiano: posterior ρ = Gaussiana centrada nos pesos treinados. KL penaliza norma dos pesos e relação de variâncias. Bounds não-vacuosos para DNNs.",
                 Criador = "Gintare Karolina Dziugaite / Daniel Roy",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -514,6 +744,11 @@ public partial class FormulaService
                 Descricao = "Conexão PAC-Bayes-flatness: mínimos planos (baixo tr(H)) toleram perturbação gaussiana sem aumentar a perda. Explica por que SGD generaliza — prefere mínimos planos.",
                 Criador = "Sepp Hochreiter / Jürgen Schmidhuber (flatness) / Dziugaite-Roy (PAC-Bayes)",
                 AnoOrigin = "1997",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 12.3 Kernel Methods Avançados
@@ -526,6 +761,11 @@ public partial class FormulaService
                 Descricao = "Neural Tangent Kernel: no limite de largura infinita, rede treinada com GD é equivalente a regressão kernel com NTK constante Θ∞. Lineariza a dinâmica.",
                 Criador = "Arthur Jacot / Franck Gabriel / Clément Hongler",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -536,6 +776,11 @@ public partial class FormulaService
                 Descricao = "NNGP kernel: redes com largura infinita convergem para processos gaussianos. Kernel K^L é recursão sobre camadas. Predição exata sem treinamento.",
                 Criador = "Jaehoon Lee / Yasaman Bahri / Roman Novak / Samuel Schoenholz / Jeffrey Pennington / Jascha Sohl-Dickstein",
                 AnoOrigin = "2018",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -546,6 +791,11 @@ public partial class FormulaService
                 Descricao = "Random Fourier Features: aproxima kernel shift-invariante por features aleatórias via teorema de Bochner. O(nD) em vez de O(n²). Escalabiliza métodos de kernel.",
                 Criador = "Ali Rahimi / Benjamin Recht",
                 AnoOrigin = "2007",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -556,6 +806,11 @@ public partial class FormulaService
                 Descricao = "Kernel mean embedding: representa distribuição P como elemento μP no RKHS. MMD mede distância entre distribuições. Kernel característico ⇒ MMD=0 iff P=Q.",
                 Criador = "Alex Smola / Arthur Gretton / Kenji Fukumizu",
                 AnoOrigin = "2007",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -566,6 +821,11 @@ public partial class FormulaService
                 Descricao = "Teorema do representante: solução ótima regularizada no RKHS é combinação linear de kernel nos pontos de treino. Reduz otimização infinito-dimensional a finita.",
                 Criador = "Bernhard Schölkopf / Ralf Herbrich / Alex Smola",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -576,6 +836,11 @@ public partial class FormulaService
                 Descricao = "GP esparso: aproxima posterior usando m≪n inducing points. ELBO variacional. Complexidade O(nm²) em vez de O(n³). SVGP para minibatches.",
                 Criador = "Michalis Titsias / James Hensman",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
         ]);
     }

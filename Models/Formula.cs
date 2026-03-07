@@ -3,6 +3,7 @@ namespace CompendioCalc.Models;
 public class Formula
 {
     public string Id { get; set; } = "";
+    public string CodigoCompendio { get; set; } = ""; // Official compendium code: 001..387 (empty when formula is outside official index)
     public string Nome { get; set; } = "";
     public string Categoria { get; set; } = "";
     public string SubCategoria { get; set; } = "";

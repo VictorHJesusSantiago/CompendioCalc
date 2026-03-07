@@ -23,6 +23,11 @@ public partial class FormulaService
                 Descricao = "ε-privacidade diferencial: mecanismo M é ε-DP se saída é quase idêntica para bancos D e D' que diferem em um registro. Menor ε = mais privacidade.",
                 Criador = "Cynthia Dwork",
                 AnoOrigin = "2006",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -31,6 +36,11 @@ public partial class FormulaService
                 ExprTexto = "M(D) = f(D) + Lap(Δf/ε)",
                 Icone = "Lap",
                 Descricao = "Mecanismo de Laplace: adiciona ruído Laplace proporcional à sensibilidade da consulta dividida por ε. Mecanismo fundamental de ε-DP para consultas numéricas.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -39,6 +49,11 @@ public partial class FormulaService
                 ExprTexto = "M(D) = f(D) + N(0, Δf²·2ln(1.25/δ)/ε²)",
                 Icone = "Gs",
                 Descricao = "Mecanismo Gaussiano: para (ε,δ)-DP. Adiciona ruído gaussiano. σ proporcional a sensibilidade L2. Mais natural para altas dimensões que Laplace.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -47,6 +62,11 @@ public partial class FormulaService
                 ExprTexto = "k× εi-DP → Σεi-DP (seq. comp.)",
                 Icone = "Σε",
                 Descricao = "Composição sequencial: privacidade degrada aditivamente. k consultas εi-DP resultam em (Σεi)-DP. Composição avançada: cresce como √k (com δ>0).",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -55,6 +75,11 @@ public partial class FormulaService
                 ExprTexto = "k× ε-DP → O(ε√k)-DP (avançada)",
                 Icone = "√k",
                 Descricao = "Composição avançada: k mecanismos ε-DP compõem como O(ε√k) ao permitir δ>0. Moments accountant (Abadi 2016) é ainda mais apertado.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -63,6 +88,11 @@ public partial class FormulaService
                 ExprTexto = "P(r) ∝ exp(εu(D,r)/(2Δu))",
                 Icone = "Exp",
                 Descricao = "Mecanismo exponencial: para saídas não-numéricas. Seleciona resultado com probabilidade proporcional a exp de utilidade. Aplicações: seleção, leilões, otimização.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -73,6 +103,11 @@ public partial class FormulaService
                 Descricao = "DP-SGD: treinamento de deep learning com DP. Clip gradientes individuais, adiciona ruído gaussiano. Moments accountant rastreia privacidade total.",
                 Criador = "Abadi et al.",
                 AnoOrigin = "2016",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -81,6 +116,11 @@ public partial class FormulaService
                 ExprTexto = "RDP: Rényi divergence ≤ ε; composição aditiva",
                 Icone = "Rα",
                 Descricao = "Rényi DP: usa divergência de Rényi de ordem α. Composição aditiva exata. Converte para (ε,δ)-DP. Análise mais apertada que composição avançada.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -89,6 +129,11 @@ public partial class FormulaService
                 ExprTexto = "LDP: perturbação local sem confiança no servidor",
                 Icone = "LDP",
                 Descricao = "DP Local: cada indivíduo randomiza seu dado antes de compartilhar. Sem necessidade de servidor confiável. RAPPOR (Google), implementações da Apple.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -99,6 +144,11 @@ public partial class FormulaService
                 Descricao = "Randomized response (Warner 1965): técnica clássica de LDP. Respondente cola moeda para decidir se responde verdade ou aleatório. Precursor de DP.",
                 Criador = "Stanley Warner",
                 AnoOrigin = "1965",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -107,6 +157,95 @@ public partial class FormulaService
                 ExprTexto = "Erro ~ Δf/ε; minimax Ω(1/nε²)",
                 Icone = "PU",
                 Descricao = "Tradeoff privacidade-utilidade: erro adicionado proporcional a sensibilidade/ε. Limites fundamentais: erro minimax Ω(1/(nε²)) para média com n registros.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+            },
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────
+    // 20B. APRENDIZADO FEDERADO
+    // ─────────────────────────────────────────────────────
+    private void AdicionarAprendizadoFederado()
+    {
+        _formulas.AddRange([
+            new Formula
+            {
+                Id = "5_fl01", Nome = "FedAvg (Agregação Federada)", Categoria = "Aprendizado Federado", SubCategoria = "Algoritmos Federados",
+                Expressao = "θ_global = Σₖ (nₖ/n)·θₖ;  média ponderada de clientes",
+                ExprTexto = "θ = Σ(nₖ/n)θₖ (FedAvg)",
+                Icone = "FA",
+                Descricao = "Federated Averaging: cada cliente treina localmente em dados privados, servidor agrega modelos por média ponderada. Comunicação eficiente, privacidade preservada sem compartilhar dados.",
+                Criador = "McMahan et al",
+                AnoOrigin = "2017",
+                ExemploPratico = "Com 3 clientes com n=[100,200,300] registros e pesos θ=[1.0,1.2,0.8], calcule θ_global.",
+                Variaveis = [ new() { Simbolo = "θ1", Nome = "Peso cliente 1", ValorPadrao = 1.0 }, new() { Simbolo = "n1", Nome = "Tamanho cliente 1", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "θ2", Nome = "Peso cliente 2", ValorPadrao = 1.2 }, new() { Simbolo = "n2", Nome = "Tamanho cliente 2", ValorPadrao = 200, ValorMin = 1 }, new() { Simbolo = "θ3", Nome = "Peso cliente 3", ValorPadrao = 0.8 }, new() { Simbolo = "n3", Nome = "Tamanho cliente 3", ValorPadrao = 300, ValorMin = 1 } ],
+                VariavelResultado = "θ_global",
+                UnidadeResultado = "",
+                Calcular = vars => {
+                    double nTotal = vars["n1"] + vars["n2"] + vars["n3"];
+                    return (vars["n1"] * vars["θ1"] + vars["n2"] * vars["θ2"] + vars["n3"] * vars["θ3"]) / nTotal;
+                }
+            },
+            new Formula
+            {
+                Id = "5_fl02", Nome = "Client Drift (Heterogeneidade)", Categoria = "Aprendizado Federado", SubCategoria = "Algoritmos Federados",
+                Expressao = "θₖ* = argmin Lₖ(θ) ≠ argmin L(θ);  dados não-IID",
+                ExprTexto = "Client drift: min Lₖ ≠ min L (não-IID)",
+                Icone = "CD",
+                Descricao = "Client drift: quando dados de clientes são não-IID (heterogêneos), gradientes locais divergem do ótimo global. Problema central de FL. FedProx, SCAFFOLD tentam corrigir.",
+                ExemploPratico = "Divergência entre ótimo local e global mede heterogeneidade de dados.",
+                Variaveis = [ new() { Simbolo = "θₖ", Nome = "Ótimo local θₖ", ValorPadrao = 1.5 }, new() { Simbolo = "θ*", Nome = "Ótimo global θ*", ValorPadrao = 1.0 } ],
+                VariavelResultado = "Divergência",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Abs(vars["θₖ"] - vars["θ*"])
+            },
+            new Formula
+            {
+                Id = "5_fl03", Nome = "FedProx (Regularização Proximal)", Categoria = "Aprendizado Federado", SubCategoria = "Algoritmos Federados",
+                Expressao = "min_θ Lₖ(θ) + (μ/2)||θ - θ_global||²;  proximal term",
+                ExprTexto = "FedProx: min Lₖ + (μ/2)||θ-θglobal||²",
+                Icone = "FP",
+                Descricao = "FedProx: adiciona termo proximal que penaliza desvio do modelo global. Reduz client drift, permite convergência mesmo com heterogeneidade e clientes lentos. μ controla força da restrição.",
+                Criador = "Li et al",
+                AnoOrigin = "2020",
+                ExemploPratico = "Com perda local Lₖ=2.0, desvio ||θ-θglobal||²=0.5, regularização μ=0.1, calcule loss total.",
+                Variaveis = [ new() { Simbolo = "Lₖ", Nome = "Perda local Lₖ", ValorPadrao = 2.0, ValorMin = 0 }, new() { Simbolo = "μ", Nome = "Coef proximal μ", ValorPadrao = 0.1, ValorMin = 0 }, new() { Simbolo = "dist²", Nome = "||θ-θglobal||²", ValorPadrao = 0.5, ValorMin = 0 } ],
+                VariavelResultado = "Loss total",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Lₖ"] + (vars["μ"] / 2.0) * vars["dist²"]
+            },
+            new Formula
+            {
+                Id = "5_fl04", Nome = "DP-FedAvg (FL com Privacidade)", Categoria = "Aprendizado Federado", SubCategoria = "Privacidade em FL",
+                Expressao = "g̃ₖ = clip(gₖ, C) + N(0, σ²C²I);  DP local ou central",
+                ExprTexto = "g̃=clip(g,C)+N(0,σ²C²) (DP-FedAvg)",
+                Icone = "DPFL",
+                Descricao = "DP-FedAvg: combina aprendizado federado com privacidade diferencial. Gradientes locais são clippados e ruidosos antes do envio. Protege contra inferência de membros e reconstrução de dados.",
+                ExemploPratico = "Com gradiente g=5.0, clip C=2.0, ruído σ=0.5, calcule norma esperada após clip+ruído.",
+                Variaveis = [ new() { Simbolo = "g", Nome = "Gradiente g", ValorPadrao = 5.0 }, new() { Simbolo = "C", Nome = "Clip norm C", ValorPadrao = 2.0, ValorMin = 0.001 }, new() { Simbolo = "σ", Nome = "Ruído σ", ValorPadrao = 0.5, ValorMin = 0 } ],
+                VariavelResultado = "Gradiente clippado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Min(vars["g"], vars["C"])
+            },
+            new Formula
+            {
+                Id = "5_fl05", Nome = "Comunicação Eficiente (Quantização)", Categoria = "Aprendizado Federado", SubCategoria = "Privacidade em FL",
+                Expressao = "Comprimir: g̃ = Q(g, b bits);  erro quant. ~ 2^(-b)",
+                ExprTexto = "Q(g,b): quantização b-bits, erro~2^(-b)",
+                Icone = "Qz",
+                Descricao = "Quantização de gradientes: comprimir atualizações de float32 (32 bits) para 8 ou mesmo 1 bit. Reduz comunicação drasticamente. Sparsificação (top-k) também usado. Tradeoff comunicação vs convergência.",
+                ExemploPratico = "Com gradiente g=0.12345, quantizar para b=8 bits (256 níveis) em [0,1].",
+                Variaveis = [ new() { Simbolo = "g", Nome = "Gradiente g", ValorPadrao = 0.12345, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "b", Nome = "Bits b", ValorPadrao = 8, ValorMin = 1, ValorMax = 32 } ],
+                VariavelResultado = "Valor quantizado",
+                UnidadeResultado = "",
+                Calcular = vars => {
+                    int levels = (int)Math.Pow(2, vars["b"]);
+                    return Math.Round(vars["g"] * (levels - 1)) / (levels - 1);
+                }
             },
         ]);
     }
@@ -124,6 +263,11 @@ public partial class FormulaService
                 ExprTexto = "H: {0,1}*→{0,1}ⁿ; resistente a colisão",
                 Icone = "#",
                 Descricao = "Função hash criptográfica: mapeia dados para digest fixo (256 bits). Propriedades: resistência a pré-imagem, 2ª pré-imagem e colisão. SHA-256 no Bitcoin.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "a", Nome = "a", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["H"] + vars["a"]
             },
             new Formula
             {
@@ -134,6 +278,11 @@ public partial class FormulaService
                 Descricao = "Árvore de Merkle: estrutura de hash hierárquica. Raiz resume todas transações. Prova de inclusão em O(log n). Usada em blocos Bitcoin, Ethereum, certificados.",
                 Criador = "Ralph Merkle",
                 AnoOrigin = "1979",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -142,6 +291,11 @@ public partial class FormulaService
                 ExprTexto = "H(bloco||nonce) < target (PoW)",
                 Icone = "PoW",
                 Descricao = "Proof of Work: minerador busca nonce que produza hash abaixo do target. Dificuldade ajustada para ~10 min/bloco (Bitcoin). Custo energético garante segurança.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "PoW", Nome = "PoW", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["H"] + vars["PoW"]
             },
             new Formula
             {
@@ -150,6 +304,11 @@ public partial class FormulaService
                 ExprTexto = "P(validar) ∝ stake; slash se malicioso",
                 Icone = "PoS",
                 Descricao = "Proof of Stake: validadores eleitos proporcionalmente ao stake. Ethereum 2.0 usa Casper. Menos energia que PoW. Slashing penaliza ataques.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "se", Nome = "se", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] + vars["se"]
             },
             new Formula
             {
@@ -160,6 +319,11 @@ public partial class FormulaService
                 Descricao = "Problema dos Generais Bizantinos: consenso com falhas arbitrárias requer n≥3f+1. PBFT: O(n²) mensagens. Base teórica de blockchains permissionadas.",
                 Criador = "Lamport / Shostak / Pease",
                 AnoOrigin = "1982",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "BFT", Nome = "BFT", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["BFT"] + vars["n"]
             },
             new Formula
             {
@@ -170,6 +334,11 @@ public partial class FormulaService
                 Descricao = "Consenso de Nakamoto: regra da cadeia mais longa + PoW. Probabilidade de ataque de duplo gasto diminui exponencialmente com z confirmações.",
                 Criador = "Satoshi Nakamoto",
                 AnoOrigin = "2008",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] + vars["q"]
             },
             new Formula
             {
@@ -178,6 +347,11 @@ public partial class FormulaService
                 ExprTexto = "Custo = gas × gasPrice (EVM)",
                 Icone = "⛽",
                 Descricao = "Smart contracts em Ethereum: código executado na EVM. Gas mede computação (previne loops infinitos). Custo = gas × preço. Solidity é a linguagem principal.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "gas", Nome = "gas", ValorPadrao = 5 }, new() { Simbolo = "gasPrice", Nome = "gasPrice", ValorPadrao = 3 } ],
+                VariavelResultado = "Custo",
+                UnidadeResultado = "",
+                Calcular = vars => vars["gas"] * vars["gasPrice"]
             },
             new Formula
             {
@@ -186,6 +360,11 @@ public partial class FormulaService
                 ExprTexto = "ERC-20: transfer/approve/transferFrom",
                 Icone = "ERC",
                 Descricao = "ERC-20: padrão de token fungível em Ethereum. Interface: totalSupply, balanceOf, transfer, approve, transferFrom. Base de DeFi e ICOs.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "ERC", Nome = "ERC", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ERC"]
             },
             new Formula
             {
@@ -194,6 +373,11 @@ public partial class FormulaService
                 ExprTexto = "Σinputs ≥ output+fee; troco=resto",
                 Icone = "UTX",
                 Descricao = "Modelo UTXO (Bitcoin): transação consome UTXOs como inputs e cria novos como outputs. Soma inputs ≥ soma outputs + fee. Troco retorna ao remetente.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "fee", Nome = "fee", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["fee"]
             },
             new Formula
             {
@@ -204,6 +388,39 @@ public partial class FormulaService
                 Descricao = "Consenso Avalanche: família de protocolos de metaestabilidade. Nó amostra k peers repetidamente; tendência acumula em contadores. Finalidade sub-segundo.",
                 Criador = "Team Rocket / Emin Gün Sirer",
                 AnoOrigin = "2018",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["k"] + vars["alpha"]
+            },
+            new Formula
+            {
+                Id = "5_bc11", Nome = "Merkle Proof (Prova de Inclusão)", Categoria = "Blockchain e Consenso", SubCategoria = "Criptografia Blockchain",
+                Expressao = "Prova: O(log n) hashes;  verificação contra raiz",
+                ExprTexto = "Merkle proof: O(log n) para verificação",
+                Icone = "MP",
+                Descricao = "Prova de Merkle: demonstra que transação está em bloco sem baixar bloco inteiro. Cliente leve verifica apenas log(n) hashes contra raiz. SPV em Bitcoin usa isso.",
+                ExemploPratico = "Para árvore com n=1024 transações, prova tem log2(1024)=10 hashes.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "Num transações n", ValorPadrao = 1024, ValorMin = 1 } ],
+                VariavelResultado = "Tamanho prova (hashes)",
+                UnidadeResultado = "hashes",
+                Calcular = vars => Math.Ceiling(Math.Log(vars["n"], 2))
+            },
+            new Formula
+            {
+                Id = "5_bc12", Nome = "ZK-SNARK (Zero-Knowledge Succinct)", Categoria = "Blockchain e Consenso", SubCategoria = "Criptografia Blockchain",
+                Expressao = "Prova π: P conhece w s.t. C(x,w)=1;  |π|=O(1), verify=O(1)",
+                ExprTexto = "ZK-SNARK: prova sucinta O(1), verificação O(1)",
+                Icone = "ZK",
+                Descricao = "ZK-SNARK: prova criptográfica que permite provar conhecimento de testemunha sem revelá-la. Prova e verificação são sucintas (constantes). Zcash usa para privacidade. Groth16, PLONK.",
+                Criador = "Groth et al",
+                AnoOrigin = "2016",
+                ExemploPratico = "Prova que conheço x s.t. SHA256(x)=hash sem revelar x. Tamanho prova ~200 bytes, verify ~1ms.",
+                Variaveis = [ new() { Simbolo = "π", Nome = "Tamanho prova (bytes)", ValorPadrao = 200, ValorMin = 1 }, new() { Simbolo = "t", Nome = "Tempo verify (ms)", ValorPadrao = 1, ValorMin = 0 } ],
+                VariavelResultado = "Overhead total",
+                UnidadeResultado = "bytes·ms",
+                Calcular = vars => vars["π"] * vars["t"]
             },
         ]);
     }
@@ -221,6 +438,11 @@ public partial class FormulaService
                 ExprTexto = "Anyon: troca → e^(iθ), θ∈(0,π)",
                 Icone = "An",
                 Descricao = "Anyons: quasipartículas em 2D com estatística fracionária. Troca produz fase e^(iθ). Anyons não-abelianos: troca produz transformação unitária no espaço degenerado.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -229,6 +451,11 @@ public partial class FormulaService
                 ExprTexto = "Braid: σiσi+1σi = σi+1σiσi+1",
                 Icone = "Br",
                 Descricao = "Grupo de braid: descreve tranças de partículas em 2+1D. Relação de Yang-Baxter σiσi+1σi = σi+1σiσi+1. Representações dão portas quânticas.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -237,6 +464,11 @@ public partial class FormulaService
                 ExprTexto = "τ×τ=1+τ; dim=Fibonacci(n+1)",
                 Icone = "Fb",
                 Descricao = "Fibonacci anyons: anyons não-abelianos com regra de fusão τ×τ=1+τ. Espaço de Hilbert cresce como Fibonacci. Universais para computação quântica por braiding.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "τ", Nome = "τ", ValorPadrao = 5 } ],
+                VariavelResultado = "τ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] + vars["τ"]
             },
             new Formula
             {
@@ -247,6 +479,11 @@ public partial class FormulaService
                 Descricao = "Código tórico de Kitaev: código quântico topológico em reticulado. Estabilizadores Av (vértice) e Bp (plaqueta). Erros detectados por anyons. Distância d=L.",
                 Criador = "Alexei Kitaev",
                 AnoOrigin = "1997",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -255,6 +492,11 @@ public partial class FormulaService
                 ExprTexto = "[[L²,1,L]]; threshold ~1%",
                 Icone = "Sf",
                 Descricao = "Código de superfície: variante planar do tórico. 1 qubit lógico, distância L, L² qubits físicos. Threshold ~1% com decodificador MWPM. Favorito para hardware.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -263,6 +505,11 @@ public partial class FormulaService
                 ExprTexto = "Erro ~ e^(-αL) (supressão exponencial)",
                 Icone = "TP",
                 Descricao = "Proteção topológica: erros locais não corrompem informação codificada topologicamente. Supressão exponencial em L. Motivação para computação quântica topológica.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -273,6 +520,11 @@ public partial class FormulaService
                 Descricao = "Invariante de Jones: polinômio de nós computável via TQFT (Witten). Conecta teoria de nós, QFT de Chern-Simons e computação quântica topológica.",
                 Criador = "Vaughan Jones",
                 AnoOrigin = "1984",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -283,6 +535,37 @@ public partial class FormulaService
                 Descricao = "Modelo de Levin-Wen: Hamiltoniano de string-net em reticulado. Ground state topológico descreve fases topológicas 2D. Generaliza código tórico para categorias de fusão.",
                 Criador = "Levin / Wen",
                 AnoOrigin = "2005",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
+            },
+            new Formula
+            {
+                Id = "5_qt09", Nome = "Twist de Anyon (Topological Spin)", Categoria = "Computação Quântica Topológica", SubCategoria = "Códigos Topológicos",
+                Expressao = "θₐ = e^(2πisₐ);  sₐ=topological spin (conformal weight)",
+                ExprTexto = "θ=e^(2πis); s=topological spin",
+                Icone = "Tw",
+                Descricao = "Twist de anyon: auto-estatística ao trocar partícula consigo mesma via volta completa (2π). Topological spin s é obstáculo à trivialidade. θ=±1 → abeliano; |θ|=1 genérico.",
+                ExemploPratico = "Para anyon de Fibonacci: s=4/5 → θ=e^(i8π/5). Para férmion: s=1/2 → θ=-1.",
+                Variaveis = [ new() { Simbolo = "s", Nome = "Topological spin s", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                VariavelResultado = "Fase θ (cosseno parte real)",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Cos(2 * Math.PI * vars["s"])
+            },
+            new Formula
+            {
+                Id = "5_qt10", Nome = "Capacidade Quântica Topológica", Categoria = "Computação Quântica Topológica", SubCategoria = "Códigos Topológicos",
+                Expressao = "Dimensão espaço: d = D^g;  D²=Σₐ dₐ² (dimensão quântica total)",
+                ExprTexto = "dim=D^g; D²=Σdₐ² (toro g>1)",
+                Icone = "Cp",
+                Descricao = "Capacidade topológica: dimensão do espaço de ground states em superfície de gênero g é D^g, onde D=dimensão quântica total. Para código tórico: D=2 → 4^g estados. Armazena log2(D^g) qubits topológicos.",
+                ExemploPratico = "Código tórico (D=2) em toro duplo (g=2): dim=2²=4 → 2 qubits lógicos.",
+                Variaveis = [ new() { Simbolo = "D", Nome = "Dimensão quântica D", ValorPadrao = 2, ValorMin = 1 }, new() { Simbolo = "g", Nome = "Gênero superfície g", ValorPadrao = 1, ValorMin = 0 } ],
+                VariavelResultado = "Dimensão espaço",
+                UnidadeResultado = "estados",
+                Calcular = vars => Math.Pow(vars["D"], vars["g"])
             },
         ]);
     }
@@ -302,6 +585,11 @@ public partial class FormulaService
                 Descricao = "LIME: explica predição individual perturbando entrada e ajustando modelo linear local. Agnóstico ao modelo. Produz importância de features por instância.",
                 Criador = "Ribeiro / Singh / Guestrin",
                 AnoOrigin = "2016",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["L"] + vars["f"]
             },
             new Formula
             {
@@ -312,6 +600,11 @@ public partial class FormulaService
                 Descricao = "SHAP: valores de Shapley para explicação de ML. Única atribuição que satisfaz eficiência, simetria, dummy e aditividade. TreeSHAP, DeepSHAP, KernelSHAP.",
                 Criador = "Lundberg / Lee",
                 AnoOrigin = "2017",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"] + vars["i"]
             },
             new Formula
             {
@@ -320,6 +613,11 @@ public partial class FormulaService
                 ExprTexto = "CF: min d(x,x') s.t. f(x')≠f(x)",
                 Icone = "CF",
                 Descricao = "Explicação contrafactual: menor mudança na entrada que altera a predição. 'Se X fosse Y, resultado seria Z.' Ação direta para o usuário.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "CF", Nome = "CF", ValorPadrao = 1 }, new() { Simbolo = "d", Nome = "d", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["CF"] + vars["d"]
             },
             new Formula
             {
@@ -330,6 +628,11 @@ public partial class FormulaService
                 Descricao = "Grad-CAM: visualiza importância espacial em CNNs. Pesos = gradiente médio global da classe c em cada feature map. Heatmap sobre a imagem.",
                 Criador = "Selvaraju et al.",
                 AnoOrigin = "2017",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["alpha"] + vars["k"]
             },
             new Formula
             {
@@ -338,6 +641,11 @@ public partial class FormulaService
                 ExprTexto = "Rollout: R = Π(0.5Ã+0.5I) camadas",
                 Icone = "AR",
                 Descricao = "Attention Rollout: propaga atenção pelas camadas do Transformer. Produto de matrizes de atenção com residual. Mapa de relevância de tokens.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "R", Nome = "R", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["R"]
             },
             new Formula
             {
@@ -348,6 +656,11 @@ public partial class FormulaService
                 Descricao = "Integrated Gradients: atribuição que satisfaz axiomas de sensibilidade e invariância à implementação. Integra gradientes ao longo de caminho linear baseline→input.",
                 Criador = "Sundararajan / Taly / Yan",
                 AnoOrigin = "2017",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -356,6 +669,11 @@ public partial class FormulaService
                 ExprTexto = "Faithfulness: corr(importância, impacto perturbação)",
                 Icone = "Fa",
                 Descricao = "Fidelidade: avalia se explicação corresponde ao modelo real. Mede correlação entre importância atribuída e impacto na predição ao remover features. Métricas: AOPC, sufficiency.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
             },
             new Formula
             {
@@ -364,6 +682,41 @@ public partial class FormulaService
                 ExprTexto = "x→conceitos→y (bottleneck)",
                 Icone = "CB",
                 Descricao = "Concept Bottleneck: rede prediz conceitos interpretáveis primeiro, depois classe final. Permite intervenção humana nos conceitos. Interpretável by design.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["y"]
+            },
+            new Formula
+            {
+                Id = "5_xa09", Nome = "Integrated Gradients", Categoria = "IA Explicável", SubCategoria = "Métodos de Atribuição",
+                Expressao = "IGᵢ(x) = (xᵢ-x'ᵢ)·∫₀¹ ∂F/∂xᵢ(x'+α(x-x')) dα",
+                ExprTexto = "IG=(x-x')·∫₀¹∂F/∂x dα (baseline→input)",
+                Icone = "IG",
+                Descricao = "Integrated Gradients: atribui importância integrando gradientes ao longo do caminho de baseline x' até input x. Axiomas: sensibilidade, completude (soma=F(x)-F(x')). Método rigoroso para DNNs.",
+                Criador = "Sundararajan et al",
+                AnoOrigin = "2017",
+                ExemploPratico = "Baseline x'=0 (imagem preta), input x=imagem classificada. IG(pixel i) mede contribuição acumulada ao longo do caminho.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Feature x", ValorPadrao = 1.0 }, new() { Simbolo = "x'", Nome = "Baseline x'", ValorPadrao = 0.0 }, new() { Simbolo = "∂F", Nome = "Gradiente médio ∂F", ValorPadrao = 0.5 } ],
+                VariavelResultado = "Integrated Gradient",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["x"] - vars["x'"]) * vars["∂F"]
+            },
+            new Formula
+            {
+                Id = "5_xa10", Nome = "Partial Dependence Plot (PDP)", Categoria = "IA Explicável", SubCategoria = "Métodos de Atribuição",
+                Expressao = "PDP(xₛ) = E_{xC}[f(xₛ, xC)];  marginaliza sobre xC",
+                ExprTexto = "PDP(xs)=E[f(xs,xC)] (marginal effect)",
+                Icone = "PDP",
+                Descricao = "Partial Dependence Plot: visualiza efeito marginal de feature(s) xₛ marginalizando sobre outras features xC. Mostra relação média entre xₛ e predição. Assume independência entre features.",
+                Criador = "Friedman",
+                AnoOrigin = "2001",
+                ExemploPratico = "PDP de idade: calcula E[f(idade=a, outras features)] variando a. Curva mostra como predição muda com idade, em média sobre população.",
+                Variaveis = [ new() { Simbolo = "f1", Nome = "Predição sample 1", ValorPadrao = 0.8 }, new() { Simbolo = "f2", Nome = "Predição sample 2", ValorPadrao = 0.6 }, new() { Simbolo = "f3", Nome = "Predição sample 3", ValorPadrao = 0.7 }, new() { Simbolo = "n", Nome = "Num samples", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "PDP (valor médio)",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["f1"] + vars["f2"] + vars["f3"]) / vars["n"]
             },
         ]);
     }
@@ -384,6 +737,11 @@ public partial class FormulaService
                 Descricao = "Computação com DNA (Adleman 1994): resolução de Hamiltonian Path com moléculas. Codifica vértices em oligonucleotídeos, hibridização gera caminhos, gel seleciona.",
                 Criador = "Leonard Adleman",
                 AnoOrigin = "1994",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -392,6 +750,11 @@ public partial class FormulaService
                 ExprTexto = "DNA storage: ~2 bits/nt, 1 EB/mm³",
                 Icone = "St",
                 Descricao = "Armazenamento em DNA: densidade ultra-alta (~1 exabyte/mm³). Codifica bits em bases (A,T,C,G). Desafios: custo de síntese/sequenciamento, taxa de erro, acesso aleatório.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -400,6 +763,11 @@ public partial class FormulaService
                 ExprTexto = "Toehold→invasão→deslocamento",
                 Icone = "SD",
                 Descricao = "Strand displacement: mecanismo de troca de fitas via toehold. Base de circuitos de DNA. Portas AND, OR, NOT implementadas. Cascatas de sinalização molecular.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -410,6 +778,11 @@ public partial class FormulaService
                 Descricao = "DNA Origami (Rothemund 2006): fita longa scaffold dobrada em forma arbitrária por ~200 staple strands curtos. Nanoestruturas precisas para sensores e drug delivery.",
                 Criador = "Paul Rothemund",
                 AnoOrigin = "2006",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -418,6 +791,11 @@ public partial class FormulaService
                 ExprTexto = "CRISPR: gRNA+Cas9→edit; lógica in vivo",
                 Icone = "CR",
                 Descricao = "CRISPR como circuito lógico: guias RNA programam Cas9/dCas9 para ativar/reprimir genes condicionalmente. Portas lógicas e registradores de memória celular.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
 
             // 24.2 Computação Neuromórfica
@@ -428,6 +806,11 @@ public partial class FormulaService
                 ExprTexto = "τ·dV/dt=-(V-EL)+RI; V≥Vth→spike",
                 Icone = "LIF",
                 Descricao = "Leaky Integrate-and-Fire: modelo neuronal simples. Tensão integra correntes com leak. Ao atingir limiar, dispara spike e reseta. Base de chips neuromórficos.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -436,6 +819,11 @@ public partial class FormulaService
                 ExprTexto = "STDP: Δw ~ exp(-|Δt|/τ); sinal por timing",
                 Icone = "ST",
                 Descricao = "STDP: regra de aprendizado hebbiana temporal. Pré antes de pós → potenciação. Pós antes de pré → depressão. Base de aprendizado em hardware neuromórfico.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -444,6 +832,11 @@ public partial class FormulaService
                 ExprTexto = "SNN: spike trains, evento-driven",
                 Icone = "SNN",
                 Descricao = "SNN: redes neurais de spikes. Comunicação por pulsos discretos. Eficientes em energia (~20 fJ/spike). Implementadas em Loihi (Intel), TrueNorth (IBM), SpiNNaker.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -454,6 +847,11 @@ public partial class FormulaService
                 Descricao = "Memristor: componente passivo cuja resistência depende do histórico. Emula sinapse (peso análogo). Arrays de memristores para computação in-memory e crossbar.",
                 Criador = "Leon Chua (teoria)",
                 AnoOrigin = "1971",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -462,6 +860,11 @@ public partial class FormulaService
                 ExprTexto = "Neuromórfico: ~100× eficiência vs GPU",
                 Icone = "⚡",
                 Descricao = "Vantagem energética: chips neuromórficos processam spikes assincronamente, consumindo ~mW vs ~100W de GPUs. Ideal para edge AI, robótica e sensores always-on.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
         ]);
     }
@@ -481,6 +884,11 @@ public partial class FormulaService
                 Descricao = "Equação de Michaelis-Menten: cinética enzimática. v=velocidade, Vmax=velocidade máxima, Km=constante de Michaelis (afinidade). Derivada do mecanismo E+S↔ES→E+P.",
                 Criador = "Michaelis / Menten",
                 AnoOrigin = "1913",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -491,6 +899,11 @@ public partial class FormulaService
                 Descricao = "Equação de Hill: modela cooperatividade na ligação de ligantes. n>1 cooperatividade positiva (hemoglobina n≈2.8), n<1 negativa, n=1 não-cooperativa.",
                 Criador = "Archibald Hill",
                 AnoOrigin = "1910",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -501,6 +914,11 @@ public partial class FormulaService
                 Descricao = "Lei de Bragg: condição de difração construtiva em cristais. Base da cristalografia de raios-X para resolver estruturas de proteínas. d=espaçamento, θ=ângulo.",
                 Criador = "W.H. & W.L. Bragg",
                 AnoOrigin = "1913",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "2d", Nome = "2d", ValorPadrao = 5 }, new() { Simbolo = "sinθ", Nome = "sinθ", ValorPadrao = 3 } ],
+                VariavelResultado = "nλ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["2d"] * vars["sinθ"]
             },
             new Formula
             {
@@ -509,6 +927,11 @@ public partial class FormulaService
                 ExprTexto = "F(hkl) = Σ fj·e^(2πi(hx+ky+lz))",
                 Icone = "Fhkl",
                 Descricao = "Fator de estrutura: amplitude de difração para reflexão (hkl). Problema de fase: |F| medido mas fase perdida. Métodos: MAD, MR, SAD para resolver.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -519,6 +942,11 @@ public partial class FormulaService
                 Descricao = "Diagrama de Ramachandran: mapa de ângulos diedros φ (C-N-Cα-C) e ψ (N-Cα-C-N) do backbone proteico. Colisões estéricas definem regiões permitidas.",
                 Criador = "G.N. Ramachandran",
                 AnoOrigin = "1963",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -529,6 +957,11 @@ public partial class FormulaService
                 Descricao = "AlphaFold2: prediz estrutura 3D de proteínas a partir da sequência. Evoformer processa MSA e pares. Acurácia experimental. Revolucionou biologia estrutural.",
                 Criador = "DeepMind",
                 AnoOrigin = "2020",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -537,6 +970,11 @@ public partial class FormulaService
                 ExprTexto = "RMSD = √(Σ||r-r'||²/N)",
                 Icone = "RM",
                 Descricao = "RMSD: raiz da média dos quadrados das distâncias entre átomos correspondentes após superposição ótima. Mede similaridade estrutural. <2Å = muito similar.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -545,6 +983,11 @@ public partial class FormulaService
                 ExprTexto = "ΔG = ΔH-TΔS = -RT·ln(Ka)",
                 Icone = "ΔG",
                 Descricao = "Energia livre de ligação: ΔG determina espontaneidade. Ka = constante de associação. ΔG negativo = ligação favorável. Docking e scoring functions estimam ΔG.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "ΔH", Nome = "ΔH", ValorPadrao = 10 }, new() { Simbolo = "TΔS", Nome = "TΔS", ValorPadrao = 5 } ],
+                VariavelResultado = "ΔG",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ΔH"] - vars["TΔS"]
             },
             new Formula
             {
@@ -553,6 +996,11 @@ public partial class FormulaService
                 ExprTexto = "V(r) = 4ε[(σ/r)¹²-(σ/r)⁶]",
                 Icone = "LJ",
                 Descricao = "Potencial de Lennard-Jones: modela interação de van der Waals. Repulsão r⁻¹² e atração r⁻⁶. Parâmetros ε (profundidade) e σ (distância). Usado em MD de proteínas.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -561,6 +1009,11 @@ public partial class FormulaService
                 ExprTexto = "V = Vbond+Vangle+Vdih+VLJ+VCoulomb",
                 Icone = "FF",
                 Descricao = "Campo de força para dinâmica molecular: soma de termos para ligações, ângulos, diedros, van der Waals e eletrostática. AMBER, CHARMM, OPLS. Simula dinâmica de proteínas.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Entrada principal x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Entrada secundária y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -569,6 +1022,11 @@ public partial class FormulaService
                 ExprTexto = "pH = pKa + log([A⁻]/[HA])",
                 Icone = "pH",
                 Descricao = "Henderson-Hasselbalch: relaciona pH, pKa e razão base/ácido. Fundamental para entender protonação de resíduos de proteínas e tampões biológicos.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "pKa", Nome = "pKa", ValorPadrao = 10 }, new() { Simbolo = "log", Nome = "log", ValorPadrao = 5 } ],
+                VariavelResultado = "pH",
+                UnidadeResultado = "",
+                Calcular = vars => vars["pKa"] + vars["log"]
             },
         ]);
     }
@@ -589,6 +1047,11 @@ public partial class FormulaService
                 Descricao = "Rede de Hopfield: memória associativa. Pesos de Hebb: wij = correlação entre padrões. Dinâmica converge a atratores (memórias). Capacidade ~0.14N padrões.",
                 Criador = "John Hopfield",
                 AnoOrigin = "1982",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -597,6 +1060,11 @@ public partial class FormulaService
                 ExprTexto = "E = -(1/2)Σwij·si·sj - Σθi·si",
                 Icone = "EH",
                 Descricao = "Função de energia da rede de Hopfield: decresce ou mantém-se a cada atualização assíncrona. Mínimos locais = padrões memorizados. Análogo a spin glass.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -607,6 +1075,11 @@ public partial class FormulaService
                 Descricao = "Redes de Hopfield modernas (Ramsauer 2021): energia com interação exponencial. Capacidade exponencial em dimensão. Conexão direta com atenção de Transformers.",
                 Criador = "Ramsauer et al.",
                 AnoOrigin = "2021",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -617,6 +1090,26 @@ public partial class FormulaService
                 Descricao = "Máquina de Boltzmann: modelo generativo estocástico. RBM (restrita) com camadas visível/oculta. Treinamento por contrastive divergence. Pré-treinamento de deep nets.",
                 Criador = "Hinton / Sejnowski",
                 AnoOrigin = "1985",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+            },
+            new Formula
+            {
+                Id = "5_hp05", Nome = "Hopfield Moderno (Capacidade Exponencial)", Categoria = "Hopfield e Ecologia", SubCategoria = "Redes de Hopfield",
+                Expressao = "E = -log(Σμ exp(β·ξμᵀσ));  capacidade ~ exp(N)",
+                ExprTexto = "E=-log Σexp(βξᵀσ); capacidade exponencial",
+                Icone = "HM",
+                Descricao = "Hopfield moderno: energia baseada em logsumexp de produtos internos. Capacidade cresce exponencialmente com N (vs linear clássico αc≈0.14N). Retrieval perfeito de exp(N) memórias. Conexão com attention transformers.",
+                Criador = "Krotov / Hopfield",
+                AnoOrigin = "2016",
+                ExemploPratico = "Com β=2, N=100 neurônios, capacidade ~ e^100 memórias vs ~14 no modelo clássico.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "Num neurônios N", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "α_classic", Nome = "Capacidade clássica αc", ValorPadrao = 0.138 } ],
+                VariavelResultado = "Capacidade clássica",
+                UnidadeResultado = "memórias",
+                Calcular = vars => vars["α_classic"] * vars["N"]
             },
 
             // 26.2 Ecologia Matemática
@@ -629,6 +1122,11 @@ public partial class FormulaService
                 Descricao = "Crescimento logístico: população cresce exponencialmente quando pequena, desacelera ao se aproximar da capacidade de carga K. Modelo clássico de ecologia.",
                 Criador = "Pierre-François Verhulst",
                 AnoOrigin = "1838",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -639,6 +1137,11 @@ public partial class FormulaService
                 Descricao = "Equações de Lotka-Volterra: presa x cresce e é consumida; predador y cresce com presa e morre. Oscilações periódicas. Modelo fundamental de interação ecológica.",
                 Criador = "Lotka / Volterra",
                 AnoOrigin = "1926",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -647,6 +1150,11 @@ public partial class FormulaService
                 ExprTexto = "Ni' = riNi(1-(Ni+αNj)/Ki)",
                 Icone = "Cp",
                 Descricao = "Competição interespecífica: duas espécies competem por recurso. Coexistência se competição intraespecífica > interespecífica. Princípio de exclusão competitiva.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -657,6 +1165,11 @@ public partial class FormulaService
                 Descricao = "Modelo de metapopulação de Levins: patches ocupados colonizam vazios (taxa c), sofrem extinção local (taxa e). Equilíbrio p*=1-e/c. Conservação de habitats fragmentados.",
                 Criador = "Richard Levins",
                 AnoOrigin = "1969",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -665,6 +1178,11 @@ public partial class FormulaService
                 ExprTexto = "H' = -Σpi·ln(pi); J=H'/ln(S)",
                 Icone = "H'",
                 Descricao = "Índice de Shannon: mede diversidade de espécies combinando riqueza (S) e uniformidade (equitabilidade J). Mais alto = mais diverso. Usado em ecologia e repertório imune.",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -673,6 +1191,11 @@ public partial class FormulaService
                 ExprTexto = "S = cAᶻ (espécie-área)",
                 Icone = "SA",
                 Descricao = "Relação espécie-área: número de espécies cresce como potência da área. z~0.25 para ilhas. Base de biogeografia de ilhas e conservação (MacArthur-Wilson).",
+                ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
         ]);
     }

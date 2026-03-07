@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Constante de propagação β e número V de um guia de onda dielétrico. V<2.405 → single-mode. Base de fotônica integrada (SOI, SiN, InP).",
                 Criador = "Amnon Yariv",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Acoplador direcional: dois guias próximos trocam potência com período 2Lc. κ = coeficiente de acoplamento. Splitters, switches e filtros integrados.",
                 Criador = "Amnon Yariv",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "sin", Nome = "sin", ValorPadrao = 5 } ],
+                VariavelResultado = "P₁",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sin"] * vars["sin"]
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Ressonador em anel: filtro óptico integrado com FSR e finesse controláveis. Ressonância quando φ=2πm. Usado em WDM, sensores e moduladores.",
                 Criador = "B.E. Little / S.T. Chu / H.A. Haus",
                 AnoOrigin = "1997",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "λ", Nome = "λ", ValorPadrao = 5 } ],
+                VariavelResultado = "FSR",
+                UnidadeResultado = "",
+                Calcular = vars => vars["λ"] * vars["λ"]
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Modulador Mach-Zehnder: modula intensidade via diferença de fase eletro-óptica. Vπ = tensão para extinção. Chave em comunicações ópticas de alta velocidade.",
                 Criador = "Various / LiNbO₃ standard",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Iin", Nome = "Iin", ValorPadrao = 5 }, new() { Simbolo = "cos²", Nome = "cos²", ValorPadrao = 3 } ],
+                VariavelResultado = "Iout",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Iin"] * vars["cos²"]
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Cristal fotônico: estrutura dielétrica periódica cria band gap para fótons. Análogo ao potencial periódico de Bloch. Cavidades, guias e slow light.",
                 Criador = "Eli Yablonovitch / Sajeev John",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 }, new() { Simbolo = "gap", Nome = "gap", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["em"] + vars["gap"]
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Fibra de cristal fotônico: casca com furos de ar cria guiamento por band gap ou TIR modificada. Engenharia de dispersão e alta não-linearidade.",
                 Criador = "Philip Russell",
                 AnoOrigin = "1996",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "PCF", Nome = "PCF", ValorPadrao = 1 }, new() { Simbolo = "GVD", Nome = "GVD", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["PCF"] + vars["GVD"]
             },
             new Formula
             {
@@ -84,6 +114,11 @@ public partial class FormulaService
                 Descricao = "Plasmon polariton de superfície: onda EM na interface metal-dielétrico. Confinamento sub-λ para nano-fotônica. Sensores LSPR e circuitos plasmônicos.",
                 Criador = "Ritchie (teoria) / Raether (experimental)",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
 
             // 13.2 MEMS e NEMS
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "Frequência de ressonância de cantilever MEMS: depende da rigidez k (material, geometria) e massa m. Base de sensores, filtros RF e giroscópios.",
                 Criador = "Kurt Petersen",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Voltagem de pull-in: quando V>VPI, a força eletrostática supera a restauração elástica → colapso do gap. Limitação fundamental de atuadores MEMS.",
                 Criador = "Hal Nathanson / William Newell / Robert Wickstrom / Jerry Davis",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Amortecimento termoelástico (Zener): limite fundamental de Q em ressonadores MEMS. Fluxo de calor por gradientes de deformação dissipa energia. Pico quando Ωτ≈1.",
                 Criador = "Clarence Zener / Ron Lifshitz / Michael Roukes",
                 AnoOrigin = "1937",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["alpha"]
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "Acelerômetro MEMS capacitivo: massa de prova desloca sob aceleração → variação de capacitância. Em smartphones, carros, inerciais. Resolução ~µg possível.",
                 Criador = "Analog Devices (ADXL50) / L. Roylance / J. Angell",
                 AnoOrigin = "1979",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "εAx", Nome = "εAx", ValorPadrao = 10 }, new() { Simbolo = "g₀²", Nome = "g₀²", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "ΔC",
+                UnidadeResultado = "",
+                Calcular = vars => vars["εAx"] / vars["g₀²"]
             },
             new Formula
             {
@@ -136,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Giroscópio MEMS: massa vibra no eixo drive; rotação Ω gera força de Coriolis no eixo sense. Detecta taxa angular. Usado em IMUs, drones, carros.",
                 Criador = "Najafi / Ayazi / Clark",
                 AnoOrigin = "1998",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 }, new() { Simbolo = "Omega", Nome = "Omega", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["F"] + vars["Omega"]
             },
             new Formula
             {
@@ -146,6 +206,11 @@ public partial class FormulaService
                 Descricao = "Sensor de massa NEMS: adição de massa desloca frequência de ressonância. Resolução de atogramas (10⁻¹⁸ g). Conta moléculas individuais em vácuo.",
                 Criador = "Michael Roukes",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "m", Nome = "m", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["m"]
             },
 
             // 13.3 Tribologia
@@ -158,6 +223,11 @@ public partial class FormulaService
                 Descricao = "Lei de Archard: volume de desgaste proporcional à carga normal F, distância de deslizamento s e inversamente à dureza H. K adimensional caracteriza par tribológico.",
                 Criador = "John Frederick Archard",
                 AnoOrigin = "1953",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 2 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 3 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 4 } ],
+                VariavelResultado = "V",
+                UnidadeResultado = "",
+                Calcular = vars => vars["K"] * vars["F"] * vars["s"]
             },
             new Formula
             {
@@ -168,6 +238,11 @@ public partial class FormulaService
                 Descricao = "Contato hertziano: solução elástica para contato esfera-plano. Raio de contato a e pressão principal p₀. Base da mecânica de contato em tribologia.",
                 Criador = "Heinrich Hertz",
                 AnoOrigin = "1882",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["a"] + vars["pi"]
             },
             new Formula
             {
@@ -178,6 +253,11 @@ public partial class FormulaService
                 Descricao = "Equação de Reynolds: governa distribuição de pressão em filme lubrificante fino. Lado esquerdo = fluxo de Poiseuille; direito = cunha + squeeze. Lubrificação hidrodinâmica.",
                 Criador = "Osborne Reynolds",
                 AnoOrigin = "1886",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["mu"]
             },
             new Formula
             {
@@ -188,6 +268,11 @@ public partial class FormulaService
                 Descricao = "Número de Sommerfeld: parâmetro adimensional de mancais hidrodinâmicos. Relaciona viscosidade, velocidade, carga e geometria. Define regime de lubrificação na curva de Stribeck.",
                 Criador = "Arnold Sommerfeld",
                 AnoOrigin = "1904",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] + vars["r"]
             },
             new Formula
             {
@@ -198,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Modelo JKR: contato hertziano com adesão (energia de superfície Δγ). Força de pull-off proporcional a R·Δγ. Importante em MEMS, nanoindentação e biologia.",
                 Criador = "Johnson / Kendall / Roberts",
                 AnoOrigin = "1971",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "JKR", Nome = "JKR", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["JKR"] + vars["pi"]
             },
         ]);
     }
@@ -218,6 +308,11 @@ public partial class FormulaService
                 Descricao = "Modelo LWR: lei de conservação macroscópica para fluxo de tráfego. Densidade ρ, velocidade v(ρ) decrescente. Ondas de choque e rarefação. Diagrama fundamental.",
                 Criador = "M.J. Lighthill / G.B. Whitham / Paul Richards",
                 AnoOrigin = "1955",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ρ", Nome = "ρ", ValorPadrao = 5 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 3 } ],
+                VariavelResultado = "q",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ρ"] * vars["v"]
             },
             new Formula
             {
@@ -228,6 +323,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Greenshields: relação linear velocidade-densidade. vf = velocidade de fluxo livre, ρj = densidade de congestionamento. Modelo mais simples para diagrama fundamental.",
                 Criador = "Bruce Greenshields",
                 AnoOrigin = "1935",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "vf", Nome = "vf", ValorPadrao = 5 }, new() { Simbolo = "ρj", Nome = "ρj", ValorPadrao = 3 } ],
+                VariavelResultado = "qmax",
+                UnidadeResultado = "",
+                Calcular = vars => vars["vf"] * vars["ρj"]
             },
             new Formula
             {
@@ -238,6 +338,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de Webster: ciclo ótimo de semáforo que minimiza atraso total. L = tempo perdido, yi = razão de fluxo. Segunda fórmula dá atraso médio por veículo.",
                 Criador = "Frederick Webster",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "yi", Nome = "yi", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["yi"] + vars["f"]
             },
             new Formula
             {
@@ -248,6 +353,11 @@ public partial class FormulaService
                 Descricao = "Intelligent Driver Model: cada veículo acelera/freia segundo velocidade relativa e gap. Reproduz formação de congestionamento, stop-and-go e capacidade. Microscópico.",
                 Criador = "Martin Treiber / Ansgar Hennecke / Dirk Helbing",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "IDM", Nome = "IDM", ValorPadrao = 1 }, new() { Simbolo = "dv", Nome = "dv", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["IDM"] + vars["dv"]
             },
             new Formula
             {
@@ -258,6 +368,11 @@ public partial class FormulaService
                 Descricao = "Equilíbrio de Wardrop: nenhum motorista pode reduzir unilateralmente seu tempo mudando de rota. Programa de otimização convexa. Base de modelos de atribuição de tráfego.",
                 Criador = "John Glen Wardrop",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "UE", Nome = "UE", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["UE"] + vars["de"]
             },
             new Formula
             {
@@ -268,6 +383,11 @@ public partial class FormulaService
                 Descricao = "Diagrama fundamental de tráfego: relação q(ρ) em forma de parábola invertida. ρc = densidade crítica, qmax = capacidade. Velocidade de onda de choque = Δq/Δρ.",
                 Criador = "Greenshields / Greenberg / Daganzo",
                 AnoOrigin = "1935",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Δq", Nome = "Δq", ValorPadrao = 10 }, new() { Simbolo = "Δρ", Nome = "Δρ", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "wshock",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Δq"] / vars["Δρ"]
             },
 
             // 14.2 Transferência Radiativa
@@ -280,6 +400,11 @@ public partial class FormulaService
                 Descricao = "Equação de transferência radiativa: governa intensidade I ao longo de raio em meio absorvente/espalhante. Absorção κa, espalhamento κs, função de fase p, emissão B(T).",
                 Criador = "Subrahmanyan Chandrasekhar",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -290,6 +415,11 @@ public partial class FormulaService
                 Descricao = "Lei de Beer-Lambert: atenuação exponencial de radiação em meio absorvente. Profundidade óptica τ integra coeficiente de extinção. Base de espectroscopia e sensoriamento remoto.",
                 Criador = "Pierre Bouguer / Johann Lambert / August Beer",
                 AnoOrigin = "1852",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "I₀", Nome = "I₀", ValorPadrao = 5 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3 } ],
+                VariavelResultado = "I",
+                UnidadeResultado = "",
+                Calcular = vars => vars["I₀"] * vars["exp"]
             },
             new Formula
             {
@@ -300,6 +430,11 @@ public partial class FormulaService
                 Descricao = "Função de fase de Henyey-Greenstein: parametriza anisotropia de espalhamento por g∈[-1,1]. g>0 forward, g<0 backward. Usada em atmosferas, tecidos biológicos.",
                 Criador = "Louis Henyey / Jesse Greenstein",
                 AnoOrigin = "1941",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "HG", Nome = "HG", ValorPadrao = 1 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["HG"] + vars["p"]
             },
             new Formula
             {
@@ -310,6 +445,11 @@ public partial class FormulaService
                 Descricao = "Aproximação de difusão: válida quando espalhamento domina (τ≫1, g≈1). Reduz RTE a equação de difusão para fluência φ. Usada em tecidos biológicos e nuvens.",
                 Criador = "Subrahmanyan Chandrasekhar",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "D", Nome = "D", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["D"] + vars["phi"]
             },
             new Formula
             {
@@ -320,6 +460,11 @@ public partial class FormulaService
                 Descricao = "Monte Carlo radiativo: amostra fótons individuais. Livre caminho exponencial, decisão absorção/espalhamento por κa/κt, novo ângulo pela função de fase. Referência em validação.",
                 Criador = "John Howell / Modest",
                 AnoOrigin = "1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -330,6 +475,11 @@ public partial class FormulaService
                 Descricao = "Lei de Kirchhoff: em equilíbrio térmico, emissividade espectral direcional iguala absortância. Relaciona propriedades de superfície. Base de engenharia térmica radiativa.",
                 Criador = "Gustav Kirchhoff",
                 AnoOrigin = "1860",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["epsilon"] + vars["lambda_"]
             },
             new Formula
             {
@@ -340,6 +490,11 @@ public partial class FormulaService
                 Descricao = "Fator de forma radiativo: fração de radiação que sai de A₁ e atinge A₂. Puramente geométrico. Propriedade de reciprocidade: A₁F₁₂=A₂F₂₁.",
                 Criador = "Hoyt Hottel",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "F12", Nome = "F12", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["F12"] + vars["theta"]
             },
 
             // 14.3 Colorimetria e Iluminação
@@ -352,6 +507,11 @@ public partial class FormulaService
                 Descricao = "Sistema CIE 1931 XYZ: coordenadas de cor obtidas pela integração do espectro S(λ) com funções de matching x̄,ȳ,z̄. Y = luminância. Base de toda colorimetria.",
                 Criador = "CIE (Commission Internationale de l'Éclairage)",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -362,6 +522,11 @@ public partial class FormulaService
                 Descricao = "Diagrama de cromaticidade CIE xy: projeção normalizada do XYZ. Todas as cores visíveis dentro do locus espectral. D65 = iluminante padrão luz do dia (6504K).",
                 Criador = "CIE",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 }, new() { Simbolo = "X", Nome = "X", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["X"]
             },
             new Formula
             {
@@ -372,6 +537,11 @@ public partial class FormulaService
                 Descricao = "CIEDE2000: fórmula de diferença de cor perceptualmente uniforme. Inclui correções de luminosidade, croma, hue e termo de rotação RT. ΔE<1 imperceptível.",
                 Criador = "CIE / Gaurav Sharma / Wencheng Wu / Edul Dalal",
                 AnoOrigin = "2000",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["E"]
             },
             new Formula
             {
@@ -382,6 +552,11 @@ public partial class FormulaService
                 Descricao = "Equação de rendering de Kajiya: radiância de saída = emissão + integral da BRDF × radiância incidente × cosseno. Base de ray tracing, path tracing e radiosity.",
                 Criador = "James Kajiya",
                 AnoOrigin = "1986",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
         ]);
     }
@@ -402,6 +577,11 @@ public partial class FormulaService
                 Descricao = "Espectro de resposta sísmica: máxima resposta de osciladores de 1 grau de liberdade em função do período T e amortecimento ξ. Base do projeto sísmico em normas.",
                 Criador = "Maurice Biot / George Housner",
                 AnoOrigin = "1941",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -412,6 +592,11 @@ public partial class FormulaService
                 Descricao = "Análise modal: decompõe resposta estrutural em modos naturais φₙ. Cada modo é oscilador 1DOF independente. Γₙ = fator de participação modal. Base da análise sísmica.",
                 Criador = "Ray Clough / Joseph Penzien",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -422,6 +607,11 @@ public partial class FormulaService
                 Descricao = "Fator de comportamento q: reduz forças sísmicas elásticas para projeto em regime inelástico. Depende de ductilidade μ, sobrerresistência e redundância. Eurocode 8.",
                 Criador = "CEN (Eurocode 8) / ATC (R-factor)",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Ve", Nome = "Ve", ValorPadrao = 10 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "Vd",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Ve"] / vars["q"]
             },
             new Formula
             {
@@ -432,6 +622,11 @@ public partial class FormulaService
                 Descricao = "Isolamento sísmico de base: apoios flexíveis aumentam período natural para fora do platô espectral. Reduz acelerações em 60-80%. Edifícios e pontes críticas.",
                 Criador = "James Kelly / Ivan Skinner",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -442,6 +637,11 @@ public partial class FormulaService
                 Descricao = "Magnitude-momento: escala sísmica baseada no momento sísmico M₀. μ = rigidez da rocha, A = área de ruptura, D = deslizamento médio. Não satura como Richter.",
                 Criador = "Hiroo Kanamori",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 15.2 Eletroquímica
@@ -454,6 +654,11 @@ public partial class FormulaService
                 Descricao = "Equação de Nernst: relaciona potencial de eletrodo E à atividade dos reagentes. E⁰ = potencial padrão, n = elétrons transferidos. Fundamental em baterias e sensores.",
                 Criador = "Walther Nernst",
                 AnoOrigin = "1889",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -464,6 +669,11 @@ public partial class FormulaService
                 Descricao = "Butler-Volmer: densidade de corrente em função do sobrepotencial η. j₀ = corrente de troca, αa,αc = coeficientes de transferência. Cinética eletroquímica fundamental.",
                 Criador = "John Butler / Max Volmer",
                 AnoOrigin = "1924",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -474,6 +684,11 @@ public partial class FormulaService
                 Descricao = "Equação de Tafel: aproximação de Butler-Volmer para altos sobrepotenciais. Relação linear η vs log|j|. Inclinação b revela mecanismo da reação (α). Corrosão e eletrocatálise.",
                 Criador = "Julius Tafel",
                 AnoOrigin = "1905",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 10 }, new() { Simbolo = "b", Nome = "b", ValorPadrao = 5 } ],
+                VariavelResultado = "η",
+                UnidadeResultado = "",
+                Calcular = vars => vars["a"] + vars["b"]
             },
             new Formula
             {
@@ -484,6 +699,11 @@ public partial class FormulaService
                 Descricao = "Lei de Faraday da eletrólise: massa depositada proporcional à carga total (I·t = Q) e peso equivalente M/n. F = 96485 C/mol. Base de eletrodeposição industrial.",
                 Criador = "Michael Faraday",
                 AnoOrigin = "1834",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 2 }, new() { Simbolo = "I", Nome = "I", ValorPadrao = 3 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 4 } ],
+                VariavelResultado = "m",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"] * vars["I"] * vars["t"]
             },
             new Formula
             {
@@ -494,6 +714,11 @@ public partial class FormulaService
                 Descricao = "Espectroscopia de impedância eletroquímica: circuito Randles com Rs (solução), Rct (transferência de carga), Cdl (dupla camada). Diagnóstico de baterias e corrosão.",
                 Criador = "John Randles",
                 AnoOrigin = "1947",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Rs", Nome = "Rs", ValorPadrao = 10 }, new() { Simbolo = "Rct", Nome = "Rct", ValorPadrao = 5 } ],
+                VariavelResultado = "Z",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Rs"] + vars["Rct"]
             },
             new Formula
             {
@@ -504,6 +729,11 @@ public partial class FormulaService
                 Descricao = "Impedância de Warburg: contribuição difusional à impedância eletroquímica. Reta a 45° no diagrama de Nyquist. Dominante em baixas frequências. σ = coeficiente de Warburg.",
                 Criador = "Emil Warburg",
                 AnoOrigin = "1899",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
 
             // 15.3 Confiabilidade
@@ -516,6 +746,11 @@ public partial class FormulaService
                 Descricao = "Função de confiabilidade (sobrevivência): probabilidade de funcionar sem falha até t. λ(t) = taxa de falha (hazard rate). R(t) decrescente de 1 a 0.",
                 Criador = "Erich Pieruschka / Waloddi Weibull",
                 AnoOrigin = "1951",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -526,6 +761,11 @@ public partial class FormulaService
                 Descricao = "Distribuição de Weibull: β<1 mortalidade infantil, β=1 exponencial, β>1 desgaste. η = vida característica. Modelo mais usado em confiabilidade de equipamentos.",
                 Criador = "Waloddi Weibull",
                 AnoOrigin = "1951",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "η", Nome = "η", ValorPadrao = 5 }, new() { Simbolo = "Γ", Nome = "Γ", ValorPadrao = 3 } ],
+                VariavelResultado = "MTTF",
+                UnidadeResultado = "",
+                Calcular = vars => vars["η"] * vars["Γ"]
             },
             new Formula
             {
@@ -536,6 +776,11 @@ public partial class FormulaService
                 Descricao = "MTTF: tempo médio até falha (não reparável). MTBF: tempo médio entre falhas (reparável) = MTTF + tempo de reparo MTTR. Métricas fundamentais de confiabilidade.",
                 Criador = "US Military (MIL-HDBK-217)",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -546,6 +791,11 @@ public partial class FormulaService
                 Descricao = "Confiabilidade série (todos devem funcionar): R = ΠRi. Paralelo (ao menos um): R = 1−Π(1−Ri). Redundância paralela aumenta confiabilidade.",
                 Criador = "Barlow / Proschan",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "Π", Nome = "Π", ValorPadrao = 5 } ],
+                VariavelResultado = "R",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] - vars["Π"]
             },
             new Formula
             {
@@ -556,6 +806,11 @@ public partial class FormulaService
                 Descricao = "Fault Tree Analysis: diagrama lógico top-down de como eventos básicos combinam (AND/OR) para causar falha do sistema. MCS = conjuntos mínimos de corte.",
                 Criador = "H.A. Watson / Bell Labs para USAF",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -566,6 +821,11 @@ public partial class FormulaService
                 Descricao = "Processo de Poisson homogêneo: falhas aleatórias independentes com taxa constante λ. Tempos entre falhas exponenciais. Modelo da fase de vida útil (bathtub curve).",
                 Criador = "Siméon Denis Poisson",
                 AnoOrigin = "1837",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
         ]);
     }

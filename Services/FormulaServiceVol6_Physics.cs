@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de Landauer: condutância de um condutor mesoscópico expressa como soma de coeficientes de transmissão quânticos. Quantum de condutância G₀=e²/h.",
                 Criador = "Rolf Landauer",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de Landauer-Büttiker: generalização multi-terminal. Corrente no terminal p depende de transmissões para todos os outros terminais.",
                 Criador = "Markus Büttiker",
                 AnoOrigin = "1986",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Quantização de condutância: em quantum point contacts, G sobe em platôs de 2e²/h (spin degenerado). Evidência direta de modos de transporte discretos.",
                 Criador = "Bart van Wees / Michael Pepper",
                 AnoOrigin = "1988",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5 }, new() { Simbolo = "2e²", Nome = "2e²", ValorPadrao = 3 } ],
+                VariavelResultado = "G",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n"] * vars["2e²"]
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de Kubo para condutividade: resposta linear do sistema a um campo elétrico. Conecta condutividade à função de correlação corrente-corrente retardada.",
                 Criador = "Ryogo Kubo",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Efeito Aharonov-Bohm: elétron adquire fase proporcional ao fluxo magnético encerrado, mesmo sem campo local. Demonstra natureza topológica do potencial vetor.",
                 Criador = "Yakir Aharonov / David Bohm",
                 AnoOrigin = "1959",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "2π", Nome = "2π", ValorPadrao = 5 }, new() { Simbolo = "Φ", Nome = "Φ", ValorPadrao = 3 } ],
+                VariavelResultado = "Δφ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["2π"] * vars["Φ"]
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Localização de Anderson: desordem suficientemente forte localiza estados eletrônicos exponencialmente. Transição metal-isolante. ξ diverge no limiar.",
                 Criador = "Philip Anderson",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
 
             // 6.2 Efeito Hall Quântico
@@ -86,6 +116,11 @@ public partial class FormulaService
                 Descricao = "Efeito Hall quântico inteiro: condutância Hall quantizada em múltiplos inteiros de e²/h. Níveis de Landau preenchidos. Topologicamente protegido.",
                 Criador = "Klaus von Klitzing",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ν", Nome = "ν", ValorPadrao = 5 }, new() { Simbolo = "e²", Nome = "e²", ValorPadrao = 3 } ],
+                VariavelResultado = "σ_xy",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ν"] * vars["e²"]
             },
             new Formula
             {
@@ -96,6 +131,11 @@ public partial class FormulaService
                 Descricao = "Fórmula TKNN: condutância Hall = número de Chern da banda. Integral da curvatura de Berry sobre a zona de Brillouin. Invariante topológico inteiro.",
                 Criador = "Thouless / Kohmoto / Nightingale / den Nijs",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Efeito Hall quântico fracionário: platôs em frações de e²/h. Estado coletivo fortemente correlacionado com quasipartículas aniônicas de carga fracionária.",
                 Criador = "Daniel Tsui / Horst Störmer / Robert Laughlin",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "3", Nome = "3", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "ν",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] / vars["3"]
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Função de onda de Laughlin: ansatz variacional para o estado ν=1/m. Zeros de ordem m entre pares de elétrons. Descreve o FQHE com precisão notável.",
                 Criador = "Robert Laughlin",
                 AnoOrigin = "1983",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "Correspondência bulk-edge: número de modos quirais de borda é igual ao invariante topológico bulk (número de Chern). Princípio central da matéria topológica.",
                 Criador = "Yasuhiro Hatsugai",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 6.3 Isolantes Topológicos
@@ -138,6 +193,11 @@ public partial class FormulaService
                 Descricao = "Invariante Z₂ para isolantes topológicos 2D com simetria time-reversal. ν=1 indica isolante topológico não-trivial com estados de borda de spin helicoidais.",
                 Criador = "Charles Kane / Eugene Mele",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -148,6 +208,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Kane-Mele: grafeno com acoplamento spin-órbita. Dois cópias do modelo de Haldane (spin up e down). Primeiro modelo de isolante topológico Z₂.",
                 Criador = "Charles Kane / Eugene Mele",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -158,6 +223,11 @@ public partial class FormulaService
                 Descricao = "Isolante topológico 3D: classificado por 4 invariantes Z₂. ν₀=1 indica isolante forte com cone de Dirac na superfície. Bi₂Se₃ é exemplo canônico.",
                 Criador = "Liang Fu / Charles Kane / Eugene Mele",
                 AnoOrigin = "2007",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -168,6 +238,11 @@ public partial class FormulaService
                 Descricao = "Hamiltoniano de superfície de isolante topológico: cone de Dirac único com acoplamento spin-momento. Férmions de Dirac sem massa protegidos topologicamente.",
                 Criador = "Liang Fu / Charles Kane",
                 AnoOrigin = "2007",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -178,6 +253,11 @@ public partial class FormulaService
                 Descricao = "Classificação topológica de Altland-Zirnbauer: 10 classes de simetria (reversão temporal T, partícula-buraco C, quiralidade S) determinam invariantes em cada dimensão.",
                 Criador = "Alexei Kitaev / Shinsei Ryu / Andreas Schnyder",
                 AnoOrigin = "2008",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -188,6 +268,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Haldane: Chern insulator sem campo magnético líquido. Hopping de segundo vizinho complexo quebra T. Primeiro modelo de efeito Hall quântico anômalo.",
                 Criador = "F. Duncan M. Haldane",
                 AnoOrigin = "1988",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -198,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Semimetal de Weyl: bandas cruzam em nós (Weyl points) com quiralidade ±1. Arcos de Fermi na superfície. Efeito quiral anômalo no transporte.",
                 Criador = "Xiangang Wan / Ashvin Vishwanath",
                 AnoOrigin = "2011",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ℏvF", Nome = "ℏvF", ValorPadrao = 2 }, new() { Simbolo = "σ", Nome = "σ", ValorPadrao = 3 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 4 } ],
+                VariavelResultado = "H_Weyl",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ℏvF"] * vars["σ"] * vars["k"]
             },
 
             // 6.4 Polârons
@@ -210,6 +300,11 @@ public partial class FormulaService
                 Descricao = "Hamiltoniano de polâron de Fröhlich: elétron acoplado a fônons ópticos longitudinais. Constante α = acoplamento. Massa efetiva m* > m.",
                 Criador = "Herbert Fröhlich",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -220,6 +315,11 @@ public partial class FormulaService
                 Descricao = "Energia do polâron em acoplamento fraco: deslocamento de energia proporcional a α e renormalização de massa. Resultado perturbativo para α≪1.",
                 Criador = "Herbert Fröhlich",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -230,6 +330,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Holstein: polâron em rede com acoplamento local. Transição de grande a pequeno polâron conforme g/t aumenta. Modelo canônico de localização polarônica.",
                 Criador = "Theodore Holstein",
                 AnoOrigin = "1959",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -240,6 +345,11 @@ public partial class FormulaService
                 Descricao = "Energia de Pekar: limite de acoplamento forte do polâron. Elétron auto-preso pela deformação da rede. Energia escala como α².",
                 Criador = "Solomon Pekar",
                 AnoOrigin = "1946",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -250,6 +360,11 @@ public partial class FormulaService
                 Descricao = "Bipolâron: par de elétrons ligado pela interação com a rede vencendo a repulsão Coulomb. Possível mecanismo de supercondutividade em certos materiais.",
                 Criador = "Viktor Vinetskii / Maya Giterman",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -270,6 +385,11 @@ public partial class FormulaService
                 Descricao = "Polarização não-linear: expansão em série de potências do campo. χ⁽²⁾ gera SHG, SFG; χ⁽³⁾ gera efeito Kerr, THG, FWM.",
                 Criador = "Nicolaas Bloembergen",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -280,6 +400,11 @@ public partial class FormulaService
                 Descricao = "SHG: conversão de frequência ω→2ω em cristais não-centrossimétricos. Eficiência máxima com phase matching Δk=0. Base de lasers verdes.",
                 Criador = "Peter Franken",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -290,6 +415,11 @@ public partial class FormulaService
                 Descricao = "Efeito Kerr óptico: índice de refração depende da intensidade. n₂ é o coeficiente não-linear. Causa autofocalização, SPM e formação de sólitons.",
                 Criador = "John Kerr",
                 AnoOrigin = "1875",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "n₀", Nome = "n₀", ValorPadrao = 10 }, new() { Simbolo = "n₂", Nome = "n₂", ValorPadrao = 5 } ],
+                VariavelResultado = "n",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n₀"] + vars["n₂"]
             },
             new Formula
             {
@@ -300,6 +430,11 @@ public partial class FormulaService
                 Descricao = "Automodulação de fase: pulso intenso adquire fase proporcional à própria intensidade. Gera chirp e alargamento espectral. Essencial em supercontinuum.",
                 Criador = "Robert Stolen / Chinlon Lin",
                 AnoOrigin = "1978",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "γ", Nome = "γ", ValorPadrao = 2 }, new() { Simbolo = "P", Nome = "P", ValorPadrao = 3 }, new() { Simbolo = "L", Nome = "L", ValorPadrao = 4 } ],
+                VariavelResultado = "φ_NL",
+                UnidadeResultado = "",
+                Calcular = vars => vars["γ"] * vars["P"] * vars["L"]
             },
             new Formula
             {
@@ -310,6 +445,11 @@ public partial class FormulaService
                 Descricao = "Sóliton óptico: equilíbrio entre dispersão (β₂) e não-linearidade Kerr (γ). Pulso que propaga sem deformação em fibras. Base de comunicações sóliton.",
                 Criador = "Akira Hasegawa / Frederick Tappert",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -320,6 +460,11 @@ public partial class FormulaService
                 Descricao = "Mistura de quatro ondas: processo χ⁽³⁾ gerando nova frequência por interação de três campos. Phase matching necessário. Amplificação paramétrica em fibras.",
                 Criador = "Robert Boyd",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ω₁", Nome = "ω₁", ValorPadrao = 10 }, new() { Simbolo = "ω₂", Nome = "ω₂", ValorPadrao = 5 } ],
+                VariavelResultado = "ω₄",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ω₁"] + vars["ω₂"]
             },
             new Formula
             {
@@ -330,6 +475,11 @@ public partial class FormulaService
                 Descricao = "OPO: oscilador paramétrico óptico converte pump em signal+idler via χ⁽²⁾. Fonte sintonizável do UV ao infravermelho. Phase matching por birrefringência ou QPM.",
                 Criador = "Joseph Giordmaine / Robert Miller",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ωs", Nome = "ωs", ValorPadrao = 10 }, new() { Simbolo = "ωi", Nome = "ωi", ValorPadrao = 5 } ],
+                VariavelResultado = "ωp",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ωs"] + vars["ωi"]
             },
             new Formula
             {
@@ -340,6 +490,11 @@ public partial class FormulaService
                 Descricao = "HHG: laser intenso ioniza átomo → elétron acelera → recombina emitindo harmônico alto. Modelo de 3 passos. Fonte de attossegundos no XUV.",
                 Criador = "Paul Corkum",
                 AnoOrigin = "1993",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Ip", Nome = "Ip", ValorPadrao = 10 }, new() { Simbolo = "3", Nome = "3", ValorPadrao = 5 } ],
+                VariavelResultado = "Ecutoff",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Ip"] + vars["3"]
             },
 
             // 7.2 Física Atômica
@@ -352,6 +507,11 @@ public partial class FormulaService
                 Descricao = "Resfriamento Doppler: lasers contra-propagantes dessintonizados para o vermelho criam força viscosa. Limite Doppler T_D = ℏΓ/(2k_B).",
                 Criador = "Theodor Hänsch / Arthur Schawlow",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -362,6 +522,11 @@ public partial class FormulaService
                 Descricao = "MOT: combina resfriamento Doppler com gradiente magnético para confinar e resfriar átomos. 6 feixes laser. Temperaturas de ~100 μK, 10⁸ átomos.",
                 Criador = "Steven Chu / Jean Dalibard",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -372,6 +537,11 @@ public partial class FormulaService
                 Descricao = "Condensado de Bose-Einstein: abaixo de Tc, fração macroscópica de bósons ocupa o estado fundamental. Superfluidez e coerência macroscópica.",
                 Criador = "Satyendra Nath Bose / Albert Einstein",
                 AnoOrigin = "1924",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -382,6 +552,11 @@ public partial class FormulaService
                 Descricao = "Equação de Gross-Pitaevskii: EDP não-linear para BEC diluído. Campo médio com interação de contato g∝a_s. Descreve vórtices, sólitons e modos coletivos.",
                 Criador = "Eugene Gross / Lev Pitaevskii",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -392,6 +567,11 @@ public partial class FormulaService
                 Descricao = "Rede óptica: potencial periódico criado por ondas estacionárias de laser. Átomos frios simulam modelos de Hubbard. Transição superfluido-Mott insulator.",
                 Criador = "Markus Greiner",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -402,6 +582,11 @@ public partial class FormulaService
                 Descricao = "Ressonância de Feshbach: comprimento de espalhamento a(B) diverge no campo magnético B₀. Permite sintonizar interações de repulsivas a atrativas.",
                 Criador = "Herman Feshbach",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -412,6 +597,11 @@ public partial class FormulaService
                 Descricao = "Resfriamento sub-Doppler (Sísyfo): gradiente de polarização + bombeamento óptico. Átomo sobe colina de potencial e é rebombeado no vale. T abaixo do limite Doppler.",
                 Criador = "Jean Dalibard / Claude Cohen-Tannoudji",
                 AnoOrigin = "1989",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ℏ²k", Nome = "ℏ²k", ValorPadrao = 5 } ],
+                VariavelResultado = "T_recoil",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ℏ²k"] * vars["ℏ²k"]
             },
 
             // 7.3 Física de Superfícies
@@ -424,6 +614,11 @@ public partial class FormulaService
                 Descricao = "Isoterma de Langmuir: fração de cobertura θ da superfície em função da pressão P. Modelo de monocamada com sítios equivalentes e sem interação lateral.",
                 Criador = "Irving Langmuir",
                 AnoOrigin = "1918",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -434,6 +629,11 @@ public partial class FormulaService
                 Descricao = "Isoterma BET: extensão de Langmuir para adsorção em multicamadas. V_m = volume de monocamada, c = constante de energia. Mede área superficial.",
                 Criador = "Stephen Brunauer / Paul Emmett / Edward Teller",
                 AnoOrigin = "1938",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 10 }, new() { Simbolo = "P₀", Nome = "P₀", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "x",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] / vars["P₀"]
             },
             new Formula
             {
@@ -444,6 +644,11 @@ public partial class FormulaService
                 Descricao = "LEED (Low Energy Electron Diffraction): difração de elétrons lentos (20-200 eV) revela estrutura cristalina da superfície. Padrão de difração 2D.",
                 Criador = "Clinton Davisson / Lester Germer",
                 AnoOrigin = "1927",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -454,6 +659,11 @@ public partial class FormulaService
                 Descricao = "STM: corrente de tunelamento entre ponta e amostra varia exponencialmente com a distância d. φ = barreira de trabalho. Resolução atômica de superfícies.",
                 Criador = "Gerd Binnig / Heinrich Rohrer",
                 AnoOrigin = "1981",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -464,6 +674,11 @@ public partial class FormulaService
                 Descricao = "Energia de superfície: trabalho por unidade de área para criar superfície. Equação de Young relaciona ângulo de contato com energias de superfície sólido-líquido-gás.",
                 Criador = "Thomas Young",
                 AnoOrigin = "1805",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "dG", Nome = "dG", ValorPadrao = 10 }, new() { Simbolo = "dA", Nome = "dA", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "γ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dG"] / vars["dA"]
             },
             new Formula
             {
@@ -474,6 +689,11 @@ public partial class FormulaService
                 Descricao = "XPS: fótons de raios X ejetam elétrons com energia cinética que revela a energia de ligação. Identifica composição e estado químico das primeiras camadas (~10 nm).",
                 Criador = "Kai Siegbahn",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "hν", Nome = "hν", ValorPadrao = 10 }, new() { Simbolo = "EB", Nome = "EB", ValorPadrao = 5 } ],
+                VariavelResultado = "Ek",
+                UnidadeResultado = "",
+                Calcular = vars => vars["hν"] - vars["EB"]
             },
         ]);
     }
@@ -494,6 +714,11 @@ public partial class FormulaService
                 Descricao = "Lei de Newton da viscosidade: tensão de cisalhamento σ proporcional à taxa de deformação γ̇. η = viscosidade (Pa·s). Base de toda reologia.",
                 Criador = "Isaac Newton",
                 AnoOrigin = "1687",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "η", Nome = "η", ValorPadrao = 5 }, new() { Simbolo = "γ", Nome = "γ", ValorPadrao = 3 } ],
+                VariavelResultado = "σ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["η"] * vars["γ"]
             },
             new Formula
             {
@@ -504,6 +729,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Maxwell: viscoelástico linear com mola (G) e amortecedor (η) em série. Tempo de relaxação τ=η/G. Descreve fluidos viscoelásticos.",
                 Criador = "James Clerk Maxwell",
                 AnoOrigin = "1867",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "η", Nome = "η", ValorPadrao = 5 }, new() { Simbolo = "dγ", Nome = "dγ", ValorPadrao = 3 } ],
+                VariavelResultado = "dt",
+                UnidadeResultado = "",
+                Calcular = vars => vars["η"] * vars["dγ"]
             },
             new Formula
             {
@@ -514,6 +744,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Kelvin-Voigt: mola e amortecedor em paralelo. Descreve sólidos viscoelásticos com deformação retardada (creep). Não relaxa tensão.",
                 Criador = "Lord Kelvin / Woldemar Voigt",
                 AnoOrigin = "1890",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "G", Nome = "G", ValorPadrao = 5 }, new() { Simbolo = "γ", Nome = "γ", ValorPadrao = 3 } ],
+                VariavelResultado = "σ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["G"] * vars["γ"]
             },
             new Formula
             {
@@ -524,6 +759,11 @@ public partial class FormulaService
                 Descricao = "Fluido de lei de potência: viscosidade aparente η_app = Kγ̇^{n-1}. n<1: pseudoplástico (tintas, polímeros). n>1: dilatante (suspensões concentradas).",
                 Criador = "Wolfgang Ostwald / Armand de Waele",
                 AnoOrigin = "1929",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 5 }, new() { Simbolo = "γ", Nome = "γ", ValorPadrao = 3 } ],
+                VariavelResultado = "σ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["K"] * vars["γ"]
             },
             new Formula
             {
@@ -534,6 +774,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Cross: viscosidade interpola entre platô newtoniano η₀ (baixo cisalhamento) e η_∞ (alto cisalhamento). λ = tempo característico, m = expoente.",
                 Criador = "Malcolm Cross",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -544,6 +789,11 @@ public partial class FormulaService
                 Descricao = "Módulo complexo: G' (armazenamento/elástico) e G'' (perda/viscoso) em oscilação. tanδ = razão de perda. Caracterização completa da viscoelasticidade.",
                 Criador = "Herbert Leaderman",
                 AnoOrigin = "1943",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -554,6 +804,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Oldroyd-B: fluido viscoelástico com derivada convectada superior. Generaliza Maxwell para grandes deformações. Prevê tensão normal mas viscosidade constante.",
                 Criador = "James Oldroyd",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
 
             // 8.2 Eletrodinâmica em Meios
@@ -566,6 +821,11 @@ public partial class FormulaService
                 Descricao = "Modelo de Drude: resposta dielétrica de metais com elétrons livres. ω_p = frequência de plasma, γ = taxa de amortecimento. Base de plasmônica.",
                 Criador = "Paul Drude",
                 AnoOrigin = "1900",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -576,6 +836,11 @@ public partial class FormulaService
                 Descricao = "Modelo de oscilador de Lorentz: resposta dielétrica de isolantes com ressonâncias. Cada oscilador j tem frequência ω₀ⱼ e amortecimento γⱼ.",
                 Criador = "Hendrik Lorentz",
                 AnoOrigin = "1878",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -586,6 +851,11 @@ public partial class FormulaService
                 Descricao = "Relações de Kramers-Kronig: parte real e imaginária de qualquer função resposta causal são relacionadas por transformadas de Hilbert. Verificação de consistência de dados ópticos.",
                 Criador = "Hendrik Kramers / Ralph Kronig",
                 AnoOrigin = "1926",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -596,6 +866,11 @@ public partial class FormulaService
                 Descricao = "Plasmon de superfície: onda eletromagnética confinada à interface metal-dielétrico. Vetor de onda > luz livre, necessita acoplamento por prisma ou grade.",
                 Criador = "Rufus Ritchie",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -606,6 +881,11 @@ public partial class FormulaService
                 Descricao = "Metamaterial com índice negativo: ε e μ ambos negativos simultaneamente. Refração negativa, lente perfeita de Veselago-Pendry. Estruturas artificiais sub-λ.",
                 Criador = "Viktor Veselago / John Pendry",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -616,6 +896,11 @@ public partial class FormulaService
                 Descricao = "Relação de Clausius-Mossotti: conecta constante dielétrica macroscópica ε à polarizabilidade molecular α e densidade n. Inclui correção de campo local.",
                 Criador = "Rudolf Clausius / Ottaviano-Fabrizio Mossotti",
                 AnoOrigin = "1850",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -626,6 +911,11 @@ public partial class FormulaService
                 Descricao = "Efeito Casimir: força atrativa entre placas condutoras paralelas devida a flutuações quânticas do vácuo. F ∝ 1/d⁴. Medido experimentalmente em 1997.",
                 Criador = "Hendrik Casimir",
                 AnoOrigin = "1948",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
 
             // 8.3 Biofísica de Membranas
@@ -638,6 +928,11 @@ public partial class FormulaService
                 Descricao = "Hamiltoniana de Helfrich: energia de curvatura de membranas lipídicas. κ = rigidez de bending, H = curvatura média, K = gaussiana, c₀ = curvatura espontânea.",
                 Criador = "Wolfgang Helfrich",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -648,6 +943,11 @@ public partial class FormulaService
                 Descricao = "Equação de forma de Helfrich: condição de equilíbrio variacional da vesícula. Determina formas de equilíbrio: esfera, disco córneo, estomatócito, etc.",
                 Criador = "Ou-Yang Zhong-Can / Wolfgang Helfrich",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -658,6 +958,11 @@ public partial class FormulaService
                 Descricao = "Espectro de flutuações de membrana: modo q amortecido por rigidez κq⁴ e tensão σq². Medido por micropipeta ou análise de contorno por microscopia.",
                 Criador = "Wolfgang Helfrich",
                 AnoOrigin = "1973",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -668,6 +973,11 @@ public partial class FormulaService
                 Descricao = "Difusão de Saffman-Delbrück: coeficiente de difusão de proteínas na membrana. Depende logaritmicamente do raio a. η_m, h = viscosidade e espessura da membrana.",
                 Criador = "Philip Saffman / Max Delbrück",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -678,6 +988,11 @@ public partial class FormulaService
                 Descricao = "Modelo do mosaico fluido: membrana biológica como bicamada lipídica bidimensional fluida com proteínas embebidas. Base de toda biofísica de membranas.",
                 Criador = "S. Jonathan Singer / Garth Nicolson",
                 AnoOrigin = "1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
             new Formula
             {
@@ -688,6 +1003,11 @@ public partial class FormulaService
                 Descricao = "Transição gel-fluido: membranas lipídicas transitam de fase gel ordenada (Lβ) para líquido-desordenada (Lα) a Tm. Comprimento de cadeia e insaturação afetam Tm.",
                 Criador = "John Chapman",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "N (população)", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "r", Nome = "r (taxa)", ValorPadrao = 0.1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["N"] * vars["r"]
             },
         ]);
     }
@@ -708,6 +1028,11 @@ public partial class FormulaService
                 Descricao = "Equação de Tolman-Oppenheimer-Volkoff: equilíbrio hidrostático em relatividade geral. Determina estrutura de estrelas de nêutrons dada equação de estado P(ρ).",
                 Criador = "Robert Oppenheimer / George Volkoff",
                 AnoOrigin = "1939",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -718,6 +1043,11 @@ public partial class FormulaService
                 Descricao = "Limite de Chandrasekhar: massa máxima suportada por pressão de degenerescência eletrônica. Acima disso → colapso para estrela de nêutrons ou buraco negro.",
                 Criador = "Subrahmanyan Chandrasekhar",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -728,6 +1058,11 @@ public partial class FormulaService
                 Descricao = "Equação de estado nuclear: relação P(ρ) para matéria nuclear ultra-densa. Determina massa máxima e raio de estrelas de nêutrons. Constrangida por GW170817.",
                 Criador = "James Lattimer / Madappa Prakash",
                 AnoOrigin = "1991",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -738,6 +1073,11 @@ public partial class FormulaService
                 Descricao = "Spin-down de pulsar: perda de energia rotacional por radiação de dipolo magnético. Ṗ e P determinam campo magnético e idade. Pulsares de milissegundo reciclados.",
                 Criador = "Thomas Gold / Franco Pacini",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -748,6 +1088,11 @@ public partial class FormulaService
                 Descricao = "Glitch: aumento súbito na frequência de rotação do pulsar. Causado por transferência de momento angular do interior superfluido para a crosta. Sonda interior da estrela.",
                 Criador = "V. Radhakrishnan / Richard Manchester",
                 AnoOrigin = "1969",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -758,6 +1103,11 @@ public partial class FormulaService
                 Descricao = "Ondas gravitacionais de coalescência: amplitude h escala com chirp mass e frequência. GW170817: primeiro evento BNS detectado, com contrapartida EM.",
                 Criador = "LIGO/Virgo",
                 AnoOrigin = "2017",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -768,6 +1118,11 @@ public partial class FormulaService
                 Descricao = "Atraso de Shapiro: pulso de rádio de pulsar binário sofre atraso gravitacional ao passar perto da companheira. Permite medida precisa de massa (ex: J0740+6620, 2.14M☉).",
                 Criador = "Irwin Shapiro",
                 AnoOrigin = "1964",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 9.2 Mecânica Celeste Avançada
@@ -780,6 +1135,11 @@ public partial class FormulaService
                 Descricao = "Teoria de perturbação secular: média das equações sobre uma órbita, retendo apenas variações lentas de e, i, ω, Ω. Determina evolução de longo prazo de sistemas planetários.",
                 Criador = "Joseph-Louis Lagrange / Pierre-Simon Laplace",
                 AnoOrigin = "1780",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -790,6 +1150,11 @@ public partial class FormulaService
                 Descricao = "Oscilação de Kozai-Lidov: em sistema hierárquico, excentricidade e inclinação trocam periodicamente. Importante para migração de hot Jupiters e binárias compactas.",
                 Criador = "Yoshihide Kozai / Mikhail Lidov",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -800,6 +1165,11 @@ public partial class FormulaService
                 Descricao = "Ressonância de movimento médio: períodos orbitais em razão de inteiros p:q. Ângulo ressonante θ libra (oscila). Lacunas de Kirkwood, ressonância de Plutão 3:2.",
                 Criador = "Pierre-Simon Laplace",
                 AnoOrigin = "1799",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -810,6 +1180,11 @@ public partial class FormulaService
                 Descricao = "Integrador simplético leapfrog/Störmer-Verlet: preserva a estrutura simplética do espaço de fase. Erro em energia limitado, ideal para integrações longas.",
                 Criador = "Ruth / Yoshida / Wisdom / Holman",
                 AnoOrigin = "1991",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -820,6 +1195,11 @@ public partial class FormulaService
                 Descricao = "Migração tipo I: planeta de baixa massa em disco gera ondas de densidade. Torque diferencial de Lindblad causa migração radial. Escala de tempo ~ 10⁵ anos.",
                 Criador = "William Ward",
                 AnoOrigin = "1997",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -830,6 +1210,11 @@ public partial class FormulaService
                 Descricao = "Raio de Hill: região ao redor do planeta onde sua gravidade domina sobre a estrela. Satélites estáveis dentro de ~R_H/3. Define zona de acreção.",
                 Criador = "George William Hill",
                 AnoOrigin = "1878",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 9.3 Relatividade Numérica
@@ -842,6 +1227,11 @@ public partial class FormulaService
                 Descricao = "Decomposição ADM 3+1: espaço-tempo foliado em hipersuperfícies espaciais. α = lapse (avanço temporal), βⁱ = shift (coordenadas espaciais), γᵢⱼ = métrica 3D.",
                 Criador = "Richard Arnowitt / Stanley Deser / Charles Misner",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -852,6 +1242,11 @@ public partial class FormulaService
                 Descricao = "Formalismo BSSN: reescrita conformal das equações ADM para estabilidade numérica. Variáveis: fator conformal φ, métrica conformal γ̃, traço K, Ãij. Padrão em NR.",
                 Criador = "Thomas Baumgarte / Stuart Shapiro / Masaru Shibata / Takashi Nakamura",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -862,6 +1257,11 @@ public partial class FormulaService
                 Descricao = "Condições de gauge padrão em NR: '1+log' slicing evita colapso do lapse; Gamma-driver shift combate distorção de coordenadas. Estáveis para buracos negros.",
                 Criador = "Miguel Alcubierre / Bernd Brügmann",
                 AnoOrigin = "2003",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -872,6 +1272,11 @@ public partial class FormulaService
                 Descricao = "Horizonte aparente: superfície 2D onde a expansão de raios de luz normais de saída é zero. Diagnostico de buracos negros em simulações. Resolvido como equação elíptica.",
                 Criador = "Roger Penrose / Stephen Hawking",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -882,6 +1287,11 @@ public partial class FormulaService
                 Descricao = "Extração de ondas gravitacionais: escalar de Weyl ψ₄ na tetrada de Newman-Penrose representa a radiação gravitacional saindo. Dupla integração temporal dá h₊,h₍.",
                 Criador = "Ezra Newman / Roger Penrose",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -892,6 +1302,11 @@ public partial class FormulaService
                 Descricao = "Método de puncture: dados iniciais com singularidades (punctures) representando buracos negros. Moving puncture com gauge 1+log/Gamma-driver: breakthrough de 2005.",
                 Criador = "Manuela Campanelli / Carlos Lousto / Yosef Zlochower / Frans Pretorius",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "Σ", Nome = "Σ", ValorPadrao = 5 } ],
+                VariavelResultado = "ψ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] + vars["Σ"]
             },
         ]);
     }

@@ -1,4 +1,4 @@
-using CompendioCalc.Models;
+﻿using CompendioCalc.Models;
 
 namespace CompendioCalc.Services;
 
@@ -23,6 +23,11 @@ public partial class FormulaService
                 Descricao = "Perfil de estratégias onde nenhum jogador melhora unilateralmente. Existência: todo jogo finito tem NE em estratégias mistas (Nash 1950). Pode haver múltiplos equilíbrios.",
                 Criador = "John Nash",
                 AnoOrigin = "1950",
+                ExemploPratico = "Exemplo: u*=5.2 e u=4.9 => ganho unilateral=-0.3 (sem desvio lucrativo).",
+                Variaveis = [ new() { Simbolo = "u*", Nome = "Utilidade no perfil candidato", ValorPadrao = 5.2 }, new() { Simbolo = "u", Nome = "Melhor desvio unilateral", ValorPadrao = 4.9 } ],
+                VariavelResultado = "u-u*",
+                UnidadeResultado = "",
+                Calcular = vars => vars["u"] - vars["u*"]
             },
             new Formula
             {
@@ -31,6 +36,11 @@ public partial class FormulaService
                 ExprTexto = "σᵢ∈Δ(Sᵢ); u=Σ(Πσⱼ(sⱼ))uᵢ(s)",
                 Icone = "Δ",
                 Descricao = "Distribuição de probabilidade sobre estratégias puras. Utilidade esperada: soma ponderada. Suporte do NE misto: todas as puras jogadas com prob>0 dão mesma utilidade esperada.",
+                ExemploPratico = "Exemplo: p1=0.6, u1=8, p2=0.4, u2=2 => utilidade esperada=5.6.",
+                Variaveis = [ new() { Simbolo = "p1", Nome = "Probabilidade estrategia 1", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "u1", Nome = "Payoff estrategia 1", ValorPadrao = 8 }, new() { Simbolo = "p2", Nome = "Probabilidade estrategia 2", ValorPadrao = 0.4, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "u2", Nome = "Payoff estrategia 2", ValorPadrao = 2 } ],
+                VariavelResultado = "E[u]",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p1"] * vars["u1"] + vars["p2"] * vars["u2"]
             },
             new Formula
             {
@@ -41,6 +51,11 @@ public partial class FormulaService
                 Descricao = "Jogos de soma zero: valor do jogo v existe, cada jogador garante v. Equivalente a programação linear (dualidade). Poker, xadrez (em teoria). von Neumann (1928).",
                 Criador = "John von Neumann",
                 AnoOrigin = "1928",
+                ExemploPratico = "Exemplo: maxmin=1.8 e minmax=2.0 => gap=0.2.",
+                Variaveis = [ new() { Simbolo = "maxmin", Nome = "Valor maxmin", ValorPadrao = 1.8 }, new() { Simbolo = "minmax", Nome = "Valor minmax", ValorPadrao = 2.0 } ],
+                VariavelResultado = "|maxmin-minmax|",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Abs(vars["maxmin"] - vars["minmax"])
             },
             new Formula
             {
@@ -51,6 +66,11 @@ public partial class FormulaService
                 Descricao = "Refinamento de Nash para jogos extensivos: estratégia é NE em todo subjogo (ameaças críveis). Indução retroativa em jogos finitos de informação perfeita. Selten (1965).",
                 Criador = "Reinhard Selten",
                 AnoOrigin = "1965",
+                ExemploPratico = "Exemplo: payoff subjogo=4.0 e payoff desvio=3.1 => margem SPE=0.9.",
+                Variaveis = [ new() { Simbolo = "uSub", Nome = "Payoff no subjogo", ValorPadrao = 4.0 }, new() { Simbolo = "uDev", Nome = "Payoff de desvio", ValorPadrao = 3.1 } ],
+                VariavelResultado = "uSub-uDev",
+                UnidadeResultado = "",
+                Calcular = vars => vars["uSub"] - vars["uDev"]
             },
             new Formula
             {
@@ -61,6 +81,11 @@ public partial class FormulaService
                 Descricao = "NE com informação incompleta: tipos tᵢ (privados) com prior p(t). Cada tipo maximiza utilidade esperada dado prior sobre tipos adversários. Harsanyi (1967-68).",
                 Criador = "John Harsanyi",
                 AnoOrigin = "1967",
+                ExemploPratico = "Exemplo: tipo com p=0.7 e utilidade condicional=6 => utilidade esperada=4.2.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "Probabilidade do tipo", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "u", Nome = "Utilidade condicional", ValorPadrao = 6.0 } ],
+                VariavelResultado = "E[u]",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] * vars["u"]
             },
             new Formula
             {
@@ -71,6 +96,11 @@ public partial class FormulaService
                 Descricao = "Leilão selado de segundo preço: revelar valor verdadeiro é dominante (incentive-compatible). Vencedor paga preço do 2º lance. Receita equivalente a inglês.",
                 Criador = "William Vickrey",
                 AnoOrigin = "1961",
+                ExemploPratico = "Exemplo: valor=10 e segundo lance=7 => utilidade=3.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "Valor privado v", ValorPadrao = 10.0 }, new() { Simbolo = "p2", Nome = "Segundo maior lance", ValorPadrao = 7.0 } ],
+                VariavelResultado = "u=v-p2",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] - vars["p2"]
             },
             new Formula
             {
@@ -80,6 +110,11 @@ public partial class FormulaService
                 Icone = "VCG",
                 Descricao = "Vickrey-Clarke-Groves: mecanismo truthful geral. Pagamento = externalidade imposta aos outros. Eficiente (maximiza bem-estar social) e compatível com incentivos. Aplicações: leilões, alocação.",
                 Criador = "Vickrey / Clarke / Groves",
+                ExemploPratico = "Exemplo: bem-estar sem i=15 e com i=12 => pagamento VCG=3.",
+                Variaveis = [ new() { Simbolo = "Wsem", Nome = "Bem-estar sem jogador i", ValorPadrao = 15.0 }, new() { Simbolo = "Wcom", Nome = "Bem-estar dos outros com i", ValorPadrao = 12.0 } ],
+                VariavelResultado = "p_i",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Wsem"] - vars["Wcom"]
             },
             new Formula
             {
@@ -88,6 +123,11 @@ public partial class FormulaService
                 ExprTexto = "Mecanismo indireto → direto truthful equivalente",
                 Icone = "Rev",
                 Descricao = "Resultado central de mechanism design: qualquer resultado alcançável pode ser obtido pedindo tipos diretamente. Foco no design: definir regra de alocação + pagamento truthful.",
+                ExemploPratico = "Exemplo: utilidade direta=5.1 e indireta=5.1 => gap=0.",
+                Variaveis = [ new() { Simbolo = "uDir", Nome = "Utilidade no mecanismo direto", ValorPadrao = 5.1 }, new() { Simbolo = "uInd", Nome = "Utilidade no mecanismo indireto", ValorPadrao = 5.1 } ],
+                VariavelResultado = "|uDir-uInd|",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Abs(vars["uDir"] - vars["uInd"])
             },
             new Formula
             {
@@ -98,6 +138,11 @@ public partial class FormulaService
                 Descricao = "Revenue Equivalence Theorem: com IPV simétrico, todos os leilões eficientes dão mesma receita esperada (inglês, holandês, 1º preço, 2º preço). Myerson (1981).",
                 Criador = "Roger Myerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Exemplo: receita 2o preço=8.4 e 1o preço=8.1 => diferença=0.3.",
+                Variaveis = [ new() { Simbolo = "R2", Nome = "Receita mecanismo 2", ValorPadrao = 8.4 }, new() { Simbolo = "R1", Nome = "Receita mecanismo 1", ValorPadrao = 8.1 } ],
+                VariavelResultado = "R2-R1",
+                UnidadeResultado = "",
+                Calcular = vars => vars["R2"] - vars["R1"]
             },
             new Formula
             {
@@ -108,6 +153,11 @@ public partial class FormulaService
                 Descricao = "Evolução de frequências de estratégias em populações: estratégias com fitness acima da média crescem. Pontos fixos incluem NE. Conexão biologia-economia.",
                 Criador = "Taylor / Jonker",
                 AnoOrigin = "1978",
+                ExemploPratico = "Exemplo: x=0.4, fi=1.3 e fbar=1.0 => xdot=0.12.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Frequencia da estrategia", ValorPadrao = 0.4, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "fi", Nome = "Fitness da estrategia", ValorPadrao = 1.3 }, new() { Simbolo = "fbar", Nome = "Fitness medio", ValorPadrao = 1.0 } ],
+                VariavelResultado = "x_dot",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] * (vars["fi"] - vars["fbar"])
             },
             new Formula
             {
@@ -118,6 +168,11 @@ public partial class FormulaService
                 Descricao = "Refinamento de NE para jogos evolucionários: população σ* não pode ser invadida por mutante σ raro. Mais forte que NE. Hawk-Dove: ESS misto (frequência de agressividade).",
                 Criador = "John Maynard Smith",
                 AnoOrigin = "1973",
+                ExemploPratico = "Exemplo: u(s*,s*)=4.0 e u(mut,s*)=3.2 => margem ESS=0.8.",
+                Variaveis = [ new() { Simbolo = "uSS", Nome = "u(s*,s*)", ValorPadrao = 4.0 }, new() { Simbolo = "uMS", Nome = "u(mut,s*)", ValorPadrao = 3.2 } ],
+                VariavelResultado = "uSS-uMS",
+                UnidadeResultado = "",
+                Calcular = vars => vars["uSS"] - vars["uMS"]
             },
             new Formula
             {
@@ -128,6 +183,11 @@ public partial class FormulaService
                 Descricao = "Distribuição justa de valor em coalizão: contribuição marginal média sobre todas as ordens de chegada. Axiomas: eficiência, simetria, linearidade, nulidade. Aplicações: ML (SHAP values).",
                 Criador = "Lloyd Shapley",
                 AnoOrigin = "1953",
+                ExemploPratico = "Exemplo: contribuição total de i em permutações=18, n!=6 => φ=3.",
+                Variaveis = [ new() { Simbolo = "sumMarg", Nome = "Soma das contribuições marginais", ValorPadrao = 18 }, new() { Simbolo = "fact", Nome = "n!", ValorPadrao = 6, ValorMin = 1 } ],
+                VariavelResultado = "φ_i",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sumMarg"] / vars["fact"]
             },
             new Formula
             {
@@ -136,6 +196,11 @@ public partial class FormulaService
                 ExprTexto = "Core = {x: x(N)=v(N), x(S)≥v(S) ∀S}",
                 Icone = "Core",
                 Descricao = "Conjunto de alocações que nenhuma coalizão quer desviar: cada grupo recebe pelo menos o que pode obter sozinho. Pode ser vazio. Bondareva-Shapley: core não-vazio ⟺ jogo balanceado.",
+                ExemploPratico = "Exemplo: alocação total=10 e valor da coalizão=8 => folga=2.",
+                Variaveis = [ new() { Simbolo = "xS", Nome = "Soma alocada para S", ValorPadrao = 10 }, new() { Simbolo = "vS", Nome = "Valor da coalizao S", ValorPadrao = 8 } ],
+                VariavelResultado = "x(S)-v(S)",
+                UnidadeResultado = "",
+                Calcular = vars => vars["xS"] - vars["vS"]
             },
             new Formula
             {
@@ -146,6 +211,11 @@ public partial class FormulaService
                 Descricao = "Solução axiomática de barganha: maximiza produto dos ganhos sobre ponto de desacordo d. Axiomas: Pareto, simetria, invariância a transformações afins, IIA.",
                 Criador = "John Nash",
                 AnoOrigin = "1950",
+                ExemploPratico = "Exemplo: u1=8,d1=3,u2=7,d2=2 => produto Nash=25.",
+                Variaveis = [ new() { Simbolo = "u1", Nome = "Utilidade jogador 1", ValorPadrao = 8 }, new() { Simbolo = "d1", Nome = "Discordância jogador 1", ValorPadrao = 3 }, new() { Simbolo = "u2", Nome = "Utilidade jogador 2", ValorPadrao = 7 }, new() { Simbolo = "d2", Nome = "Discordância jogador 2", ValorPadrao = 2 } ],
+                VariavelResultado = "(u1-d1)(u2-d2)",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["u1"] - vars["d1"]) * (vars["u2"] - vars["d2"])
             },
             new Formula
             {
@@ -154,6 +224,11 @@ public partial class FormulaService
                 ExprTexto = "TfT: C→C; D→D (reciprocidade)",
                 Icone = "PD",
                 Descricao = "Jogo estágio: (C,C)>(D,D) mas D domina. Repetido infinito: cooperação sustentável se δ≥(T-R)/(T-P) (folk theorem). Torneio de Axelrod (1984): TfT venceu. Evolução da cooperação.",
+                ExemploPratico = "Exemplo: T=5,R=3,P=1 => δmín=(T-R)/(T-P)=0.5.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "Tentação T", ValorPadrao = 5 }, new() { Simbolo = "R", Nome = "Recompensa mutua R", ValorPadrao = 3 }, new() { Simbolo = "P", Nome = "Punição mutua P", ValorPadrao = 1 } ],
+                VariavelResultado = "δ_min",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["T"] - vars["R"]) / (vars["T"] - vars["P"])
             },
             new Formula
             {
@@ -162,6 +237,11 @@ public partial class FormulaService
                 ExprTexto = "δ→1: qualquer u viável e IR é NE",
                 Icone = "Folk",
                 Descricao = "Em jogos repetidos com desconto δ suficiente: qualquer perfil de payoffs cooperativo pode ser sustentado como equilíbrio. Resultado: multiplicidade enorme de equilíbrios → poucos selecionados.",
+                ExemploPratico = "Exemplo: δ=0.92 e limiar=0.85 => sustentabilidade=0.07.",
+                Variaveis = [ new() { Simbolo = "δ", Nome = "Fator de desconto", ValorPadrao = 0.92, ValorMin = 0, ValorMax = 0.999 }, new() { Simbolo = "δmin", Nome = "Limiar minimo", ValorPadrao = 0.85, ValorMin = 0, ValorMax = 0.999 } ],
+                VariavelResultado = "δ-δmin",
+                UnidadeResultado = "",
+                Calcular = vars => vars["δ"] - vars["δmin"]
             },
             new Formula
             {
@@ -172,6 +252,11 @@ public partial class FormulaService
                 Descricao = "Distribuição conjunta p(s) correlacionada (mediador recomenda). Conjunto convexo contendo todos NE. Pode Pareto-dominar NE. Computável via LP (vs PPAD para NE).",
                 Criador = "Robert Aumann",
                 AnoOrigin = "1974",
+                ExemploPratico = "Exemplo: ganho obedecendo=6.3 e desviando=5.9 => slack=0.4.",
+                Variaveis = [ new() { Simbolo = "uRec", Nome = "Utilidade obedecendo recomendação", ValorPadrao = 6.3 }, new() { Simbolo = "uDev", Nome = "Utilidade desviando", ValorPadrao = 5.9 } ],
+                VariavelResultado = "uRec-uDev",
+                UnidadeResultado = "",
+                Calcular = vars => vars["uRec"] - vars["uDev"]
             },
             new Formula
             {
@@ -182,6 +267,11 @@ public partial class FormulaService
                 Descricao = "Leilão ótimo de receita: aloca ao maior virtual value φ(v)=v-(1-F(v))/f(v) se φ≥0. Com distribuição regular (φ crescente): 2º preço com reserva r* onde φ(r*)=0. Prêmio Nobel 2007.",
                 Criador = "Roger Myerson",
                 AnoOrigin = "1981",
+                ExemploPratico = "Exemplo: φ(v)=1.4 e x=0.8 => receita virtual=1.12.",
+                Variaveis = [ new() { Simbolo = "φ", Nome = "Valor virtual", ValorPadrao = 1.4 }, new() { Simbolo = "x", Nome = "Probabilidade de alocação", ValorPadrao = 0.8, ValorMin = 0, ValorMax = 1 } ],
+                VariavelResultado = "φx",
+                UnidadeResultado = "",
+                Calcular = vars => vars["φ"] * vars["x"]
             },
         ]);
     }
@@ -199,6 +289,11 @@ public partial class FormulaService
                 ExprTexto = "P(k): prob. grau=k; ⟨k⟩=ΣkP(k)",
                 Icone = "P(k)",
                 Descricao = "Distribuição de grau: propriedade mais básica de uma rede. Redes aleatórias: Poisson. Redes reais (web, social, biológica): frequentemente power-law ou heavy-tailed.",
+                ExemploPratico = "Exemplo: k=4 e P(k)=0.18 => contribuição para <k>=0.72.",
+                Variaveis = [ new() { Simbolo = "k", Nome = "Grau k", ValorPadrao = 4, ValorMin = 0 }, new() { Simbolo = "Pk", Nome = "Probabilidade P(k)", ValorPadrao = 0.18, ValorMin = 0, ValorMax = 1 } ],
+                VariavelResultado = "kP(k)",
+                UnidadeResultado = "",
+                Calcular = vars => vars["k"] * vars["Pk"]
             },
             new Formula
             {
@@ -209,6 +304,11 @@ public partial class FormulaService
                 Descricao = "Redes livres de escala: poucos hubs com grau muito alto, muitos nós de grau baixo. Internet, redes de proteínas, citações. Robustas a falhas aleatórias, vulneráveis a ataques direcionados.",
                 Criador = "Albert-László Barabási",
                 AnoOrigin = "1999",
+                ExemploPratico = "Exemplo: C=0.12 e γ=2.5 => escore de cauda=0.048.",
+                Variaveis = [ new() { Simbolo = "C", Nome = "Constante de normalização", ValorPadrao = 0.12, ValorMin = 0 }, new() { Simbolo = "γ", Nome = "Expoente da lei de potência", ValorPadrao = 2.5, ValorMin = 1.01 } ],
+                VariavelResultado = "C/γ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["C"] / vars["γ"]
             },
             new Formula
             {
@@ -219,6 +319,11 @@ public partial class FormulaService
                 Descricao = "Distância média curta (logarítmica em N) + alto coeficiente de clustering. 'Seis graus de separação'. Modelo WS: rede regular + rewiring com prob. p → transição percolação.",
                 Criador = "Duncan Watts / Steven Strogatz",
                 AnoOrigin = "1998",
+                ExemploPratico = "Exemplo: N=1000 e <k>=8 => L≈ln(N)/ln(<k>)≈3.32.",
+                Variaveis = [ new() { Simbolo = "N", Nome = "Número de nós", ValorPadrao = 1000, ValorMin = 2 }, new() { Simbolo = "k", Nome = "Grau médio <k>", ValorPadrao = 8, ValorMin = 1.01 } ],
+                VariavelResultado = "L_aprox",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["N"]) / Math.Log(vars["k"])
             },
             new Formula
             {
@@ -227,6 +332,11 @@ public partial class FormulaService
                 ExprTexto = "Cᵢ = 2Eᵢ/(kᵢ(kᵢ−1)); C=⟨Cᵢ⟩",
                 Icone = "C",
                 Descricao = "Fração de pares de vizinhos que são conectados. Transitividade local: 'amigos de amigos são amigos'. Redes sociais: C~0.1-0.5. Redes aleatórias: C=⟨k⟩/N → 0.",
+                ExemploPratico = "Exemplo: Ei=6 e ki=5 => Ci=0.6.",
+                Variaveis = [ new() { Simbolo = "Ei", Nome = "Arestas entre vizinhos", ValorPadrao = 6, ValorMin = 0 }, new() { Simbolo = "ki", Nome = "Grau do nó", ValorPadrao = 5, ValorMin = 2 } ],
+                VariavelResultado = "C_i",
+                UnidadeResultado = "",
+                Calcular = vars => 2.0 * vars["Ei"] / (vars["ki"] * (vars["ki"] - 1.0))
             },
             new Formula
             {
@@ -235,6 +345,11 @@ public partial class FormulaService
                 ExprTexto = "gᵢ = Σ σst(i)/σst",
                 Icone = "betw",
                 Descricao = "Fração de caminhos mais curtos que passam pelo nó i. Alta betweenness = ponte entre comunidades. Detecção de comunidades (Girvan-Newman): remove arestas de maior betweenness.",
+                ExemploPratico = "Exemplo: σst(i)=12 e σst=30 => betweenness parcial=0.4.",
+                Variaveis = [ new() { Simbolo = "σi", Nome = "Caminhos por i", ValorPadrao = 12, ValorMin = 0 }, new() { Simbolo = "σ", Nome = "Caminhos totais", ValorPadrao = 30, ValorMin = 1 } ],
+                VariavelResultado = "σi/σ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["σi"] / vars["σ"]
             },
             new Formula
             {
@@ -245,6 +360,11 @@ public partial class FormulaService
                 Descricao = "Importância recursiva: nó importante se apontado por nós importantes. d = damping (0.85), random surfer com teleporte. Autovetor principal de Google matrix. O(m) por iteração.",
                 Criador = "Larry Page / Sergey Brin",
                 AnoOrigin = "1998",
+                ExemploPratico = "Exemplo: d=0.85, N=100 e soma PR entrante=0.42 => PR=0.367.",
+                Variaveis = [ new() { Simbolo = "d", Nome = "Damping", ValorPadrao = 0.85, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "N", Nome = "Número de nós", ValorPadrao = 100, ValorMin = 1 }, new() { Simbolo = "S", Nome = "Soma entrante", ValorPadrao = 0.42 } ],
+                VariavelResultado = "PR(i)",
+                UnidadeResultado = "",
+                Calcular = vars => (1.0 - vars["d"]) / vars["N"] + vars["d"] * vars["S"]
             },
             new Formula
             {
@@ -255,6 +375,11 @@ public partial class FormulaService
                 Descricao = "Qualidade de partição em comunidades: fração de arestas intra-comunidade menos esperado em rede aleatória. Q∈[-½,1], Q>0.3 = boa estrutura. Método Louvain: heurística gulosa O(n log n).",
                 Criador = "Mark Newman",
                 AnoOrigin = "2004",
+                ExemploPratico = "Exemplo: Ain=210, Aexp=160, m=500 => Q=0.05.",
+                Variaveis = [ new() { Simbolo = "Ain", Nome = "Soma intra observada", ValorPadrao = 210 }, new() { Simbolo = "Aexp", Nome = "Soma esperada", ValorPadrao = 160 }, new() { Simbolo = "m", Nome = "Número de arestas", ValorPadrao = 500, ValorMin = 1 } ],
+                VariavelResultado = "Q",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["Ain"] - vars["Aexp"]) / (2.0 * vars["m"])
             },
             new Formula
             {
@@ -265,6 +390,11 @@ public partial class FormulaService
                 Descricao = "Rede aleatória clássica: grau Poisson, sem clustering, componente gigante em p=1/n (transição de fase). Modelo nulo para comparação com redes reais.",
                 Criador = "Paul Erdős / Alfréd Rényi",
                 AnoOrigin = "1959",
+                ExemploPratico = "Exemplo: n=500 e p=0.02 => grau médio esperado=9.98.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "Número de nós", ValorPadrao = 500, ValorMin = 2 }, new() { Simbolo = "p", Nome = "Probabilidade de aresta", ValorPadrao = 0.02, ValorMin = 0, ValorMax = 1 } ],
+                VariavelResultado = "<k>",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["n"] - 1.0) * vars["p"]
             },
             new Formula
             {
@@ -275,6 +405,10 @@ public partial class FormulaService
                 Descricao = "Crescimento + ligação preferencial: novos nós se conectam a nós de alto grau proporcionalmente a k. Gera γ=3 universal. 'Ricos ficam mais ricos' (efeito Matthew).",
                 Criador = "Albert-László Barabási / Réka Albert",
                 AnoOrigin = "1999",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -283,6 +417,10 @@ public partial class FormulaService
                 ExprTexto = "P(Aij) = ω(ci,cj); ω=prob. entre blocos",
                 Icone = "SBM",
                 Descricao = "Modelo generativo com comunidades: nós pertencem a blocos (clusters), conexão depende dos blocos. Caso assortativo: ω_within > ω_between. Base teórica para detecção de comunidades.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -291,6 +429,10 @@ public partial class FormulaService
                 ExprTexto = "pc ≈ 1/⟨k⟩ (ER); γ≤3: pc→0",
                 Icone = "perc",
                 Descricao = "Remoção aleatória de nós: componente gigante sobrevive até p_c. Redes scale-free com γ≤3: resilientes a falhas aleatórias (p_c→0) mas frágeis a ataques em hubs.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -299,6 +441,10 @@ public partial class FormulaService
                 ExprTexto = "R₀ = β⟨k²⟩/(γ⟨k⟩); epidemia: R₀>1",
                 Icone = "SIR",
                 Descricao = "Epidemia em rede heterogênea: limiar depende de ⟨k²⟩/⟨k⟩ (não só ⟨k⟩). Scale-free com γ≤3: ⟨k²⟩→∞ → R₀→∞ (epidemia para qualquer β>0). Pastor-Satorras & Vespignani (2001).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -309,6 +455,10 @@ public partial class FormulaService
                 Descricao = "Cascata de informação/inovação: regra de threshold. Cascata global se existe componente vulnerável (grau suficientemente baixo). Paradoxo: hubs resistem e podem bloquear cascata.",
                 Criador = "Duncan Watts",
                 AnoOrigin = "2002",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -317,6 +467,10 @@ public partial class FormulaService
                 ExprTexto = "G multiplex: L camadas, mesmo V",
                 Icone = "mux",
                 Descricao = "Mesmo conjunto de nós, múltiplos tipos de relação (layers). Ex: rede social = amizade + trabalho + família. Percolação interdependente: falha em cascata entre camadas.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -325,6 +479,10 @@ public partial class FormulaService
                 ExprTexto = "A_proj = BB'−diag(BB')",
                 Icone = "bip",
                 Descricao = "Rede com dois tipos de nós (ex: autores-artigos, genes-doenças). Projeção: conecta nós do mesmo tipo se compartilham vizinho bipartido. Perda de informação → usar bipartido direto.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -335,6 +493,10 @@ public partial class FormulaService
                 Descricao = "r>0: assortativa (hubs conectam a hubs — social). r<0: dissortativa (hubs a folhas — biológica, tecnológica). Mede tendência de nós similares se conectarem.",
                 Criador = "Mark Newman",
                 AnoOrigin = "2002",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -343,7 +505,17 @@ public partial class FormulaService
                 ExprTexto = "L=D−A; λ₁=0; λ₂=Fiedler value",
                 Icone = "λ₂",
                 Descricao = "Laplaciano L=D-A: λ₂>0 ⟺ grafo conectado. λ₂ mede 'gargalo' → spectral clustering (corte do vetor de Fiedler). Cheeger inequality: h(G) entre λ₂/2 e √(2λ₂).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "D", Nome = "D", ValorPadrao = 10 }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 5 } ],
+                VariavelResultado = "L",
+                UnidadeResultado = "",
+                Calcular = vars => vars["D"] - vars["A"]
             },
+            new Formula { Id = "4_rc18", Nome = "Grau Médio", Categoria = "Redes Complexas", SubCategoria = "Propriedades", Expressao = "<k>=2m/N", ExprTexto = "kmean=2m/N", Icone = "k", Descricao = "Número médio de conexões por nó.", ExemploPratico = "Exemplo: m=1500 e N=500 => <k>=6.", Variaveis = [ new() { Simbolo = "m", Nome = "Número de arestas", ValorPadrao = 1500, ValorMin = 1 }, new() { Simbolo = "N", Nome = "Número de nós", ValorPadrao = 500, ValorMin = 1 } ], VariavelResultado = "<k>", UnidadeResultado = "", Calcular = vars => 2 * vars["m"] / vars["N"] },
+            new Formula { Id = "4_rc19", Nome = "Clustering Médio", Categoria = "Redes Complexas", SubCategoria = "Propriedades", Expressao = "C=(1/N)ΣC_i", ExprTexto = "C=mean(Ci)", Icone = "C", Descricao = "Coeficiente de clustering médio global da rede.", ExemploPratico = "Exemplo: soma Ci=95 com N=500 => C=0.19.", Variaveis = [ new() { Simbolo = "ΣC", Nome = "Soma dos C_i", ValorPadrao = 95, ValorMin = 0 }, new() { Simbolo = "N", Nome = "Número de nós", ValorPadrao = 500, ValorMin = 1 } ], VariavelResultado = "C", UnidadeResultado = "", Calcular = vars => vars["ΣC"] / vars["N"] },
+            new Formula { Id = "4_rc20", Nome = "Comprimento Médio de Caminho", Categoria = "Redes Complexas", SubCategoria = "Propriedades", Expressao = "L=(1/(N(N-1)))Σ_{i≠j} d(i,j)", ExprTexto = "L=mean shortest path", Icone = "L", Descricao = "Distância geodésica média entre pares de nós.", ExemploPratico = "Exemplo: soma distâncias=240000, N=400 => L≈1.50.", Variaveis = [ new() { Simbolo = "Σd", Nome = "Soma das distâncias", ValorPadrao = 240000, ValorMin = 0 }, new() { Simbolo = "N", Nome = "Número de nós", ValorPadrao = 400, ValorMin = 2 } ], VariavelResultado = "L", UnidadeResultado = "", Calcular = vars => vars["Σd"] / (vars["N"] * (vars["N"] - 1)) },
+            new Formula { Id = "4_rc21", Nome = "Raio Espectral", Categoria = "Redes Complexas", SubCategoria = "Propriedades", Expressao = "λ_max(A)", ExprTexto = "lambdamax adjacency", Icone = "λ", Descricao = "Maior autovalor da matriz de adjacência; ligado a limiar epidêmico.", ExemploPratico = "Exemplo: λmax=7.2 => limiar SIS≈1/7.2.", Variaveis = [ new() { Simbolo = "λ", Nome = "Maior autovalor λ", ValorPadrao = 7.2, ValorMin = 0.0001 } ], VariavelResultado = "1/λ", UnidadeResultado = "", Calcular = vars => 1.0 / vars["λ"] },
+            new Formula { Id = "4_rc22", Nome = "Limiar Epidêmico em Rede", Categoria = "Redes Complexas", SubCategoria = "Processos em Redes", Expressao = "τ_c≈<k>/<(k²)> ou 1/λ_max", ExprTexto = "tau_c approx 1/lambda", Icone = "τc", Descricao = "Condição aproximada para surtos em modelos SIS sobre redes complexas.", ExemploPratico = "Exemplo: λmax=5 => τc=0.2.", Variaveis = [ new() { Simbolo = "λ", Nome = "Maior autovalor", ValorPadrao = 5, ValorMin = 0.0001 } ], VariavelResultado = "τ_c", UnidadeResultado = "", Calcular = vars => 1.0 / vars["λ"] },
         ]);
     }
 
@@ -361,6 +533,10 @@ public partial class FormulaService
                 ExprTexto = "Λ = {Bz: z∈ℤⁿ}, B=base",
                 Icone = "Λ",
                 Descricao = "Conjunto discreto de pontos gerados por combinações inteiras de vetores base. Dimensão n, determinante det(Λ) = |det(B)|. Estrutura algébrica rica com problemas computacionais difíceis.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -369,6 +545,10 @@ public partial class FormulaService
                 ExprTexto = "SVP: min ‖v‖ para v∈Λ\\{0}",
                 Icone = "SVP",
                 Descricao = "Problema central: encontrar vetor mais curto no reticulado. NP-hard para exato (Ajtai 1998). Melhor algoritmo: sieving 2^{0.292n}. Aproximação gap-SVP base de criptografia.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -377,6 +557,10 @@ public partial class FormulaService
                 ExprTexto = "CVP: min ‖v−t‖ para v∈Λ",
                 Icone = "CVP",
                 Descricao = "Vetor mais próximo de um alvo t. NP-hard. Relacionado a decodificação de códigos. Babai's nearest plane: aproximação 2^{n/2}. Usado em ataques a criptografia.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -387,6 +571,11 @@ public partial class FormulaService
                 Descricao = "Learning With Errors: distinguir (A,As+e) de uniforme, ou recuperar s. Tão difícil quanto worst-case gap-SVP (Regev 2005). Base da maioria dos esquemas pós-quânticos (Kyber, FrodoKEM).",
                 Criador = "Oded Regev",
                 AnoOrigin = "2005",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "As", Nome = "As", ValorPadrao = 10 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 5 } ],
+                VariavelResultado = "b",
+                UnidadeResultado = "",
+                Calcular = vars => vars["As"] + vars["e"]
             },
             new Formula
             {
@@ -395,6 +584,11 @@ public partial class FormulaService
                 ExprTexto = "RLWE: b=as+e em Rq=ℤq[x]/(xⁿ+1)",
                 Icone = "RLWE",
                 Descricao = "Variante estruturada do LWE em anel de polinômios: chaves e operações O(n log n) vs O(n²). Base de Kyber/CRYSTALS. Segurança de ideal lattices. Lyubashevsky, Peikert, Regev (2010).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "as", Nome = "as", ValorPadrao = 10 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 5 } ],
+                VariavelResultado = "b",
+                UnidadeResultado = "",
+                Calcular = vars => vars["as"] + vars["e"]
             },
             new Formula
             {
@@ -405,6 +599,10 @@ public partial class FormulaService
                 Descricao = "Encontrar vetor curto no kernel de A. Base de funções hash resistentes a colisão e esquemas de assinatura (Dilithium). Worst-case hardness: equivalente a SVP em reticulados aleatórios.",
                 Criador = "Miklós Ajtai",
                 AnoOrigin = "1996",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -415,6 +613,10 @@ public partial class FormulaService
                 Descricao = "Algoritmo polinomial de redução de base: encontra vetores 'razoavelmente curtos' (fator 2^{n/2} do ótimo). Usado para quebrar esquemas de baixa dimensão e em ataques a RSA com chave mal-escolhida.",
                 Criador = "Lenstra / Lenstra / Lovász",
                 AnoOrigin = "1982",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             // 24.2 Esquemas Pós-Quânticos
             new Formula
@@ -424,6 +626,10 @@ public partial class FormulaService
                 ExprTexto = "Kyber: Module-LWE; FIPS 203 (ML-KEM)",
                 Icone = "Kyber",
                 Descricao = "KEM selecionado pelo NIST para padronização: encapsulamento de chave baseado em Module-LWE. Kyber-768: 128-bit segurança clássica. Chave pública ~1KB, ciphertext ~1KB. Usado em TLS 1.3 híbrido.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -432,6 +638,10 @@ public partial class FormulaService
                 ExprTexto = "Dilithium: Module-LWE; FIPS 204 (ML-DSA)",
                 Icone = "Dil",
                 Descricao = "Assinatura digital selecionada pelo NIST: Fiat-Shamir com abortos sobre Module-LWE. Dilithium3: assinatura ~2.4KB, chave pública ~1.9KB. Substituição de RSA/ECDSA para era pós-quântica.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -440,6 +650,10 @@ public partial class FormulaService
                 ExprTexto = "FALCON: NTRU + Gaussian; sig ~666B",
                 Icone = "FAL",
                 Descricao = "Assinatura baseada em NTRU lattices com amostragem gaussiana (hash-and-sign). FALCON-512: assinatura ~666 bytes (menor que Dilithium). Complexidade: amostragem em tempo constante (side-channel).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -448,6 +662,10 @@ public partial class FormulaService
                 ExprTexto = "SPHINCS+: hash-based; FIPS 205 (SLH-DSA)",
                 Icone = "SPH",
                 Descricao = "Assinatura baseada apenas em funções hash (sem suposições algébricas): hyper-tree de WOTS+/FORS. Stateless (vs XMSS stateful). Assinatura ~17-49KB (grande), mas segurança conservadora.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -458,6 +676,10 @@ public partial class FormulaService
                 Descricao = "Criptosistema baseado em codificação (1978!): chave pública = gerador de código aleatório, decodificação privada via código Goppa. Chave pública grande (~1MB) mas IND-CCA2. Candidato alternativo NIST.",
                 Criador = "Robert McEliece",
                 AnoOrigin = "1978",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -468,6 +690,11 @@ public partial class FormulaService
                 Descricao = "Motivo da PQC: computador quântico fatoraria e resolveria log discreto em tempo polinomial. RSA-2048 → ~4000 qubits lógicos. Timeline incerta: 2030s-2040s? Harvest-now-decrypt-later motiva migração já.",
                 Criador = "Peter Shor",
                 AnoOrigin = "1994",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -478,7 +705,29 @@ public partial class FormulaService
                 Descricao = "Aceleração quadrática genérica: AES-128 → 64 bits de segurança quântica. Solução: AES-256 para 128 bits pós-quântica. Impacto menor que Shor; criptografia simétrica sobrevive com chaves maiores.",
                 Criador = "Lov Grover",
                 AnoOrigin = "1996",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
+            new Formula { Id = "4_cp01", Nome = "Parâmetro de Módulo", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "q primo ou potência de primo", ExprTexto = "q modulus", Icone = "q", Descricao = "Módulo aritmético central em esquemas baseados em reticulados.", ExemploPratico = "Exemplo: q=3329 (Kyber).", Variaveis = [ new() { Simbolo = "q", Nome = "Módulo q", ValorPadrao = 3329, ValorMin = 2 } ], VariavelResultado = "q", UnidadeResultado = "", Calcular = vars => vars["q"] },
+            new Formula { Id = "4_cp02", Nome = "Dimensão do Reticulado", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "n=dimensão do espaço", ExprTexto = "n lattice dimension", Icone = "n", Descricao = "Dimensão n influencia custo e segurança.", ExemploPratico = "Exemplo: n=256.", Variaveis = [ new() { Simbolo = "n", Nome = "Dimensão n", ValorPadrao = 256, ValorMin = 1 } ], VariavelResultado = "n", UnidadeResultado = "", Calcular = vars => vars["n"] },
+            new Formula { Id = "4_cp03", Nome = "Magnitude do Erro", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "s~chi (ruído discreto)", ExprTexto = "s error scale", Icone = "s", Descricao = "Escala do ruído/erro em instâncias LWE/RLWE.", ExemploPratico = "Exemplo: s=2.6.", Variaveis = [ new() { Simbolo = "s", Nome = "Escala de erro s", ValorPadrao = 2.6, ValorMin = 0.0001 } ], VariavelResultado = "s", UnidadeResultado = "", Calcular = vars => vars["s"] },
+            new Formula { Id = "4_cp04", Nome = "Nível de Segurança", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "t≈log2(custo de ataque)", ExprTexto = "t security bits", Icone = "t", Descricao = "Segurança em bits equivalente ao log2 da complexidade de ataque.", ExemploPratico = "Exemplo: ataque 2^128 => t=128.", Variaveis = [ new() { Simbolo = "t", Nome = "Segurança t (bits)", ValorPadrao = 128, ValorMin = 1 } ], VariavelResultado = "t", UnidadeResultado = "bits", Calcular = vars => vars["t"] },
+            new Formula { Id = "4_cp05", Nome = "Relação Segurança-Módulo", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "t cresce com log2(q)", ExprTexto = "tq = log2(q)", Icone = "logq", Descricao = "Aumento de q tende a elevar custo de redução/ataque.", ExemploPratico = "Exemplo: q=3329 => log2(q)≈11.7.", Variaveis = [ new() { Simbolo = "q", Nome = "Módulo q", ValorPadrao = 3329, ValorMin = 2 } ], VariavelResultado = "log2(q)", UnidadeResultado = "", Calcular = vars => Math.Log(vars["q"], 2) },
+            new Formula { Id = "4_cp06", Nome = "Razão q/n", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "ρ=q/n", ExprTexto = "rho=q/n", Icone = "ρ", Descricao = "Heurística de regime de parâmetros para robustez e eficiência.", ExemploPratico = "Exemplo: q=3329, n=256 => 13.0.", Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 256, ValorMin = 1 } ], VariavelResultado = "ρ", UnidadeResultado = "", Calcular = vars => vars["q"] / vars["n"] },
+            new Formula { Id = "4_cp07", Nome = "Sinal sobre Erro", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "SNR=q/s", ExprTexto = "snr=q/s", Icone = "SNR", Descricao = "Razão módulo/erro relevante para decodificação correta.", ExemploPratico = "Exemplo: q=3329, s=2.6 => ~1280.", Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 2.6, ValorMin = 0.0001 } ], VariavelResultado = "q/s", UnidadeResultado = "", Calcular = vars => vars["q"] / vars["s"] },
+            new Formula { Id = "4_cp08", Nome = "Margem de Decodificação", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "m=q/2-s", ExprTexto = "margin=q/2-s", Icone = "m", Descricao = "Margem simplificada para evitar falhas de decodificação.", ExemploPratico = "Exemplo: q=3329, s=2.6 => 1661.9.", Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 2.6 } ], VariavelResultado = "m", UnidadeResultado = "", Calcular = vars => vars["q"] / 2.0 - vars["s"] },
+            new Formula { Id = "4_cp09", Nome = "Custo de Chave Pública", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "pk~n·log2(q)", ExprTexto = "pk = n*log2(q)", Icone = "pk", Descricao = "Estimativa simplificada de tamanho de chave pública.", ExemploPratico = "Exemplo: n=256, q=3329 => ~2996 bits.", Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 256, ValorMin = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 2 } ], VariavelResultado = "pk", UnidadeResultado = "bits", Calcular = vars => vars["n"] * Math.Log(vars["q"], 2) },
+            new Formula { Id = "4_cp10", Nome = "Custo de Cifra", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "ct~n·log2(q)", ExprTexto = "ct = n*log2(q)", Icone = "ct", Descricao = "Estimativa simplificada de tamanho de ciphertext.", ExemploPratico = "Exemplo: n=256, q=3329 => ~2996 bits.", Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 256, ValorMin = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 2 } ], VariavelResultado = "ct", UnidadeResultado = "bits", Calcular = vars => vars["n"] * Math.Log(vars["q"], 2) },
+            new Formula { Id = "4_cp11", Nome = "Custo de Multiplicação Polinomial", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "M~n log n", ExprTexto = "M=n*log2(n)", Icone = "NTT", Descricao = "Complexidade aproximada com NTT em esquemas de anel.", ExemploPratico = "Exemplo: n=256 => 2048.", Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 256, ValorMin = 2 } ], VariavelResultado = "M", UnidadeResultado = "", Calcular = vars => vars["n"] * Math.Log(vars["n"], 2) },
+            new Formula { Id = "4_cp12", Nome = "Complexidade de Ataque BKZ", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "cost~2^{c·n}", ExprTexto = "log2(cost)=c*n", Icone = "BKZ", Descricao = "Modelo exponencial simplificado de custo de redução de reticulado.", ExemploPratico = "Exemplo: c=0.005, n=256 => 1.28 bits no expoente simplificado.", Variaveis = [ new() { Simbolo = "c", Nome = "Constante c", ValorPadrao = 0.005, ValorMin = 0 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 256, ValorMin = 1 } ], VariavelResultado = "c·n", UnidadeResultado = "bits", Calcular = vars => vars["c"] * vars["n"] },
+            new Formula { Id = "4_cp13", Nome = "Nível NIST Aproximado", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "Level≈t/32", ExprTexto = "level=t/32", Icone = "NIST", Descricao = "Mapeamento aproximado de segurança em bits para níveis NIST.", ExemploPratico = "Exemplo: t=128 => level=4.", Variaveis = [ new() { Simbolo = "t", Nome = "Segurança em bits", ValorPadrao = 128, ValorMin = 1 } ], VariavelResultado = "Level", UnidadeResultado = "", Calcular = vars => vars["t"] / 32.0 },
+            new Formula { Id = "4_cp14", Nome = "Erro Relativo", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "e_rel=s/q", ExprTexto = "erel=s/q", Icone = "e", Descricao = "Ruído relativo ao módulo q.", ExemploPratico = "Exemplo: s=2.6, q=3329 => 0.00078.", Variaveis = [ new() { Simbolo = "s", Nome = "Erro s", ValorPadrao = 2.6, ValorMin = 0 }, new() { Simbolo = "q", Nome = "Módulo q", ValorPadrao = 3329, ValorMin = 1 } ], VariavelResultado = "s/q", UnidadeResultado = "", Calcular = vars => vars["s"] / vars["q"] },
+            new Formula { Id = "4_cp15", Nome = "Orçamento de Segurança", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "B=t-log2(Q)", ExprTexto = "budget=t-log2(queries)", Icone = "B", Descricao = "Margem de segurança após considerar número de consultas do adversário.", ExemploPratico = "Exemplo: t=128, Q=2^40 => B=88.", Variaveis = [ new() { Simbolo = "t", Nome = "Segurança alvo", ValorPadrao = 128, ValorMin = 1 }, new() { Simbolo = "Q", Nome = "Consultas adversárias", ValorPadrao = 1099511627776, ValorMin = 1 } ], VariavelResultado = "B", UnidadeResultado = "bits", Calcular = vars => vars["t"] - Math.Log(vars["Q"], 2) },
+            new Formula { Id = "4_cp16", Nome = "Probabilidade de Falha", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "p_fail≈exp(-q/s)", ExprTexto = "pfail=exp(-q/s)", Icone = "pf", Descricao = "Heurística simples para taxa de falha de decriptação.", ExemploPratico = "Exemplo: q=3329,s=2.6 => praticamente 0.", Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 3329, ValorMin = 0.0001 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 2.6, ValorMin = 0.0001 } ], VariavelResultado = "p_fail", UnidadeResultado = "", Calcular = vars => Math.Exp(-vars["q"] / vars["s"]) },
+            new Formula { Id = "4_cp17", Nome = "Score de Segurança Composto", Categoria = "Criptografia Pós-Quântica", SubCategoria = "Cripto Pós-Quântica", Expressao = "Score=t+log2(n)+log2(q)-log2(s)", ExprTexto = "score=t+log2(n)+log2(q)-log2(s)", Icone = "sec", Descricao = "Indicador composto (heurístico) para comparar conjuntos de parâmetros.", ExemploPratico = "Exemplo: t=128,n=256,q=3329,s=2.6 => score≈145.9.", Variaveis = [ new() { Simbolo = "t", Nome = "Segurança t", ValorPadrao = 128, ValorMin = 1 }, new() { Simbolo = "n", Nome = "Dimensão n", ValorPadrao = 256, ValorMin = 1 }, new() { Simbolo = "q", Nome = "Módulo q", ValorPadrao = 3329, ValorMin = 2 }, new() { Simbolo = "s", Nome = "Erro s", ValorPadrao = 2.6, ValorMin = 0.0001 } ], VariavelResultado = "Score", UnidadeResultado = "", Calcular = vars => vars["t"] + Math.Log(vars["n"], 2) + Math.Log(vars["q"], 2) - Math.Log(vars["s"], 2) },
         ]);
     }
 
@@ -495,6 +744,10 @@ public partial class FormulaService
                 ExprTexto = "ε(ρ) = ΣₖEₖρEₖ†; ΣEₖ†Eₖ=I",
                 Icone = "Kraus",
                 Descricao = "Representação operador-soma de canal quântico completamente positivo e preservador de traço (CPTP). Eₖ = operadores de Kraus. Toda evolução aberta pode ser escrita assim (Stinespring).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -503,6 +756,10 @@ public partial class FormulaService
                 ExprTexto = "ε(ρ) = (1−p)ρ+pI/d",
                 Icone = "dep",
                 Descricao = "Modelo de ruído universal: com prob. p substitui por estado maximamente misturado I/d. Capacidade clássica: 1-H₂(p) + p·log(d-1). Limiar de correção: p < (d-1)/d.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -511,6 +768,11 @@ public partial class FormulaService
                 ExprTexto = "E₀=diag(1,√(1−γ)), E₁=√γ|0⟩⟨1|",
                 Icone = "amp",
                 Descricao = "Modelo físico de emissão espontânea: |1⟩ decai para |0⟩ com prob. γ. Tempo de relaxação T₁: γ=1-e^{-t/T₁}. Canal não-unitário mais importante em qubits supercondutores.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -519,6 +781,10 @@ public partial class FormulaService
                 ExprTexto = "ε(ρ) = (1−p)ρ+pZρZ",
                 Icone = "deph",
                 Descricao = "Perda de coerência sem perda de energia: off-diagonais multiplicadas por (1-2p). Tempo T₂: p=½(1-e^{-t/T₂}). T₂ ≤ 2T₁. Erro dominante em qubits supercondutores atuais.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -529,6 +795,10 @@ public partial class FormulaService
                 Descricao = "Limite superior da informação clássica extraível de ensemble quântico {pᵢ,ρᵢ}: máximo de I(X:Y) sobre todas as medidas. HSW theorem: alcançável com codificação de produto.",
                 Criador = "Alexander Holevo",
                 AnoOrigin = "1973",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -537,6 +807,10 @@ public partial class FormulaService
                 ExprTexto = "Ic = S(N(ρ))−S(complementar)",
                 Icone = "Ic",
                 Descricao = "Capacidade quântica Q = max_ρ I_c: taxa máxima de transmissão quântica confiável. Requer regularização (super-aditiva!): Q = lim Q^(n)/n. Hashing bound: Q ≥ I_c de uso único.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -547,6 +821,10 @@ public partial class FormulaService
                 Descricao = "Códigos definidos por subgrupo estabilizador S do grupo de Pauli: code space = autoespaço +1 comum. Detecção: erros no normalizador mas fora de S. Steane [[7,1,3]], Shor [[9,1,3]].",
                 Criador = "Daniel Gottesman",
                 AnoOrigin = "1997",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -555,6 +833,10 @@ public partial class FormulaService
                 ExprTexto = "Surface code: [[O(d²),1,d]] em 2D",
                 Icone = "surf",
                 Descricao = "Código topológico em grade 2D: operações locais (próximos vizinhos). Threshold ~1% (mais alto entre códigos). d~20-30 para computação fault-tolerant. Google/IBM/Microsoft usam. O(d²) qubits físicos por lógico.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -565,6 +847,10 @@ public partial class FormulaService
                 Descricao = "Primeiro código topológico (Kitaev 1997): em torus codifica k=2 qubits lógicos. Anyons como excitações (violações de estabilizador). Decodificação ótima: matching de peso mínimo.",
                 Criador = "Alexei Kitaev",
                 AnoOrigin = "1997",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -573,6 +859,10 @@ public partial class FormulaService
                 ExprTexto = "p < pth → computação FT arbitrária",
                 Icone = "FT",
                 Descricao = "Teorema do threshold: se taxa de erro por gate p < p_th (~10⁻² a 10⁻⁴), concatenação de códigos permite computação de comprimento arbitrário. Overhead polilogarítmico. Aharonov & Ben-Or (1997).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
             new Formula
             {
@@ -581,6 +871,11 @@ public partial class FormulaService
                 ExprTexto = "|GHZ⟩ = (|0⟩ⁿ+|1⟩ⁿ)/√2",
                 Icone = "GHZ",
                 Descricao = "Estado GHZ n-partido: maximamente emaranhado (entanglement genuinamente multipartido). Traço parcial → estado misturado. Usado em metrologia quântica (Heisenberg scaling), secret sharing.",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -589,6 +884,11 @@ public partial class FormulaService
                 ExprTexto = "E = S(ρA) = −Σλᵢlogλᵢ",
                 Icone = "E",
                 Descricao = "Medida canônica de emaranhamento para estados puros bipartidos: entropia de von Neumann da reduzida. Para |ψ⟩=Σ√λᵢ|iA⟩|iB⟩ (Schmidt), E = S(ρA). E=0 (produto) a log d (Bell).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -597,6 +897,10 @@ public partial class FormulaService
                 ExprTexto = "D(ρ) = m/n (pares Bell por cópia, LOCC)",
                 Icone = "dist",
                 Descricao = "Concentrar emaranhamento: converter n cópias de ρ misto em m pares de Bell puros via LOCC. D(ρ) = taxa distilável ≤ E(ρ). Bound entangled: emaranhado mas D=0 (Horodecki 1998).",
+                ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
             },
         ]);
     }

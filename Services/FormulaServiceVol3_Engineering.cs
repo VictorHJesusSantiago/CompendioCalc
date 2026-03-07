@@ -42,6 +42,11 @@ public partial class FormulaService
                 Descricao = "KIC = tenacidade à fratura: propriedade do material (ex.: aço 50-200, alumínio 20-45, cerâmica 1-5 MPa√m). Quando KI atinge KIC, a trinca propaga catastroficamente.",
                 Criador = "George Irwin",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -69,6 +74,11 @@ public partial class FormulaService
                 Descricao = "Tensão crítica de Griffith: equilíbrio entre energia elástica liberada e energia de superfície criada. Balanço energético da fratura frágil.",
                 Criador = "Alan Arnold Griffith",
                 AnoOrigin = "1921",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -79,6 +89,11 @@ public partial class FormulaService
                 Descricao = "Generalização de G para elastoplasticidade. Independente do caminho Γ. J=G no caso elástico linear; J=JIC define início de crescimento na fratura dúctil.",
                 Criador = "James R. Rice",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -89,6 +104,11 @@ public partial class FormulaService
                 Descricao = "Solução de Hutchinson-Rice-Rosengren para ponta de trinca elastoplástica (lei de potência). Singularidade r^(-1/(n+1)) mais fraca que elástica r^(-1/2).",
                 Criador = "Hutchinson / Rice & Rosengren",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -99,6 +119,11 @@ public partial class FormulaService
                 Descricao = "Abertura da trinca na ponta: parâmetro alternativo a K ou J. Diretamente mensurável. δ_c = CTOD crítico para início de fratura.",
                 Criador = "Alan Wells",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "KI", Nome = "KI", ValorPadrao = 5 } ],
+                VariavelResultado = "δ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["KI"] * vars["KI"]
             },
             new Formula
             {
@@ -109,6 +134,11 @@ public partial class FormulaService
                 Descricao = "Tamanho estimado da zona de deformação plástica na ponta da trinca. LEFM válida quando rp ≪ a (trinca total). Caso contrário → EPFM (Integral J).",
                 Criador = "George Irwin",
                 AnoOrigin = "1961",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -118,6 +148,11 @@ public partial class FormulaService
                 Icone = "✓",
                 Descricao = "Condição para que KIC seja propriedade do material (estado plano de deformação). B=espessura, W-a=ligamento. ASTM E399.",
                 Criador = "ASTM E399",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             // 15.2 Fadiga
             new Formula
@@ -129,6 +164,11 @@ public partial class FormulaService
                 Descricao = "Relação tensão-vida: quanto maior S, menor N (ciclos até falha). Aço tem limite de fadiga (~10⁷ ciclos). Alumínio não (sempre falha).",
                 Criador = "August Wöhler",
                 AnoOrigin = "1860",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 5 }, new() { Simbolo = "Nᵇ", Nome = "Nᵇ", ValorPadrao = 3 } ],
+                VariavelResultado = "S",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * vars["Nᵇ"]
             },
             new Formula
             {
@@ -174,6 +214,11 @@ public partial class FormulaService
                 Icone = "Nf",
                 Descricao = "Número de ciclos para a trinca crescer de aᵢ (inicial) a af (crítica, quando K=KIC). Integração numérica de Paris. Base de manutenção por inspeção (damage tolerance).",
                 Criador = "Mecânica de fratura aplicada",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -184,6 +229,11 @@ public partial class FormulaService
                 Descricao = "Dano cumulativo linear: cada bloco de nᵢ ciclos a σᵢ contribui nᵢ/Nᵢ do dano. Falha quando D=1. Simples mas ignora sequência de carregamento.",
                 Criador = "Milton A. Miner",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -194,6 +244,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo para decompor histórico de carregamento aleatório em ciclos individuais com amplitude e média definidas. Essencial para análise de fadiga em campo.",
                 Criador = "Tatsuo Endo / Matsuishi",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -203,6 +258,11 @@ public partial class FormulaService
                 Icone = "ΔKth",
                 Descricao = "Abaixo de ΔKth, a trinca não propaga (ou cresce desprezavelmente). Valores típicos: aço 2-10 MPa√m, alumínio 1-3 MPa√m.",
                 Criador = "Mecânica da fratura por fadiga",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
@@ -223,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Equações fundamentais da mecânica dos fluidos: conservação de momento + incompressibilidade. Existência e suavidade em 3D é um dos Problemas do Milênio (Clay $1M).",
                 Criador = "Claude-Louis Navier / George Stokes",
                 AnoOrigin = "1822/1845",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["v"]
             },
             new Formula
             {
@@ -284,6 +349,11 @@ public partial class FormulaService
                 Icone = "ω",
                 Descricao = "Medida local de rotação do fluido. Equação de transporte: estiramento de vórtice (ω·∇)v tridimensional + difusão viscosa ν∇²ω.",
                 Criador = "Hermann von Helmholtz / N-S",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["omega"] + vars["v"]
             },
             // 16.2 Turbulência (RANS, LES)
             new Formula
@@ -295,6 +365,11 @@ public partial class FormulaService
                 Descricao = "Velocidade = média temporal + flutuação. Aplicando à N-S e tirando média → equações RANS. Surge o tensor de Reynolds ⟨u'ᵢu'ⱼ⟩ (problema de fechamento).",
                 Criador = "Osborne Reynolds",
                 AnoOrigin = "1895",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ū", Nome = "ū", ValorPadrao = 10 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 5 } ],
+                VariavelResultado = "u",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ū"] + vars["u"]
             },
             new Formula
             {
@@ -304,6 +379,11 @@ public partial class FormulaService
                 Icone = "RANS",
                 Descricao = "Navier-Stokes médias: 6 incógnitas extras (tensor de Reynolds). Precisa de modelo de turbulência para fechar (k-ε, k-ω, SST, etc.).",
                 Criador = "Reynolds / Modelos de turbulência",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["p"]
             },
             new Formula
             {
@@ -314,6 +394,11 @@ public partial class FormulaService
                 Descricao = "Tensor de Reynolds proporcional à taxa de deformação média via viscosidade turbulenta μt (analógica à Lei de Newton para viscosidade). Base de modelos k-ε e k-ω.",
                 Criador = "Joseph Boussinesq",
                 AnoOrigin = "1877",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rho"] + vars["u"]
             },
             new Formula
             {
@@ -324,6 +409,11 @@ public partial class FormulaService
                 Descricao = "k=energia cinética turbulenta, ε=dissipação. Duas equações de transporte adicionais. Robusto e amplamente usado. Fraco para separação de fluxo e relaminarização.",
                 Criador = "Brian Launder / Dudley Spalding",
                 AnoOrigin = "1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["mu"] + vars["t"]
             },
             new Formula
             {
@@ -334,6 +424,11 @@ public partial class FormulaService
                 Descricao = "Menter SST: melhor de k-ω (camada limite) e k-ε (campo livre) via funções de blending. Padrão industrial para aeronáutica, turbomáquinas. Melhor tratamento de fluxos adversos.",
                 Criador = "Florian Menter",
                 AnoOrigin = "1994",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "SST", Nome = "SST", ValorPadrao = 1 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["SST"] + vars["k"]
             },
             new Formula
             {
@@ -344,6 +439,11 @@ public partial class FormulaService
                 Descricao = "Resolve diretamente vórtices maiores que a malha; modela os menores (sub-grid). Mais preciso que RANS para fluxos transientes. Custo: entre RANS e DNS.",
                 Criador = "Joseph Smagorinsky / James Deardorff",
                 AnoOrigin = "1963/1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["tau"]
             },
             new Formula
             {
@@ -354,6 +454,11 @@ public partial class FormulaService
                 Descricao = "Viscosidade sub-grid proporcional ao tamanho de malha Δ e taxa de deformação |S̄|. Modelo mais simples para LES. Cs calibrado para turbulência isotrópica.",
                 Criador = "Joseph Smagorinsky",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "sgs", Nome = "sgs", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["mu"] + vars["sgs"]
             },
             new Formula
             {
@@ -364,6 +469,11 @@ public partial class FormulaService
                 Descricao = "Energia cinética turbulenta é transferida de grandes para pequenas escalas sem dissipação (cascata de energia). Lei -5/3 na região inercial: resultado universal.",
                 Criador = "Andrey Kolmogorov",
                 AnoOrigin = "1941",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["E"] + vars["k"]
             },
             new Formula
             {
@@ -374,6 +484,11 @@ public partial class FormulaService
                 Descricao = "Menor escala da turbulência: onde dissipação viscosa absorve a energia. η decresce com Re. Relação: L/η ~ Re^(3/4). DNS deve resolver até η.",
                 Criador = "Andrey Kolmogorov",
                 AnoOrigin = "1941",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "eta", Nome = "eta", ValorPadrao = 1 }, new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["eta"] + vars["nu"]
             },
             // 16.3 FVM e Esquemas Numéricos
             new Formula
@@ -385,6 +500,11 @@ public partial class FormulaService
                 Descricao = "Equação de transporte escalar em forma integral. Base do método de volumes finitos: conservação garantida em cada volume de controle.",
                 Criador = "S.V. Patankar / Base de CFD moderno",
                 AnoOrigin = "~1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -394,6 +514,11 @@ public partial class FormulaService
                 Icone = "↑",
                 Descricao = "Valor na face = valor do centro a montante. Estável mas difusivo (1ª ordem). Esquemas de 2ª ordem (MUSCL, QUICK) melhoram precisão com limitadores de fluxo.",
                 Criador = "Prática CFD",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"] + vars["f"]
             },
             new Formula
             {
@@ -404,6 +529,11 @@ public partial class FormulaService
                 Descricao = "Semi-Implicit Method for Pressure-Linked Equations. Resolve acoplamento velocidade-pressão iterativamente. Variantes: SIMPLEC, PISO para transiente.",
                 Criador = "S.V. Patankar / D.B. Spalding",
                 AnoOrigin = "1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] + vars["p"]
             },
             new Formula
             {
@@ -431,6 +561,11 @@ public partial class FormulaService
                 Descricao = "Grid Convergence Index: estimativa do erro de discretização usando 3 malhas. Fs=1.25 (3 malhas), r=razão de refinamento, p estimado por Richardson. Padrão ASME V&V 20.",
                 Criador = "Patrick Roache",
                 AnoOrigin = "1994",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "GCI", Nome = "GCI", ValorPadrao = 1 }, new() { Simbolo = "Fs", Nome = "Fs", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["GCI"] + vars["Fs"]
             },
         ]);
     }
@@ -450,6 +585,11 @@ public partial class FormulaService
                 Icone = "T",
                 Descricao = "Matriz 4×4 que combina rotação R (3×3) e translação d (3×1). Composição: T₀₂ = T₀₁·T₁₂. Grupo especial euclidiano SE(3).",
                 Criador = "Robótica / Geometria",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 }, new() { Simbolo = "R", Nome = "R", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] + vars["R"]
             },
             new Formula
             {
@@ -460,6 +600,11 @@ public partial class FormulaService
                 Descricao = "Convenção DH: 4 parâmetros por junta descrevem geometria do link. Produto T₀ₙ = T₁·T₂·...·Tₙ dá cinemática direta. θᵢ variável para junta revoluta.",
                 Criador = "Jacques Denavit / Richard Hartenberg",
                 AnoOrigin = "1955",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Rz", Nome = "Rz", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Rz"] + vars["theta"]
             },
             new Formula
             {
@@ -469,6 +614,11 @@ public partial class FormulaService
                 Icone = "FK",
                 Descricao = "Dado vetor de juntas q, calcula posição/orientação do efetuador. Multiplicação de matrizes DH. Sempre tem solução única. Computacionalmente trivial.",
                 Criador = "Robótica clássica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["f"]
             },
             new Formula
             {
@@ -478,6 +628,11 @@ public partial class FormulaService
                 Icone = "J",
                 Descricao = "Relaciona velocidades de junta com velocidades cartesianas do efetuador. 6×n para 6 DOF cartesianos. Singularidades: det(J)=0 → perda de mobilidade.",
                 Criador = "Robótica / Análise diferencial",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"] + vars["q"]
             },
             new Formula
             {
@@ -487,6 +642,11 @@ public partial class FormulaService
                 Icone = "IK",
                 Descricao = "Dada posição desejada do efetuador, encontrar ângulos das juntas. Geralmente não-linear, múltiplas soluções. Métodos: analítico (6R), numérico (Newton-Raphson via J).",
                 Criador = "Robótica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["q"] + vars["f"]
             },
             new Formula
             {
@@ -496,6 +656,11 @@ public partial class FormulaService
                 Icone = "J⁻¹",
                 Descricao = "Método iterativo: linearizar via Jacobiano, dar passo em q, recalcular erro. J⁻¹ ou pseudoinversa (J†) para redundância. Convergência depende de inicialização.",
                 Criador = "Robótica numérica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["q"]
             },
             new Formula
             {
@@ -505,6 +670,11 @@ public partial class FormulaService
                 Icone = "⚠",
                 Descricao = "Na singularidade, o robô perde graus de liberdade em certas direções (velocidade infinita das juntas para velocidade finita do efetuador). Evitar por planejamento de trajetória.",
                 Criador = "Teoria de robótica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"]
             },
             // 17.2 Dinâmica
             new Formula
@@ -515,6 +685,11 @@ public partial class FormulaService
                 Icone = "τ",
                 Descricao = "Equação do movimento: M=matriz de inércia, C=Coriolis/centrípeta, g=gravidade, τ=torques. Base para controle dinâmico. M é simétrica e definida positiva.",
                 Criador = "Lagrange / Robótica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"] + vars["q"]
             },
             new Formula
             {
@@ -524,6 +699,11 @@ public partial class FormulaService
                 Icone = "T",
                 Descricao = "Energia cinética total é forma quadrática em velocidades de junta. M(q) depende da configuração. Usado para derivar equações de Lagrange: L=T-V.",
                 Criador = "Mecânica Lagrangiana",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] + vars["q"]
             },
             new Formula
             {
@@ -533,6 +713,11 @@ public partial class FormulaService
                 Icone = "CTC",
                 Descricao = "Controle por modelo inverso: cancela não-linearidades (M, C, g) e impõe dinâmica de erro linear (PD). Precisa de modelo preciso; adaptativo se incerto.",
                 Criador = "Robótica de controle",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 }, new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["tau"] + vars["M"]
             },
             new Formula
             {
@@ -543,6 +728,11 @@ public partial class FormulaService
                 Descricao = "Algoritmo O(n) para dinâmica de robôs. Propaga velocidades/acelerações da base para o efetuador, depois forças/torques do efetuador para a base. Mais eficiente que Lagrange.",
                 Criador = "John Y.S. Luh / Walker & Orin",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 1 }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["v"] + vars["omega"]
             },
             new Formula
             {
@@ -552,6 +742,11 @@ public partial class FormulaService
                 Icone = "W",
                 Descricao = "Conjunto de posições alcançáveis pelo efetuador. Dexterous workspace (todas as orientações) ⊂ Reachable workspace (pelo menos uma orientação). Determinado por geometria e limites de junta.",
                 Criador = "Robótica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "W", Nome = "W", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["W"] + vars["x"]
             },
             new Formula
             {
@@ -561,6 +756,11 @@ public partial class FormulaService
                 Icone = "PD",
                 Descricao = "Controle proporcional-derivativo com compensação de gravidade. Estável globalmente por Lyapunov. Simples e eficaz para regulação (ponto a ponto). Base para controle de robôs.",
                 Criador = "Robótica de controle",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Kp", Nome = "Kp", ValorPadrao = 5 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 3 } ],
+                VariavelResultado = "τ",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Kp"] * vars["e"]
             },
         ]);
     }
@@ -580,6 +780,11 @@ public partial class FormulaService
                 Icone = "PF",
                 Descricao = "Potência ativa e reativa em cada barra como função das tensões e ângulos de todas as barras. Sistema não-linear 2n (n barras). Base da operação do SEP.",
                 Criador = "Engenharia de potência",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 }, new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["theta"] + vars["delta"]
             },
             new Formula
             {
@@ -589,6 +794,11 @@ public partial class FormulaService
                 Icone = "Sᵢⱼ",
                 Descricao = "Potência complexa do nó i para nó j pela linha com impedância z. Pᵢⱼ controla ativo (ângulos), Qᵢⱼ modula reativo (tensões).",
                 Criador = "Engenharia de potência",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "z", Nome = "z", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["z"]
             },
             new Formula
             {
@@ -599,6 +809,11 @@ public partial class FormulaService
                 Descricao = "Método padrão para resolver fluxo de potência. Jacobiano J: ∂(P,Q)/∂(δ,|V|). Convergência quadrática (3-5 iterações). Sistemas de milhares de barras.",
                 Criador = "William Tinney / Computação de potência",
                 AnoOrigin = "~1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 }, new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Delta"] + vars["P"]
             },
             new Formula
             {
@@ -626,6 +841,11 @@ public partial class FormulaService
                 Icone = "Ploss",
                 Descricao = "Perdas ôhmicas proporcional ao quadrado da corrente. Motivação para alta tensão de transmissão: dobrar V → perda 1/4. Fator de potência alto reduz Q e perdas.",
                 Criador = "Engenharia elétrica clássica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "I", Nome = "I", ValorPadrao = 5 } ],
+                VariavelResultado = "Ploss",
+                UnidadeResultado = "",
+                Calcular = vars => vars["I"] * vars["I"]
             },
             // 18.2 Estabilidade e Curto-Circuito
             new Formula
@@ -636,6 +856,11 @@ public partial class FormulaService
                 Icone = "Icc",
                 Descricao = "Corrente no ponto de falta = tensão pré-falta / impedância de Thevenin. Critério para dimensionamento de disjuntores e proteção. Curto trifásico: mais severo e simétrico.",
                 Criador = "Engenharia de proteção",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 10 }, new() { Simbolo = "Zth", Nome = "Zth", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "Icc",
+                UnidadeResultado = "",
+                Calcular = vars => vars["V"] / vars["Zth"]
             },
             new Formula
             {
@@ -646,6 +871,11 @@ public partial class FormulaService
                 Descricao = "Fortescue: decompõe sistema desequilibrado trifásico em 3 sistemas equilibrados (seq. positiva, negativa, zero). Simplifica análise de faltas assimétricas.",
                 Criador = "Charles Fortescue",
                 AnoOrigin = "1918",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 }, new() { Simbolo = "Va", Nome = "Va", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] + vars["Va"]
             },
             new Formula
             {
@@ -655,6 +885,11 @@ public partial class FormulaService
                 Icone = "δ(t)",
                 Descricao = "Equação diferencial que governa a dinâmica do rotor. M=constante de inércia, Pm=potência mecânica, Pe=elétrica. Equilíbrio: Pm=Pe. Análise de estabilidade transitória.",
                 Criador = "Engenharia de sistemas de potência",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 }, new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"] + vars["delta"]
             },
             new Formula
             {
@@ -664,6 +899,11 @@ public partial class FormulaService
                 Icone = "EAC",
                 Descricao = "Para sistema de 2 máquinas: se a área de aceleração (Pm>Pe) pode ser compensada pela área de desaceleração disponível, o sistema é transitoriamente estável.",
                 Criador = "Análise de estabilidade de potência",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {

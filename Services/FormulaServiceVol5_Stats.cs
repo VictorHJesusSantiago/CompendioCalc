@@ -22,6 +22,11 @@ public partial class FormulaService
                 ExprTexto = "f ~ GP(m(x), k(x,x'))",
                 Icone = "GP",
                 Descricao = "Processo Gaussiano: distribuição sobre funções. Qualquer subconjunto finito de avaliações tem distribuição normal multivariada. Definido por média e kernel.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -30,6 +35,11 @@ public partial class FormulaService
                 ExprTexto = "y = f(X)+ε; ε~N(0,σ²I)",
                 Icone = "y",
                 Descricao = "Modelo com ruído gaussiano: observações y = função latente f mais ruído i.i.d. gaussiano com variância σ².",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -38,6 +48,11 @@ public partial class FormulaService
                 ExprTexto = "f*|dados ~ N(μ*,Σ*)",
                 Icone = "N",
                 Descricao = "Posterior do GP: distribuição preditiva nos pontos de teste X*. Gaussiana com média μ* e covariância Σ* dados por fórmulas fechadas.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -46,6 +61,11 @@ public partial class FormulaService
                 ExprTexto = "μ* = m(X*)+K*ᵀ(K+σ²I)⁻¹(y-m)",
                 Icone = "μ*",
                 Descricao = "Média posterior: predição ótima (MMSE). Combinação linear dos dados ponderada pela covariância kernel. K*=kernel(X*,X).",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -54,6 +74,11 @@ public partial class FormulaService
                 ExprTexto = "Σ* = K** - K*ᵀ(K+σ²I)⁻¹K*",
                 Icone = "Σ*",
                 Descricao = "Covariância posterior: incerteza preditiva diminui onde há dados. K**=kernel(X*,X*). Custo: O(n³) pela inversão matricial.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -62,6 +87,11 @@ public partial class FormulaService
                 ExprTexto = "k = σf²·exp(-|x-x'|²/2l²)",
                 Icone = "RBF",
                 Descricao = "Kernel RBF (Radial Basis Function / Squared Exponential): suave, estacionário, isotrópico. σf=amplitude, l=comprimento característico.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "σf²", Nome = "σf²", ValorPadrao = 5 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3 } ],
+                VariavelResultado = "k",
+                UnidadeResultado = "",
+                Calcular = vars => vars["σf²"] * vars["exp"]
             },
             new Formula
             {
@@ -70,6 +100,11 @@ public partial class FormulaService
                 ExprTexto = "k = (1+√5r/l+5r²/3l²)exp(-√5r/l)",
                 Icone = "M",
                 Descricao = "Kernel Matérn ν=5/2: 2-vezes diferenciável. Mais flexível que RBF (infinitamente suave). Muito usado em GP para dados reais.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -78,6 +113,11 @@ public partial class FormulaService
                 ExprTexto = "logp = -½yᵀK̃⁻¹y - ½log|K̃| - n/2 log2π",
                 Icone = "ℓ",
                 Descricao = "Log-verossimilhança marginal para otimização de hiperparâmetros do kernel. K̃=K+σ²I. Balanço automático entre ajuste e complexidade.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -86,6 +126,11 @@ public partial class FormulaService
                 ExprTexto = "EI(x) = E[max(f(x)-f*,0)]",
                 Icone = "EI",
                 Descricao = "Otimização bayesiana: critério de aquisição Expected Improvement. Balança exploração (incerteza alta) e exploração (μ alta). Usa GP como surrogate.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
 
             // 9.2 GAM e Splines
@@ -96,6 +141,11 @@ public partial class FormulaService
                 ExprTexto = "g(μ) = α + Σfⱼ(xⱼ)",
                 Icone = "GAM",
                 Descricao = "GAM: extensão de GLM com funções suaves não-paramétricas fⱼ para cada preditor. g = link function. Flexível e interpretável.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -104,6 +154,11 @@ public partial class FormulaService
                 ExprTexto = "min Σ(y-f(x))² + λ∫f''²dx",
                 Icone = "λ",
                 Descricao = "Spline cúbica natural: solução do problema de suavização penalizada. λ controla tradeoff ajuste/suavidade. λ→0: interpolação. λ→∞: reta.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -112,6 +167,11 @@ public partial class FormulaService
                 ExprTexto = "Pen = Σ(Δᵈβⱼ)²",
                 Icone = "P",
                 Descricao = "P-splines: B-splines com penalização nas diferenças dos coeficientes. Computacionalmente eficiente. d=2 tipicamente (suavidade de 2ª derivada).",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -120,6 +180,11 @@ public partial class FormulaService
                 ExprTexto = "LOESS: regressão local com kernel tri-cubo",
                 Icone = "L",
                 Descricao = "LOESS (LOcally Estimated Scatterplot Smoothing): regressão polinomial local em vizinhança ponderada. Não-paramétrico, adaptativo.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -128,6 +193,11 @@ public partial class FormulaService
                 ExprTexto = "df = tr(H)",
                 Icone = "df",
                 Descricao = "Graus de liberdade efetivos: traço da hat matrix. Mede complexidade efetiva do suavizador. 1=reta, n=interpolação. Controla overfitting.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -136,6 +206,11 @@ public partial class FormulaService
                 ExprTexto = "GCV = RSS/(n(1-df/n)²)",
                 Icone = "GCV",
                 Descricao = "GCV: critério para escolher λ ótimo. Invariante rotacional. Aproximação eficiente do leave-one-out CV sem reajustar n vezes.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
 
             // 9.3 Bootstrap e Métodos Não-Paramétricos
@@ -148,6 +223,11 @@ public partial class FormulaService
                 Descricao = "Bootstrap: reamostrar com reposição para estimar distribuição amostral de uma estatística. B repetições geram θ̂*₁,...,θ̂*_B.",
                 Criador = "Bradley Efron",
                 AnoOrigin = "1979",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -156,6 +236,11 @@ public partial class FormulaService
                 ExprTexto = "V̂ = Σ(θ̂*-θ̄*)²/(B-1)",
                 Icone = "V̂",
                 Descricao = "Variância bootstrap: estimativa da variância do estimador usando a variância das réplicas bootstrap. Não-paramétrica.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -164,6 +249,11 @@ public partial class FormulaService
                 ExprTexto = "IC = [θ̂*(α/2), θ̂*(1-α/2)]",
                 Icone = "IC",
                 Descricao = "Intervalo de confiança bootstrap percentil: usa quantis da distribuição bootstrap. Simples mas pode ser enviesado.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -172,6 +262,11 @@ public partial class FormulaService
                 ExprTexto = "BCa: ajuste viés z₀ + aceleração a",
                 Icone = "BCa",
                 Descricao = "Bootstrap BCa (bias-corrected and accelerated): ajusta os quantis para viés e assimetria. Mais preciso que percentil simples.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -181,6 +276,11 @@ public partial class FormulaService
                 Icone = "JK",
                 Descricao = "Jackknife: remove uma observação por vez. Estima viés e variância. Precursor do bootstrap. Exato para funcionais lineares.",
                 Criador = "Maurice Quenouille / John Tukey",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -191,6 +291,11 @@ public partial class FormulaService
                 Descricao = "Teste de Wilcoxon signed-rank: teste não-paramétrico de localização para amostras pareadas. Alternativa ao t-test sem normalidade.",
                 Criador = "Frank Wilcoxon",
                 AnoOrigin = "1945",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -199,6 +304,11 @@ public partial class FormulaService
                 ExprTexto = "U = ΣΣ1{Xᵢ>Yⱼ}",
                 Icone = "U",
                 Descricao = "Teste de Mann-Whitney U: comparação não-paramétrica de duas amostras independentes. Conta inversões. Alternativa ao t-test de 2 amostras.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
             new Formula
             {
@@ -207,6 +317,11 @@ public partial class FormulaService
                 ExprTexto = "Dₙ = sup|Fₙ(x)-F₀(x)|",
                 Icone = "KS",
                 Descricao = "Teste de Kolmogorov-Smirnov: compara distribuição empírica com teórica usando distância supremo. Distribution-free sob H₀.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = CalculoPadrao
             },
         ]);
     }
@@ -225,6 +340,11 @@ public partial class FormulaService
                 ExprTexto = "f(λx+(1-λ)y) ≤ λf(x)+(1-λ)f(y)",
                 Icone = "∪",
                 Descricao = "Definição de convexidade: epígrafo é conjunto convexo. Todo mínimo local é global. Propriedade fundamental para otimização tratável.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -233,6 +353,11 @@ public partial class FormulaService
                 ExprTexto = "f*(y) = sup(⟨y,x⟩-f(x))",
                 Icone = "f*",
                 Descricao = "Conjugada de Fenchel (transformada de Legendre): dualidade fundamental em análise convexa. Codifica informação de f em espaço dual.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -241,6 +366,11 @@ public partial class FormulaService
                 ExprTexto = "f** = f (f fechada convexa)",
                 Icone = "**",
                 Descricao = "Teorema de Fenchel-Moreau: a biconjugada recupera f se f é convexa, fechada (lsc) e própria. Involução no espaço de funções convexas.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -249,6 +379,11 @@ public partial class FormulaService
                 ExprTexto = "g∈∂f(x): f(y)≥f(x)+⟨g,y-x⟩",
                 Icone = "∂",
                 Descricao = "Subgradiente: generalização do gradiente para funções convexas não-diferenciáveis. ∂f(x) é convexo compacto. Gradiente∈∂f quando f é C¹.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -257,6 +392,11 @@ public partial class FormulaService
                 ExprTexto = "∇f+Σλ∇g+Σμ∇h=0; μ≥0; μh=0",
                 Icone = "KKT",
                 Descricao = "Condições de Karush-Kuhn-Tucker: condições necessárias (e suficientes sob convexidade) de otimalidade com restrições. Complementaridade: μⱼhⱼ=0.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -265,6 +405,11 @@ public partial class FormulaService
                 ExprTexto = "p*=d* se Slater (∃x int. viável)",
                 Icone = "p*",
                 Descricao = "Dualidade forte: valor ótimo primal = dual sob condição de Slater (existência de ponto interior viável). Gap de dualidade = 0.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
 
             // 10.2 Métodos de Otimização
@@ -275,6 +420,11 @@ public partial class FormulaService
                 ExprTexto = "x←ProjC(x-α∇f(x))",
                 Icone = "PG",
                 Descricao = "Gradiente projetado: passo de gradiente seguido de projeção no conjunto viável C. Convergência O(1/k) para f convexa suave.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -283,6 +433,11 @@ public partial class FormulaService
                 ExprTexto = "x←x-αg; g∈∂f; α=1/√k",
                 Icone = "SG",
                 Descricao = "Método do subgradiente: para funções convexas não-suaves. Passo decrescente α_k=1/√k garante convergência O(1/√k).",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -291,6 +446,11 @@ public partial class FormulaService
                 ExprTexto = "ADMM: min f(x)+g(z) s.t. Ax+Bz=c",
                 Icone = "AD",
                 Descricao = "ADMM (Alternating Direction Method of Multipliers): divide problema em subproblemas mais fáceis. Combina decomposição dual com método aumentado.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -299,6 +459,11 @@ public partial class FormulaService
                 ExprTexto = "min f - (1/t)Σlog(-hⱼ); Newton",
                 Icone = "IP",
                 Descricao = "Método de ponto interior: transforma restrições em barreira logarítmica. Convergência em O(√m·log(1/ε)) iterações de Newton. Revolucionou otimização.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -307,6 +472,11 @@ public partial class FormulaService
                 ExprTexto = "min cᵀx s.t. F₀+ΣxᵢFᵢ ⪰ 0",
                 Icone = "SDP",
                 Descricao = "SDP: otimização linear com restrição de matriz semidefinida positiva. Generaliza LP. Resolve relaxações de problemas combinatórios, controle robusto.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -315,6 +485,11 @@ public partial class FormulaService
                 ExprTexto = "min cᵀx s.t. ‖Ax+b‖≤cᵀx+d",
                 Icone = "SO",
                 Descricao = "SOCP (Second-Order Cone Program): restrições cônicas de 2ª ordem. Entre LP e SDP em poder. Inclui LP, QP, QCQP como casos especiais.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -325,6 +500,11 @@ public partial class FormulaService
                 Descricao = "Aceleração de Nesterov: momentum ótimo que acelera gradiente de O(1/k) para O(1/k²). Taxa ótima para funções convexas suaves de 1ª ordem.",
                 Criador = "Yurii Nesterov",
                 AnoOrigin = "1983",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -343,6 +523,11 @@ public partial class FormulaService
                 ExprTexto = "x = As; s independentes",
                 Icone = "ICA",
                 Descricao = "ICA: decompor sinais misturados em fontes independentes. Modelo generativo linear: observação = mistura de fontes latentes.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Sinal observado x", ValorPadrao = 1 }, new() { Simbolo = "As", Nome = "Matriz de mistura As", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x"] + vars["As"]
             },
             new Formula
             {
@@ -351,6 +536,11 @@ public partial class FormulaService
                 ExprTexto = "J(y) = H(ygauss)-H(y) (neguentropia)",
                 Icone = "J",
                 Descricao = "Neguentropia: mede afastamento de gaussianidade. CLT implica que componentes independentes são maximamente não-gaussianas (exceto no máximo uma).",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"] + vars["y"]
             },
             new Formula
             {
@@ -359,6 +549,11 @@ public partial class FormulaService
                 ExprTexto = "J(y) ≈ (E[G(y)]-E[G(ν)])²",
                 Icone = "≈",
                 Descricao = "Aproximação prática da neguentropia usando função não-linear G (ex: G(u)=log cosh u). ν=variável gaussiana de referência.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["J"] + vars["y"]
             },
             new Formula
             {
@@ -369,6 +564,11 @@ public partial class FormulaService
                 Descricao = "FastICA: algoritmo eficiente de ponto fixo para ICA. Convergência cúbica. G = função não-linear (log cosh, exp, ...).",
                 Criador = "Aapo Hyvärinen",
                 AnoOrigin = "1999",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["w"] + vars["E"]
             },
             new Formula
             {
@@ -379,6 +579,11 @@ public partial class FormulaService
                 Descricao = "Infomax: maximizar informação mútua entre saída e entrada. Equivalente a maximizar log-det do jacobiano. Abordagem de teoria da informação.",
                 Criador = "Anthony Bell / Terrence Sejnowski",
                 AnoOrigin = "1995",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -387,6 +592,11 @@ public partial class FormulaService
                 ExprTexto = "ICA: ordem e escala indeterminadas",
                 Icone = "?",
                 Descricao = "Ambiguidades intrínsecas: ICA não determina a ordem nem a escala (incluindo sinal) das componentes independentes. Permutação e escala livres.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "ICA", Nome = "ICA", ValorPadrao = 1 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ICA"] + vars["e"]
             },
 
             // 11.2 GMM e EM
@@ -397,6 +607,11 @@ public partial class FormulaService
                 ExprTexto = "p(x) = Σπₖ N(x;μₖ,Σₖ)",
                 Icone = "GMM",
                 Descricao = "GMM: mistura de K gaussianas com pesos πₖ, médias μₖ e covariâncias Σₖ. Modelo universal de densidade. Ajustado via EM.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "Densidade p(x)", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Ponto de avaliação x", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["x"]
             },
             new Formula
             {
@@ -405,6 +620,11 @@ public partial class FormulaService
                 ExprTexto = "rnk = πkN(xn;μk,Σk)/Σ πjN(xn;μj,Σj)",
                 Icone = "E",
                 Descricao = "E-step: calcula responsabilidades r_{nk} = probabilidade posterior de xₙ pertencer à componente k. Pesos soft para cada observação.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "rnk", Nome = "rnk", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["rnk"] + vars["pi"]
             },
             new Formula
             {
@@ -413,6 +633,11 @@ public partial class FormulaService
                 ExprTexto = "πk=Nk/N; μk=Σrnkxn/Nk; Σk=...",
                 Icone = "M",
                 Descricao = "M-step: atualiza parâmetros usando responsabilidades. Pesos=fração efetiva, média=média ponderada, covariância=covariância ponderada.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "Nk", Nome = "Nk", ValorPadrao = 10 }, new() { Simbolo = "N", Nome = "N", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "πk",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Nk"] / vars["N"]
             },
             new Formula
             {
@@ -421,6 +646,11 @@ public partial class FormulaService
                 ExprTexto = "L = Σlog(ΣπkN(xn;μk,Σk))",
                 Icone = "ℓ",
                 Descricao = "Log-verossimilhança do GMM: cada iteração EM garante L não-decresça (convergência monótona). Pode convergir para máximo local.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -429,6 +659,11 @@ public partial class FormulaService
                 ExprTexto = "BIC=-2logL+k·logn; AIC=-2logL+2k",
                 Icone = "BIC",
                 Descricao = "Critérios de seleção de modelo: BIC penaliza mais (consistente), AIC menos (eficiente). k=número de parâmetros, n=observações.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 11.3 KDE
@@ -439,6 +674,11 @@ public partial class FormulaService
                 ExprTexto = "f̂(x) = (1/nh)ΣK((x-xᵢ)/h)",
                 Icone = "KDE",
                 Descricao = "KDE: estimador não-paramétrico de densidade. K=kernel (função simétrica positiva), h=bandwidth. Suavização de histograma.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "Frequência f", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Observação x", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["x"]
             },
             new Formula
             {
@@ -447,6 +687,11 @@ public partial class FormulaService
                 ExprTexto = "K(u) = exp(-u²/2)/√(2π)",
                 Icone = "φ",
                 Descricao = "Kernel gaussiano: o mais popular em KDE. Suporte infinito, infinitamente suave. Boa escolha default, embora não ótimo em MISE.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -455,6 +700,11 @@ public partial class FormulaService
                 ExprTexto = "K(u) = ¾(1-u²) se |u|≤1",
                 Icone = "Ep",
                 Descricao = "Kernel de Epanechnikov: ótimo em termos de MISE (minimiza erro integrado quadrático médio). Suporte compacto [-1,1]. Parábola invertida.",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 1 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["K"] + vars["u"]
             },
             new Formula
             {
@@ -465,6 +715,11 @@ public partial class FormulaService
                 Descricao = "Regra de Silverman para bandwidth ótimo com kernel gaussiano assumindo dados gaussianos. Rápida e razoável. σ estimado por desvio-padrão ou IQR.",
                 Criador = "Bernard Silverman",
                 AnoOrigin = "1986",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1 }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["h"] + vars["sigma"]
             },
             new Formula
             {
@@ -473,6 +728,11 @@ public partial class FormulaService
                 ExprTexto = "MISE = ∫(viés²+var)dx",
                 Icone = "MSE",
                 Descricao = "Mean Integrated Squared Error: critério de qualidade global do KDE. Tradeoff viés-variância controlado por h: h↑ suave (viés), h↓ ruidoso (var).",
+                ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Valor calculado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
         ]);
     }

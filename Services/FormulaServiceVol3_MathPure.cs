@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Uma norma em um espaço vetorial satisfaz: positividade, igualdade a zero somente para vetor nulo, homogeneidade absoluta e desigualdade triangular.",
                 Criador = "Stefan Banach",
                 AnoOrigin = "1920",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Um espaço de Banach é um espaço normado completo, ou seja, toda sequência de Cauchy tem limite no espaço. Exemplos: ℝⁿ, Lᵖ(Ω), C[a,b] com norma sup.",
                 Criador = "Stefan Banach",
                 AnoOrigin = "1922",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -61,6 +71,11 @@ public partial class FormulaService
                 Descricao = "A norma supremo é o máximo dos valores absolutos das componentes. É o limite da norma p quando p→∞.",
                 Criador = "Pafnuty Chebyshev",
                 AnoOrigin = "~1850",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -71,6 +86,11 @@ public partial class FormulaService
                 Descricao = "Espaço de funções mensuráveis f com ∫|f|ᵖdμ < ∞. São espaços de Banach para 1≤p≤∞. Para p=2 é espaço de Hilbert.",
                 Criador = "Henri Lebesgue / Frigyes Riesz",
                 AnoOrigin = "1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -81,6 +101,11 @@ public partial class FormulaService
                 Descricao = "Generaliza Cauchy-Schwarz (p=q=2). Fundamental para provar que Lᵖ é espaço vetorial e que o dual de Lᵖ é Lᵍ.",
                 Criador = "Otto Hölder",
                 AnoOrigin = "1889",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -91,6 +116,11 @@ public partial class FormulaService
                 Descricao = "Desigualdade triangular para normas Lᵖ. Demonstra-se usando Hölder. Garante que ‖·‖_p é de fato uma norma.",
                 Criador = "Hermann Minkowski",
                 AnoOrigin = "1896",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -101,6 +131,11 @@ public partial class FormulaService
                 Descricao = "Todo funcional linear contínuo em um subespaço pode ser estendido a todo o espaço preservando a norma. Pilha base da análise funcional.",
                 Criador = "Hans Hahn / Stefan Banach",
                 AnoOrigin = "1927-1929",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -111,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Generalização do ponto fixo de Brouwer para espaços de Banach. Um operador compacto mapeando um convexo fechado e limitado em si possui ponto fixo.",
                 Criador = "Juliusz Schauder",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -121,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Se operadores lineares contínuos são pontualmente limitados em um Banach, são uniformemente limitados em norma. Consequência do teorema de Baire.",
                 Criador = "Stefan Banach / Hugo Steinhaus",
                 AnoOrigin = "1927",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -131,6 +176,11 @@ public partial class FormulaService
                 Descricao = "Um operador linear contínuo e sobrejetivo entre espaços de Banach é uma aplicação aberta. Consequência: bijeção contínua entre Banach tem inversa contínua.",
                 Criador = "Stefan Banach / Juliusz Schauder",
                 AnoOrigin = "1929-1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -141,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Um operador linear entre Banach cujo gráfico é fechado é automaticamente contínuo. Equivale ao Teorema da Aplicação Aberta.",
                 Criador = "Stefan Banach",
                 AnoOrigin = "1932",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 1.2 Espaços de Hilbert
             new Formula
@@ -152,6 +207,11 @@ public partial class FormulaService
                 Descricao = "Produto interno: positividade, linearidade no 1º argumento e simetria conjugada. Induz norma e topologia no espaço.",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -162,6 +222,11 @@ public partial class FormulaService
                 Descricao = "A norma induzida por um produto interno. Todo espaço de Hilbert é um Banach, mas nem todo Banach é Hilbert (precisa satisfazer lei do paralelogramo).",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -172,6 +237,11 @@ public partial class FormulaService
                 Descricao = "Desigualdade fundamental válida em qualquer espaço com produto interno. Igualdade ocorre se e somente se x e y são linearmente dependentes.",
                 Criador = "Augustin-Louis Cauchy / Hermann Schwarz",
                 AnoOrigin = "1821-1885",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -182,6 +252,11 @@ public partial class FormulaService
                 Descricao = "Caracteriza normas vindas de produto interno. Um Banach é Hilbert ⟺ a norma satisfaz esta identidade (teorema de von Neumann-Jordan).",
                 Criador = "John von Neumann / Pascual Jordan",
                 AnoOrigin = "1935",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -192,6 +267,11 @@ public partial class FormulaService
                 Descricao = "Dois vetores são ortogonais quando seu produto interno é zero. Generaliza perpendicularidade euclidiana para espaços de dimensão infinita.",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -202,6 +282,11 @@ public partial class FormulaService
                 Descricao = "Para subespaço fechado M em Hilbert, todo vetor tem uma única melhor aproximação em M. O projetor P é linear, idempotente e autoadjunto.",
                 Criador = "David Hilbert / Erhard Schmidt",
                 AnoOrigin = "1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -212,6 +297,11 @@ public partial class FormulaService
                 Descricao = "Todo funcional linear contínuo em um Hilbert é representável como produto interno com um vetor único. H*≅H (isomorfismo anti-linear).",
                 Criador = "Frigyes Riesz",
                 AnoOrigin = "1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -222,6 +312,11 @@ public partial class FormulaService
                 Descricao = "Conjunto ortonormal completo (base de Hilbert). Vetores são mutuamente ortogonais e normalizados. Todo Hilbert separável possui base ortonormal enumerável.",
                 Criador = "Erhard Schmidt",
                 AnoOrigin = "1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -232,6 +327,11 @@ public partial class FormulaService
                 Descricao = "Todo vetor em Hilbert pode ser decomposto como série de componentes ortogonais. Os coeficientes ⟨x,eᵢ⟩ são os 'coeficientes de Fourier generalizados'.",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -242,6 +342,11 @@ public partial class FormulaService
                 Descricao = "A energia total do vetor é a soma das energias de cada componente de Fourier. Generaliza o teorema de Parseval para séries de Fourier abstratas.",
                 Criador = "Marc-Antoine Parseval",
                 AnoOrigin = "1799 (generalizado ~1907)",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -252,6 +357,11 @@ public partial class FormulaService
                 Descricao = "O espaço L² com produto interno dado pela integral. É o espaço de Hilbert mais importante em física quântica e análise de Fourier.",
                 Criador = "Henri Lebesgue / Frigyes Riesz",
                 AnoOrigin = "~1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             // 1.3 Teoria Espectral
             new Formula
@@ -263,6 +373,11 @@ public partial class FormulaService
                 Descricao = "Operador igual a seu adjunto. Autovalores são reais e autovetores de autovalores distintos são ortogonais. Central em mecânica quântica (observáveis).",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -273,6 +388,11 @@ public partial class FormulaService
                 Descricao = "O espectro generaliza autovalores para operadores em espaços de dimensão infinita. Para autoadjuntos, σ(T)⊂ℝ.",
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -283,6 +403,11 @@ public partial class FormulaService
                 Descricao = "Autovalores verdadeiros onde T-λI tem núcleo não-trivial. Em dimensão finita, σ(T)=σₚ(T).",
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -293,6 +418,11 @@ public partial class FormulaService
                 Descricao = "O espectro decompõe-se em pontual (autovalores), contínuo (T-λI injetivo, imagem densa mas não todo H) e residual (imagem não densa).",
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -303,6 +433,11 @@ public partial class FormulaService
                 Descricao = "Todo operador autoadjunto em Hilbert é representável como integral espectral. Generaliza diagonalização de matrizes hermitianas para dimensão infinita.",
                 Criador = "David Hilbert / John von Neumann",
                 AnoOrigin = "1906-1932",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -313,6 +448,11 @@ public partial class FormulaService
                 Descricao = "Operador compacto mapeia a bola unitária em conjunto com fecho compacto. São limites de operadores de imagem finita (rank finito).",
                 Criador = "Frigyes Riesz / David Hilbert",
                 AnoOrigin = "~1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -323,6 +463,11 @@ public partial class FormulaService
                 Descricao = "Operador de Hilbert-Schmidt: a soma dos quadrados das normas das imagens de uma base ortonormal é finita. Todo HS é compacto.",
                 Criador = "Erhard Schmidt",
                 AnoOrigin = "1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -333,6 +478,11 @@ public partial class FormulaService
                 Descricao = "Para operadores compactos, o espectro não-nulo é enumerável, consiste apenas de autovalores de multiplicidade finita, e pode acumular somente em 0.",
                 Criador = "Erik Ivar Fredholm",
                 AnoOrigin = "1903",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -353,6 +503,11 @@ public partial class FormulaService
                 Descricao = "Uma σ-álgebra é uma família de subconjuntos fechada para complemento e uniões enumeráveis. Contém o conjunto vazio e o espaço todo.",
                 Criador = "Émile Borel / Henri Lebesgue",
                 AnoOrigin = "~1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["F"] + vars["A"]
             },
             new Formula
             {
@@ -363,6 +518,11 @@ public partial class FormulaService
                 Descricao = "Medida: função μ:F→[0,∞] com medida do vazio zero e σ-aditividade (soma de medidas de conjuntos disjuntos = medida da união).",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["mu"] + vars["sigma"]
             },
             new Formula
             {
@@ -373,6 +533,11 @@ public partial class FormulaService
                 Descricao = "Tríade fundamental: Ω é o espaço amostral, F (σ-álgebra) os conjuntos mensuráveis, μ atribui tamanho. (ℝ, Borel, Lebesgue) é o exemplo canônico.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Omega", Nome = "Omega", ValorPadrao = 1 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Omega"] + vars["F"]
             },
             new Formula
             {
@@ -399,6 +564,11 @@ public partial class FormulaService
                 Descricao = "A menor σ-álgebra contendo todos os conjuntos abertos. Contém abertos, fechados, compactos, Gδ, Fσ, etc.",
                 Criador = "Émile Borel",
                 AnoOrigin = "1898",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["sigma"] + vars["de"]
             },
             new Formula
             {
@@ -408,6 +578,11 @@ public partial class FormulaService
                 Icone = "μ",
                 Descricao = "Atribui a cada ponto peso 1. A medida de um conjunto é seu número de elementos. A integral em relação a ela é a soma.",
                 Criador = "Teoria de medida clássica",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["mu"] + vars["x"]
             },
             new Formula
             {
@@ -418,6 +593,11 @@ public partial class FormulaService
                 Descricao = "Para sequência decrescente de conjuntos com medida finita, a medida do limite é o limite das medidas.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] + vars["mu"]
             },
             new Formula
             {
@@ -428,6 +608,11 @@ public partial class FormulaService
                 Descricao = "Para sequência crescente de conjuntos, a medida converge para a medida da união. Não exige hipótese de medida finita.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] + vars["mu"]
             },
             // 2.2 Integral de Lebesgue
             new Formula
@@ -439,6 +624,11 @@ public partial class FormulaService
                 Descricao = "Para funções mensuráveis não-negativas, a integral é definida como supremo das integrais de funções simples dominadas. Sempre existe (pode ser ∞).",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -449,6 +639,11 @@ public partial class FormulaService
                 Descricao = "Decompõe f em partes positiva e negativa. A integral existe (é finita) quando ambas as partes são integráveis, i.e., f ∈ L¹.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -459,6 +654,11 @@ public partial class FormulaService
                 Descricao = "Se funções mensuráveis não-negativas crescem pontualmente para f, as integrais convergem. Permite trocar limite com integral para sequências monótonas.",
                 Criador = "Beppo Levi",
                 AnoOrigin = "1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -469,6 +669,11 @@ public partial class FormulaService
                 Descricao = "O teorema mais poderoso de convergência: se fₙ converge pontualmente e é dominada por uma função integrável, então a integral do limite é o limite das integrais.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -479,6 +684,11 @@ public partial class FormulaService
                 Descricao = "Desigualdade crucial: para funções não-negativas mensuráveis, a integral do liminf é no máximo o liminf das integrais. Pode haver perda de massa no limite.",
                 Criador = "Pierre Fatou",
                 AnoOrigin = "1906",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -489,6 +699,11 @@ public partial class FormulaService
                 Descricao = "Se f é integrável em relação à medida produto, as integrais iteradas em qualquer ordem coincidem com a integral dupla.",
                 Criador = "Guido Fubini",
                 AnoOrigin = "1907",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -499,6 +714,11 @@ public partial class FormulaService
                 Descricao = "Versão de Fubini para funções não-negativas: a troca de ordem é sempre permitida, sem exigir integrabilidade prévia (o resultado pode ser ∞).",
                 Criador = "Leonida Tonelli",
                 AnoOrigin = "1909",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             // 2.3 Derivada de Radon-Nikodym
             new Formula
@@ -510,6 +730,11 @@ public partial class FormulaService
                 Descricao = "ν é absolutamente contínua em relação a μ se todo conjunto de μ-medida zero tem ν-medida zero. Condição para existência de densidade.",
                 Criador = "Johann Radon / Otto Nikodym",
                 AnoOrigin = "1913-1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["nu"] + vars["mu"]
             },
             new Formula
             {
@@ -520,6 +745,11 @@ public partial class FormulaService
                 Descricao = "Se ν≪μ com μ σ-finita, existe uma 'derivada' f=dν/dμ (única q.t.p.) tal que ν se obtém integrando f em relação a μ. Fundamental em probabilidade.",
                 Criador = "Johann Radon / Otto Nikodym",
                 AnoOrigin = "1913-1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "dν", Nome = "dν", ValorPadrao = 10 }, new() { Simbolo = "dμ", Nome = "dμ", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "f",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dν"] / vars["dμ"]
             },
             new Formula
             {
@@ -530,6 +760,11 @@ public partial class FormulaService
                 Descricao = "Toda medida σ-finita decompõe-se unicamente em parte absolutamente contínua (tem densidade) e parte singular em relação a outra medida.",
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "_ac", Nome = "_ac", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["mu"] + vars["_ac"]
             },
             new Formula
             {
@@ -540,6 +775,11 @@ public partial class FormulaService
                 Descricao = "O dual topológico de Lᵖ é identificado com Lᵍ (expoente conjugado). Todo funcional contínuo em Lᵖ é da forma f↦∫fg dμ com g∈Lᵍ.",
                 Criador = "Frigyes Riesz",
                 AnoOrigin = "~1910",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["p"] + vars["q"]
             },
         ]);
     }
@@ -560,6 +800,11 @@ public partial class FormulaService
                 Descricao = "Uma categoria consiste de objetos, morfismos entre objetos, composição associativa e morfismos identidade. Ex.: Set (conjuntos), Grp (grupos), Top (espaços topológicos).",
                 Criador = "Samuel Eilenberg / Saunders Mac Lane",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -570,6 +815,11 @@ public partial class FormulaService
                 Descricao = "Mapeamento entre categorias que preserva composição e identidades. Generaliza homomorfismo. Um funtor é 'um morfismo de categorias'.",
                 Criador = "Samuel Eilenberg / Saunders Mac Lane",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -580,6 +830,11 @@ public partial class FormulaService
                 Descricao = "Funtor covariante preserva a direção dos morfismos. Contravariante inverte: se f:A→B, então F(f):F(B)→F(A). Ex.: dual de espaços vetoriais é contravariante.",
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -590,6 +845,11 @@ public partial class FormulaService
                 Descricao = "Família de morfismos η_A:F(A)→G(A) que comuta com todos os morfismos. Um 'morfismo de funtores'. Motivou a criação da teoria das categorias.",
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -600,6 +860,11 @@ public partial class FormulaService
                 Descricao = "Transformação natural onde cada componente η_A é isomorfismo. Relaciona funtores de forma canônica. Ex.: V≅V** (espaço vetorial e seu bidual).",
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 3.2 Construções Universais
             new Formula
@@ -611,6 +876,11 @@ public partial class FormulaService
                 Descricao = "Generaliza produto cartesiano: A×B é o objeto universal com projeções. Em Set é produto cartesiano, em Grp é produto direto.",
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -621,6 +891,11 @@ public partial class FormulaService
                 Descricao = "Dual do produto: união disjunta em Set, soma livre em Grp, soma direta em Ab. A propriedade universal é 'de dentro para fora'.",
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -631,6 +906,11 @@ public partial class FormulaService
                 Descricao = "Generaliza produto, equalizador, pullback. É o cone terminal sobre um diagrama: todo outro cone fatora unicamente por ele.",
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -641,6 +921,11 @@ public partial class FormulaService
                 Descricao = "Dual do limite. Generaliza coproduto, coequalizador, pushout. Cocone inicial sob o diagrama.",
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1960",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -651,6 +936,11 @@ public partial class FormulaService
                 Descricao = "Par de funtores adjuntos: 'melhor aproximação' em cada direção. Fundamental em toda a matemática: livre⊣esquecimento, Σ⊣Δ⊣Π, etc.",
                 Criador = "Daniel Kan",
                 AnoOrigin = "1958",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -661,6 +951,11 @@ public partial class FormulaService
                 Descricao = "O resultado mais profundo da teoria: transformações naturais do funtor representável Hom(A,-) em F bijetam com F(A). 'Objects are determined by their morphisms.'",
                 Criador = "Nobuo Yoneda",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -671,6 +966,11 @@ public partial class FormulaService
                 Descricao = "Topos elementar generaliza a categoria dos conjuntos: tem produtos finitos, exponenciais e classificador de subobjetos. Base para lógica categórica e geometria algébrica.",
                 Criador = "Alexander Grothendieck / F. William Lawvere",
                 AnoOrigin = "1963-1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -715,6 +1015,11 @@ public partial class FormulaService
                 Descricao = "O erro de interpolação depende da derivada (n+1)-ésima de f e do produto das distâncias aos nós. Escolha de nós (Chebyshev) minimiza o erro.",
                 Criador = "Joseph-Louis Lagrange",
                 AnoOrigin = "~1795",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -725,6 +1030,11 @@ public partial class FormulaService
                 Descricao = "Diferenças divididas para construção recursiva do polinômio interpolador. Forma de Newton permite adicionar nós incrementalmente.",
                 Criador = "Isaac Newton",
                 AnoOrigin = "~1687",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -735,6 +1045,11 @@ public partial class FormulaService
                 Descricao = "Polinômio de grau 3 por pedaço com continuidade C². Evita oscilações de Runge da interpolação de grau alto. Muito usada em CAD e gráficos.",
                 Criador = "Isaac Jacob Schoenberg",
                 AnoOrigin = "1946",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -745,6 +1060,11 @@ public partial class FormulaService
                 Descricao = "Raízes dos polinômios de Chebyshev. Distribuição ótima de nós que minimiza o máximo de |Π(x-xᵢ)|, evitando fenômeno de Runge.",
                 Criador = "Pafnuty Chebyshev",
                 AnoOrigin = "~1854",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -755,6 +1075,11 @@ public partial class FormulaService
                 Descricao = "Solução que minimiza o resíduo quadrático. As equações normais projetam b no espaço coluna de A. Condicionamento: κ(AᵀA) = κ(A)².",
                 Criador = "Carl Friedrich Gauss / Adrien-Marie Legendre",
                 AnoOrigin = "1795-1809",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 4.2 Integração Numérica
             new Formula
@@ -783,6 +1108,11 @@ public partial class FormulaService
                 Icone = "≈",
                 Descricao = "O erro é proporcional a h² e à segunda derivada de f. Funções com f''=0 (lineares) são integradas exatamente.",
                 Criador = "Análise de erro Newton-Cotes",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -814,6 +1144,11 @@ public partial class FormulaService
                 Icone = "≈",
                 Descricao = "Erro proporcional a h⁴ e à quarta derivada. Polinômios de grau ≤3 são integrados exatamente (precisão superior à esperada).",
                 Criador = "Thomas Simpson / Análise de erro",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -824,6 +1159,11 @@ public partial class FormulaService
                 Descricao = "Escolhe nós e pesos otimamente: com n pontos, integra exatamente polinômios de grau até 2n-1. Nós são raízes dos polinômios de Legendre.",
                 Criador = "Carl Friedrich Gauss",
                 AnoOrigin = "1814",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -834,6 +1174,11 @@ public partial class FormulaService
                 Descricao = "Combina regras do trapézio com diferentes passos h para eliminar termos de erro sucessivos. Converge rapidamente para funções suaves.",
                 Criador = "Werner Romberg",
                 AnoOrigin = "1955",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 4.3 EDOs Numéricas
             new Formula
@@ -862,6 +1207,11 @@ public partial class FormulaService
                 Descricao = "O método de referência para EDOs. Avalia a derivada em 4 pontos. Erro local O(h⁵), global O(h⁴). Ótimo equilíbrio custo/precisão.",
                 Criador = "Carl Runge / Martin Kutta",
                 AnoOrigin = "1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -872,6 +1222,11 @@ public partial class FormulaService
                 Descricao = "Primeira e segunda avaliação: k₁ é inclinação no início, k₂ é inclinação no ponto médio usando k₁ como predição.",
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -882,6 +1237,11 @@ public partial class FormulaService
                 Descricao = "Terceira e quarta avaliação: k₃ refina o ponto médio com k₂, k₄ usa k₃ para avaliar no final do intervalo.",
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -892,6 +1252,11 @@ public partial class FormulaService
                 Descricao = "Média ponderada: k₁ e k₄ com peso 1/6, k₂ e k₃ com peso 1/3. A ponderação vem da quadratura de Simpson aplicada à integral da ODE.",
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -902,6 +1267,11 @@ public partial class FormulaService
                 Descricao = "Método multi-passo explícito de 4ª ordem. Usa 4 valores anteriores da derivada. Mais eficiente que RK4 para problemas suaves (1 avaliação por passo).",
                 Criador = "John Couch Adams / Francis Bashforth",
                 AnoOrigin = "1883",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -912,6 +1282,11 @@ public partial class FormulaService
                 Descricao = "Para y'=λy (λ<0), o método numérico é estável se hλ está na região de estabilidade. Impõe restrição no passo h. Métodos implícitos têm regiões maiores.",
                 Criador = "Germund Dahlquist",
                 AnoOrigin = "1956",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 4.4 Álgebra Linear Numérica e Elementos Finitos
             new Formula
@@ -923,6 +1298,11 @@ public partial class FormulaService
                 Descricao = "Resolve Ax=b (A simétrica definida positiva) em no máximo n passos. Conjuga direções de busca para convergência ótima. O mais eficiente método iterativo para SPD.",
                 Criador = "Magnus Hestenes / Eduard Stiefel",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -933,6 +1313,11 @@ public partial class FormulaService
                 Descricao = "Minimiza o resíduo no subespaço de Krylov. Funciona para matrizes não-simétricas. Padrão para sistemas lineares grandes esparsos.",
                 Criador = "Yousef Saad / Martin Schultz",
                 AnoOrigin = "1986",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -959,6 +1344,11 @@ public partial class FormulaService
                 Descricao = "A formulação variacional transforma a EDP em encontrar u tal que a forma bilinear a(u,v) iguala o funcional L(v) para toda função teste v.",
                 Criador = "Alexander Hrennikoff / Richard Courant",
                 AnoOrigin = "1941-1943",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -969,6 +1359,11 @@ public partial class FormulaService
                 Descricao = "Aproxima u no subespaço de dimensão finita Vₕ. Resulta em sistema linear Kc=f onde K é a matriz de rigidez e f o vetor de carga.",
                 Criador = "Boris Galerkin",
                 AnoOrigin = "1915",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -979,6 +1374,11 @@ public partial class FormulaService
                 Descricao = "A taxa de convergência em H¹ é O(hᵏ) para elementos de grau k. Dobrando a malha (h/2) reduz o erro por fator 2ᵏ. Teoria de Céa-Strang.",
                 Criador = "Jean Céa / Gilbert Strang",
                 AnoOrigin = "1964-1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -999,6 +1399,11 @@ public partial class FormulaService
                 Descricao = "O conjunto de zeros comuns de um ideal de polinômios. Curvas, superfícies e variedades de dimensão superior são exemplos.",
                 Criador = "David Hilbert / André Weil",
                 AnoOrigin = "~1890-1946",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1009,6 +1414,11 @@ public partial class FormulaService
                 Descricao = "Correspondência variedade→ideal: o conjunto de todos os polinômios que se anulam na variedade V. É sempre um ideal radical.",
                 Criador = "David Hilbert",
                 AnoOrigin = "~1893",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1019,6 +1429,11 @@ public partial class FormulaService
                 Descricao = "O 'teorema dos zeros': a correspondência V↔I estabelece bijeção entre variedades e ideais radicais. Ponte fundamental entre álgebra e geometria.",
                 Criador = "David Hilbert",
                 AnoOrigin = "1893",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -1028,6 +1443,11 @@ public partial class FormulaService
                 Icone = "∩",
                 Descricao = "A dimensão algébrica é o grau de transcendência do corpo de funções racionais sobre k. Coincide com a dimensão topológica para variedades suaves.",
                 Criador = "Alexander Grothendieck / Emmy Noether",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1070,6 +1490,11 @@ public partial class FormulaService
                 Descricao = "Forma padrão de uma curva elíptica. É uma curva de gênero 1 com um ponto base (grupo abeliano). Fundamental em criptografia e teoria dos números.",
                 Criador = "Karl Weierstrass",
                 AnoOrigin = "~1860",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 10 }, new() { Simbolo = "ax", Nome = "ax", ValorPadrao = 5 } ],
+                VariavelResultado = "y²",
+                UnidadeResultado = "",
+                Calcular = vars => vars["x³"] + vars["ax"]
             },
             new Formula
             {
@@ -1095,6 +1520,11 @@ public partial class FormulaService
                 Descricao = "A reta passando por P e Q intersecta E num terceiro ponto; refletindo-o sobre o eixo x obtemos P+Q. Esta operação forma um grupo abeliano.",
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1137,6 +1567,11 @@ public partial class FormulaService
                 Icone = "E",
                 Descricao = "Fórmulas explícitas para as coordenadas de P+Q a partir de λ. x₃ vem de Vieta; y₃ da equação da reta substituída na curva.",
                 Criador = "Aritmética de curvas elípticas",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "λ²", Nome = "λ²", ValorPadrao = 10 }, new() { Simbolo = "x₁", Nome = "x₁", ValorPadrao = 5 } ],
+                VariavelResultado = "x₃",
+                UnidadeResultado = "",
+                Calcular = vars => vars["λ²"] - vars["x₁"]
             },
             new Formula
             {
@@ -1147,6 +1582,11 @@ public partial class FormulaService
                 Descricao = "Os pontos de uma curva elíptica sobre um corpo k formam um grupo abeliano com a adição geométrica. O ponto no infinito é a identidade.",
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1157,6 +1597,11 @@ public partial class FormulaService
                 Descricao = "Os pontos racionais de uma curva elíptica formam grupo finitamente gerado: parte livre de rank r (possivelmente 0) + subgrupo de torção finito.",
                 Criador = "Louis Mordell / André Weil",
                 AnoOrigin = "1922-1928",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1167,6 +1612,11 @@ public partial class FormulaService
                 Descricao = "O rank r mede quantos pontos racionais independentes geram o grupo. r=0 significa finitos pontos racionais. A conjectura de Birch-Swinnerton-Dyer relaciona r com L(E,s).",
                 Criador = "Louis Mordell",
                 AnoOrigin = "1922",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1177,6 +1627,11 @@ public partial class FormulaService
                 Descricao = "Base da criptografia de curvas elípticas (ECC). Multiplicação k·P é rápida (O(log k)) mas inverter é exponencial. Permite chaves menores que RSA para mesma segurança.",
                 Criador = "Neal Koblitz / Victor Miller",
                 AnoOrigin = "1985",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -1197,6 +1652,11 @@ public partial class FormulaService
                 Descricao = "Os blocos da lógica de 1ª ordem: quantificadores (∀,∃), conectivos lógicos (∧,∨,¬,→), variáveis, constantes, funções e predicados.",
                 Criador = "Gottlob Frege",
                 AnoOrigin = "1879",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1207,6 +1667,11 @@ public partial class FormulaService
                 Descricao = "M⊨φ significa que a fórmula φ é verdadeira na estrutura M (modelo). A semântica de Tarski atribui verdade relativa a interpretações.",
                 Criador = "Alfred Tarski",
                 AnoOrigin = "1933",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1217,6 +1682,11 @@ public partial class FormulaService
                 Descricao = "Uma fórmula é provável no cálculo de predicados se e somente se é verdadeira em todos os modelos. Conecta sintaxe (prova) e semântica (verdade).",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1929",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1227,6 +1697,11 @@ public partial class FormulaService
                 Descricao = "Uma teoria tem modelo se e somente se todo subconjunto finito tem modelo. Permite construir modelos infinitos e provar existência via consistência finita.",
                 Criador = "Kurt Gödel (consequência da completude)",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1237,6 +1712,11 @@ public partial class FormulaService
                 Descricao = "Uma teoria de 1ª ordem com modelo infinito tem modelos de todos os cardinais infinitos. A lógica de 1ª ordem não pode distinguir entre infinitos de tamanhos diferentes.",
                 Criador = "Leopold Löwenheim / Thoralf Skolem",
                 AnoOrigin = "1915-1920",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             // 6.2 Incompletude de Gödel
             new Formula
@@ -1248,6 +1728,11 @@ public partial class FormulaService
                 Descricao = "Qualquer sistema formal consistente capaz de expressar aritmética básica contém sentenças verdadeiras que não podem ser provadas nem refutadas dentro do sistema.",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1258,6 +1743,11 @@ public partial class FormulaService
                 Descricao = "Um sistema consistente não pode provar sua própria consistência. Encerrou o programa de Hilbert de fundamentar toda a matemática, mostrando limites inerentes de sistemas formais.",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1268,6 +1758,11 @@ public partial class FormulaService
                 Descricao = "Cada fórmula e prova é codificada unicamente como número natural. Permite que a aritmética 'fale sobre' suas próprias fórmulas — chave para auto-referência.",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1278,6 +1773,11 @@ public partial class FormulaService
                 Descricao = "A sentença G afirma 'eu não tenho prova em T'. Se T é consistente, G é verdadeira mas indemonstrável. Análoga ao paradoxo do mentiroso, porém sobre provabilidade.",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -1288,6 +1788,11 @@ public partial class FormulaService
                 Descricao = "Não existe fórmula na linguagem da aritmética que defina exatamente o conjunto das sentenças verdadeiras. Mais forte que Gödel: verdade é mais 'complexa' que provabilidade.",
                 Criador = "Alfred Tarski",
                 AnoOrigin = "1936",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }

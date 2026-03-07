@@ -24,6 +24,11 @@ public partial class FormulaService
                 Descricao = "Categoria derivada D(A): localização da categoria homotópica K(A) nos quase-isomorfismos. Foundacional para álgebra homológica moderna.",
                 Criador = "Jean-Louis Verdier",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -34,6 +39,11 @@ public partial class FormulaService
                 Descricao = "Triângulo distinto: sequência X→Y→Z→X[1] na categoria derivada. Generaliza sequências exatas curtas; axiomas de Puppe.",
                 Criador = "Jean-Louis Verdier",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -44,6 +54,11 @@ public partial class FormulaService
                 Descricao = "Functor derivado à direita: aplica-se F a uma resolução injetiva e toma-se cohomologia. Base para Ext, sheaf cohomology.",
                 Criador = "Henri Cartan / Samuel Eilenberg",
                 AnoOrigin = "1956",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
             new Formula
             {
@@ -54,6 +69,11 @@ public partial class FormulaService
                 Descricao = "Sequência espectral de Grothendieck para composição de functores derivados. Ferramenta fundamental de cálculo homológico.",
                 Criador = "Alexander Grothendieck",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -64,6 +84,11 @@ public partial class FormulaService
                 Descricao = "Complexo de Koszul: resolução livre canônica associada a uma sequência regular. Calcula Tor e Ext para ideais.",
                 Criador = "Jean-Louis Koszul",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -74,6 +99,11 @@ public partial class FormulaService
                 Descricao = "Teorema de reconstrução de Bondal-Orlov: a categoria derivada limitada de feixes coerentes determina a variedade quando o canônico é amplo.",
                 Criador = "Alexei Bondal / Dmitri Orlov",
                 AnoOrigin = "2001",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -84,6 +114,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Rickard: duas álgebras são derivadamente equivalentes se e somente se existe um complexo tilting. Generaliza Morita clássico.",
                 Criador = "Jeremy Rickard",
                 AnoOrigin = "1989",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -94,6 +129,11 @@ public partial class FormulaService
                 Descricao = "t-Estrutura em categoria triangulada: decomposição que recupera uma categoria abeliana (o coração). Essencial em D-módulos e perverse sheaves.",
                 Criador = "Alexander Beilinson / Joseph Bernstein / Pierre Deligne",
                 AnoOrigin = "1982",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
 
             // 1.2 ∞-Categorias Quasicategóricas
@@ -106,6 +146,11 @@ public partial class FormulaService
                 Descricao = "Quasicategoria (∞-categoria fraca): conjunto simplicial satisfazendo a condição de preenchimento de chifres internos. Modelo de Joyal-Lurie para (∞,1)-categorias.",
                 Criador = "André Joyal",
                 AnoOrigin = "2002",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -116,6 +161,11 @@ public partial class FormulaService
                 Descricao = "Espaço de mapeamento numa quasicategoria: complexo de Kan dos morfismos de x a y. Generaliza Hom-sets para ∞-categorias.",
                 Criador = "Jacob Lurie",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -126,6 +176,11 @@ public partial class FormulaService
                 Descricao = "Limites e colimites homotópicos em ∞-categorias: definidos via objetos terminais/iniciais em categorias-fatia. Substituem limites derivados.",
                 Criador = "Jacob Lurie",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -136,6 +191,11 @@ public partial class FormulaService
                 Descricao = "Adjunção em ∞-categorias: equivalência natural de espaços de mapeamento. Generaliza adjunções clássicas preservando informação homotópica.",
                 Criador = "Jacob Lurie",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -146,6 +206,11 @@ public partial class FormulaService
                 Descricao = "Localização de Dwyer-Kan: constrói a ∞-categoria onde morfismos em W se tornam equivalências. Precursor da teoria de ∞-categorias.",
                 Criador = "William Dwyer / Daniel Kan",
                 AnoOrigin = "1980",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -156,6 +221,11 @@ public partial class FormulaService
                 Descricao = "∞-Topos de Lurie: análogo homotópico de topos de Grothendieck. Feixes de espaços satisfazendo descent. Base da geometria derivada.",
                 Criador = "Jacob Lurie",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -166,6 +236,11 @@ public partial class FormulaService
                 Descricao = "Lema de Yoneda para ∞-categorias: o functor representável é plenamente fiel e Nat(y(c),F) ≃ F(c). Pilar da álgebra superior.",
                 Criador = "Jacob Lurie",
                 AnoOrigin = "2009",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
 
             // 1.3 Teoria Homotópica de Tipos (HoTT)
@@ -178,6 +253,11 @@ public partial class FormulaService
                 Descricao = "Tipo identidade em HoTT: para cada a,b:A existe o tipo Id_A(a,b). O construtor refl_a é o caminho constante. Base da homotopia em tipos.",
                 Criador = "Per Martin-Löf",
                 AnoOrigin = "1975",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -188,6 +268,11 @@ public partial class FormulaService
                 Descricao = "Universos em HoTT: U é um tipo cujos termos são tipos. Hierarquia cumulativa U₀ ⊂ U₁ ⊂ ... evita paradoxos tipo Russell.",
                 Criador = "Per Martin-Löf",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -198,6 +283,11 @@ public partial class FormulaService
                 Descricao = "Axioma de univalência de Voevodsky: identificação no universo U é equivalente a equivalência de tipos. Fundamental em HoTT, conecta igualdade e isomorfismo.",
                 Criador = "Vladimir Voevodsky",
                 AnoOrigin = "2006",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -208,6 +298,11 @@ public partial class FormulaService
                 Descricao = "Tipo indutivo superior: define espaços por geradores de pontos e caminhos. S¹ tem um ponto base e um loop, realizando o círculo homotópico.",
                 Criador = "Peter Lumsdaine / Guillaume Brunerie",
                 AnoOrigin = "2012",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -218,6 +313,11 @@ public partial class FormulaService
                 Descricao = "Correspondência Grothendieck em HoTT: famílias de tipos B:A→U correspondem a fibrações (Σ-tipos). Ponte entre lógica dependente e topologia.",
                 Criador = "Vladimir Voevodsky",
                 AnoOrigin = "2010",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -228,6 +328,11 @@ public partial class FormulaService
                 Descricao = "Cálculo de π₁(S¹)=ℤ puramente em HoTT sem pontos: usa recobrimento universal como tipo dependente sobre S¹. Marco da homotopia sintética.",
                 Criador = "Michael Shulman",
                 AnoOrigin = "2011",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -238,6 +343,11 @@ public partial class FormulaService
                 Descricao = "Truncação homotópica: ‖A‖ₙ força A a ter informação homotópica apenas até nível n. isProp (n=-1), isSet (n=0). Controle de níveis em HoTT.",
                 Criador = "Vladimir Voevodsky",
                 AnoOrigin = "2010",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
         ]);
     }
@@ -258,6 +368,11 @@ public partial class FormulaService
                 Descricao = "Equação de Korteweg-de Vries: modelo de ondas solitárias em águas rasas. Protótipo de EDP integrável com sólitons.",
                 Criador = "Diederik Korteweg / Gustav de Vries",
                 AnoOrigin = "1895",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["u"] + vars["t"]
             },
             new Formula
             {
@@ -268,6 +383,11 @@ public partial class FormulaService
                 Descricao = "Representação de Lax: L,P operadores com dL/dt=[P,L]. Espectro de L é conservado, gerando infinitas quantidades conservadas.",
                 Criador = "Peter Lax",
                 AnoOrigin = "1968",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "dL", Nome = "dL", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["dL"] + vars["dt"]
             },
             new Formula
             {
@@ -278,6 +398,11 @@ public partial class FormulaService
                 Descricao = "Transformada de scattering inverso: método para resolver a KdV e outras EDPs integráveis. Análogo não-linear da transformada de Fourier.",
                 Criador = "Clifford Gardner / John Greene / Martin Kruskal / Robert Miura",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "IST", Nome = "IST", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["IST"]
             },
             new Formula
             {
@@ -288,6 +413,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de N-sólitons via IST: solução exata da KdV como logaritmo do determinante. Sólitons interagem elasticamente.",
                 Criador = "Vladimir Zakharov / Alexei Shabat",
                 AnoOrigin = "1971",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "2", Nome = "2", ValorPadrao = 5 }, new() { Simbolo = "d²", Nome = "d²", ValorPadrao = 3 } ],
+                VariavelResultado = "u",
+                UnidadeResultado = "",
+                Calcular = vars => vars["2"] * vars["d²"]
             },
             new Formula
             {
@@ -298,6 +428,11 @@ public partial class FormulaService
                 Descricao = "Cadeia de Toda: sistema integrável de partículas com interação exponencial. Importante em teoria de matrizes aleatórias e álgebras de Lie.",
                 Criador = "Morikazu Toda",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
             },
             new Formula
             {
@@ -308,6 +443,11 @@ public partial class FormulaService
                 Descricao = "Equação Sine-Gordon: EDP integrável com sólitons topológicos (kinks/antikinks). Aparece em teoria de campo e cristais.",
                 Criador = "Edmond Bour",
                 AnoOrigin = "1862",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"]
             },
             new Formula
             {
@@ -318,6 +458,11 @@ public partial class FormulaService
                 Descricao = "Equação de Schrödinger não-linear: integrável via IST, modela fibras ópticas e ondas em águas profundas. Sólitons de envelope.",
                 Criador = "Vladimir Zakharov / Alexei Shabat",
                 AnoOrigin = "1972",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 }, new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["i"] + vars["psi"]
             },
             new Formula
             {
@@ -328,6 +473,11 @@ public partial class FormulaService
                 Descricao = "Equação de Kadomtsev-Petviashvili: generalização 2D da KdV. Hierarquia KP conecta integrabilidade, Grassmanianas e moduli de curvas.",
                 Criador = "Boris Kadomtsev / Vladimir Petviashvili",
                 AnoOrigin = "1970",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "u_", Nome = "u_", ValorPadrao = 1 }, new() { Simbolo = "yy", Nome = "yy", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["u_"] + vars["yy"]
             },
             new Formula
             {
@@ -338,6 +488,11 @@ public partial class FormulaService
                 Descricao = "Equação de Yang-Baxter: condição de consistência para integrabilidade. A R-matrix gera simetrias quânticas (grupos quânticos).",
                 Criador = "Chen-Ning Yang / Rodney Baxter",
                 AnoOrigin = "1967",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "R₂₃", Nome = "R₂₃", ValorPadrao = 2 }, new() { Simbolo = "R₁₃", Nome = "R₁₃", ValorPadrao = 3 }, new() { Simbolo = "R₁₂", Nome = "R₁₂", ValorPadrao = 4 } ],
+                VariavelResultado = "R₂₃",
+                UnidadeResultado = "",
+                Calcular = vars => vars["R₂₃"] * vars["R₁₃"] * vars["R₁₂"]
             },
             new Formula
             {
@@ -348,6 +503,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Liouville-Arnold: sistema hamiltoniano com n integrais independentes em involução é integrável por quadraturas. Órbitas em toros.",
                 Criador = "Joseph Liouville / Vladimir Arnold",
                 AnoOrigin = "1855",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["n"] + vars["em"]
             },
 
             // 2.2 TQFTs
@@ -360,6 +520,11 @@ public partial class FormulaService
                 Descricao = "TQFT (Atiyah): functor monoidal simétrico da categoria de cobordismos para Vect. Axiomas: multiplicatividade, functorialidade, involução.",
                 Criador = "Michael Atiyah",
                 AnoOrigin = "1988",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Z", Nome = "Z", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Z"] + vars["de"]
             },
             new Formula
             {
@@ -370,6 +535,11 @@ public partial class FormulaService
                 Descricao = "Ação de Chern-Simons: funcional topológico 3D para conexão A. Gera a TQFT de Witten e invariantes de nós (polinômio de Jones).",
                 Criador = "Shiing-Shen Chern / James Simons",
                 AnoOrigin = "1974",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
             new Formula
             {
@@ -380,6 +550,11 @@ public partial class FormulaService
                 Descricao = "Invariante WRT de 3-variedades: soma sobre representações do grupo quântico a uma raiz da unidade. Quantização rigorosa de Chern-Simons.",
                 Criador = "Edward Witten / Nicolai Reshetikhin / Vladimir Turaev",
                 AnoOrigin = "1991",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "M", Nome = "M", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["M"]
             },
             new Formula
             {
@@ -390,6 +565,11 @@ public partial class FormulaService
                 Descricao = "Polinômio de Jones: invariante de nós obtido como valor esperado de Wilson loop na TQFT de Chern-Simons. q = raiz da unidade.",
                 Criador = "Edward Witten",
                 AnoOrigin = "1989",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "V_L", Nome = "V_L", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["V_L"] + vars["q"]
             },
             new Formula
             {
@@ -400,6 +580,11 @@ public partial class FormulaService
                 Descricao = "Invariante de Turaev-Viro: TQFT 3D definida por state sum sobre triangulações. Usa símbolos 6j quânticos de categorias de fusão.",
                 Criador = "Vladimir Turaev / Oleg Viro",
                 AnoOrigin = "1992",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "ZTV", Nome = "ZTV", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["ZTV"]
             },
             new Formula
             {
@@ -410,6 +595,11 @@ public partial class FormulaService
                 Descricao = "Classificação de 2d TQFTs: equivalência com álgebras de Frobenius comutativas. Multiplicação = calça, comultiplicação = calça invertida.",
                 Criador = "Lowell Abrams",
                 AnoOrigin = "1996",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"]
             },
             new Formula
             {
@@ -420,6 +610,11 @@ public partial class FormulaService
                 Descricao = "Hipótese do cobordismo (Baez-Dolan, provada por Lurie): TQFT estendida n-dimensional plenamente determinada pelo valor no ponto, que é objeto plenamente dualizável.",
                 Criador = "John Baez / James Dolan",
                 AnoOrigin = "1995",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "Z", Nome = "Z", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["Z"]
             },
         ]);
     }
@@ -440,6 +635,11 @@ public partial class FormulaService
                 Descricao = "Semianél tropical: números reais com soma=max e produto=soma usual. Base da geometria tropical que \"lineariza\" problemas algébricos.",
                 Criador = "Imre Simon",
                 AnoOrigin = "1988",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -450,6 +650,11 @@ public partial class FormulaService
                 Descricao = "Variedade tropical: conjunto dos pontos onde o máximo no polinômio tropical é atingido por pelo menos dois monômios. Grafo planar ponderado.",
                 Criador = "Grigory Mikhalkin",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -460,6 +665,11 @@ public partial class FormulaService
                 Descricao = "Correspondência de Mikhalkin: conta curvas algébricas via curvas tropicais com multiplicidades. Revolucionou enumeração de curvas.",
                 Criador = "Grigory Mikhalkin",
                 AnoOrigin = "2005",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -470,6 +680,11 @@ public partial class FormulaService
                 Descricao = "Dualidade de Newton: a curva tropical de f é dual à subdivisão regular do politopo de Newton. Conecta combinatória convexa e geometria tropical.",
                 Criador = "Grigory Mikhalkin",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -480,6 +695,11 @@ public partial class FormulaService
                 Descricao = "Grassmanniana tropical: parametriza subespaços tropicais via matróides valuadas. Conecta combinatória de matróides e geometria algébrica tropical.",
                 Criador = "David Speyer / Bernd Sturmfels",
                 AnoOrigin = "2004",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -490,6 +710,11 @@ public partial class FormulaService
                 Descricao = "Gênero de curva tropical: primeiro número de Betti do grafo Γ. Análogo tropical do gênero de curvas algébricas clássicas.",
                 Criador = "Grigory Mikhalkin",
                 AnoOrigin = "2006",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -500,6 +725,11 @@ public partial class FormulaService
                 Descricao = "Fan de Bergman: tropicalização do complemento de arranjo de hiperplanos. Estrutura combinatória rica ligada a matróides.",
                 Criador = "George Bergman",
                 AnoOrigin = "1971",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
 
             // 3.2 Teoria dos Nós
@@ -512,6 +742,11 @@ public partial class FormulaService
                 Descricao = "Polinômio de Alexander: primeiro invariante polinomial de nós, calculado via matriz de Seifert. Detecta gênero e fatoração de nós.",
                 Criador = "James Alexander",
                 AnoOrigin = "1928",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -522,6 +757,11 @@ public partial class FormulaService
                 Descricao = "Polinômio de Jones: invariante de nós orientados via relação skein. Distingue nós que Alexander não diferencia. Conecta-se a física (CS).",
                 Criador = "Vaughan Jones",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Sqrt(vars["x"])
             },
             new Formula
             {
@@ -532,6 +772,11 @@ public partial class FormulaService
                 Descricao = "Invariante HOMFLY-PT: polinômio de duas variáveis que generaliza Jones e Alexander. Relação skein com parâmetros α e z.",
                 Criador = "Freyd / Yetter / Hoste / Lickorish / Millett / Ocneanu / Przytycki / Traczyk",
                 AnoOrigin = "1985",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -542,6 +787,11 @@ public partial class FormulaService
                 Descricao = "Writhe: soma algébrica dos sinais de cruzamento. Número de cruzamento c(K): mínimo de cruzamentos sobre todos os diagramas do nó.",
                 Criador = "Kurt Reidemeister",
                 AnoOrigin = "1927",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -552,6 +802,11 @@ public partial class FormulaService
                 Descricao = "Bracket de Kauffman: invariante de links não-orientados via state sum. Normalizado pelo writhe, recupera o polinômio de Jones.",
                 Criador = "Louis Kauffman",
                 AnoOrigin = "1987",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -562,6 +817,11 @@ public partial class FormulaService
                 Descricao = "Grupo do nó: grupo fundamental do complemento do nó em S³. Apresentação de Wirtinger a partir do diagrama. Invariante completo mas difícil de comparar.",
                 Criador = "Wilhelm Wirtinger",
                 AnoOrigin = "1905",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -572,6 +832,11 @@ public partial class FormulaService
                 Descricao = "Homologia de Khovanov: categorificação do polinômio de Jones. Homologia bi-graduada cujo Euler graduado é V_K. Detecta o unknot.",
                 Criador = "Mikhail Khovanov",
                 AnoOrigin = "1999",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
 
             // 3.3 Combinatória Algébrica
@@ -584,6 +849,11 @@ public partial class FormulaService
                 Descricao = "Matróide: abstração de independência linear. Axioma de troca garante que todas as bases têm o mesmo tamanho. Unifica grafos e vetores.",
                 Criador = "Hassler Whitney",
                 AnoOrigin = "1935",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -594,6 +864,11 @@ public partial class FormulaService
                 Descricao = "Polinômio cromático: conta colorações próprias de G com k cores. Caso especial do polinômio de Tutte. Conjectura de Rota verificada por Huh.",
                 Criador = "George David Birkhoff",
                 AnoOrigin = "1912",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -604,6 +879,11 @@ public partial class FormulaService
                 Descricao = "Polinômio de Tutte: invariante universal de grafos e matróides. Especializa para cromático, Jones, confiabilidade e função de partição de Potts.",
                 Criador = "William Thomas Tutte",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -614,6 +894,11 @@ public partial class FormulaService
                 Descricao = "Funções de Schur: base do anel de funções simétricas indexadas por partições. Caracteres de GL(n). Fórmula de Weyl como quociente de determinantes.",
                 Criador = "Issai Schur",
                 AnoOrigin = "1901",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -624,6 +909,11 @@ public partial class FormulaService
                 Descricao = "Regra de Littlewood-Richardson: produto de funções de Schur. Coeficientes c^λ_{μν} contados por tableaux de Young semi-standard com condição de reticulado.",
                 Criador = "Dudley Littlewood / Archibald Richardson",
                 AnoOrigin = "1934",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -634,6 +924,11 @@ public partial class FormulaService
                 Descricao = "Álgebra de Hopf das funções simétricas: comultiplicação via funções skew-Schur. Estrutura de Hopf permeia toda a combinatória algébrica.",
                 Criador = "Ira Gessel",
                 AnoOrigin = "1984",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -644,6 +939,11 @@ public partial class FormulaService
                 Descricao = "Fórmula de hook-length: conta o número de tableaux de Young standard de forma λ. h(u) = hook length da célula u no diagrama.",
                 Criador = "James Frame / Gilbert Robinson / Robert Thrall",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -654,6 +954,11 @@ public partial class FormulaService
                 Descricao = "Polinômios de Kazhdan-Lusztig: definidos pela base canônica da álgebra de Hecke. Calculam multiplicidades em representações e cohomologia de intersection.",
                 Criador = "David Kazhdan / George Lusztig",
                 AnoOrigin = "1979",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Pow(vars["x"], vars["n"])
             },
             new Formula
             {
@@ -664,6 +969,11 @@ public partial class FormulaService
                 Descricao = "Conjectura de Rota (provada por Adiprasito-Huh-Katz 2018): coeficientes do polinômio característico de matróides formam sequência log-côncava.",
                 Criador = "Gian-Carlo Rota",
                 AnoOrigin = "1971",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => Math.Log(vars["x"])
             },
         ]);
     }
@@ -684,6 +994,11 @@ public partial class FormulaService
                 Descricao = "Espaço de Sobolev: funções em Lᵖ com todas as derivadas fracas até ordem k também em Lᵖ. Espaço natural para EDPs com soluções fracas.",
                 Criador = "Sergei Sobolev",
                 AnoOrigin = "1938",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "W", Nome = "W", ValorPadrao = 1 }, new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["W"] + vars["k"]
             },
             new Formula
             {
@@ -694,6 +1009,11 @@ public partial class FormulaService
                 Descricao = "Teorema de imersão de Sobolev: W^{k,p} se imerge continuamente em Lq com expoente determinado por p,k,n. Fundamental para regularidade de EDPs.",
                 Criador = "Sergei Sobolev",
                 AnoOrigin = "1938",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 2, ValorMin = 0.001 } ],
+                VariavelResultado = "q",
+                UnidadeResultado = "",
+                Calcular = vars => vars["1"] / vars["p"]
             },
             new Formula
             {
@@ -704,6 +1024,11 @@ public partial class FormulaService
                 Descricao = "Desigualdade de Poincaré: controla a oscilação de u por seu gradiente. C depende do domínio. Essencial para coercividade em problemas elípticos.",
                 Criador = "Henri Poincaré",
                 AnoOrigin = "1890",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 }, new() { Simbolo = "_Lp", Nome = "_Lp", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["u"] + vars["_Lp"]
             },
             new Formula
             {
@@ -714,6 +1039,11 @@ public partial class FormulaService
                 Descricao = "Teorema de traços: restrição ao bordo ∂Ω é operador contínuo e sobrejetivo. Permite formular condições de contorno para soluções fracas.",
                 Criador = "Emilio Gagliardo",
                 AnoOrigin = "1957",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "gamma", Nome = "gamma", ValorPadrao = 1 }, new() { Simbolo = "W", Nome = "W", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["gamma"] + vars["W"]
             },
             new Formula
             {
@@ -724,6 +1054,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Rellich-Kondrachov: imersão compacta de W^{1,p} em Lq (q < expoente crítico). Garante convergência de subsequências — chave para existência de soluções.",
                 Criador = "Franz Rellich / Vladimir Kondrachov",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "W", Nome = "W", ValorPadrao = 1 }, new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["W"] + vars["p"]
             },
             new Formula
             {
@@ -734,6 +1069,11 @@ public partial class FormulaService
                 Descricao = "Desigualdade de Gagliardo-Nirenberg: interpolação entre derivadas de diferentes ordens. Conecta normas Sobolev e Lp com expoente θ determinado por escala.",
                 Criador = "Emilio Gagliardo / Louis Nirenberg",
                 AnoOrigin = "1959",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "_Lp", Nome = "_Lp", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["_Lp"] + vars["C"]
             },
             new Formula
             {
@@ -744,6 +1084,11 @@ public partial class FormulaService
                 Descricao = "Espaço de Sobolev fracionário H^s: definido via transformada de Fourier com peso (1+|ξ|²)^s. Permite derivadas de ordem não-inteira s∈ℝ.",
                 Criador = "Lars Hörmander",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["H"] + vars["s"]
             },
             new Formula
             {
@@ -754,6 +1099,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Lax-Milgram: forma bilinear contínua e coerciva em espaço de Hilbert garante existência e unicidade de solução fraca. Motor de EDPs elípticas.",
                 Criador = "Peter Lax / Arthur Milgram",
                 AnoOrigin = "1954",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "e", Nome = "e", ValorPadrao = 1 }, new() { Simbolo = "da", Nome = "da", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["e"] + vars["da"]
             },
 
             // 4.2 Distribuições de Schwartz
@@ -766,6 +1116,11 @@ public partial class FormulaService
                 Descricao = "Distribuição: funcional linear contínuo sobre o espaço de funções-teste C_c^∞. Generaliza funções: delta de Dirac, valor principal, etc.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "T", Nome = "T", ValorPadrao = 1 }, new() { Simbolo = "D", Nome = "D", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["T"] + vars["D"]
             },
             new Formula
             {
@@ -776,6 +1131,11 @@ public partial class FormulaService
                 Descricao = "Delta de Dirac: distribuição de avaliação pontual. Não é função mas funcional: ⟨δ_a,φ⟩=φ(a). Indispensável em física e engenharia.",
                 Criador = "Paul Dirac",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["delta"] + vars["phi"]
             },
             new Formula
             {
@@ -786,6 +1146,11 @@ public partial class FormulaService
                 Descricao = "Derivada distribucional: definida por dualidade via integração por partes. Toda distribuição é infinitamente diferenciável. Derivada de Heaviside = delta.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["phi"] + vars["alpha"]
             },
             new Formula
             {
@@ -796,6 +1161,11 @@ public partial class FormulaService
                 Descricao = "Espaço de Schwartz: funções C^∞ que decaem mais rápido que qualquer polinômio. Domínio natural da transformada de Fourier. S' = distribuições temperadas.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] + vars["C"]
             },
             new Formula
             {
@@ -806,6 +1176,11 @@ public partial class FormulaService
                 Descricao = "Transformada de Fourier em distribuições temperadas: definida por dualidade. F é isomorfismo de S' para S'. F[δ]=1 e F[1]=δ.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "FT", Nome = "FT", ValorPadrao = 1 }, new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["FT"] + vars["phi"]
             },
             new Formula
             {
@@ -816,6 +1191,11 @@ public partial class FormulaService
                 Descricao = "Solução fundamental: distribuição E com P(D)E=δ. Solução de P(D)u=f obtida por convolução u=E*f. Teorema de Malgrange-Ehrenpreis garante existência.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1950",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "D", Nome = "D", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["P"] + vars["D"]
             },
             new Formula
             {
@@ -826,6 +1206,11 @@ public partial class FormulaService
                 Descricao = "Teorema do núcleo de Schwartz: todo operador linear contínuo de S para S' é dado por um kernel distribucional. Generaliza representação integral.",
                 Criador = "Laurent Schwartz",
                 AnoOrigin = "1952",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 }, new() { Simbolo = "K", Nome = "K", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["S"] + vars["K"]
             },
 
             // 4.3 Análise Não-Standard
@@ -838,6 +1223,11 @@ public partial class FormulaService
                 Descricao = "Hiperreais: corpo ordenado *ℝ contendo infinitesimais e infinitos. Construção via ultrapotência de ℝ modulo ultrafiltro livre sobre ℕ.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"]
             },
             new Formula
             {
@@ -848,6 +1238,11 @@ public partial class FormulaService
                 Descricao = "Princípio de transferência: toda sentença de primeira ordem verdadeira em ℝ é verdadeira em *ℝ e vice-versa. Equivalência elementar ℝ ≡ *ℝ.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["de"] + vars["em"]
             },
             new Formula
             {
@@ -858,6 +1253,11 @@ public partial class FormulaService
                 Descricao = "Infinitesimais: elementos positivos de *ℝ menores que todo racional positivo. Mônada de a: conjunto dos x infinitamente próximos de a. Formaliza cálculo de Leibniz.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["epsilon"] + vars["n"]
             },
             new Formula
             {
@@ -868,6 +1268,11 @@ public partial class FormulaService
                 Descricao = "Parte standard: mapa de *ℝ finito para ℝ. st(x) é o único real infinitamente próximo de x. Conecta cálculo não-standard ao clássico.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "st", Nome = "st", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["st"] + vars["x"]
             },
             new Formula
             {
@@ -878,6 +1283,11 @@ public partial class FormulaService
                 Descricao = "Derivada não-standard: quociente (f(a+ε)-f(a))/ε para infinitesimal ε, seguido de parte standard. Realiza a intuição original de Leibniz.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "a", Nome = "a", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => vars["f"] + vars["a"]
             },
             new Formula
             {
@@ -888,6 +1298,11 @@ public partial class FormulaService
                 Descricao = "Integral não-standard: soma de Riemann hiperfinita com N infinito termos e Δx infinitesimal, seguida de parte standard. Definição construtiva e intuitiva.",
                 Criador = "Abraham Robinson",
                 AnoOrigin = "1966",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
             },
         ]);
     }
@@ -908,6 +1323,11 @@ public partial class FormulaService
                 Descricao = "Axioma K: se é necessário que p implique q, e p é necessário, então q é necessário. Axioma base de toda lógica modal normal.",
                 Criador = "Saul Kripke",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -918,6 +1338,11 @@ public partial class FormulaService
                 Descricao = "Axioma T: se p é necessário, então p é verdadeiro. Corresponde a relação de acessibilidade reflexiva. Sistema modal T = K + T.",
                 Criador = "Robert Feys",
                 AnoOrigin = "1937",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -928,6 +1353,11 @@ public partial class FormulaService
                 Descricao = "Axioma 4: necessidade é iterável. Com T, define S4 com relação pré-ordem. Lógica do conhecimento (o que sei, sei que sei).",
                 Criador = "Clarence Irving Lewis",
                 AnoOrigin = "1932",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -938,6 +1368,11 @@ public partial class FormulaService
                 Descricao = "Axioma 5: se algo é possível, é necessariamente possível. S5 = K+T+5, relação de equivalência. Lógica metafísica por excelência.",
                 Criador = "Clarence Irving Lewis",
                 AnoOrigin = "1932",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -948,6 +1383,11 @@ public partial class FormulaService
                 Descricao = "Semântica de Kripke: □φ é verdadeiro no mundo w sse φ é verdadeiro em todo mundo v acessível de w. Modelo: (W,R,V) mundos, relação, valoração.",
                 Criador = "Saul Kripke",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -958,6 +1398,11 @@ public partial class FormulaService
                 Descricao = "Lógica temporal linear (LTL): modalidades temporais para especificação de sistemas. G(p)='sempre p', F(p)='eventualmente p'. Base de model checking.",
                 Criador = "Amir Pnueli",
                 AnoOrigin = "1977",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -968,6 +1413,11 @@ public partial class FormulaService
                 Descricao = "Lógica epistêmica: K_i φ = agente i sabe φ. Satisfaz T e 4. C_G = conhecimento comum: todos sabem que todos sabem... Essencial em jogos e protocolos.",
                 Criador = "Jaakko Hintikka",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 5.2 Teoria dos Conjuntos (ZFC e além)
@@ -980,6 +1430,11 @@ public partial class FormulaService
                 Descricao = "Axiomas de Zermelo-Fraenkel com Escolha: fundamento padrão da matemática. Cada axioma garante existência de conjuntos específicos.",
                 Criador = "Ernst Zermelo / Abraham Fraenkel",
                 AnoOrigin = "1922",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -990,6 +1445,11 @@ public partial class FormulaService
                 Descricao = "Hipótese do contínuo: não existe conjunto com cardinalidade entre ℕ e ℝ. Independente de ZFC (Gödel: consistente; Cohen: irrefutável).",
                 Criador = "Georg Cantor",
                 AnoOrigin = "1878",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1000,6 +1460,11 @@ public partial class FormulaService
                 Descricao = "Forcing de Cohen: técnica para construir modelos de ZFC com propriedades específicas. Prova independência de CH adicionando genéricos.",
                 Criador = "Paul Cohen",
                 AnoOrigin = "1963",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1010,6 +1475,11 @@ public partial class FormulaService
                 Descricao = "Cardinal inacessível: não atingível por potência nem por cofinalidade. V_κ modela ZFC. Grande cardinal mais fraco; hierarquia: mensurável, Woodin, supercompacto...",
                 Criador = "Wacław Sierpiński / Alfred Tarski",
                 AnoOrigin = "1930",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1020,6 +1490,11 @@ public partial class FormulaService
                 Descricao = "Axioma de determinação: todo jogo infinito de informação perfeita sobre naturais é determinado. Incompatível com AC pleno mas consistente com DC.",
                 Criador = "Jan Mycielski / Hugo Steinhaus",
                 AnoOrigin = "1962",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1030,6 +1505,11 @@ public partial class FormulaService
                 Descricao = "Universo construtível de Gödel: L contém apenas conjuntos definíveis. V=L implica GCH e AC. Modelo interno minimal de ZFC.",
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1938",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1040,6 +1520,11 @@ public partial class FormulaService
                 Descricao = "Ordinais de von Neumann e indução transfinita: cada ordinal é o conjunto de seus predecessores. Permite definir funções sobre todos os ordinais recursivamente.",
                 Criador = "John von Neumann",
                 AnoOrigin = "1923",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
 
             // 5.3 Computabilidade Avançada
@@ -1052,6 +1537,11 @@ public partial class FormulaService
                 Descricao = "Graus de Turing: A ≤_T B se A é computável com oráculo para B. Estrutura parcialmente ordenada dos graus mede complexidade computacional relativa.",
                 Criador = "Alan Turing / Emil Post",
                 AnoOrigin = "1944",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1062,6 +1552,11 @@ public partial class FormulaService
                 Descricao = "Salto de Turing A': problema da parada relativo ao oráculo A. 0'=K. A < A' < A'' < ... gera hierarquia aritmética infinita.",
                 Criador = "Alan Turing",
                 AnoOrigin = "1939",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1072,6 +1567,11 @@ public partial class FormulaService
                 Descricao = "Hierarquia aritmética: classifica conjuntos pela complexidade de quantificadores. Σ⁰₁=r.e., Π⁰₁=co-r.e. Cada nível contém problemas estritamente mais difíceis.",
                 Criador = "Stephen Kleene / Andrzej Mostowski",
                 AnoOrigin = "1943",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1082,6 +1582,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Post: conecta hierarquia aritmética aos saltos de Turing. Σ⁰ₙ₊₁ = conjuntos r.e. em 0^(n). Δ⁰ₙ = conjuntos decidíveis com oráculo 0^(n-1).",
                 Criador = "Emil Post",
                 AnoOrigin = "1944",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1092,6 +1597,11 @@ public partial class FormulaService
                 Descricao = "Teorema de Rice: toda propriedade não-trivial das funções parciais computáveis é indecidível. Generaliza a indecidibilidade do problema da parada.",
                 Criador = "Henry Gordon Rice",
                 AnoOrigin = "1953",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
             new Formula
             {
@@ -1102,6 +1612,11 @@ public partial class FormulaService
                 Descricao = "Complexidade de Kolmogorov: K(x) = comprimento do menor programa que gera x em máquina universal. Incomputável mas fundamenta aleatoriedade algorítmica.",
                 Criador = "Andrey Kolmogorov / Ray Solomonoff / Gregory Chaitin",
                 AnoOrigin = "1965",
+                ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                VariavelResultado = "Resultado",
+                UnidadeResultado = "",
+                Calcular = _ => double.NaN
             },
         ]);
     }
