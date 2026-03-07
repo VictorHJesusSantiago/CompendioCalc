@@ -1,13 +1,22 @@
 @inherits LayoutComponentBase
+@implements IAsyncDisposable
 @inject NavigationManager Nav
+@inject AccessibilityService AccessibilityService
 
-<div class="app-shell">
+<div class="app-shell @AccessibilityService.GetAccessibilityCssClass()" style="@GetAccessibilityStyles()">
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-logo">∑</div>
         <div>
             <div class="top-bar-title">Compêndio</div>
             <div class="top-bar-sub">Volume I · Equações</div>
+        </div>
+        <div class="top-bar-actions">
+            <button class="accessibility-btn" @onclick='() => Go("/acessibilidade")' 
+                    aria-label="Abrir configurações de acessibilidade" 
+                    title="Acessibilidade (Alt+Shift+A)">
+                ♿
+            </button>
         </div>
     </div>
 
@@ -48,4 +57,22 @@
     }
 
     void Go(string path) => Nav.NavigateTo(path);
+
+    string GetAccessibilityStyles()
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        var scale = settings.FontSizePercentage / 100.0;
+        return $"--font-scale-factor: {scale};";
+    }
+
+    protected override void OnInitialized()
+    {
+        AccessibilityService.OnSettingsChanged += StateHasChanged;
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        AccessibilityService.OnSettingsChanged -= StateHasChanged;
+        await Task.CompletedTask;
+    }
 }

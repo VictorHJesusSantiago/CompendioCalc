@@ -1,0 +1,607 @@
+/* ============================================
+   ACCESSIBILITY CSS - Stylesheet de Acessibilidade
+   Suporta deficiências visuais, auditivas, motoras e cognitivas
+   ============================================ */
+
+/* ========== VARIÁVEIS DE CORES ==========*/
+:root {
+    /* Cores Padrão */
+    --color-bg-primary: #0D1117;
+    --color-bg-secondary: #161B22;
+    --color-text-primary: #E6EDF3;
+    --color-text-secondary: #8B949E;
+    --color-accent: #D4A64A;
+    --color-accent-alt: #3DD6C0;
+    --color-error: #FF6B6B;
+    --color-success: #51CF66;
+    --color-warning: #FFA94D;
+    --color-info: #74C0FC;
+
+    /* Cores Alto Contraste */
+    --ach-bg-primary: #000000;
+    --ach-bg-secondary: #1A1A1A;
+    --ach-text-primary: #FFFFFF;
+    --ach-text-secondary: #CCCCCC;
+    --ach-accent: #FFFF00;
+    --ach-accent-alt: #00FFFF;
+    --ach-error: #FF0000;
+    --ach-success: #00CC00;
+
+    /* Modo Claro */
+    --light-bg-primary: #FFFFFF;
+    --light-bg-secondary: #F5F5F5;
+    --light-text-primary: #000000;
+    --light-text-secondary: #666666;
+    --light-accent: #D4A64A;
+
+    /* Efeitos */
+    --transition-duration: 0.3s;
+    --focus-outline-color: #FFB81C;
+    --focus-outline-width: 3px;
+}
+
+/* ========== MODO DARK PADRÃO ==========*/
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ========== MODO ESCURO ==========*/
+body.dark-mode {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+/* ========== MODO CLARO ==========*/
+body.light-mode {
+    background-color: var(--light-bg-primary);
+    color: var(--light-text-primary);
+}
+
+body.light-mode .card,
+body.light-mode .nav-item {
+    background-color: var(--light-bg-secondary);
+    color: var(--light-text-primary);
+}
+
+/* ========== ALTO CONTRASTE ==========*/
+body.high-contrast {
+    --color-bg-primary: var(--ach-bg-primary);
+    --color-bg-secondary: var(--ach-bg-secondary);
+    --color-text-primary: var(--ach-text-primary);
+    --color-text-secondary: var(--ach-text-secondary);
+    --color-accent: var(--ach-accent);
+    --color-accent-alt: var(--ach-accent-alt);
+    --color-error: var(--ach-error);
+    --color-success: var(--ach-success);
+}
+
+body.high-contrast a {
+    text-decoration: underline;
+}
+
+body.high-contrast button,
+body.high-contrast input[type="checkbox"] {
+    border: 2px solid var(--ach-text-primary);
+}
+
+/* ========== CONTRASTE REFORÇADO ==========*/
+body.enhanced-contrast {
+    font-weight: 500;
+}
+
+body.enhanced-contrast * {
+    border-color: var(--color-text-primary) !important;
+}
+
+/* ========== REDUZIR MOVIMENTO ==========*/
+body.reduce-motion,
+body.reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* ========== MODO SIMPLIFICADO ==========*/
+body.simplified-mode .advanced-feature,
+body.simplified-mode .optional-section {
+    display: none !important;
+}
+
+body.simplified-mode {
+    --color-accent: var(--ach-accent);
+}
+
+/* ========== NAVEGAÇÃO APENAS POR TECLADO ==========*/
+body.keyboard-only :hover:not(button):not(a) {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* ========== TAMANHO DE FONTE ==========*/
+/* Multiplicadores de tamanho baseados em CSS custom property */
+body[style*="font-size-scale: 1.25"] {
+    font-size: 20px;
+}
+
+body[style*="font-size-scale: 1.50"] {
+    font-size: 24px;
+}
+
+body[style*="font-size-scale: 1.75"] {
+    font-size: 28px;
+}
+
+body[style*="font-size-scale: 2.00"] {
+    font-size: 32px;
+}
+
+/* ========== FOCO E NAVEGAÇÃO ==========*/
+button:focus,
+input:focus,
+a:focus,
+[role="button"]:focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+
+body.high-contrast button:focus,
+body.high-contrast input:focus,
+body.high-contrast a:focus {
+    outline: var(--focus-outline-width) dashed var(--ach-accent);
+}
+
+/* ========== BOTÕES MAIORES ==========*/
+body.larger-buttons button,
+body.larger-buttons [role="button"],
+body.larger-buttons input[type="button"],
+body.larger-buttons input[type="submit"] {
+    padding: 16px 24px;
+    min-height: 48px;
+    font-size: 1.1em;
+}
+
+body.larger-buttons .nav-item {
+    padding: 12px 8px;
+    gap: 8px;
+}
+
+/* ========== SKIP LINKS (para leitores de tela) ==========*/
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* ========== VISIBILIDADE PARA ACESSIBILIDADE ==========*/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ========== COMPONENTES ACESSÍVEIS ==========*/
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+label input[type="checkbox"],
+label input[type="radio"] {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+body.larger-buttons label input[type="checkbox"],
+body.larger-buttons label input[type="radio"] {
+    width: 24px;
+    height: 24px;
+}
+
+/* Dica de estrutura (hint) */
+.setting-hint {
+    display: block;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    font-weight: normal;
+}
+
+/* ========== CONTAINERS DE ACESSIBILIDADE ==========*/
+.accessibility-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.accessibility-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.accessibility-header h1 {
+    margin: 0;
+    font-size: 1.75em;
+}
+
+.back-button {
+    padding: 8px 16px;
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.back-button:hover {
+    opacity: 0.8;
+}
+
+.back-button:focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+}
+
+/* ========== SEÇÕES DE CONFIGURAÇÕES ==========*/
+.settings-section {
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.settings-section h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.35em;
+    color: var(--color-accent);
+}
+
+.section-description {
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.setting-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* ========== PRESETS RÁPIDOS ==========*/
+.preset-section {
+    background: linear-gradient(135deg, rgba(212, 166, 74, 0.1) 0%, rgba(61, 214, 192, 0.1) 100%);
+}
+
+.preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.preset-button {
+    padding: 16px;
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition-duration) ease;
+}
+
+.preset-button:hover {
+    background-color: rgba(212, 166, 74, 0.1);
+    transform: translateY(-2px);
+}
+
+.preset-button:focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+}
+
+.preset-icon {
+    font-size: 2em;
+    margin-bottom: 8px;
+}
+
+.preset-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.preset-desc {
+    font-size: 0.85em;
+    color: var(--color-text-secondary);
+}
+
+/* ========== GROUPS DE BOTÕES E INPUTS ==========*/
+.button-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.size-button {
+    padding: 8px 16px;
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-duration) ease;
+}
+
+.size-button:hover {
+    background-color: rgba(212, 166, 74, 0.2);
+}
+
+.size-button.active {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.size-button:focus {
+    outline: var(--focus-outline-width) solid var(--color-accent-alt);
+}
+
+/* ========== INPUT GROUP (SLIDER) ==========*/
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-group input[type="range"] {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+}
+
+.input-group input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    border: none;
+}
+
+/* ========== CHECKBOXES E RADIOS CUSTOMIZADOS ==========*/
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+/* ========== SEÇÃO DE AÇÕES ==========*/
+.actions-section {
+    text-align: center;
+}
+
+.reset-button {
+    padding: 12px 24px;
+    background-color: var(--color-error);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-duration) ease;
+}
+
+.reset-button:hover {
+    opacity: 0.8;
+}
+
+.reset-button:focus {
+    outline: var(--focus-outline-width) solid var(--color-accent-alt);
+}
+
+/* ========== SEÇÃO DE INFORMAÇÕES ==========*/
+.info-section {
+    background: rgba(61, 214, 192, 0.05);
+    border-left: 4px solid var(--color-accent-alt);
+}
+
+.info-content p {
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+.info-content code {
+    background-color: var(--color-bg-primary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+}
+
+/* ========== FEEDBACK VISUAL (Para deficiência auditiva) ==========*/
+.visual-feedback {
+    animation: visualFeedback 0.5s ease;
+}
+
+@keyframes visualFeedback {
+    0% {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 8px var(--color-accent);
+    }
+    100% {
+        border-color: transparent;
+        box-shadow: none;
+    }
+}
+
+/* ========== ALERTA COM FLASH (Para deficiência auditiva) ==========*/
+.screen-flash-alert {
+    animation: screenFlash 0.3s ease;
+}
+
+@keyframes screenFlash {
+    0%, 100% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: var(--color-warning);
+    }
+}
+
+body.reduce-motion .screen-flash-alert {
+    animation: none;
+    background-color: var(--color-warning);
+}
+
+/* ========== NOTIFICAÇÕES ACESSÍVEIS ==========*/
+.notification {
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    border-left: 4px solid;
+    position: relative;
+}
+
+.notification.success {
+    background-color: rgba(81, 207, 102, 0.1);
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.notification.error {
+    background-color: rgba(255, 107, 107, 0.1);
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
+
+.notification.info {
+    background-color: rgba(116, 192, 252, 0.1);
+    border-color: var(--color-info);
+    color: var(--color-info);
+}
+
+.notification.warning {
+    background-color: rgba(255, 169, 77, 0.1);
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+}
+
+/* ========== RESPONSIVIDADE ==========*/
+@media (max-width: 768px) {
+    .accessibility-container {
+        padding: 12px;
+    }
+
+    .preset-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .accessibility-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .settings-section {
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    body.larger-buttons .preset-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== MODO ALTO CONTRASTE (RESPEITANDO PREFERS-COLOR-SCHEME) ==========*/
+@media (prefers-contrast: more) {
+    :root {
+        --focus-outline-width: 4px;
+    }
+
+    button, a, input[type="checkbox"], input[type="radio"] {
+        outline: 2px solid transparent;
+    }
+}
+
+/* ========== RESPEITAR PREFERÊNCIAS DO SISTEMA ==========*/
+@media (prefers-color-scheme: light) {
+    body.light-mode {
+        background-color: var(--light-bg-primary);
+        color: var(--light-text-primary);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    body * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========== IMPRESSÃO ACESSÍVEL ==========*/
+@media print {
+    .skip-to-main,
+    .back-button,
+    .actions-section {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}

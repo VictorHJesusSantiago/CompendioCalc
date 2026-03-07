@@ -1,0 +1,431 @@
+@page "/acessibilidade"
+@inject AccessibilityService AccessibilityService
+@inject NavigationManager Nav
+
+<div class="accessibility-container">
+    <div class="accessibility-header">
+        <button class="back-button" @onclick="GoBack" aria-label="Voltar à página anterior">
+            ← Voltar
+        </button>
+        <h1>⚙️ Configurações de Acessibilidade</h1>
+    </div>
+
+    <div class="accessibility-content">
+        <!-- Presets Rápidos -->
+        <section class="settings-section preset-section">
+            <h2>🎯 Configurações Rápidas (Presets)</h2>
+            <p class="section-description">Selecione um perfil pré-configurado adaptado para sua necessidade:</p>
+
+            <div class="preset-grid">
+                <button class="preset-button" @onclick='() => ApplyPreset(AccessibilityPreset.VisualImpairment)'
+                        aria-label="Configuração rápida para deficiência visual">
+                    <div class="preset-icon">👁️</div>
+                    <div class="preset-title">Visão</div>
+                    <div class="preset-desc">Deficiência visual</div>
+                </button>
+
+                <button class="preset-button" @onclick='() => ApplyPreset(AccessibilityPreset.HearingImpairment)'
+                        aria-label="Configuração rápida para deficiência auditiva">
+                    <div class="preset-icon">👂</div>
+                    <div class="preset-title">Audição</div>
+                    <div class="preset-desc">Deficiência auditiva</div>
+                </button>
+
+                <button class="preset-button" @onclick='() => ApplyPreset(AccessibilityPreset.MotorImpairment)'
+                        aria-label="Configuração rápida para deficiência motora">
+                    <div class="preset-icon">🖐️</div>
+                    <div class="preset-title">Motora</div>
+                    <div class="preset-desc">Dificuldade motora</div>
+                </button>
+
+                <button class="preset-button" @onclick='() => ApplyPreset(AccessibilityPreset.CognitiveImpairment)'
+                        aria-label="Configuração rápida para deficiência cognitiva">
+                    <div class="preset-icon">🧠</div>
+                    <div class="preset-title">Cognitiva</div>
+                    <div class="preset-desc">Deficiência cognitiva</div>
+                </button>
+
+                <button class="preset-button" @onclick='() => ApplyPreset(AccessibilityPreset.Dyslexia)'
+                        aria-label="Configuração rápida para dislexia">
+                    <div class="preset-icon">📖</div>
+                    <div class="preset-title">Dislexia</div>
+                    <div class="preset-desc">Dificuldade de leitura</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Deficiência Visual -->
+        <section class="settings-section">
+            <h2>👁️ Configurações para Deficiência Visual</h2>
+
+            <!-- Tamanho de Fonte -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Tamanho de Fonte</span>
+                    <span class="setting-hint">Aumenta o tamanho de todas as letras</span>
+                </label>
+                <div class="button-group">
+                    @foreach (var size in new[] { 100, 125, 150, 175, 200 })
+                    {
+                        var isActive = AccessibilityService.CurrentSettings.FontSizePercentage == size;
+                        <button class="size-button @(isActive ? "active" : "")"
+                                @onclick='() => SetFontSize(size)'
+                                aria-pressed="@isActive"
+                                aria-label="Tamanho de fonte @size%">
+                            @size%
+                        </button>
+                    }
+                </div>
+            </div>
+
+            <!-- Alto Contraste -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Alto Contraste</span>
+                    <span class="setting-hint">Aumenta o contraste entre cores para melhor legibilidade</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetHighContrast((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.HighContrast"
+                       aria-label="Ativar modo de alto contraste" />
+            </div>
+
+            <!-- Contraste Reforçado -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Contraste Reforçado</span>
+                    <span class="setting-hint">Aumenta ainda mais o contraste (requer Alto Contraste)</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetEnhancedContrast((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.EnhancedContrast"
+                       disabled="@(!AccessibilityService.CurrentSettings.HighContrast)"
+                       aria-label="Ativar contraste reforçado" />
+            </div>
+
+            <!-- Modo Escuro -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Modo Escuro</span>
+                    <span class="setting-hint">Reduz o cansaço visual em ambientes com pouca luz</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetDarkMode((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.DarkMode"
+                       aria-label="Ativar modo escuro" />
+            </div>
+
+            <!-- Leitor de Tela -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Leitor de Tela</span>
+                    <span class="setting-hint">Ativa suporte para leitores de tela como NVDA ou JAWS</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetScreenReaderEnabled((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ScreenReaderEnabled"
+                       aria-label="Ativar leitor de tela" />
+            </div>
+
+            <!-- Reduzir Movimento -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Reduzir Movimento</span>
+                    <span class="setting-hint">Remove animações para pessoas sensíveis a movimento</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetReduceMotion((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ReduceMotion"
+                       aria-label="Ativar redução de movimento" />
+            </div>
+        </section>
+
+        <!-- Deficiência Auditiva -->
+        <section class="settings-section">
+            <h2>👂 Configurações para Deficiência Auditiva</h2>
+
+            <!-- Feedback Visual -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Feedback Visual</span>
+                    <span class="setting-hint">Mostra avisos visuais em vez de sons</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetVisualFeedback((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.VisualFeedback"
+                       aria-label="Ativar feedback visual" />
+            </div>
+
+            <!-- Legendas -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Legendas e Transcrições</span>
+                    <span class="setting-hint">Mostra legendas de áudio e transcrições de vídeos</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetCaptions((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.CaptionsEnabled"
+                       aria-label="Ativar legendas" />
+            </div>
+
+            <!-- Flash de Tela para Alertas -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Piscar de Tela para Alertas</span>
+                    <span class="setting-hint">A tela pisca quando há alertas importantes</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetScreenFlashAlerts((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ScreenFlashAlerts"
+                       aria-label="Ativar piscar de tela para alertas" />
+            </div>
+        </section>
+
+        <!-- Deficiência Motora -->
+        <section class="settings-section">
+            <h2>🖐️ Configurações para Deficiência Motora</h2>
+
+            <!-- Botões Maiores -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Botões Maiores</span>
+                    <span class="setting-hint">Aumenta o tamanho dos botões e áreas clicáveis</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetLargerButtons((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.LargerButtons"
+                       aria-label="Ativar botões maiores" />
+            </div>
+
+            <!-- Navegação por Teclado -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Navegação Apenas por Teclado</span>
+                    <span class="setting-hint">Permite usar TAB, ENTER e setas para navegar</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetKeyboardNavigation((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.KeyboardNavigationOnly"
+                       aria-label="Ativar navegação apenas por teclado" />
+            </div>
+
+            <!-- Gestos Simplificados -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Gestos Simplificados</span>
+                    <span class="setting-hint">Reduz gestos complexos (sem arrastar, pinçar, etc)</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetSimplifiedGestures((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.SimplifiedGestures"
+                       aria-label="Ativar gestos simplificados" />
+            </div>
+
+            <!-- Tempo de Interação -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Tempo Limite para Cliques</span>
+                    <span class="setting-hint">Aumenta o tempo para confirmar ações</span>
+                </label>
+                <div class="input-group">
+                    <input type="range" min="2" max="15" @onchange='e => SetInteractionTimeout(int.Parse(e.Value.ToString()))'
+                           value="@AccessibilityService.CurrentSettings.InteractionTimeoutSeconds"
+                           aria-label="Tempo limite para interações em segundos" />
+                    <span>@AccessibilityService.CurrentSettings.InteractionTimeoutSeconds segundos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deficiência Cognitiva -->
+        <section class="settings-section">
+            <h2>🧠 Configurações para Deficiência Cognitiva</h2>
+
+            <!-- Modo Simplificado -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Modo Simplificado</span>
+                    <span class="setting-hint">Remove opções avançadas, mostrando apenas o essencial</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetSimplifiedMode((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.SimplifiedMode"
+                       aria-label="Ativar modo simplificado" />
+            </div>
+
+            <!-- Instruções Passo a Passo -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Instruções Passo a Passo</span>
+                    <span class="setting-hint">Guia detalhado de como usar cada funcionalidade</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetStepByStep((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ShowStepByStepInstructions"
+                       aria-label="Ativar instruções passo a passo" />
+            </div>
+
+            <!-- Linguagem Simplificada -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Linguagem Simplificada</span>
+                    <span class="setting-hint">Usa palavras e frases mais simples</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetSimplifiedLanguage((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.SimplifiedLanguage"
+                       aria-label="Ativar linguagem simplificada" />
+            </div>
+
+            <!-- Reduzir Notificações -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Reduzir Notificações</span>
+                    <span class="setting-hint">Mostra apenas notificações essenciais</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetReduceNotifications((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ReduceNotifications"
+                       aria-label="Ativar redução de notificações" />
+            </div>
+
+            <!-- Mostrar Dicas -->
+            <div class="setting-item">
+                <label>
+                    <span class="setting-label">Mostrar Dicas e Tutoriais</span>
+                    <span class="setting-hint">Exibe ajuda contextual enquanto você usa o app</span>
+                </label>
+                <input type="checkbox" @onchange='e => SetShowHints((bool)e.Value)'
+                       checked="@AccessibilityService.CurrentSettings.ShowHints"
+                       aria-label="Ativar dicas e tutoriais" />
+            </div>
+        </section>
+
+        <!-- Ações -->
+        <section class="settings-section actions-section">
+            <button class="reset-button" @onclick="ResetToDefaults"
+                    aria-label="Restaurar todas as configurações padrão">
+                🔄 Restaurar Padrões
+            </button>
+        </section>
+
+        <!-- Informações de Acessibilidade -->
+        <section class="settings-section info-section">
+            <h2>ℹ️ Informações Adicionais</h2>
+            <div class="info-content">
+                <p>💡 <strong>Dica:</strong> Você pode alternar entre presets rápidos a qualquer momento.</p>
+                <p>⌨️ <strong>Atalho de Teclado:</strong> Pressione <code>Alt + Shift + A</code> para abrir acessibilidade.</p>
+                <p>📱 <strong>Compatibilidade:</strong> Estas configurações funcionam em Windows, Android, iOS e macOS.</p>
+                <p>🌍 <strong>Idioma:</strong> Se o modo Leitor de Tela está ativo, use a linguagem do seu sistema.</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private void GoBack() => Nav.NavigateTo("/");
+
+    private void ApplyPreset(AccessibilityPreset preset)
+    {
+        AccessibilityService.ApplyPreset(preset);
+    }
+
+    private void SetFontSize(int percentage)
+    {
+        AccessibilityService.SetFontSize(percentage);
+    }
+
+    private void SetHighContrast(bool enabled)
+    {
+        AccessibilityService.SetHighContrast(enabled);
+    }
+
+    private void SetEnhancedContrast(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.EnhancedContrast = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetDarkMode(bool enabled)
+    {
+        AccessibilityService.SetDarkMode(enabled);
+    }
+
+    private void SetScreenReaderEnabled(bool enabled)
+    {
+        AccessibilityService.SetScreenReaderEnabled(enabled);
+    }
+
+    private void SetReduceMotion(bool enabled)
+    {
+        AccessibilityService.SetReduceMotion(enabled);
+    }
+
+    private void SetVisualFeedback(bool enabled)
+    {
+        AccessibilityService.SetVisualFeedback(enabled);
+    }
+
+    private void SetCaptions(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.CaptionsEnabled = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetScreenFlashAlerts(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.ScreenFlashAlerts = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetLargerButtons(bool enabled)
+    {
+        AccessibilityService.SetLargerButtons(enabled);
+    }
+
+    private void SetKeyboardNavigation(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.KeyboardNavigationOnly = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetSimplifiedGestures(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.SimplifiedGestures = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetInteractionTimeout(int seconds)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.InteractionTimeoutSeconds = seconds;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetSimplifiedMode(bool enabled)
+    {
+        AccessibilityService.SetSimplifiedMode(enabled);
+    }
+
+    private void SetStepByStep(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.ShowStepByStepInstructions = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetSimplifiedLanguage(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.SimplifiedLanguage = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetReduceNotifications(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.ReduceNotifications = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void SetShowHints(bool enabled)
+    {
+        var settings = AccessibilityService.CurrentSettings;
+        settings.ShowHints = enabled;
+        AccessibilityService.UpdateSettings(settings);
+    }
+
+    private void ResetToDefaults()
+    {
+        AccessibilityService.ResetToDefaults();
+    }
+}

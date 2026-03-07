@@ -17,6 +17,7 @@ public static class MauiProgram
 
         builder.Services.AddMauiBlazorWebView();
         builder.Services.AddSingleton<FormulaService>();
+        builder.Services.AddSingleton<AccessibilityService>();
         builder.Services.AddSingleton<CalculadoraService>(sp =>
         {
             var calc = new CalculadoraService();
