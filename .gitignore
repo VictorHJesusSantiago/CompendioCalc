@@ -12,6 +12,12 @@ obj/
 # Crash logs gerados em runtime
 crash.log
 output.txt
+output.log
+
+# Arquivos locais de apoio/geracao
+analise_vol6.md
+generate_vol5_complete.ps1
+NUL
 
 # OS
 .DS_Store
