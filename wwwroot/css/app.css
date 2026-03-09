@@ -63,19 +63,6 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Ocultar elementos de debug e barras indesejadas */
-body::before,
-body > *:not(#app):not(#blazor-error-ui):not(script),
-[role="complementary"],
-.debug-bar,
-.dev-bar {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-}
-
 html, body {
     height: 100%;
     overflow: hidden;
@@ -210,39 +197,11 @@ body {
     letter-spacing: 0.02em;
 }
 
-.top-bar-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: auto;
-}
-
-.theme-toggle-btn,
-.accessibility-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 18px;
-}
-
-.theme-toggle-btn:hover,
-.accessibility-btn:hover {
-    background: var(--bg-hover);
-    border-color: var(--gold);
-    transform: translateY(-1px);
-}
-
-.theme-toggle-btn:active,
-.accessibility-btn:active {
-    transform: translateY(0);
+.top-bar-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 /* ─── Search Bar ─────────────────────────────────── */

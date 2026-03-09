@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Diagnostics;
+using Microsoft.JSInterop;
 
 namespace CompendioCalc.Services;
 
@@ -12,6 +13,7 @@ public class AccessibilityService
     private const string StorageKey = "accessibility_settings";
     private AccessibilitySettings _settings;
     private readonly string _storageDirectory;
+    private IJSRuntime? _jsRuntime;
 
     public event Action? OnSettingsChanged;
 
@@ -19,6 +21,100 @@ public class AccessibilityService
     {
         _storageDirectory = FileSystem.AppDataDirectory;
         _settings = LoadSettings();
+    }
+
+    /// <summary>
+    /// Inicializa o serviço com JSRuntime para interoperabilidade JavaScript
+    /// </summary>
+    public void Initialize(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+        _ = ApplySettingsViaJavaScript();
+    }
+
+    /// <summary>
+    /// Aplica as configurações via JavaScript para modificar o DOM
+    /// </summary>
+    private async Task ApplySettingsViaJavaScript()
+    {
+        if (_jsRuntime == null) return;
+
+        try
+        {
+            var classes = GetAccessibilityCssClass();
+            var styles = GetAccessibilityStyles();
+            
+            await _jsRuntime.InvokeVoidAsync("applyAccessibilitySettings", new
+            {
+                classes,
+                styles,
+                fontSizePercentage = _settings.FontSizePercentage,
+                highContrast = _settings.HighContrast,
+                darkMode = _settings.DarkMode,
+                reduceMotion = _settings.ReduceMotion,
+                largerButtons = _settings.LargerButtons,
+                simplifiedMode = _settings.SimplifiedMode,
+                enhancedContrast = _settings.EnhancedContrast,
+                keyboardNavigationOnly = _settings.KeyboardNavigationOnly,
+                screenReaderEnabled = _settings.ScreenReaderEnabled
+            });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Erro ao aplicar configurações via JavaScript: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Mostra feedback visual para usuários com deficiência auditiva
+    /// </summary>
+    public async Task ShowVisualFeedbackAsync(string message, string type = "info")
+    {
+        if (_jsRuntime == null || !_settings.VisualFeedback) return;
+
+        try
+        {
+            await _jsRuntime.InvokeVoidAsync("showVisualFeedback", message, type);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Erro ao mostrar feedback visual: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Flash de tela para alertas (para deficiência auditiva)
+    /// </summary>
+    public async Task ScreenFlashAlertAsync()
+    {
+        if (_jsRuntime == null || !_settings.ScreenFlashAlerts) return;
+
+        try
+        {
+            await _jsRuntime.InvokeVoidAsync("screenFlashAlert");
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Erro ao executar flash de tela: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// Anuncia mensagem para leitores de tela
+    /// </summary>
+    public async Task AnnounceToScreenReaderAsync(string message)
+    {
+        if (_jsRuntime == null || !_settings.ScreenReaderEnabled) return;
+
+        try
+        {
+            var fullMessage = $"{_settings.ScreenReaderAnnouncementPrefix} {message}";
+            await _jsRuntime.InvokeVoidAsync("announceToScreenReader", fullMessage);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Erro ao anunciar para leitor de tela: {ex.Message}");
+        }
     }
 
     /// <summary>
@@ -34,7 +130,7 @@ public class AccessibilityService
         public bool HighContrast { get; set; } = false;
 
         /// <summary>Ativa modo escuro</summary>
-        public bool DarkMode { get; set; } = false;
+        public bool DarkMode { get; set; } = true;
 
         /// <summary>Remove animações e transições (melhor para pessoas com sensibilidade a movimento)</summary>
         public bool ReduceMotion { get; set; } = false;
@@ -95,6 +191,7 @@ public class AccessibilityService
     {
         _settings = settings;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -104,6 +201,7 @@ public class AccessibilityService
         {
             _settings.FontSizePercentage = percentage;
             SaveSettings();
+            _ = ApplySettingsViaJavaScript();
             OnSettingsChanged?.Invoke();
         }
     }
@@ -112,6 +210,7 @@ public class AccessibilityService
     {
         _settings.HighContrast = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -119,6 +218,7 @@ public class AccessibilityService
     {
         _settings.DarkMode = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -126,6 +226,7 @@ public class AccessibilityService
     {
         _settings.ReduceMotion = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -133,6 +234,7 @@ public class AccessibilityService
     {
         _settings.ScreenReaderEnabled = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -140,6 +242,7 @@ public class AccessibilityService
     {
         _settings.VisualFeedback = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -147,6 +250,7 @@ public class AccessibilityService
     {
         _settings.LargerButtons = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -154,6 +258,7 @@ public class AccessibilityService
     {
         _settings.SimplifiedMode = enabled;
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -161,6 +266,7 @@ public class AccessibilityService
     {
         _settings = new AccessibilitySettings();
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -219,6 +325,7 @@ public class AccessibilityService
         };
 
         SaveSettings();
+        _ = ApplySettingsViaJavaScript();
         OnSettingsChanged?.Invoke();
     }
 
@@ -244,12 +351,7 @@ public class AccessibilityService
             if (File.Exists(filePath))
             {
                 var json = File.ReadAllText(filePath);
-                var settings = JsonSerializer.Deserialize<AccessibilitySettings>(json) ?? new AccessibilitySettings();
-                
-                // Força dark mode desligado (correção temporária)
-                settings.DarkMode = false;
-                
-                return settings;
+                return JsonSerializer.Deserialize<AccessibilitySettings>(json) ?? new AccessibilitySettings();
             }
         }
         catch (Exception ex)

@@ -51,71 +51,20 @@ body {
 
 /* ========== MODO ESCURO ==========*/
 body.dark-mode {
-    --bg-base: #0D1117;
-    --bg-surface: #161B22;
-    --bg-card: #1C2130;
-    --bg-input: #21262D;
-    --bg-hover: #262C3A;
-    --text-primary: #E6EDF3;
-    --text-secondary: #8B949E;
-    --text-muted: #484F58;
-    background-color: var(--bg-base);
-    color: var(--text-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
 }
 
 /* ========== MODO CLARO ==========*/
 body.light-mode {
-    --bg-base: #FFFFFF;
-    --bg-surface: #F8F9FA;
-    --bg-card: #FFFFFF;
-    --bg-input: #F1F3F5;
-    --bg-hover: #E9ECEF;
-    --text-primary: #212529;
-    --text-secondary: #6C757D;
-    --text-muted: #ADB5BD;
-    --border: rgba(0,0,0,0.1);
-    background-color: var(--bg-base);
-    color: var(--text-primary);
-}
-
-body.light-mode .app-shell {
-    background-color: var(--bg-base);
-}
-
-body.light-mode .top-bar,
-body.light-mode .bottom-nav {
-    background-color: var(--bg-surface);
-    border-color: var(--border);
+    background-color: var(--light-bg-primary);
+    color: var(--light-text-primary);
 }
 
 body.light-mode .card,
-body.light-mode .nav-item,
-body.light-mode .theme-toggle-btn,
-body.light-mode .accessibility-btn {
-    background-color: var(--bg-card);
-    color: var(--text-primary);
-    border-color: var(--border);
-}
-
-body.light-mode .nav-item:hover,
-body.light-mode .theme-toggle-btn:hover,
-body.light-mode .accessibility-btn:hover {
-    background-color: var(--bg-hover);
-}
-
-body.light-mode .formula-card,
-body.light-mode .category-card {
-    background-color: var(--bg-card);
-    border-color: var(--border);
-}
-
-body.light-mode .search-input {
-    background-color: var(--bg-input);
-    color: var(--text-primary);
-}
-
-body.light-mode .empty-state {
-    color: var(--text-secondary);
+body.light-mode .nav-item {
+    background-color: var(--light-bg-secondary);
+    color: var(--light-text-primary);
 }
 
 /* ========== ALTO CONTRASTE ==========*/
@@ -224,22 +173,17 @@ body.larger-buttons .nav-item {
 /* ========== SKIP LINKS (para leitores de tela) ==========*/
 .skip-to-main {
     position: absolute;
-    top: -9999px;
-    left: -9999px;
+    top: -40px;
+    left: 0;
     background: var(--color-accent);
     color: var(--color-bg-primary);
     padding: 8px;
     text-decoration: none;
     z-index: 100;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .skip-to-main:focus {
     top: 0;
-    left: 0;
-    opacity: 1;
-    pointer-events: auto;
 }
 
 /* ========== VISIBILIDADE PARA ACESSIBILIDADE ==========*/
@@ -390,18 +334,6 @@ body.larger-buttons label input[type="radio"] {
 
 .preset-button:focus {
     outline: var(--focus-outline-width) solid var(--focus-outline-color);
-}
-
-.preset-button.active {
-    background-color: var(--gold);
-    color: var(--bg-base);
-    border-color: var(--gold);
-    box-shadow: 0 0 20px rgba(212, 166, 74, 0.3);
-}
-
-.preset-button.active .preset-desc {
-    color: var(--bg-base);
-    opacity: 0.9;
 }
 
 .preset-icon {
@@ -566,8 +498,22 @@ input[type="radio"] {
 }
 
 body.reduce-motion .screen-flash-alert {
-    animation: none;
+    animation: none !important;
     background-color: var(--color-warning);
+}
+
+/* ========== NAVEGAÇÃO POR TECLADO COM OUTLINE VISÍVEL ==========*/
+body.using-keyboard *:focus {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color) !important;
+    outline-offset: 2px;
+}
+
+body.keyboard-only button:focus,
+body.keyboard-only a:focus,
+body.keyboard-only input:focus,
+body.keyboard-only select:focus {
+    outline: 3px dashed var(--focus-outline-color) !important;
+    outline-offset: 3px;
 }
 
 /* ========== NOTIFICAÇÕES ACESSÍVEIS ==========*/
@@ -673,3 +619,84 @@ body.reduce-motion .screen-flash-alert {
         text-decoration: underline;
     }
 }
+
+/* ========== APP SHELL E ELEMENTOS PRINCIPAIS ==========*/
+/* Garante que o app-shell e filhos respeitem as configurações de acessibilidade */
+
+.app-shell.dark-mode {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+.app-shell.light-mode {
+    background-color: var(--light-bg-primary) !important;
+    color: var(--light-text-primary) !important;
+}
+
+.app-shell.high-contrast {
+    --color-bg-primary: var(--ach-bg-primary);
+    --color-bg-secondary: var(--ach-bg-secondary);
+    --color-text-primary: var(--ach-text-primary);
+    --color-text-secondary: var(--ach-text-secondary);
+}
+
+.app-shell.high-contrast * {
+    border-color: var(--ach-text-secondary) !important;
+}
+
+.app-shell.enhanced-contrast * {
+    font-weight: 600 !important;
+    text-shadow: 0 0 1px currentColor;
+}
+
+.app-shell.reduce-motion,
+.app-shell.reduce-motion * {
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
+}
+
+.app-shell.larger-buttons button,
+.app-shell.larger-buttons .nav-item,
+.app-shell.larger-buttons [role="button"] {
+    min-height: 48px !important;
+    padding: 12px 20px !important;
+    font-size: 1.1em !important;
+}
+
+.app-shell.simplified-mode .optional-section,
+.app-shell.simplified-mode .advanced-feature {
+    display: none !important;
+}
+
+/* ========== ESCALA DE FONTE ADAPTATIVA ==========*/
+.app-shell {
+    font-size: calc(16px * var(--font-scale-factor, 1)) !important;
+}
+
+.app-shell * {
+    font-size: inherit;
+}
+
+/* ========== ACESSIBILIDADE BUTTON NO TOP BAR ==========*/
+.accessibility-btn {
+    background: rgba(212, 166, 74, 0.1);
+    border: 1px solid rgba(212, 166, 74, 0.3);
+    color: var(--gold);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.accessibility-btn:hover {
+    background: rgba(212, 166, 74, 0.2);
+    border-color: rgba(212, 166, 74, 0.5);
+}
+
+.accessibility-btn:focus {
+    outline: 3px solid var(--focus-outline-color);
+    outline-offset: 2px;
+}
+
+/* ========== FIM DO ARQUIVO ==========*/

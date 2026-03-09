@@ -248,6 +248,8 @@ CompendioCalc/
 | V | 399 | Ciências naturais, computação e economia quantitativa |
 | VI | 442 | Matemática aplicada de ponta |
 | VII | 249 | Fronteiras do conhecimento |
+| **IX** | **360** | **Compêndio Geral: Teoria dos Jogos até Relatividade** |
+| **TOTAL** | **3.247** | **Fórmulas integradas em todos os volumes** |
 
 ### :one: Volume I (fundamentos por categoria)
 
@@ -340,6 +342,43 @@ CompendioCalc/
 | 6 | Agro e Ambiente | Modelagem agroambiental, sustentabilidade, previsão ecossistêmica |
 | 7 | Artes, Ofícios e Tecnologia | Design computacional, manufatura e inovação aplicada |
 | 8 | Tecnologias Emergentes | Sistemas híbridos, tecnologias de ruptura, convergência digital |
+
+### :nine: Volume IX — Compêndio Geral de Equações (360 fórmulas) ✨ **NOVO**
+
+> [!NOTE]
+> **Volume IX** é uma compilação abrangente de 18 áreas científicas, desde fundamentos matemáticos até física de ponta.
+> Dataset arquivístico completo com atribuição histórica rigorosa (criadores, anos, Nobel Prizes, Fields Medals).
+
+#### :bookmark: Estrutura do Volume IX
+
+| # | Área | Fórmulas | Span Histórico | Exemplos-Chave |
+|---|---|---:|---|---|
+| 1 | **Teoria dos Jogos** | 21 | 1928-1997 | Nash, Shapley value, VCG, Arrow impossibility |
+| 2 | **Topologia Algébrica** | 21 | 1752-2002 | Euler characteristic, Betti numbers, persistent homology |
+| 3 | **Física Estatística** | 21 | 1907-2010 | Fermi-Dirac, BEC, BCS superconductivity, graphene |
+| 4 | **Controle Ótimo** | 19 | 1724-1994 | Pontryagin, Kalman filter, LQR, Lyapunov, MPC |
+| 5 | **Aprendizado por Reforço** | 20 | 1951-2020 | Bellman, Q-learning, PPO, AlphaZero, offline RL |
+| 6 | **Bioinformática** | 20 | 1953-2020 | Smith-Waterman, AlphaFold2, GWAS, CRISPR |
+| 7 | **Engenharia Química** | 21 | 1873-1980s | van der Waals, Rankine, McCabe-Thiele, CSTR |
+| 8 | **Ecologia** | 20 | 1920-2000s | Lotka-Volterra, Shannon diversity, species-area |
+| 9 | **Biomecânica** | 20 | 1938-2000s | Hill muscle model, Windkessel, BMI, gait |
+| 10 | **Matemática Atuarial** | 19 | 1700s-2000s | Life annuities, Cramér-Lundberg ruin, VaR |
+| 11 | **Geotecnia** | 21 | 1776-1960s | Mohr-Coulomb, Terzaghi, bearing capacity |
+| 12 | **Física do Estado Sólido** | 20 | 1949-2000s | Shockley diode, BCS gap, Shockley-Queisser |
+| 13 | **Controle e Automação** | 21 | 1788-1980s | PID, root locus, Bode, state-space |
+| 14 | **Epidemiologia** | 20 | 1927-2000s | SIR model, R₀, Cox regression, Kaplan-Meier |
+| 15 | **Termodinâmica Eng** | 20 | 1824-1990s | Brayton, Otto, Carnot, exergy, NTU |
+| 16 | **Química Computacional** | 20 | 1964-1990s | Kohn-Sham DFT, Hartree-Fock, AMBER, docking |
+| 17 | **Engenharia Estrutural** | 18 | 1744-1980s | Euler buckling, Euler-Bernoulli beam, FEM |
+| 18 | **Relatividade Geral** | 18 | 1916-2015 | Schwarzschild black hole, Friedmann cosmology, LIGO |
+| **TOTAL** | **Volume IX completo** | **360** | **1724–2020** | **296 anos de ciência integrada** |
+
+#### :trophy: Marcos Históricos no Volume IX
+
+- **Nobel Prizes citados**: 21 laureados (Física: von Klitzing 1985 Hall quântico, BCS 1972, Wilson 1982 RG, Novoselov-Geim 2010 graphene; Química: Nobel 2024 AlphaFold2 Hassabis-Jumper, Debye 1936, Kohn 1998 DFT; Economia: Nash 1994, Arrow 1972, Shapley 2012)
+- **Fields Medals**: Witten (1990 TQFT), Perelman (2006 Poincaré conjecture implicit in topologia algébrica)
+- **Breakthrough Systems**: AlphaZero Go/Chess (2017), ChatGPT RLHF (2022), AlphaFold2 protein structure (2020), BEC experimental (Cornell-Wieman 1995), quantum Hall effect (1980), graphene isolation (2004)
+- **Span Histórico**: Riccati differential equation (1724) → Conservative Q-learning offline RL (Kumar 2020) = **296 year scientific arc
 
 ### :bar_chart: Classificação global por eixo
 

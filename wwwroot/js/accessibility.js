@@ -1,7 +1,196 @@
 /**
- * Accessibility Shortcuts JavaScript
+ * Accessibility Shortcuts and Functions JavaScript
  * Adiciona atalhos de teclado e melhorias de acessibilidade
  */
+
+// ========== CORE FUNCTION ==========
+/**
+ * Aplica as configurações de acessibilidade ao documento
+ * Chamado via JSInterop do C#
+ */
+window.applyAccessibilitySettings = function(settings) {
+    const body = document.body;
+    
+    // Remover classes anteriores
+    body.classList.remove(
+        'high-contrast', 'dark-mode', 'light-mode', 'reduce-motion',
+        'larger-buttons', 'simplified-mode', 'keyboard-only', 'enhanced-contrast'
+    );
+
+    // Aplicar novas classes
+    if (settings.highContrast) {
+        body.classList.add('high-contrast');
+    }
+
+    if (settings.enhancedContrast && settings.highContrast) {
+        body.classList.add('enhanced-contrast');
+    }
+
+    if (settings.darkMode) {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.add('light-mode');
+    }
+
+    if (settings.reduceMotion) {
+        body.classList.add('reduce-motion');
+    }
+
+    if (settings.largerButtons) {
+        body.classList.add('larger-buttons');
+    }
+
+    if (settings.simplifiedMode) {
+        body.classList.add('simplified-mode');
+    }
+
+    if (settings.keyboardNavigationOnly) {
+        body.classList.add('keyboard-only');
+    }
+
+    // Aplicar escala de fonte
+    const fontScale = (settings.fontSizePercentage || 100) / 100;
+    document.documentElement.style.fontSize = `${16 * fontScale}px`;
+    document.documentElement.style.setProperty('--font-scale-factor', fontScale);
+
+    // Se leitor de tela está ativo
+    if (settings.screenReaderEnabled) {
+        body.setAttribute('aria-live', 'polite');
+        ensureLiveRegion();
+    } else {
+        body.removeAttribute('aria-live');
+    }
+
+    console.log('✓ Accessibility settings applied:', settings);
+};
+
+// ========== VISUAL FEEDBACK  ==========
+/**
+ * Mostra feedback visual para ação (para deficiência auditiva)
+ */
+window.showVisualFeedback = function(message, type = 'info') {
+    const colors = {
+        info: '#74C0FC',
+        success: '#51CF66',
+        error: '#FF6B6B',
+        warning: '#FFA94D'
+    };
+
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        background: ${colors[type] || colors.info};
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        z-index: 99999;
+        opacity: 0;
+        transition: all 0.3s ease;
+        max-width: 90%;
+        text-align: center;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    // Animar entrada
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateX(-50%) translateY(0)';
+    }, 10);
+
+    // Remover após 3 segundos
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(-50%) translateY(-20px)';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+};
+
+// ========== SCREEN FLASH ALERT ==========
+/**
+ * Flash de tela para alertas (para deficiência auditiva)
+ */
+window.screenFlashAlert = function(duration = 300, color = '#FFA94D') {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: ${color};
+        opacity: 0;
+        z-index: 99999;
+        pointer-events: none;
+        transition: opacity 0.1s;
+    `;
+    document.body.appendChild(overlay);
+
+    // Fade in
+    setTimeout(() => {
+        overlay.style.opacity = '0.6';
+    }, 10);
+
+    // Fade out
+    setTimeout(() => {
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            if (document.body.contains(overlay)) {
+                document.body.removeChild(overlay);
+            }
+        }, 100);
+    }, duration / 2);
+};
+
+// ========== SCREEN READER ANNOUNCEMENTS ==========
+/**
+ * Garante que a região ARIA live existe
+ */
+function ensureLiveRegion() {
+    if (!document.getElementById('sr-live-region')) {
+        const liveRegion = document.createElement('div');
+        liveRegion.id = 'sr-live-region';
+        liveRegion.setAttribute('role', 'status');
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.style.cssText = `
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        `;
+        document.body.appendChild(liveRegion);
+    }
+}
+
+/**
+ * Anuncia mensagem para leitores de tela
+ */
+window.announceToScreenReader = function (message) {
+    ensureLiveRegion();
+    const liveRegion = document.getElementById('sr-live-region');
+    if (liveRegion) {
+        liveRegion.textContent = message;
+
+        // Limpar após 2 segundos
+        setTimeout(() => {
+            liveRegion.textContent = '';
+        }, 2000);
+    }
+};
+
+// ========== KEYBOARD SHORTCUTS ==========
 
 // Atalho: Alt+Shift+A para abrir acessibilidade
 document.addEventListener('keydown', function(event) {
@@ -161,8 +350,12 @@ function detectSystemPreferences() {
         document.body.classList.add('high-contrast');
     }
 
-    // Respeitar preferências de esquema de cores - sempre inicia com dark-mode
-    document.body.classList.add('dark-mode');
+    // Respeitar preferências de esquema de cores
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+    }
 
     // Respeitar preferências de movimento reduzido
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

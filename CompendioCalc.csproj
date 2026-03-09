@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst;net10.0-windows10.0.19041.0</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+    <BaseTargetFrameworks>net10.0-android;net10.0-windows10.0.19041.0</BaseTargetFrameworks>
+    <TargetFrameworks>$(BaseTargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('OSX')) and Exists('Platforms/iOS/AppDelegate.cs')">$(TargetFrameworks);net10.0-ios</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('OSX')) and Exists('Platforms/MacCatalyst/AppDelegate.cs')">$(TargetFrameworks);net10.0-maccatalyst</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>CompendioCalc</RootNamespace>
     <AssemblyName>CompendioCalc</AssemblyName>

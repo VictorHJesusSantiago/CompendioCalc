@@ -2,28 +2,17 @@
 @implements IAsyncDisposable
 @inject NavigationManager Nav
 @inject AccessibilityService AccessibilityService
+@inject IJSRuntime JSRuntime
 
-<AccessibilityRenderer />
-<AccessibilityNotification />
-
-<div class="app-shell">
+<div class="app-shell @AccessibilityService.GetAccessibilityCssClass()" style="@GetAccessibilityStyles()">
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-logo">∑</div>
-        <div class="top-bar-title">Compêndio</div>
+        <div>
+            <div class="top-bar-title">Compêndio</div>
+            <div class="top-bar-sub">Volume I · Equações</div>
+        </div>
         <div class="top-bar-actions">
-            <button class="theme-toggle-btn" @onclick="ToggleDarkMode" 
-                    aria-label="Alternar entre modo claro e escuro" 
-                    title="Alternar tema">
-                @if (AccessibilityService.CurrentSettings.DarkMode)
-                {
-                    <span>☀️</span>
-                }
-                else
-                {
-                    <span>🌙</span>
-                }
-            </button>
             <button class="accessibility-btn" @onclick='() => Go("/acessibilidade")' 
                     aria-label="Abrir configurações de acessibilidade" 
                     title="Acessibilidade (Alt+Shift+A)">
@@ -70,15 +59,25 @@
 
     void Go(string path) => Nav.NavigateTo(path);
 
-    void ToggleDarkMode()
+    string GetAccessibilityStyles()
     {
         var settings = AccessibilityService.CurrentSettings;
-        AccessibilityService.SetDarkMode(!settings.DarkMode);
+        var scale = settings.FontSizePercentage / 100.0;
+        return $"--font-scale-factor: {scale};";
     }
 
     protected override void OnInitialized()
     {
         AccessibilityService.OnSettingsChanged += StateHasChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            AccessibilityService.Initialize(JSRuntime);
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     async ValueTask IAsyncDisposable.DisposeAsync()

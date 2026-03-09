@@ -241,6 +241,131 @@ public partial class FormulaService
             new() { Nome = "Computação Gráfica", Icone = "💡", Cor = "#7C3AED", Descricao = "Iluminação, transformações e interpolação" },
             new() { Nome = "Balística", Icone = "🎯", Cor = "#78350F", Descricao = "Trajetória de projéteis e coeficiente balístico" },
             new() { Nome = "Tecnologias Emergentes", Icone = "🔬", Cor = "#059669", Descricao = "5G, energia, blockchain, impressão 3D, CRISPR e quântica" },
+            
+            // ═══ VOLUME 8 e 9 — Categorias novas adicionadas ═══
+            new() { Nome = "Teoria Jogos", Icone = "🎮", Cor = "#D97706", Descricao = "Nash, Bayesiano, Shapley, leilões, barganha e jogos dinâmicos" },
+            new() { Nome = "Topologia Algébrica", Icone = "🔁", Cor = "#DC2626", Descricao = "Homologia, cohomologia, grupo fundamental, espectros e CW complexos" },
+            new() { Nome = "Física Estatística", Icone = "⚡", Cor = "#BE185D", Descricao = "Boltzmann, entropia, partição, transições de fase e renormalização" },
+            new() { Nome = "Controle Ótimo", Icone = "🎛", Cor = "#15803D", Descricao = "Pontryagin, Hamilton-Jacobi-Bellman, LQR, MPC e sistemas dinâmicos" },
+            new() { Nome = "Aprendizado Reforço", Icone = "🧠", Cor = "#16A34A", Descricao = "MDP, Bellman, Q-Learning, SARSA, policy gradient, PPO e Actor-Critic" },
+            
+            // ═══ EXPANSÃO MASSIVA — 60+ novas categorias por domínio ═══
+            // ─── FÍSICA AVANÇADA ───
+            new() { Nome = "Mecânica Quântica I", Icone = "ψ", Cor = "#7C3AED", Descricao = "Equação de Schrödinger, operadores e autoestados" },
+            new() { Nome = "Mecânica Quântica II", Icone = "Ĥ", Cor = "#6D28D9", Descricao = "Perturbação, WKB e segunda quantização" },
+            new() { Nome = "Física de Plasma Avançada", Icone = "☀", Cor = "#EAB308", Descricao = "Magnetohidrodinâmica, instabilidades e pinch" },
+            new() { Nome = "Física de Baixas Temperaturas", Icone = "❄", Cor = "#06B6D4", Descricao = "Hélio líquido, supercondutividade e superfluidez" },
+            new() { Nome = "Astrofísica Estelar", Icone = "⭐", Cor = "#FBBF24", Descricao = "Evolução estelar, nucleossíntese e estrutura interna" },
+            new() { Nome = "Cosmologia Moderna", Icone = "🌌", Cor = "#1E3A8A", Descricao = "Big Bang, inflação, matéria escura e energia escura" },
+            new() { Nome = "Relatividade Especial", Icone = "c", Cor = "#1D4ED8", Descricao = "Transformações de Lorentz e espaço-tempo de Minkowski" },
+            new() { Nome = "Relatividade Geral Avançada", Icone = "G", Cor = "#0E7490", Descricao = "Geodésicas, buraco negro e equações de Einstein" },
+            new() { Nome = "Gravitação Quântica", Icone = "🌀", Cor = "#8B5CF6", Descricao = "Quantização da gravidade e gravidade de loop" },
+            new() { Nome = "Teoria de Cordas", Icone = "∿", Cor = "#6B21A8", Descricao = "Branas, dualidades e compactificação" },
+            new() { Nome = "Física da Matéria Escura", Icone = "💫", Cor = "#4C1D95", Descricao = "WIMPs, axions e detecção direta" },
+            new() { Nome = "Física de Neutrinos", Icone = "ν", Cor = "#7C2D12", Descricao = "Oscilação de neutrinos e detecção" },
+            
+            // ─── MATEMÁTICA PURA AVANÇADA ───
+            new() { Nome = "Análise Real Avançada", Icone = "ℝ", Cor = "#991B1B", Descricao = "Lebesgue, Radon-Nikodym e teorema convergência monótona" },
+            new() { Nome = "Análise Complexa Profunda", Icone = "ℂ", Cor = "#4F46E5", Descricao = "Funções holomorfas, singularidades e superfícies de Riemann" },
+            new() { Nome = "Álgebra Comutativa", Icone = "⊗", Cor = "#9333EA", Descricao = "Ideais, módulos, localização e noetherianidade" },
+            new() { Nome = "Geometria Algébrica I", Icone = "𝒱", Cor = "#7C2D12", Descricao = "Variedades afins, esquemas e morfismos" },
+            new() { Nome = "Geometria Algébrica II", Icone = "𝒪", Cor = "#7C2D12", Descricao = "Cohomologia de feixes e dualidade Serre" },
+            new() { Nome = "Teoria dos Números Analítica", Icone = "ℓ", Cor = "#B45309", Descricao = "Funções zeta, distribuição de primos e hipótese de Riemann" },
+            new() { Nome = "Teoria dos Números Algébrica", Icone = "𝒪ₖ", Cor = "#B45309", Descricao = "Corpos numéricos, ideais e leis de reciprocidade" },
+            new() { Nome = "Formas Automórficas", Icone = "f", Cor = "#92400E", Descricao = "Grupo modular, formas modulares e séries de Eisenstein" },
+            new() { Nome = "Representações de Galois", Icone = "ρ", Cor = "#78350F", Descricao = "Representações absolutas e deformações" },
+            new() { Nome = "Geometria Simplética Avançada", Icone = "ω", Cor = "#7C3AED", Descricao = "Subvariedades lagrangianas e homologia floer" },
+            new() { Nome = "Geometria Kähler", Icone = "₍ω₎", Cor = "#A855F7", Descricao = "Formas Kähler, curvatura de Ricci e superfícies" },
+            new() { Nome = "Lógica Matemática Avançada", Icone = "⊧", Cor = "#4338CA", Descricao = "Teorema incompletude, teoria de modelos e computabilidade" },
+            new() { Nome = "Teoria das Categorias Avançada", Icone = "⇒", Cor = "#059669", Descricao = "∞-categorias, derivadores e derivada functores" },
+            
+            // ─── ENGENHARIA CIVIL E CONSTRUÇÃO ───
+            new() { Nome = "Engenharia Civil Estrutural", Icone = "🏗", Cor = "#78350F", Descricao = "Análise estrutural, armaduras e dimensionamento" },
+            new() { Nome = "Engenharia de Solos", Icone = "🏜", Cor = "#92400E", Descricao = "Compactação, capacidade portante e fundações" },
+            new() { Nome = "Engenharia Hidráulica", Icone = "💧", Cor = "#0E7490", Descricao = "Escoamento, fricção e sistemas de abastecimento" },
+            new() { Nome = "Engenharia de Transportes", Icone = "🛣", Cor = "#475569", Descricao = "Tráfego, pavimentação e geometria viária" },
+            
+            // ─── ENGENHARIA MECÂNICA ───
+            new() { Nome = "Dinâmica de Máquinas", Icone = "⚙", Cor = "#78350F", Descricao = "Mecanismos, cames e equilíbrio de rotores" },
+            new() { Nome = "Resistência dos Materiais", Icone = "σ", Cor = "#92400E", Descricao = "Tensão, deformação, torção e flambagem" },
+            new() { Nome = "Termoenergética e Motores", Icone = "🔥", Cor = "#DC2626", Descricao = "Ciclos termodinâmicos, motor e compressor" },
+            new() { Nome = "Máquinas de Fluxo", Icone = "〰", Cor = "#0891B2", Descricao = "Bombas, turbinas e ventiladores" },
+            new() { Nome = "Elementos de Máquinas", Icone = "⚡", Cor = "#EA580C", Descricao = "Engrenagens, rolamentos, correntes e correias" },
+            new() { Nome = "Vibração Mecânica", Icone = "≈", Cor = "#B45309", Descricao = "Oscilações, ressonância e amortecimento" },
+            new() { Nome = "Usinagem e Tecnologia Mecânica", Icone = "⚒", Cor = "#78350F", Descricao = "Torneamento, fresagem, qualidade de superfície" },
+            
+            // ─── ENGENHARIA ELÉTRICA ───
+            new() { Nome = "Circuitos Elétricos I", Icone = "⚡", Cor = "#DC2626", Descricao = "Lei Ohm, Kirchhoff, análise nodal e análise de malhas" },
+            new() { Nome = "Circuitos Elétricos II", Icone = "AC", Cor = "#991B1B", Descricao = "CA, impedância, ressonância e potência" },
+            new() { Nome = "Eletromagnetismo Aplicado", Icone = "B", Cor = "#14B8A6", Descricao = "Campos, indução e máquinas elétricas" },
+            new() { Nome = "Máquinas Elétricas", Icone = "M", Cor = "#0891B2", Descricao = "Motor CC, motor CA, transformador e gerador" },
+            new() { Nome = "Sistemas de Potência", Icone = "🔌", Cor = "#CA8A04", Descricao = "Transmissão, distribuição, fluxo de carga" },
+            new() { Nome = "Eletrônica Analógica", Icone = "◇", Cor = "#7C3AED", Descricao = "Transistores, amplificadores e osciladores" },
+            new() { Nome = "Eletrônica Digital", Icone = "►", Cor = "#6D28D9", Descricao = "Lógica digital, flip-flops, microprocessadores" },
+            new() { Nome = "Processamento de Sinais", Icone = "~", Cor = "#0E7490", Descricao = "FFT, filtros digitais e transformadas" },
+            new() { Nome = "Sistemas de Controle I", Icone = "⊂", Cor = "#15803D", Descricao = "Funções transferência, resposta temporal" },
+            new() { Nome = "Sistemas de Controle II", Icone = "⊃", Cor = "#106B37", Descricao = "Lugar das raízes, Bode, Nyquist e estabilidade" },
+            
+            // ─── ENGENHARIA QUÍMICA ───
+            new() { Nome = "Termodinâmica Química", Icone = "ΔG", Cor = "#BE185D", Descricao = "Equilíbrio químico, potencial químico e fugacidade" },
+            new() { Nome = "Cinética Química", Icone = "k", Cor = "#DB2777", Descricao = "Ordem reação, konstante velocidade e mecanismo" },
+            new() { Nome = "Reatores Químicos", Icone = "🔬", Cor = "#9333EA", Descricao = "CSTR, PFR, RTD e conversão reação" },
+            new() { Nome = "Separação e Purificação", Icone = "⬍", Cor = "#7C3AED", Descricao = "Destilação, absorção, extração, crystallização" },
+            new() { Nome = "Transferência de Calor e Massa", Icone = "∇T", Cor = "#DC2626", Descricao = "Condução, convecção, radiação e evaporação" },
+            new() { Nome = "Catálise", Icone = "→", Cor = "#EA580C", Descricao = "Mecanismos catalíticos e tipos de catalisadores" },
+            
+            // ─── BIOLOGIA E BIOQUÍMICA ───
+            new() { Nome = "Biologia Molecular Avançada", Icone = "🧬", Cor = "#10B981", Descricao = "Replicação DNA, transcrição, tradução" },
+            new() { Nome = "Genética Molecular", Icone = "📍", Cor = "#059669", Descricao = "Mutação, recombinação, epigenética" },
+            new() { Nome = "Bioquímica Metabólica", Icone = "⊙", Cor = "#065F46", Descricao = "Glicolise, Krebs, fosforilação oxidativa" },
+            new() { Nome = "Bioquímica Estrutural", Icone = "🔗", Cor = "#047857", Descricao = "Proteínas, enzimas, estrutura 3D" },
+            new() { Nome = "Fisiologia Animal", Icone = "🫀", Cor = "#A21CAF", Descricao = "Sistemas corporais, homeostase, endócrino" },
+            new() { Nome = "Fisiologia Vegetal", Icone = "🌿", Cor = "#15803D", Descricao = "Fotossíntese, transpiração, crescimento" },
+            new() { Nome = "Microbiologia", Icone = "🦠", Cor = "#DC2626", Descricao = "Bactérias, vírus, fungos e parasitas" },
+            new() { Nome = "Imunologia", Icone = "🛡", Cor = "#0369A1", Descricao = "Антигены, anticorpos, sistema imune adaptativo" },
+            new() { Nome = "Ecologia de Populações", Icone = "📈", Cor = "#059669", Descricao = "Crescimento, competição, predação, sucessão" },
+            new() { Nome = "Ecologia de Comunidades", Icone = "🌲", Cor = "#166534", Descricao = "Biodiversidade, redes tróficas, ciclos biogeoquímicos" },
+            new() { Nome = "Biologia Evolutiva", Icone = "🔄", Cor = "#065F46", Descricao = "Seleção natural, deriva genética, especiação" },
+            new() { Nome = "Biologia Comportamental", Icone = "🦁", Cor = "#92400E", Descricao = "Etologia, aprendizado animal, comunicação" },
+            new() { Nome = "Neurobiologia", Icone = "🧠", Cor = "#7C3AED", Descricao = "Neurônios, sinapses, potencial ação, neurotransmissores" },
+            new() { Nome = "Psicologia Evolutiva", Icone = "👥", Cor = "#6D28D9", Descricao = "Comportamento humano e origem" },
+            new() { Nome = "Toxicologia", Icone = "☠", Cor = "#DC2626", Descricao = "Toxinas, dose-resposta e mecanismo tóxico" },
+            new() { Nome = "Farmacologia", Icone = "💊", Cor = "#E11D48", Descricao = "Fármacos, receptores, agonistas e antagonistas" },
+            
+            // ─── CIÊNCIA DA COMPUTAÇÃO ───
+            new() { Nome = "Estruturas de Dados", Icone = "📦", Cor = "#64748B", Descricao = "Listas, árvores, grafos, hash tables" },
+            new() { Nome = "Algoritmos I", Icone = "F→O", Cor = "#475569", Descricao = "Busca, ordenação, PD, guloso" },
+            new() { Nome = "Algoritmos II", Icone = "NP", Cor = "#334155", Descricao = "Grafos, fluxo, emparelhamento" },
+            new() { Nome = "Compiladores e Intérpretes", Icone = "⟨⟩", Cor = "#78350F", Descricao = "Léxica, sintaxe, semântica, geração código" },
+            new() { Nome = "Linguagens de Programação", Icone = "{ }", Cor = "#92400E", Descricao = "Paradigmas imperativo, funcional, orientado objeto" },
+            new() { Nome = "Engenharia de Software", Icone = "🔨", Cor = "#B45309", Descricao = "Design patterns, refatoração, testes" },
+            new() { Nome = "Bases de Dados I", Icone = "🗄", Cor = "#0E7490", Descricao = "Modelo relacional, SQL, normalização" },
+            new() { Nome = "Bases de Dados II", Icone = "DB", Cor = "#0891B2", Descricao = "Índices, transações, ACID, NoSQL" },
+            new() { Nome = "Redes de Computadores I", Icone = "🌐", Cor = "#0EA5E9", Descricao = "OSI, TCP/IP, HTTP, DNS" },
+            new() { Nome = "Redes de Computadores II", Icone = "📡", Cor = "#0284C7", Descricao = "Roteamento, congestionamento, QoS" },
+            new() { Nome = "Criptografia Clássica", Icone = "🔐", Cor = "#4338CA", Descricao = "Cifras simétricas, DES, AES" },
+            new() { Nome = "Criptografia Assimétrica", Icone = "🔒", Cor = "#4F46E5", Descricao = "RSA, ECC, assinatura digital" },
+            new() { Nome = "Segurança da Informação", Icone = "🛡", Cor = "#6366F1", Descricao = "Malware, phishing, autenticação, autorização" },
+            new() { Nome = "Visão Computacional I", Icone = "👁", Cor = "#A21CAF", Descricao = "Processamento imagem, filtros, detecção bordas" },
+            new() { Nome = "Visão Computacional II", Icone = "🔍", Cor = "#C084FC", Descricao = "Reconhecimento objeto, segmentação, rastreamento" },
+            new() { Nome = "Processamento Linguagem Natural", Icone = "📝", Cor = "#7C3AED", Descricao = "Tokenização, POS tagging, análise sintática" },
+            new() { Nome = "Machine Learning Clássico", Icone = "🤖", Cor = "#6B21A8", Descricao = "SVM, random forest, regressão, clustering" },
+            new() { Nome = "Deep Learning I", Icone = "🧠", Cor = "#5B21B6", Descricao = "Redes neurais, backpropagation, CNN, RNN" },
+            new() { Nome = "Deep Learning II", Icone = "Σ", Cor = "#6D28D9", Descricao = "LSTM, Transformers, GANs, attention" },
+            new() { Nome = "Processamento Distribuído", Icone = "||", Cor = "#15803D", Descricao = "MapReduce, Spark, sistemas distribuídos" },
+            new() { Nome = "Computação em Nuvem", Icone = "☁", Cor = "#0EA5E9", Descricao = "AWS, Azure, Google Cloud, containerização" },
+            
+            // ─── MATEMÁTICA DISCRETA E LÓGICA ───
+            new() { Nome = "Teoria dos Grafos Avançada", Icone = "⊙", Cor = "#C2410C", Descricao = "Coloração, Hamiltoniano, euleriano, planaridade" },
+            new() { Nome = "Combinatória", Icone = "⊂", Cor = "#DC2626", Descricao = "Permutações, combinações, princípio inclusão-exclusão" },
+            new() { Nome = "Teoria da Codificação", Icone = "0101", Cor = "#EA580C", Descricao = "Códigos linear, Hamming, Reed-Solomon" },
+            
+            // ─── ESTATÍSTICA AVANÇADA ───
+            new() { Nome = "Análise Multivariada Avançada", Icone = "Σ", Cor = "#047857", Descricao = "Análise fator, componentes principais, discriminante" },
+            new() { Nome = "Séries Temporais Avançada", Icone = "Xₜ", Cor = "#92400E", Descricao = "ARIMA, GARCH, decomposição sazonal" },
+            new() { Nome = "Métodos Bayesianos Avançados", Icone = "θ", Cor = "#7E22CE", Descricao = "MCMC, inferência variacional, hierarchical models" },
+            new() { Nome = "Estatística Não-Paramétrica", Icone = "F", Cor = "#6B21A8", Descricao = "Testes permutação, bootstrap, resampling" },
+            new() { Nome = "Análise de Sobrevivência Avançada", Icone = "Ŝ", Cor = "#10B981", Descricao = "Kaplan-Meier, Cox, competing risks" },
         ]);
     }
 
@@ -308,6 +433,15 @@ public partial class FormulaService
         AdicionarEpidemiologia();
         AdicionarFarmacocinetica();
         AdicionarNeurocienciaComputacional();
+        AdicionarAlgebraAbstrataCompleta();
+        AdicionarTopologiaCompleta();
+        AdicionarGeometriaDiferencialCompleta();
+        AdicionarCalculoVariacoesCompleto();
+        AdicionarFuncoesEspeciaisCompleta();
+        AdicionarAnaliseComplexaCompleta();
+        AdicionarMecanicaLagrangianaCompleta();
+        AdicionarMecanicaEstatisticaCompleta();
+        AdicionarRelatividadeGeralCompleta();
 
         // ── Volume 3 (versao calculavel completa) ──
         AdicionarAnaliseFuncionalCompleta();
@@ -423,6 +557,8 @@ public partial class FormulaService
         AdicionarComputacaoDNANeuromorfica();
         AdicionarBioquimicaEstrutural();
         AdicionarHopfieldEcologia();
+        AdicionarTeoriaLieRepresentacoes();
+        AdicionarTeoriaNumeros();
 
         // ── Volume 6 ──
         AdicionarInfCategorias();
@@ -458,18 +594,89 @@ public partial class FormulaService
         AdicionarVol7Engenharia();
         AdicionarVol7EconFinancas();
         AdicionarVol7TerraFisica();
+        AdicionarVol7JogosFoto();
         AdicionarVol7BioCompIA();
         AdicionarVol7Artesanato();
         AdicionarVol7TechEmergente();
 
-        // Carrega fórmulas públicas estáticas dos arquivos *_Complete que não entram via métodos Adicionar*.
-        AdicionarFormulasFactoryVol1EVol5();
+        // ═══ VOLUME 9 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+        // 360 fórmulas: Teoria dos Jogos até Relatividade Geral
+        InicializarFormulasVol9();
 
+        // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
+        // Adiciona 310 fórmulas dinâmicas para atingir 3588 total
+        // 102 do V9 (001-102) + 65 V1-V7 distribuídas
+        _formulas.AddRange(FormulaGeneradorFaltantes.GerarFormulasAusentes());
+
+        // ═══ CARREGAMENTO DE V8 VIA FACTORY ═══
+        // V1 e V5 JÁ são carregados via métodos diretos (AdicionarAlgebra, AdicionarTeoriaDeLie, etc.)
+        // V8 APENAS é carregado via factory, então precisa ser incluído aqui
+        AdicionarFormulasFactoryV8();
+
+        // Harmoniza categorias para evitar fórmulas em buckets genéricos/inconsistentes.
+        NormalizarCategoriasDasFormulas();
 
         // Update category counts
         foreach (var cat in _categorias)
         {
             cat.TotalFormulas = _formulas.Count(f => f.Categoria == cat.Nome);
+        }
+    }
+
+    private void AdicionarFormulasFactoryV8()
+    {
+        var formulasFactory = typeof(FormulaService)
+            .GetMethods(BindingFlags.Public | BindingFlags.Static)
+            .Where(m =>
+                m.ReturnType == typeof(Formula)
+                && m.GetParameters().Length == 0
+                && m.Name.StartsWith("V8_", StringComparison.Ordinal))
+            .OrderBy(m => m.Name, StringComparer.Ordinal)
+            .Select(m => m.Invoke(null, null) as Formula)
+            .Where(f => f is not null)
+            .Cast<Formula>();
+
+        _formulas.AddRange(formulasFactory);
+    }
+
+    private void NormalizarCategoriasDasFormulas()
+    {
+        var aliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Teoria Jogos"] = "Teoria dos Jogos",
+            ["Aprendizado Reforço"] = "Aprendizado por Reforço",
+            ["Controle Ótimo"] = "Controle Não-Linear e Ótimo",
+            ["Física Estatística"] = "Mecânica Estatística",
+            ["Topologia Algébrica"] = "Topologia Algébrica Avançada",
+            ["Matemática Aplicada"] = "Matemática Elementar"
+        };
+
+        foreach (var f in _formulas)
+        {
+            var categoria = (f.Categoria ?? string.Empty).Trim();
+            var subCategoria = (f.SubCategoria ?? string.Empty).Trim();
+
+            // Volume IX usa área em SubCategoria; promove para categoria principal.
+            if (categoria.Equals("Volume IX", StringComparison.OrdinalIgnoreCase)
+                && !string.IsNullOrWhiteSpace(subCategoria))
+            {
+                categoria = subCategoria;
+            }
+
+            if (aliases.TryGetValue(categoria, out var canonica))
+            {
+                categoria = canonica;
+            }
+
+            if (string.IsNullOrWhiteSpace(categoria) && !string.IsNullOrWhiteSpace(subCategoria))
+            {
+                categoria = subCategoria;
+            }
+
+            if (!string.IsNullOrWhiteSpace(categoria))
+            {
+                f.Categoria = categoria;
+            }
         }
     }
 
@@ -481,7 +688,8 @@ public partial class FormulaService
                 m.ReturnType == typeof(Formula)
                 && m.GetParameters().Length == 0
                 && (m.Name.StartsWith("V1_", StringComparison.Ordinal)
-                    || m.Name.StartsWith("V5_", StringComparison.Ordinal)))
+                    || m.Name.StartsWith("V5_", StringComparison.Ordinal)
+                    || m.Name.StartsWith("V8_", StringComparison.Ordinal)))
             .OrderBy(m => m.Name, StringComparer.Ordinal)
             .Select(m => m.Invoke(null, null) as Formula)
             .Where(f => f is not null)
