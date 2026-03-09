@@ -1,0 +1,49 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE XIII
+    /// TRIBOLOGIA E LUBRIFICAÇÃO
+    /// Fórmulas V10-239 a V10-259 (21 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_Tribology()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3827,
+                    CodigoCompendio = "V10-239",
+                    Nome = "Lei de Coulomb do Atrito",
+                    Categoria = "Tribologia",
+                    SubCategoria = "Atrito e Desgaste",
+                    Nivel = "Fundamental",
+                    Expressao = @"F_f = μ·N",
+                    Descricao = "Força de atrito proporcional à força normal. μ: coeficiente de atrito (estático ou dinâmico). Independente da área de contato (idealmente).",
+                    ExemploUso = "Aço-aço seco: μ_s≈0.8, μ_k≈0.6. Teflon-aço: μ≈0.04. Lubrificação reduz μ.",
+                    Origem = "Coulomb (1785, teoria do atrito)",
+                    AnoOrigem = "1785",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Coef atrito μ", Simbolo = "μ", Unidade = "", Valor = 0.6 },
+                        new Variavel { Nome = "Força normal N (N)", Simbolo = "N", Unidade = "N", Valor = 100 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double mu = inputs["Coef atrito μ"];
+                        double N = inputs["Força normal N (N)"];
+                        double F_f = mu * N;
+                        return new Dictionary<string, double>{ ["Força atrito (N)"] = F_f };
+                    },
+                    Icone = "⚙️"
+                }
+                // Demais fórmulas V10-240 a V10-259
+            });
+        }
+    }
+}

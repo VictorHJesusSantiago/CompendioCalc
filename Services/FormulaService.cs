@@ -603,7 +603,11 @@ public partial class FormulaService
         // 360 fórmulas: Teoria dos Jogos até Relatividade Geral
         InicializarFormulasVol9();
 
-        // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
+    // ═══ VOLUME 10 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // 395 fórmulas: Computação Quântica até Mecânica Estatística de Não-Equilíbrio
+    AdicionarFormulasVol10();
+
+    // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total
         // 102 do V9 (001-102) + 65 V1-V7 distribuídas
         _formulas.AddRange(FormulaGeneradorFaltantes.GerarFormulasAusentes());

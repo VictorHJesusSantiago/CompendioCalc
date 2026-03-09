@@ -1,0 +1,46 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE VII
+    /// OTIMIZAÇÃO MATEMÁTICA AVANÇADA
+    /// Fórmulas V10-122 a V10-141 (20 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_MathOptimization()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3710,
+                    CodigoCompendio = "V10-122",
+                    Nome = "Condições KKT (Karush-Kuhn-Tucker)",
+                    Categoria = "Otimização Matemática",
+                    SubCategoria = "Programação Não-Linear",
+                    Nivel = "Avançado",
+                    Expressao = @"∇f(x*) + Σλᵢ·∇gᵢ(x*) = 0; λᵢ·gᵢ(x*)=0",
+                    Descricao = "Condições necessárias para ótimo com restrições de desigualdade. λᵢ≥0: multiplicadores. Complementaridade: λᵢ·gᵢ=0.",
+                    ExemploUso = "SVM: maximizar margem com KKT. Portfolio optimization com restrições.",
+                    Origem = "Karush (1939); Kuhn e Tucker (1951)",
+                    AnoOrigem = "1939",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome ="Gap de dualidade", Simbolo = "gap", Unidade = "", Valor = 0.01 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double gap = inputs["Gap de dualidade"];
+                        return new Dictionary<string, double>{ ["Gap"] = gap, ["Ótimo?"] = gap < 1e-6 ? 1 : 0 };
+                    },
+                    Icone = "📊"
+                }
+                // Demais fórmulas V10-123 a V10-141
+            });
+        }
+    }
+}

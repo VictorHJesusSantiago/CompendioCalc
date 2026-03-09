@@ -1,0 +1,51 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE VI
+    /// BIOLOGIA DE SISTEMAS E REDES REGULATÓRIAS
+    /// Fórmulas V10-102 a V10-121 (20 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_SystemsBiology()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3690,
+                    CodigoCompendio = "V10-102",
+                    Nome = "Equação de Hill — Cooperatividade",
+                    Categoria = "Biologia de Sistemas",
+                    SubCategoria = "Regulação Gênica",
+                    Nivel = "Intermediário",
+                    Expressao = @"θ = [L]^n/(K_d^n + [L]^n)",
+                    Descricao = "Fração de sítios ocupados. n: coeficiente Hill (cooperatividade). K_d: constante dissociação.",
+                    ExemploUso = "Hemoglobina O₂: n≈2.8. Repressor lac: n~2. Cascata sinalização: n~5-10.",
+                    Origem = "Hill (1910, J. Physiol.)",
+                    AnoOrigem = "1910",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Concentração [L]", Simbolo = "[L]", Unidade = "M", Valor = 0.001 },
+                        new Variavel { Nome = "K_d", Simbolo = "K_d", Unidade = "M", Valor = 0.001 },
+                        new Variavel { Nome = "Coef Hill n", Simbolo = "n", Unidade = "", Valor = 2.8 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double L = inputs["Concentração [L]"];
+                        double Kd = inputs["K_d"];
+                        double n = inputs["Coef Hill n"];
+                        double theta = Math.Pow(L, n) / (Math.Pow(Kd, n) + Math.Pow(L, n));
+                        return new Dictionary<string, double>{ ["Fração ocupada θ"] = theta, ["θ (%)"] = theta * 100 };
+                    },
+                    Icone = "🧬"
+                }
+                // Demais fórmulas V10-103 a V10-121
+            });
+        }
+    }
+}

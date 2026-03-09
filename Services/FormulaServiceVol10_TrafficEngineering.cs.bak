@@ -1,0 +1,60 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE XIX
+    /// ENGENHARIA DE TRÁFEGO E SISTEMAS DE TRANSPORTE
+    /// Fórmulas V10-358 a V10-376 (19 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_TrafficEngineering()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3946,
+                    CodigoCompendio = "V10-358",
+                    Nome = "Equação Fundamental do Tráfego",
+                    Categoria = "Engenharia de Tráfego",
+                    SubCategoria = "Fluxo de Tráfego",
+                    Nivel = "Fundamental",
+                    Expressao = @"q = k·v",
+                    Descricao = "Relação entre fluxo (q, veíc/h), densidade (k, veíc/km) e velocidade média (v, km/h). Fluxo máximo: regime crítico entre livre e congestionado.",
+                    ExemploUso = "Fluxo livre: k=20 veíc/km, v=100 km/h → q=2000 veíc/h. Congestionado: k=100, v=20 → q=2000. Capacidade típica via: 2000-2500 veíc/h/faixa.",
+                    Origem = "Greenshields (1935, pioneiro em modelos de tráfego)",
+                    AnoOrigem = "1935",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Densidade k (veíc/km)", Simbolo = "k", Unidade = "veíc/km", Valor = 50 },
+                        new Variavel { Nome = "Velocidade v (km/h)", Simbolo = "v", Unidade = "km/h", Valor = 60 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double k = inputs["Densidade k (veíc/km)"];
+                        double v = inputs["Velocidade v (km/h)"];
+                        
+                        double q = k * v;
+                        
+                        // Densidade crítica típica: k_crit ≈ 40-50 veíc/km
+                        double k_crit = 45;
+                        bool regime_livre = k < k_crit;
+                        
+                        return new Dictionary<string, double>{
+                            ["Fluxo q (veíc/h)"] = q,
+                            ["Regime livre?"] = regime_livre ? 1 : 0,
+                            ["Espaçamento (m/veíc)"] = 1000.0 / Math.Max(k, 1),
+                            ["Headway (s)"] = 3600.0 / Math.Max(q, 1)
+                        };
+                    },
+                    Icone = "🚗"
+                }
+                // Demais fórmulas V10-359 a V10-376
+            });
+        }
+    }
+}

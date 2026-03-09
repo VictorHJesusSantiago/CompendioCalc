@@ -1,0 +1,56 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE XVII
+    /// QUÍMICA VERDE E SUSTENTABILIDADE QUÍMICA
+    /// Fórmulas V10-319 a V10-337 (19 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_GreenChemistry()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3907,
+                    CodigoCompendio = "V10-319",
+                    Nome = "Economia Atômica (Atom Economy)",
+                    Categoria = "Química Verde",
+                    SubCategoria = "Eficiência de Reação",
+                    Nivel = "Intermediário",
+                    Expressao = @"AE = (MM_produto)/(ΣMM_reagentes) × 100%",
+                    Descricao = "Mede eficiência: quanto da massa de reagentes vira produto desejado. AE=100%: ideal (adição). Reactions com resíduos: AE baixo.",
+                    ExemploUso = "Síntese Diels-Alder: AE~100%. Wittig com subproduto óxido fosfina: AE~50%. Favorece rotas sustentáveis.",
+                    Origem = "Trost (1991, Science, conceito de economia atômica)",
+                    AnoOrigem = "1991",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "MM produto (g/mol)", Simbolo = "MM_p", Unidade = "g/mol", Valor = 100 },
+                        new Variavel { Nome = "Σ MM reagentes (g/mol)", Simbolo = "MM_r", Unidade = "g/mol", Valor = 150 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double MM_produto = inputs["MM produto (g/mol)"];
+                        double MM_reagentes = inputs["Σ MM reagentes (g/mol)"];
+                        
+                        double AE = (MM_produto / Math.Max(MM_reagentes, 1)) * 100;
+                        bool sustentavel = AE > 75;
+                        
+                        return new Dictionary<string, double>{
+                            ["Economia Atômica (%)"] = AE,
+                            ["Sustentável (>75%)?"] = sustentavel ? 1 : 0,
+                            ["Perda massa (%)"] = 100 - AE
+                        };
+                    },
+                    Icone = "🌱"
+                }
+                // Demais fórmulas V10-320 a V10-337
+            });
+        }
+    }
+}

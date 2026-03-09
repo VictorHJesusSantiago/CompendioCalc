@@ -1,0 +1,51 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE V
+    /// COSMOLOGIA INFLACIONÁRIA E ENERGIA ESCURA
+    /// Fórmulas V10-082 a V10-101 (20 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_Cosmology()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3670,
+                    CodigoCompendio = "V10-082",
+                    Nome = "Equação de Friedmann",
+                    Categoria = "Cosmologia",
+                    SubCategoria = "Cosmologia Dinâmica",
+                    Nivel = "Avançado",
+                    Expressao = @"H² = (8πG/3)ρ − k/a² + Λ/3",
+                    Descricao = "Evolução do fator de escala a(t). H: parâmetro Hubble. ρ: densidade energia. k: curvatura. Λ: constante cosmológica.",
+                    ExemploUso = "Planck 2018: Ω_Λ≈0.68, Ω_m≈0.32. Idade: t₀≈13.8 Gyr.",
+                    Origem = "Friedmann (1922); base do modelo FLRW",
+                    AnoOrigem = "1922",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", Valor = 70 },
+                        new Variavel { Nome = "Ω_m", Simbolo = "Ω_m", Unidade = "", Valor = 0.32 },
+                        new Variavel { Nome = "Ω_Λ", Simbolo = "Ω_Λ", Unidade = "", Valor = 0.68 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double H0 = inputs["H0 (km/s/Mpc)"];
+                        double Om = inputs["Ω_m"];
+                        double OL = inputs["Ω_Λ"];
+                        double Otot = Om + OL;
+                        return new Dictionary<string, double>{ ["Ω_total"] = Otot, ["Universo plano?"] = Math.Abs(Otot - 1) < 0.01 ? 1 : 0 };
+                    },
+                    Icone = "🌌"
+                }
+                // Demais fórmulas V10-083 a V10-101
+            });
+        }
+    }
+}

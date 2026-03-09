@@ -1,0 +1,74 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE IX
+    /// FINANÇAS QUANTITATIVAS AVANÇADAS
+    /// Fórmulas V10-161 a V10-180 (20 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_QuantFinance()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3749,
+                    CodigoCompendio = "V10-161",
+                    Nome = "Black-Scholes — Preço de Opção",
+                    Categoria = "Finanças Quantitativas",
+                    SubCategoria = "Precificação de Derivativos",
+                    Nivel = "Avançado",
+                    Expressao = @"C = S₀N(d₁) − Ke^(−rT)N(d₂)",
+                    Descricao = "Preço call europeia. d₁=(ln(S₀/K)+(r+σ²/2)T)/(σ√T). N: distribuição normal acumulada.",
+                    ExemploUso = "S₀=$100, K=$100, r=5%, σ=20%, T=1yr: C≈$10.45. Put-call parity: P=C−S₀+Ke^(−rT).",
+                    Origem = "Black e Scholes (1973, JPE); Merton (1973, Nobel 1997)",
+                    AnoOrigem = "1973",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "S₀ Preço ativo", Simbolo = "S₀", Unidade = "$", Valor = 100 },
+                        new Variavel { Nome = "Strike K", Simbolo = "K", Unidade = "$", Valor = 100 },
+                        new Variavel { Nome = "Taxa r (%)", Simbolo = "r", Unidade = "%", Valor = 5 },
+                        new Variavel { Nome = "Volatilidade σ (%)", Simbolo = "σ", Unidade = "%", Valor = 20 },
+                        new Variavel { Nome = "Tempo T (anos)", Simbolo = "T", Unidade = "anos", Valor = 1 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double S0 = inputs["S₀ Preço ativo"];
+                        double K = inputs["Strike K"];
+                        double r = inputs["Taxa r (%)"] / 100.0;
+                        double sigma = inputs["Volatilidade σ (%)"] / 100.0;
+                        double T = inputs["Tempo T (anos)"];
+                        
+                        double d1 = (Math.Log(S0 / K) + (r + sigma * sigma / 2) * T) / (sigma * Math.Sqrt(T));
+                        double d2 = d1 - sigma * Math.Sqrt(T);
+                        
+                        // Aproximação da função de distribuição normal acumulada
+                        Func<double, double> N = x =>
+                        {
+                            return 0.5 * (1 + Math.Sign(x) * Math.Sqrt(1 - Math.Exp(-2 * x * x / Math.PI)));
+                        };
+                        
+                        double C = S0 * N(d1) - K * Math.Exp(-r * T) * N(d2);
+                        double P = C - S0 + K * Math.Exp(-r * T); // Put-call parity
+                        
+                        return new Dictionary<string, double>{
+                            ["Call price C"] = C,
+                            ["Put price P"] = P,
+                            ["d₁"] = d1,
+                            ["d₂"] = d2,
+                            ["N(d₁)"] = N(d1),
+                            ["N(d₂)"] = N(d2)
+                        };
+                    },
+                    Icone = "💰"
+                }
+                // Demais fórmulas V10-162 a V10-180
+            });
+        }
+    }
+}

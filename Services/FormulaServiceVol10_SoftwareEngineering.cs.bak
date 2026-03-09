@@ -1,0 +1,337 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE III
+    /// ENGENHARIA DE SOFTWARE E COMPLEXIDADE COMPUTACIONAL
+    /// Fórmulas V10-042 a V10-061 (20 fórmulas)
+    /// Métricas de software, complexidade de algoritmos e análise de desempenho
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_SoftwareEngineering()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                // V10-042: Complexidade Ciclomática
+                new Formula
+                {
+                    Id = 3630,
+                    CodigoCompendio = "V10-042",
+                    Nome = "Complexidade Ciclomática de McCabe",
+                    Categoria = "Engenharia de Software",
+                    SubCategoria = "Métricas de Código",
+                    Nivel = "Intermediário",
+                    Expressao = @"CC = E − N + 2P",
+                    Descricao = "Métrica de complexidade estrutural. E: arestas do grafo de fluxo. N: nós. P: componentes conectados (geralmente 1). CC>10: código complexo (difícil testar). CC>20: alto risco.",
+                    ExemploUso = "Método com 3 ifs e 1 for: CC≈5 (baixo). Função com 15 branches: CC=16 (refatorar). SonarQube usa CC para qualidade.",
+                    Origem = "McCabe (1976, IEEE Trans. Soft. Eng.)",
+                    AnoOrigem = "1976",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Arestas E", Simbolo = "E", Unidade = "", Valor = 15 },
+                        new Variavel { Nome = "Nós N", Simbolo = "N", Unidade = "", Valor = 12 },
+                        new Variavel { Nome = "Componentes P", Simbolo = "P", Unidade = "", Valor = 1 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double E = inputs["Arestas E"];
+                        double N = inputs["Nós N"];
+                        double P = inputs["Componentes P"];
+                        
+                        // Complexidade Ciclomática
+                        double CC = E - N + 2 * P;
+                        
+                        // Thresholds de qualidade
+                        double threshold_baixo = 10;
+                        double threshold_alto = 20;
+                        
+                        // Nível de risco
+                        string risco = CC <= threshold_baixo ? "Baixo" :
+                                      CC <= threshold_alto ? "Médio" : "Alto";
+                        
+                        // Número de caminhos independentes (aproximado)
+                        double caminhos_teste = CC;
+                        
+                        // Esforço de teste (relativo)
+                        double esforco_teste = CC * CC * 0.1;
+                        
+                        return new Dictionary<string, double>{
+                            ["Complexidade CC"] = CC,
+                            ["Risco Baixo (<10)?"] = CC <= threshold_baixo ? 1 : 0,
+                            ["Risco Médio (10-20)?"] = CC > threshold_baixo && CC <= threshold_alto ? 1 : 0,
+                            ["Risco Alto (>20)?"] = CC > threshold_alto ? 1 : 0,
+                            ["Caminhos de teste"] = caminhos_teste,
+                            ["Esforço teste (relativo)"] = esforco_teste,
+                            ["E - N"] = E - N
+                        };
+                    },
+                    Icone = "💻"
+                },
+
+                // V10-043: Lei de Halstead
+                new Formula
+                {
+                    Id = 3631,
+                    CodigoCompendio = "V10-043",
+                    Nome = "Métricas de Halstead — Volume e Dificuldade",
+                    Categoria = "Engenharia de Software",
+                    SubCategoria = "Complexidade de Código",
+                    Nivel = "Avançado",
+                    Expressao = @"V = N·log₂(η); D = (η₁/2)·(N₂/η₂)",
+                    Descricao = "Volume V: tamanho do programa. η=η₁+η₂: vocabulário (operadores+operandos). D: dificuldade. Esforço E=D·V. Tempo programação T=E/18 (stroud number).",
+                    ExemploUso = "Código com η=50, N=500: V≈2800. D≈10: E=28000. T≈1500s≈26min. Predição de bugs: B=V/3000. Alta dificuldade → mais erros.",
+                    Origem = "Halstead (1977, Elements of Software Science)",
+                    AnoOrigem = "1977",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Operadores únicos η₁", Simbolo = "η₁", Unidade = "", Valor = 20 },
+                        new Variavel { Nome = "Operandos únicos η₂", Simbolo = "η₂", Unidade = "", Valor = 30 },
+                        new Variavel { Nome = "Total operadores N₁", Simbolo = "N₁", Unidade = "", Valor = 200 },
+                        new Variavel { Nome = "Total operandos N₂", Simbolo = "N₂", Unidade = "", Valor = 300 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double eta1 = inputs["Operadores únicos η₁"];
+                        double eta2 = inputs["Operandos únicos η₂"];
+                        double N1 = inputs["Total operadores N₁"];
+                        double N2 = inputs["Total operandos N₂"];
+                        
+                        // Vocabulário e comprimento
+                        double eta = eta1 + eta2;
+                        double N = N1 + N2;
+                        
+                        // Volume
+                        double V = N * Math.Log(eta, 2);
+                        
+                        // Dificuldade
+                        double D = (eta1 / 2.0) * (N2 / Math.Max(eta2, 1));
+                        
+                        // Esforço
+                        double E = D * V;
+                        
+                        // Tempo (segundos, stroud number = 18)
+                        double T_sec = E / 18.0;
+                        double T_min = T_sec / 60.0;
+                        
+                        // Predição de bugs
+                        double B = V / 3000.0;
+                        
+                        return new Dictionary<string, double>{
+                            ["Vocabulário η"] = eta,
+                            ["Comprimento N"] = N,
+                            ["Volume V"] = V,
+                            ["Dificuldade D"] = D,
+                            ["Esforço E"] = E,
+                            ["Tempo (segundos)"] = T_sec,
+                            ["Tempo (minutos)"] = T_min,
+                            ["Bugs estimados"] = B
+                        };
+                    },
+                    Icone = "💻"
+                },
+
+                // V10-044: Lei de Amdahl
+                new Formula
+                {
+                    Id = 3632,
+                    CodigoCompendio = "V10-044",
+                    Nome = "Lei de Amdahl — Speedup de Paralelização",
+                    Categoria = "Engenharia de Software",
+                    SubCategoria = "Computação Paralela",
+                    Nivel = "Fundamental",
+                    Expressao = @"S(N) = 1/(s + p/N)",
+                    Descricao = "Speedup máximo ao paralelizar. s: fração serial. p: fração paralela (s+p=1). N: núcleos. Limite: S_max=1/s. Mesmo com N→∞, parte serial limita ganho.",
+                    ExemploUso = "s=10%, p=90%, N=4: S≈3.1× (não 4×). s=50%: S_max=2× independente de N. Web scraping (s<5%): escala bem. Banco de dados (s~30%): escala mal.",
+                    Origem = "Amdahl (1967, AFIPS Conference)",
+                    AnoOrigem = "1967",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Fração serial s (%)", Simbolo = "s", Unidade = "%", Valor = 10 },
+                        new Variavel { Nome = "Número de processadores N", Simbolo = "N", Unidade = "", Valor = 8 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double s_percent = inputs["Fração serial s (%)"];
+                        double N = inputs["Número de processadores N"];
+                        
+                        double s = s_percent / 100.0;
+                        double p = 1.0 - s;
+                        
+                        // Speedup
+                        double S = 1.0 / (s + p / N);
+                        
+                        // Speedup máximo (N→∞)
+                        double S_max = 1.0 / s;
+                        
+                        // Eficiência
+                        double E = S / N;
+                        
+                        // Speedup ideal (linear)
+                        double S_ideal = N;
+                        
+                        // Perda de desempenho
+                        double perda = (S_ideal - S) / S_ideal * 100;
+                        
+                        return new Dictionary<string, double>{
+                            ["Fração serial (%)"] = s_percent,
+                            ["Fração paralela (%)"] = p * 100,
+                            ["Speedup S"] = S,
+                            ["Speedup máximo S_max"] = Math.Min(S_max, 1000),
+                            ["Speedup ideal"] = S_ideal,
+                            ["Eficiência (%)"] = E * 100,
+                            ["Perda vs ideal (%)"] = perda,
+                            ["% do máximo atingido"] = (S / Math.Min(S_max, S_ideal)) * 100
+                        };
+                    },
+                    Icone = "💻"
+                },
+
+                // V10-045: Notação Big O — Complexidade Temporal
+                new Formula
+                {
+                    Id = 3633,
+                    CodigoCompendio = "V10-045",
+                    Nome = "Análise Assintótica — Big O",
+                    Categoria = "Engenharia de Software",
+                    SubCategoria = "Complexidade de Algoritmos",
+                    Nivel = "Fundamental",
+                    Expressao = @"T(n) = O(f(n)): ∃c,n₀: T(n) ≤ c·f(n) ∀n>n₀",
+                    Descricao = "Limite superior assintótico. T(n): tempo real. f(n): função dominante. Classes comuns: O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ).",
+                    ExemploUso = "Binary search: O(log n). Merge sort: O(n log n). Bubble sort: O(n²). n=10^6: O(n) → 1s, O(n²) → 11 dias. Escolha de algoritmo crítica.",
+                    Origem = "Knuth (1976, Big O notation popularizada na ciência da computação)",
+                    AnoOrigem = "1976",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Tamanho entrada n", Simbolo = "n", Unidade = "", Valor = 1000 },
+                        new Variavel { Nome = "Tipo complexidade (1-6)", Simbolo = "tipo", Unidade = "", Valor = 3 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double n = inputs["Tamanho entrada n"];
+                        double tipo = inputs["Tipo complexidade (1-6)"];
+                        
+                        // Tipos: 1=O(1), 2=O(log n), 3=O(n), 4=O(n log n), 5=O(n²), 6=O(2^n)
+                        int t = Math.Max(1, Math.Min(6, (int)Math.Round(tipo)));
+                        
+                        double operacoes = 0;
+                        string nome = "";
+                        
+                        switch (t)
+                        {
+                            case 1: operacoes = 1; nome = "O(1)"; break;
+                            case 2: operacoes = Math.Log(n, 2); nome = "O(log n)"; break;
+                            case 3: operacoes = n; nome = "O(n)"; break;
+                            case 4: operacoes = n * Math.Log(n, 2); nome = "O(n log n)"; break;
+                            case 5: operacoes = n * n; nome = "O(n²)"; break;
+                            case 6: operacoes = Math.Min(Math.Pow(2, Math.Min(n, 30)), 1e15); nome = "O(2^n)"; break;
+                        }
+                        
+                        // Tempo estimado (assumindo 1 op = 1ns)
+                        double tempo_ns = operacoes;
+                        double tempo_ms = tempo_ns / 1e6;
+                        double tempo_s = tempo_ns / 1e9;
+                        
+                        return new Dictionary<string, double>{
+                            ["Tipo"] = t,
+                            ["Operações"] = operacoes,
+                            ["Tempo (ns)"] = tempo_ns,
+                            ["Tempo (ms)"] = tempo_ms,
+                            ["Tempo (s)"] = tempo_s,
+                            ["log₁₀(ops)"] = Math.Log10(Math.Max(operacoes, 1)),
+                            ["Escalável (ops<10^9)?"] = operacoes < 1e9 ? 1 : 0
+                        };
+                    },
+                    Icone = "💻"
+                },
+
+                // V10-046: COCOMO — Estimativa de Esforço
+                new Formula
+                {
+                    Id = 3634,
+                    CodigoCompendio = "V10-046",
+                    Nome = "COCOMO — Estimativa de Esforço de Projeto",
+                    Categoria = "Engenharia de Software",
+                    SubCategoria = "Gerenciamento de Projetos",
+                    Nivel = "Avançado",
+                    Expressao = @"E = a·(KLOC)^b; T = c·E^d",
+                    Descricao = "Constructive Cost Model. E: pessoa-mês. KLOC: milhares de linhas de código. Modo orgânico (a=2.4,b=1.05), semi-destacado (3.0,1.12), embutido (3.6,1.20). T: tempo em meses.",
+                    ExemploUso = "Projeto 50 KLOC, orgânico: E≈128 pessoa-mês, T≈14 meses. Embutido (crítico): E≈209, T≈16. COCOMO II ajusta com fatores de custo.",
+                    Origem = "Boehm (1981, Software Engineering Economics)",
+                    AnoOrigem = "1981",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "KLOC (milhares linhas)", Simbolo = "KLOC", Unidade = "", Valor = 50 },
+                        new Variavel { Nome = "Modo (1=org,2=semi,3=emb)", Simbolo = "modo", Unidade = "", Valor = 1 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double KLOC = inputs["KLOC (milhares linhas)"];
+                        double modo_val = inputs["Modo (1=org,2=semi,3=emb)"];
+                        
+                        int modo = Math.Max(1, Math.Min(3, (int)Math.Round(modo_val)));
+                        
+                        //Parâmetros COCOMO
+                        double a = 0, b = 0, c = 0, d = 0;
+                        
+                        switch (modo)
+                        {
+                            case 1: // Orgânico
+                                a = 2.4; b = 1.05; c = 2.5; d = 0.38;
+                                break;
+                            case 2: // Semi-destacado
+                                a = 3.0; b = 1.12; c = 2.5; d = 0.35;
+                                break;
+                            case 3: // Embutido
+                                a = 3.6; b = 1.20; c = 2.5; d = 0.32;
+                                break;
+                        }
+                        
+                        // Esforço (pessoa-mês)
+                        double E = a * Math.Pow(KLOC, b);
+                        
+                        // Tempo (meses)
+                        double T = c * Math.Pow(E, d);
+                        
+                        // Pessoas médias
+                        double P = E / T;
+                        
+                        // Produtividade (LOC/pessoa-mês)
+                        double prod = (KLOC * 1000) / E;
+                        
+                        return new Dictionary<string, double>{
+                            ["KLOC"] = KLOC,
+                            ["Modo (1/2/3)"] = modo,
+                            ["Esforço (pessoa-mês)"] = E,
+                            ["Tempo (meses)"] = T,
+                            ["Pessoas médias"] = P,
+                            ["Produtividade (LOC/PM)"] = prod,
+                            ["Custo ($, @$10k/PM)"] = E * 10000
+                        };
+                    },
+                    Icone = "💻"
+                }
+
+                // As demais fórmulas V10-047 a V10-061 incluiriam:
+                // - V10-047: Análise de Performance (Latência vs Throughput)
+                // - V10-048: Lei de Little (Sistemas de Filas)
+                // - V10-049: Cache Hit Rate e Miss Penalty
+                // - V10-050: Fator de Acoplamento (Coupling)
+                // - V10-051: Coesão de Módulo
+                // - V10-052: Profundidade de Herança (DIT)
+                // - V10-053: Número de Métodos Ponderados (WMC)
+                // - V10-054: Lack of Cohesion in Methods (LCOM)
+                // - V10-055: Technical Debt Ratio
+                // - V10-056: Code Churn
+                // - V10-057: Defect Density
+                // - V10-058: Mean Time to Failure (MTTF)
+                // - V10-059: Availability (SLA)
+                // - V10-060: Response Time Percentiles
+                // - V10-061: Resource Utilization Law
+            });
+        }
+    }
+}

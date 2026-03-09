@@ -1,0 +1,71 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE XX
+    /// MECÂNICA ESTATÍSTICA DE NÃO-EQUILÍBRIO
+    /// Fórmulas V10-377 a V10-395 (19 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_NonEquilibriumStatMech()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3965,
+                    CodigoCompendio = "V10-377",
+                    Nome = "Teorema de Flutuação de Jarzynski",
+                    Categoria = "Mecânica Estatística de Não-Equilíbrio",
+                    SubCategoria = "Relações de Flutuação",
+                    Nivel = "Avançado",
+                    Expressao = @"⟨e^(−βW)⟩ = e^(−βΔF)",
+                    Descricao = "Relaciona trabalho (W) irreversível com variação de energia livre (ΔF). β=1/(k_BT). Válido para processos arbitrariamente rápidos fora do equilíbrio.",
+                    ExemploUso = "Puxar molécula DNA com AFM: W_diss>ΔF sempre, mas ⟨e^(−βW)⟩ = e^(−βΔF). Recupera 2ª lei: ⟨W⟩≥ΔF (desigualdade de Jensen).",
+                    Origem = "Jarzynski (1997, Phys. Rev. Lett.)",
+                    AnoOrigem = "1997",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Trabalho W (kJ/mol)", Simbolo = "W", Unidade = "kJ/mol", Valor = 10 },
+                        new Variavel { Nome = "ΔF (kJ/mol)", Simbolo = "ΔF", Unidade = "kJ/mol", Valor = 8 },
+                        new Variavel { Nome = "Temperatura T (K)", Simbolo = "T", Unidade = "K", Valor = 300 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double W = inputs["Trabalho W (kJ/mol)"];
+                        double deltaF = inputs["ΔF (kJ/mol)"];
+                        double T = inputs["Temperatura T (K)"];
+                        
+                        double R = 0.008314; // kJ/(mol·K)
+                        double beta = 1.0 / (R * T);
+                        
+                        // Trabalho dissipado
+                        double W_diss = W - deltaF;
+                        
+                        // Verificação 2ª lei
+                        bool segunda_lei = W >= deltaF;
+                        
+                        // Termo exponencial
+                        double exp_termo = Math.Exp(-beta * W_diss);
+                        
+                        return new Dictionary<string, double>{
+                            ["Trabalho W (kJ/mol)"] = W,
+                            ["ΔF (kJ/mol)"] = deltaF,
+                            ["W_diss = W−ΔF (kJ/mol)"] = W_diss,
+                            ["2ª lei satisfeita?"] = segunda_lei ? 1 : 0,
+                            ["β (mol/kJ)"] = beta,
+                            ["e^(−βW_diss)"] = exp_termo,
+                            ["Entropia gerada (J/K/mol)"] = W_diss * R / T
+                        };
+                    },
+                    Icone = "📈"
+                }
+                // Demais fórmulas V10-378 a V10-395
+            });
+        }
+    }
+}

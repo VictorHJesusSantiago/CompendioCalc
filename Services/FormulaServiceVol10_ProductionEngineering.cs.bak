@@ -1,0 +1,63 @@
+using CompendioCalc.Models;
+using System;
+using System.Collections.Generic;
+
+namespace CompendioCalc.Services
+{
+    /// <summary>
+    /// VOLUME X - PARTE X
+    /// ENGENHARIA DE PRODUÇÃO, LOGÍSTICA E PESQUISA OPERACIONAL
+    /// Fórmulas V10-181 a V10-200 (20 fórmulas)
+    /// </summary>
+    public partial class FormulaService
+    {
+        private void AdicionarFormulasVol10_ProductionEngineering()
+        {
+            _formulas.AddRange(new List<Formula>
+            {
+                new Formula
+                {
+                    Id = 3769,
+                    CodigoCompendio = "V10-181",
+                    Nome = "Lote Econômico de Compra (EOQ)",
+                    Categoria = "Engenharia de Produção",
+                    SubCategoria = "Gestão de Estoques",
+                    Nivel = "Intermediário",
+                    Expressao = @"Q* = √(2DS/H)",
+                    Descricao = "Quantidade ótima de pedido. D: demanda anual. S: custo pedido. H: custo manutenção/unidade/ano. Minimiza custo total.",
+                    ExemploUso = "D=10000 un/ano, S=$50/pedido, H=$5/un/ano: Q*=447. Número pedidos=D/Q*≈22/ano.",
+                    Origem = "Wilson (1913, formulação original do EOQ)",
+                    AnoOrigem = "1913",
+                    Variaveis = new List<Variavel>
+                    {
+                        new Variavel { Nome = "Demanda D (un/ano)", Simbolo = "D", Unidade = "un/ano", Valor = 10000 },
+                        new Variavel { Nome = "Custo pedido S ($)", Simbolo = "S", Unidade = "$", Valor = 50 },
+                        new Variavel { Nome = "Custo manutenção H ($/un/ano)", Simbolo = "H", Unidade = "$/un/ano", Valor = 5 }
+                    },
+                    Calcular = inputs =>
+                    {
+                        double D = inputs["Demanda D (un/ano)"];
+                        double S = inputs["Custo pedido S ($)"];
+                        double H = inputs["Custo manutenção H ($/un/ano)"];
+                        
+                        double Q_star = Math.Sqrt(2 * D * S / H);
+                        double num_pedidos = D / Q_star;
+                        double custo_pedido_anual = (D / Q_star) * S;
+                        double custo_manutencao_anual = (Q_star / 2) * H;
+                        double custo_total = custo_pedido_anual + custo_manutencao_anual;
+                        
+                        return new Dictionary<string, double>{
+                            ["Q* (unidades)"] = Q_star,
+                            ["Número pedidos/ano"] = num_pedidos,
+                            ["Custo pedido/ano ($)"] = custo_pedido_anual,
+                            ["Custo manutenção/ano ($)"] = custo_manutencao_anual,
+                            ["Custo total/ano ($)"] = custo_total
+                        };
+                    },
+                    Icone = "📦"
+                }
+                // Demais fórmulas V10-182 a V10-200
+            });
+        }
+    }
+}
