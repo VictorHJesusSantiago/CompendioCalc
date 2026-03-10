@@ -366,6 +366,28 @@ public partial class FormulaService
             new() { Nome = "Métodos Bayesianos Avançados", Icone = "θ", Cor = "#7E22CE", Descricao = "MCMC, inferência variacional, hierarchical models" },
             new() { Nome = "Estatística Não-Paramétrica", Icone = "F", Cor = "#6B21A8", Descricao = "Testes permutação, bootstrap, resampling" },
             new() { Nome = "Análise de Sobrevivência Avançada", Icone = "Ŝ", Cor = "#10B981", Descricao = "Kaplan-Meier, Cox, competing risks" },
+
+            // ─── VOLUME XI ───
+            new() { Nome = "Vol XI - Astrofisica Estelar", Icone = "★", Cor = "#1D4ED8", Descricao = "Equacoes de estrutura e evolucao estelar" },
+            new() { Nome = "Vol XI - Fusao Termonuclear", Icone = "☢", Cor = "#B91C1C", Descricao = "Confinamento, ignicao e ganho energetico em plasma" },
+            new() { Nome = "Vol XI - Engenharia de Petroleo", Icone = "🛢", Cor = "#92400E", Descricao = "Reservatorios, escoamento e produtividade" },
+            new() { Nome = "Vol XI - Ciencia de Polimeros", Icone = "🧪", Cor = "#7C3AED", Descricao = "Reologia, cinetica e propriedades de polimeros" },
+            new() { Nome = "Vol XI - Geofisica e Sismologia", Icone = "🌍", Cor = "#0F766E", Descricao = "Ondas sismicas, energia e risco geofisico" },
+            new() { Nome = "Vol XI - Fotonica e Optica Quantica", Icone = "💡", Cor = "#EA580C", Descricao = "Interacao luz-materia e sistemas fotonicos" },
+            new() { Nome = "Vol XI - Ciencia de Dados e ML", Icone = "🧠", Cor = "#6D28D9", Descricao = "Modelagem estatistica e aprendizado de maquina" },
+            new() { Nome = "Vol XI - Biomecanica Cardiovascular", Icone = "🫀", Cor = "#BE185D", Descricao = "Hemodinamica e mecanica de tecidos cardiovasculares" },
+            new() { Nome = "Vol XI - Engenharia de Controle", Icone = "🎛", Cor = "#15803D", Descricao = "Projeto, estabilidade e robustez de controladores" },
+            new() { Nome = "Vol XI - Engenharia Ambiental", Icone = "♻", Cor = "#16A34A", Descricao = "Balancos, remocao de poluentes e risco ambiental" },
+            new() { Nome = "Vol XI - Engenharia Nuclear", Icone = "⚛", Cor = "#334155", Descricao = "Criticidade, termohidraulica e seguranca nuclear" },
+            new() { Nome = "Vol XI - Meteorologia e Clima", Icone = "🌦", Cor = "#0284C7", Descricao = "Indicadores atmosfericos e dinamica climatica" },
+            new() { Nome = "Vol XI - Fisica de Semicondutores", Icone = "🔋", Cor = "#4F46E5", Descricao = "Transporte de portadores e dispositivos" },
+            new() { Nome = "Vol XI - Linguistica Computacional", Icone = "🗣", Cor = "#0EA5E9", Descricao = "Modelos probabilisticos e metricas de linguagem" },
+            new() { Nome = "Vol XI - Microfluidica e Biotecnologia", Icone = "🧫", Cor = "#0D9488", Descricao = "Escoamento em microescala e bioprocessos" },
+            new() { Nome = "Vol XI - Fontes de Energia Renovavel", Icone = "☀", Cor = "#CA8A04", Descricao = "Conversao e eficiencia em sistemas renovaveis" },
+            new() { Nome = "Vol XI - Fisica de Plasma e MHD", Icone = "🌐", Cor = "#2563EB", Descricao = "Estabilidade magnetica e transporte em plasma" },
+            new() { Nome = "Vol XI - Matematica Financeira", Icone = "💰", Cor = "#059669", Descricao = "Desconto, risco e avaliacao de projetos" },
+            new() { Nome = "Vol XI - Engenharia Aeroespacial", Icone = "✈", Cor = "#9333EA", Descricao = "Desempenho aerodinamico e propulsao" },
+            new() { Nome = "Vol XI - Matematica Pura Avancada", Icone = "∞", Cor = "#7C2D12", Descricao = "Modelos abstratos e criterios de convergencia" },
         ]);
     }
 
@@ -606,6 +628,10 @@ public partial class FormulaService
     // ═══ VOLUME 10 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
     // 395 fórmulas: Computação Quântica até Mecânica Estatística de Não-Equilíbrio
     AdicionarFormulasVol10();
+
+    // ═══ VOLUME 11 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // 400 fórmulas: 20 áreas avançadas com descrição, exemplo, variáveis e origem
+    AdicionarFormulasVol11();
 
     // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total

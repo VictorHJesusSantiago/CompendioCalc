@@ -45,6 +45,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Services\FormulaServiceVol11_*.cs" />
+    <Compile Include="Services\FormulaServiceVol11_Generated.cs" />
+  </ItemGroup>
+
   <!-- App Icon -->
   <ItemGroup>
     <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#111827" />
