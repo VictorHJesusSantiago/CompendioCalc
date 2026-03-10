@@ -190,7 +190,6 @@ namespace CompendioCalc.Services
                         
                         // Classe A: ~20% items, 80% value
                         double N_A = N * 0.20;
-                        double val_A_pct = 80;
                         
                         return N_A;
                     },

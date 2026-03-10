@@ -190,9 +190,9 @@ namespace CompendioCalc.Services
             var nomesPorId = ObterDicionarioNomesCompleto();
             for (int id = 123; id <= 360; id++)
             {
-                if (!dict.ContainsKey(id) && nomesPorId.TryGetValue(id, out string nome))
+                if (!dict.ContainsKey(id) && nomesPorId.TryGetValue(id, out var nome))
                 {
-                    dict[id] = CriarFormulaEspecializadaVol9(id, nome);
+                    dict[id] = CriarFormulaEspecializadaVol9(id, nome ?? $"Formula {id}");
                 }
             }
 
@@ -228,7 +228,7 @@ namespace CompendioCalc.Services
         public Formula ObterFormulaVol9(int id)
         {
             if (!_formulasVol9.Value.TryGetValue(id, out var metadata))
-                return null;
+                return null!;
 
             return new Formula
             {

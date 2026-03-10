@@ -99,9 +99,6 @@ namespace CompendioCalc.Services
                         // Comprimento de London
                         double lambda_L = Math.Sqrt(massa / (mu0 * ns * e * e));
                         
-                        // Temperatura crítica típica (Nb: 9.2K)
-                        double Tc = 9.2;
-                        
                         // Coerência length (típico)
                         double xi = 40e-9; // 40nm para Nb
                         
@@ -741,8 +738,6 @@ namespace CompendioCalc.Services
                         // Parâmetro Rashba α_R ∝ E·γ
                         double alpha_R = E_field * gamma / 10; // eV·Å (conversão aproximada)
                         
-                        // Comprimento spin-órbita típico
-                        double hbar = 1.054571817e-34;
                         double eV_J = 1.602176634e-19;
                         double alpha_R_SI = alpha_R * eV_J * 1e-10; // J·m
                         

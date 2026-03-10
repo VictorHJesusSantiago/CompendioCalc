@@ -241,6 +241,28 @@ public partial class FormulaService
             new() { Nome = "Computação Gráfica", Icone = "💡", Cor = "#7C3AED", Descricao = "Iluminação, transformações e interpolação" },
             new() { Nome = "Balística", Icone = "🎯", Cor = "#78350F", Descricao = "Trajetória de projéteis e coeficiente balístico" },
             new() { Nome = "Tecnologias Emergentes", Icone = "🔬", Cor = "#059669", Descricao = "5G, energia, blockchain, impressão 3D, CRISPR e quântica" },
+
+            // ═══ VOLUME 12 — Horizontes da Ciência (Edição 2026) ═══
+            new() { Nome = "Cristalografia e Difração de Raios-X", Icone = "💎", Cor = "#7C3AED", Descricao = "Difração, estrutura cristalina, refinamento e tensão residual" },
+            new() { Nome = "Engenharia de Telecomunicações e Antenas", Icone = "📡", Cor = "#EA580C", Descricao = "Enlace de rádio, capacidade de canal, antenas e propagação" },
+            new() { Nome = "Mecânica dos Fluidos Computacional (CFD)", Icone = "🌊", Cor = "#0284C7", Descricao = "Navier-Stokes, turbulência, estabilidade numérica e escoamentos" },
+            new() { Nome = "Ciência Cognitiva e Modelagem Neural", Icone = "🧠", Cor = "#4338CA", Descricao = "Neurônios, aprendizagem, cognição e modelos neurais" },
+            new() { Nome = "Engenharia Biomédica e Dispositivos Médicos", Icone = "🏥", Cor = "#DC2626", Descricao = "Eletrofisiologia, bioinstrumentação e imagem médica" },
+            new() { Nome = "Físico-Química e Cinética Química", Icone = "⚗", Cor = "#A21CAF", Descricao = "Termoquímica, cinética, equilíbrio e eletroquímica" },
+            new() { Nome = "Geodésia e Cartografia", Icone = "🧭", Cor = "#0E7490", Descricao = "Geodesia elipsoidal, projeções, GNSS e gravimetria" },
+            new() { Nome = "FOTOQUÍMICA E QUÍMICA DE RADICAIS", Icone = "☀", Cor = "#F59E0B", Descricao = "Fotoquímica, radicais livres, fotocatálise e processos avançados" },
+            new() { Nome = "BIOLOGIA EVOLUTIVA E GENÉTICA DE POPULAÇÕES", Icone = "🧬", Cor = "#16A34A", Descricao = "Evolução, genética de populações, filogenia e seleção" },
+            new() { Nome = "MECÂNICA QUÂNTICA RELATIVÍSTICA E QED", Icone = "ℏ", Cor = "#6D28D9", Descricao = "Dirac, QED, partículas elementares e física relativística" },
+            new() { Nome = "ECONOMETRIA E ANÁLISE DE SÉRIES TEMPORAIS", Icone = "📈", Cor = "#0F766E", Descricao = "OLS, ARIMA, GARCH, causalidade e modelos econométricos" },
+            new() { Nome = "HIDROLOGIA E GESTÃO DE RECURSOS HÍDRICOS", Icone = "💧", Cor = "#0891B2", Descricao = "Bacias, chuva-vazão, aquíferos e qualidade da água" },
+            new() { Nome = "PSICOLOGIA QUANTITATIVA E NEUROCIÊNCIA COGNITIVA", Icone = "🧩", Cor = "#BE185D", Descricao = "Modelagem cognitiva, psicometria e neurociência computacional" },
+            new() { Nome = "QUÍMICA VERDE E SUSTENTABILIDADE QUÍMICA", Icone = "♻", Cor = "#15803D", Descricao = "Métricas verdes, catálise e processos sustentáveis" },
+            new() { Nome = "CIÊNCIAS DO SOLO E AGROFÍSICA", Icone = "🌾", Cor = "#65A30D", Descricao = "Física do solo, fertilidade, erosão e manejo hídrico" },
+            new() { Nome = "ENGENHARIA NUCLEAR CLÁSSICA E PROTEÇÃO RADIOLÓGICA", Icone = "☢", Cor = "#7C2D12", Descricao = "Reatores, blindagem, dosimetria e segurança nuclear" },
+            new() { Nome = "ASTRONOMIA E ASTROFÍSICA DE SISTEMAS PLANETÁRIOS", Icone = "🌌", Cor = "#1D4ED8", Descricao = "Mecânica orbital, exoplanetas e habitabilidade" },
+            new() { Nome = "MODELAGEM CLIMÁTICA E CIÊNCIAS DA ATMOSFERA", Icone = "🌍", Cor = "#0EA5E9", Descricao = "Forçamento radiativo, feedbacks e dinâmica atmosférica" },
+            new() { Nome = "CIÊNCIAS DA COMPUTAÇÃO APLICADAS — ALGORITMOS E OTIMIZAÇÃO", Icone = "💻", Cor = "#475569", Descricao = "Algoritmos clássicos, grafos e otimização combinatória" },
+            new() { Nome = "MATEMÁTICA FINANCEIRA E ATUARIAL", Icone = "💰", Cor = "#CA8A04", Descricao = "Juros, derivativos, risco e ciência atuarial" },
             
             // ═══ VOLUME 8 e 9 — Categorias novas adicionadas ═══
             new() { Nome = "Teoria Jogos", Icone = "🎮", Cor = "#D97706", Descricao = "Nash, Bayesiano, Shapley, leilões, barganha e jogos dinâmicos" },
@@ -632,6 +654,14 @@ public partial class FormulaService
     // ═══ VOLUME 11 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
     // 400 fórmulas: 20 áreas avançadas com descrição, exemplo, variáveis e origem
     AdicionarFormulasVol11();
+
+    // ═══ VOLUME 12 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // Horizontes da Ciência (Edição 2026)
+    AdicionarFormulasVol12();
+
+    // ═══ VOLUME 13 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // Atlas do Saber — Ciências Aplicadas e Exatas (Edição 2026)
+    AdicionarFormulasVol13();
 
     // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total

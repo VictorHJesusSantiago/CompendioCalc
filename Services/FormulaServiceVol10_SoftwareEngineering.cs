@@ -191,16 +191,15 @@ namespace CompendioCalc.Services
                         int t = Math.Max(1, Math.Min(6, (int)Math.Round(tipo)));
                         
                         double operacoes = 0;
-                        string nome = "";
                         
                         switch (t)
                         {
-                            case 1: operacoes = 1; nome = "O(1)"; break;
-                            case 2: operacoes = Math.Log(n, 2); nome = "O(log n)"; break;
-                            case 3: operacoes = n; nome = "O(n)"; break;
-                            case 4: operacoes = n * Math.Log(n, 2); nome = "O(n log n)"; break;
-                            case 5: operacoes = n * n; nome = "O(n²)"; break;
-                            case 6: operacoes = Math.Min(Math.Pow(2, Math.Min(n, 30)), 1e15); nome = "O(2^n)"; break;
+                            case 1: operacoes = 1; break;
+                            case 2: operacoes = Math.Log(n, 2); break;
+                            case 3: operacoes = n; break;
+                            case 4: operacoes = n * Math.Log(n, 2); break;
+                            case 5: operacoes = n * n; break;
+                            case 6: operacoes = Math.Min(Math.Pow(2, Math.Min(n, 30)), 1e15); break;
                         }
                         
                         // Tempo estimado (assumindo 1 op = 1ns)

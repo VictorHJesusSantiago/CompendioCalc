@@ -925,13 +925,10 @@ namespace CompendioCalc.Services
                 },
                 Calcular = valores =>
                 {
-                    double v_max = valores["v_max"];
                     double v_segundo = valores["v_segundo"];
                     // Leilão ascendente: preço sobe até v_segundo (segundo lugar sai)
                     // Vencedor paga aproximadamente v_segundo (preço final)
                     double preco_venda = v_segundo;
-                    // Eficiência: vencedor tem maior valoração sempre (e=1)
-                    double eficiencia = 1.0; // sempre eficiente com valores privados
                     return preco_venda; // preço de venda ≈ segunda maior valoração
                 },
                 VariavelResultado = "Preço de venda",
