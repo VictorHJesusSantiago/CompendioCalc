@@ -663,6 +663,14 @@ public partial class FormulaService
     // Atlas do Saber — Ciências Aplicadas e Exatas (Edição 2026)
     AdicionarFormulasVol13();
 
+    // ═══ VOLUME 14 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // Arquiteturas Quantitativas e Integração Sistêmica (Edição 2026)
+    AdicionarFormulasVol14();
+
+    // ═══ VOLUME 15 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // Fronteiras Cientificas — Areas de Vanguarda (Edicao 2026)
+    AdicionarFormulasVol15();
+
     // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total
         // 102 do V9 (001-102) + 65 V1-V7 distribuídas
