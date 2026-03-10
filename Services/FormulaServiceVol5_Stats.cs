@@ -23,10 +23,13 @@ public partial class FormulaService
                 Icone = "GP",
                 Descricao = "Processo Gaussiano: distribuição sobre funções. Qualquer subconjunto finito de avaliações tem distribuição normal multivariada. Definido por média e kernel.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -36,10 +39,13 @@ public partial class FormulaService
                 Icone = "y",
                 Descricao = "Modelo com ruído gaussiano: observações y = função latente f mais ruído i.i.d. gaussiano com variância σ².",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -49,10 +55,13 @@ public partial class FormulaService
                 Icone = "N",
                 Descricao = "Posterior do GP: distribuição preditiva nos pontos de teste X*. Gaussiana com média μ* e covariância Σ* dados por fórmulas fechadas.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -62,10 +71,13 @@ public partial class FormulaService
                 Icone = "μ*",
                 Descricao = "Média posterior: predição ótima (MMSE). Combinação linear dos dados ponderada pela covariância kernel. K*=kernel(X*,X).",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -75,10 +87,13 @@ public partial class FormulaService
                 Icone = "Σ*",
                 Descricao = "Covariância posterior: incerteza preditiva diminui onde há dados. K**=kernel(X*,X*). Custo: O(n³) pela inversão matricial.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -88,10 +103,13 @@ public partial class FormulaService
                 Icone = "RBF",
                 Descricao = "Kernel RBF (Radial Basis Function / Squared Exponential): suave, estacionário, isotrópico. σf=amplitude, l=comprimento característico.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "σf²", Nome = "σf²", ValorPadrao = 5 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3 } ],
+                Variaveis = [ new() { Simbolo = "σf²", Nome = "σf²", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "k",
                 UnidadeResultado = "",
-                Calcular = vars => vars["σf²"] * vars["exp"]
+                Calcular = vars => vars["σf²"] * vars["exp"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -101,10 +119,13 @@ public partial class FormulaService
                 Icone = "M",
                 Descricao = "Kernel Matérn ν=5/2: 2-vezes diferenciável. Mais flexível que RBF (infinitamente suave). Muito usado em GP para dados reais.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -114,10 +135,13 @@ public partial class FormulaService
                 Icone = "ℓ",
                 Descricao = "Log-verossimilhança marginal para otimização de hiperparâmetros do kernel. K̃=K+σ²I. Balanço automático entre ajuste e complexidade.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -127,10 +151,13 @@ public partial class FormulaService
                 Icone = "EI",
                 Descricao = "Otimização bayesiana: critério de aquisição Expected Improvement. Balança exploração (incerteza alta) e exploração (μ alta). Usa GP como surrogate.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 9.2 GAM e Splines
@@ -142,10 +169,13 @@ public partial class FormulaService
                 Icone = "GAM",
                 Descricao = "GAM: extensão de GLM com funções suaves não-paramétricas fⱼ para cada preditor. g = link function. Flexível e interpretável.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -155,10 +185,13 @@ public partial class FormulaService
                 Icone = "λ",
                 Descricao = "Spline cúbica natural: solução do problema de suavização penalizada. λ controla tradeoff ajuste/suavidade. λ→0: interpolação. λ→∞: reta.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -168,10 +201,13 @@ public partial class FormulaService
                 Icone = "P",
                 Descricao = "P-splines: B-splines com penalização nas diferenças dos coeficientes. Computacionalmente eficiente. d=2 tipicamente (suavidade de 2ª derivada).",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -181,10 +217,13 @@ public partial class FormulaService
                 Icone = "L",
                 Descricao = "LOESS (LOcally Estimated Scatterplot Smoothing): regressão polinomial local em vizinhança ponderada. Não-paramétrico, adaptativo.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -194,10 +233,13 @@ public partial class FormulaService
                 Icone = "df",
                 Descricao = "Graus de liberdade efetivos: traço da hat matrix. Mede complexidade efetiva do suavizador. 1=reta, n=interpolação. Controla overfitting.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -207,10 +249,13 @@ public partial class FormulaService
                 Icone = "GCV",
                 Descricao = "GCV: critério para escolher λ ótimo. Invariante rotacional. Aproximação eficiente do leave-one-out CV sem reajustar n vezes.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 9.3 Bootstrap e Métodos Não-Paramétricos
@@ -224,10 +269,11 @@ public partial class FormulaService
                 Criador = "Bradley Efron",
                 AnoOrigin = "1979",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -237,10 +283,13 @@ public partial class FormulaService
                 Icone = "V̂",
                 Descricao = "Variância bootstrap: estimativa da variância do estimador usando a variância das réplicas bootstrap. Não-paramétrica.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -250,10 +299,13 @@ public partial class FormulaService
                 Icone = "IC",
                 Descricao = "Intervalo de confiança bootstrap percentil: usa quantis da distribuição bootstrap. Simples mas pode ser enviesado.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -263,10 +315,13 @@ public partial class FormulaService
                 Icone = "BCa",
                 Descricao = "Bootstrap BCa (bias-corrected and accelerated): ajusta os quantis para viés e assimetria. Mais preciso que percentil simples.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -277,10 +332,12 @@ public partial class FormulaService
                 Descricao = "Jackknife: remove uma observação por vez. Estima viés e variância. Precursor do bootstrap. Exato para funcionais lineares.",
                 Criador = "Maurice Quenouille / John Tukey",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -292,10 +349,11 @@ public partial class FormulaService
                 Criador = "Frank Wilcoxon",
                 AnoOrigin = "1945",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -305,10 +363,13 @@ public partial class FormulaService
                 Icone = "U",
                 Descricao = "Teste de Mann-Whitney U: comparação não-paramétrica de duas amostras independentes. Conta inversões. Alternativa ao t-test de 2 amostras.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -318,10 +379,13 @@ public partial class FormulaService
                 Icone = "KS",
                 Descricao = "Teste de Kolmogorov-Smirnov: compara distribuição empírica com teórica usando distância supremo. Distribution-free sob H₀.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -341,10 +405,13 @@ public partial class FormulaService
                 Icone = "∪",
                 Descricao = "Definição de convexidade: epígrafo é conjunto convexo. Todo mínimo local é global. Propriedade fundamental para otimização tratável.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -354,10 +421,13 @@ public partial class FormulaService
                 Icone = "f*",
                 Descricao = "Conjugada de Fenchel (transformada de Legendre): dualidade fundamental em análise convexa. Codifica informação de f em espaço dual.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -367,10 +437,13 @@ public partial class FormulaService
                 Icone = "**",
                 Descricao = "Teorema de Fenchel-Moreau: a biconjugada recupera f se f é convexa, fechada (lsc) e própria. Involução no espaço de funções convexas.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -380,10 +453,13 @@ public partial class FormulaService
                 Icone = "∂",
                 Descricao = "Subgradiente: generalização do gradiente para funções convexas não-diferenciáveis. ∂f(x) é convexo compacto. Gradiente∈∂f quando f é C¹.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -393,10 +469,13 @@ public partial class FormulaService
                 Icone = "KKT",
                 Descricao = "Condições de Karush-Kuhn-Tucker: condições necessárias (e suficientes sob convexidade) de otimalidade com restrições. Complementaridade: μⱼhⱼ=0.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -406,10 +485,13 @@ public partial class FormulaService
                 Icone = "p*",
                 Descricao = "Dualidade forte: valor ótimo primal = dual sob condição de Slater (existência de ponto interior viável). Gap de dualidade = 0.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 10.2 Métodos de Otimização
@@ -421,10 +503,13 @@ public partial class FormulaService
                 Icone = "PG",
                 Descricao = "Gradiente projetado: passo de gradiente seguido de projeção no conjunto viável C. Convergência O(1/k) para f convexa suave.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -434,10 +519,13 @@ public partial class FormulaService
                 Icone = "SG",
                 Descricao = "Método do subgradiente: para funções convexas não-suaves. Passo decrescente α_k=1/√k garante convergência O(1/√k).",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -447,10 +535,13 @@ public partial class FormulaService
                 Icone = "AD",
                 Descricao = "ADMM (Alternating Direction Method of Multipliers): divide problema em subproblemas mais fáceis. Combina decomposição dual com método aumentado.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -460,10 +551,13 @@ public partial class FormulaService
                 Icone = "IP",
                 Descricao = "Método de ponto interior: transforma restrições em barreira logarítmica. Convergência em O(√m·log(1/ε)) iterações de Newton. Revolucionou otimização.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -473,10 +567,13 @@ public partial class FormulaService
                 Icone = "SDP",
                 Descricao = "SDP: otimização linear com restrição de matriz semidefinida positiva. Generaliza LP. Resolve relaxações de problemas combinatórios, controle robusto.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -486,10 +583,13 @@ public partial class FormulaService
                 Icone = "SO",
                 Descricao = "SOCP (Second-Order Cone Program): restrições cônicas de 2ª ordem. Entre LP e SDP em poder. Inclui LP, QP, QCQP como casos especiais.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -501,10 +601,11 @@ public partial class FormulaService
                 Criador = "Yurii Nesterov",
                 AnoOrigin = "1983",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor base x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Ordem n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -524,10 +625,13 @@ public partial class FormulaService
                 Icone = "ICA",
                 Descricao = "ICA: decompor sinais misturados em fontes independentes. Modelo generativo linear: observação = mistura de fontes latentes.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Sinal observado x", ValorPadrao = 1 }, new() { Simbolo = "As", Nome = "Matriz de mistura As", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Sinal observado x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "As", Nome = "Matriz de mistura As", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] + vars["As"]
+                Calcular = vars => vars["x"] + vars["As"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -537,10 +641,13 @@ public partial class FormulaService
                 Icone = "J",
                 Descricao = "Neguentropia: mede afastamento de gaussianidade. CLT implica que componentes independentes são maximamente não-gaussianas (exceto no máximo uma).",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["J"] + vars["y"]
+                Calcular = vars => vars["J"] + vars["y"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -550,10 +657,13 @@ public partial class FormulaService
                 Icone = "≈",
                 Descricao = "Aproximação prática da neguentropia usando função não-linear G (ex: G(u)=log cosh u). ν=variável gaussiana de referência.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "J", Nome = "Neguentropia J", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Componente y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["J"] + vars["y"]
+                Calcular = vars => vars["J"] + vars["y"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -565,10 +675,11 @@ public partial class FormulaService
                 Criador = "Aapo Hyvärinen",
                 AnoOrigin = "1999",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "w", Nome = "w", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["w"] + vars["E"]
+                Calcular = vars => vars["w"] + vars["E"],
+                Unidades = "",
             },
             new Formula
             {
@@ -580,10 +691,11 @@ public partial class FormulaService
                 Criador = "Anthony Bell / Terrence Sejnowski",
                 AnoOrigin = "1995",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -593,10 +705,13 @@ public partial class FormulaService
                 Icone = "?",
                 Descricao = "Ambiguidades intrínsecas: ICA não determina a ordem nem a escala (incluindo sinal) das componentes independentes. Permutação e escala livres.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "ICA", Nome = "ICA", ValorPadrao = 1 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "ICA", Nome = "ICA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["ICA"] + vars["e"]
+                Calcular = vars => vars["ICA"] + vars["e"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 11.2 GMM e EM
@@ -608,10 +723,13 @@ public partial class FormulaService
                 Icone = "GMM",
                 Descricao = "GMM: mistura de K gaussianas com pesos πₖ, médias μₖ e covariâncias Σₖ. Modelo universal de densidade. Ajustado via EM.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "p", Nome = "Densidade p(x)", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Ponto de avaliação x", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "p", Nome = "Densidade p(x)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "Ponto de avaliação x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["p"] + vars["x"]
+                Calcular = vars => vars["p"] + vars["x"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -621,10 +739,13 @@ public partial class FormulaService
                 Icone = "E",
                 Descricao = "E-step: calcula responsabilidades r_{nk} = probabilidade posterior de xₙ pertencer à componente k. Pesos soft para cada observação.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "rnk", Nome = "rnk", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "rnk", Nome = "rnk", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["rnk"] + vars["pi"]
+                Calcular = vars => vars["rnk"] + vars["pi"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -634,10 +755,13 @@ public partial class FormulaService
                 Icone = "M",
                 Descricao = "M-step: atualiza parâmetros usando responsabilidades. Pesos=fração efetiva, média=média ponderada, covariância=covariância ponderada.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "Nk", Nome = "Nk", ValorPadrao = 10 }, new() { Simbolo = "N", Nome = "N", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "Nk", Nome = "Nk", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "N", Nome = "N", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "πk",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Nk"] / vars["N"]
+                Calcular = vars => vars["Nk"] / vars["N"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -647,10 +771,13 @@ public partial class FormulaService
                 Icone = "ℓ",
                 Descricao = "Log-verossimilhança do GMM: cada iteração EM garante L não-decresça (convergência monótona). Pode convergir para máximo local.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -660,10 +787,13 @@ public partial class FormulaService
                 Icone = "BIC",
                 Descricao = "Critérios de seleção de modelo: BIC penaliza mais (consistente), AIC menos (eficiente). k=número de parâmetros, n=observações.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 11.3 KDE
@@ -675,10 +805,13 @@ public partial class FormulaService
                 Icone = "KDE",
                 Descricao = "KDE: estimador não-paramétrico de densidade. K=kernel (função simétrica positiva), h=bandwidth. Suavização de histograma.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "f", Nome = "Frequência f", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Observação x", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "f", Nome = "Frequência f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "Observação x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["f"] + vars["x"]
+                Calcular = vars => vars["f"] + vars["x"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -688,10 +821,13 @@ public partial class FormulaService
                 Icone = "φ",
                 Descricao = "Kernel gaussiano: o mais popular em KDE. Suporte infinito, infinitamente suave. Boa escolha default, embora não ótimo em MISE.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -701,10 +837,13 @@ public partial class FormulaService
                 Icone = "Ep",
                 Descricao = "Kernel de Epanechnikov: ótimo em termos de MISE (minimiza erro integrado quadrático médio). Suporte compacto [-1,1]. Parábola invertida.",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 1 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "K", Nome = "K", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["K"] + vars["u"]
+                Calcular = vars => vars["K"] + vars["u"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -716,10 +855,11 @@ public partial class FormulaService
                 Criador = "Bernard Silverman",
                 AnoOrigin = "1986",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1 }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["h"] + vars["sigma"]
+                Calcular = vars => vars["h"] + vars["sigma"],
+                Unidades = "",
             },
             new Formula
             {
@@ -729,10 +869,13 @@ public partial class FormulaService
                 Icone = "MSE",
                 Descricao = "Mean Integrated Squared Error: critério de qualidade global do KDE. Tradeoff viés-variância controlado por h: h↑ suave (viés), h↓ ruidoso (var).",
                 ExemploPratico = "Exemplo: use dados observados da amostra, execute o cálculo e interprete o indicador estatístico no contexto do método.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }

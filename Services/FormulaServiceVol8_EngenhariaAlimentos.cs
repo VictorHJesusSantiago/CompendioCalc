@@ -41,7 +41,8 @@ public partial class FormulaService
                 double N = inputs["N"];
                 
                 return t / Math.Log10(N0 / N);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -76,7 +77,8 @@ public partial class FormulaService
                 double D2 = inputs["D2"];
                 
                 return delta_T / Math.Log10(D1 / D2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -114,7 +116,8 @@ public partial class FormulaService
                 
                 // Simplificação: assumindo T constante
                 return t * Math.Pow(10, (T - T_ref) / z);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -145,7 +148,8 @@ public partial class FormulaService
                 double ERH = inputs["ERH"];
                 
                 return ERH / 100;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -185,7 +189,8 @@ public partial class FormulaService
                 double denominator = (1 - K * a_w) * (1 - K * a_w + C * K * a_w);
                 
                 return numerator / denominator;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -220,7 +225,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return a * Math.Exp(-k * t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -255,7 +261,8 @@ public partial class FormulaService
                 double gradT = inputs["gradT"];
                 
                 return -k * A * gradT;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -290,7 +297,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 
                 return h * L / k;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -327,7 +335,8 @@ public partial class FormulaService
                 double T2 = inputs["T2"];
                 
                 return Math.Pow(k2 / k1, 10 / (T2 - T1));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -362,7 +371,8 @@ public partial class FormulaService
                 double K_m = inputs["K_m"];
                 
                 return V_max * S / (K_m + S);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -399,7 +409,8 @@ public partial class FormulaService
                 double z = inputs["z"];
                 
                 return t * Math.Pow(10, (T - T_ref) / z);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -436,7 +447,8 @@ public partial class FormulaService
                 double R = 8.314; // J/(mol·K)
                 
                 return A * Math.Exp(-E_a * 1000 / (R * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -473,7 +485,8 @@ public partial class FormulaService
                 double m = inputs["m"];
                 
                 return (V_sample - V_blank) * N * 1000 / m;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -508,7 +521,8 @@ public partial class FormulaService
                 double m = inputs["m"];
                 
                 return (A * V * 72.6) / (m * 1000);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -545,7 +559,8 @@ public partial class FormulaService
                 double Q10 = inputs["Q10"];
                 
                 return t1 * Math.Pow(Q10, (T1 - T2) / 10);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -582,7 +597,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 
                 return tau0 + K * Math.Pow(gamma, n);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

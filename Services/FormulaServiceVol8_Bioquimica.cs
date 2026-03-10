@@ -40,7 +40,8 @@ public partial class FormulaService
                 double S = inputs["S"];
                 double Km = inputs["Km"];
                 return (Vmax * S) / (Km + S);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -74,7 +75,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 double Kd = inputs["Kd"];
                 return Math.Pow(L, n) / (Math.Pow(Kd, n) + Math.Pow(L, n));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -106,7 +108,8 @@ public partial class FormulaService
                 double p = inputs["p"];
                 double q = inputs["q"];
                 return p * p; // Retorna frequência de homozigotos dominantes (AA)
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -140,7 +143,8 @@ public partial class FormulaService
                 double E = inputs["E"];
                 double n = inputs["n"];
                 return N0 * Math.Pow(1 + E, n);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -180,7 +184,8 @@ public partial class FormulaService
                 double X_out = inputs["X_out"];
                 double X_in = inputs["X_in"];
                 return (R * T / (z * F)) * Math.Log(X_out / X_in) * 1000; // Convertendo para mV
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -220,7 +225,8 @@ public partial class FormulaService
                 double Pi = inputs["Pi"];
                 double ATP = inputs["ATP"];
                 return DG0_prime + (R * T / 1000) * Math.Log((ADP * Pi) / ATP);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -258,7 +264,8 @@ public partial class FormulaService
                 double Km = inputs["Km"];
                 double alpha_prime = inputs["alpha_prime"];
                 return (Vmax * S) / (alpha * Km + alpha_prime * S);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -292,7 +299,8 @@ public partial class FormulaService
                 double Vmax = inputs["Vmax"];
                 double S = inputs["S"];
                 return (Km / Vmax) * (1.0 / S) + (1.0 / Vmax);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -324,7 +332,8 @@ public partial class FormulaService
                 double C_octanol = inputs["C_octanol"];
                 double C_agua = inputs["C_agua"];
                 return Math.Log10(C_octanol / C_agua);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -360,7 +369,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 double Kd = inputs["Kd"];
                 return n / Kd - r / Kd;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -400,7 +410,8 @@ public partial class FormulaService
                 double v_bar = inputs["v_bar"];
                 double rho = inputs["rho"];
                 return (R * T * s) / (D * (1 - v_bar * rho));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -434,7 +445,8 @@ public partial class FormulaService
                 double glicose = inputs["glicose"];
                 double ureia = inputs["ureia"];
                 return 2 * Na + glicose / 18 + ureia / 6;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -466,7 +478,8 @@ public partial class FormulaService
                 double HCO3 = inputs["HCO3"];
                 double pCO2 = inputs["pCO2"];
                 return 6.1 + Math.Log10(HCO3 / (0.0307 * pCO2));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -500,7 +513,8 @@ public partial class FormulaService
                 double Cl = inputs["Cl"];
                 double HCO3 = inputs["HCO3"];
                 return Na - (Cl + HCO3);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -541,7 +555,8 @@ public partial class FormulaService
                 if (HBD > 5) violations++;
                 if (HBA > 10) violations++;
                 return violations;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -581,7 +596,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 double V = inputs["V"];
                 return (D * A * (Cs - C)) / (h * V);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -615,7 +631,8 @@ public partial class FormulaService
                 double C1 = inputs["C1"];
                 double C2 = inputs["C2"];
                 return P * (C1 - C2) / 1000; // Convertendo L para cm³
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -646,7 +663,8 @@ public partial class FormulaService
                 double n_carbono = inputs["n_carbono"];
                 // Estimativa empírica: log(CMC) ≈ A - B*n_C
                 return Math.Exp(5 - 0.5 * n_carbono);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -682,7 +700,8 @@ public partial class FormulaService
                 double c2 = inputs["c2"];
                 double z2 = inputs["z2"];
                 return 0.5 * (c1 * z1 * z1 + c2 * z2 * z2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -714,7 +733,8 @@ public partial class FormulaService
                 double sigma2_B = inputs["sigma2_B"];
                 double sigma2_W = inputs["sigma2_W"];
                 return sigma2_B / (sigma2_B + 2 * sigma2_W);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -748,7 +768,8 @@ public partial class FormulaService
                 double S = inputs["S"];
                 double Ks = inputs["Ks"];
                 return (mu_max * S) / (Ks + S);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

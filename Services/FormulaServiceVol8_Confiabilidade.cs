@@ -39,7 +39,8 @@ public partial class FormulaService
                 double n_failures = inputs["n_failures"];
                 
                 return total_time / n_failures;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -70,7 +71,8 @@ public partial class FormulaService
                 double lambda = inputs["lambda"];
                 
                 return 1.0 / lambda;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -103,7 +105,8 @@ public partial class FormulaService
                 double R_t = inputs["R_t"];
                 
                 return f_t / R_t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -136,7 +139,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return Math.Exp(-lambda * t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -171,7 +175,8 @@ public partial class FormulaService
                 double beta = inputs["beta"];
                 
                 return Math.Exp(-Math.Pow(t / eta, beta));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -206,7 +211,8 @@ public partial class FormulaService
                 double beta = inputs["beta"];
                 
                 return (beta / eta) * Math.Pow(t / eta, beta - 1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -239,7 +245,8 @@ public partial class FormulaService
                 double MTTR = inputs["MTTR"];
                 
                 return MTBF / (MTBF + MTTR);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -274,7 +281,8 @@ public partial class FormulaService
                 double R3 = inputs["R3"];
                 
                 return R1 * R2 * R3;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -307,7 +315,8 @@ public partial class FormulaService
                 double R2 = inputs["R2"];
                 
                 return 1 - (1 - R1) * (1 - R2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -340,7 +349,8 @@ public partial class FormulaService
                 double R_original = inputs["R_original"];
                 
                 return R_redundant / R_original;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -373,7 +383,8 @@ public partial class FormulaService
                 double n_repairs = inputs["n_repairs"];
                 
                 return total_repair_time / n_repairs;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -406,7 +417,8 @@ public partial class FormulaService
                 double MLDT = inputs["MLDT"];
                 
                 return MTTR + MLDT;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -439,7 +451,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return 1 - Math.Exp(-mu * t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -470,7 +483,8 @@ public partial class FormulaService
                 double lambda = inputs["lambda"];
                 
                 return lambda * 1e9;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -505,7 +519,8 @@ public partial class FormulaService
                 double D = inputs["D"];
                 
                 return S * O * D;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -542,7 +557,8 @@ public partial class FormulaService
                 double C_disp = inputs["C_disp"];
                 
                 return C_acq + C_op + C_maint + C_disp;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

@@ -23,10 +23,13 @@ public partial class FormulaService
                 Icone = "Eu",
                 Descricao = "Equação de Euler: condição de otimalidade intertemporal do consumidor. β=fator de desconto, u=utilidade, r=taxa de juros. Núcleo de modelos DSGE.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u"] + vars["C"]
+                Calcular = vars => vars["u"] + vars["C"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -36,10 +39,13 @@ public partial class FormulaService
                 Icone = "NK",
                 Descricao = "NKPC: inflação depende de expectativa futura e gap do produto. Derivada de firmas com preços rígidos (Calvo). κ = slope. Base da política monetária moderna.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 }, new() { Simbolo = "beta", Nome = "beta", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "beta", Nome = "beta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["pi"] + vars["beta"]
+                Calcular = vars => vars["pi"] + vars["beta"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -51,10 +57,11 @@ public partial class FormulaService
                 Criador = "John Taylor",
                 AnoOrigin = "1993",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "i", Nome = "i", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["i"] + vars["r"]
+                Calcular = vars => vars["i"] + vars["r"],
+                Unidades = "",
             },
             new Formula
             {
@@ -66,10 +73,11 @@ public partial class FormulaService
                 Criador = "Kydland / Prescott",
                 AnoOrigin = "1982",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 2 }, new() { Simbolo = "Kᵅ", Nome = "Kᵅ", ValorPadrao = 3 }, new() { Simbolo = "L¹", Nome = "L¹", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Kᵅ", Nome = "Kᵅ", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "L¹", Nome = "L¹", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Y",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * vars["Kᵅ"] * vars["L¹"]
+                Calcular = vars => vars["A"] * vars["Kᵅ"] * vars["L¹"],
+                Unidades = "",
             },
             new Formula
             {
@@ -81,10 +89,11 @@ public partial class FormulaService
                 Criador = "Guillermo Calvo",
                 AnoOrigin = "1983",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P"] + vars["theta"]
+                Calcular = vars => vars["P"] + vars["theta"],
+                Unidades = "",
             },
             new Formula
             {
@@ -94,10 +103,13 @@ public partial class FormulaService
                 Icone = "IS",
                 Descricao = "Curva IS dinâmica: gap do produto depende de expectativa futura e taxa de juros real (juros nominal less inflação esperada). σ=elasticidade intertemporal.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "E", Nome = "E", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] + vars["E"]
+                Calcular = vars => vars["x"] + vars["E"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -107,10 +119,13 @@ public partial class FormulaService
                 Icone = "Bm",
                 Descricao = "Equação de Bellman: princípio de otimalidade dinâmica. Valor de estado = utilidade imediata + valor descontado futuro. Resolvida por iteração ou perturbação.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "V", Nome = "V", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "s", Nome = "s", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V"] + vars["s"]
+                Calcular = vars => vars["V"] + vars["s"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -120,10 +135,13 @@ public partial class FormulaService
                 Icone = "LL",
                 Descricao = "Log-linearização: aproximação de 1ª ordem em torno do estado estacionário. Transforma sistema não-linear em linear. Método Blanchard-Kahn para resolver.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -133,10 +151,13 @@ public partial class FormulaService
                 Icone = "Gov",
                 Descricao = "Restrição fiscal: dívida pública evolui com déficit primário e juros. Condição de transversalidade: dívida não explode. Equivalência ricardiana.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1 }, new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "i", Nome = "i", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["B"] + vars["i"]
+                Calcular = vars => vars["B"] + vars["i"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 16.2 Economia Monetária
@@ -150,10 +171,11 @@ public partial class FormulaService
                 Criador = "Irving Fisher",
                 AnoOrigin = "1930",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "i", Nome = "i", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "i", Nome = "i", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["i"] + vars["r"]
+                Calcular = vars => vars["i"] + vars["r"],
+                Unidades = "",
             },
             new Formula
             {
@@ -163,10 +185,13 @@ public partial class FormulaService
                 Icone = "MV",
                 Descricao = "TQM: oferta monetária × velocidade = nível de preços × produto real. Com V constante, M determina P. Base do monetarismo.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "MV", Nome = "MV", ValorPadrao = 1 }, new() { Simbolo = "PY", Nome = "PY", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "MV", Nome = "MV", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "PY", Nome = "PY", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["MV"] + vars["PY"]
+                Calcular = vars => vars["MV"] + vars["PY"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -178,10 +203,11 @@ public partial class FormulaService
                 Criador = "Robert Solow",
                 AnoOrigin = "1956",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 }, new() { Simbolo = "sf", Nome = "sf", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "sf", Nome = "sf", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k"] + vars["sf"]
+                Calcular = vars => vars["k"] + vars["sf"],
+                Unidades = "",
             },
         ]);
     }
@@ -200,10 +226,13 @@ public partial class FormulaService
                 Icone = "Is",
                 Descricao = "Modelo de Ising aplicado a mercados: agentes compram (+1) ou vendem (-1). Interação J modela herding. Transição de fase = crash/bolha.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "J", Nome = "J", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["H"] + vars["J"]
+                Calcular = vars => vars["H"] + vars["J"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -213,10 +242,13 @@ public partial class FormulaService
                 Icone = "α",
                 Descricao = "Caudas pesadas de retornos financeiros: distribuição segue lei de potência com expoente ~3 (lei cúbica inversa). Estilizado e universal.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P"] + vars["r"]
+                Calcular = vars => vars["P"] + vars["r"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -226,10 +258,13 @@ public partial class FormulaService
                 Icone = "VC",
                 Descricao = "Clustering de volatilidade: autocorrelação de retornos absolutos decai como lei de potência. Memória longa. Motivação para GARCH e modelos de vol estocástica.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["r"] + vars["tau"]
+                Calcular = vars => vars["r"] + vars["tau"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -239,10 +274,13 @@ public partial class FormulaService
                 Icone = "MG",
                 Descricao = "Minority Game: modelo de coordenação. Agentes usam estratégias binárias; minoria é recompensada. Transição de fase em α=P/N. Emergência de auto-organização.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "N", Nome = "N", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "N", Nome = "N", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["N"]
+                Calcular = vars => vars["N"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -252,10 +290,13 @@ public partial class FormulaService
                 Icone = "RMT",
                 Descricao = "RMT aplicada a correlações financeiras: autovalores da matriz de correlação seguem Marchenko-Pastur para ruído. Autovalores fora = sinal real.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -265,10 +306,13 @@ public partial class FormulaService
                 Icone = "Perc",
                 Descricao = "Percolação em redes financeiras: se conectividade > limiar pc, default pode propagar por cluster gigante. Modela risco sistêmico e contágio.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "pc", Nome = "pc", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "pc", Nome = "pc", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["p"] + vars["pc"]
+                Calcular = vars => vars["p"] + vars["pc"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -280,10 +324,11 @@ public partial class FormulaService
                 Criador = "Harold Hurst",
                 AnoOrigin = "1951",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "R", Nome = "R", ValorPadrao = 1 }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "R", Nome = "R", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["R"] + vars["S"]
+                Calcular = vars => vars["R"] + vars["S"],
+                Unidades = "",
             },
             new Formula
             {
@@ -295,10 +340,11 @@ public partial class FormulaService
                 Criador = "Benoît Mandelbrot",
                 AnoOrigin = "1997",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "X", Nome = "X", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "X", Nome = "X", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["X"] + vars["t"]
+                Calcular = vars => vars["X"] + vars["t"],
+                Unidades = "",
             },
             new Formula
             {
@@ -308,10 +354,13 @@ public partial class FormulaService
                 Icone = "Zf",
                 Descricao = "Lei de Zipf para tamanho de firmas: distribuição de tamanho segue lei de potência com expoente ~1. Também vale para cidades. Crescimento proporcional (Gibrat).",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "S", Nome = "S", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P"] + vars["S"]
+                Calcular = vars => vars["P"] + vars["S"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -323,10 +372,11 @@ public partial class FormulaService
                 Criador = "Vilfredo Pareto",
                 AnoOrigin = "1897",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1 }, new() { Simbolo = "X", Nome = "X", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "P", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "X", Nome = "X", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P"] + vars["X"]
+                Calcular = vars => vars["P"] + vars["X"],
+                Unidades = "",
             },
             new Formula
             {
@@ -336,10 +386,13 @@ public partial class FormulaService
                 Icone = "BG",
                 Descricao = "Distribuição de Boltzmann-Gibbs para renda: maioria da população segue exponencial. Cauda superior segue Pareto. Resultado de trocas conservativas aleatórias.",
                 ExemploPratico = "Exemplo: com os valores padrão definidos abaixo, calcule o valor da expressão e interprete no contexto da fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -360,10 +413,11 @@ public partial class FormulaService
                 Criador = "Bernanke/Gertler/Gilchrist",
                 AnoOrigin = "1999",
                 ExemploPratico = "Com patrimônio líquido n̄=100 e taxa base R=1.05, calcule o prêmio de risco.",
-                Variaveis = [ new() { Simbolo = "R", Nome = "Taxa base R", ValorPadrao = 1.05, ValorMin = 1 }, new() { Simbolo = "n", Nome = "Patrimônio n̄", ValorPadrao = 100, ValorMin = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "R", Nome = "Taxa base R", ValorPadrao = 1.05, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Patrimônio n̄", ValorPadrao = 100, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Taxa efetiva",
                 UnidadeResultado = "",
-                Calcular = vars => vars["R"] * (1 + 0.1 / Math.Sqrt(vars["n"]))
+                Calcular = vars => vars["R"] * (1 + 0.1 / Math.Sqrt(vars["n"])),
+                Unidades = "",
             },
             new Formula
             {
@@ -375,10 +429,11 @@ public partial class FormulaService
                 Criador = "Mundell/Fleming",
                 AnoOrigin = "1962",
                 ExemploPratico = "Com taxa externa i*=2%, depreciação esperada Δs=1%, calcule taxa doméstica.",
-                Variaveis = [ new() { Simbolo = "i*", Nome = "Taxa externa i*", ValorPadrao = 0.02 }, new() { Simbolo = "Δs", Nome = "Depreciação Δs", ValorPadrao = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "i*", Nome = "Taxa externa i*", ValorPadrao = 0.02, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Δs", Nome = "Depreciação Δs", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Taxa doméstica i",
                 UnidadeResultado = "",
-                Calcular = vars => vars["i*"] + vars["Δs"]
+                Calcular = vars => vars["i*"] + vars["Δs"],
+                Unidades = "",
             },
             new Formula
             {
@@ -388,10 +443,13 @@ public partial class FormulaService
                 Icone = "Hyb",
                 Descricao = "NKPC híbrida com indexação: γ capta backward-looking (indexação), 1-γ forward-looking. Melhora fit empírico, captura inércia inflacionária.",
                 ExemploPratico = "Com indexação γ=0.5, inflação passada π₋₁=0.02, expectativa E[π']=0.025, gap x=0.01, κ=0.3, calcule inflação atual.",
-                Variaveis = [ new() { Simbolo = "γ", Nome = "Indexação γ", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "π₋₁", Nome = "Inflação passada π₋₁", ValorPadrao = 0.02 }, new() { Simbolo = "E[π']", Nome = "Expectativa E[π']", ValorPadrao = 0.025 }, new() { Simbolo = "x", Nome = "Gap produto x", ValorPadrao = 0.01 }, new() { Simbolo = "κ", Nome = "Slope κ", ValorPadrao = 0.3 } ],
+                Variaveis = [ new() { Simbolo = "γ", Nome = "Indexação γ", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "π₋₁", Nome = "Inflação passada π₋₁", ValorPadrao = 0.02, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "E[π']", Nome = "Expectativa E[π']", ValorPadrao = 0.025, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "Gap produto x", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "κ", Nome = "Slope κ", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Inflação π",
                 UnidadeResultado = "",
-                Calcular = vars => vars["γ"] * vars["π₋₁"] + (1 - vars["γ"]) * 0.99 * vars["E[π']"] + vars["κ"] * vars["x"]
+                Calcular = vars => vars["γ"] * vars["π₋₁"] + (1 - vars["γ"]) * 0.99 * vars["E[π']"] + vars["κ"] * vars["x"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -403,10 +461,11 @@ public partial class FormulaService
                 Criador = "Clarida/Galí/Gertler",
                 AnoOrigin = "1999",
                 ExemploPratico = "Com desvio de inflação (π-π*)²=0.04, desvio de produto (y-y*)²=0.01, peso λ=0.5, calcule perda.",
-                Variaveis = [ new() { Simbolo = "Δπ²", Nome = "Desvio inflação²", ValorPadrao = 0.04, ValorMin = 0 }, new() { Simbolo = "Δy²", Nome = "Desvio produto²", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "λ", Nome = "Peso output λ", ValorPadrao = 0.5, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "Δπ²", Nome = "Desvio inflação²", ValorPadrao = 0.04, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Δy²", Nome = "Desvio produto²", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "λ", Nome = "Peso output λ", ValorPadrao = 0.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Perda L",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Δπ²"] + vars["λ"] * vars["Δy²"]
+                Calcular = vars => vars["Δπ²"] + vars["λ"] * vars["Δy²"],
+                Unidades = "",
             },
             new Formula
             {
@@ -418,10 +477,11 @@ public partial class FormulaService
                 Criador = "Del Negro/Schorfheide",
                 AnoOrigin = "2004",
                 ExemploPratico = "Implementação conceitual de posterior Bayesiana: prior × likelihood.",
-                Variaveis = [ new() { Simbolo = "L", Nome = "Likelihood L", ValorPadrao = 0.8, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "p", Nome = "Prior p", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "L", Nome = "Likelihood L", ValorPadrao = 0.8, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "Prior p", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Posterior (não normalizado)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["L"] * vars["p"]
+                Calcular = vars => vars["L"] * vars["p"],
+                Unidades = "",
             },
         ]);
     }
@@ -442,10 +502,11 @@ public partial class FormulaService
                 Criador = "John Nash",
                 AnoOrigin = "1950",
                 ExemploPratico = "Exemplo conceitual: em dilema dos prisioneiros, (Confess, Confess) é Nash.",
-                Variaveis = [ new() { Simbolo = "u1", Nome = "Payoff jogador 1", ValorPadrao = 5 }, new() { Simbolo = "u2", Nome = "Payoff jogador 2", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "u1", Nome = "Payoff jogador 1", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u2", Nome = "Payoff jogador 2", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Payoff total",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u1"] + vars["u2"]
+                Calcular = vars => vars["u1"] + vars["u2"],
+                Unidades = "",
             },
             new Formula
             {
@@ -457,10 +518,11 @@ public partial class FormulaService
                 Criador = "Reinhard Selten",
                 AnoOrigin = "1965",
                 ExemploPratico = "Exemplo: em jogo de entrada, incumbente não ataca se entrada já ocorreu (ameaça não crível).",
-                Variaveis = [ new() { Simbolo = "V", Nome = "Valor nó terminal", ValorPadrao = 10 }, new() { Simbolo = "c", Nome = "Custo ação", ValorPadrao = 2 } ],
+                Variaveis = [ new() { Simbolo = "V", Nome = "Valor nó terminal", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "c", Nome = "Custo ação", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor líquido",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V"] - vars["c"]
+                Calcular = vars => vars["V"] - vars["c"],
+                Unidades = "",
             },
             new Formula
             {
@@ -472,10 +534,11 @@ public partial class FormulaService
                 Criador = "Roger Myerson",
                 AnoOrigin = "1979",
                 ExemploPratico = "Exemplo conceitual: leiloeiro pode assumir lances são valores verdadeiros (incentive-compatible).",
-                Variaveis = [ new() { Simbolo = "v", Nome = "Valor verdadeiro v", ValorPadrao = 100 }, new() { Simbolo = "b", Nome = "Lance revelado b", ValorPadrao = 100 } ],
+                Variaveis = [ new() { Simbolo = "v", Nome = "Valor verdadeiro v", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Lance revelado b", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Ganho de verdade",
                 UnidadeResultado = "",
-                Calcular = vars => vars["v"] - Math.Abs(vars["v"] - vars["b"])
+                Calcular = vars => vars["v"] - Math.Abs(vars["v"] - vars["b"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -487,10 +550,11 @@ public partial class FormulaService
                 Criador = "William Vickrey",
                 AnoOrigin = "1961",
                 ExemploPratico = "Jogador com valor v=100 lança 100, vence pagando 2º lance b₂=80. Payoff = 100-80 = 20.",
-                Variaveis = [ new() { Simbolo = "v", Nome = "Valor verdadeiro v", ValorPadrao = 100 }, new() { Simbolo = "b₂", Nome = "2º maior lance b₂", ValorPadrao = 80 } ],
+                Variaveis = [ new() { Simbolo = "v", Nome = "Valor verdadeiro v", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b₂", Nome = "2º maior lance b₂", ValorPadrao = 80, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Payoff vencedor",
                 UnidadeResultado = "",
-                Calcular = vars => vars["v"] - vars["b₂"]
+                Calcular = vars => vars["v"] - vars["b₂"],
+                Unidades = "",
             },
             new Formula
             {
@@ -502,10 +566,11 @@ public partial class FormulaService
                 Criador = "Spence/Rothschild/Stiglitz",
                 AnoOrigin = "1973-1976",
                 ExemploPratico = "Exemplo: educação como sinal (Spence), seguros com deductibles (Rothschild-Stiglitz).",
-                Variaveis = [ new() { Simbolo = "cH", Nome = "Custo sinal tipo alto", ValorPadrao = 10 }, new() { Simbolo = "cL", Nome = "Custo sinal tipo baixo", ValorPadrao = 20 } ],
+                Variaveis = [ new() { Simbolo = "cH", Nome = "Custo sinal tipo alto", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "cL", Nome = "Custo sinal tipo baixo", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Diferença custos (separação)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["cL"] - vars["cH"]
+                Calcular = vars => vars["cL"] - vars["cH"],
+                Unidades = "",
             },
             new Formula
             {
@@ -517,10 +582,11 @@ public partial class FormulaService
                 Criador = "Williamson/Grossman/Hart/Moore",
                 AnoOrigin = "1985",
                 ExemploPratico = "Fornecedor investe menos em máquina específica temendo renegociação ex-post.",
-                Variaveis = [ new() { Simbolo = "I*", Nome = "Investimento ótimo I*", ValorPadrao = 100 }, new() { Simbolo = "I", Nome = "Investimento real I", ValorPadrao = 60 } ],
+                Variaveis = [ new() { Simbolo = "I*", Nome = "Investimento ótimo I*", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Investimento real I", ValorPadrao = 60, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Subinvestimento",
                 UnidadeResultado = "",
-                Calcular = vars => vars["I*"] - vars["I"]
+                Calcular = vars => vars["I*"] - vars["I"],
+                Unidades = "",
             },
         ]);
     }
@@ -539,10 +605,13 @@ public partial class FormulaService
                 Icone = "VM",
                 Descricao = "Voter model: cada agente adota opinião de vizinho aleatório. Processo de deriva neutra. Em rede finita, convergência para consenso (absorving states ±1).",
                 ExemploPratico = "Simulação: N agentes em rede, cada um copia vizinho. Tempo de consenso ~ N.",
-                Variaveis = [ new() { Simbolo = "N", Nome = "Número agentes N", ValorPadrao = 100, ValorMin = 2 }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 50 } ],
+                Variaveis = [ new() { Simbolo = "N", Nome = "Número agentes N", ValorPadrao = 100, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Tempo consenso estimado",
                 UnidadeResultado = "passos",
-                Calcular = vars => vars["N"] * Math.Log(vars["N"])
+                Calcular = vars => vars["N"] * Math.Log(vars["N"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -554,10 +623,11 @@ public partial class FormulaService
                 Criador = "Thomas Schelling",
                 AnoOrigin = "1971",
                 ExemploPratico = "Com T=0.3 (tolera 30% diferentes), sistema segrega. Ilustra efeito emergente de preferências brandas.",
-                Variaveis = [ new() { Simbolo = "T", Nome = "Threshold T", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "fₛ", Nome = "Fração vizinhos mesmo tipo", ValorPadrao = 0.25, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "T", Nome = "Threshold T", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "fₛ", Nome = "Fração vizinhos mesmo tipo", ValorPadrao = 0.25, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Move? (1=sim, 0=não)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["fₛ"] < vars["T"] ? 1.0 : 0.0
+                Calcular = vars => vars["fₛ"] < vars["T"] ? 1.0 : 0.0,
+                Unidades = "",
             },
             new Formula
             {
@@ -569,10 +639,11 @@ public partial class FormulaService
                 Criador = "Barabási/Albert",
                 AnoOrigin = "1999",
                 ExemploPratico = "Simule rede: cada novo nó conecta a m nós existentes com prob ∝ ki. Emerge distribuição scale-free.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "Grau nó k", ValorPadrao = 10, ValorMin = 1 }, new() { Simbolo = "Σk", Nome = "Soma graus Σk", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "Grau nó k", ValorPadrao = 10, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Σk", Nome = "Soma graus Σk", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Prob attachment",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k"] / vars["Σk"]
+                Calcular = vars => vars["k"] / vars["Σk"],
+                Unidades = "",
             },
             new Formula
             {
@@ -584,10 +655,11 @@ public partial class FormulaService
                 Criador = "Watts/Strogatz",
                 AnoOrigin = "1998",
                 ExemploPratico = "Com p=0.01, rede mantém clustering local mas ganha atalhos. Caminho médio ~ log(N).",
-                Variaveis = [ new() { Simbolo = "p", Nome = "Prob rewiring p", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "L₀", Nome = "Caminho médio inicial L₀", ValorPadrao = 50 } ],
+                Variaveis = [ new() { Simbolo = "p", Nome = "Prob rewiring p", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "L₀", Nome = "Caminho médio inicial L₀", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Caminho médio estimado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["L₀"] * (1 - vars["p"] * 0.9)
+                Calcular = vars => vars["L₀"] * (1 - vars["p"] * 0.9),
+                Unidades = "",
             },
             new Formula
             {
@@ -597,10 +669,13 @@ public partial class FormulaService
                 Icone = "SIS",
                 Descricao = "Modelo SIS em rede: suscetível vira infectado (taxa β por vizinho infectado), infectado vira suscetível (taxa μ). Número reprodutivo R₀=β/μ. Em redes scale-free, limiar epidêmico → 0.",
                 ExemploPratico = "Com β=0.3 (prob transmissão), μ=0.1 (prob recuperação), R₀=3. Epidemia se R₀>1.",
-                Variaveis = [ new() { Simbolo = "β", Nome = "Taxa transmissão β", ValorPadrao = 0.3, ValorMin = 0 }, new() { Simbolo = "μ", Nome = "Taxa recuperação μ", ValorPadrao = 0.1, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "β", Nome = "Taxa transmissão β", ValorPadrao = 0.3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "μ", Nome = "Taxa recuperação μ", ValorPadrao = 0.1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Número reprodutivo R₀",
                 UnidadeResultado = "",
-                Calcular = vars => vars["β"] / vars["μ"]
+                Calcular = vars => vars["β"] / vars["μ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -612,10 +687,11 @@ public partial class FormulaService
                 Criador = "Guillaume Deffuant",
                 AnoOrigin = "2000",
                 ExemploPratico = "Com ε=0.2, opiniões separam em clusters se diferença inicial > ε. Polarização emerge.",
-                Variaveis = [ new() { Simbolo = "xi", Nome = "Opinião agente i", ValorPadrao = 0.3 }, new() { Simbolo = "xj", Nome = "Opinião agente j", ValorPadrao = 0.5 }, new() { Simbolo = "ε", Nome = "Threshold ε", ValorPadrao = 0.2, ValorMin = 0 }, new() { Simbolo = "μ", Nome = "Taxa convergência μ", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "xi", Nome = "Opinião agente i", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "xj", Nome = "Opinião agente j", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ε", Nome = "Threshold ε", ValorPadrao = 0.2, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "μ", Nome = "Taxa convergência μ", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Nova opinião i (se interagem)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Abs(vars["xi"] - vars["xj"]) < vars["ε"] ? vars["xi"] + vars["μ"] * (vars["xj"] - vars["xi"]) : vars["xi"]
+                Calcular = vars => Math.Abs(vars["xi"] - vars["xj"]) < vars["ε"] ? vars["xi"] + vars["μ"] * (vars["xj"] - vars["xi"]) : vars["xi"],
+                Unidades = "",
             },
         ]);
     }

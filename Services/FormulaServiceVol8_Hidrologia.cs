@@ -39,7 +39,8 @@ public partial class FormulaService
                 double v = inputs["v"];
                 
                 return A * v;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -74,7 +75,8 @@ public partial class FormulaService
                 double S = inputs["S"];
                 
                 return (1.0 / n) * Math.Pow(R, 2.0 / 3.0) * Math.Sqrt(S);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -110,7 +112,8 @@ public partial class FormulaService
                 
                 // Fator conversão: 1/3,6 para mm/h·km² → m³/s
                 return (C * i * A) / 3.6;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -143,7 +146,8 @@ public partial class FormulaService
                 double S = inputs["S"];
                 
                 return 0.0078 * Math.Pow(L, 0.77) / Math.Pow(S, 0.385);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -176,7 +180,8 @@ public partial class FormulaService
                 double dh_dl = inputs["dh_dl"];
                 
                 return -K * dh_dl;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -213,7 +218,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return fc + (f0 - fc) * Math.Exp(-k * t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -251,7 +257,8 @@ public partial class FormulaService
                 
                 // Aproximação linear inicial: F ≈ K*t
                 return K * t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -288,7 +295,8 @@ public partial class FormulaService
                 double Ea = inputs["Ea"];
                 
                 return (Delta * Rn + gamma * Ea) / (Delta + gamma);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -329,7 +337,8 @@ public partial class FormulaService
                 double c = inputs["c"];
                 
                 return (K * Math.Pow(Tr, a)) / Math.Pow(t + b, c);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -370,7 +379,8 @@ public partial class FormulaService
                 double denominator = P + 0.8 * S;
                 
                 return numerator / denominator;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -403,7 +413,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 
                 return m / (n + 1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -438,7 +449,8 @@ public partial class FormulaService
                 double Tp = inputs["Tp"];
                 
                 return (0.208 * A * Q_runoff) / Tp;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -471,7 +483,8 @@ public partial class FormulaService
                 double b = inputs["b"];
                 
                 return K * b;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -508,7 +521,8 @@ public partial class FormulaService
                 double r1 = inputs["r1"];
                 
                 return (2 * Math.PI * T * h1_minus_h2) / Math.Log(r2 / r1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -541,7 +555,8 @@ public partial class FormulaService
                 double b = inputs["b"];
                 
                 return Ss * b;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -580,7 +595,8 @@ public partial class FormulaService
                 double r1 = inputs["r1"];
                 
                 return (Math.PI * K * (h1 * h1 - h2 * h2)) / Math.Log(r2 / r1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -619,7 +635,8 @@ public partial class FormulaService
                 double G = inputs["G"];
                 
                 return P + Qin - E - Qout - G;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -656,7 +673,8 @@ public partial class FormulaService
                 double rho_ratio = inputs["rho_s_over_rho_w"];
                 
                 return k * Math.Sqrt(g * d * (rho_ratio - 1));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -692,7 +710,8 @@ public partial class FormulaService
                 
                 // Retorna aceleração gravitacional e friccional: -g*(dz/dx + Sf)
                 return -g * (dz_dx + Sf);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -727,7 +746,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 
                 return v / Math.Sqrt(g * h);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

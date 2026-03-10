@@ -29,8 +29,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1805",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "γ_LV", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "Ângulo θ (°)", Simbolo = "θ", Unidade = "°", ValorPadrao = 30 }
+                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "γ_LV", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ângulo θ (°)", Simbolo = "θ", Unidade = "°", ValorPadrao = 30, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "cos_theta",
                     UnidadeResultado = "",
@@ -43,7 +43,8 @@ namespace CompendioCalc.Services
                         double cos_theta = Math.Cos(theta_rad);
                         return cos_theta;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-281: Pressão de Laplace
@@ -63,9 +64,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Pa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 1 },
-                        new Variavel { Nome = "Tipo (2=gota,4=bolha)", Simbolo = "tipo", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo (2=gota,4=bolha)", Simbolo = "tipo", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -79,7 +80,8 @@ namespace CompendioCalc.Services
                         double delta_p = tipo * gamma / R_m;
                         return delta_p;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-282: Ascensão Capilar (Jurin)
@@ -99,10 +101,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0 },
-                        new Variavel { Nome = "r raio (mm)", Simbolo = "r", Unidade = "mm", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000 }
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r raio (mm)", Simbolo = "r", Unidade = "mm", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -120,7 +122,8 @@ namespace CompendioCalc.Services
                         double h_mm = h_m * 1000;
                         return h_mm;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-283: Surfactantes (CMC)
@@ -140,10 +143,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mN/m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "c concentração (mM)", Simbolo = "c", Unidade = "mM", ValorPadrao = 5 },
-                        new Variavel { Nome = "CMC (mM)", Simbolo = "CMC", Unidade = "mM", ValorPadrao = 8 },
-                        new Variavel { Nome = "γ₀ água (mN/m)", Simbolo = "gamma0", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "γ_CMC mín (mN/m)", Simbolo = "gammaCMC", Unidade = "mN/m", ValorPadrao = 35 }
+                        new Variavel { Nome = "c concentração (mM)", Simbolo = "c", Unidade = "mM", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "CMC (mM)", Simbolo = "CMC", Unidade = "mM", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ₀ água (mN/m)", Simbolo = "gamma0", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ_CMC mín (mN/m)", Simbolo = "gammaCMC", Unidade = "mN/m", ValorPadrao = 35, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -159,7 +162,8 @@ namespace CompendioCalc.Services
                         double gamma = gamma0 - (gamma0 - gammaCMC) * (c / CMC);
                         return gamma;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-284: Adsorção de Gibbs
@@ -179,8 +183,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "µmol/m²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "dγ/dlnc (mN/m)", Simbolo = "dgamma_dlnc", Unidade = "mN/m", ValorPadrao = -10 },
-                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 298 }
+                        new Variavel { Nome = "dγ/dlnc (mN/m)", Simbolo = "dgamma_dlnc", Unidade = "mN/m", ValorPadrao = -10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 298, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -194,7 +198,8 @@ namespace CompendioCalc.Services
                         double Gamma_umol = Gamma_mol * 1e6;
                         return Gamma_umol;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-285: Isoterma de Langmuir
@@ -214,8 +219,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K equilíbrio (1/atm)", Simbolo = "K", Unidade = "1/atm", ValorPadrao = 10 },
-                        new Variavel { Nome = "p pressão (atm)", Simbolo = "p", Unidade = "atm", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "K equilíbrio (1/atm)", Simbolo = "K", Unidade = "1/atm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p pressão (atm)", Simbolo = "p", Unidade = "atm", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -225,7 +230,8 @@ namespace CompendioCalc.Services
                         double theta = (K * p) / (1 + K * p);
                         return theta;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-286: Coeficiente de Espalhamento
@@ -245,9 +251,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mN/m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ_SV (mN/m)", Simbolo = "gamma_SV", Unidade = "mN/m", ValorPadrao = 25 },
-                        new Variavel { Nome = "γ_SL (mN/m)", Simbolo = "gamma_SL", Unidade = "mN/m", ValorPadrao = 50 },
-                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "gamma_LV", Unidade = "mN/m", ValorPadrao = 72 }
+                        new Variavel { Nome = "γ_SV (mN/m)", Simbolo = "gamma_SV", Unidade = "mN/m", ValorPadrao = 25, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ_SL (mN/m)", Simbolo = "gamma_SL", Unidade = "mN/m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "gamma_LV", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -258,7 +264,8 @@ namespace CompendioCalc.Services
                         double S = gamma_SV - (gamma_SL + gamma_LV);
                         return S;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-287: Dinâmica de Molhamento (Washburn)
@@ -278,11 +285,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "r raio (µm)", Simbolo = "r", Unidade = "µm", ValorPadrao = 10 },
-                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0 },
-                        new Variavel { Nome = "t tempo (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 1 },
-                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 1 }
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r raio (µm)", Simbolo = "r", Unidade = "µm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t tempo (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -302,7 +309,8 @@ namespace CompendioCalc.Services
                         double x_mm = x_m * 1000;
                         return x_mm;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-288: Superhidrofóbico (Cassie-Baxter)
@@ -322,8 +330,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "θ intrínseco (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 110 },
-                        new Variavel { Nome = "f fração sólido", Simbolo = "f", Unidade = "", ValorPadrao = 0.2 }
+                        new Variavel { Nome = "θ intrínseco (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 110, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f fração sólido", Simbolo = "f", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -339,7 +347,8 @@ namespace CompendioCalc.Services
                         double theta_star_deg = Math.Acos(cos_theta_star) * 180 / Math.PI;
                         return theta_star_deg;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-289: Histerese de Ângulo de Contato
@@ -359,8 +368,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "θ_a avanço (°)", Simbolo = "theta_a", Unidade = "°", ValorPadrao = 95 },
-                        new Variavel { Nome = "θ_r recuo (°)", Simbolo = "theta_r", Unidade = "°", ValorPadrao = 65 }
+                        new Variavel { Nome = "θ_a avanço (°)", Simbolo = "theta_a", Unidade = "°", ValorPadrao = 95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ_r recuo (°)", Simbolo = "theta_r", Unidade = "°", ValorPadrao = 65, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -370,7 +379,8 @@ namespace CompendioCalc.Services
                         double delta_theta = theta_a - theta_r;
                         return delta_theta;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-290: Trabalho de Adesão (Dupré)
@@ -390,8 +400,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mN/m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "gamma_LV", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0 }
+                        new Variavel { Nome = "γ_LV (mN/m)", Simbolo = "gamma_LV", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ (°)", Simbolo = "theta", Unidade = "°", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -402,7 +412,8 @@ namespace CompendioCalc.Services
                         double W_a = gamma_LV * (1 + Math.Cos(theta_rad));
                         return W_a;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-291: Tensão Interfacial Líquido-Líquido
@@ -422,8 +433,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mN/m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ_1 (mN/m)", Simbolo = "gamma1", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "γ_2 (mN/m)", Simbolo = "gamma2", Unidade = "mN/m", ValorPadrao = 18 }
+                        new Variavel { Nome = "γ_1 (mN/m)", Simbolo = "gamma1", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ_2 (mN/m)", Simbolo = "gamma2", Unidade = "mN/m", ValorPadrao = 18, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -433,7 +444,8 @@ namespace CompendioCalc.Services
                         double gamma_12 = Math.Sqrt(gamma1 * gamma2);
                         return gamma_12;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-292: Número de Weber (Dinâmica Gota)
@@ -453,10 +465,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 1 },
-                        new Variavel { Nome = "L dim (mm)", Simbolo = "L", Unidade = "mm", ValorPadrao = 1 },
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72 }
+                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "L dim (mm)", Simbolo = "L", Unidade = "mm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -471,7 +483,8 @@ namespace CompendioCalc.Services
                         double We = rho * v * v * L_m / gamma;
                         return We;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-293: Número Capilar (Ca)
@@ -491,9 +504,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 100 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 30 }
+                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 30, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -507,7 +520,8 @@ namespace CompendioCalc.Services
                         double Ca = eta * v / gamma;
                         return Ca;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-294: Comprimento Capilar
@@ -527,8 +541,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72 },
-                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000 }
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 72, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -542,7 +556,8 @@ namespace CompendioCalc.Services
                         double kappa_inv_mm = kappa_inv_m * 1000;
                         return kappa_inv_mm;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-295: Isoterma BET (Adsorção Multicamadas)
@@ -562,7 +577,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m²/g",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V_m monocamada (cm³/g STP)", Simbolo = "Vm", Unidade = "cm³/g", ValorPadrao = 100 }
+                        new Variavel { Nome = "V_m monocamada (cm³/g STP)", Simbolo = "Vm", Unidade = "cm³/g", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -576,7 +591,8 @@ namespace CompendioCalc.Services
                         double A_BET = Vm * N_A * sigma_N2 / volume_molar_STP;
                         return A_BET;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-296: Ângulo de Contato Dinâmico (Cox-Voinov)
@@ -596,8 +612,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "θ_e equilíbrio (°)", Simbolo = "theta_e", Unidade = "°", ValorPadrao = 60 },
-                        new Variavel { Nome = "Ca número capilar", Simbolo = "Ca", Unidade = "", ValorPadrao = 0.01 }
+                        new Variavel { Nome = "θ_e equilíbrio (°)", Simbolo = "theta_e", Unidade = "°", ValorPadrao = 60, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ca número capilar", Simbolo = "Ca", Unidade = "", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -616,7 +632,8 @@ namespace CompendioCalc.Services
                         
                         return theta_d_deg;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-297: Emulsões (Tamanho Gota)
@@ -636,9 +653,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "µm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 50 },
-                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10 }
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -651,7 +668,8 @@ namespace CompendioCalc.Services
                         double d_um = d_m * 1e6;
                         return d_um;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-298: Coalescência (Tempo)
@@ -671,9 +689,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 1 },
-                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 50 },
-                        new Variavel { Nome = "R raio gota (µm)", Simbolo = "R", Unidade = "µm", ValorPadrao = 1 }
+                        new Variavel { Nome = "η viscosidade (mPa·s)", Simbolo = "eta", Unidade = "mPa·s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ (mN/m)", Simbolo = "gamma", Unidade = "mN/m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R raio gota (µm)", Simbolo = "R", Unidade = "µm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -689,7 +707,8 @@ namespace CompendioCalc.Services
                         double t_coal = eta / (gamma * R_m);
                         return t_coal;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 },
 
                 // V10-299: HLB (Hydrophile-Lipophile Balance)
@@ -709,8 +728,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "M_h hidrofílico (g/mol)", Simbolo = "Mh", Unidade = "g/mol", ValorPadrao = 350 },
-                        new Variavel { Nome = "M total (g/mol)", Simbolo = "M", Unidade = "g/mol", ValorPadrao = 500 }
+                        new Variavel { Nome = "M_h hidrofílico (g/mol)", Simbolo = "Mh", Unidade = "g/mol", ValorPadrao = 350, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "M total (g/mol)", Simbolo = "M", Unidade = "g/mol", ValorPadrao = 500, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -721,7 +740,8 @@ namespace CompendioCalc.Services
                         double HLB = (Mh / M) * 20;
                         return HLB;
                     },
-                    Icone = "💧"
+                    Icone = "💧",
+                    Unidades = "",
                 }
             });
         }

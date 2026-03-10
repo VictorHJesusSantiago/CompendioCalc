@@ -32,10 +32,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "α_r", Nome = "Alpha real", Unidade = "", ValorPadrao = 0.707 },
-                        new Variavel { Simbolo = "α_i", Nome = "Alpha imaginário", Unidade = "", ValorPadrao = 0 },
-                        new Variavel { Simbolo = "β_r", Nome = "Beta real", Unidade = "", ValorPadrao = 0.707 },
-                        new Variavel { Simbolo = "β_i", Nome = "Beta imaginário", Unidade = "", ValorPadrao = 0 }
+                        new Variavel { Simbolo = "α_r", Nome = "Alpha real", Unidade = "", ValorPadrao = 0.707, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "α_i", Nome = "Alpha imaginário", Unidade = "", ValorPadrao = 0, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "β_r", Nome = "Beta real", Unidade = "", ValorPadrao = 0.707, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "β_i", Nome = "Beta imaginário", Unidade = "", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -47,7 +47,8 @@ namespace CompendioCalc.Services
                         double normBeta2 = betaR * betaR + betaI * betaI;
                         return normAlpha2 + normBeta2; // Deve ser ≈1
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-002: Porta Hadamard
@@ -67,14 +68,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "q", Nome = "Estado inicial", Unidade = "", ValorPadrao = 0, ValorMin = 0, ValorMax = 1 }
+                        new Variavel { Simbolo = "q", Nome = "Estado inicial", Unidade = "", ValorPadrao = 0, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double q = inputs["Estado inicial"];
                         return 1.0 / Math.Sqrt(2.0); // Amplitude resultante
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-003: Porta CNOT
@@ -94,8 +96,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "c", Nome = "Qubit controle", Unidade = "", ValorPadrao = 1, ValorMin = 0, ValorMax = 1 },
-                        new Variavel { Simbolo = "t", Nome = "Qubit alvo", Unidade = "", ValorPadrao = 0, ValorMin = 0, ValorMax = 1 }
+                        new Variavel { Simbolo = "c", Nome = "Qubit controle", Unidade = "", ValorPadrao = 1, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "t", Nome = "Qubit alvo", Unidade = "", ValorPadrao = 0, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -103,7 +105,8 @@ namespace CompendioCalc.Services
                         int target = (int)Math.Round(inputs["Qubit alvo"]);
                         return control == 1 ? (target == 0 ? 1.0 : 0.0) : target;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-004: Estado de Bell
@@ -123,13 +126,14 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "θ", Nome = "Ângulo de medição", Unidade = "rad", ValorPadrao = 0 }
+                        new Variavel { Simbolo = "θ", Nome = "Ângulo de medição", Unidade = "rad", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         return 1.0 / Math.Sqrt(2.0); // Amplitude do estado de Bell
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-005: Algoritmo de Shor
@@ -149,7 +153,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "operações",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "N", Nome = "Número a fatorar", Unidade = "", ValorPadrao = 15 }
+                        new Variavel { Simbolo = "N", Nome = "Número a fatorar", Unidade = "", ValorPadrao = 15, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -158,7 +162,8 @@ namespace CompendioCalc.Services
                         double loglogN = Math.Log(logN, 2);
                         return logN * logN * logN * loglogN; // Complexidade Shor
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-006: Algoritmo de Grover
@@ -178,14 +183,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "N", Nome = "Tamanho do espaço", Unidade = "", ValorPadrao = 1000000 }
+                        new Variavel { Simbolo = "N", Nome = "Tamanho do espaço", Unidade = "", ValorPadrao = 1000000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double N = inputs["Tamanho do espaço"];
                         return Math.PI * Math.Sqrt(N) / 4.0; // Número ótimo de iterações
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-007: Transformada de Fourier Quântica (QFT)
@@ -205,14 +211,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "n", Nome = "Número de qubits", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Simbolo = "n", Nome = "Número de qubits", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double n = inputs["Número de qubits"];
                         return n * n; // Número de portas QFT
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-008: Fidelidade Quântica
@@ -232,14 +239,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "overlap", Nome = "Overlap dos estados", Unidade = "", ValorPadrao = 0.99 }
+                        new Variavel { Simbolo = "overlap", Nome = "Overlap dos estados", Unidade = "", ValorPadrao = 0.99, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double overlap = inputs["Overlap dos estados"];
                         return overlap * overlap; // Fidelidade = |overlap|²
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-009: Código de Shor (Correção de Erros)
@@ -259,14 +267,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "k", Nome = "Qubits lógicos", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Simbolo = "k", Nome = "Qubits lógicos", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double k = inputs["Qubits lógicos"];
                         return k * 9; // Qubits físicos necessários
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-010: Limite de Heisenberg
@@ -286,7 +295,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "ΔE", Nome = "Diferença energia", Unidade = "J", ValorPadrao = 1e-25 }
+                        new Variavel { Simbolo = "ΔE", Nome = "Diferença energia", Unidade = "J", ValorPadrao = 1e-25, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -294,7 +303,8 @@ namespace CompendioCalc.Services
                         double hbar = 1.054571817e-34; // J·s
                         return hbar / (2.0 * deltaE); // Tempo mínimo
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-011: Threshold Theorem (FTQC)
@@ -314,8 +324,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "p", Nome = "Erro físico", Unidade = "", ValorPadrao = 0.001 },
-                        new Variavel { Simbolo = "L", Nome = "Nível concatenação", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Simbolo = "p", Nome = "Erro físico", Unidade = "", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "L", Nome = "Nível concatenação", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -323,7 +333,8 @@ namespace CompendioCalc.Services
                         double L = inputs["Nível concatenação"];
                         return Math.Pow(p, Math.Pow(2, L)); // Erro lógico após L níveis
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-012: Critérios de DiVincenzo
@@ -343,8 +354,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "T2", Nome = "Tempo coerência", Unidade = "s", ValorPadrao = 0.0001 },
-                        new Variavel { Simbolo = "Tg", Nome = "Tempo porta", Unidade = "s", ValorPadrao = 5e-8 }
+                        new Variavel { Simbolo = "T2", Nome = "Tempo coerência", Unidade = "s", ValorPadrao = 0.0001, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "Tg", Nome = "Tempo porta", Unidade = "s", ValorPadrao = 5e-8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -352,7 +363,8 @@ namespace CompendioCalc.Services
                         double Tgate = inputs["Tempo porta"];
                         return T2 / Tgate; // Razão (ideal: >10⁴)
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-013: BB84 — Distribuição Quântica de Chaves
@@ -372,8 +384,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "bits/qubit",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "R", Nome = "Taxa transmissão", Unidade = "bits/s", ValorPadrao = 1000 },
-                        new Variavel { Simbolo = "Q", Nome = "Taxa erro (QBER)", Unidade = "", ValorPadrao = 0.05, ValorMax = 0.11 }
+                        new Variavel { Simbolo = "R", Nome = "Taxa transmissão", Unidade = "bits/s", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "Q", Nome = "Taxa erro (QBER)", Unidade = "", ValorPadrao = 0.05, ValorMax = 0.11, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -382,7 +394,8 @@ namespace CompendioCalc.Services
                         double h = Q > 0 ? -Q * Math.Log(Q, 2) - (1 - Q) * Math.Log(1 - Q, 2) : 0;
                         return R * (1 - h); // Taxa chave segura
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-014: Teorema No-Cloning
@@ -402,14 +415,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "N", Nome = "Número de cópias", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Simbolo = "N", Nome = "Número de cópias", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
  },
                     Calcular = inputs =>
                     {
                         double N = inputs["Número de cópias"];
                         return 2.0 / (N + 1.0); // Fidelidade ótima
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-015: Classe BQP
@@ -429,14 +443,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "p_erro", Nome = "Probabilidade erro", Unidade = "", ValorPadrao = 0.33, ValorMax = 0.5 }
+                        new Variavel { Simbolo = "p_erro", Nome = "Probabilidade erro", Unidade = "", ValorPadrao = 0.33, ValorMax = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double p_erro = inputs["Probabilidade erro"];
                         return 1.0 - p_erro; // Probabilidade acerto (≥2/3)
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-016: Operador de Densidade — Estado Misto
@@ -456,7 +471,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "p", Nome = "Probabilidade estado |0⟩", Unidade = "", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1 }
+                        new Variavel { Simbolo = "p", Nome = "Probabilidade estado |0⟩", Unidade = "", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -464,7 +479,8 @@ namespace CompendioCalc.Services
                         double pureza = p * p + (1 - p) * (1 - p); // Tr(ρ²)
                         return pureza; // 1=puro, 0.5=maximamente misto
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-017: Circuito Variacional — VQE
@@ -484,8 +500,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "E0", Nome = "Energia fundamental", Unidade = "eV", ValorPadrao = -1.137 },
-                        new Variavel { Simbolo = "delta", Nome = "Excesso variacional", Unidade = "eV", ValorPadrao = 0.05, ValorMin = 0 }
+                        new Variavel { Simbolo = "E0", Nome = "Energia fundamental", Unidade = "eV", ValorPadrao = -1.137, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "delta", Nome = "Excesso variacional", Unidade = "eV", ValorPadrao = 0.05, ValorMin = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -493,7 +509,8 @@ namespace CompendioCalc.Services
                         double delta = inputs["Excesso variacional"];
                         return E0 + delta; // ⟨E⟩ ≥ E₀
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-018: Vantagem Quântica — Supremacia
@@ -513,8 +530,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "T_classico", Nome = "Tempo clássico", Unidade = "s", ValorPadrao = 315360000 }, // 10.000 anos
-                        new Variavel { Simbolo = "T_quantico", Nome = "Tempo quântico", Unidade = "s", ValorPadrao = 200 }
+                        new Variavel { Simbolo = "T_classico", Nome = "Tempo clássico", Unidade = "s", ValorPadrao = 315360000, Descricao = "Parâmetro de entrada." }, // 10.000 anos
+                        new Variavel { Simbolo = "T_quantico", Nome = "Tempo quântico", Unidade = "s", ValorPadrao = 200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -522,7 +539,8 @@ namespace CompendioCalc.Services
                         double tQuant = inputs["Tempo quântico"];
                         return tClass / tQuant; // Razão de speedup
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-019: Entropia de Von Neumann
@@ -542,8 +560,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "bits",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "lambda1", Nome = "Autovalor λ₁", Unidade = "", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1 },
-                        new Variavel { Simbolo = "lambda2", Nome = "Autovalor λ₂", Unidade = "", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1 }
+                        new Variavel { Simbolo = "lambda1", Nome = "Autovalor λ₁", Unidade = "", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "lambda2", Nome = "Autovalor λ₂", Unidade = "", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -554,7 +572,8 @@ namespace CompendioCalc.Services
                         if (lambda2 > 1e-10) S += -lambda2 * Math.Log(lambda2, 2);
                         return S; // Entropia em bits
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-020: Protocolo de Teleportação Quântica
@@ -574,8 +593,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "F_EPR", Nome = "Fidelidade do par EPR", Unidade = "", ValorPadrao = 0.98, ValorMin = 0, ValorMax = 1 },
-                        new Variavel { Simbolo = "eficiencia", Nome = "Eficiência canal", Unidade = "", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1 }
+                        new Variavel { Simbolo = "F_EPR", Nome = "Fidelidade do par EPR", Unidade = "", ValorPadrao = 0.98, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "eficiencia", Nome = "Eficiência canal", Unidade = "", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -583,7 +602,8 @@ namespace CompendioCalc.Services
                         double eficiencia = inputs["Eficiência canal"];
                         return F_EPR * eficiencia; // Fidelidade total
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-021: Erro de Decoerência — Lindblad
@@ -603,8 +623,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Simbolo = "t", Nome = "Tempo", Unidade = "μs", ValorPadrao = 50 },
-                        new Variavel { Simbolo = "T2", Nome = "Tempo T₂", Unidade = "μs", ValorPadrao = 100 }
+                        new Variavel { Simbolo = "t", Nome = "Tempo", Unidade = "μs", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Simbolo = "T2", Nome = "Tempo T₂", Unidade = "μs", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -612,7 +632,8 @@ namespace CompendioCalc.Services
                         double T2 = inputs["Tempo T₂"];
                         return Math.Exp(-t / T2); // Coerência decai exponencialmente
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 }
             });
         }

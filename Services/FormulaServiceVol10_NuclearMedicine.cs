@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1902",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Atividade inicial A₀ (MBq)", Simbolo = "A₀", Unidade = "MBq", ValorPadrao = 100 },
-                        new Variavel { Nome = "Meia-vida T₁/₂ (h)", Simbolo = "T₁/₂", Unidade = "h", ValorPadrao = 6 },
-                        new Variavel { Nome = "Tempo t (h)", Simbolo = "t", Unidade = "h", ValorPadrao = 12 }
+                        new Variavel { Nome = "Atividade inicial A₀ (MBq)", Simbolo = "A₀", Unidade = "MBq", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Meia-vida T₁/₂ (h)", Simbolo = "T₁/₂", Unidade = "h", ValorPadrao = 6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo t (h)", Simbolo = "t", Unidade = "h", ValorPadrao = 12, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -44,7 +44,8 @@ namespace CompendioCalc.Services
                         double A_t = A0 * Math.Exp(-lambda * t);
                         return A_t;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-202: Dose Absorvida (Gray)
@@ -64,8 +65,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Gy",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Energia E (J)", Simbolo = "E", Unidade = "J", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "Massa m (kg)", Simbolo = "m", Unidade = "kg", ValorPadrao = 0.05 }
+                        new Variavel { Nome = "Energia E (J)", Simbolo = "E", Unidade = "J", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa m (kg)", Simbolo = "m", Unidade = "kg", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -76,7 +77,8 @@ namespace CompendioCalc.Services
                         double D = E / m;
                         return D;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-203: Dose Equivalente (Sievert)
@@ -96,8 +98,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Sv",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Dose D (Gy)", Simbolo = "D", Unidade = "Gy", ValorPadrao = 0.01 },
-                        new Variavel { Nome = "Tipo (1=γ/X,2=p,3=α)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Dose D (Gy)", Simbolo = "D", Unidade = "Gy", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo (1=γ/X,2=p,3=α)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -115,7 +117,8 @@ namespace CompendioCalc.Services
                         double H = D * w_R;
                         return H;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-204: SUV (Standard Uptake Value) — PET
@@ -135,9 +138,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Atividade tecido (kBq/mL)", Simbolo = "A_tec", Unidade = "kBq/mL", ValorPadrao = 10 },
-                        new Variavel { Nome = "Dose injetada (MBq)", Simbolo = "Dose", Unidade = "MBq", ValorPadrao = 400 },
-                        new Variavel { Nome = "Peso paciente (kg)", Simbolo = "peso", Unidade = "kg", ValorPadrao = 70 }
+                        new Variavel { Nome = "Atividade tecido (kBq/mL)", Simbolo = "A_tec", Unidade = "kBq/mL", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Dose injetada (MBq)", Simbolo = "Dose", Unidade = "MBq", ValorPadrao = 400, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Peso paciente (kg)", Simbolo = "peso", Unidade = "kg", ValorPadrao = 70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -151,7 +154,8 @@ namespace CompendioCalc.Services
                         double SUV = A_tec_MBq / (Dose / peso);
                         return SUV;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-205: Resolução Espacial SPECT
@@ -171,9 +175,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "d diâm furo (mm)", Simbolo = "d", Unidade = "mm", ValorPadrao = 1.5 },
-                        new Variavel { Nome = "b distância furo (mm)", Simbolo = "b", Unidade = "mm", ValorPadrao = 25 },
-                        new Variavel { Nome = "f dist fonte (mm)", Simbolo = "f", Unidade = "mm", ValorPadrao = 100 }
+                        new Variavel { Nome = "d diâm furo (mm)", Simbolo = "d", Unidade = "mm", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "b distância furo (mm)", Simbolo = "b", Unidade = "mm", ValorPadrao = 25, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f dist fonte (mm)", Simbolo = "f", Unidade = "mm", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -185,7 +189,8 @@ namespace CompendioCalc.Services
                         double R_c = d * (b + f) / b;
                         return R_c;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-206: Fator de Acumulação (Buildup)
@@ -205,9 +210,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ (1/cm)", Simbolo = "mu", Unidade = "1/cm", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "x espessura (cm)", Simbolo = "x", Unidade = "cm", ValorPadrao = 30 },
-                        new Variavel { Nome = "B buildup", Simbolo = "B", Unidade = "", ValorPadrao = 2.5 }
+                        new Variavel { Nome = "μ (1/cm)", Simbolo = "mu", Unidade = "1/cm", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x espessura (cm)", Simbolo = "x", Unidade = "cm", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "B buildup", Simbolo = "B", Unidade = "", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -218,7 +223,8 @@ namespace CompendioCalc.Services
                         double I_rel = Math.Exp(-mu * x) * B;
                         return I_rel;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-207: Tempo de Trânsito (Renograma)
@@ -238,8 +244,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "∫tC(t) (counts·min)", Simbolo = "integ_tC", Unidade = "counts·min", ValorPadrao = 5000 },
-                        new Variavel { Nome = "∫C(t) (counts)", Simbolo = "integ_C", Unidade = "counts", ValorPadrao = 1000 }
+                        new Variavel { Nome = "∫tC(t) (counts·min)", Simbolo = "integ_tC", Unidade = "counts·min", ValorPadrao = 5000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "∫C(t) (counts)", Simbolo = "integ_C", Unidade = "counts", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -250,7 +256,8 @@ namespace CompendioCalc.Services
                         double MTT = integ_tC / integ_C;
                         return MTT;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-208: Clearance Renal (GFR)
@@ -270,10 +277,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mL/min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Dose (MBq)", Simbolo = "dose", Unidade = "MBq", ValorPadrao = 100 },
-                        new Variavel { Nome = "Resíduo (MBq)", Simbolo = "res", Unidade = "MBq", ValorPadrao = 5 },
-                        new Variavel { Nome = "AUC (MBq·min/L)", Simbolo = "AUC", Unidade = "MBq·min/L", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Peso (kg)", Simbolo = "peso", Unidade = "kg", ValorPadrao = 70 }
+                        new Variavel { Nome = "Dose (MBq)", Simbolo = "dose", Unidade = "MBq", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Resíduo (MBq)", Simbolo = "res", Unidade = "MBq", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "AUC (MBq·min/L)", Simbolo = "AUC", Unidade = "MBq·min/L", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Peso (kg)", Simbolo = "peso", Unidade = "kg", ValorPadrao = 70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -289,7 +296,8 @@ namespace CompendioCalc.Services
                         GFR *= peso / 70 * 1.73; // normalize to 1.73 m²
                         return GFR;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-209: Fração de Ejeção Cardíaca (LVEF)
@@ -309,8 +317,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "EDC (counts)", Simbolo = "EDC", Unidade = "counts", ValorPadrao = 10000 },
-                        new Variavel { Nome = "ESC (counts)", Simbolo = "ESC", Unidade = "counts", ValorPadrao = 4000 }
+                        new Variavel { Nome = "EDC (counts)", Simbolo = "EDC", Unidade = "counts", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ESC (counts)", Simbolo = "ESC", Unidade = "counts", ValorPadrao = 4000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -321,7 +329,8 @@ namespace CompendioCalc.Services
                         double LVEF = ((EDC - ESC) / EDC) * 100;
                         return LVEF;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-210: Modelo de Compartimentos (Farmacocinética)
@@ -341,9 +350,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kBq/mL",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C₀ (kBq/mL)", Simbolo = "C0", Unidade = "kBq/mL", ValorPadrao = 10 },
-                        new Variavel { Nome = "k (1/min)", Simbolo = "k", Unidade = "1/min", ValorPadrao = 0.01 },
-                        new Variavel { Nome = "t (min)", Simbolo = "t", Unidade = "min", ValorPadrao = 180 }
+                        new Variavel { Nome = "C₀ (kBq/mL)", Simbolo = "C0", Unidade = "kBq/mL", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k (1/min)", Simbolo = "k", Unidade = "1/min", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (min)", Simbolo = "t", Unidade = "min", ValorPadrao = 180, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -354,7 +363,8 @@ namespace CompendioCalc.Services
                         double C_t = C0 * Math.Exp(-k * t);
                         return C_t;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-211: Sensibilidade PET
@@ -374,8 +384,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "cps/(kBq/mL)",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Counts/s (cps)", Simbolo = "cps", Unidade = "cps", ValorPadrao = 10000 },
-                        new Variavel { Nome = "Concentração (kBq/mL)", Simbolo = "conc", Unidade = "kBq/mL", ValorPadrao = 20 }
+                        new Variavel { Nome = "Counts/s (cps)", Simbolo = "cps", Unidade = "cps", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Concentração (kBq/mL)", Simbolo = "conc", Unidade = "kBq/mL", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -386,7 +396,8 @@ namespace CompendioCalc.Services
                         double Sens = cps / conc;
                         return Sens;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-212: Índice de Extração Hepática
@@ -406,8 +417,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Cin (kBq/mL)", Simbolo = "Cin", Unidade = "kBq/mL", ValorPadrao = 100 },
-                        new Variavel { Nome = "Cout (kBq/mL)", Simbolo = "Cout", Unidade = "kBq/mL", ValorPadrao = 10 }
+                        new Variavel { Nome = "Cin (kBq/mL)", Simbolo = "Cin", Unidade = "kBq/mL", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Cout (kBq/mL)", Simbolo = "Cout", Unidade = "kBq/mL", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -418,7 +429,8 @@ namespace CompendioCalc.Services
                         double HEF = (Cin - Cout) / Cin;
                         return HEF;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-213: Fração de Shunt Pulmonar
@@ -438,8 +450,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Lung counts", Simbolo = "lung", Unidade = "counts", ValorPadrao = 200000 },
-                        new Variavel { Nome = "Liver counts", Simbolo = "liver", Unidade = "counts", ValorPadrao = 800000 }
+                        new Variavel { Nome = "Lung counts", Simbolo = "lung", Unidade = "counts", ValorPadrao = 200000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Liver counts", Simbolo = "liver", Unidade = "counts", ValorPadrao = 800000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -452,7 +464,8 @@ namespace CompendioCalc.Services
                         double LSF = (lung / total) * 100;
                         return LSF;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-214: Dose de Radiofármaco
@@ -472,8 +485,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MBq",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Dose adulto (MBq)", Simbolo = "adult", Unidade = "MBq", ValorPadrao = 740 },
-                        new Variavel { Nome = "Idade (anos)", Simbolo = "age", Unidade = "anos", ValorPadrao = 5 }
+                        new Variavel { Nome = "Dose adulto (MBq)", Simbolo = "adult", Unidade = "MBq", ValorPadrao = 740, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Idade (anos)", Simbolo = "age", Unidade = "anos", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -483,7 +496,8 @@ namespace CompendioCalc.Services
                         double Dose_child = adult * Math.Sqrt(age / (age + 1));
                         return Dose_child;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-215: Cintigrafia Óssea — Razão Lesão/Background
@@ -503,9 +517,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Counts lesão", Simbolo = "lesion", Unidade = "counts", ValorPadrao = 5000 },
-                        new Variavel { Nome = "Counts normal", Simbolo = "normal", Unidade = "counts", ValorPadrao = 2000 },
-                        new Variavel { Nome = "Background", Simbolo = "BG", Unidade = "counts", ValorPadrao = 500 }
+                        new Variavel { Nome = "Counts lesão", Simbolo = "lesion", Unidade = "counts", ValorPadrao = 5000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Counts normal", Simbolo = "normal", Unidade = "counts", ValorPadrao = 2000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Background", Simbolo = "BG", Unidade = "counts", ValorPadrao = 500, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -519,7 +533,8 @@ namespace CompendioCalc.Services
                         double L_B = (lesion - BG) / denom;
                         return L_B;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-216: Tempo de Duplicação Tumoral
@@ -539,9 +554,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dias",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V₁ (cm³)", Simbolo = "V1", Unidade = "cm³", ValorPadrao = 1 },
-                        new Variavel { Nome = "V₂ (cm³)", Simbolo = "V2", Unidade = "cm³", ValorPadrao = 1.4 },
-                        new Variavel { Nome = "Δt (dias)", Simbolo = "dt", Unidade = "dias", ValorPadrao = 180 }
+                        new Variavel { Nome = "V₁ (cm³)", Simbolo = "V1", Unidade = "cm³", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "V₂ (cm³)", Simbolo = "V2", Unidade = "cm³", ValorPadrao = 1.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Δt (dias)", Simbolo = "dt", Unidade = "dias", ValorPadrao = 180, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -554,7 +569,8 @@ namespace CompendioCalc.Services
                         double T_d = dt * Math.Log(2) / Math.Log(V2 / V1);
                         return T_d;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-217: Correção de Atenuação (Chang)
@@ -574,8 +590,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ (1/cm)", Simbolo = "mu", Unidade = "1/cm", ValorPadrao = 0.15 },
-                        new Variavel { Nome = "d profundidade (cm)", Simbolo = "d", Unidade = "cm", ValorPadrao = 10 }
+                        new Variavel { Nome = "μ (1/cm)", Simbolo = "mu", Unidade = "1/cm", ValorPadrao = 0.15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "d profundidade (cm)", Simbolo = "d", Unidade = "cm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -585,7 +601,8 @@ namespace CompendioCalc.Services
                         double CF = Math.Exp(mu * d / 2);
                         return CF;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-218: Dose Efetiva (mSv)
@@ -605,14 +622,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mSv",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ΣwH (mSv)", Simbolo = "sum_wH", Unidade = "mSv", ValorPadrao = 7 }
+                        new Variavel { Nome = "ΣwH (mSv)", Simbolo = "sum_wH", Unidade = "mSv", ValorPadrao = 7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double E = inputs["ΣwH (mSv)"];
                         return E;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 },
 
                 // V10-219: Sensibilidade Diagnóstica
@@ -632,8 +650,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "TP", Simbolo = "TP", Unidade = "", ValorPadrao = 80 },
-                        new Variavel { Nome = "FN", Simbolo = "FN", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "TP", Simbolo = "TP", Unidade = "", ValorPadrao = 80, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "FN", Simbolo = "FN", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -646,7 +664,8 @@ namespace CompendioCalc.Services
                         double Sens = (TP / total_pos) * 100;
                         return Sens;
                     },
-                    Icone = "☢️"
+                    Icone = "☢️",
+                    Unidades = "",
                 }
             });
         }

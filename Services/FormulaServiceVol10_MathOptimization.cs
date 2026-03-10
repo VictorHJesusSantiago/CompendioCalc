@@ -31,14 +31,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Gap de dualidade", Simbolo = "gap", Unidade = "", ValorPadrao = 0.01 }
+                        new Variavel { Nome = "Gap de dualidade", Simbolo = "gap", Unidade = "", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double gap = inputs["Gap de dualidade"];
                         return gap;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-123: Gradiente Descendente
@@ -58,9 +59,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "∇f(x)", Simbolo = "grad", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "Learning rate α", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "∇f(x)", Simbolo = "grad", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Learning rate α", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -71,7 +72,8 @@ namespace CompendioCalc.Services
                         double x_new = x - alpha * grad;
                         return x_new;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-124: Método de Newton-Raphson
@@ -91,9 +93,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "∇f(x)", Simbolo = "grad", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "H (Hessiana)", Simbolo = "H", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "∇f(x)", Simbolo = "grad", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H (Hessiana)", Simbolo = "H", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -105,7 +107,8 @@ namespace CompendioCalc.Services
                         double x_new = x - grad / H;
                         return x_new;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-125: Programação Linear — Método Simplex
@@ -125,10 +128,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x₁", Simbolo = "x1", Unidade = "", ValorPadrao = 50 },
-                        new Variavel { Nome = "x₂", Simbolo = "x2", Unidade = "", ValorPadrao = 50 },
-                        new Variavel { Nome = "c₁", Simbolo = "c1", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "c₂", Simbolo = "c2", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "x₁", Simbolo = "x1", Unidade = "", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x₂", Simbolo = "x2", Unidade = "", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₁", Simbolo = "c1", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₂", Simbolo = "c2", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -140,7 +143,8 @@ namespace CompendioCalc.Services
                         double Z = c1 * x1 + c2 * x2;
                         return Z;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-126: Convexidade
@@ -160,9 +164,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "H₁₁ (elemento Hessiana)", Simbolo = "H11", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "H₂₂", Simbolo = "H22", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "H₁₂", Simbolo = "H12", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "H₁₁ (elemento Hessiana)", Simbolo = "H11", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H₂₂", Simbolo = "H22", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H₁₂", Simbolo = "H12", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -177,7 +181,8 @@ namespace CompendioCalc.Services
                         
                         return lambda_min; // >0: convexa
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-127: Otimização Restrita — Lagrangiano
@@ -197,9 +202,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f(x)", Simbolo = "f", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = -1 },
-                        new Variavel { Nome = "h(x)", Simbolo = "h", Unidade = "", ValorPadrao = 0 }
+                        new Variavel { Nome = "f(x)", Simbolo = "f", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = -1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "h(x)", Simbolo = "h", Unidade = "", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -210,7 +215,8 @@ namespace CompendioCalc.Services
                         double L = f + lambda * h;
                         return L;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-128: Busca em Grade (Grid Search)
@@ -230,9 +236,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "avaliações",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "n_param1", Simbolo = "n1", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "n_param2", Simbolo = "n2", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "n_param3", Simbolo = "n3", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "n_param1", Simbolo = "n1", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n_param2", Simbolo = "n2", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n_param3", Simbolo = "n3", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -243,7 +249,8 @@ namespace CompendioCalc.Services
                         int N_eval = n1 * n2 * n3;
                         return N_eval;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-129: Simulated Annealing
@@ -263,8 +270,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ΔE", Simbolo = "dE", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "Temperatura T", Simbolo = "T", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "ΔE", Simbolo = "dE", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Temperatura T", Simbolo = "T", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -277,7 +284,8 @@ namespace CompendioCalc.Services
                         double P = Math.Exp(-dE / T);
                         return P;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-130: Algoritmo Genético — Fitness
@@ -297,8 +305,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "fitness_indivíduo", Simbolo = "f_i", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "fitness_total", Simbolo = "f_total", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "fitness_indivíduo", Simbolo = "f_i", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "fitness_total", Simbolo = "f_total", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -309,7 +317,8 @@ namespace CompendioCalc.Services
                         double P = f_i / f_total;
                         return P;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-131: Particle Swarm Optimization (PSO)
@@ -329,11 +338,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v_atual", Simbolo = "v", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "Inércia w", Simbolo = "w", Unidade = "", ValorPadrao = 0.7 },
-                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "p_best", Simbolo = "p", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "g_best", Simbolo = "g", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "v_atual", Simbolo = "v", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Inércia w", Simbolo = "w", Unidade = "", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x_atual", Simbolo = "x", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p_best", Simbolo = "p", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "g_best", Simbolo = "g", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -349,7 +358,8 @@ namespace CompendioCalc.Services
                         double v_new = w * v + c1 * r1 * (p - x) + c2 * r2 * (g - x);
                         return v_new;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-132: Programação Dinâmica — Bellman
@@ -369,9 +379,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R(s,a)", Simbolo = "R", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "γ", Simbolo = "gamma", Unidade = "", ValorPadrao = 0.9 },
-                        new Variavel { Nome = "V(s')", Simbolo = "V_next", Unidade = "", ValorPadrao = 20 }
+                        new Variavel { Nome = "R(s,a)", Simbolo = "R", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ", Simbolo = "gamma", Unidade = "", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "V(s')", Simbolo = "V_next", Unidade = "", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -382,7 +392,8 @@ namespace CompendioCalc.Services
                         double V_s = R + gamma * V_next;
                         return V_s;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-133: Otimização Combinatória — Branch and Bound
@@ -402,8 +413,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "bound_nó", Simbolo = "bound", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "best_solution", Simbolo = "best", Unidade = "", ValorPadrao = 120 }
+                        new Variavel { Nome = "bound_nó", Simbolo = "bound", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "best_solution", Simbolo = "best", Unidade = "", ValorPadrao = 120, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -413,7 +424,8 @@ namespace CompendioCalc.Services
                         double poda = (bound <= best) ? 1 : 0; // 1=poda, 0=explora
                         return poda;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-134: Regularização L1/L2
@@ -433,9 +445,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "|w| (L1 norm)", Simbolo = "w_L1", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "||w||² (L2 norm²)", Simbolo = "w_L2_sq", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "|w| (L1 norm)", Simbolo = "w_L1", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "||w||² (L2 norm²)", Simbolo = "w_L2_sq", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -447,7 +459,8 @@ namespace CompendioCalc.Services
                         double penalty = lambda * w_L1;
                         return penalty;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-135: Bayesian Optimization
@@ -467,9 +480,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ(x) (GP mean)", Simbolo = "mu", Unidade = "", ValorPadrao = 0.8 },
-                        new Variavel { Nome = "σ(x) (GP std)", Simbolo = "sigma", Unidade = "", ValorPadrao = 0.2 },
-                        new Variavel { Nome = "f* (best)", Simbolo = "f_star", Unidade = "", ValorPadrao = 0.9 }
+                        new Variavel { Nome = "μ(x) (GP mean)", Simbolo = "mu", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ(x) (GP std)", Simbolo = "sigma", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f* (best)", Simbolo = "f_star", Unidade = "", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -487,7 +500,8 @@ namespace CompendioCalc.Services
                         
                         return alpha_EI;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-136: Método do Ponto Crítico
@@ -507,14 +521,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f''(x*)", Simbolo = "f_2nd", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "f''(x*)", Simbolo = "f_2nd", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double f_2nd = inputs["f''(x*)"];
                         return f_2nd; // >0: mín; <0: máx; =0: indefinido
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-137: Otimização Multi-Objetivo — Pareto
@@ -534,10 +549,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f₁(x)", Simbolo = "f1_x", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "f₁(x')", Simbolo = "f1_x_prime", Unidade = "", ValorPadrao = 8 },
-                        new Variavel { Nome = "f₂(x)", Simbolo = "f2_x", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "f₂(x')", Simbolo = "f2_x_prime", Unidade = "", ValorPadrao = 7 }
+                        new Variavel { Nome = "f₁(x)", Simbolo = "f1_x", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f₁(x')", Simbolo = "f1_x_prime", Unidade = "", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f₂(x)", Simbolo = "f2_x", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f₂(x')", Simbolo = "f2_x_prime", Unidade = "", ValorPadrao = 7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -551,7 +566,8 @@ namespace CompendioCalc.Services
                         
                         return dominado ? 1 : 0;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-138: Descida de Coordenadas
@@ -571,9 +587,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x_i atual", Simbolo = "x_i", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "∂f/∂x_i", Simbolo = "grad_i", Unidade = "", ValorPadrao = -2 },
-                        new Variavel { Nome = "Step size", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "x_i atual", Simbolo = "x_i", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "∂f/∂x_i", Simbolo = "grad_i", Unidade = "", ValorPadrao = -2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Step size", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -584,7 +600,8 @@ namespace CompendioCalc.Services
                         double x_i_new = x_i - alpha * grad_i;
                         return x_i_new;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-139: Proximal Gradient Method
@@ -604,10 +621,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x^k", Simbolo = "x_k", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "∇f(x^k)", Simbolo = "grad", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "α", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "λ (L1 penalty)", Simbolo = "lambda", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "x^k", Simbolo = "x_k", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "∇f(x^k)", Simbolo = "grad", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "λ (L1 penalty)", Simbolo = "lambda", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -628,7 +645,8 @@ namespace CompendioCalc.Services
                         
                         return x_prox;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-140: Método de Powell
@@ -648,8 +666,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "iterações",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Dimensão n", Simbolo = "n", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "Tipo função (1=quad,2=geral)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Dimensão n", Simbolo = "n", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo função (1=quad,2=geral)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -660,7 +678,8 @@ namespace CompendioCalc.Services
                         double iter = (tipo == 1) ? n : 10 * n;
                         return iter;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 },
 
                 // V10-141: Subgradiente
@@ -680,9 +699,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x^k", Simbolo = "x_k", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "Subgradiente g", Simbolo = "g", Unidade = "", ValorPadrao = -1 },
-                        new Variavel { Nome = "α_k", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "x^k", Simbolo = "x_k", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Subgradiente g", Simbolo = "g", Unidade = "", ValorPadrao = -1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α_k", Simbolo = "alpha", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -693,7 +712,8 @@ namespace CompendioCalc.Services
                         double x_new = x_k - alpha * g;
                         return x_new;
                     },
-                    Icone = "📊"
+                    Icone = "📊",
+                    Unidades = "",
                 }
             });
         }

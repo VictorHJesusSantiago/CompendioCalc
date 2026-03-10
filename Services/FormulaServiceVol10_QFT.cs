@@ -31,7 +31,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "fm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Massa m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 125 }
+                        new Variavel { Nome = "Massa m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 125, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -40,7 +40,8 @@ namespace CompendioCalc.Services
                         double compton = hbar_c / m;
                         return compton;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-143: Lagrangiana de Dirac
@@ -60,7 +61,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MeV/c²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tipo (1=e,2=μ,3=quark u)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Tipo (1=e,2=μ,3=quark u)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -74,7 +75,8 @@ namespace CompendioCalc.Services
                         }
                         return m;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-144: Regras de Feynman — Propagador
@@ -94,8 +96,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "1/GeV²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p² (GeV²)", Simbolo = "p2", Unidade = "GeV²", ValorPadrao = 1 },
-                        new Variavel { Nome = "m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 0.0005 }
+                        new Variavel { Nome = "p² (GeV²)", Simbolo = "p2", Unidade = "GeV²", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 0.0005, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -108,7 +110,8 @@ namespace CompendioCalc.Services
                         double prop = 1.0 / Math.Abs(denominator);
                         return prop;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-145: Constante de Acoplamento QED
@@ -128,7 +131,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Escala Q (GeV)", Simbolo = "Q", Unidade = "GeV", ValorPadrao = 0.511e-3 }
+                        new Variavel { Nome = "Escala Q (GeV)", Simbolo = "Q", Unidade = "GeV", ValorPadrao = 0.511e-3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -146,7 +149,8 @@ namespace CompendioCalc.Services
                         
                         return alpha_Q;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-146: Seção de Choque QED
@@ -166,9 +170,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "barn/sr",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "E (MeV)", Simbolo = "E", Unidade = "MeV", ValorPadrao = 1 },
-                        new Variavel { Nome = "θ (graus)", Simbolo = "theta", Unidade = "graus", ValorPadrao = 90 },
-                        new Variavel { Nome = "Z (carga núcleo)", Simbolo = "Z", Unidade = "", ValorPadrao = 79 }
+                        new Variavel { Nome = "E (MeV)", Simbolo = "E", Unidade = "MeV", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ (graus)", Simbolo = "theta", Unidade = "graus", ValorPadrao = 90, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Z (carga núcleo)", Simbolo = "Z", Unidade = "", ValorPadrao = 79, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -191,7 +195,8 @@ namespace CompendioCalc.Services
                         
                         return dsigma_barn;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-147: Renormalização
@@ -211,7 +216,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "α", Simbolo = "alpha", Unidade = "", ValorPadrao = 1.0 / 137 }
+                        new Variavel { Nome = "α", Simbolo = "alpha", Unidade = "", ValorPadrao = 1.0 / 137, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -222,7 +227,8 @@ namespace CompendioCalc.Services
                         
                         return beta;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-148: Anomalia Momento Magnético
@@ -242,7 +248,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Ordem perturbação", Simbolo = "ordem", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Ordem perturbação", Simbolo = "ordem", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -256,7 +262,8 @@ namespace CompendioCalc.Services
                         
                         return a_e;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-149: Quebra Espontânea Simetria
@@ -276,8 +283,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "GeV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ² (GeV²)", Simbolo = "mu2", Unidade = "GeV²", ValorPadrao = 1e4 },
-                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = 0.13 }
+                        new Variavel { Nome = "μ² (GeV²)", Simbolo = "mu2", Unidade = "GeV²", ValorPadrao = 1e4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "λ", Simbolo = "lambda", Unidade = "", ValorPadrao = 0.13, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -289,7 +296,8 @@ namespace CompendioCalc.Services
                         double phi0 = Math.Sqrt(mu2 / (2 * lambda));
                         return phi0;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-150: Unitariedade
@@ -309,7 +317,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "GeV²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_W (GeV)", Simbolo = "m_W", Unidade = "GeV", ValorPadrao = 80 }
+                        new Variavel { Nome = "m_W (GeV)", Simbolo = "m_W", Unidade = "GeV", ValorPadrao = 80, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -320,7 +328,8 @@ namespace CompendioCalc.Services
                         
                         return s_max;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-151: Teorema CPT
@@ -340,8 +349,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Δm (GeV)", Simbolo = "Dm", Unidade = "GeV", ValorPadrao = 1e-18 },
-                        new Variavel { Nome = "m (GeV)", Simbolo = "m", Unidade = "GeV", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "Δm (GeV)", Simbolo = "Dm", Unidade = "GeV", ValorPadrao = 1e-18, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m (GeV)", Simbolo = "m", Unidade = "GeV", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -352,7 +361,8 @@ namespace CompendioCalc.Services
                         double Dm_rel = Dm / m;
                         return Dm_rel;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-152: Matriz S (Scattering)
@@ -372,8 +382,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "pb",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "√s (GeV)", Simbolo = "sqrt_s", Unidade = "GeV", ValorPadrao = 10 },
-                        new Variavel { Nome = "Processo (1=ee→μμ,2=qq̄)", Simbolo = "proc", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "√s (GeV)", Simbolo = "sqrt_s", Unidade = "GeV", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Processo (1=ee→μμ,2=qq̄)", Simbolo = "proc", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -399,7 +409,8 @@ namespace CompendioCalc.Services
                         
                         return sigma_pb;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-153: Cromodinâmica Quântica (QCD)
@@ -419,7 +430,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Q (GeV)", Simbolo = "Q", Unidade = "GeV", ValorPadrao = 91 }
+                        new Variavel { Nome = "Q (GeV)", Simbolo = "Q", Unidade = "GeV", ValorPadrao = 91, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -440,7 +451,8 @@ namespace CompendioCalc.Services
                         
                         return alpha_s_Q;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-154: Confinamento de Cor
@@ -460,8 +472,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "GeV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "r (fm)", Simbolo = "r", Unidade = "fm", ValorPadrao = 1 },
-                        new Variavel { Nome = "σ (GeV/fm)", Simbolo = "sigma", Unidade = "GeV/fm", ValorPadrao = 0.9 }
+                        new Variavel { Nome = "r (fm)", Simbolo = "r", Unidade = "fm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ (GeV/fm)", Simbolo = "sigma", Unidade = "GeV/fm", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -479,7 +491,8 @@ namespace CompendioCalc.Services
                         
                         return V;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-155: Teorema Óptico
@@ -499,8 +512,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mb",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k (GeV)", Simbolo = "k", Unidade = "GeV", ValorPadrao = 7000 },
-                        new Variavel { Nome = "Im[f(0)] (GeV^-1)", Simbolo = "Im_f", Unidade = "GeV^-1", ValorPadrao = 50 }
+                        new Variavel { Nome = "k (GeV)", Simbolo = "k", Unidade = "GeV", ValorPadrao = 7000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Im[f(0)] (GeV^-1)", Simbolo = "Im_f", Unidade = "GeV^-1", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -516,7 +529,8 @@ namespace CompendioCalc.Services
                         
                         return sigma_mb;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-156: Fórmula de Breit-Wigner
@@ -536,9 +550,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "nb",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "M (GeV)", Simbolo = "M", Unidade = "GeV", ValorPadrao = 91.2 },
-                        new Variavel { Nome = "Γ (GeV)", Simbolo = "Gamma", Unidade = "GeV", ValorPadrao = 2.5 },
-                        new Variavel { Nome = "√s (GeV)", Simbolo = "sqrt_s", Unidade = "GeV", ValorPadrao = 91.2 }
+                        new Variavel { Nome = "M (GeV)", Simbolo = "M", Unidade = "GeV", ValorPadrao = 91.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Γ (GeV)", Simbolo = "Gamma", Unidade = "GeV", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "√s (GeV)", Simbolo = "sqrt_s", Unidade = "GeV", ValorPadrao = 91.2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -561,7 +575,8 @@ namespace CompendioCalc.Services
                         
                         return sigma_nb;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-157: Mecanismo Seesaw (Neutrinos)
@@ -581,8 +596,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_D (GeV)", Simbolo = "m_D", Unidade = "GeV", ValorPadrao = 100 },
-                        new Variavel { Nome = "M_R (GeV)", Simbolo = "M_R", Unidade = "GeV", ValorPadrao = 1e14 }
+                        new Variavel { Nome = "m_D (GeV)", Simbolo = "m_D", Unidade = "GeV", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "M_R (GeV)", Simbolo = "M_R", Unidade = "GeV", ValorPadrao = 1e14, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -596,7 +611,8 @@ namespace CompendioCalc.Services
                         
                         return m_nu_eV;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-158: Anomalias Quirais
@@ -616,8 +632,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_π (MeV)", Simbolo = "m_pi", Unidade = "MeV", ValorPadrao = 135 },
-                        new Variavel { Nome = "f_π (MeV)", Simbolo = "f_pi", Unidade = "MeV", ValorPadrao = 92 }
+                        new Variavel { Nome = "m_π (MeV)", Simbolo = "m_pi", Unidade = "MeV", ValorPadrao = 135, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f_π (MeV)", Simbolo = "f_pi", Unidade = "MeV", ValorPadrao = 92, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -632,7 +648,8 @@ namespace CompendioCalc.Services
                         
                         return Gamma_eV;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-159: Produção de Pares
@@ -652,7 +669,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "GeV²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 173 }
+                        new Variavel { Nome = "m (GeV/c²)", Simbolo = "m", Unidade = "GeV/c²", ValorPadrao = 173, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -660,7 +677,8 @@ namespace CompendioCalc.Services
                         double s_threshold = 4 * m * m;
                         return s_threshold;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 },
 
                 // V10-160: Integração Funcional
@@ -680,8 +698,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ℏ",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ℒ (GeV⁴)", Simbolo = "L", Unidade = "GeV⁴", ValorPadrao = 1 },
-                        new Variavel { Nome = "Volume (fm⁴)", Simbolo = "V", Unidade = "fm⁴", ValorPadrao = 1 }
+                        new Variavel { Nome = "ℒ (GeV⁴)", Simbolo = "L", Unidade = "GeV⁴", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Volume (fm⁴)", Simbolo = "V", Unidade = "fm⁴", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -695,7 +713,8 @@ namespace CompendioCalc.Services
                         
                         return S_GeV;
                     },
-                    Icone = "⚛️"
+                    Icone = "⚛️",
+                    Unidades = "",
                 }
             });
         }

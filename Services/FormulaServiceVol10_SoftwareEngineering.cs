@@ -31,9 +31,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1976",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Arestas E", Simbolo = "E", Unidade = "", ValorPadrao = 15 },
-                        new Variavel { Nome = "Nós N", Simbolo = "N", Unidade = "", ValorPadrao = 12 },
-                        new Variavel { Nome = "Componentes P", Simbolo = "P", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Arestas E", Simbolo = "E", Unidade = "", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Nós N", Simbolo = "N", Unidade = "", ValorPadrao = 12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Componentes P", Simbolo = "P", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -60,7 +60,8 @@ namespace CompendioCalc.Services
                         
                         return CC;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-043: Lei de Halstead
@@ -78,10 +79,10 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1977",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Operadores únicos η₁", Simbolo = "η₁", Unidade = "", ValorPadrao = 20 },
-                        new Variavel { Nome = "Operandos únicos η₂", Simbolo = "η₂", Unidade = "", ValorPadrao = 30 },
-                        new Variavel { Nome = "Total operadores N₁", Simbolo = "N₁", Unidade = "", ValorPadrao = 200 },
-                        new Variavel { Nome = "Total operandos N₂", Simbolo = "N₂", Unidade = "", ValorPadrao = 300 }
+                        new Variavel { Nome = "Operadores únicos η₁", Simbolo = "η₁", Unidade = "", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Operandos únicos η₂", Simbolo = "η₂", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Total operadores N₁", Simbolo = "N₁", Unidade = "", ValorPadrao = 200, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Total operandos N₂", Simbolo = "N₂", Unidade = "", ValorPadrao = 300, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -112,7 +113,8 @@ namespace CompendioCalc.Services
                         
                         return V;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-044: Lei de Amdahl
@@ -130,8 +132,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1967",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Fração serial s (%)", Simbolo = "s", Unidade = "%", ValorPadrao = 10 },
-                        new Variavel { Nome = "Número de processadores N", Simbolo = "N", Unidade = "", ValorPadrao = 8 }
+                        new Variavel { Nome = "Fração serial s (%)", Simbolo = "s", Unidade = "%", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número de processadores N", Simbolo = "N", Unidade = "", ValorPadrao = 8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -158,7 +160,8 @@ namespace CompendioCalc.Services
                         
                         return S;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-045: Notação Big O — Complexidade Temporal
@@ -176,8 +179,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1976",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tamanho entrada n", Simbolo = "n", Unidade = "", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Tipo complexidade (1-6)", Simbolo = "tipo", Unidade = "", ValorPadrao = 3 }
+                        new Variavel { Nome = "Tamanho entrada n", Simbolo = "n", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo complexidade (1-6)", Simbolo = "tipo", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -207,7 +210,8 @@ namespace CompendioCalc.Services
                         
                         return operacoes;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-046: COCOMO — Estimativa de Esforço
@@ -225,8 +229,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1981",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "KLOC (milhares linhas)", Simbolo = "KLOC", Unidade = "", ValorPadrao = 50 },
-                        new Variavel { Nome = "Modo (1=org,2=semi,3=emb)", Simbolo = "modo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "KLOC (milhares linhas)", Simbolo = "KLOC", Unidade = "", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Modo (1=org,2=semi,3=emb)", Simbolo = "modo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -265,7 +269,8 @@ namespace CompendioCalc.Services
                         
                         return E;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-047: Análise de Performance — Latência vs Throughput
@@ -285,8 +290,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ops/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Latência (ms)", Simbolo = "L", Unidade = "ms", ValorPadrao = 100 },
-                        new Variavel { Nome = "Paralelismo N", Simbolo = "N", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Latência (ms)", Simbolo = "L", Unidade = "ms", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Paralelismo N", Simbolo = "N", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -303,7 +308,8 @@ namespace CompendioCalc.Services
                         
                         return throughput_paralelo;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-048: Lei de Little
@@ -323,8 +329,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "itens",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Taxa chegada λ (itens/s)", Simbolo = "λ", Unidade = "itens/s", ValorPadrao = 100 },
-                        new Variavel { Nome = "Tempo sistema W (ms)", Simbolo = "W", Unidade = "ms", ValorPadrao = 200 }
+                        new Variavel { Nome = "Taxa chegada λ (itens/s)", Simbolo = "λ", Unidade = "itens/s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo sistema W (ms)", Simbolo = "W", Unidade = "ms", ValorPadrao = 200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -336,7 +342,8 @@ namespace CompendioCalc.Services
                         
                         return L;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-049: Cache Hit Rate e Miss Penalty
@@ -356,9 +363,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ms",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Hit rate h (%)", Simbolo = "h", Unidade = "%", ValorPadrao = 95 },
-                        new Variavel { Nome = "Tempo hit (ms)", Simbolo = "T_hit", Unidade = "ms", ValorPadrao = 1 },
-                        new Variavel { Nome = "Tempo miss (ms)", Simbolo = "T_miss", Unidade = "ms", ValorPadrao = 50 }
+                        new Variavel { Nome = "Hit rate h (%)", Simbolo = "h", Unidade = "%", ValorPadrao = 95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo hit (ms)", Simbolo = "T_hit", Unidade = "ms", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo miss (ms)", Simbolo = "T_miss", Unidade = "ms", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -371,7 +378,8 @@ namespace CompendioCalc.Services
                         
                         return T_avg;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-050: Fator de Acoplamento
@@ -391,8 +399,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Número de classes m", Simbolo = "m", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "Conexões reais C", Simbolo = "C", Unidade = "", ValorPadrao = 15 }
+                        new Variavel { Nome = "Número de classes m", Simbolo = "m", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Conexões reais C", Simbolo = "C", Unidade = "", ValorPadrao = 15, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -406,7 +414,8 @@ namespace CompendioCalc.Services
                         
                         return CF;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-051: Coesão de Módulo
@@ -426,8 +435,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Pares não-coesos P", Simbolo = "P", Unidade = "", ValorPadrao = 30 },
-                        new Variavel { Nome = "Pares coesos Q", Simbolo = "Q", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Pares não-coesos P", Simbolo = "P", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Pares coesos Q", Simbolo = "Q", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -442,7 +451,8 @@ namespace CompendioCalc.Services
                         
                         return LCOM;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-052: Profund idade de Herança (DIT)
@@ -462,7 +472,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Profundidade DIT", Simbolo = "DIT", Unidade = "", ValorPadrao = 3 }
+                        new Variavel { Nome = "Profundidade DIT", Simbolo = "DIT", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -473,7 +483,8 @@ namespace CompendioCalc.Services
                         
                         return complexidade;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-053: Número de Métodos Ponderados (WMC)
@@ -493,8 +504,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Número métodos N", Simbolo = "N", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "CC médio", Simbolo = "CC_avg", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "Número métodos N", Simbolo = "N", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "CC médio", Simbolo = "CC_avg", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -505,7 +516,8 @@ namespace CompendioCalc.Services
                         
                         return WMC;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-054: Lack of Cohesion (LCOM4)
@@ -525,14 +537,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Componentes conexos", Simbolo = "C", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Componentes conexos", Simbolo = "C", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double C = inputs["Componentes conexos"];
                         return C;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-055: Technical Debt Ratio
@@ -552,8 +565,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Custo remediar (h)", Simbolo = "C_remediar", Unidade = "h", ValorPadrao = 50 },
-                        new Variavel { Nome = "Custo desenvolver (h)", Simbolo = "C_dev", Unidade = "h", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Custo remediar (h)", Simbolo = "C_remediar", Unidade = "h", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Custo desenvolver (h)", Simbolo = "C_dev", Unidade = "h", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -566,7 +579,8 @@ namespace CompendioCalc.Services
                         
                         return TDR;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-056: Code Churn
@@ -586,10 +600,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Linhas adicionadas", Simbolo = "Add", Unidade = "", ValorPadrao = 200 },
-                        new Variavel { Nome = "Linhas deletadas", Simbolo = "Del", Unidade = "", ValorPadrao = 150 },
-                        new Variavel { Nome = "Linhas modificadas", Simbolo = "Mod", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Total linhas", Simbolo = "Total", Unidade = "", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Linhas adicionadas", Simbolo = "Add", Unidade = "", ValorPadrao = 200, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Linhas deletadas", Simbolo = "Del", Unidade = "", ValorPadrao = 150, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Linhas modificadas", Simbolo = "Mod", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Total linhas", Simbolo = "Total", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -604,7 +618,8 @@ namespace CompendioCalc.Services
                         
                         return churn;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-057: Defect Density
@@ -624,8 +639,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "defeitos/KLOC",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Número defeitos", Simbolo = "D", Unidade = "", ValorPadrao = 30 },
-                        new Variavel { Nome = "KLOC", Simbolo = "KLOC", Unidade = "", ValorPadrao = 50 }
+                        new Variavel { Nome = "Número defeitos", Simbolo = "D", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "KLOC", Simbolo = "KLOC", Unidade = "", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -638,7 +653,8 @@ namespace CompendioCalc.Services
                         
                         return DD;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-058: Mean Time to Failure (MTTF)
@@ -658,8 +674,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tempo operação (h)", Simbolo = "T", Unidade = "h", ValorPadrao = 8760 },
-                        new Variavel { Nome = "Número falhas", Simbolo = "F", Unidade = "", ValorPadrao = 3 }
+                        new Variavel { Nome = "Tempo operação (h)", Simbolo = "T", Unidade = "h", ValorPadrao = 8760, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número falhas", Simbolo = "F", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -672,7 +688,8 @@ namespace CompendioCalc.Services
                         
                         return MTTF;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-059: Availability (SLA)
@@ -692,8 +709,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Uptime (min)", Simbolo = "U", Unidade = "min", ValorPadrao = 43800 },
-                        new Variavel { Nome = "Downtime (min)", Simbolo = "D", Unidade = "min", ValorPadrao = 24 }
+                        new Variavel { Nome = "Uptime (min)", Simbolo = "U", Unidade = "min", ValorPadrao = 43800, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Downtime (min)", Simbolo = "D", Unidade = "min", ValorPadrao = 24, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -707,7 +724,8 @@ namespace CompendioCalc.Services
                         
                         return A;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-060: Response Time Percentiles
@@ -727,8 +745,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "x",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p50 mediana (ms)", Simbolo = "p50", Unidade = "ms", ValorPadrao = 50 },
-                        new Variavel { Nome = "p99 tail (ms)", Simbolo = "p99", Unidade = "ms", ValorPadrao = 800 }
+                        new Variavel { Nome = "p50 mediana (ms)", Simbolo = "p50", Unidade = "ms", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p99 tail (ms)", Simbolo = "p99", Unidade = "ms", ValorPadrao = 800, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -742,7 +760,8 @@ namespace CompendioCalc.Services
                         
                         return slowdown;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 },
 
                 // V10-061: Resource Utilization Law
@@ -762,8 +781,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Throughput λ (req/s)", Simbolo = "λ", Unidade = "req/s", ValorPadrao = 100 },
-                        new Variavel { Nome = "Tempo serviço S (ms)", Simbolo = "S", Unidade = "ms", ValorPadrao = 5 }
+                        new Variavel { Nome = "Throughput λ (req/s)", Simbolo = "λ", Unidade = "req/s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo serviço S (ms)", Simbolo = "S", Unidade = "ms", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -781,7 +800,8 @@ namespace CompendioCalc.Services
                         
                         return U_percent;
                     },
-                    Icone = "💻"
+                    Icone = "💻",
+                    Unidades = "",
                 }
             });
         }

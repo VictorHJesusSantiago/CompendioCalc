@@ -25,10 +25,11 @@ public partial class FormulaService
                 Criador = "Felix Bloch",
                 AnoOrigin = "1929",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["psi"] + vars["r"]
+                Calcular = vars => vars["psi"] + vars["r"],
+                Unidades = "",
             },
             new Formula
             {
@@ -40,10 +41,11 @@ public partial class FormulaService
                 Criador = "Léon Brillouin",
                 AnoOrigin = "1930",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 }, new() { Simbolo = "G", Nome = "G", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "G", Nome = "G", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k"] + vars["G"]
+                Calcular = vars => vars["k"] + vars["G"],
+                Unidades = "",
             },
             new Formula
             {
@@ -54,13 +56,16 @@ public partial class FormulaService
                 Descricao = "Relação de dispersão parabólica para elétrons livres. Boa aproximação no fundo/topo de bandas. Desvios definem a massa efetiva.",
                 Criador = "Mecânica quântica clássica",
                 Variaveis = [
-                    new() { Simbolo = "hbar", Nome = "ℏ (J·s)", ValorPadrao = 1.0546e-34 },
-                    new() { Simbolo = "k", Nome = "k (m⁻¹)", Descricao = "Vetor de onda", ValorPadrao = 1e10 },
-                    new() { Simbolo = "m", Nome = "m (kg)", Descricao = "Massa do elétron", ValorPadrao = 9.109e-31 },
+                    new() { Simbolo = "hbar", Nome = "ℏ (J·s)", ValorPadrao = 1.0546e-34, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "k (m⁻¹)", Descricao = "Vetor de onda", ValorPadrao = 1e10, Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "m (kg)", Descricao = "Massa do elétron", ValorPadrao = 9.109e-31, Unidade = "adim" },
                 ],
                 VariavelResultado = "E (J)",
                 UnidadeResultado = "J",
-                Calcular = v => v["hbar"] * v["hbar"] * v["k"] * v["k"] / (2 * v["m"])
+                Calcular = v => v["hbar"] * v["hbar"] * v["k"] * v["k"] / (2 * v["m"]),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -72,10 +77,11 @@ public partial class FormulaService
                 Criador = "Franco Rasetti / Teoria de bandas",
                 AnoOrigin = "~1930",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "m", Nome = "m", ValorPadrao = 1 }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "m", Nome = "m", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["m"] + vars["hbar"]
+                Calcular = vars => vars["m"] + vars["hbar"],
+                Unidades = "",
             },
             new Formula
             {
@@ -86,10 +92,12 @@ public partial class FormulaService
                 Descricao = "Número de estados por unidade de energia em 3D. Cresce como √E para elétrons livres. Determina propriedades termodinâmicas e de transporte.",
                 Criador = "Teoria de bandas",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -101,10 +109,11 @@ public partial class FormulaService
                 Criador = "Léon Brillouin",
                 AnoOrigin = "1930",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "ZB", Nome = "ZB", ValorPadrao = 1 }, new() { Simbolo = "no", Nome = "no", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "ZB", Nome = "ZB", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "no", Nome = "no", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["ZB"] + vars["no"]
+                Calcular = vars => vars["ZB"] + vars["no"],
+                Unidades = "",
             },
             new Formula
             {
@@ -116,14 +125,16 @@ public partial class FormulaService
                 Criador = "Paul Drude",
                 AnoOrigin = "1900",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28 },
-                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19 },
-                    new() { Simbolo = "tau", Nome = "τ (s)", Descricao = "Tempo de relaxação", ValorPadrao = 2.5e-14 },
-                    new() { Simbolo = "m", Nome = "m (kg)", ValorPadrao = 9.109e-31 },
+                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "tau", Nome = "τ (s)", Descricao = "Tempo de relaxação", ValorPadrao = 2.5e-14, Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "m (kg)", ValorPadrao = 9.109e-31, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "σ (S/m)",
                 UnidadeResultado = "S/m",
-                Calcular = v => v["n"] * v["e"] * v["e"] * v["tau"] / v["m"]
+                Calcular = v => v["n"] * v["e"] * v["e"] * v["tau"] / v["m"],
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -135,10 +146,11 @@ public partial class FormulaService
                 Criador = "Paul Drude",
                 AnoOrigin = "1900",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "omega", Nome = "omega", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["sigma"] + vars["omega"]
+                Calcular = vars => vars["sigma"] + vars["omega"],
+                Unidades = "",
             },
             new Formula
             {
@@ -150,12 +162,14 @@ public partial class FormulaService
                 Criador = "Edwin Hall",
                 AnoOrigin = "1879",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28 },
-                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19 },
+                    new() { Simbolo = "n", Nome = "Densidade n (m⁻³)", ValorPadrao = 8.5e28, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "Carga e (C)", ValorPadrao = 1.602e-19, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "R_H (m³/C)",
                 UnidadeResultado = "m³/C",
-                Calcular = v => -1.0 / (v["n"] * v["e"])
+                Calcular = v => -1.0 / (v["n"] * v["e"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -167,10 +181,11 @@ public partial class FormulaService
                 Criador = "Klaus von Klitzing",
                 AnoOrigin = "1980",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5 }, new() { Simbolo = "e²", Nome = "e²", ValorPadrao = 3 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "e²", Nome = "e²", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "σ_xy",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["e²"]
+                Calcular = vars => vars["n"] * vars["e²"],
+                Unidades = "",
             },
             new Formula
             {
@@ -182,10 +197,11 @@ public partial class FormulaService
                 Criador = "Von Klitzing / Laughlin",
                 AnoOrigin = "1980-1983",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1 }, new() { Simbolo = "nh", Nome = "nh", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "nh", Nome = "nh", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["nu"] + vars["nh"]
+                Calcular = vars => vars["nu"] + vars["nh"],
+                Unidades = "",
             },
             // 7.2 Supercondutividade BCS
             new Formula
@@ -198,10 +214,11 @@ public partial class FormulaService
                 Criador = "Bardeen, Cooper, Schrieffer",
                 AnoOrigin = "1957",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -213,10 +230,11 @@ public partial class FormulaService
                 Criador = "Bardeen, Cooper, Schrieffer",
                 AnoOrigin = "1957",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Delta", Nome = "Delta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Delta"]
+                Calcular = vars => vars["Delta"],
+                Unidades = "",
             },
             new Formula
             {
@@ -228,10 +246,11 @@ public partial class FormulaService
                 Criador = "Leon Cooper",
                 AnoOrigin = "1956",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k"]
+                Calcular = vars => vars["k"],
+                Unidades = "",
             },
             new Formula
             {
@@ -243,10 +262,11 @@ public partial class FormulaService
                 Criador = "Fritz e Heinz London",
                 AnoOrigin = "1935",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1 }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Lambda"] + vars["j"]
+                Calcular = vars => vars["Lambda"] + vars["j"],
+                Unidades = "",
             },
             new Formula
             {
@@ -258,10 +278,11 @@ public partial class FormulaService
                 Criador = "Fritz e Heinz London",
                 AnoOrigin = "1935",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -273,10 +294,11 @@ public partial class FormulaService
                 Criador = "Teoria BCS",
                 AnoOrigin = "1957",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "xi", Nome = "xi", ValorPadrao = 1 }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "xi", Nome = "xi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "hbar", Nome = "hbar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["xi"] + vars["hbar"]
+                Calcular = vars => vars["xi"] + vars["hbar"],
+                Unidades = "",
             },
             new Formula
             {
@@ -288,10 +310,11 @@ public partial class FormulaService
                 Criador = "Fritz London / Deaver & Fairbank",
                 AnoOrigin = "1950/1961",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1 }, new() { Simbolo = "Wb", Nome = "Wb", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "h", Nome = "h", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Wb", Nome = "Wb", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["h"] + vars["Wb"]
+                Calcular = vars => vars["h"] + vars["Wb"],
+                Unidades = "",
             },
             new Formula
             {
@@ -303,10 +326,11 @@ public partial class FormulaService
                 Criador = "Vitaly Ginzburg / Lev Landau",
                 AnoOrigin = "1950",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 }, new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "psi", Nome = "psi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["alpha"] + vars["psi"]
+                Calcular = vars => vars["alpha"] + vars["psi"],
+                Unidades = "",
             },
             // 7.3 Fônons e Vibrações de Rede
             new Formula
@@ -319,10 +343,11 @@ public partial class FormulaService
                 Criador = "Albert Einstein",
                 AnoOrigin = "1907",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Cv"] + vars["theta"]
+                Calcular = vars => vars["Cv"] + vars["theta"],
+                Unidades = "",
             },
             new Formula
             {
@@ -334,10 +359,11 @@ public partial class FormulaService
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -349,10 +375,11 @@ public partial class FormulaService
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "ℏωD", Nome = "ℏωD", ValorPadrao = 10 }, new() { Simbolo = "kB", Nome = "kB", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "ℏωD", Nome = "ℏωD", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "kB", Nome = "kB", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "θD",
                 UnidadeResultado = "",
-                Calcular = vars => vars["ℏωD"] / vars["kB"]
+                Calcular = vars => vars["ℏωD"] / vars["kB"],
+                Unidades = "",
             },
             new Formula
             {
@@ -364,10 +391,11 @@ public partial class FormulaService
                 Criador = "Peter Debye",
                 AnoOrigin = "1912",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1 }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Cv", Nome = "Cv", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "pi", Nome = "pi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Cv"] + vars["pi"]
+                Calcular = vars => vars["Cv"] + vars["pi"],
+                Unidades = "",
             },
         ]);
     }
@@ -389,10 +417,11 @@ public partial class FormulaService
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1890",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dx"] + vars["dt"]
+                Calcular = vars => vars["dx"] + vars["dt"],
+                Unidades = "",
             },
             new Formula
             {
@@ -404,10 +433,11 @@ public partial class FormulaService
                 Criador = "Henri Poincaré / Aleksandr Lyapunov",
                 AnoOrigin = "~1892",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "Variável física x", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "Variável física x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["f"] + vars["x"]
+                Calcular = vars => vars["f"] + vars["x"],
+                Unidades = "",
             },
             new Formula
             {
@@ -419,10 +449,11 @@ public partial class FormulaService
                 Criador = "Aleksandr Lyapunov",
                 AnoOrigin = "1892",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "f", Nome = "f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["J"] + vars["f"]
+                Calcular = vars => vars["J"] + vars["f"],
+                Unidades = "",
             },
             new Formula
             {
@@ -433,10 +464,12 @@ public partial class FormulaService
                 Descricao = "Em 2D: nó estável/instável, espiral, sela, centro. A parte real determina convergência/divergência; a imaginária, oscilação.",
                 Criador = "Poincaré / Lyapunov",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Re"] + vars["lambda_"]
+                Calcular = vars => vars["Re"] + vars["lambda_"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -448,10 +481,11 @@ public partial class FormulaService
                 Criador = "Eberhard Hopf",
                 AnoOrigin = "1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Re", Nome = "Re", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Re"] + vars["lambda_"]
+                Calcular = vars => vars["Re"] + vars["lambda_"],
+                Unidades = "",
             },
             new Formula
             {
@@ -462,10 +496,12 @@ public partial class FormulaService
                 Descricao = "Em μ<0: um equilíbrio estável. Em μ>0: equilíbrio instável + 2 novos estáveis em ±√μ. Modelo de quebra de simetria.",
                 Criador = "Teoria de bifurcações",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "μx", Nome = "μx", ValorPadrao = 10 }, new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "μx", Nome = "μx", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ẋ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["μx"] - vars["x³"]
+                Calcular = vars => vars["μx"] - vars["x³"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -477,11 +513,13 @@ public partial class FormulaService
                 Criador = "Robert May",
                 AnoOrigin = "1976",
                 Variaveis = [
-                    new() { Simbolo = "r", Nome = "r (parâmetro)", ValorPadrao = 3.7, ValorMin = 0, ValorMax = 4 },
-                    new() { Simbolo = "xn", Nome = "xₙ (estado atual)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 },
+                    new() { Simbolo = "r", Nome = "r (parâmetro)", ValorPadrao = 3.7, ValorMin = 0, ValorMax = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "xn", Nome = "xₙ (estado atual)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "xₙ₊₁",
-                Calcular = v => v["r"] * v["xn"] * (1 - v["xn"])
+                Calcular = v => v["r"] * v["xn"] * (1 - v["xn"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -493,10 +531,11 @@ public partial class FormulaService
                 Criador = "Mitchell Feigenbaum / Robert May",
                 AnoOrigin = "1976-1978",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "r", Nome = "r", ValorPadrao = 1 }, new() { Simbolo = "vs", Nome = "vs", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "r", Nome = "r", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "vs", Nome = "vs", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["r"] + vars["vs"]
+                Calcular = vars => vars["r"] + vars["vs"],
+                Unidades = "",
             },
             // 8.2 Atratores de Lorenz
             new Formula
@@ -509,10 +548,11 @@ public partial class FormulaService
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "dx", Nome = "dx", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dx"] + vars["dt"]
+                Calcular = vars => vars["dx"] + vars["dt"],
+                Unidades = "",
             },
             new Formula
             {
@@ -524,10 +564,11 @@ public partial class FormulaService
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "dy", Nome = "dy", ValorPadrao = 1 }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "dy", Nome = "dy", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dt", Nome = "dt", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dy"] + vars["dt"]
+                Calcular = vars => vars["dy"] + vars["dt"],
+                Unidades = "",
             },
             new Formula
             {
@@ -539,10 +580,11 @@ public partial class FormulaService
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "xy", Nome = "xy", ValorPadrao = 10 }, new() { Simbolo = "βz", Nome = "βz", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "xy", Nome = "xy", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "βz", Nome = "βz", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "dt",
                 UnidadeResultado = "",
-                Calcular = vars => vars["xy"] - vars["βz"]
+                Calcular = vars => vars["xy"] - vars["βz"],
+                Unidades = "",
             },
             new Formula
             {
@@ -554,10 +596,11 @@ public partial class FormulaService
                 Criador = "Edward Lorenz",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["delta"] + vars["t"]
+                Calcular = vars => vars["delta"] + vars["t"],
+                Unidades = "",
             },
             new Formula
             {
@@ -569,10 +612,11 @@ public partial class FormulaService
                 Criador = "Aleksandr Lyapunov / Oseledets",
                 AnoOrigin = "1892/1968",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "delta", Nome = "delta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["delta"] + vars["t"]
+                Calcular = vars => vars["delta"] + vars["t"],
+                Unidades = "",
             },
             new Formula
             {
@@ -583,10 +627,12 @@ public partial class FormulaService
                 Descricao = "3 expoentes: 1 positivo (caos), 1 zero (fluxo), 1 muito negativo (contração). Soma negativa → sistema dissipativo, volume no espaço de fase diminui.",
                 Criador = "Lorenz / Oseledets",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["lambda_"]
+                Calcular = vars => vars["lambda_"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -598,10 +644,11 @@ public partial class FormulaService
                 Criador = "James Kaplan / James Yorke",
                 AnoOrigin = "1979",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "dKY", Nome = "dKY", ValorPadrao = 1 }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "dKY", Nome = "dKY", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "j", Nome = "j", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dKY"] + vars["j"]
+                Calcular = vars => vars["dKY"] + vars["j"],
+                Unidades = "",
             },
             // 8.3 Fractais
             new Formula
@@ -614,10 +661,11 @@ public partial class FormulaService
                 Criador = "Felix Hausdorff",
                 AnoOrigin = "1918",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -629,10 +677,11 @@ public partial class FormulaService
                 Criador = "Georg Cantor",
                 AnoOrigin = "1883",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -644,10 +693,11 @@ public partial class FormulaService
                 Criador = "Helge von Koch",
                 AnoOrigin = "1904",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -659,10 +709,11 @@ public partial class FormulaService
                 Criador = "Wacław Sierpiński",
                 AnoOrigin = "1915",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -674,17 +725,19 @@ public partial class FormulaService
                 Criador = "Benoît B. Mandelbrot",
                 AnoOrigin = "1980",
                 Variaveis = [
-                    new() { Simbolo = "zr", Nome = "Re(zₙ)", ValorPadrao = 0 },
-                    new() { Simbolo = "zi", Nome = "Im(zₙ)", ValorPadrao = 0 },
-                    new() { Simbolo = "cr", Nome = "Re(c)", ValorPadrao = -0.5 },
-                    new() { Simbolo = "ci", Nome = "Im(c)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "zr", Nome = "Re(zₙ)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "zi", Nome = "Im(zₙ)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "cr", Nome = "Re(c)", ValorPadrao = -0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ci", Nome = "Im(c)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "|zₙ₊₁|",
                 Calcular = v => {
                     double zr2 = v["zr"] * v["zr"] - v["zi"] * v["zi"] + v["cr"];
                     double zi2 = 2 * v["zr"] * v["zi"] + v["ci"];
                     return Math.Sqrt(zr2 * zr2 + zi2 * zi2);
-                }
+                },
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -696,10 +749,11 @@ public partial class FormulaService
                 Criador = "John Hutchinson / Michael Barnsley",
                 AnoOrigin = "1981-1988",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["F"]
+                Calcular = vars => vars["F"],
+                Unidades = "",
             },
         ]);
     }
@@ -721,15 +775,17 @@ public partial class FormulaService
                 Criador = "Peter Debye / Erich Hückel",
                 AnoOrigin = "1923",
                 Variaveis = [
-                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12 },
-                    new() { Simbolo = "kB", Nome = "kB (J/K)", ValorPadrao = 1.381e-23 },
-                    new() { Simbolo = "T", Nome = "T (K)", ValorPadrao = 1e6 },
-                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18 },
-                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19 },
+                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "kB", Nome = "kB (J/K)", ValorPadrao = 1.381e-23, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T", Nome = "T (K)", ValorPadrao = 1e6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "λD (m)",
                 UnidadeResultado = "m",
-                Calcular = v => Math.Sqrt(v["eps0"] * v["kB"] * v["T"] / (v["n"] * v["e"] * v["e"]))
+                Calcular = v => Math.Sqrt(v["eps0"] * v["kB"] * v["T"] / (v["n"] * v["e"] * v["e"])),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -740,10 +796,12 @@ public partial class FormulaService
                 Descricao = "Número de partículas na esfera de Debye. Λ≫1 significa comportamento coletivo domina sobre colisões individuais — plasma fracamente acoplado.",
                 Criador = "Teoria de plasmas",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Lambda", Nome = "Lambda", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Lambda"] + vars["n"]
+                Calcular = vars => vars["Lambda"] + vars["n"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -755,14 +813,16 @@ public partial class FormulaService
                 Criador = "Irving Langmuir / Lev Tonks",
                 AnoOrigin = "1929",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18 },
-                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19 },
-                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12 },
-                    new() { Simbolo = "me", Nome = "mₑ (kg)", ValorPadrao = 9.109e-31 },
+                    new() { Simbolo = "n", Nome = "n (m⁻³)", ValorPadrao = 1e18, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "e (C)", ValorPadrao = 1.602e-19, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "eps0", Nome = "ε₀ (F/m)", ValorPadrao = 8.854e-12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "me", Nome = "mₑ (kg)", ValorPadrao = 9.109e-31, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "ωp (rad/s)",
                 UnidadeResultado = "rad/s",
-                Calcular = v => Math.Sqrt(v["n"] * v["e"] * v["e"] / (v["eps0"] * v["me"]))
+                Calcular = v => Math.Sqrt(v["n"] * v["e"] * v["e"] / (v["eps0"] * v["me"])),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -773,10 +833,12 @@ public partial class FormulaService
                 Descricao = "Três critérios para um gás ionizado ser plasma: tamanho muito maior que λD, escala temporal maior que 1/ωp, muitas partículas na esfera de Debye.",
                 Criador = "Definição clássica de plasma",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lambda_", Nome = "lambda_", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["L"] + vars["lambda_"]
+                Calcular = vars => vars["L"] + vars["lambda_"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -788,10 +850,11 @@ public partial class FormulaService
                 Criador = "Anatoly Vlasov",
                 AnoOrigin = "1938",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["f"] + vars["t"]
+                Calcular = vars => vars["f"] + vars["t"],
+                Unidades = "",
             },
             // 9.2 MHD
             new Formula
@@ -804,10 +867,11 @@ public partial class FormulaService
                 Criador = "Equações clássicas / Hannes Alfvén",
                 AnoOrigin = "1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["rho"] + vars["t"]
+                Calcular = vars => vars["rho"] + vars["t"],
+                Unidades = "",
             },
             new Formula
             {
@@ -819,10 +883,11 @@ public partial class FormulaService
                 Criador = "Hannes Alfvén",
                 AnoOrigin = "1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["rho"] + vars["Dv"]
+                Calcular = vars => vars["rho"] + vars["Dv"],
+                Unidades = "",
             },
             new Formula
             {
@@ -834,10 +899,11 @@ public partial class FormulaService
                 Criador = "Hannes Alfvén",
                 AnoOrigin = "1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "B", Nome = "B", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["B"] + vars["t"]
+                Calcular = vars => vars["B"] + vars["t"],
+                Unidades = "",
             },
             new Formula
             {
@@ -848,10 +914,12 @@ public partial class FormulaService
                 Descricao = "Corrente relacionada ao rotacional do campo magnético. Aproximação quase-estática (ignora corrente de deslocamento ∂D/∂t).",
                 Criador = "André-Marie Ampère",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "J", Nome = "J", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["J"] + vars["mu"]
+                Calcular = vars => vars["J"] + vars["mu"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -863,13 +931,15 @@ public partial class FormulaService
                 Criador = "Hannes Alfvén",
                 AnoOrigin = "1942",
                 Variaveis = [
-                    new() { Simbolo = "B", Nome = "B (T)", Descricao = "Campo magnético", ValorPadrao = 1e-3 },
-                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6 },
-                    new() { Simbolo = "rho", Nome = "ρ (kg/m³)", ValorPadrao = 1e-12 },
+                    new() { Simbolo = "B", Nome = "B (T)", Descricao = "Campo magnético", ValorPadrao = 1e-3, Unidade = "adim" },
+                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "rho", Nome = "ρ (kg/m³)", ValorPadrao = 1e-12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "vA (m/s)",
                 UnidadeResultado = "m/s",
-                Calcular = v => v["B"] / Math.Sqrt(v["mu0"] * v["rho"])
+                Calcular = v => v["B"] / Math.Sqrt(v["mu0"] * v["rho"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -880,10 +950,12 @@ public partial class FormulaService
                 Descricao = "Razão entre escalas temporal resistiva e de Alfvén. S grande → campo magnético quase 'congelado'. S~10⁶-10¹² em plasmas astrofísicos.",
                 Criador = "Hannes Alfvén",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "LvA", Nome = "LvA", ValorPadrao = 10 }, new() { Simbolo = "η", Nome = "η", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "LvA", Nome = "LvA", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "η", Nome = "η", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "S",
                 UnidadeResultado = "",
-                Calcular = vars => vars["LvA"] / vars["η"]
+                Calcular = vars => vars["LvA"] / vars["η"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -894,12 +966,15 @@ public partial class FormulaService
                 Descricao = "Razão entre pressão cinética do plasma e pressão magnética. β≪1: dominado por campos magnéticos. β≫1: plasma domina (alta pressão).",
                 Criador = "Física de plasmas",
                 Variaveis = [
-                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6 },
-                    new() { Simbolo = "p", Nome = "p (Pa)", Descricao = "Pressão do plasma", ValorPadrao = 1e3 },
-                    new() { Simbolo = "B", Nome = "B (T)", ValorPadrao = 1 },
+                    new() { Simbolo = "mu0", Nome = "μ₀ (H/m)", ValorPadrao = 1.257e-6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "p", Nome = "p (Pa)", Descricao = "Pressão do plasma", ValorPadrao = 1e3, Unidade = "adim" },
+                    new() { Simbolo = "B", Nome = "B (T)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "β",
-                Calcular = v => 2 * v["mu0"] * v["p"] / (v["B"] * v["B"])
+                Calcular = v => 2 * v["mu0"] * v["p"] / (v["B"] * v["B"]),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
         ]);
     }
@@ -921,12 +996,14 @@ public partial class FormulaService
                 Criador = "Experimentos de espalhamento de elétrons",
                 AnoOrigin = "~1950",
                 Variaveis = [
-                    new() { Simbolo = "R0", Nome = "R₀ (fm)", ValorPadrao = 1.2 },
-                    new() { Simbolo = "A", Nome = "A (número de massa)", ValorPadrao = 56, ValorMin = 1 },
+                    new() { Simbolo = "R0", Nome = "R₀ (fm)", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "A (número de massa)", ValorPadrao = 56, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "R (fm)",
                 UnidadeResultado = "fm",
-                Calcular = v => v["R0"] * Math.Pow(v["A"], 1.0 / 3.0)
+                Calcular = v => v["R0"] * Math.Pow(v["A"], 1.0 / 3.0),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -938,10 +1015,11 @@ public partial class FormulaService
                 Criador = "Carl Friedrich von Weizsäcker",
                 AnoOrigin = "1935",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -953,10 +1031,11 @@ public partial class FormulaService
                 Criador = "Weizsäcker / Bethe",
                 AnoOrigin = "1935",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -967,10 +1046,12 @@ public partial class FormulaService
                 Descricao = "Energia de emparelhamento: núcleos par-par são mais estáveis (todos os nucleons em pares). ap≈12 MeV. Explica por que há mais isótopos estáveis par-par.",
                 Criador = "Modelo de gota líquida",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -982,10 +1063,11 @@ public partial class FormulaService
                 Criador = "Francis Aston / Weizsäcker",
                 AnoOrigin = "~1927-1935",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             // 10.2 Reações e Decaimentos
             new Formula
@@ -997,12 +1079,15 @@ public partial class FormulaService
                 Descricao = "Energia liberada (Q>0) ou absorvida (Q<0) numa reação nuclear. Diferença de massa repouso entre reagentes e produtos vezes c².",
                 Criador = "Física nuclear clássica",
                 Variaveis = [
-                    new() { Simbolo = "mi", Nome = "Σm_inicial (u)", ValorPadrao = 236.0526 },
-                    new() { Simbolo = "mf", Nome = "Σm_final (u)", ValorPadrao = 235.8397 },
+                    new() { Simbolo = "mi", Nome = "Σm_inicial (u)", ValorPadrao = 236.0526, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "mf", Nome = "Σm_final (u)", ValorPadrao = 235.8397, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Q (MeV)",
                 UnidadeResultado = "MeV",
-                Calcular = v => (v["mi"] - v["mf"]) * 931.494
+                Calcular = v => (v["mi"] - v["mf"]) * 931.494,
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1014,10 +1099,11 @@ public partial class FormulaService
                 Criador = "Otto Hahn / Lise Meitner / Fritz Strassmann",
                 AnoOrigin = "1938",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1029,10 +1115,11 @@ public partial class FormulaService
                 Criador = "Hans Bethe / Tokamak (ITER)",
                 AnoOrigin = "1938/2025",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1044,10 +1131,11 @@ public partial class FormulaService
                 Criador = "Ernest Rutherford / Terminology Manhattan Project",
                 AnoOrigin = "~1911/1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "σ", Nome = "σ", ValorPadrao = 2 }, new() { Simbolo = "I", Nome = "I", ValorPadrao = 3 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "σ", Nome = "σ", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "I", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "N",
                 UnidadeResultado = "",
-                Calcular = vars => vars["σ"] * vars["I"] * vars["n"]
+                Calcular = vars => vars["σ"] * vars["I"] * vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -1059,10 +1147,11 @@ public partial class FormulaService
                 Criador = "George Gamow",
                 AnoOrigin = "1928",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1074,10 +1163,11 @@ public partial class FormulaService
                 Criador = "Enrico Fermi / teoria de reatores",
                 AnoOrigin = "1942",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
         ]);
     }
@@ -1099,10 +1189,11 @@ public partial class FormulaService
                 Criador = "Paul Dirac",
                 AnoOrigin = "1927",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1114,10 +1205,11 @@ public partial class FormulaService
                 Criador = "Paul Dirac",
                 AnoOrigin = "1927",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1129,10 +1221,11 @@ public partial class FormulaService
                 Criador = "Paul Dirac / Max Planck",
                 AnoOrigin = "1927",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1144,10 +1237,11 @@ public partial class FormulaService
                 Criador = "Vladimir Fock / Paul Dirac",
                 AnoOrigin = "1927-1932",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             // 11.2 Estados Coerentes e Laser
             new Formula
@@ -1160,10 +1254,11 @@ public partial class FormulaService
                 Criador = "Roy Glauber",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1175,10 +1270,11 @@ public partial class FormulaService
                 Criador = "Roy Glauber",
                 AnoOrigin = "1963",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1190,10 +1286,11 @@ public partial class FormulaService
                 Criador = "Albert Einstein (emissão estimulada) / Schawlow-Townes",
                 AnoOrigin = "1917/1958",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "Rp", Nome = "Rp", ValorPadrao = 10 }, new() { Simbolo = "N₂", Nome = "N₂", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Rp", Nome = "Rp", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "N₂", Nome = "N₂", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "dt",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Rp"] - vars["N₂"]
+                Calcular = vars => vars["Rp"] - vars["N₂"],
+                Unidades = "",
             },
             new Formula
             {
@@ -1204,10 +1301,12 @@ public partial class FormulaService
                 Descricao = "Evolução do número de fótons na cavidade: ganho estimulado, perdas na cavidade (τc), emissão espontânea no modo (fator β). Acoplada com a equação de N₂.",
                 Criador = "Teoria de laser semiclássica",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -1219,10 +1318,11 @@ public partial class FormulaService
                 Criador = "Charles Townes / Arthur Schawlow",
                 AnoOrigin = "1958",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1233,10 +1333,12 @@ public partial class FormulaService
                 Descricao = "Ganho com perfil lorentziano centrado em ν₀, saturado pela intensidade I. Acima do limiar, g(ν)=perdas (operação em estado estacionário).",
                 Criador = "Teoria semiclássica de laser",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 11.3 Emaranhamento e Informação Quântica Óptica
             new Formula
@@ -1249,10 +1351,11 @@ public partial class FormulaService
                 Criador = "John Bell / Alain Aspect",
                 AnoOrigin = "1964/1982",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1264,10 +1367,11 @@ public partial class FormulaService
                 Criador = "Clauser, Horne, Shimony, Holt",
                 AnoOrigin = "1969",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
             new Formula
             {
@@ -1279,10 +1383,11 @@ public partial class FormulaService
                 Criador = "Boris Tsirelson / Alain Aspect",
                 AnoOrigin = "1980/1982",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1294,10 +1399,11 @@ public partial class FormulaService
                 Criador = "Bennett, Brassard, Crépeau, Jozsa, Peres, Wootters",
                 AnoOrigin = "1993",
                 ExemploPratico = "Exemplo: substitua pelos valores físicos do cenário, calcule e verifique a coerência da unidade do resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável física principal", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável física auxiliar", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = _ => double.NaN
+                Calcular = _ => double.NaN,
+                Unidades = "",
             },
         ]);
     }

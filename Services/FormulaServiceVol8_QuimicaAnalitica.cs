@@ -46,7 +46,8 @@ public partial class FormulaService
                 double F = inputs["F"];
                 double Q = inputs["Q"];
                 return E0 - (R * T / (n * F)) * Math.Log(Q);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -80,7 +81,8 @@ public partial class FormulaService
                 double c = inputs["c"];
                 double l = inputs["l"];
                 return epsilon * c * l;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -116,7 +118,8 @@ public partial class FormulaService
                 // Para M_a X_b: S = (Ksp / (a^a * b^b))^(1/(a+b))
                 double den = Math.Pow(a, a) * Math.Pow(b, b);
                 return Math.Pow(Ksp / den, 1.0 / (a + b));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -152,7 +155,8 @@ public partial class FormulaService
                 double R = inputs["R"];
                 double T = inputs["T"];
                 return A * Math.Exp(-Ea / (R * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -190,7 +194,8 @@ public partial class FormulaService
                 double B = inputs["B"];
                 double n = inputs["n"];
                 return k * Math.Pow(A, m) * Math.Pow(B, n);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -222,7 +227,8 @@ public partial class FormulaService
                 double DHf_prod = inputs["DHf_prod"];
                 double DHf_reat = inputs["DHf_reat"];
                 return DHf_prod - DHf_reat;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -258,7 +264,8 @@ public partial class FormulaService
                 double R = inputs["R"];
                 double T = inputs["T"];
                 return i * c * R * T * 1000; // Convertendo para Pa (c em mol/L)
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -290,7 +297,8 @@ public partial class FormulaService
                 double prod = inputs["prod"];
                 double reag = inputs["reag"];
                 return prod / reag;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -320,7 +328,8 @@ public partial class FormulaService
             {
                 double H = inputs["H"];
                 return -Math.Log10(H);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -358,7 +367,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 double F = inputs["F"];
                 return (M * I * t) / (n * F);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -392,7 +402,8 @@ public partial class FormulaService
                 double T = inputs["T"];
                 double DS = inputs["DS"];
                 return DH - T * DS;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -428,7 +439,8 @@ public partial class FormulaService
                 double T1 = inputs["T1"];
                 double T2 = inputs["T2"];
                 return -(DHvap / R) * (1.0 / T2 - 1.0 / T1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -460,7 +472,8 @@ public partial class FormulaService
                 double Ka = inputs["Ka"];
                 double C = inputs["C"];
                 return Math.Sqrt(Ka / C);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -496,7 +509,8 @@ public partial class FormulaService
                 double z_neg = inputs["z_neg"];
                 double I = inputs["I"];
                 return -A * Math.Abs(z_pos * z_neg) * Math.Sqrt(I);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -530,7 +544,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 double t = inputs["t"];
                 return A0 * Math.Exp(-k * t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -564,7 +579,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 double t = inputs["t"];
                 return 1.0 / A0 + k * t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -602,7 +618,8 @@ public partial class FormulaService
                 double DG_ativ = inputs["DG_ativ"];
                 double R = inputs["R"];
                 return (kB * T / h) * Math.Exp(-DG_ativ / (R * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -636,7 +653,8 @@ public partial class FormulaService
                 double R = inputs["R"];
                 double T = inputs["T"];
                 return DH0 / (R * T * T);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -670,7 +688,8 @@ public partial class FormulaService
                 double A_neg = inputs["A_neg"];
                 double HA = inputs["HA"];
                 return pKa + Math.Log10(A_neg / HA);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -703,7 +722,8 @@ public partial class FormulaService
                 double C = inputs["C"];
                 double H = Math.Sqrt(Ka1 * C);
                 return -Math.Log10(H);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -737,7 +757,8 @@ public partial class FormulaService
                 double DT = inputs["DT"];
                 double m = inputs["m"];
                 return -Cv * DT; // Negativo pois combustão é exotérmica
-            }
+            },
+            Icone = "∑",
         };
     }
 }

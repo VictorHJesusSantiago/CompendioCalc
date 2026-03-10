@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1913",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Demanda D (un/ano)", Simbolo = "D", Unidade = "un/ano", ValorPadrao = 10000 },
-                        new Variavel { Nome = "Custo pedido S ($)", Simbolo = "S", Unidade = "$", ValorPadrao = 50 },
-                        new Variavel { Nome = "Custo manutenção H ($/un/ano)", Simbolo = "H", Unidade = "$/un/ano", ValorPadrao = 5 }
+                        new Variavel { Nome = "Demanda D (un/ano)", Simbolo = "D", Unidade = "un/ano", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Custo pedido S ($)", Simbolo = "S", Unidade = "$", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Custo manutenção H ($/un/ano)", Simbolo = "H", Unidade = "$/un/ano", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -43,7 +43,8 @@ namespace CompendioCalc.Services
                         double Q_star = Math.Sqrt(2 * D * S / H);
                         return Q_star;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-182: Eficiência Global de Equipamento (OEE)
@@ -63,12 +64,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tempo operando (h)", Simbolo = "op", Unidade = "h", ValorPadrao = 7 },
-                        new Variavel { Nome = "Tempo planejado (h)", Simbolo = "plan", Unidade = "h", ValorPadrao = 8 },
-                        new Variavel { Nome = "Produção real", Simbolo = "real", Unidade = "un", ValorPadrao = 900 },
-                        new Variavel { Nome = "Produção ideal", Simbolo = "ideal", Unidade = "un", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Boas", Simbolo = "boas", Unidade = "un", ValorPadrao = 855 },
-                        new Variavel { Nome = "Total produzido", Simbolo = "total", Unidade = "un", ValorPadrao = 900 }
+                        new Variavel { Nome = "Tempo operando (h)", Simbolo = "op", Unidade = "h", ValorPadrao = 7, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo planejado (h)", Simbolo = "plan", Unidade = "h", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Produção real", Simbolo = "real", Unidade = "un", ValorPadrao = 900, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Produção ideal", Simbolo = "ideal", Unidade = "un", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Boas", Simbolo = "boas", Unidade = "un", ValorPadrao = 855, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Total produzido", Simbolo = "total", Unidade = "un", ValorPadrao = 900, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -86,7 +87,8 @@ namespace CompendioCalc.Services
                         double OEE = disp * perf * qual * 100;
                         return OEE;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-183: Takt Time (Produção Lean)
@@ -106,8 +108,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min/un",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tempo disponível (min)", Simbolo = "T", Unidade = "min", ValorPadrao = 450 },
-                        new Variavel { Nome = "Demanda (un/dia)", Simbolo = "D", Unidade = "un", ValorPadrao = 100 }
+                        new Variavel { Nome = "Tempo disponível (min)", Simbolo = "T", Unidade = "min", ValorPadrao = 450, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Demanda (un/dia)", Simbolo = "D", Unidade = "un", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -118,7 +120,8 @@ namespace CompendioCalc.Services
                         double takt = T / D;
                         return takt;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-184: Capacidade de Processo (Cp, Cpk)
@@ -138,10 +141,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "USL (limite superior)", Simbolo = "USL", Unidade = "mm", ValorPadrao = 105 },
-                        new Variavel { Nome = "LSL (limite inferior)", Simbolo = "LSL", Unidade = "mm", ValorPadrao = 95 },
-                        new Variavel { Nome = "Média μ", Simbolo = "mu", Unidade = "mm", ValorPadrao = 101 },
-                        new Variavel { Nome = "Desvio σ", Simbolo = "sigma", Unidade = "mm", ValorPadrao = 1.5 }
+                        new Variavel { Nome = "USL (limite superior)", Simbolo = "USL", Unidade = "mm", ValorPadrao = 105, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "LSL (limite inferior)", Simbolo = "LSL", Unidade = "mm", ValorPadrao = 95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Média μ", Simbolo = "mu", Unidade = "mm", ValorPadrao = 101, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Desvio σ", Simbolo = "sigma", Unidade = "mm", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -158,7 +161,8 @@ namespace CompendioCalc.Services
                         
                         return Cpk;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-185: Curva ABC (Pareto)
@@ -178,7 +182,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Num itens total", Simbolo = "N", Unidade = "itens", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Num itens total", Simbolo = "N", Unidade = "itens", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -190,7 +194,8 @@ namespace CompendioCalc.Services
                         
                         return N_A;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-186: Ponto de Pedido (Reorder Point)
@@ -210,10 +215,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "un",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Demanda diária d", Simbolo = "d", Unidade = "un/dia", ValorPadrao = 50 },
-                        new Variavel { Nome = "Lead time L (dias)", Simbolo = "L", Unidade = "dias", ValorPadrao = 10 },
-                        new Variavel { Nome = "σ_d desvio demanda", Simbolo = "sigma_d", Unidade = "un", ValorPadrao = 10 },
-                        new Variavel { Nome = "z service level", Simbolo = "z", Unidade = "", ValorPadrao = 1.65 }
+                        new Variavel { Nome = "Demanda diária d", Simbolo = "d", Unidade = "un/dia", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Lead time L (dias)", Simbolo = "L", Unidade = "dias", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_d desvio demanda", Simbolo = "sigma_d", Unidade = "un", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "z service level", Simbolo = "z", Unidade = "", ValorPadrao = 1.65, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -228,7 +233,8 @@ namespace CompendioCalc.Services
                         
                         return ROP;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-187: Taxa de Defeitos (PPM)
@@ -248,8 +254,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "PPM",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Defeitos", Simbolo = "D", Unidade = "un", ValorPadrao = 100 },
-                        new Variavel { Nome = "Total produzido", Simbolo = "N", Unidade = "un", ValorPadrao = 1e6 }
+                        new Variavel { Nome = "Defeitos", Simbolo = "D", Unidade = "un", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Total produzido", Simbolo = "N", Unidade = "un", ValorPadrao = 1e6, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -260,7 +266,8 @@ namespace CompendioCalc.Services
                         double PPM = (D / N) * 1e6;
                         return PPM;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-188: Tempo de Ciclo vs Lead Time
@@ -280,8 +287,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Cycle time (min)", Simbolo = "cycle", Unidade = "min", ValorPadrao = 10 },
-                        new Variavel { Nome = "Lead time (min)", Simbolo = "lead", Unidade = "min", ValorPadrao = 310 }
+                        new Variavel { Nome = "Cycle time (min)", Simbolo = "cycle", Unidade = "min", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Lead time (min)", Simbolo = "lead", Unidade = "min", ValorPadrao = 310, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -292,7 +299,8 @@ namespace CompendioCalc.Services
                         double eficiencia = (cycle / lead) * 100;
                         return eficiencia;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-189: Índice de Produtividade
@@ -312,8 +320,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "un/hh",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Output (un)", Simbolo = "output", Unidade = "un", ValorPadrao = 10000 },
-                        new Variavel { Nome = "Input (hh)", Simbolo = "input", Unidade = "hh", ValorPadrao = 400 }
+                        new Variavel { Nome = "Output (un)", Simbolo = "output", Unidade = "un", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Input (hh)", Simbolo = "input", Unidade = "hh", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -324,7 +332,8 @@ namespace CompendioCalc.Services
                         double produtividade = output / input;
                         return produtividade;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-190: SMED (Single-Minute Exchange of Die)
@@ -344,8 +353,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Setup inicial (min)", Simbolo = "inicial", Unidade = "min", ValorPadrao = 240 },
-                        new Variavel { Nome = "% redução SMED", Simbolo = "reducao_pct", Unidade = "%", ValorPadrao = 75 }
+                        new Variavel { Nome = "Setup inicial (min)", Simbolo = "inicial", Unidade = "min", ValorPadrao = 240, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "% redução SMED", Simbolo = "reducao_pct", Unidade = "%", ValorPadrao = 75, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -355,7 +364,8 @@ namespace CompendioCalc.Services
                         double setup_reduzido = inicial * (1 - reducao_pct / 100);
                         return setup_reduzido;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-191: Teoria das Restrições (TOC) — Gargalo
@@ -375,11 +385,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "un/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Estação 1 (un/h)", Simbolo = "e1", Unidade = "un/h", ValorPadrao = 10 },
-                        new Variavel { Nome = "Estação 2 (un/h)", Simbolo = "e2", Unidade = "un/h", ValorPadrao = 12 },
-                        new Variavel { Nome = "Estação 3 (un/h)", Simbolo = "e3", Unidade = "un/h", ValorPadrao = 8 },
-                        new Variavel { Nome = "Estação 4 (un/h)", Simbolo = "e4", Unidade = "un/h", ValorPadrao = 11 },
-                        new Variavel { Nome = "Estação 5 (un/h)", Simbolo = "e5", Unidade = "un/h", ValorPadrao = 9 }
+                        new Variavel { Nome = "Estação 1 (un/h)", Simbolo = "e1", Unidade = "un/h", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Estação 2 (un/h)", Simbolo = "e2", Unidade = "un/h", ValorPadrao = 12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Estação 3 (un/h)", Simbolo = "e3", Unidade = "un/h", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Estação 4 (un/h)", Simbolo = "e4", Unidade = "un/h", ValorPadrao = 11, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Estação 5 (un/h)", Simbolo = "e5", Unidade = "un/h", ValorPadrao = 9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -392,7 +402,8 @@ namespace CompendioCalc.Services
                         double throughput = Math.Min(e1, Math.Min(e2, Math.Min(e3, Math.Min(e4, e5))));
                         return throughput;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-192: Custo de Qualidade (COQ)
@@ -412,10 +423,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Prevenção ($)", Simbolo = "prev", Unidade = "$", ValorPadrao = 50000 },
-                        new Variavel { Nome = "Avaliação ($)", Simbolo = "aval", Unidade = "$", ValorPadrao = 30000 },
-                        new Variavel { Nome = "Falhas internas ($)", Simbolo = "fint", Unidade = "$", ValorPadrao = 70000 },
-                        new Variavel { Nome = "Falhas externas ($)", Simbolo = "fext", Unidade = "$", ValorPadrao = 100000 }
+                        new Variavel { Nome = "Prevenção ($)", Simbolo = "prev", Unidade = "$", ValorPadrao = 50000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Avaliação ($)", Simbolo = "aval", Unidade = "$", ValorPadrao = 30000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Falhas internas ($)", Simbolo = "fint", Unidade = "$", ValorPadrao = 70000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Falhas externas ($)", Simbolo = "fext", Unidade = "$", ValorPadrao = 100000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -427,7 +438,8 @@ namespace CompendioCalc.Services
                         double COQ = prev + aval + fint + fext;
                         return COQ;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-193: Ponto de Equilíbrio (Break-Even)
@@ -447,9 +459,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "un",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Custo fixo CF ($)", Simbolo = "CF", Unidade = "$", ValorPadrao = 100000 },
-                        new Variavel { Nome = "Preço P ($)", Simbolo = "P", Unidade = "$", ValorPadrao = 50 },
-                        new Variavel { Nome = "Custo variável CV ($)", Simbolo = "CV", Unidade = "$", ValorPadrao = 30 }
+                        new Variavel { Nome = "Custo fixo CF ($)", Simbolo = "CF", Unidade = "$", ValorPadrao = 100000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Preço P ($)", Simbolo = "P", Unidade = "$", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Custo variável CV ($)", Simbolo = "CV", Unidade = "$", ValorPadrao = 30, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -463,7 +475,8 @@ namespace CompendioCalc.Services
                         double Q_BE = CF / mc;
                         return Q_BE;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-194: Tempo Padrão de Operação
@@ -483,9 +496,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tempo normal TN (min)", Simbolo = "TN", Unidade = "min", ValorPadrao = 10 },
-                        new Variavel { Nome = "Fator ritmo FR (%)", Simbolo = "FR", Unidade = "%", ValorPadrao = 110 },
-                        new Variavel { Nome = "Tolerância TL (%)", Simbolo = "TL", Unidade = "%", ValorPadrao = 15 }
+                        new Variavel { Nome = "Tempo normal TN (min)", Simbolo = "TN", Unidade = "min", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fator ritmo FR (%)", Simbolo = "FR", Unidade = "%", ValorPadrao = 110, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tolerância TL (%)", Simbolo = "TL", Unidade = "%", ValorPadrao = 15, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -496,7 +509,8 @@ namespace CompendioCalc.Services
                         double TS = TN * FR * (1 + TL);
                         return TS;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-195: Simulação Monte Carlo (Estoques)
@@ -516,9 +530,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Demanda média μ", Simbolo = "mu", Unidade = "un", ValorPadrao = 100 },
-                        new Variavel { Nome = "Desvio σ", Simbolo = "sigma", Unidade = "un", ValorPadrao = 20 },
-                        new Variavel { Nome = "Estoque", Simbolo = "estoque", Unidade = "un", ValorPadrao = 130 }
+                        new Variavel { Nome = "Demanda média μ", Simbolo = "mu", Unidade = "un", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Desvio σ", Simbolo = "sigma", Unidade = "un", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Estoque", Simbolo = "estoque", Unidade = "un", ValorPadrao = 130, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -534,7 +548,8 @@ namespace CompendioCalc.Services
                         
                         return SL_pct;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-196: Análise de Envoltória de Dados (DEA)
@@ -554,8 +569,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Output ponderado", Simbolo = "output", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Input ponderado", Simbolo = "input", Unidade = "", ValorPadrao = 120 }
+                        new Variavel { Nome = "Output ponderado", Simbolo = "output", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Input ponderado", Simbolo = "input", Unidade = "", ValorPadrao = 120, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -566,7 +581,8 @@ namespace CompendioCalc.Services
                         double eficiencia = output / input;
                         return eficiencia;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-197: Modelo de Filas M/M/1
@@ -586,8 +602,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "clientes",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ arrival (clientes/h)", Simbolo = "lambda", Unidade = "clientes/h", ValorPadrao = 50 },
-                        new Variavel { Nome = "μ service (clientes/h)", Simbolo = "mu", Unidade = "clientes/h", ValorPadrao = 60 }
+                        new Variavel { Nome = "λ arrival (clientes/h)", Simbolo = "lambda", Unidade = "clientes/h", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ service (clientes/h)", Simbolo = "mu", Unidade = "clientes/h", ValorPadrao = 60, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -600,7 +616,8 @@ namespace CompendioCalc.Services
                         double L = rho / (1 - rho);
                         return L;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-198: Programação Linear — Simplex
@@ -620,10 +637,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x₁ (un)", Simbolo = "x1", Unidade = "un", ValorPadrao = 40 },
-                        new Variavel { Nome = "x₂ (un)", Simbolo = "x2", Unidade = "un", ValorPadrao = 20 },
-                        new Variavel { Nome = "c₁ lucro/un ($)", Simbolo = "c1", Unidade = "$", ValorPadrao = 50 },
-                        new Variavel { Nome = "c₂ lucro/un ($)", Simbolo = "c2", Unidade = "$", ValorPadrao = 40 }
+                        new Variavel { Nome = "x₁ (un)", Simbolo = "x1", Unidade = "un", ValorPadrao = 40, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x₂ (un)", Simbolo = "x2", Unidade = "un", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₁ lucro/un ($)", Simbolo = "c1", Unidade = "$", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₂ lucro/un ($)", Simbolo = "c2", Unidade = "$", ValorPadrao = 40, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -635,7 +652,8 @@ namespace CompendioCalc.Services
                         double z = c1 * x1 + c2 * x2;
                         return z;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-199: Modelo de Transporte (Custo Mínimo)
@@ -655,8 +673,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "x_ij quantidade", Simbolo = "x", Unidade = "un", ValorPadrao = 100 },
-                        new Variavel { Nome = "c_ij custo/un ($)", Simbolo = "c", Unidade = "$/un", ValorPadrao = 5 }
+                        new Variavel { Nome = "x_ij quantidade", Simbolo = "x", Unidade = "un", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c_ij custo/un ($)", Simbolo = "c", Unidade = "$/un", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -666,7 +684,8 @@ namespace CompendioCalc.Services
                         double z = c * x;
                         return z;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 },
 
                 // V10-200: Análise de Decisão — Árvore de Decisão
@@ -686,10 +705,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$k",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p_high", Simbolo = "p_high", Unidade = "", ValorPadrao = 0.6 },
-                        new Variavel { Nome = "Payoff high ($k)", Simbolo = "pay_high", Unidade = "$k", ValorPadrao = 200 },
-                        new Variavel { Nome = "p_low", Simbolo = "p_low", Unidade = "", ValorPadrao = 0.4 },
-                        new Variavel { Nome = "Payoff low ($k)", Simbolo = "pay_low", Unidade = "$k", ValorPadrao = 20 }
+                        new Variavel { Nome = "p_high", Simbolo = "p_high", Unidade = "", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Payoff high ($k)", Simbolo = "pay_high", Unidade = "$k", ValorPadrao = 200, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p_low", Simbolo = "p_low", Unidade = "", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Payoff low ($k)", Simbolo = "pay_low", Unidade = "$k", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -701,7 +720,8 @@ namespace CompendioCalc.Services
                         double EV = p_high * pay_high + p_low * pay_low;
                         return EV;
                     },
-                    Icone = "📦"
+                    Icone = "📦",
+                    Unidades = "",
                 }
             });
         }

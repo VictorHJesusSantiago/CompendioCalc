@@ -39,7 +39,8 @@ public partial class FormulaService
                 double d = inputs["d"];
                 
                 return H0 * d;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -72,7 +73,8 @@ public partial class FormulaService
                 double lambda_emit = inputs["lambda_emit"];
                 
                 return (lambda_obs - lambda_emit) / lambda_emit;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -107,7 +109,8 @@ public partial class FormulaService
                 double z = inputs["z"];
                 
                 return (c / H0) * Math.Log(1 + z);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -138,7 +141,8 @@ public partial class FormulaService
                 double H0_si = inputs["H0_si"];
                 
                 return (2.0 / 3.0) / H0_si;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -171,7 +175,8 @@ public partial class FormulaService
                 double rho_crit = inputs["rho_crit"];
                 
                 return rho / rho_crit;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -204,7 +209,8 @@ public partial class FormulaService
                 double G = inputs["G"];
                 
                 return (3 * H * H) / (8 * Math.PI * G);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -243,7 +249,8 @@ public partial class FormulaService
                 double a = inputs["a"];
                 
                 return (8 * Math.PI * G * rho / 3) - (k * c * c / (a * a));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -280,7 +287,8 @@ public partial class FormulaService
                 double c = inputs["c"];
                 
                 return -(4 * Math.PI * G / 3) * (rho + 3 * P / (c * c));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -317,7 +325,8 @@ public partial class FormulaService
                 if (Math.Abs(rho) < 1e-40) return 0;
                 
                 return P / (rho * c * c);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -350,7 +359,8 @@ public partial class FormulaService
                 double z = inputs["z"];
                 
                 return T0 * (1 + z);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -385,7 +395,8 @@ public partial class FormulaService
                 double T = inputs["T"];
                 
                 return (4 * sigma / c) * Math.Pow(T, 4);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -429,7 +440,8 @@ public partial class FormulaService
                 double MJ = Math.Pow(cs_squared, 1.5) * Math.Pow(3 / (4 * Math.PI * rho), 0.5);
                 
                 return MJ;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -462,7 +474,8 @@ public partial class FormulaService
                 double F = inputs["F"];
                 
                 return Math.Sqrt(L / (4 * Math.PI * F));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -495,7 +508,8 @@ public partial class FormulaService
                 double theta = inputs["theta"];
                 
                 return D / theta;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -526,7 +540,8 @@ public partial class FormulaService
                 double dL = inputs["dL"];
                 
                 return 5 * Math.Log10(dL / 10);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -559,7 +574,8 @@ public partial class FormulaService
                 double t0 = inputs["t0"];
                 
                 return Math.Pow(t / t0, 2.0 / 3.0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -592,7 +608,8 @@ public partial class FormulaService
                 double yr_to_s = inputs["yr_to_s"];
                 
                 return t_rec_yr * yr_to_s;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -625,7 +642,8 @@ public partial class FormulaService
                 double H = inputs["H"];
                 
                 return c / H;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -658,7 +676,8 @@ public partial class FormulaService
                 double nH = inputs["nH"];
                 
                 return (4 * nHe) / (nH + 4 * nHe);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

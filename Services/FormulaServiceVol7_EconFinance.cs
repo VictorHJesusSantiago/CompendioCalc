@@ -24,14 +24,16 @@ public partial class FormulaService
                 AnoOrigin = "1934",
                 ExemploPratico = "C=3,5 tri, I=1,0 tri, G=1,2 tri, X=1,5 tri, M=1,0 tri: PIB = 6,2 trilhões",
                 Variaveis = [
-                    new() { Simbolo = "C", Nome = "Consumo (C)", ValorPadrao = 3500 },
-                    new() { Simbolo = "I", Nome = "Investimento (I)", ValorPadrao = 1000 },
-                    new() { Simbolo = "G", Nome = "Gastos do governo (G)", ValorPadrao = 1200 },
-                    new() { Simbolo = "X", Nome = "Exportações (X)", ValorPadrao = 1500 },
-                    new() { Simbolo = "M", Nome = "Importações (M)", ValorPadrao = 1000 },
+                    new() { Simbolo = "C", Nome = "Consumo (C)", ValorPadrao = 3500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Investimento (I)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "G", Nome = "Gastos do governo (G)", ValorPadrao = 1200, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "X", Nome = "Exportações (X)", ValorPadrao = 1500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "M", Nome = "Importações (M)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "PIB",
-                Calcular = vars => vars["C"] + vars["I"] + vars["G"] + (vars["X"] - vars["M"])
+                Calcular = vars => vars["C"] + vars["I"] + vars["G"] + (vars["X"] - vars["M"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -44,12 +46,14 @@ public partial class FormulaService
                 AnoOrigin = "1922",
                 ExemploPratico = "IPC dez/22=6100, dez/23=6400: π = (6400−6100)/6100×100 = 4,92%",
                 Variaveis = [
-                    new() { Simbolo = "IPCt", Nome = "IPC atual", ValorPadrao = 6400 },
-                    new() { Simbolo = "IPCt1", Nome = "IPC anterior", ValorPadrao = 6100, ValorMin = 0.01 },
+                    new() { Simbolo = "IPCt", Nome = "IPC atual", ValorPadrao = 6400, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "IPCt1", Nome = "IPC anterior", ValorPadrao = 6100, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "π (%)",
                 UnidadeResultado = "%",
-                Calcular = vars => (vars["IPCt"] - vars["IPCt1"]) / vars["IPCt1"] * 100
+                Calcular = vars => (vars["IPCt"] - vars["IPCt1"]) / vars["IPCt1"] * 100,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -62,12 +66,14 @@ public partial class FormulaService
                 AnoOrigin = "1930",
                 ExemploPratico = "r=4%, π=5%: i ≈ 4+5 = 9%. Exata: (1,04)(1,05)−1 = 9,2%",
                 Variaveis = [
-                    new() { Simbolo = "r", Nome = "Taxa real (%)", ValorPadrao = 4 },
-                    new() { Simbolo = "pi", Nome = "Inflação esperada (%)", ValorPadrao = 5 },
+                    new() { Simbolo = "r", Nome = "Taxa real (%)", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "pi", Nome = "Inflação esperada (%)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "i (%)",
                 UnidadeResultado = "%",
-                Calcular = vars => (1 + vars["r"] / 100) * (1 + vars["pi"] / 100) * 100 - 100
+                Calcular = vars => (1 + vars["r"] / 100) * (1 + vars["pi"] / 100) * 100 - 100,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -80,10 +86,12 @@ public partial class FormulaService
                 AnoOrigin = "1936",
                 ExemploPratico = "c=0,8: k = 1/(1−0,8) = 5. Cada R$1 de gasto gera R$5 no PIB.",
                 Variaveis = [
-                    new() { Simbolo = "c", Nome = "Pr. marginal a consumir (c)", Descricao = "0 a 1", ValorPadrao = 0.8 },
+                    new() { Simbolo = "c", Nome = "Pr. marginal a consumir (c)", Descricao = "0 a 1", ValorPadrao = 0.8, Unidade = "adim" },
                 ],
                 VariavelResultado = "k (multiplicador)",
-                Calcular = vars => 1.0 / (1.0 - vars["c"])
+                Calcular = vars => 1.0 / (1.0 - vars["c"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ PESQUISA OPERACIONAL (4 fórmulas) ═══
@@ -99,13 +107,15 @@ public partial class FormulaService
                 AnoOrigin = "1947",
                 ExemploPratico = "Max Z=5x₁+3x₂, com x₁=4, x₂=6: Z = 20+18 = 38",
                 Variaveis = [
-                    new() { Simbolo = "c1", Nome = "Coef. c₁", ValorPadrao = 5 },
-                    new() { Simbolo = "x1", Nome = "Variável x₁", ValorPadrao = 4 },
-                    new() { Simbolo = "c2", Nome = "Coef. c₂", ValorPadrao = 3 },
-                    new() { Simbolo = "x2", Nome = "Variável x₂", ValorPadrao = 6 },
+                    new() { Simbolo = "c1", Nome = "Coef. c₁", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "x1", Nome = "Variável x₁", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "c2", Nome = "Coef. c₂", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "x2", Nome = "Variável x₂", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Z",
-                Calcular = vars => vars["c1"] * vars["x1"] + vars["c2"] * vars["x2"]
+                Calcular = vars => vars["c1"] * vars["x1"] + vars["c2"] * vars["x2"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -118,12 +128,14 @@ public partial class FormulaService
                 AnoOrigin = "1909",
                 ExemploPratico = "λ=8 clientes/h, μ=10: W = 1/(10−8) = 0,5h = 30 min no sistema",
                 Variaveis = [
-                    new() { Simbolo = "lambda", Nome = "Taxa de chegada λ (/h)", ValorPadrao = 8 },
-                    new() { Simbolo = "mu", Nome = "Taxa de serviço μ (/h)", ValorPadrao = 10, ValorMin = 0.01 },
+                    new() { Simbolo = "lambda", Nome = "Taxa de chegada λ (/h)", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "mu", Nome = "Taxa de serviço μ (/h)", ValorPadrao = 10, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "W (h)",
                 UnidadeResultado = "h",
-                Calcular = vars => 1.0 / (vars["mu"] - vars["lambda"])
+                Calcular = vars => 1.0 / (vars["mu"] - vars["lambda"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -136,13 +148,15 @@ public partial class FormulaService
                 AnoOrigin = "1913",
                 ExemploPratico = "D=10.000/ano, S=R$50/pedido, H=R$2/unid/ano: Q* = √(2×10000×50/2) = 707 unidades",
                 Variaveis = [
-                    new() { Simbolo = "D", Nome = "Demanda anual", ValorPadrao = 10000 },
-                    new() { Simbolo = "S", Nome = "Custo por pedido (R$)", ValorPadrao = 50 },
-                    new() { Simbolo = "H", Nome = "Custo estoque/unid/ano (R$)", ValorPadrao = 2, ValorMin = 0.01 },
+                    new() { Simbolo = "D", Nome = "Demanda anual", ValorPadrao = 10000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "S", Nome = "Custo por pedido (R$)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "H", Nome = "Custo estoque/unid/ano (R$)", ValorPadrao = 2, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Q*",
                 UnidadeResultado = "unidades",
-                Calcular = vars => Math.Sqrt(2 * vars["D"] * vars["S"] / vars["H"])
+                Calcular = vars => Math.Sqrt(2 * vars["D"] * vars["S"] / vars["H"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -155,13 +169,15 @@ public partial class FormulaService
                 AnoOrigin = "1958",
                 ExemploPratico = "a=2 dias, m=5, b=14: te = (2+20+14)/6 = 6 dias",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Tempo otimista (a)", ValorPadrao = 2 },
-                    new() { Simbolo = "m", Nome = "Tempo mais provável (m)", ValorPadrao = 5 },
-                    new() { Simbolo = "b", Nome = "Tempo pessimista (b)", ValorPadrao = 14 },
+                    new() { Simbolo = "a", Nome = "Tempo otimista (a)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "Tempo mais provável (m)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Tempo pessimista (b)", ValorPadrao = 14, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "te",
                 UnidadeResultado = "dias",
-                Calcular = vars => (vars["a"] + 4 * vars["m"] + vars["b"]) / 6.0
+                Calcular = vars => (vars["a"] + 4 * vars["m"] + vars["b"]) / 6.0,
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ CIÊNCIA ATUARIAL (2 fórmulas) ═══
@@ -177,9 +193,9 @@ public partial class FormulaService
                 AnoOrigin = "1693",
                 ExemploPratico = "Idade 65, i=5%, expectativa 15 anos: äx ≈ Σ(1/1,05)^t × sobrev ≈ 10,38",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "Horizonte (anos)", ValorPadrao = 15 },
-                    new() { Simbolo = "i", Nome = "Taxa de juros anual", ValorPadrao = 0.05 },
-                    new() { Simbolo = "qx", Nome = "Prob. mortalidade anual (qx)", Descricao = "Ex: 0,02 para 2%", ValorPadrao = 0.02 },
+                    new() { Simbolo = "n", Nome = "Horizonte (anos)", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "i", Nome = "Taxa de juros anual", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "qx", Nome = "Prob. mortalidade anual (qx)", Descricao = "Ex: 0,02 para 2%", ValorPadrao = 0.02, Unidade = "adim" },
                 ],
                 VariavelResultado = "äx",
                 Calcular = vars =>
@@ -192,7 +208,9 @@ public partial class FormulaService
                         px *= (1 - vars["qx"]);
                     }
                     return soma;
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -205,11 +223,13 @@ public partial class FormulaService
                 AnoOrigin = "1756",
                 ExemploPratico = "Ax=0,35 (seguro vida inteira), äx=10: P = 0,35/10 = 0,035 por unidade/ano",
                 Variaveis = [
-                    new() { Simbolo = "Ax", Nome = "Valor presente do seguro (Ax)", ValorPadrao = 0.35 },
-                    new() { Simbolo = "ax", Nome = "Anuidade vitalícia (äx)", ValorPadrao = 10, ValorMin = 0.01 },
+                    new() { Simbolo = "Ax", Nome = "Valor presente do seguro (Ax)", ValorPadrao = 0.35, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ax", Nome = "Anuidade vitalícia (äx)", ValorPadrao = 10, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P",
-                Calcular = vars => vars["Ax"] / vars["ax"]
+                Calcular = vars => vars["Ax"] / vars["ax"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ TEORIA DOS JOGOS (3 fórmulas) ═══
@@ -225,19 +245,21 @@ public partial class FormulaService
                 AnoOrigin = "1950",
                 ExemploPratico = "Dilema prisioneiro: a₁₁=3, a₁₂=0, a₂₁=5, a₂₂=1, p=q=0,5: EU = 0,25(3+0+5+1) = 2,25",
                 Variaveis = [
-                    new() { Simbolo = "p", Nome = "Prob. jogador 1 escolher ação 1", ValorPadrao = 0.5 },
-                    new() { Simbolo = "q", Nome = "Prob. jogador 2 escolher ação 1", ValorPadrao = 0.5 },
-                    new() { Simbolo = "a11", Nome = "Payoff (Ação1, Ação1)", ValorPadrao = 3 },
-                    new() { Simbolo = "a12", Nome = "Payoff (Ação1, Ação2)", ValorPadrao = 0 },
-                    new() { Simbolo = "a21", Nome = "Payoff (Ação2, Ação1)", ValorPadrao = 5 },
-                    new() { Simbolo = "a22", Nome = "Payoff (Ação2, Ação2)", ValorPadrao = 1 },
+                    new() { Simbolo = "p", Nome = "Prob. jogador 1 escolher ação 1", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "q", Nome = "Prob. jogador 2 escolher ação 1", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a11", Nome = "Payoff (Ação1, Ação1)", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a12", Nome = "Payoff (Ação1, Ação2)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a21", Nome = "Payoff (Ação2, Ação1)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a22", Nome = "Payoff (Ação2, Ação2)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "E[U₁]",
                 Calcular = vars =>
                     vars["p"] * vars["q"] * vars["a11"] +
                     vars["p"] * (1 - vars["q"]) * vars["a12"] +
                     (1 - vars["p"]) * vars["q"] * vars["a21"] +
-                    (1 - vars["p"]) * (1 - vars["q"]) * vars["a22"]
+                    (1 - vars["p"]) * (1 - vars["q"]) * vars["a22"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -250,13 +272,15 @@ public partial class FormulaService
                 AnoOrigin = "1953",
                 ExemploPratico = "3 jogadores, v({A})=0, v({B})=0, v({AB})=6, v({ABC})=12: φA ≈ 3",
                 Variaveis = [
-                    new() { Simbolo = "vAB", Nome = "v({A,B})", ValorPadrao = 6 },
-                    new() { Simbolo = "vABC", Nome = "v({A,B,C})", ValorPadrao = 12 },
-                    new() { Simbolo = "vA", Nome = "v({A})", ValorPadrao = 0 },
-                    new() { Simbolo = "vBC", Nome = "v({B,C})", ValorPadrao = 6 },
+                    new() { Simbolo = "vAB", Nome = "v({A,B})", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "vABC", Nome = "v({A,B,C})", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "vA", Nome = "v({A})", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "vBC", Nome = "v({B,C})", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "φ_A (simplificado 3 jogadores)",
-                Calcular = vars => (vars["vA"] + (vars["vAB"] - 0) / 2.0 + (vars["vABC"] - vars["vBC"]) / 2.0 + (vars["vABC"] - 0) / 3.0) / 2.0
+                Calcular = vars => (vars["vA"] + (vars["vAB"] - 0) / 2.0 + (vars["vABC"] - vars["vBC"]) / 2.0 + (vars["vABC"] - 0) / 3.0) / 2.0,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -269,11 +293,13 @@ public partial class FormulaService
                 AnoOrigin = "1961",
                 ExemploPratico = "Lances: A=100, B=80, C=60: A vence e paga 80 (2º maior lance)",
                 Variaveis = [
-                    new() { Simbolo = "b1", Nome = "Maior lance", ValorPadrao = 100 },
-                    new() { Simbolo = "b2", Nome = "Segundo maior lance", ValorPadrao = 80 },
+                    new() { Simbolo = "b1", Nome = "Maior lance", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b2", Nome = "Segundo maior lance", ValorPadrao = 80, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Preço pago",
-                Calcular = vars => vars["b2"]
+                Calcular = vars => vars["b2"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ MICROECONOMIA (2 fórmulas) ═══
@@ -289,11 +315,13 @@ public partial class FormulaService
                 AnoOrigin = "1890",
                 ExemploPratico = "Preço sobe 10%, quantidade cai 20%: Ed = −20/10 = −2 (elástica)",
                 Variaveis = [
-                    new() { Simbolo = "dQ", Nome = "Variação % quantidade", ValorPadrao = -20 },
-                    new() { Simbolo = "dP", Nome = "Variação % preço", ValorPadrao = 10, ValorMin = 0.01 },
+                    new() { Simbolo = "dQ", Nome = "Variação % quantidade", ValorPadrao = -20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dP", Nome = "Variação % preço", ValorPadrao = 10, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Ed",
-                Calcular = vars => vars["dQ"] / vars["dP"]
+                Calcular = vars => vars["dQ"] / vars["dP"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -306,13 +334,15 @@ public partial class FormulaService
                 AnoOrigin = "1844",
                 ExemploPratico = "Pmax=100, P*=60, Q*=200: EC = 0,5×40×200 = R$4.000",
                 Variaveis = [
-                    new() { Simbolo = "Pmax", Nome = "Preço máximo (disposição)", ValorPadrao = 100 },
-                    new() { Simbolo = "Peq", Nome = "Preço de equilíbrio", ValorPadrao = 60 },
-                    new() { Simbolo = "Qeq", Nome = "Quantidade de equilíbrio", ValorPadrao = 200 },
+                    new() { Simbolo = "Pmax", Nome = "Preço máximo (disposição)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Peq", Nome = "Preço de equilíbrio", ValorPadrao = 60, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Qeq", Nome = "Quantidade de equilíbrio", ValorPadrao = 200, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "EC (R$)",
                 UnidadeResultado = "R$",
-                Calcular = vars => 0.5 * (vars["Pmax"] - vars["Peq"]) * vars["Qeq"]
+                Calcular = vars => 0.5 * (vars["Pmax"] - vars["Peq"]) * vars["Qeq"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ MACROECONOMIA (1 fórmula) ═══
@@ -328,11 +358,13 @@ public partial class FormulaService
                 AnoOrigin = "1911",
                 ExemploPratico = "M=2 tri, V=4: PIB nominal = MV = 8 trilhões",
                 Variaveis = [
-                    new() { Simbolo = "M", Nome = "Oferta monetária (M)", ValorPadrao = 2000 },
-                    new() { Simbolo = "V", Nome = "Velocidade (V)", ValorPadrao = 4 },
+                    new() { Simbolo = "M", Nome = "Oferta monetária (M)", ValorPadrao = 2000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "V", Nome = "Velocidade (V)", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "PY (PIB nominal)",
-                Calcular = vars => vars["M"] * vars["V"]
+                Calcular = vars => vars["M"] * vars["V"],
+                SubCategoria = "",
+                Unidades = "",
             },
         ]);
     }

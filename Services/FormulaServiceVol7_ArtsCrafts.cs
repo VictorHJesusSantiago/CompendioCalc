@@ -25,8 +25,8 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Cintura 70cm, comprimento 60cm: R=70/(2π)=11,14cm, L=2π×(11,14+60)=447 cm",
                 Variaveis = [
-                    new() { Simbolo = "cintura", Nome = "Medida da cintura (cm)", ValorPadrao = 70 },
-                    new() { Simbolo = "comp", Nome = "Comprimento da saia (cm)", ValorPadrao = 60 },
+                    new() { Simbolo = "cintura", Nome = "Medida da cintura (cm)", ValorPadrao = 70, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "comp", Nome = "Comprimento da saia (cm)", ValorPadrao = 60, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "L (perímetro barra, cm)",
                 UnidadeResultado = "cm",
@@ -34,7 +34,9 @@ public partial class FormulaService
                 {
                     double r = vars["cintura"] / (2 * Math.PI);
                     return 2 * Math.PI * (r + vars["comp"]);
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -47,13 +49,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "Peça 50×30cm, margem 1,5cm: A = (50+3)×(30+3) = 53×33 = 1749 cm²",
                 Variaveis = [
-                    new() { Simbolo = "L", Nome = "Comprimento da peça (cm)", ValorPadrao = 50 },
-                    new() { Simbolo = "W", Nome = "Largura da peça (cm)", ValorPadrao = 30 },
-                    new() { Simbolo = "m", Nome = "Margem de costura (cm)", ValorPadrao = 1.5 },
+                    new() { Simbolo = "L", Nome = "Comprimento da peça (cm)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "W", Nome = "Largura da peça (cm)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "Margem de costura (cm)", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Área total (cm²)",
                 UnidadeResultado = "cm²",
-                Calcular = vars => (vars["L"] + 2 * vars["m"]) * (vars["W"] + 2 * vars["m"])
+                Calcular = vars => (vars["L"] + 2 * vars["m"]) * (vars["W"] + 2 * vars["m"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Marcenaria ---
@@ -68,13 +72,15 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Tábua: 2,5m × 0,3m × 0,025m = 0,01875 m³",
                 Variaveis = [
-                    new() { Simbolo = "C", Nome = "Comprimento (m)", ValorPadrao = 2.5 },
-                    new() { Simbolo = "L", Nome = "Largura (m)", ValorPadrao = 0.3 },
-                    new() { Simbolo = "E", Nome = "Espessura (m)", ValorPadrao = 0.025 },
+                    new() { Simbolo = "C", Nome = "Comprimento (m)", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Largura (m)", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "E", Nome = "Espessura (m)", ValorPadrao = 0.025, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Volume (m³)",
                 UnidadeResultado = "m³",
-                Calcular = vars => vars["C"] * vars["L"] * vars["E"]
+                Calcular = vars => vars["C"] * vars["L"] * vars["E"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -87,11 +93,13 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Moldura octogonal (n=8): α = 180/8 = 22,5° em cada ponta",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "Número de lados", ValorPadrao = 8, ValorMin = 3 },
+                    new() { Simbolo = "n", Nome = "Número de lados", ValorPadrao = 8, ValorMin = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "α (graus)",
                 UnidadeResultado = "°",
-                Calcular = vars => 180.0 / vars["n"]
+                Calcular = vars => 180.0 / vars["n"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Cerâmica ---
@@ -106,12 +114,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "L úmido=20cm, L queimado=17cm: retração = (20−17)/20 × 100 = 15%",
                 Variaveis = [
-                    new() { Simbolo = "Lu", Nome = "Dimensão úmida (cm)", ValorPadrao = 20 },
-                    new() { Simbolo = "Ls", Nome = "Dimensão após queima (cm)", ValorPadrao = 17 },
+                    new() { Simbolo = "Lu", Nome = "Dimensão úmida (cm)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Ls", Nome = "Dimensão após queima (cm)", ValorPadrao = 17, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Retração (%)",
                 UnidadeResultado = "%",
-                Calcular = vars => (vars["Lu"] - vars["Ls"]) / vars["Lu"] * 100.0
+                Calcular = vars => (vars["Lu"] - vars["Ls"]) / vars["Lu"] * 100.0,
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Culinária ---
@@ -126,12 +136,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Receita p/6: 300g farinha. Para 15: Q = 300×(15/6) = 750g",
                 Variaveis = [
-                    new() { Simbolo = "Q", Nome = "Quantidade original", ValorPadrao = 300 },
-                    new() { Simbolo = "Pd", Nome = "Porções desejadas", ValorPadrao = 15 },
-                    new() { Simbolo = "Po", Nome = "Porções originais", ValorPadrao = 6, ValorMin = 1 },
+                    new() { Simbolo = "Q", Nome = "Quantidade original", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Pd", Nome = "Porções desejadas", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Po", Nome = "Porções originais", ValorPadrao = 6, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Quantidade ajustada",
-                Calcular = vars => vars["Q"] * (vars["Pd"] / vars["Po"])
+                Calcular = vars => vars["Q"] * (vars["Pd"] / vars["Po"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -144,11 +156,13 @@ public partial class FormulaService
                 AnoOrigin = "1742",
                 ExemploPratico = "Forno a 180°C: °F = 180×1,8+32 = 356°F",
                 Variaveis = [
-                    new() { Simbolo = "C", Nome = "Temperatura (°C)", ValorPadrao = 180 },
+                    new() { Simbolo = "C", Nome = "Temperatura (°C)", ValorPadrao = 180, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "°F",
                 UnidadeResultado = "°F",
-                Calcular = vars => vars["C"] * 9.0 / 5.0 + 32
+                Calcular = vars => vars["C"] * 9.0 / 5.0 + 32,
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Jardinagem ---
@@ -163,13 +177,15 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Canteiro 3m × 1,2m × 0,3m = 1,08 m³ ≈ 1080 litros de substrato",
                 Variaveis = [
-                    new() { Simbolo = "C", Nome = "Comprimento (m)", ValorPadrao = 3 },
-                    new() { Simbolo = "L", Nome = "Largura (m)", ValorPadrao = 1.2 },
-                    new() { Simbolo = "H", Nome = "Altura/profundidade (m)", ValorPadrao = 0.3 },
+                    new() { Simbolo = "C", Nome = "Comprimento (m)", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Largura (m)", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "H", Nome = "Altura/profundidade (m)", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Volume (m³)",
                 UnidadeResultado = "m³",
-                Calcular = vars => vars["C"] * vars["L"] * vars["H"]
+                Calcular = vars => vars["C"] * vars["L"] * vars["H"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Pintura ---
@@ -184,13 +200,15 @@ public partial class FormulaService
                 AnoOrigin = "Prática",
                 ExemploPratico = "Parede 12 m², rendimento 10 m²/L, 2 demãos: V = (12/10)×2 = 2,4 L",
                 Variaveis = [
-                    new() { Simbolo = "A", Nome = "Área a pintar (m²)", ValorPadrao = 12 },
-                    new() { Simbolo = "R", Nome = "Rendimento (m²/L)", ValorPadrao = 10, ValorMin = 0.1 },
-                    new() { Simbolo = "n", Nome = "Nº de demãos", ValorPadrao = 2 },
+                    new() { Simbolo = "A", Nome = "Área a pintar (m²)", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "R", Nome = "Rendimento (m²/L)", ValorPadrao = 10, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "n", Nome = "Nº de demãos", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Volume de tinta (L)",
                 UnidadeResultado = "L",
-                Calcular = vars => (vars["A"] / vars["R"]) * vars["n"]
+                Calcular = vars => (vars["A"] / vars["R"]) * vars["n"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Tricô e Crochê ---
@@ -205,12 +223,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Amostra: 22 pontos em 10 cm. Peça de 50 cm: pontos = (50/10)×22 = 110",
                 Variaveis = [
-                    new() { Simbolo = "Ld", Nome = "Largura desejada (cm)", ValorPadrao = 50 },
-                    new() { Simbolo = "La", Nome = "Largura da amostra (cm)", ValorPadrao = 10, ValorMin = 0.1 },
-                    new() { Simbolo = "Pa", Nome = "Pontos na amostra", ValorPadrao = 22 },
+                    new() { Simbolo = "Ld", Nome = "Largura desejada (cm)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "La", Nome = "Largura da amostra (cm)", ValorPadrao = 10, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Pa", Nome = "Pontos na amostra", ValorPadrao = 22, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Pontos necessários",
-                Calcular = vars => (vars["Ld"] / vars["La"]) * vars["Pa"]
+                Calcular = vars => (vars["Ld"] / vars["La"]) * vars["Pa"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Saboaria ---
@@ -225,13 +245,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "500g oliva, IS=0,1345, superfat 5%: NaOH = 500×0,1345×0,95 = 63,9g",
                 Variaveis = [
-                    new() { Simbolo = "W", Nome = "Peso do óleo (g)", ValorPadrao = 500 },
-                    new() { Simbolo = "IS", Nome = "Índice saponificação NaOH", ValorPadrao = 0.1345 },
-                    new() { Simbolo = "sf", Nome = "Superfat (0-0,1)", Descricao = "Ex: 0,05 p/ 5%", ValorPadrao = 0.05 },
+                    new() { Simbolo = "W", Nome = "Peso do óleo (g)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "IS", Nome = "Índice saponificação NaOH", ValorPadrao = 0.1345, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "sf", Nome = "Superfat (0-0,1)", Descricao = "Ex: 0,05 p/ 5%", ValorPadrao = 0.05, Unidade = "adim" },
                 ],
                 VariavelResultado = "NaOH (g)",
                 UnidadeResultado = "g",
-                Calcular = vars => vars["W"] * vars["IS"] * (1 - vars["sf"])
+                Calcular = vars => vars["W"] * vars["IS"] * (1 - vars["sf"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Joalheria ---
@@ -246,12 +268,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Dedo: d=16,5mm, espessura 1mm: L = π×(16,5+2) = 58,1 mm",
                 Variaveis = [
-                    new() { Simbolo = "d", Nome = "Diâmetro do dedo (mm)", ValorPadrao = 16.5 },
-                    new() { Simbolo = "e", Nome = "Espessura do metal (mm)", ValorPadrao = 1 },
+                    new() { Simbolo = "d", Nome = "Diâmetro do dedo (mm)", ValorPadrao = 16.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "Espessura do metal (mm)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "L (mm)",
                 UnidadeResultado = "mm",
-                Calcular = vars => Math.PI * (vars["d"] + 2 * vars["e"])
+                Calcular = vars => Math.PI * (vars["d"] + 2 * vars["e"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Encadernação ---
@@ -266,13 +290,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XV (Gutenberg)",
                 ExemploPratico = "200 folhas × 0,1mm + 2×2mm = 20+4 = 24 mm de lombada",
                 Variaveis = [
-                    new() { Simbolo = "nf", Nome = "Nº de folhas", ValorPadrao = 200 },
-                    new() { Simbolo = "ef", Nome = "Espessura da folha (mm)", ValorPadrao = 0.1 },
-                    new() { Simbolo = "ec", Nome = "Espessura da capa (mm)", ValorPadrao = 2 },
+                    new() { Simbolo = "nf", Nome = "Nº de folhas", ValorPadrao = 200, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ef", Nome = "Espessura da folha (mm)", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ec", Nome = "Espessura da capa (mm)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Lombada (mm)",
                 UnidadeResultado = "mm",
-                Calcular = vars => vars["nf"] * vars["ef"] + 2 * vars["ec"]
+                Calcular = vars => vars["nf"] * vars["ef"] + 2 * vars["ec"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Vidraria ---
@@ -287,13 +313,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XVIII",
                 ExemploPratico = "Vidro 30cm, α=8,5e-6, ΔT=500°C: ΔL = 0,3×8,5e-6×500 = 0,00128m = 1,28mm",
                 Variaveis = [
-                    new() { Simbolo = "L0", Nome = "Comprimento original (m)", ValorPadrao = 0.3 },
-                    new() { Simbolo = "alpha", Nome = "Coef. expansão (1/°C)", ValorPadrao = 8.5e-6 },
-                    new() { Simbolo = "dT", Nome = "Variação temperatura (°C)", ValorPadrao = 500 },
+                    new() { Simbolo = "L0", Nome = "Comprimento original (m)", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "alpha", Nome = "Coef. expansão (1/°C)", ValorPadrao = 8.5e-6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dT", Nome = "Variação temperatura (°C)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "ΔL (m)",
                 UnidadeResultado = "m",
-                Calcular = vars => vars["L0"] * vars["alpha"] * vars["dT"]
+                Calcular = vars => vars["L0"] * vars["alpha"] * vars["dT"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Tecelagem ---
@@ -308,12 +336,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Tecido 50cm, 8 fios/cm, ourela 6 fios cada: Total = 50×8 + 2×6 = 412 fios",
                 Variaveis = [
-                    new() { Simbolo = "W", Nome = "Largura do tecido (cm)", ValorPadrao = 50 },
-                    new() { Simbolo = "DPI", Nome = "Fios por cm", ValorPadrao = 8 },
-                    new() { Simbolo = "ourela", Nome = "Fios de ourela (cada lado)", ValorPadrao = 6 },
+                    new() { Simbolo = "W", Nome = "Largura do tecido (cm)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "DPI", Nome = "Fios por cm", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ourela", Nome = "Fios de ourela (cada lado)", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Total de fios",
-                Calcular = vars => vars["W"] * vars["DPI"] + 2 * vars["ourela"]
+                Calcular = vars => vars["W"] * vars["DPI"] + 2 * vars["ourela"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // --- Origami ---
@@ -328,12 +358,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XVII",
                 ExemploPratico = "Detalhe final 0,5cm, 6 dobras: L = 0,5×2⁶ = 32 cm de papel",
                 Variaveis = [
-                    new() { Simbolo = "Lf", Nome = "Tamanho final (cm)", ValorPadrao = 0.5 },
-                    new() { Simbolo = "d", Nome = "Nº de dobras", ValorPadrao = 6 },
+                    new() { Simbolo = "Lf", Nome = "Tamanho final (cm)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "d", Nome = "Nº de dobras", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "L papel (cm)",
                 UnidadeResultado = "cm",
-                Calcular = vars => vars["Lf"] * Math.Pow(2, vars["d"])
+                Calcular = vars => vars["Lf"] * Math.Pow(2, vars["d"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ JOGOS E RECREAÇÃO (10 fórmulas) ═══
@@ -349,11 +381,13 @@ public partial class FormulaService
                 AnoOrigin = "1654",
                 ExemploPratico = "2d6, soma=7: 6 combinações em 36 → P = 6/36 = 0,167 (16,7%)",
                 Variaveis = [
-                    new() { Simbolo = "fav", Nome = "Casos favoráveis", ValorPadrao = 6 },
-                    new() { Simbolo = "total", Nome = "Casos possíveis", ValorPadrao = 36, ValorMin = 1 },
+                    new() { Simbolo = "fav", Nome = "Casos favoráveis", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "total", Nome = "Casos possíveis", ValorPadrao = 36, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P",
-                Calcular = vars => vars["fav"] / vars["total"]
+                Calcular = vars => vars["fav"] / vars["total"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -366,13 +400,15 @@ public partial class FormulaService
                 AnoOrigin = "1657",
                 ExemploPratico = "Roleta (vermelho): P=18/38, ganho=1, perda=1: EV = 0,474×1−0,526×1 = −0,053 (−5,3% casa)",
                 Variaveis = [
-                    new() { Simbolo = "Pg", Nome = "P(ganho)", ValorPadrao = 0.474 },
-                    new() { Simbolo = "G", Nome = "Ganho ($)", ValorPadrao = 1 },
-                    new() { Simbolo = "Pp", Nome = "P(perda)", ValorPadrao = 0.526 },
-                    new() { Simbolo = "L", Nome = "Perda ($)", ValorPadrao = 1 },
+                    new() { Simbolo = "Pg", Nome = "P(ganho)", ValorPadrao = 0.474, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "G", Nome = "Ganho ($)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Pp", Nome = "P(perda)", ValorPadrao = 0.526, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Perda ($)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "EV ($)",
-                Calcular = vars => vars["Pg"] * vars["G"] - vars["Pp"] * vars["L"]
+                Calcular = vars => vars["Pg"] * vars["G"] - vars["Pp"] * vars["L"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -385,13 +421,15 @@ public partial class FormulaService
                 AnoOrigin = "1960",
                 ExemploPratico = "Ra=1500, Rb=1700, K=20, vitória(S=1): E=1/(1+10^(200/400))=0,24 → Rnovo = 1500+20×0,76 = 1515",
                 Variaveis = [
-                    new() { Simbolo = "R", Nome = "Rating atual", ValorPadrao = 1500 },
-                    new() { Simbolo = "K", Nome = "Fator K", ValorPadrao = 20 },
-                    new() { Simbolo = "S", Nome = "Resultado (0, 0.5, 1)", ValorPadrao = 1 },
-                    new() { Simbolo = "E", Nome = "Resultado esperado", Descricao = "E = 1/(1+10^((Rb-Ra)/400))", ValorPadrao = 0.24 },
+                    new() { Simbolo = "R", Nome = "Rating atual", ValorPadrao = 1500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "K", Nome = "Fator K", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "S", Nome = "Resultado (0, 0.5, 1)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "E", Nome = "Resultado esperado", Descricao = "E = 1/(1+10^((Rb-Ra)/400))", ValorPadrao = 0.24, Unidade = "adim" },
                 ],
                 VariavelResultado = "R_novo",
-                Calcular = vars => vars["R"] + vars["K"] * (vars["S"] - vars["E"])
+                Calcular = vars => vars["R"] + vars["K"] * (vars["S"] - vars["E"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -404,8 +442,8 @@ public partial class FormulaService
                 AnoOrigin = "1654",
                 ExemploPratico = "Mega-Sena: C(60,6) = 50.063.860 → P(acerto) ≈ 1 em 50 milhões",
                 Variaveis = [
-                    new() { Simbolo = "n", Nome = "Total de números", ValorPadrao = 60, ValorMin = 1 },
-                    new() { Simbolo = "k", Nome = "Números escolhidos", ValorPadrao = 6, ValorMin = 1 },
+                    new() { Simbolo = "n", Nome = "Total de números", ValorPadrao = 60, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "Números escolhidos", ValorPadrao = 6, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "C(n,k)",
                 Calcular = vars =>
@@ -416,7 +454,9 @@ public partial class FormulaService
                     double r = 1;
                     for (int i = 0; i < k; i++) r = r * (n - i) / (i + 1);
                     return r;
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -429,12 +469,14 @@ public partial class FormulaService
                 AnoOrigin = "Milenar",
                 ExemploPratico = "Impacto em (30, 40)mm: d = √(900+1600) = 50 mm do centro",
                 Variaveis = [
-                    new() { Simbolo = "x", Nome = "Coord. x do impacto (mm)", ValorPadrao = 30 },
-                    new() { Simbolo = "y", Nome = "Coord. y do impacto (mm)", ValorPadrao = 40 },
+                    new() { Simbolo = "x", Nome = "Coord. x do impacto (mm)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y", Nome = "Coord. y do impacto (mm)", ValorPadrao = 40, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "d (mm)",
                 UnidadeResultado = "mm",
-                Calcular = vars => Math.Sqrt(vars["x"] * vars["x"] + vars["y"] * vars["y"])
+                Calcular = vars => Math.Sqrt(vars["x"] * vars["x"] + vars["y"] * vars["y"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -447,12 +489,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XVII",
                 ExemploPratico = "Airsoft: m=0,20g=0,0002kg, v=100m/s: E = 0,5×0,0002×10000 = 1,0 J (dentro do limite)",
                 Variaveis = [
-                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 0.0002 },
-                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 100 },
+                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 0.0002, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "E (Joules)",
                 UnidadeResultado = "J",
-                Calcular = vars => 0.5 * vars["m"] * vars["v"] * vars["v"]
+                Calcular = vars => 0.5 * vars["m"] * vars["v"] * vars["v"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -465,12 +509,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Score=85, rating=72, slope=130: Dif = (85−72)×113/130 = 11,3",
                 Variaveis = [
-                    new() { Simbolo = "S", Nome = "Score (tacadas)", ValorPadrao = 85 },
-                    new() { Simbolo = "CR", Nome = "Course Rating", ValorPadrao = 72 },
-                    new() { Simbolo = "SR", Nome = "Slope Rating", ValorPadrao = 130, ValorMin = 55 },
+                    new() { Simbolo = "S", Nome = "Score (tacadas)", ValorPadrao = 85, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "CR", Nome = "Course Rating", ValorPadrao = 72, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "SR", Nome = "Slope Rating", ValorPadrao = 130, ValorMin = 55, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Diferencial",
-                Calcular = vars => (vars["S"] - vars["CR"]) * 113.0 / vars["SR"]
+                Calcular = vars => (vars["S"] - vars["CR"]) * 113.0 / vars["SR"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -483,11 +529,13 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "Baixados: 150 pts, restante mão: 35 pts: Score = 150 − 35 = 115",
                 Variaveis = [
-                    new() { Simbolo = "Pos", Nome = "Pontos baixados", ValorPadrao = 150 },
-                    new() { Simbolo = "Neg", Nome = "Pontos restantes (mão)", ValorPadrao = 35 },
+                    new() { Simbolo = "Pos", Nome = "Pontos baixados", ValorPadrao = 150, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Neg", Nome = "Pontos restantes (mão)", ValorPadrao = 35, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Score final",
-                Calcular = vars => vars["Pos"] - vars["Neg"]
+                Calcular = vars => vars["Pos"] - vars["Neg"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -500,11 +548,11 @@ public partial class FormulaService
                 AnoOrigin = "2003",
                 ExemploPratico = "Tempos: 8,2 / 7,5 / 9,1 / 8,8 / 7,9 → descarta 7,5 e 9,1 → Ao5 = (8,2+8,8+7,9)/3 = 8,30s",
                 Variaveis = [
-                    new() { Simbolo = "t1", Nome = "Tempo 1 (s)", ValorPadrao = 8.2 },
-                    new() { Simbolo = "t2", Nome = "Tempo 2 (s)", ValorPadrao = 7.5 },
-                    new() { Simbolo = "t3", Nome = "Tempo 3 (s)", ValorPadrao = 9.1 },
-                    new() { Simbolo = "t4", Nome = "Tempo 4 (s)", ValorPadrao = 8.8 },
-                    new() { Simbolo = "t5", Nome = "Tempo 5 (s)", ValorPadrao = 7.9 },
+                    new() { Simbolo = "t1", Nome = "Tempo 1 (s)", ValorPadrao = 8.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t2", Nome = "Tempo 2 (s)", ValorPadrao = 7.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t3", Nome = "Tempo 3 (s)", ValorPadrao = 9.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t4", Nome = "Tempo 4 (s)", ValorPadrao = 8.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t5", Nome = "Tempo 5 (s)", ValorPadrao = 7.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Ao5 (s)",
                 UnidadeResultado = "s",
@@ -513,7 +561,9 @@ public partial class FormulaService
                     double[] t = [vars["t1"], vars["t2"], vars["t3"], vars["t4"], vars["t5"]];
                     Array.Sort(t);
                     return (t[1] + t[2] + t[3]) / 3.0;
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -526,11 +576,13 @@ public partial class FormulaService
                 AnoOrigin = "1995",
                 ExemploPratico = "R=1500, RD=100: intervalo 95% = [1300, 1700]. Após 30 jogos, RD pode cair para 50 → [1400, 1600]",
                 Variaveis = [
-                    new() { Simbolo = "R", Nome = "Rating", ValorPadrao = 1500 },
-                    new() { Simbolo = "RD", Nome = "Rating Deviation", ValorPadrao = 100 },
+                    new() { Simbolo = "R", Nome = "Rating", ValorPadrao = 1500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "RD", Nome = "Rating Deviation", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Limite superior",
-                Calcular = vars => vars["R"] + 2 * vars["RD"]
+                Calcular = vars => vars["R"] + 2 * vars["RD"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ FOTOGRAFIA (4 fórmulas) ═══
@@ -546,10 +598,10 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "f/2,8, c=0,03mm, d=3m, f=50mm: DoF ≈ 2×2,8×0,03×9/2500 = 0,00060m ≈ 0,60m ~ corrigindo unidades ~0,19m",
                 Variaveis = [
-                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 2.8 },
-                    new() { Simbolo = "c", Nome = "Círculo de confusão (mm)", ValorPadrao = 0.03 },
-                    new() { Simbolo = "d", Nome = "Distância ao sujeito (m)", ValorPadrao = 3 },
-                    new() { Simbolo = "f", Nome = "Dist. focal (mm)", ValorPadrao = 50, ValorMin = 1 },
+                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 2.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "c", Nome = "Círculo de confusão (mm)", ValorPadrao = 0.03, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "d", Nome = "Distância ao sujeito (m)", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "f", Nome = "Dist. focal (mm)", ValorPadrao = 50, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "DoF (m)",
                 UnidadeResultado = "m",
@@ -558,7 +610,9 @@ public partial class FormulaService
                     double fM = vars["f"] / 1000.0; // mm -> m
                     double cM = vars["c"] / 1000.0;
                     return 2 * vars["N"] * cM * vars["d"] * vars["d"] / (fM * fM);
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -571,10 +625,12 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "ISO 200, sol: f/16, velocidade 1/200s. ISO 400: 1/400s.",
                 Variaveis = [
-                    new() { Simbolo = "ISO", Nome = "ISO", ValorPadrao = 200 },
+                    new() { Simbolo = "ISO", Nome = "ISO", ValorPadrao = 200, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Velocidade (1/x seg)",
-                Calcular = vars => 1.0 / vars["ISO"]
+                Calcular = vars => 1.0 / vars["ISO"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -587,13 +643,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "f=35mm, f/11, c=0,03mm: H = 35²/(11×0,03) = 1225/0,33 = 3712 mm ≈ 3,7m",
                 Variaveis = [
-                    new() { Simbolo = "f", Nome = "Dist. focal (mm)", ValorPadrao = 35 },
-                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 11 },
-                    new() { Simbolo = "c", Nome = "CoC (mm)", ValorPadrao = 0.03, ValorMin = 0.001 },
+                    new() { Simbolo = "f", Nome = "Dist. focal (mm)", ValorPadrao = 35, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 11, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "c", Nome = "CoC (mm)", ValorPadrao = 0.03, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "H (mm)",
                 UnidadeResultado = "mm",
-                Calcular = vars => vars["f"] * vars["f"] / (vars["N"] * vars["c"])
+                Calcular = vars => vars["f"] * vars["f"] / (vars["N"] * vars["c"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -606,11 +664,13 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "f/8, 1/250s: EV = log₂(64/0,004) = log₂(16000) ≈ 13,97 (dia nublado brilhante)",
                 Variaveis = [
-                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 8 },
-                    new() { Simbolo = "t", Nome = "Tempo de exposição (s)", ValorPadrao = 0.004, ValorMin = 0.00001 },
+                    new() { Simbolo = "N", Nome = "Abertura (f-stop)", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t", Nome = "Tempo de exposição (s)", ValorPadrao = 0.004, ValorMin = 0.00001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "EV",
-                Calcular = vars => Math.Log(vars["N"] * vars["N"] / vars["t"]) / Math.Log(2)
+                Calcular = vars => Math.Log(vars["N"] * vars["N"] / vars["t"]) / Math.Log(2),
+                SubCategoria = "",
+                Unidades = "",
             },
         ]);
     }

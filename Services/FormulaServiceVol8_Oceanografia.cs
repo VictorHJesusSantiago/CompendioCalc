@@ -39,7 +39,8 @@ public partial class FormulaService
                 double lambda = inputs["lambda"];
                 
                 return Math.Sqrt(g * lambda / (2 * Math.PI));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -72,7 +73,8 @@ public partial class FormulaService
                 double c = inputs["c"];
                 
                 return lambda / c;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -103,7 +105,8 @@ public partial class FormulaService
                 double m0 = inputs["m0"];
                 
                 return 4 * Math.Sqrt(m0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -134,7 +137,8 @@ public partial class FormulaService
                 double v = inputs["v"];
                 
                 return 0.836 * Math.Pow(v, 2.0 / 3.0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -167,7 +171,8 @@ public partial class FormulaService
                 double C_ref = inputs["C_ref"];
                 
                 return (C / C_ref) * 35;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -210,7 +215,8 @@ public partial class FormulaService
                 double T0 = inputs["T0"];
                 
                 return rho0 + alpha_S * (S - S0) - beta_T * (T - T0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -247,7 +253,8 @@ public partial class FormulaService
                 return 1448.96 + 4.591 * T - 0.05304 * T * T + 0.0002374 * T * T * T
                        + (1.34 - 0.01 * T) * (S - 35)
                        + 0.016 * z;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -280,7 +287,8 @@ public partial class FormulaService
                 double f = inputs["f"];
                 
                 return A * f * f;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -317,7 +325,8 @@ public partial class FormulaService
                 double omega = inputs["omega"];
                 
                 return (eta * g * k) / omega;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -352,7 +361,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 
                 return U / Math.Sqrt(g_prime * h);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -387,7 +397,8 @@ public partial class FormulaService
                 double f = inputs["f"];
                 
                 return Math.Sqrt(g_prime * h) / f;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -422,7 +433,8 @@ public partial class FormulaService
                 if (Math.Abs(beta) < 1e-20) return 0;
                 
                 return (1 / beta) * dtau_dx;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -457,7 +469,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 
                 return nu / (f * h * h);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -490,7 +503,8 @@ public partial class FormulaService
                 double f = inputs["f"];
                 
                 return Math.Sqrt(2 * nu / f);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -527,7 +541,8 @@ public partial class FormulaService
                 double z = inputs["z"];
                 
                 return P_atm + rho * g * z;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -560,7 +575,8 @@ public partial class FormulaService
                 if (H_plus <= 0) return double.NaN;
                 
                 return -Math.Log10(H_plus);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -592,7 +608,8 @@ public partial class FormulaService
                 
                 // Empírica: Zs ≈ 1.7/Kd (aproximação comum)
                 return 1.7 / Kd;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -627,7 +644,8 @@ public partial class FormulaService
                 double B = inputs["B"];
                 
                 return alpha * I * B;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -662,7 +680,8 @@ public partial class FormulaService
                 double delta_pCO2 = inputs["delta_pCO2"];
                 
                 return k * K0 * delta_pCO2;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

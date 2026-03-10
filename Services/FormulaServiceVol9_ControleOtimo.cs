@@ -24,11 +24,12 @@ namespace CompendioCalc.Services
             Unidades = "depende do problema",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "L", Nome = "Custo instantâneo", Unidade = "$/s", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "lambda_f", Nome = "λ'f", Unidade = "$/s", ValorPadrao = 0.5, Obrigatoria = true }
+                new Variavel { Simbolo = "L", Nome = "Custo instantâneo", Unidade = "$/s", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "lambda_f", Nome = "λ'f", Unidade = "$/s", ValorPadrao = 0.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["L"] + v["lambda_f"], // Hamiltoniano
-            VariavelResultado = "H", UnidadeResultado = "$/s"
+            VariavelResultado = "H", UnidadeResultado = "$/s",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL065_EquacaoHamiltonJacobiBellman() => new Formula
@@ -44,11 +45,12 @@ namespace CompendioCalc.Services
             Unidades = "custo",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "L", Nome = "Custo instantâneo", Unidade = "$", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "V_x_f", Nome = "∇V·f", Unidade = "$/s", ValorPadrao = -0.5, Obrigatoria = true }
+                new Variavel { Simbolo = "L", Nome = "Custo instantâneo", Unidade = "$", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V_x_f", Nome = "∇V·f", Unidade = "$/s", ValorPadrao = -0.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["L"] + v["V_x_f"], // lado direito HJB
-            VariavelResultado = "RHS HJB", UnidadeResultado = "$/s"
+            VariavelResultado = "RHS HJB", UnidadeResultado = "$/s",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL066_ReguladorQuadraticoLinear() => new Formula
@@ -64,12 +66,13 @@ namespace CompendioCalc.Services
             Unidades = "matriz ganho",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "P11", Nome = "P[1,1]", Unidade = "adim", ValorPadrao = 10, Obrigatoria = true },
-                new Variavel { Simbolo = "B1", Nome = "B[1]", Unidade = "adim", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "R", Nome = "R peso", Unidade = "adim", ValorPadrao = 1, ValorMin = 0.001, Obrigatoria = true }
+                new Variavel { Simbolo = "P11", Nome = "P[1,1]", Unidade = "adim", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "B1", Nome = "B[1]", Unidade = "adim", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "R", Nome = "R peso", Unidade = "adim", ValorPadrao = 1, ValorMin = 0.001, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["P11"] * v["B1"] / v["R"], // K simplificado 1D
-            VariavelResultado = "Ganho K", UnidadeResultado = "adimensional"
+            VariavelResultado = "Ganho K", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL067_FiltroKalman() => new Formula
@@ -85,12 +88,13 @@ namespace CompendioCalc.Services
             Unidades = "estado",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "x_pred", Nome = "x̂ predito", Unidade = "m", ValorPadrao = 10, Obrigatoria = true },
-                new Variavel { Simbolo = "y_meas", Nome = "Medição y", Unidade = "m", ValorPadrao = 10.5, Obrigatoria = true },
-                new Variavel { Simbolo = "K", Nome = "Ganho Kalman", Unidade = "adim", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "x_pred", Nome = "x̂ predito", Unidade = "m", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "y_meas", Nome = "Medição y", Unidade = "m", ValorPadrao = 10.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "K", Nome = "Ganho Kalman", Unidade = "adim", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["x_pred"] + v["K"] * (v["y_meas"] - v["x_pred"]),
-            VariavelResultado = "x̂ corrigido", UnidadeResultado = "m"
+            VariavelResultado = "x̂ corrigido", UnidadeResultado = "m",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL068_EstabilidadeLyapunov() => new Formula
@@ -106,11 +110,12 @@ namespace CompendioCalc.Services
             Unidades = "energia",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "V", Nome = "V(x)", Unidade = "J", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "V_dot", Nome = "V̇(x)", Unidade = "W", ValorPadrao = -1, ValorMax = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "V", Nome = "V(x)", Unidade = "J", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V_dot", Nome = "V̇(x)", Unidade = "W", ValorPadrao = -1, ValorMax = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => (v["V"] > 0 && v["V_dot"] < 0) ? 1.0 : 0.0, // 1=estável
-            VariavelResultado = "Estável", UnidadeResultado = "bool"
+            VariavelResultado = "Estável", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL069_MargemFaseGanho() => new Formula
@@ -126,11 +131,12 @@ namespace CompendioCalc.Services
             Unidades = "PM em °, GM em dB",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "phase_at_wgc", Nome = "∠L(jω_cg)", Unidade = "°", ValorPadrao = -120, ValorMax = -1, Obrigatoria = true },
-                new Variavel { Simbolo = "mag_at_wpc", Nome = "|L(jω_pc)|", Unidade = "adim", ValorPadrao = 0.5, ValorMin = 0.01, Obrigatoria = true }
+                new Variavel { Simbolo = "phase_at_wgc", Nome = "∠L(jω_cg)", Unidade = "°", ValorPadrao = -120, ValorMax = -1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "mag_at_wpc", Nome = "|L(jω_pc)|", Unidade = "adim", ValorPadrao = 0.5, ValorMin = 0.01, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { double PM = 180 + v["phase_at_wgc"]; double GM = 20 * Math.Log10(1.0 / v["mag_at_wpc"]); return PM; }, // retorna PM
-            VariavelResultado = "Phase Margin", UnidadeResultado = "°"
+            VariavelResultado = "Phase Margin", UnidadeResultado = "°",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL070_ControleHInfinity() => new Formula
@@ -146,10 +152,11 @@ namespace CompendioCalc.Services
             Unidades = "adimensional (norma)",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "gamma", Nome = "Nível γ", Unidade = "adim", ValorPadrao = 1.5, ValorMin = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "gamma", Nome = "Nível γ", Unidade = "adim", ValorPadrao = 1.5, ValorMin = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["gamma"],
-            VariavelResultado = "Nível H∞", UnidadeResultado = "adimensional"
+            VariavelResultado = "Nível H∞", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         // Continua fórmulas 071-082 (mais 12)...
@@ -166,10 +173,11 @@ namespace CompendioCalc.Services
             Unidades = "matriz ganho",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "polo_desejado", Nome = "λ desejado", Unidade = "rad/s", ValorPadrao = -5, ValorMax = -0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "polo_desejado", Nome = "λ desejado", Unidade = "rad/s", ValorPadrao = -5, ValorMax = -0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["polo_desejado"],
-            VariavelResultado = "Polo alocado", UnidadeResultado = "rad/s"
+            VariavelResultado = "Polo alocado", UnidadeResultado = "rad/s",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL072_ObservadorLuenberger() => new Formula
@@ -185,12 +193,13 @@ namespace CompendioCalc.Services
             Unidades = "estado",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "y", Nome = "Saída medida", Unidade = "m", ValorPadrao = 5, Obrigatoria = true },
-                new Variavel { Simbolo = "C_x_hat", Nome = "Cx̂", Unidade = "m", ValorPadrao = 4.8, Obrigatoria = true },
-                new Variavel { Simbolo = "L", Nome = "Ganho L", Unidade = "adim", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "y", Nome = "Saída medida", Unidade = "m", ValorPadrao = 5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "C_x_hat", Nome = "Cx̂", Unidade = "m", ValorPadrao = 4.8, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "L", Nome = "Ganho L", Unidade = "adim", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["L"] * (v["y"] - v["C_x_hat"]), // correção L(y−Cx̂)
-            VariavelResultado = "Correção observador", UnidadeResultado = "m/s"
+            VariavelResultado = "Correção observador", UnidadeResultado = "m/s",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL073_ControleAdaptativoMRAC() => new Formula
@@ -206,11 +215,12 @@ namespace CompendioCalc.Services
             Unidades = "parâmetro",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "e", Nome = "Erro tracking", Unidade = "m", ValorPadrao = 0.1, Obrigatoria = true },
-                new Variavel { Simbolo = "Gamma", Nome = "Taxa adaptação", Unidade = "1/s", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "e", Nome = "Erro tracking", Unidade = "m", ValorPadrao = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Gamma", Nome = "Taxa adaptação", Unidade = "1/s", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => -v["Gamma"] * v["e"], // θ̇ simplificado 1D
-            VariavelResultado = "θ̇ adaptação", UnidadeResultado = "param/s"
+            VariavelResultado = "θ̇ adaptação", UnidadeResultado = "param/s",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL074_CondicoesLMI() => new Formula
@@ -226,10 +236,11 @@ namespace CompendioCalc.Services
             Unidades = "matriz",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "lambda_max", Nome = "λ_max(LMI)", Unidade = "adim", ValorPadrao = -0.5, ValorMax = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "lambda_max", Nome = "λ_max(LMI)", Unidade = "adim", ValorPadrao = -0.5, ValorMax = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["lambda_max"] < 0 ? 1.0 : 0.0, // 1=LMI satisfeita
-            VariavelResultado = "LMI factível", UnidadeResultado = "bool"
+            VariavelResultado = "LMI factível", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL075_CriterioEstabilidadeNyquist() => new Formula
@@ -245,11 +256,12 @@ namespace CompendioCalc.Services
             Unidades = "contagem",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "N", Nome = "Envolvimentos", Unidade = "contagem", ValorPadrao = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "P", Nome = "Polos instáveis MA", Unidade = "contagem", ValorPadrao = 0, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "N", Nome = "Envolvimentos", Unidade = "contagem", ValorPadrao = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "P", Nome = "Polos instáveis MA", Unidade = "contagem", ValorPadrao = 0, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["N"] + v["P"], // Z=N+P: polos instáveis MF
-            VariavelResultado = "Z polos instáveis MF", UnidadeResultado = "contagem"
+            VariavelResultado = "Z polos instáveis MF", UnidadeResultado = "contagem",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL076_TeoriaFloquet() => new Formula
@@ -265,10 +277,11 @@ namespace CompendioCalc.Services
             Unidades = "adimensional",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "rho", Nome = "Multiplicador Floquet", Unidade = "adim", ValorPadrao = 0.95, Obrigatoria = true }
+                new Variavel { Simbolo = "rho", Nome = "Multiplicador Floquet", Unidade = "adim", ValorPadrao = 0.95, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => Math.Abs(v["rho"]) < 1.0 ? 1.0 : 0.0, // 1=estável
-            VariavelResultado = "Estabilidade Floquet", UnidadeResultado = "bool"
+            VariavelResultado = "Estabilidade Floquet", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL077_ControleDiscreto() => new Formula
@@ -284,11 +297,12 @@ namespace CompendioCalc.Services
             Unidades = "matriz",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "A", Nome = "Matriz A", Unidade = "1/s", ValorPadrao = -2, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Período amostragem", Unidade = "s", ValorPadrao = 0.1, ValorMin = 0.001, Obrigatoria = true }
+                new Variavel { Simbolo = "A", Nome = "Matriz A", Unidade = "1/s", ValorPadrao = -2, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Período amostragem", Unidade = "s", ValorPadrao = 0.1, ValorMin = 0.001, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => Math.Exp(v["A"] * v["T"]), // Φ=e^{AT} escalar
-            VariavelResultado = "Φ discreto", UnidadeResultado = "adimensional"
+            VariavelResultado = "Φ discreto", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL078_EstabilidadeLyapunovDiscreta() => new Formula
@@ -304,10 +318,11 @@ namespace CompendioCalc.Services
             Unidades = "matriz",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "lambda_max_Phi", Nome = "max|λ(Φ)|", Unidade = "adim", ValorPadrao = 0.95, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "lambda_max_Phi", Nome = "max|λ(Φ)|", Unidade = "adim", ValorPadrao = 0.95, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["lambda_max_Phi"] < 1.0 ? 1.0 : 0.0, // 1=estável
-            VariavelResultado = "Estável discreto", UnidadeResultado = "bool"
+            VariavelResultado = "Estável discreto", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL079_BifurcacaoHopf() => new Formula
@@ -323,10 +338,11 @@ namespace CompendioCalc.Services
             Unidades = "depende do sistema",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "mu", Nome = "Parâmetro bifurcação μ", Unidade = "adim", ValorPadrao = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "mu", Nome = "Parâmetro bifurcação μ", Unidade = "adim", ValorPadrao = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["mu"] > 0 ? 1.0 : 0.0, // 1=ciclo limite existe (supercrítico)
-            VariavelResultado = "Ciclo limite", UnidadeResultado = "bool"
+            VariavelResultado = "Ciclo limite", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL080_ControlePreditivo() => new Formula
@@ -342,12 +358,13 @@ namespace CompendioCalc.Services
             Unidades = "custo",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "N", Nome = "Horizonte predição", Unidade = "passos", ValorPadrao = 10, ValorMin = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "Q", Nome = "Peso Q saída", Unidade = "adim", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "R", Nome = "Peso R entrada", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "N", Nome = "Horizonte predição", Unidade = "passos", ValorPadrao = 10, ValorMin = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Q", Nome = "Peso Q saída", Unidade = "adim", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "R", Nome = "Peso R entrada", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["N"] * (v["Q"] + v["R"]), // aproximação custo
-            VariavelResultado = "Custo MPC aprox", UnidadeResultado = "adimensional"
+            VariavelResultado = "Custo MPC aprox", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL081_CriterioRouthHurwitz() => new Formula
@@ -363,10 +380,11 @@ namespace CompendioCalc.Services
             Unidades = "contagem",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "n_sign_changes", Nome = "Mudanças sinal", Unidade = "contagem", ValorPadrao = 0, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "n_sign_changes", Nome = "Mudanças sinal", Unidade = "contagem", ValorPadrao = 0, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["n_sign_changes"] == 0 ? 1.0 : 0.0, // 1=estável
-            VariavelResultado = "Estável Routh", UnidadeResultado = "bool"
+            VariavelResultado = "Estável Routh", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_CTRL082_SistemasFlatDiferencial() => new Formula
@@ -382,11 +400,12 @@ namespace CompendioCalc.Services
             Unidades = "depende do sistema",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "y", Nome = "Saída flat", Unidade = "m", ValorPadrao = 5, Obrigatoria = true },
-                new Variavel { Simbolo = "y_dot", Nome = "ẏ", Unidade = "m/s", ValorPadrao = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "y", Nome = "Saída flat", Unidade = "m", ValorPadrao = 5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "y_dot", Nome = "ẏ", Unidade = "m/s", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["y"] + v["y_dot"], // exemplo simplificado x=φ(y,ẏ)
-            VariavelResultado = "Estado x via flatness", UnidadeResultado = "m"
+            VariavelResultado = "Estado x via flatness", UnidadeResultado = "m",
+            Icone = "∑",
         };
     }
 }

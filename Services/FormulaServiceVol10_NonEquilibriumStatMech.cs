@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1997",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Trabalho W (kJ/mol)", Simbolo = "W", Unidade = "kJ/mol", ValorPadrao = 10 },
-                        new Variavel { Nome = "ΔF (kJ/mol)", Simbolo = "ΔF", Unidade = "kJ/mol", ValorPadrao = 8 },
-                        new Variavel { Nome = "Temperatura T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300 }
+                        new Variavel { Nome = "Trabalho W (kJ/mol)", Simbolo = "W", Unidade = "kJ/mol", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔF (kJ/mol)", Simbolo = "ΔF", Unidade = "kJ/mol", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Temperatura T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "W_diss",
                     UnidadeResultado = "kJ/mol",
@@ -44,7 +44,8 @@ namespace CompendioCalc.Services
                         double W_diss = W - deltaF;
                         return W_diss;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-378: Teorema de Crooks
@@ -64,9 +65,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "W (kJ/mol)", Simbolo = "W", Unidade = "kJ/mol", ValorPadrao = 12 },
-                        new Variavel { Nome = "ΔF (kJ/mol)", Simbolo = "dF", Unidade = "kJ/mol", ValorPadrao = 8 },
-                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300 }
+                        new Variavel { Nome = "W (kJ/mol)", Simbolo = "W", Unidade = "kJ/mol", ValorPadrao = 12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔF (kJ/mol)", Simbolo = "dF", Unidade = "kJ/mol", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -77,7 +78,8 @@ namespace CompendioCalc.Services
                         double R = 0.008314;
                         return Math.Exp((W - dF) / (R * T));
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-379: Produção de entropia
@@ -97,11 +99,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "W/(m³·K)",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "J fluxo", Simbolo = "J", Unidade = "SI", ValorPadrao = 2 },
-                        new Variavel { Nome = "X força", Simbolo = "X", Unidade = "SI", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "J fluxo", Simbolo = "J", Unidade = "SI", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "X força", Simbolo = "X", Unidade = "SI", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["J fluxo"] * inputs["X força"],
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-380: Relações de Onsager
@@ -121,11 +124,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "L_ij", Simbolo = "Lij", Unidade = "", ValorPadrao = 1.8 },
-                        new Variavel { Nome = "L_ji", Simbolo = "Lji", Unidade = "", ValorPadrao = 1.7 }
+                        new Variavel { Nome = "L_ij", Simbolo = "Lij", Unidade = "", ValorPadrao = 1.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "L_ji", Simbolo = "Lji", Unidade = "", ValorPadrao = 1.7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => Math.Abs(inputs["L_ij"] - inputs["L_ji"]),
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-381: Flutuação-dissipação
@@ -145,9 +149,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "SI",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300 },
-                        new Variavel { Nome = "Re[χ(ω)]", Simbolo = "chi", Unidade = "", ValorPadrao = 0.8 },
-                        new Variavel { Nome = "ω (rad/s)", Simbolo = "w", Unidade = "rad/s", ValorPadrao = 100 }
+                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Re[χ(ω)]", Simbolo = "chi", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ω (rad/s)", Simbolo = "w", Unidade = "rad/s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -158,7 +162,8 @@ namespace CompendioCalc.Services
                         double kB = 1.380649e-23;
                         return 2 * kB * T * chi / w;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-382: Equação de Fokker-Planck (drift)
@@ -178,9 +183,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "A drift", Simbolo = "A", Unidade = "", ValorPadrao = 0.4 },
-                        new Variavel { Nome = "D difusão", Simbolo = "D", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "L escala", Simbolo = "L", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "A drift", Simbolo = "A", Unidade = "", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "D difusão", Simbolo = "D", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "L escala", Simbolo = "L", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -190,7 +195,8 @@ namespace CompendioCalc.Services
                         if (D == 0) return 0;
                         return A * L / D;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-383: Einstein-Smoluchowski
@@ -210,11 +216,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m²/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ mobilidade (m/N·s)", Simbolo = "mu", Unidade = "m/N·s", ValorPadrao = 4e7 },
-                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300 }
+                        new Variavel { Nome = "μ mobilidade (m/N·s)", Simbolo = "mu", Unidade = "m/N·s", ValorPadrao = 4e7, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T (K)", Simbolo = "T", Unidade = "K", ValorPadrao = 300, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => 1.380649e-23 * inputs["T (K)"] * inputs["μ mobilidade (m/N·s)"],
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-384: Caminhada aleatória
@@ -234,11 +241,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "D (m²/s)", Simbolo = "D", Unidade = "m²/s", ValorPadrao = 1e-9 },
-                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 100 }
+                        new Variavel { Nome = "D (m²/s)", Simbolo = "D", Unidade = "m²/s", ValorPadrao = 1e-9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => 2 * inputs["D (m²/s)"] * inputs["t (s)"],
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-385: Equação mestra discreta
@@ -258,11 +266,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "1/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Entrada ΣWjiPj", Simbolo = "in", Unidade = "1/s", ValorPadrao = 0.35 },
-                        new Variavel { Nome = "Saída ΣWijPi", Simbolo = "out", Unidade = "1/s", ValorPadrao = 0.20 }
+                        new Variavel { Nome = "Entrada ΣWjiPj", Simbolo = "in", Unidade = "1/s", ValorPadrao = 0.35, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Saída ΣWijPi", Simbolo = "out", Unidade = "1/s", ValorPadrao = 0.20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["Entrada ΣWjiPj"] - inputs["Saída ΣWijPi"],
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-386: Balanço detalhado
@@ -282,11 +291,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "W_ij·P_i*", Simbolo = "a", Unidade = "", ValorPadrao = 0.12 },
-                        new Variavel { Nome = "W_ji·P_j*", Simbolo = "b", Unidade = "", ValorPadrao = 0.10 }
+                        new Variavel { Nome = "W_ij·P_i*", Simbolo = "a", Unidade = "", ValorPadrao = 0.12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "W_ji·P_j*", Simbolo = "b", Unidade = "", ValorPadrao = 0.10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => Math.Abs(inputs["W_ij·P_i*"] - inputs["W_ji·P_j*"]),
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-387: H-teorema
@@ -306,10 +316,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Taxa colisional", Simbolo = "c", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "Taxa colisional", Simbolo = "c", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => -Math.Abs(inputs["Taxa colisional"]),
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-388: Relaxação exponencial
@@ -329,10 +340,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "A0", Simbolo = "A0", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "A_eq", Simbolo = "Aeq", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "τ (s)", Simbolo = "tau", Unidade = "s", ValorPadrao = 5 },
-                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 10 }
+                        new Variavel { Nome = "A0", Simbolo = "A0", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "A_eq", Simbolo = "Aeq", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "τ (s)", Simbolo = "tau", Unidade = "s", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -343,7 +354,8 @@ namespace CompendioCalc.Services
                         if (tau <= 0) return Aeq;
                         return Aeq + (A0 - Aeq) * Math.Exp(-t / tau);
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-389: Kramers rate
@@ -363,11 +375,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "1/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ν0 (1/s)", Simbolo = "nu0", Unidade = "1/s", ValorPadrao = 1e9 },
-                        new Variavel { Nome = "ΔU/(kBT)", Simbolo = "u", Unidade = "", ValorPadrao = 20 }
+                        new Variavel { Nome = "ν0 (1/s)", Simbolo = "nu0", Unidade = "1/s", ValorPadrao = 1e9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔU/(kBT)", Simbolo = "u", Unidade = "", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["ν0 (1/s)"] * Math.Exp(-inputs["ΔU/(kBT)"]),
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-390: Número de Péclet
@@ -387,9 +400,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 1e-3 },
-                        new Variavel { Nome = "L (m)", Simbolo = "L", Unidade = "m", ValorPadrao = 1e-3 },
-                        new Variavel { Nome = "D (m²/s)", Simbolo = "D", Unidade = "m²/s", ValorPadrao = 1e-9 }
+                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 1e-3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "L (m)", Simbolo = "L", Unidade = "m", ValorPadrao = 1e-3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "D (m²/s)", Simbolo = "D", Unidade = "m²/s", ValorPadrao = 1e-9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -397,7 +410,8 @@ namespace CompendioCalc.Services
                         if (D == 0) return 0;
                         return inputs["v (m/s)"] * inputs["L (m)"] / D;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-391: Reynolds entrópico (produção normalizada)
@@ -417,8 +431,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ", Simbolo = "s", Unidade = "", ValorPadrao = 0.45 },
-                        new Variavel { Nome = "σ_ref", Simbolo = "sr", Unidade = "", ValorPadrao = 0.30 }
+                        new Variavel { Nome = "σ", Simbolo = "s", Unidade = "", ValorPadrao = 0.45, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_ref", Simbolo = "sr", Unidade = "", ValorPadrao = 0.30, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -426,7 +440,8 @@ namespace CompendioCalc.Services
                         if (sr == 0) return 0;
                         return inputs["σ"] / sr;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-392: Tempo de correlação
@@ -446,9 +461,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C0", Simbolo = "C0", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "τ_c (s)", Simbolo = "tc", Unidade = "s", ValorPadrao = 2 },
-                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 4 }
+                        new Variavel { Nome = "C0", Simbolo = "C0", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "τ_c (s)", Simbolo = "tc", Unidade = "s", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 4, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -458,7 +473,8 @@ namespace CompendioCalc.Services
                         if (tc <= 0) return 0;
                         return C0 * Math.Exp(-t / tc);
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-393: Princípio de mínima produção (linear)
@@ -478,11 +494,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ atual", Simbolo = "s", Unidade = "", ValorPadrao = 0.42 },
-                        new Variavel { Nome = "σ candidato", Simbolo = "sc", Unidade = "", ValorPadrao = 0.40 }
+                        new Variavel { Nome = "σ atual", Simbolo = "s", Unidade = "", ValorPadrao = 0.42, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ candidato", Simbolo = "sc", Unidade = "", ValorPadrao = 0.40, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => Math.Min(inputs["σ atual"], inputs["σ candidato"]),
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-394: Teorema central limite para fluxos
@@ -502,8 +519,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ desvio", Simbolo = "sigma", Unidade = "", ValorPadrao = 0.8 },
-                        new Variavel { Nome = "N amostras", Simbolo = "N", Unidade = "", ValorPadrao = 100 }
+                        new Variavel { Nome = "σ desvio", Simbolo = "sigma", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "N amostras", Simbolo = "N", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -512,7 +529,8 @@ namespace CompendioCalc.Services
                         if (N <= 0) return 0;
                         return sigma / Math.Sqrt(N);
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 },
 
                 // V10-395: Função de partição efetiva (2 estados)
@@ -532,8 +550,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k12 (1/s)", Simbolo = "k12", Unidade = "1/s", ValorPadrao = 3 },
-                        new Variavel { Nome = "k21 (1/s)", Simbolo = "k21", Unidade = "1/s", ValorPadrao = 1 }
+                        new Variavel { Nome = "k12 (1/s)", Simbolo = "k12", Unidade = "1/s", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k21 (1/s)", Simbolo = "k21", Unidade = "1/s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -543,7 +561,8 @@ namespace CompendioCalc.Services
                         if (den <= 0) return 0;
                         return k21 / den;
                     },
-                    Icone = "📈"
+                    Icone = "📈",
+                    Unidades = "",
                 }
             });
         }

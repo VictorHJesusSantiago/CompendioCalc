@@ -52,7 +52,8 @@ public partial class FormulaService
                         val = (val * (a % n)) % n;
                     }
                     return double.NaN;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -76,7 +77,8 @@ public partial class FormulaService
                     if (vars["G"] < vars["H"]) return double.NaN;
                     if ((int)vars["G"] % (int)vars["H"] != 0) return double.NaN; // Violaria Lagrange
                     return vars["G"] / vars["H"];
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -96,7 +98,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "|G×H|",
                 UnidadeResultado = "",
-                Calcular = vars => vars["G"] * vars["H"]
+                Calcular = vars => vars["G"] * vars["H"],
+                Unidades = "",
             },
 
             // 1.2 Anéis e Corpos
@@ -117,7 +120,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "q = pⁿ",
                 UnidadeResultado = "elementos",
-                Calcular = vars => Math.Pow(vars["p"], vars["n"])
+                Calcular = vars => Math.Pow(vars["p"], vars["n"]),
+                Unidades = "",
             },
 
             new Formula
@@ -136,7 +140,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "[E:F]",
                 UnidadeResultado = "",
-                Calcular = vars => vars["E"]
+                Calcular = vars => vars["E"],
+                Unidades = "",
             },
         ]);
     }
@@ -166,7 +171,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "d(x,y)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(Math.Pow(vars["y1"] - vars["x1"], 2) + Math.Pow(vars["y2"] - vars["x2"], 2))
+                Calcular = vars => Math.Sqrt(Math.Pow(vars["y1"] - vars["x1"], 2) + Math.Pow(vars["y2"] - vars["x2"], 2)),
+                Unidades = "",
             },
 
             new Formula
@@ -188,7 +194,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "d₁(x,y)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Abs(vars["y1"] - vars["x1"]) + Math.Abs(vars["y2"] - vars["x2"])
+                Calcular = vars => Math.Abs(vars["y1"] - vars["x1"]) + Math.Abs(vars["y2"] - vars["x2"]),
+                Unidades = "",
             },
 
             new Formula
@@ -210,7 +217,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "d_∞(x,y)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Max(Math.Abs(vars["y1"] - vars["x1"]), Math.Abs(vars["y2"] - vars["x2"]))
+                Calcular = vars => Math.Max(Math.Abs(vars["y1"] - vars["x1"]), Math.Abs(vars["y2"] - vars["x2"])),
+                Unidades = "",
             },
 
             new Formula
@@ -231,7 +239,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "χ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V"] - vars["E"] + vars["F"]
+                Calcular = vars => vars["V"] - vars["E"] + vars["F"],
+                Unidades = "",
             },
         ]);
     }
@@ -258,7 +267,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "κ",
                 UnidadeResultado = "1/m",
-                Calcular = vars => 1.0 / vars["R"]
+                Calcular = vars => 1.0 / vars["R"],
+                Unidades = "",
             },
 
             new Formula
@@ -278,7 +288,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "K",
                 UnidadeResultado = "1/m²",
-                Calcular = vars => vars["k1"] * vars["k2"]
+                Calcular = vars => vars["k1"] * vars["k2"],
+                Unidades = "",
             },
 
             new Formula
@@ -298,7 +309,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "H",
                 UnidadeResultado = "1/m",
-                Calcular = vars => (vars["k1"] + vars["k2"]) / 2.0
+                Calcular = vars => (vars["k1"] + vars["k2"]) / 2.0,
+                Unidades = "",
             },
 
             new Formula
@@ -317,7 +329,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "∫∫K dA",
                 UnidadeResultado = "",
-                Calcular = vars => 2 * Math.PI * vars["chi"]
+                Calcular = vars => 2 * Math.PI * vars["chi"],
+                Unidades = "",
             },
         ]);
     }
@@ -347,7 +360,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "L (reta)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(Math.Pow(vars["x2"] - vars["x1"], 2) + Math.Pow(vars["y2"] - vars["y1"], 2))
+                Calcular = vars => Math.Sqrt(Math.Pow(vars["x2"] - vars["x1"], 2) + Math.Pow(vars["y2"] - vars["y1"], 2)),
+                Unidades = "",
             },
 
             new Formula
@@ -369,7 +383,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "H (oscilador)",
                 UnidadeResultado = "J",
-                Calcular = vars => Math.Pow(vars["p"], 2) / (2 * vars["m"]) + 0.5 * vars["k"] * Math.Pow(vars["q"], 2)
+                Calcular = vars => Math.Pow(vars["p"], 2) / (2 * vars["m"]) + 0.5 * vars["k"] * Math.Pow(vars["q"], 2),
+                Unidades = "",
             },
         ]);
     }
@@ -403,7 +418,8 @@ public partial class FormulaService
                     double result = 1;
                     for (int i = 2; i <= n; i++) result *= i;
                     return result;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -425,7 +441,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double n = vars["n"];
                     return Math.Sqrt(2 * Math.PI * n) * Math.Pow(n / Math.E, n);
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -459,7 +476,8 @@ public partial class FormulaService
                         return (gx * gy) / gxy;
                     }
                     return double.NaN; // Requer função Gamma completa
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -489,7 +507,8 @@ public partial class FormulaService
                         3 => (5 * x * x * x - 3 * x) / 2.0,
                         _ => double.NaN
                     };
-                }
+                },
+                Unidades = "",
             },
         ]);
     }
@@ -517,7 +536,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "|z|",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"] * vars["x"] + vars["y"] * vars["y"])
+                Calcular = vars => Math.Sqrt(vars["x"] * vars["x"] + vars["y"] * vars["y"]),
+                Unidades = "",
             },
 
             new Formula
@@ -537,7 +557,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "arg(z) [rad]",
                 UnidadeResultado = "rad",
-                Calcular = vars => Math.Atan2(vars["y"], vars["x"])
+                Calcular = vars => Math.Atan2(vars["y"], vars["x"]),
+                Unidades = "",
             },
 
             new Formula
@@ -556,7 +577,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "|e^(iθ)|",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 // |e^(iθ)| = 1 sempre
+                Calcular = vars => 1.0,
+                Unidades = "", // |e^(iθ)| = 1 sempre
             },
 
             new Formula
@@ -575,7 +597,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Res(f,a)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] // Para polo simples f(z)=A/(z-a), resíduo é A
+                Calcular = vars => vars["A"],
+                Unidades = "", // Para polo simples f(z)=A/(z-a), resíduo é A
             },
         ]);
     }

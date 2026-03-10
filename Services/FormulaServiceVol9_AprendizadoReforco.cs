@@ -24,12 +24,13 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "r", Nome = "Recompensa", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "gamma", Nome = "Desconto γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "V_next", Nome = "V(s')", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true }
+                new Variavel { Simbolo = "r", Nome = "Recompensa", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "gamma", Nome = "Desconto γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V_next", Nome = "V(s')", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["r"] + v["gamma"] * v["V_next"],
-            VariavelResultado = "V(s)", UnidadeResultado = "reward"
+            VariavelResultado = "V(s)", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL084_FuncaoAcaoValor() => new Formula
@@ -45,14 +46,15 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "r", Nome = "Recompensa", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "gamma", Nome = "Desconto γ", Unidade = "adim", ValorPadrao = 0.99, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "max_Q_next", Nome = "max Q(s',a')", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true },
-                new Variavel { Simbolo = "alpha", Nome = "Taxa aprendizado α", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "Q_old", Nome = "Q(s,a) antigo", Unidade = "reward", ValorPadrao = 12, Obrigatoria = true }
+                new Variavel { Simbolo = "r", Nome = "Recompensa", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "gamma", Nome = "Desconto γ", Unidade = "adim", ValorPadrao = 0.99, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "max_Q_next", Nome = "max Q(s',a')", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "alpha", Nome = "Taxa aprendizado α", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Q_old", Nome = "Q(s,a) antigo", Unidade = "reward", ValorPadrao = 12, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["Q_old"] + v["alpha"] * (v["r"] + v["gamma"] * v["max_Q_next"] - v["Q_old"]),
-            VariavelResultado = "Q(s,a) novo", UnidadeResultado = "reward"
+            VariavelResultado = "Q(s,a) novo", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL085_PolicyGradient() => new Formula
@@ -68,11 +70,12 @@ namespace CompendioCalc.Services
             Unidades = "gradiente",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "G_t", Nome = "Return G_t", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true },
-                new Variavel { Simbolo = "log_pi", Nome = "log π(a|s)", Unidade = "log-prob", ValorPadrao = -1.2, ValorMax = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "G_t", Nome = "Return G_t", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "log_pi", Nome = "log π(a|s)", Unidade = "log-prob", ValorPadrao = -1.2, ValorMax = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["G_t"] * v["log_pi"], // ∇θ J ∝ G·∇logπ
-            VariavelResultado = "∇J term", UnidadeResultado = "gradiente"
+            VariavelResultado = "∇J term", UnidadeResultado = "gradiente",
+            Icone = "∑",
         };
 
         private Formula V9_RL086_ActorCritic() => new Formula
@@ -88,11 +91,12 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "Q", Nome = "Q(s,a)", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true },
-                new Variavel { Simbolo = "V", Nome = "V(s)", Unidade = "reward", ValorPadrao = 12, Obrigatoria = true }
+                new Variavel { Simbolo = "Q", Nome = "Q(s,a)", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V", Nome = "V(s)", Unidade = "reward", ValorPadrao = 12, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["Q"] - v["V"],
-            VariavelResultado = "Advantage A", UnidadeResultado = "reward"
+            VariavelResultado = "Advantage A", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL087_TDLearning() => new Formula
@@ -108,14 +112,15 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "V_s", Nome = "V(s_t)", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true },
-                new Variavel { Simbolo = "r", Nome = "r_{t+1}", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "V_s_next", Nome = "V(s_{t+1})", Unidade = "reward", ValorPadrao = 11, Obrigatoria = true },
-                new Variavel { Simbolo = "alpha", Nome = "α", Unidade = "adim", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "V_s", Nome = "V(s_t)", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "r", Nome = "r_{t+1}", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V_s_next", Nome = "V(s_{t+1})", Unidade = "reward", ValorPadrao = 11, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "alpha", Nome = "α", Unidade = "adim", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { double td_error = v["r"] + v["gamma"] * v["V_s_next"] - v["V_s"]; return v["V_s"] + v["alpha"] * td_error; },
-            VariavelResultado = "V(s) novo", UnidadeResultado = "reward"
+            VariavelResultado = "V(s) novo", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         // Continue com mais fórmulas até 102...
@@ -132,11 +137,12 @@ namespace CompendioCalc.Services
             Unidades = "probabilidade",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "epsilon", Nome = "ε", Unidade = "prob", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "n_actions", Nome = "|A|", Unidade = "contagem", ValorPadrao = 4, ValorMin = 2, Obrigatoria = true }
+                new Variavel { Simbolo = "epsilon", Nome = "ε", Unidade = "prob", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n_actions", Nome = "|A|", Unidade = "contagem", ValorPadrao = 4, ValorMin = 2, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => (1 - v["epsilon"]) + v["epsilon"] / v["n_actions"], // prob de ação greedy
-            VariavelResultado = "Prob greedy", UnidadeResultado = "probabilidade"
+            VariavelResultado = "Prob greedy", UnidadeResultado = "probabilidade",
+            Icone = "∑",
         };
 
         private Formula V9_RL089_ImportanceSampling() => new Formula
@@ -152,11 +158,12 @@ namespace CompendioCalc.Services
             Unidades = "ratio",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "pi_prob", Nome = "π(a|s)", Unidade = "prob", ValorPadrao = 0.8, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "mu_prob", Nome = "μ(a|s)", Unidade = "prob", ValorPadrao = 0.4, ValorMin = 0.01, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "pi_prob", Nome = "π(a|s)", Unidade = "prob", ValorPadrao = 0.8, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "mu_prob", Nome = "μ(a|s)", Unidade = "prob", ValorPadrao = 0.4, ValorMin = 0.01, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["pi_prob"] / v["mu_prob"],
-            VariavelResultado = "Razão ρ", UnidadeResultado = "ratio"
+            VariavelResultado = "Razão ρ", UnidadeResultado = "ratio",
+            Icone = "∑",
         };
 
         private Formula V9_RL090_PPOClippedObjective() => new Formula
@@ -172,12 +179,13 @@ namespace CompendioCalc.Services
             Unidades = "objective",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "r_t", Nome = "Razão r_t", Unidade = "ratio", ValorPadrao = 1.15, ValorMin = 0.1, Obrigatoria = true },
-                new Variavel { Simbolo = "A_t", Nome = "Advantage", Unidade = "reward", ValorPadrao = 5, Obrigatoria = true },
-                new Variavel { Simbolo = "epsilon", Nome = "ε clip", Unidade = "adim", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "r_t", Nome = "Razão r_t", Unidade = "ratio", ValorPadrao = 1.15, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "A_t", Nome = "Advantage", Unidade = "reward", ValorPadrao = 5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "epsilon", Nome = "ε clip", Unidade = "adim", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { double clipped_r = Math.Max(1 - v["epsilon"], Math.Min(v["r_t"], 1 + v["epsilon"])); return Math.Min(v["r_t"] * v["A_t"], clipped_r * v["A_t"]); },
-            VariavelResultado = "L^CLIP", UnidadeResultado = "objective"
+            VariavelResultado = "L^CLIP", UnidadeResultado = "objective",
+            Icone = "∑",
         };
 
         private Formula V9_RL091_DDPG() => new Formula
@@ -193,11 +201,12 @@ namespace CompendioCalc.Services
             Unidades = "gradiente",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "dQ_da", Nome = "∇_a Q", Unidade = "grad", ValorPadrao = 2, Obrigatoria = true },
-                new Variavel { Simbolo = "dmu_dtheta", Nome = "∇_θ μ", Unidade = "grad", ValorPadrao = 0.5, Obrigatoria = true }
+                new Variavel { Simbolo = "dQ_da", Nome = "∇_a Q", Unidade = "grad", ValorPadrao = 2, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "dmu_dtheta", Nome = "∇_θ μ", Unidade = "grad", ValorPadrao = 0.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["dQ_da"] * v["dmu_dtheta"], // chain rule
-            VariavelResultado = "∇_θ J", UnidadeResultado = "gradiente"
+            VariavelResultado = "∇_θ J", UnidadeResultado = "gradiente",
+            Icone = "∑",
         };
 
         private Formula V9_RL092_PrioritizedExperience() => new Formula
@@ -213,12 +222,13 @@ namespace CompendioCalc.Services
             Unidades = "probabilidade",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "delta_i", Nome = "|δ_i|", Unidade = "reward", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "sum_delta", Nome = "Σ|δ_k|", Unidade = "reward", ValorPadrao = 100, ValorMin = 0.1, Obrigatoria = true },
-                new Variavel { Simbolo = "alpha", Nome = "α expoente", Unidade = "adim", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "delta_i", Nome = "|δ_i|", Unidade = "reward", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "sum_delta", Nome = "Σ|δ_k|", Unidade = "reward", ValorPadrao = 100, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "alpha", Nome = "α expoente", Unidade = "adim", ValorPadrao = 0.6, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => Math.Pow(v["delta_i"], v["alpha"]) / v["sum_delta"],
-            VariavelResultado = "P(i)", UnidadeResultado = "probabilidade"
+            VariavelResultado = "P(i)", UnidadeResultado = "probabilidade",
+            Icone = "∑",
         };
 
         // Fórmulas 093-102 seguem...
@@ -235,14 +245,15 @@ namespace CompendioCalc.Services
             Unidades = "score",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "Q", Nome = "Valor Q médio", Unidade = "score", ValorPadrao = 0.5, ValorMin = -1, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "P", Nome = "Prior π(a|s)", Unidade = "prob", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "c", Nome = "Exploração c", Unidade = "adim", ValorPadrao = 1.414, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "N", Nome = "Visitas pai", Unidade = "contagem", ValorPadrao = 100, ValorMin = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "n", Nome = "Visitas nó", Unidade = "contagem", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "Q", Nome = "Valor Q médio", Unidade = "score", ValorPadrao = 0.5, ValorMin = -1, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "P", Nome = "Prior π(a|s)", Unidade = "prob", ValorPadrao = 0.3, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "c", Nome = "Exploração c", Unidade = "adim", ValorPadrao = 1.414, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "N", Nome = "Visitas pai", Unidade = "contagem", ValorPadrao = 100, ValorMin = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n", Nome = "Visitas nó", Unidade = "contagem", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["Q"] + v["c"] * v["P"] * Math.Sqrt(v["N"]) / (1 + v["n"]),
-            VariavelResultado = "UCT score", UnidadeResultado = "score"
+            VariavelResultado = "UCT score", UnidadeResultado = "score",
+            Icone = "∑",
         };
 
         private Formula V9_RL094_InverseRL() => new Formula
@@ -258,11 +269,12 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "V_expert", Nome = "V^{π*}", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true },
-                new Variavel { Simbolo = "V_other", Nome = "max V^π≠π*", Unidade = "reward", ValorPadrao = 80, ValorMax = 99, Obrigatoria = true }
+                new Variavel { Simbolo = "V_expert", Nome = "V^{π*}", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V_other", Nome = "max V^π≠π*", Unidade = "reward", ValorPadrao = 80, ValorMax = 99, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["V_expert"] - v["V_other"], // margin
-            VariavelResultado = "Margem IRL", UnidadeResultado = "reward"
+            VariavelResultado = "Margem IRL", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL095_ModelBasedRL() => new Formula
@@ -278,12 +290,13 @@ namespace CompendioCalc.Services
             Unidades = "Q-value",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "r_sim", Nome = "Recompensa simulada", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "max_Q_sim", Nome = "max Q(s'_sim,a')", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true }
+                new Variavel { Simbolo = "r_sim", Nome = "Recompensa simulada", Unidade = "reward", ValorPadrao = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.9, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "max_Q_sim", Nome = "max Q(s'_sim,a')", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["r_sim"] + v["gamma"] * v["max_Q_sim"],
-            VariavelResultado = "Target Dyna", UnidadeResultado = "reward"
+            VariavelResultado = "Target Dyna", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL096_RewardShaping() => new Formula
@@ -299,12 +312,13 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.99, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "Phi_next", Nome = "Φ(s')", Unidade = "potencial", ValorPadrao = -5, Obrigatoria = true },
-                new Variavel { Simbolo = "Phi", Nome = "Φ(s)", Unidade = "potencial", ValorPadrao = -10, Obrigatoria = true }
+                new Variavel { Simbolo = "gamma", Nome = "γ", Unidade = "adim", ValorPadrao = 0.99, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Phi_next", Nome = "Φ(s')", Unidade = "potencial", ValorPadrao = -5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Phi", Nome = "Φ(s)", Unidade = "potencial", ValorPadrao = -10, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["gamma"] * v["Phi_next"] - v["Phi"],
-            VariavelResultado = "Shaping F", UnidadeResultado = "reward"
+            VariavelResultado = "Shaping F", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL097_MultiAgentRL() => new Formula
@@ -320,11 +334,12 @@ namespace CompendioCalc.Services
             Unidades = "Q-value",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "Q_i", Nome = "Q agente i", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true },
-                new Variavel { Simbolo = "Q_j", Nome = "Q oponente j", Unidade = "reward", ValorPadrao = 8, Obrigatoria = true }
+                new Variavel { Simbolo = "Q_i", Nome = "Q agente i", Unidade = "reward", ValorPadrao = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Q_j", Nome = "Q oponente j", Unidade = "reward", ValorPadrao = 8, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["Q_i"] - v["Q_j"], // diferença Q (simplificado)
-            VariavelResultado = "Vantagem sobre oponente", UnidadeResultado = "reward"
+            VariavelResultado = "Vantagem sobre oponente", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL098_HierarchicalRL() => new Formula
@@ -340,10 +355,11 @@ namespace CompendioCalc.Services
             Unidades = "option",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "beta", Nome = "Prob término β", Unidade = "prob", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "beta", Nome = "Prob término β", Unidade = "prob", ValorPadrao = 0.1, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => 1.0 / v["beta"], // duração esperada 1/β
-            VariavelResultado = "Duração esperada", UnidadeResultado = "steps"
+            VariavelResultado = "Duração esperada", UnidadeResultado = "steps",
+            Icone = "∑",
         };
 
         private Formula V9_RL099_CuriosityDrivenRL() => new Formula
@@ -359,12 +375,13 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "pred_error", Nome = "Prediction error", Unidade = "adim", ValorPadrao = 0.5, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "beta", Nome = "Peso intrinsic β", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "r_ext", Nome = "Reward extrínseco", Unidade = "reward", ValorPadrao = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "pred_error", Nome = "Prediction error", Unidade = "adim", ValorPadrao = 0.5, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "beta", Nome = "Peso intrinsic β", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "r_ext", Nome = "Reward extrínseco", Unidade = "reward", ValorPadrao = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["r_ext"] + v["beta"] * v["pred_error"],
-            VariavelResultado = "Reward total", UnidadeResultado = "reward"
+            VariavelResultado = "Reward total", UnidadeResultado = "reward",
+            Icone = "∑",
         };
 
         private Formula V9_RL100_MetaRL() => new Formula
@@ -380,11 +397,12 @@ namespace CompendioCalc.Services
             Unidades = "parâmetro",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "alpha", Nome = "Taxa inner α", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "grad_L", Nome = "∇_θ L_τ", Unidade = "grad", ValorPadrao = 0.5, Obrigatoria = true }
+                new Variavel { Simbolo = "alpha", Nome = "Taxa inner α", Unidade = "adim", ValorPadrao = 0.01, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "grad_L", Nome = "∇_θ L_τ", Unidade = "grad", ValorPadrao = 0.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => -v["alpha"] * v["grad_L"], // update inner
-            VariavelResultado = "Δθ inner", UnidadeResultado = "parâmetro"
+            VariavelResultado = "Δθ inner", UnidadeResultado = "parâmetro",
+            Icone = "∑",
         };
 
         private Formula V9_RL101_SafeRL() => new Formula
@@ -400,12 +418,13 @@ namespace CompendioCalc.Services
             Unidades = "reward",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "J", Nome = "Reward J", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true },
-                new Variavel { Simbolo = "J_C", Nome = "Custo J_C", Unidade = "custo", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "d", Nome = "Limite custo", Unidade = "custo", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "J", Nome = "Reward J", Unidade = "reward", ValorPadrao = 100, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "J_C", Nome = "Custo J_C", Unidade = "custo", ValorPadrao = 5, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "d", Nome = "Limite custo", Unidade = "custo", ValorPadrao = 10, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["J_C"] <= v["d"] ? 1.0 : 0.0, // 1=constraint satisfeito
-            VariavelResultado = "Constraint OK", UnidadeResultado = "bool"
+            VariavelResultado = "Constraint OK", UnidadeResultado = "bool",
+            Icone = "∑",
         };
 
         private Formula V9_RL102_OfflineRL() => new Formula
@@ -421,11 +440,12 @@ namespace CompendioCalc.Services
             Unidades = "Q-value",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "Q_max", Nome = "max_a Q(s,a)", Unidade = "reward", ValorPadrao = 20, Obrigatoria = true },
-                new Variavel { Simbolo = "Q_data", Nome = "𝔼_{D}[Q(s,a)]", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true }
+                new Variavel { Simbolo = "Q_max", Nome = "max_a Q(s,a)", Unidade = "reward", ValorPadrao = 20, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "Q_data", Nome = "𝔼_{D}[Q(s,a)]", Unidade = "reward", ValorPadrao = 15, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["Q_max"] - v["Q_data"], // regularização CQL simplificada
-            VariavelResultado = "Penalidade CQL", UnidadeResultado = "reward"
+            VariavelResultado = "Penalidade CQL", UnidadeResultado = "reward",
+            Icone = "∑",
         };
     }
 }

@@ -31,8 +31,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Triângulos", Simbolo = "T", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Tripletas conectadas", Simbolo = "Tr", Unidade = "", ValorPadrao = 500 }
+                        new Variavel { Nome = "Triângulos", Simbolo = "T", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tripletas conectadas", Simbolo = "Tr", Unidade = "", ValorPadrao = 500, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -41,7 +41,8 @@ namespace CompendioCalc.Services
                         double C = (3 * triangulos) / Math.Max(tripletas, 1);
                         return C;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-063: Distância Característica (Small-World)
@@ -61,8 +62,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Soma distâncias", Simbolo = "sum_d", Unidade = "", ValorPadrao = 5000 },
-                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 100 }
+                        new Variavel { Nome = "Soma distâncias", Simbolo = "sum_d", Unidade = "", ValorPadrao = 5000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -72,7 +73,8 @@ namespace CompendioCalc.Services
                         double L = sum_d / (N * (N - 1));
                         return L;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-064: Distribuição de Grau — Scale-Free
@@ -92,9 +94,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Grau k", Simbolo = "k", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "Expoente γ", Simbolo = "γ", Unidade = "", ValorPadrao = 2.5 },
-                        new Variavel { Nome = "Constante C", Simbolo = "C", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Grau k", Simbolo = "k", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Expoente γ", Simbolo = "γ", Unidade = "", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Constante C", Simbolo = "C", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -105,7 +107,8 @@ namespace CompendioCalc.Services
                         double P_k = C * Math.Pow(k, -gamma);
                         return P_k;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-065: PageRank
@@ -125,9 +128,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Damping d", Simbolo = "d", Unidade = "", ValorPadrao = 0.85 },
-                        new Variavel { Nome = "N total nós", Simbolo = "N", Unidade = "", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Soma PR_entrada", Simbolo = "sum_PR", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "Damping d", Simbolo = "d", Unidade = "", ValorPadrao = 0.85, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "N total nós", Simbolo = "N", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Soma PR_entrada", Simbolo = "sum_PR", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -138,7 +141,8 @@ namespace CompendioCalc.Services
                         double PR = (1 - d) / N + d * sum_PR;
                         return PR;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-066: Betweenness Centrality
@@ -158,8 +162,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Caminhos por v", Simbolo = "sigma_v", Unidade = "", ValorPadrao = 300 },
-                        new Variavel { Nome = "Caminhos totais", Simbolo = "sigma_total", Unidade = "", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Caminhos por v", Simbolo = "sigma_v", Unidade = "", ValorPadrao = 300, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Caminhos totais", Simbolo = "sigma_total", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -169,7 +173,8 @@ namespace CompendioCalc.Services
                         double BC = sigma_v / sigma_total;
                         return BC;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-067: Limiar de Percolação
@@ -189,8 +194,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k_avg", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "Momento ⟨k²⟩", Simbolo = "k2_avg", Unidade = "", ValorPadrao = 6 }
+                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k_avg", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Momento ⟨k²⟩", Simbolo = "k2_avg", Unidade = "", ValorPadrao = 6, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -201,7 +206,8 @@ namespace CompendioCalc.Services
                         double p_c = k_avg / denom;
                         return Math.Min(p_c, 1);
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-068: Modularidade (Comunidades)
@@ -221,9 +227,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Arestas intra-comunidade", Simbolo = "e_dentro", Unidade = "", ValorPadrao = 80 },
-                        new Variavel { Nome = "Arestas totais", Simbolo = "m", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Fração esperada", Simbolo = "f_esp", Unidade = "", ValorPadrao = 0.25 }
+                        new Variavel { Nome = "Arestas intra-comunidade", Simbolo = "e_dentro", Unidade = "", ValorPadrao = 80, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Arestas totais", Simbolo = "m", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fração esperada", Simbolo = "f_esp", Unidade = "", ValorPadrao = 0.25, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -234,7 +240,8 @@ namespace CompendioCalc.Services
                         double Q = (e_dentro / m) - f_esp;
                         return Q;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-069: Resiliência de Rede
@@ -254,8 +261,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tamanho após remoção (%)", Simbolo = "S_f", Unidade = "%", ValorPadrao = 70 },
-                        new Variavel { Nome = "Tamanho original (%)", Simbolo = "S_0", Unidade = "%", ValorPadrao = 100 }
+                        new Variavel { Nome = "Tamanho após remoção (%)", Simbolo = "S_f", Unidade = "%", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tamanho original (%)", Simbolo = "S_0", Unidade = "%", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -265,7 +272,8 @@ namespace CompendioCalc.Services
                         double R = S_f / S_0;
                         return R;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-070: Assortatividade
@@ -285,8 +293,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Covariância graus", Simbolo = "cov", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "Variância graus", Simbolo = "var", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Covariância graus", Simbolo = "cov", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Variância graus", Simbolo = "var", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -296,7 +304,8 @@ namespace CompendioCalc.Services
                         double r = cov / var;
                         return r;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-071: Eficiência Global
@@ -316,8 +325,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Soma 1/d(i,j)", Simbolo = "sum_inv_d", Unidade = "", ValorPadrao = 4000 },
-                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 100 }
+                        new Variavel { Nome = "Soma 1/d(i,j)", Simbolo = "sum_inv_d", Unidade = "", ValorPadrao = 4000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -327,7 +336,8 @@ namespace CompendioCalc.Services
                         double E_glob = sum_inv_d / (N * (N - 1));
                         return E_glob;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-072: Rich-Club Coefficient
@@ -347,8 +357,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Arestas entre hubs E>k", Simbolo = "E", Unidade = "", ValorPadrao = 30 },
-                        new Variavel { Nome = "Número hubs N>k", Simbolo = "N_hub", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Arestas entre hubs E>k", Simbolo = "E", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número hubs N>k", Simbolo = "N_hub", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -358,7 +368,8 @@ namespace CompendioCalc.Services
                         double phi = (2 * E) / (N_hub * (N_hub - 1));
                         return phi;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-073: Entropia de Rótulos (Label Entropy)
@@ -378,9 +389,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "bits",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Probabilidade p1", Simbolo = "p1", Unidade = "", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "Probabilidade p2", Simbolo = "p2", Unidade = "", ValorPadrao = 0.3 },
-                        new Variavel { Nome = "Probabilidade p3", Simbolo = "p3", Unidade = "", ValorPadrao = 0.2 }
+                        new Variavel { Nome = "Probabilidade p1", Simbolo = "p1", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Probabilidade p2", Simbolo = "p2", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Probabilidade p3", Simbolo = "p3", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -395,7 +406,8 @@ namespace CompendioCalc.Services
                         
                         return H;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-074: Motifs — Subgrafos frequentes
@@ -415,9 +427,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Contagem real", Simbolo = "N_real", Unidade = "", ValorPadrao = 50 },
-                        new Variavel { Nome = "Média aleatória", Simbolo = "N_rand", Unidade = "", ValorPadrao = 30 },
-                        new Variavel { Nome = "Desvio padrão", Simbolo = "σ", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "Contagem real", Simbolo = "N_real", Unidade = "", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Média aleatória", Simbolo = "N_rand", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Desvio padrão", Simbolo = "σ", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -428,7 +440,8 @@ namespace CompendioCalc.Services
                         double Z = (N_real - N_rand) / sigma;
                         return Z;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-075: Processo de Ramificação (Epidemias)
@@ -448,10 +461,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Taxa transmissão β", Simbolo = "β", Unidade = "", ValorPadrao = 0.2 },
-                        new Variavel { Nome = "Taxa recuperação γ", Simbolo = "γ", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "Momento ⟨k²⟩", Simbolo = "k2", Unidade = "", ValorPadrao = 20 },
-                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k", Unidade = "", ValorPadrao = 4 }
+                        new Variavel { Nome = "Taxa transmissão β", Simbolo = "β", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Taxa recuperação γ", Simbolo = "γ", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Momento ⟨k²⟩", Simbolo = "k2", Unidade = "", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k", Unidade = "", ValorPadrao = 4, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -463,7 +476,8 @@ namespace CompendioCalc.Services
                         double R0 = (beta * k2) / (gamma * k);
                         return R0;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-076: Cascading Failures
@@ -483,9 +497,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Carga inicial L₀", Simbolo = "L0", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Fator sobrecarga α", Simbolo = "α", Unidade = "", ValorPadrao = 0.2 },
-                        new Variavel { Nome = "Número iterações n", Simbolo = "n", Unidade = "", ValorPadrao = 5 }
+                        new Variavel { Nome = "Carga inicial L₀", Simbolo = "L0", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fator sobrecarga α", Simbolo = "α", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número iterações n", Simbolo = "n", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -496,7 +510,8 @@ namespace CompendioCalc.Services
                         double L_fail = L0 * Math.Pow(1 + alpha, n);
                         return L_fail;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-077: Synchronization — Acoplamento Kuramoto
@@ -516,8 +531,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Acoplamento K", Simbolo = "K", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "K crítico K_c", Simbolo = "K_c", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Acoplamento K", Simbolo = "K", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K crítico K_c", Simbolo = "K_c", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -528,7 +543,8 @@ namespace CompendioCalc.Services
                         double r = K > K_c ? Math.Sqrt((K - K_c) / K) : 0;
                         return r;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-078: Voter Model — Dinâmica de Opinião
@@ -548,7 +564,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "passos",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tamanho rede N", Simbolo = "N", Unidade = "", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Tamanho rede N", Simbolo = "N", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -557,7 +573,8 @@ namespace CompendioCalc.Services
                         double T = N * Math.Log(N);
                         return T;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-079: Modelo SIS — Epidemia Endêmica
@@ -577,7 +594,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R₀", Simbolo = "R0", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "R₀", Simbolo = "R0", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -586,7 +603,8 @@ namespace CompendioCalc.Services
                         double i_inf = (1 - 1.0 / R0) * 100;
                         return i_inf;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-080: Grau de Separação Médio (Diameter)
@@ -606,8 +624,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "N nós", Simbolo = "N", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Grau médio ⟨k⟩", Simbolo = "k", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -619,7 +637,8 @@ namespace CompendioCalc.Services
                         double D = Math.Log(N) / Math.Log(k);
                         return D;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 },
 
                 // V10-081: Hierarquia — Hierarchical Coefficient
@@ -639,9 +658,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Log(C) alto grau", Simbolo = "log_C_high", Unidade = "", ValorPadrao = -2 },
-                        new Variavel { Nome = "Log(C) baixo grau", Simbolo = "log_C_low", Unidade = "", ValorPadrao = -0.5 },
-                        new Variavel { Nome = "Log(k_high/k_low)", Simbolo = "log_k_ratio", Unidade = "", ValorPadrao = 1.5 }
+                        new Variavel { Nome = "Log(C) alto grau", Simbolo = "log_C_high", Unidade = "", ValorPadrao = -2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Log(C) baixo grau", Simbolo = "log_C_low", Unidade = "", ValorPadrao = -0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Log(k_high/k_low)", Simbolo = "log_k_ratio", Unidade = "", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -655,7 +674,8 @@ namespace CompendioCalc.Services
                         double beta = -(log_C_high - log_C_low) / log_k_ratio;
                         return beta;
                     },
-                    Icone = "🌐"
+                    Icone = "🌐",
+                    Unidades = "",
                 }
             });
         }

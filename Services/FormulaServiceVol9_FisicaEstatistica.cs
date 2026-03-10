@@ -24,12 +24,13 @@ namespace CompendioCalc.Services
             Unidades = "probabilidade",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "E", Nome = "Energia", Unidade = "eV", ValorPadrao = 5.0, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "mu", Nome = "Potencial químico μ", Unidade = "eV", ValorPadrao = 4.8, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 300, ValorMin = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "E", Nome = "Energia", Unidade = "eV", ValorPadrao = 5.0, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "mu", Nome = "Potencial químico μ", Unidade = "eV", ValorPadrao = 4.8, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 300, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double k_B = 8.617e-5; return 1.0 / (Math.Exp((v["E"] - v["mu"]) / (k_B * v["T"])) + 1.0); },
-            VariavelResultado = "f(E)", UnidadeResultado = "probabilidade"
+            VariavelResultado = "f(E)", UnidadeResultado = "probabilidade",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS044_DistribuicaoBoseEinstein() => new Formula
@@ -45,12 +46,13 @@ namespace CompendioCalc.Services
             Unidades = "número médio",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "E", Nome = "Energia", Unidade = "eV", ValorPadrao = 0.001, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "mu", Nome = "Potencial químico μ", Unidade = "eV", ValorPadrao = 0, ValorMax = 0.001, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 1, ValorMin = 0.01, Obrigatoria = true }
+                new Variavel { Simbolo = "E", Nome = "Energia", Unidade = "eV", ValorPadrao = 0.001, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "mu", Nome = "Potencial químico μ", Unidade = "eV", ValorPadrao = 0, ValorMax = 0.001, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 1, ValorMin = 0.01, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double k_B = 8.617e-5; return 1.0 / (Math.Exp((v["E"] - v["mu"]) / (k_B * v["T"])) - 1.0); },
-            VariavelResultado = "n(E)", UnidadeResultado = "número médio"
+            VariavelResultado = "n(E)", UnidadeResultado = "número médio",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS045_TemperaturaCriticaBEC() => new Formula
@@ -66,11 +68,12 @@ namespace CompendioCalc.Services
             Unidades = "K",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "n", Nome = "Densidade", Unidade = "m⁻³", ValorPadrao = 1e20, ValorMin = 1e10, Obrigatoria = true },
-                new Variavel { Simbolo = "m", Nome = "Massa atômica", Unidade = "kg", ValorPadrao = 1.44e-25, ValorMin = 1e-27, Obrigatoria = true }
+                new Variavel { Simbolo = "n", Nome = "Densidade", Unidade = "m⁻³", ValorPadrao = 1e20, ValorMin = 1e10, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "m", Nome = "Massa atômica", Unidade = "kg", ValorPadrao = 1.44e-25, ValorMin = 1e-27, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double hbar = 1.055e-34; const double k_B = 1.381e-23; const double zeta = 2.612; return (2 * Math.PI * hbar * hbar / (v["m"] * k_B)) * Math.Pow(v["n"] / zeta, 2.0 / 3.0); },
-            VariavelResultado = "T_c", UnidadeResultado = "K"
+            VariavelResultado = "T_c", UnidadeResultado = "K",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS046_EquacaoGrossPitaevskii() => new Formula
@@ -86,11 +89,12 @@ namespace CompendioCalc.Services
             Unidades = "ψ tem dim √(densidade)",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "g", Nome = "Parâmetro interação", Unidade = "J·m³", ValorPadrao = 1e-37, Obrigatoria = true },
-                new Variavel { Simbolo = "n_peak", Nome = "Densidade pico |ψ|²", Unidade = "m⁻³", ValorPadrao = 1e20, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "g", Nome = "Parâmetro interação", Unidade = "J·m³", ValorPadrao = 1e-37, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n_peak", Nome = "Densidade pico |ψ|²", Unidade = "m⁻³", ValorPadrao = 1e20, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["g"] * v["n_peak"], // energia de interação
-            VariavelResultado = "g·n", UnidadeResultado = "J/m³"
+            VariavelResultado = "g·n", UnidadeResultado = "J/m³",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS047_ModeloIsing() => new Formula
@@ -106,13 +110,14 @@ namespace CompendioCalc.Services
             Unidades = "J (energia)",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "J", Nome = "Acoplamento", Unidade = "J", ValorPadrao = 1e-21, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "N_vizinhos", Nome = "Pares vizinhos alinhados", Unidade = "contagem", ValorPadrao = 100, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "h", Nome = "Campo externo", Unidade = "J", ValorPadrao = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "M", Nome = "Magnetização total", Unidade = "spin total", ValorPadrao = 50, Obrigatoria = true }
+                new Variavel { Simbolo = "J", Nome = "Acoplamento", Unidade = "J", ValorPadrao = 1e-21, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "N_vizinhos", Nome = "Pares vizinhos alinhados", Unidade = "contagem", ValorPadrao = 100, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "h", Nome = "Campo externo", Unidade = "J", ValorPadrao = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "M", Nome = "Magnetização total", Unidade = "spin total", ValorPadrao = 50, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => -v["J"] * v["N_vizinhos"] - v["h"] * v["M"],
-            VariavelResultado = "Energia H", UnidadeResultado = "J"
+            VariavelResultado = "Energia H", UnidadeResultado = "J",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS048_TeoriaLandau() => new Formula
@@ -128,15 +133,16 @@ namespace CompendioCalc.Services
             Unidades = "J",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "a", Nome = "Coef quadrático", Unidade = "J", ValorPadrao = 1e-3, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 290, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "T_c", Nome = "Temp crítica", Unidade = "K", ValorPadrao = 300, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "M", Nome = "Parâmetro ordem", Unidade = "adim", ValorPadrao = 0.5, Obrigatoria = true },
-                new Variavel { Simbolo = "b", Nome = "Coef quártico", Unidade = "J", ValorPadrao = 1e-2, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "h", Nome = "Campo conjugado", Unidade = "J", ValorPadrao = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "a", Nome = "Coef quadrático", Unidade = "J", ValorPadrao = 1e-3, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 290, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T_c", Nome = "Temp crítica", Unidade = "K", ValorPadrao = 300, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "M", Nome = "Parâmetro ordem", Unidade = "adim", ValorPadrao = 0.5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "b", Nome = "Coef quártico", Unidade = "J", ValorPadrao = 1e-2, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "h", Nome = "Campo conjugado", Unidade = "J", ValorPadrao = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["a"] * (v["T"] - v["T_c"]) * v["M"] * v["M"] + v["b"] * Math.Pow(v["M"], 4) - v["h"] * v["M"],
-            VariavelResultado = "Energia livre F", UnidadeResultado = "J"
+            VariavelResultado = "Energia livre F", UnidadeResultado = "J",
+            Icone = "∑",
         };
 
         // Continua com as fórmulas 049-063 (mais 15 fórmulas)...
@@ -153,11 +159,12 @@ namespace CompendioCalc.Services
             Unidades = "adimensional",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "beta", Nome = "Expoente β", Unidade = "adim", ValorPadrao = 0.125, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "delta", Nome = "Expoente δ", Unidade = "adim", ValorPadrao = 15, ValorMin = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "beta", Nome = "Expoente β", Unidade = "adim", ValorPadrao = 0.125, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "delta", Nome = "Expoente δ", Unidade = "adim", ValorPadrao = 15, ValorMin = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["beta"] * (v["delta"] - 1.0), // γ = β(δ−1)
-            VariavelResultado = "Expoente γ", UnidadeResultado = "adimensional"
+            VariavelResultado = "Expoente γ", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS050_GrupoRenormalizacaoWilson() => new Formula
@@ -173,11 +180,12 @@ namespace CompendioCalc.Services
             Unidades = "adimensional",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "epsilon", Nome = "ε = 4−d", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, ValorMax = 4, Obrigatoria = true },
-                new Variavel { Simbolo = "lambda", Nome = "Acoplamento λ", Unidade = "adim", ValorPadrao = 0.333, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "epsilon", Nome = "ε = 4−d", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, ValorMax = 4, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "lambda", Nome = "Acoplamento λ", Unidade = "adim", ValorPadrao = 0.333, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { double eps = v["epsilon"]; double lam = v["lambda"]; return (eps / 6.0) * lam - (lam * lam) / 2.0; }, // β(λ)
-            VariavelResultado = "β(λ)", UnidadeResultado = "adimensional"
+            VariavelResultado = "β(λ)", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS051_TeoriaBCS() => new Formula
@@ -193,12 +201,13 @@ namespace CompendioCalc.Services
             Unidades = "eV",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "hbar_omega_D", Nome = "ℏω_D", Unidade = "eV", ValorPadrao = 0.03, ValorMin = 0.001, Obrigatoria = true },
-                new Variavel { Simbolo = "N_0", Nome = "N(0)", Unidade = "estados/eV", ValorPadrao = 1e23, ValorMin = 1e20, Obrigatoria = true },
-                new Variavel { Simbolo = "V", Nome = "Interação V", Unidade = "eV", ValorPadrao = 1e-24, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "hbar_omega_D", Nome = "ℏω_D", Unidade = "eV", ValorPadrao = 0.03, ValorMin = 0.001, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "N_0", Nome = "N(0)", Unidade = "estados/eV", ValorPadrao = 1e23, ValorMin = 1e20, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "V", Nome = "Interação V", Unidade = "eV", ValorPadrao = 1e-24, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["hbar_omega_D"] * Math.Exp(-1.0 / (v["N_0"] * v["V"])),
-            VariavelResultado = "Gap Δ", UnidadeResultado = "eV"
+            VariavelResultado = "Gap Δ", UnidadeResultado = "eV",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS052_EfeitoMeissnerLondon() => new Formula
@@ -214,12 +223,13 @@ namespace CompendioCalc.Services
             Unidades = "m",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "m", Nome = "Massa elétron", Unidade = "kg", ValorPadrao = 9.109e-31, Obrigatoria = true },
-                new Variavel { Simbolo = "n_s", Nome = "Densidade superelétrons", Unidade = "m⁻³", ValorPadrao = 1e28, ValorMin = 1e25, Obrigatoria = true },
-                new Variavel { Simbolo = "e", Nome = "Carga elétron", Unidade = "C", ValorPadrao = 1.602e-19, Obrigatoria = true }
+                new Variavel { Simbolo = "m", Nome = "Massa elétron", Unidade = "kg", ValorPadrao = 9.109e-31, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n_s", Nome = "Densidade superelétrons", Unidade = "m⁻³", ValorPadrao = 1e28, ValorMin = 1e25, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "e", Nome = "Carga elétron", Unidade = "C", ValorPadrao = 1.602e-19, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double mu0 = 1.257e-6; return Math.Sqrt(v["m"] / (mu0 * v["n_s"] * v["e"] * v["e"])); },
-            VariavelResultado = "Comprimento London λ_L", UnidadeResultado = "m"
+            VariavelResultado = "Comprimento London λ_L", UnidadeResultado = "m",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS053_EfeitoHallQuantico() => new Formula
@@ -235,10 +245,11 @@ namespace CompendioCalc.Services
             Unidades = "Ω",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "nu", Nome = "Fator preenchimento ν", Unidade = "adim", ValorPadrao = 1, ValorMin = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "nu", Nome = "Fator preenchimento ν", Unidade = "adim", ValorPadrao = 1, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double h = 6.626e-34; const double e = 1.602e-19; return h / (v["nu"] * e * e); },
-            VariavelResultado = "Resistência Hall R_xy", UnidadeResultado = "Ω"
+            VariavelResultado = "Resistência Hall R_xy", UnidadeResultado = "Ω",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS054_DiracHamiltonianoGraphene() => new Formula
@@ -254,11 +265,12 @@ namespace CompendioCalc.Services
             Unidades = "eV",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "v_F", Nome = "Velocidade Fermi", Unidade = "m/s", ValorPadrao = 1e6, Obrigatoria = true },
-                new Variavel { Simbolo = "k", Nome = "Vetor onda |k|", Unidade = "m⁻¹", ValorPadrao = 1e9, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "v_F", Nome = "Velocidade Fermi", Unidade = "m/s", ValorPadrao = 1e6, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "k", Nome = "Vetor onda |k|", Unidade = "m⁻¹", ValorPadrao = 1e9, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double hbar = 1.055e-34; const double eV = 1.602e-19; return hbar * v["v_F"] * v["k"] / eV; },
-            VariavelResultado = "Energia E", UnidadeResultado = "eV"
+            VariavelResultado = "Energia E", UnidadeResultado = "eV",
+            Icone = "∑",
         };
 
         // Fórmulas 055-063 continuam o mesmo padrão...
@@ -275,11 +287,12 @@ namespace CompendioCalc.Services
             Unidades = "função de onda",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "k", Nome = "Vetor onda", Unidade = "m⁻¹", ValorPadrao = 1e9, Obrigatoria = true },
-                new Variavel { Simbolo = "x", Nome = "Posição", Unidade = "m", ValorPadrao = 1e-9, Obrigatoria = true }
+                new Variavel { Simbolo = "k", Nome = "Vetor onda", Unidade = "m⁻¹", ValorPadrao = 1e9, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "x", Nome = "Posição", Unidade = "m", ValorPadrao = 1e-9, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => Math.Cos(v["k"] * v["x"]), // parte real onda plana
-            VariavelResultado = "Re[e^{ikx}]", UnidadeResultado = "adimensional"
+            VariavelResultado = "Re[e^{ikx}]", UnidadeResultado = "adimensional",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS056_ModeloHubbard() => new Formula
@@ -295,13 +308,14 @@ namespace CompendioCalc.Services
             Unidades = "eV",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "t", Nome = "Hopping t", Unidade = "eV", ValorPadrao = 0.5, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "U", Nome = "Repulsão U", Unidade = "eV", ValorPadrao = 4.0, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "n_hopping", Nome = "Termos hopping", Unidade = "contagem", ValorPadrao = 4, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "n_doubly_occupied", Nome = "Sítios dupla ocupação", Unidade = "contagem", ValorPadrao = 2, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "t", Nome = "Hopping t", Unidade = "eV", ValorPadrao = 0.5, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "U", Nome = "Repulsão U", Unidade = "eV", ValorPadrao = 4.0, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n_hopping", Nome = "Termos hopping", Unidade = "contagem", ValorPadrao = 4, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "n_doubly_occupied", Nome = "Sítios dupla ocupação", Unidade = "contagem", ValorPadrao = 2, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => -v["t"] * v["n_hopping"] + v["U"] * v["n_doubly_occupied"],
-            VariavelResultado = "Energia Hubbard", UnidadeResultado = "eV"
+            VariavelResultado = "Energia Hubbard", UnidadeResultado = "eV",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS057_IsoladorTopologico() => new Formula
@@ -317,10 +331,11 @@ namespace CompendioCalc.Services
             Unidades = "adimensional",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "nu", Nome = "Invariante Z₂", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, ValorMax = 1, Obrigatoria = true }
+                new Variavel { Simbolo = "nu", Nome = "Invariante Z₂", Unidade = "adim", ValorPadrao = 1, ValorMin = 0, ValorMax = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["nu"], // 0=trivial, 1=topológico
-            VariavelResultado = "ν invariante", UnidadeResultado = "Z₂ (0 ou 1)"
+            VariavelResultado = "ν invariante", UnidadeResultado = "Z₂ (0 ou 1)",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS058_CalorEspecificoDebye() => new Formula
@@ -336,12 +351,13 @@ namespace CompendioCalc.Services
             Unidades = "J/K",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "N", Nome = "Número átomos", Unidade = "átomos", ValorPadrao = 1e23, ValorMin = 1, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 50, ValorMin = 0.1, Obrigatoria = true },
-                new Variavel { Simbolo = "T_D", Nome = "Temp Debye", Unidade = "K", ValorPadrao = 300, ValorMin = 10, Obrigatoria = true }
+                new Variavel { Simbolo = "N", Nome = "Número átomos", Unidade = "átomos", ValorPadrao = 1e23, ValorMin = 1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 50, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T_D", Nome = "Temp Debye", Unidade = "K", ValorPadrao = 300, ValorMin = 10, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double k_B = 1.381e-23; double ratio = v["T"] / v["T_D"]; return 12.0 * Math.PI * Math.PI * Math.PI * Math.PI * v["N"] * k_B * ratio * ratio * ratio / 5.0; }, // aproximação T³
-            VariavelResultado = "C_V Debye", UnidadeResultado = "J/K"
+            VariavelResultado = "C_V Debye", UnidadeResultado = "J/K",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS059_TeoriaWeissCampoMolecular() => new Formula
@@ -357,14 +373,15 @@ namespace CompendioCalc.Services
             Unidades = "A/m",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "N", Nome = "Densidade spins", Unidade = "m⁻³", ValorPadrao = 1e28, ValorMin = 1e20, Obrigatoria = true },
-                new Variavel { Simbolo = "mu_B", Nome = "Magneton Bohr", Unidade = "A·m²", ValorPadrao = 9.274e-24, Obrigatoria = true },
-                new Variavel { Simbolo = "H", Nome = "Campo externo", Unidade = "A/m", ValorPadrao = 1e5, Obrigatoria = true },
-                new Variavel { Simbolo = "lambda", Nome = "Campo molecular λ", Unidade = "adim", ValorPadrao = 1e3, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 300, ValorMin = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "N", Nome = "Densidade spins", Unidade = "m⁻³", ValorPadrao = 1e28, ValorMin = 1e20, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "mu_B", Nome = "Magneton Bohr", Unidade = "A·m²", ValorPadrao = 9.274e-24, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "H", Nome = "Campo externo", Unidade = "A/m", ValorPadrao = 1e5, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "lambda", Nome = "Campo molecular λ", Unidade = "adim", ValorPadrao = 1e3, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 300, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double k_B = 1.381e-23; double M_guess = 1e5; double H_eff = v["H"] + v["lambda"] * M_guess; double M = v["N"] * v["mu_B"] * Math.Tanh(v["mu_B"] * H_eff / (k_B * v["T"])); return M; },
-            VariavelResultado = "Magnetização M", UnidadeResultado = "A/m"
+            VariavelResultado = "Magnetização M", UnidadeResultado = "A/m",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS060_CalorEspecificoEletronico() => new Formula
@@ -380,11 +397,12 @@ namespace CompendioCalc.Services
             Unidades = "J/K",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "gamma", Nome = "Coef Sommerfeld γ", Unidade = "J/(K²)", ValorPadrao = 0.0007, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 10, ValorMin = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "gamma", Nome = "Coef Sommerfeld γ", Unidade = "J/(K²)", ValorPadrao = 0.0007, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 10, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["gamma"] * v["T"],
-            VariavelResultado = "C_e eletrônico", UnidadeResultado = "J/K"
+            VariavelResultado = "C_e eletrônico", UnidadeResultado = "J/K",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS061_EquacaoSahaIonizacao() => new Formula
@@ -400,11 +418,12 @@ namespace CompendioCalc.Services
             Unidades = "m⁻⁶",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 10000, ValorMin = 1000, Obrigatoria = true },
-                new Variavel { Simbolo = "chi", Nome = "Energia ionização", Unidade = "J", ValorPadrao = 2.18e-18, ValorMin = 0, Obrigatoria = true }
+                new Variavel { Simbolo = "T", Nome = "Temperatura", Unidade = "K", ValorPadrao = 10000, ValorMin = 1000, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "chi", Nome = "Energia ionização", Unidade = "J", ValorPadrao = 2.18e-18, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { const double m_e = 9.109e-31; const double k_B = 1.381e-23; const double h = 6.626e-34; return Math.Pow(2 * Math.PI * m_e * k_B * v["T"] / (h * h), 1.5) * Math.Exp(-v["chi"] / (k_B * v["T"])); },
-            VariavelResultado = "n_e·n_i/n_a", UnidadeResultado = "m⁻⁶"
+            VariavelResultado = "n_e·n_i/n_a", UnidadeResultado = "m⁻⁶",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS062_SupercondutividadeAltoTc() => new Formula
@@ -420,10 +439,11 @@ namespace CompendioCalc.Services
             Unidades = "K",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "T_c", Nome = "Temp crítica", Unidade = "K", ValorPadrao = 93, ValorMin = 77, Obrigatoria = true }
+                new Variavel { Simbolo = "T_c", Nome = "Temp crítica", Unidade = "K", ValorPadrao = 93, ValorMin = 77, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => v["T_c"],
-            VariavelResultado = "T_c alto-T_c", UnidadeResultado = "K"
+            VariavelResultado = "T_c alto-T_c", UnidadeResultado = "K",
+            Icone = "∑",
         };
 
         private Formula V9_PHYS063_TransicaoMottIsolante() => new Formula
@@ -439,11 +459,12 @@ namespace CompendioCalc.Services
             Unidades = "adimensional",
             Variaveis = new List<Variavel>
             {
-                new Variavel { Simbolo = "U", Nome = "Repulsão Coulomb", Unidade = "eV", ValorPadrao = 7, ValorMin = 0, Obrigatoria = true },
-                new Variavel { Simbolo = "W", Nome = "Largura banda", Unidade = "eV", ValorPadrao = 4, ValorMin = 0.1, Obrigatoria = true }
+                new Variavel { Simbolo = "U", Nome = "Repulsão Coulomb", Unidade = "eV", ValorPadrao = 7, ValorMin = 0, Obrigatoria = true, Descricao = "Parâmetro de entrada." },
+                new Variavel { Simbolo = "W", Nome = "Largura banda", Unidade = "eV", ValorPadrao = 4, ValorMin = 0.1, Obrigatoria = true, Descricao = "Parâmetro de entrada." }
             },
             Calcular = v => { double ratio = v["U"] / v["W"]; return ratio > 1.0 ? 1.0 : 0.0; }, // 1=isolante, 0=metal
-            VariavelResultado = "Fase Mott", UnidadeResultado = "bool (1=isolante)"
+            VariavelResultado = "Fase Mott", UnidadeResultado = "bool (1=isolante)",
+            Icone = "∑",
         };
     }
 }

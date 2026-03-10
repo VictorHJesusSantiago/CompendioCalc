@@ -24,10 +24,12 @@ public partial class FormulaService
                 Descricao = "Probabilidade de sobreviver além do tempo t. S(0)=1, S(∞)=0, S é não-crescente. Complementar da CDF da variável de tempo de falha T.",
                 Criador = "Estatística atuarial",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -38,10 +40,12 @@ public partial class FormulaService
                 Descricao = "Taxa instantânea de falha dado que sobreviveu até t. Não é probabilidade (pode ser >1). Forma de banheira: alta no início, mínima, alta no final.",
                 Criador = "Estatística de confiabilidade",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -52,10 +56,12 @@ public partial class FormulaService
                 Descricao = "Integral do hazard. Relação direta com sobrevivência: S(t) = exp(-H(t)). Estimador de Nelson-Aalen é alternativa não-paramétrica.",
                 Criador = "Estatística de sobrevivência",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -66,11 +72,14 @@ public partial class FormulaService
                 Descricao = "Hazard constante: 'sem memória' (idade não importa). Tempo médio = 1/λ. Modelo mais simples de sobrevivência; subconjunto de Weibull com k=1.",
                 Criador = "Modelagem de confiabilidade",
                 Variaveis = [
-                    new() { Simbolo = "lambda", Nome = "λ (taxa)", ValorPadrao = 0.1, ValorMin = 0.001 },
-                    new() { Simbolo = "t", Nome = "t (tempo)", ValorPadrao = 5, ValorMin = 0 },
+                    new() { Simbolo = "lambda", Nome = "λ (taxa)", ValorPadrao = 0.1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t", Nome = "t (tempo)", ValorPadrao = 5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "S(t)",
-                Calcular = v => Math.Exp(-v["lambda"] * v["t"])
+                Calcular = v => Math.Exp(-v["lambda"] * v["t"]),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -82,12 +91,14 @@ public partial class FormulaService
                 Criador = "Waloddi Weibull",
                 AnoOrigin = "1951",
                 Variaveis = [
-                    new() { Simbolo = "t", Nome = "t", ValorPadrao = 5, ValorMin = 0 },
-                    new() { Simbolo = "lambda", Nome = "λ (escala)", ValorPadrao = 10, ValorMin = 0.01 },
-                    new() { Simbolo = "k", Nome = "k (forma)", ValorPadrao = 1.5, ValorMin = 0.01 },
+                    new() { Simbolo = "t", Nome = "t", ValorPadrao = 5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "lambda", Nome = "λ (escala)", ValorPadrao = 10, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "k (forma)", ValorPadrao = 1.5, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "S(t)",
-                Calcular = v => Math.Exp(-Math.Pow(v["t"] / v["lambda"], v["k"]))
+                Calcular = v => Math.Exp(-Math.Pow(v["t"] / v["lambda"], v["k"])),
+                ExemploPratico = "",
+                Unidades = "",
             },
             // 12.2 Kaplan-Meier e Censura
             new Formula
@@ -100,10 +111,11 @@ public partial class FormulaService
                 Criador = "Edward Kaplan / Paul Meier",
                 AnoOrigin = "1958",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -115,10 +127,11 @@ public partial class FormulaService
                 Criador = "Major Greenwood",
                 AnoOrigin = "1926",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -130,10 +143,11 @@ public partial class FormulaService
                 Criador = "Nathan Mantel / Richard Peto",
                 AnoOrigin = "1966/1972",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -144,10 +158,12 @@ public partial class FormulaService
                 Descricao = "O indivíduo é observado até min(evento,censura). Se censurado (δ=0), sabemos apenas T>C. Ignorar censura causa viés. KM a incorpora naturalmente.",
                 Criador = "Kaplan & Meier / Estatística de sobrevivência",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 12.3 Modelo de Cox
             new Formula
@@ -160,10 +176,11 @@ public partial class FormulaService
                 Criador = "David Cox",
                 AnoOrigin = "1972",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -175,10 +192,11 @@ public partial class FormulaService
                 Criador = "David Cox",
                 AnoOrigin = "1975",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -190,10 +208,12 @@ public partial class FormulaService
                 Criador = "David Cox",
                 AnoOrigin = "1972",
                 Variaveis = [
-                    new() { Simbolo = "beta", Nome = "β (coeficiente)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "beta", Nome = "β (coeficiente)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "HR",
-                Calcular = v => Math.Exp(v["beta"])
+                Calcular = v => Math.Exp(v["beta"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -205,10 +225,11 @@ public partial class FormulaService
                 Criador = "Wayne Nelson / Odd Aalen",
                 AnoOrigin = "1972/1978",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -219,10 +240,12 @@ public partial class FormulaService
                 Descricao = "Área sob a curva de sobrevivência até τ. Alternativa ao HR quando proporcionalidade não se sustenta. Intuitivo: tempo médio de vida até o horizonte τ.",
                 Criador = "Biostatística moderna",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -244,10 +267,11 @@ public partial class FormulaService
                 Criador = "Fisher-Tippett / Gnedenko",
                 AnoOrigin = "1928/1943",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "GEV", Nome = "GEV", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "GEV", Nome = "GEV", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["GEV"] + vars["mu"]
+                Calcular = vars => vars["GEV"] + vars["mu"],
+                Unidades = "",
             },
             new Formula
             {
@@ -259,10 +283,11 @@ public partial class FormulaService
                 Criador = "Fisher-Tippett-Gnedenko",
                 AnoOrigin = "1928",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -274,10 +299,11 @@ public partial class FormulaService
                 Criador = "Pickands / Balkema-de Haan",
                 AnoOrigin = "1975",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "H", Nome = "H", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["H"] + vars["y"]
+                Calcular = vars => vars["H"] + vars["y"],
+                Unidades = "",
             },
             new Formula
             {
@@ -288,10 +314,12 @@ public partial class FormulaService
                 Descricao = "VaR extrapolado via GPD para probabilidades muito pequenas (1 em 1000 anos). Mais confiável que VaR paramétrico normal para caudas pesadas.",
                 Criador = "Risco financeiro + EVT",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1 }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u"] + vars["sigma"]
+                Calcular = vars => vars["u"] + vars["sigma"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -303,10 +331,11 @@ public partial class FormulaService
                 Criador = "Acerbi & Tasche / Basel III",
                 AnoOrigin = "2002",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "ES", Nome = "ES", ValorPadrao = 1 }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "ES", Nome = "ES", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "alpha", Nome = "alpha", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["ES"] + vars["alpha"]
+                Calcular = vars => vars["ES"] + vars["alpha"],
+                Unidades = "",
             },
             // 13.2 Cópulas
             new Formula
@@ -319,10 +348,11 @@ public partial class FormulaService
                 Criador = "Abe Sklar",
                 AnoOrigin = "1959",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 }, new() { Simbolo = "xd", Nome = "xd", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "xd", Nome = "xd", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["F"] + vars["xd"]
+                Calcular = vars => vars["F"] + vars["xd"],
+                Unidades = "",
             },
             new Formula
             {
@@ -333,10 +363,12 @@ public partial class FormulaService
                 Descricao = "A densidade conjunta separa-se em produto das marginais vezes a densidade da cópula c. Facilita modelagem e estimação (IFM: marginais primeiro, depois cópula).",
                 Criador = "Teoria de cópulas",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1 }, new() { Simbolo = "xd", Nome = "xd", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "f", Nome = "f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "xd", Nome = "xd", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["f"] + vars["xd"]
+                Calcular = vars => vars["f"] + vars["xd"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -348,10 +380,11 @@ public partial class FormulaService
                 Criador = "David X. Li",
                 AnoOrigin = "2000",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["C"] + vars["rho"]
+                Calcular = vars => vars["C"] + vars["rho"],
+                Unidades = "",
             },
             new Formula
             {
@@ -363,10 +396,11 @@ public partial class FormulaService
                 Criador = "David Clayton",
                 AnoOrigin = "1978",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "theta", Nome = "theta", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["C"] + vars["theta"]
+                Calcular = vars => vars["C"] + vars["theta"],
+                Unidades = "",
             },
             new Formula
             {
@@ -378,10 +412,11 @@ public partial class FormulaService
                 Criador = "Emil Gumbel",
                 AnoOrigin = "~1960",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -393,10 +428,11 @@ public partial class FormulaService
                 Criador = "Maurice Kendall / Teoria de cópulas",
                 AnoOrigin = "1938",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
         ]);
     }
@@ -418,10 +454,11 @@ public partial class FormulaService
                 Criador = "Danie G. Krige / Georges Matheron",
                 AnoOrigin = "1951/1963",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -432,10 +469,12 @@ public partial class FormulaService
                 Descricao = "Variação a distância zero: erro de medição + microvariabilidade. γ não é zero na origem (descontinuidade). Nugget puro = ausência de correlação espacial.",
                 Criador = "Georges Matheron",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -447,10 +486,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron",
                 AnoOrigin = "1963",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -461,10 +501,12 @@ public partial class FormulaService
                 Descricao = "Atinge patamar assintoticamente (alcance efetivo ≈ 3a). Correlação nunca desaparece completamente. Bom para variáveis suaves.",
                 Criador = "Teoria de variogramas",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -475,10 +517,12 @@ public partial class FormulaService
                 Descricao = "Comportamento parabólico na origem (suavíssimo). Para variáveis muito contínuas e diferenciáveis. Pode causar instabilidade numérica em kriging.",
                 Criador = "Teoria de variogramas",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 14.2 Kriging
             new Formula
@@ -491,10 +535,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron (formulação) / D.G. Krige",
                 AnoOrigin = "1963/1951",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -506,10 +551,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron",
                 AnoOrigin = "1963",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -521,10 +567,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron",
                 AnoOrigin = "1963",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -536,10 +583,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron",
                 AnoOrigin = "1969",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
             new Formula
             {
@@ -550,10 +598,12 @@ public partial class FormulaService
                 Descricao = "Remove um ponto de cada vez (leave-one-out) e estima pelo kriging com os restantes. Compara Ẑ com Z real. Avalia qualidade do modelo de variograma.",
                 Criador = "Prática geoestatística",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -565,10 +615,11 @@ public partial class FormulaService
                 Criador = "Georges Matheron / André Journel",
                 AnoOrigin = "~1970",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n (amostra)", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "p", Nome = "p (probabilidade)", ValorPadrao = 0.5, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["p"]
+                Calcular = vars => vars["n"] * vars["p"],
+                Unidades = "",
             },
         ]);
     }

@@ -54,7 +54,8 @@ namespace CompendioCalc.Services
                     double term2 = comm_bc * a - a * comm_bc;
                     double term3 = comm_ca * b - b * comm_ca;
                     return term1 + term2 + term3; // Deve ser ≈0
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -92,7 +93,8 @@ namespace CompendioCalc.Services
                     double y12 = inputs["y12"];
                     // B(x,y) ≈ tr(ad_x · ad_y) para matrizes 2×2 traço zero
                     return 2 * (x11 * y11 + x12 * y12); // Simplificação
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -131,7 +133,8 @@ namespace CompendioCalc.Services
                     for (int i = 1; i <= rank; i++)
                         prod *= (lambda + rho) / rho;
                     return Math.Round(prod);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -171,7 +174,8 @@ namespace CompendioCalc.Services
                     // ⟨χ₁,χ₂⟩ = (1/|G|) Σ χ₁(g)χ̄₂(g)
                     double soma = chi1_g1 * chi2_g1 + chi1_g2 * chi2_g2;
                     return soma / ordem; // = 0 se inequivalentes, 1 se equivalentes
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -205,7 +209,8 @@ namespace CompendioCalc.Services
                     double dim2 = inputs["dim2"];
                     double dim3 = inputs["dim3"];
                     return dim1 * dim1 + dim2 * dim2 + dim3 * dim3;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -242,7 +247,8 @@ namespace CompendioCalc.Services
                     int q = (int)inputs["q"];
                     int exponent = ((p - 1) * (q - 1)) / 4;
                     return Math.Pow(-1, exponent);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -276,7 +282,8 @@ namespace CompendioCalc.Services
                     if (a % p == 0) return 0;
                     long result = ModPow(a, (p - 1) / 2, p);
                     return result == p - 1 ? -1 : result;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -318,7 +325,8 @@ namespace CompendioCalc.Services
                     double epsilon = inputs["epsilon"];
                     double H1 = inputs["H1"];
                     return H0 + epsilon * H1;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -352,7 +360,8 @@ namespace CompendioCalc.Services
                     double e = inputs["e"];
                     double theta = inputs["theta"];
                     return a * (1 - e * e) / (1 + e * Math.Cos(theta));
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -386,7 +395,8 @@ namespace CompendioCalc.Services
                     double M = inputs["M"];
                     double R = inputs["R"];
                     return Math.Sqrt(2 * G * M / R);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -425,7 +435,8 @@ namespace CompendioCalc.Services
                     double Tc = inputs["Tc"];
                     if (Math.Abs(T - Tc) < 0.01) return double.PositiveInfinity;
                     return C / (T - Tc);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -470,7 +481,8 @@ namespace CompendioCalc.Services
                     double y = inputs["y"];
                     // Simplificação 1D: μ* = k*/(k+σ²) · y
                     return k_star / (k_train + sigma2) * y;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -507,7 +519,8 @@ namespace CompendioCalc.Services
                     double length_scale = inputs["length_scale"];
                     double dist_sq = (x1 - x2) * (x1 - x2);
                     return sigma2 * Math.Exp(-dist_sq / (2 * length_scale * length_scale));
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -552,7 +565,8 @@ namespace CompendioCalc.Services
                     double y_k = x_k + beta * (x_k - x_prev);
                     // x_{k+1} = y_k - α·∇f(y_k)
                     return y_k - alpha * grad_f;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -594,7 +608,8 @@ namespace CompendioCalc.Services
                     for (int i = 1; i <= n; i++)
                         harmonic += 1.0 / i;
                     return harmonic; // Razão de aproximação
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -626,7 +641,8 @@ namespace CompendioCalc.Services
                     double p = inputs["p"];
                     double N = inputs["N"];
                     return 1.0 / ((1 - p) + p / N);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -672,7 +688,8 @@ namespace CompendioCalc.Services
                     double pi_lead = inputs["pi_lead"];
                     double r_n = inputs["r_n"];
                     return x_lead - sigma * (i_t - pi_lead - r_n);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -708,7 +725,8 @@ namespace CompendioCalc.Services
                     double kappa = inputs["kappa"];
                     double x_t = inputs["x_t"];
                     return beta * pi_lead + kappa * x_t;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -748,7 +766,8 @@ namespace CompendioCalc.Services
                     double phi_x = inputs["phi_x"];
                     double x_t = inputs["x_t"];
                     return r_star + pi_t + phi_pi * (pi_t - pi_star) + phi_x * x_t;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -787,7 +806,8 @@ namespace CompendioCalc.Services
                     double x = inputs["x"];
                     if (x < x_m) return 0;
                     return alpha * Math.Pow(x_m, alpha) / Math.Pow(x, alpha + 1);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -823,7 +843,8 @@ namespace CompendioCalc.Services
                     double N_t = inputs["N_t"];
                     double m = inputs["m"];
                     return (p + q * N_t / m) * (m - N_t);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -863,7 +884,8 @@ namespace CompendioCalc.Services
                     double h2 = inputs["h2"];
                     double S = inputs["S"];
                     return h2 * S;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -899,7 +921,8 @@ namespace CompendioCalc.Services
                     double beta2 = inputs["beta2"];
                     double g2 = inputs["g2"];
                     return beta1 * g1 + beta2 * g2;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -937,7 +960,8 @@ namespace CompendioCalc.Services
                 {
                     double epsilon = inputs["epsilon"];
                     return Math.Exp(epsilon); // Razão máxima de probabilidades
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -975,7 +999,8 @@ namespace CompendioCalc.Services
                     double b = delta_f / epsilon;
                     // Simplificação: aceita ruído como entrada (em real, seria sample de Lap(0,b))
                     return f_D + ruido;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -1012,7 +1037,8 @@ namespace CompendioCalc.Services
                     double n2 = inputs["n2"];
                     double n_total = n1 + n2;
                     return (n1 / n_total) * w1 + (n2 / n_total) * w2;
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -1047,7 +1073,8 @@ namespace CompendioCalc.Services
                     double difficulty = inputs["difficulty"];
                     // Número esperado de hashes = difficulty * 2³²
                     return difficulty * Math.Pow(2, 32);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -1086,7 +1113,8 @@ namespace CompendioCalc.Services
                     double weight = inputs["weight"];
                     // Simplificação: φ ≈ weight · (f_with - f_without)
                     return weight * (f_with - f_without);
-                }
+                },
+                Icone = "∑",
             };
         }
 
@@ -1120,7 +1148,8 @@ namespace CompendioCalc.Services
                     double linear_combination = alpha * A;
                     // ReLU
                     return linear_combination > 0 ? linear_combination : 0;
-                }
+                },
+                Icone = "∑",
             };
         }
 

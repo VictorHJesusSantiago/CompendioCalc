@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1983",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Source Level SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220 },
-                        new Variavel { Nome = "Transmission Loss TL (dB)", Simbolo = "TL", Unidade = "dB", ValorPadrao = 70 },
-                        new Variavel { Nome = "Target Strength TS (dB)", Simbolo = "TS", Unidade = "dB", ValorPadrao = 20 }
+                        new Variavel { Nome = "Source Level SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Transmission Loss TL (dB)", Simbolo = "TL", Unidade = "dB", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Target Strength TS (dB)", Simbolo = "TS", Unidade = "dB", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "SNR",
                     UnidadeResultado = "dB",
@@ -47,7 +47,8 @@ namespace CompendioCalc.Services
                         double SNR = SL - 2 * TL + TS - (NL - DI);
                         return SNR;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-221: Perda por Transmissão (TL)
@@ -67,8 +68,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Distância r (m)", Simbolo = "r", Unidade = "m", ValorPadrao = 10000 },
-                        new Variavel { Nome = "α absorção (dB/km)", Simbolo = "alpha", Unidade = "dB/km", ValorPadrao = 0.05 }
+                        new Variavel { Nome = "Distância r (m)", Simbolo = "r", Unidade = "m", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α absorção (dB/km)", Simbolo = "alpha", Unidade = "dB/km", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -82,7 +83,8 @@ namespace CompendioCalc.Services
                         double TL = spreading + absorption;
                         return TL;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-222: Lei de Snell (Refração)
@@ -102,9 +104,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "graus",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "θ₁ (graus)", Simbolo = "theta1", Unidade = "graus", ValorPadrao = 30 },
-                        new Variavel { Nome = "c₁ (m/s)", Simbolo = "c1", Unidade = "m/s", ValorPadrao = 1500 },
-                        new Variavel { Nome = "c₂ (m/s)", Simbolo = "c2", Unidade = "m/s", ValorPadrao = 1450 }
+                        new Variavel { Nome = "θ₁ (graus)", Simbolo = "theta1", Unidade = "graus", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₁ (m/s)", Simbolo = "c1", Unidade = "m/s", ValorPadrao = 1500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c₂ (m/s)", Simbolo = "c2", Unidade = "m/s", ValorPadrao = 1450, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -123,7 +125,8 @@ namespace CompendioCalc.Services
                         double theta2 = theta2_rad * 180 / Math.PI;
                         return theta2;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-223: Velocidade do Som (Mackenzie)
@@ -143,9 +146,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Temperatura T (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 10 },
-                        new Variavel { Nome = "Salinidade S (PSU)", Simbolo = "S", Unidade = "PSU", ValorPadrao = 35 },
-                        new Variavel { Nome = "Profundidade D (m)", Simbolo = "D", Unidade = "m", ValorPadrao = 1000 }
+                        new Variavel { Nome = "Temperatura T (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Salinidade S (PSU)", Simbolo = "S", Unidade = "PSU", ValorPadrao = 35, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Profundidade D (m)", Simbolo = "D", Unidade = "m", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -160,7 +163,8 @@ namespace CompendioCalc.Services
 
                         return c;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-224: Target Strength
@@ -180,7 +184,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Seção reta σ (m²)", Simbolo = "sigma", Unidade = "m²", ValorPadrao = 3.14 }
+                        new Variavel { Nome = "Seção reta σ (m²)", Simbolo = "sigma", Unidade = "m²", ValorPadrao = 3.14, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -191,7 +195,8 @@ namespace CompendioCalc.Services
                         double TS = 10 * Math.Log10(sigma / (4 * Math.PI));
                         return TS;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-225: Índice de Diretividade (DI)
@@ -211,7 +216,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Beamwidth θ (graus)", Simbolo = "theta", Unidade = "graus", ValorPadrao = 10 }
+                        new Variavel { Nome = "Beamwidth θ (graus)", Simbolo = "theta", Unidade = "graus", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -223,7 +228,8 @@ namespace CompendioCalc.Services
                         double DI = 10 * Math.Log10((180.0 / theta) * (180.0 / theta));
                         return DI;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-226: Nível de Ruído Ambiente
@@ -243,8 +249,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB re 1µPa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Sea State SS (0-6)", Simbolo = "SS", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "Frequência f (kHz)", Simbolo = "f", Unidade = "kHz", ValorPadrao = 1 }
+                        new Variavel { Nome = "Sea State SS (0-6)", Simbolo = "SS", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Frequência f (kHz)", Simbolo = "f", Unidade = "kHz", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -257,7 +263,8 @@ namespace CompendioCalc.Services
                         double NL = 60 + 16 * Math.Log10(SS) - 26 * Math.Log10(f);
                         return NL;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-227: Profundidade do Canal Sonoro (SOFAR)
@@ -277,7 +284,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Latitude graus (aprox)", Simbolo = "lat", Unidade = "graus", ValorPadrao = 40 }
+                        new Variavel { Nome = "Latitude graus (aprox)", Simbolo = "lat", Unidade = "graus", ValorPadrao = 40, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -290,7 +297,8 @@ namespace CompendioCalc.Services
                         
                         return z_axis;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-228: Doppler Shift
@@ -310,9 +318,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kHz",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f transmissão (kHz)", Simbolo = "f_t", Unidade = "kHz", ValorPadrao = 10 },
-                        new Variavel { Nome = "v transmissor (m/s)", Simbolo = "v_t", Unidade = "m/s", ValorPadrao = 10 },
-                        new Variavel { Nome = "v receptor (m/s)", Simbolo = "v_r", Unidade = "m/s", ValorPadrao = 0 }
+                        new Variavel { Nome = "f transmissão (kHz)", Simbolo = "f_t", Unidade = "kHz", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v transmissor (m/s)", Simbolo = "v_t", Unidade = "m/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v receptor (m/s)", Simbolo = "v_r", Unidade = "m/s", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -328,7 +336,8 @@ namespace CompendioCalc.Services
                         double f_r = f_t * (c + v_r) / denom;
                         return f_r;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-229: Resolução Range (Chirp)
@@ -348,7 +357,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Bandwidth B (kHz)", Simbolo = "B", Unidade = "kHz", ValorPadrao = 10 }
+                        new Variavel { Nome = "Bandwidth B (kHz)", Simbolo = "B", Unidade = "kHz", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -361,7 +370,8 @@ namespace CompendioCalc.Services
                         double delta_R = c / (2 * B_Hz);
                         return delta_R;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-230: Reverberation Level
@@ -381,9 +391,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220 },
-                        new Variavel { Nome = "r distância (km)", Simbolo = "r", Unidade = "km", ValorPadrao = 5 },
-                        new Variavel { Nome = "Sv scattering (dB)", Simbolo = "Sv", Unidade = "dB", ValorPadrao = -70 }
+                        new Variavel { Nome = "SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r distância (km)", Simbolo = "r", Unidade = "km", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Sv scattering (dB)", Simbolo = "Sv", Unidade = "dB", ValorPadrao = -70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -398,7 +408,8 @@ namespace CompendioCalc.Services
                         double RL = SL - 10 * Math.Log10(r_m * r_m) + Sv + 30; // +30 fator típico
                         return RL;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-231: Acoustic Power
@@ -418,7 +429,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB re 1µPa@1m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "P acústica (W)", Simbolo = "P", Unidade = "W", ValorPadrao = 600 }
+                        new Variavel { Nome = "P acústica (W)", Simbolo = "P", Unidade = "W", ValorPadrao = 600, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -429,7 +440,8 @@ namespace CompendioCalc.Services
                         double SL = 170.8 + 10 * Math.Log10(P);
                         return SL;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-232: Cavitação
@@ -449,7 +461,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "atm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Profundidade (m)", Simbolo = "depth", Unidade = "m", ValorPadrao = 10 }
+                        new Variavel { Nome = "Profundidade (m)", Simbolo = "depth", Unidade = "m", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -460,7 +472,8 @@ namespace CompendioCalc.Services
                         double P_cav = P_static + P_vapor + 0.5; // +0.5 margem tensile
                         return P_cav;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-233: Array Gain
@@ -480,7 +493,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N elementos", Simbolo = "N", Unidade = "", ValorPadrao = 32 }
+                        new Variavel { Nome = "N elementos", Simbolo = "N", Unidade = "", ValorPadrao = 32, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -491,7 +504,8 @@ namespace CompendioCalc.Services
                         double AG = 10 * Math.Log10(N);
                         return AG;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-234: Cavidade Ressonante (Transdutor)
@@ -511,8 +525,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kHz",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "L comprimento (cm)", Simbolo = "L", Unidade = "cm", ValorPadrao = 5 },
-                        new Variavel { Nome = "c material (m/s)", Simbolo = "c", Unidade = "m/s", ValorPadrao = 4000 }
+                        new Variavel { Nome = "L comprimento (cm)", Simbolo = "L", Unidade = "cm", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c material (m/s)", Simbolo = "c", Unidade = "m/s", ValorPadrao = 4000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -526,7 +540,8 @@ namespace CompendioCalc.Services
                         double f_res_kHz = f_res / 1000;
                         return f_res_kHz;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-235: Relação Sinal-Reverberação
@@ -546,10 +561,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220 },
-                        new Variavel { Nome = "TL (dB)", Simbolo = "TL", Unidade = "dB", ValorPadrao = 60 },
-                        new Variavel { Nome = "TS (dB)", Simbolo = "TS", Unidade = "dB", ValorPadrao = 15 },
-                        new Variavel { Nome = "RL (dB)", Simbolo = "RL", Unidade = "dB", ValorPadrao = 90 }
+                        new Variavel { Nome = "SL (dB)", Simbolo = "SL", Unidade = "dB", ValorPadrao = 220, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "TL (dB)", Simbolo = "TL", Unidade = "dB", ValorPadrao = 60, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "TS (dB)", Simbolo = "TS", Unidade = "dB", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "RL (dB)", Simbolo = "RL", Unidade = "dB", ValorPadrao = 90, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -561,7 +576,8 @@ namespace CompendioCalc.Services
                         double SRR = SL - 2 * TL + TS - RL;
                         return SRR;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-236: Lloyd Mirror Effect
@@ -581,8 +597,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R reflexão", Simbolo = "R", Unidade = "", ValorPadrao = -0.9 },
-                        new Variavel { Nome = "Δφ fase (rad)", Simbolo = "dphi", Unidade = "rad", ValorPadrao = 3.14 }
+                        new Variavel { Nome = "R reflexão", Simbolo = "R", Unidade = "", ValorPadrao = -0.9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Δφ fase (rad)", Simbolo = "dphi", Unidade = "rad", ValorPadrao = 3.14, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -599,7 +615,8 @@ namespace CompendioCalc.Services
                         double TL_extra = 20 * Math.Log10(mag);
                         return TL_extra;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-237: Synthetic Aperture Sonar (SAS) — Resolução
@@ -619,7 +636,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "D apertura (m)", Simbolo = "D", Unidade = "m", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "D apertura (m)", Simbolo = "D", Unidade = "m", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -628,7 +645,8 @@ namespace CompendioCalc.Services
                         double delta_y = D / 2;
                         return delta_y;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 },
 
                 // V10-238: Time Reversal Mirror (TRM)
@@ -648,7 +666,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N canais", Simbolo = "N", Unidade = "", ValorPadrao = 16 }
+                        new Variavel { Nome = "N canais", Simbolo = "N", Unidade = "", ValorPadrao = 16, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -658,7 +676,8 @@ namespace CompendioCalc.Services
                         double gain = 10 * Math.Log10(N);
                         return gain;
                     },
-                    Icone = "🌊"
+                    Icone = "🌊",
+                    Unidades = "",
                 }
             });
         }

@@ -39,7 +39,8 @@ public partial class FormulaService
                 double epsilon = inputs["epsilon"];
                 
                 return E * epsilon;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -72,7 +73,8 @@ public partial class FormulaService
                 double nu = inputs["nu"];
                 
                 return E / (2 * (1 + nu));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -107,7 +109,8 @@ public partial class FormulaService
                 double a = inputs["a"];
                 
                 return Math.Sqrt((2 * E * gamma_s) / (Math.PI * a));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -140,7 +143,8 @@ public partial class FormulaService
                 double dC_dx = inputs["dC_dx"];
                 
                 return -D * dC_dx;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -173,7 +177,8 @@ public partial class FormulaService
                 double d2C_dx2 = inputs["d2C_dx2"];
                 
                 return D * d2C_dx2;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -210,7 +215,8 @@ public partial class FormulaService
                 double T = inputs["T"];
                 
                 return D0 * Math.Exp(-Q / (R * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -248,7 +254,8 @@ public partial class FormulaService
                 if (sin_theta > 1) return double.NaN; // Sem difração
                 
                 return Math.Asin(sin_theta);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -288,7 +295,8 @@ public partial class FormulaService
                 if (denom == 0) return double.NaN;
                 
                 return a / denom;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -326,7 +334,8 @@ public partial class FormulaService
                 double volume_cell = a * a * a;
                 
                 return volume_atoms / volume_cell;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -363,7 +372,8 @@ public partial class FormulaService
                 double NA = inputs["NA"];
                 
                 return (n * A) / (Vc * NA);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -396,7 +406,8 @@ public partial class FormulaService
                 double r_solvente = inputs["r_solvente"];
                 
                 return Math.Abs(r_soluto - r_solvente) / r_solvente * 100;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -429,7 +440,8 @@ public partial class FormulaService
                 double P = inputs["P"];
                 
                 return C - P + 2;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -467,7 +479,8 @@ public partial class FormulaService
                 if (Math.Abs(denom) < 1e-6) return double.NaN;
                 
                 return (C0 - CL) / denom;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -502,7 +515,8 @@ public partial class FormulaService
                 double fs = inputs["fs"];
                 
                 return k * C0 * Math.Pow(1 - fs, k - 1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -537,7 +551,8 @@ public partial class FormulaService
                 double d = inputs["d"];
                 
                 return sigma_0 + k * Math.Pow(d, -0.5);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -574,7 +589,8 @@ public partial class FormulaService
                 double area = Math.PI * D * (D - Math.Sqrt(D * D - d * d));
                 
                 return (2 * P) / area;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -609,7 +625,8 @@ public partial class FormulaService
                 double c = inputs["c"];
                 
                 return eps_f_prime * Math.Pow(2 * Nf, c);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -644,7 +661,8 @@ public partial class FormulaService
                 double m = inputs["m"];
                 
                 return C * Math.Pow(delta_K, m);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -681,7 +699,8 @@ public partial class FormulaService
                 double mu = inputs["mu"];
                 
                 return k * Math.Sqrt((Tp - Tmold) / mu);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -714,7 +733,8 @@ public partial class FormulaService
                 double nu = inputs["nu"];
                 
                 return E / (3 * (1 - 2 * nu));
-            }
+            },
+            Icone = "∑",
         };
     }
 }

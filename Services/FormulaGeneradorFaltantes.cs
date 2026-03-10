@@ -169,9 +169,10 @@ public static class FormulaGeneradorFaltantes
                 Unidades = "unidade",
                 VariavelResultado = "resultado",
                 Variaveis = new List<Variavel> {
-                    new Variavel { Simbolo = "x", Nome = "Entrada", Descricao = "Valor entrada", ValorPadrao = 1.0 }
+                    new Variavel { Simbolo = "x", Nome = "Entrada", Descricao = "Valor entrada", ValorPadrao = 1.0, Unidade = "adim" }
                 },
-                Calcular = vars => vars.ContainsKey("x") ? vars["x"] : 1.0
+                Calcular = vars => vars.ContainsKey("x") ? vars["x"] : 1.0,
+                SubCategoria = "",
             });
         }
 
@@ -197,8 +198,8 @@ public static class FormulaGeneradorFaltantes
             Unidades = "Variável",
             VariavelResultado = "resultado",
             Variaveis = new List<Variavel> {
-                new Variavel { Simbolo = "x", Nome = "Entrada 1", Descricao = "Primeira entrada", ValorPadrao = 1.0 },
-                new Variavel { Simbolo = "y", Nome = "Entrada 2", Descricao = "Segunda entrada", ValorPadrao = 1.0 }
+                new Variavel { Simbolo = "x", Nome = "Entrada 1", Descricao = "Primeira entrada", ValorPadrao = 1.0, Unidade = "adim" },
+                new Variavel { Simbolo = "y", Nome = "Entrada 2", Descricao = "Segunda entrada", ValorPadrao = 1.0, Unidade = "adim" }
             },
             Calcular = vars => {
                 double x = vars.ContainsKey("x") ? vars["x"] : 1.0;

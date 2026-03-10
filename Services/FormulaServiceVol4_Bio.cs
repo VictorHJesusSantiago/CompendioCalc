@@ -25,10 +25,11 @@ public partial class FormulaService
                 Criador = "Alan Turing",
                 AnoOrigin = "1952",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Du", Nome = "Difusividade Du", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "lapU", Nome = "Laplaciano de u", ValorPadrao = -0.3 }, new() { Simbolo = "f", Nome = "Reacao f(u,v)", ValorPadrao = 0.2 } ],
+                Variaveis = [ new() { Simbolo = "Du", Nome = "Difusividade Du", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lapU", Nome = "Laplaciano de u", ValorPadrao = -0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "f", Nome = "Reacao f(u,v)", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂u/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Du"] * vars["lapU"] + vars["f"]
+                Calcular = vars => vars["Du"] * vars["lapU"] + vars["f"],
+                Unidades = "",
             },
             new Formula
             {
@@ -38,10 +39,13 @@ public partial class FormulaService
                 Icone = "ins",
                 Descricao = "Estado homogêneo localmente estável (traço<0, det>0), mas difusão desestabiliza: existe k² tal que Re(λ(k²))>0. Requer Dv/Du > limiar crítico (razão de difusividade).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Dv", Nome = "Difusividade Dv", ValorPadrao = 10, ValorMin = 0 }, new() { Simbolo = "Du", Nome = "Difusividade Du", ValorPadrao = 1, ValorMin = 0.0001 }, new() { Simbolo = "fu", Nome = "Derivada fu", ValorPadrao = 0.8 }, new() { Simbolo = "gv", Nome = "Derivada gv", ValorPadrao = -0.2 } ],
+                Variaveis = [ new() { Simbolo = "Dv", Nome = "Difusividade Dv", ValorPadrao = 10, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Du", Nome = "Difusividade Du", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "fu", Nome = "Derivada fu", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "gv", Nome = "Derivada gv", ValorPadrao = -0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Dv·fu+Du·gv",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Dv"] * vars["fu"] + vars["Du"] * vars["gv"]
+                Calcular = vars => vars["Dv"] * vars["fu"] + vars["Du"] * vars["gv"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -53,10 +57,11 @@ public partial class FormulaService
                 Criador = "Alfred Gierer / Hans Meinhardt",
                 AnoOrigin = "1972",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Da", Nome = "Da", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "lapA", Nome = "Laplaciano de a", ValorPadrao = -0.2 }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.1 }, new() { Simbolo = "h", Nome = "h", ValorPadrao = 0.8, ValorMin = 0.0001 }, new() { Simbolo = "mu", Nome = "μ", ValorPadrao = 0.4 }, new() { Simbolo = "rho0", Nome = "ρ0", ValorPadrao = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "Da", Nome = "Da", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lapA", Nome = "Laplaciano de a", ValorPadrao = -0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "h", Nome = "h", ValorPadrao = 0.8, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "μ", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "rho0", Nome = "ρ0", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂a/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Da"] * vars["lapA"] + vars["rho"] * vars["a"] * vars["a"] / vars["h"] - vars["mu"] * vars["a"] + vars["rho0"]
+                Calcular = vars => vars["Da"] * vars["lapA"] + vars["rho"] * vars["a"] * vars["a"] / vars["h"] - vars["mu"] * vars["a"] + vars["rho0"],
+                Unidades = "",
             },
             new Formula
             {
@@ -66,10 +71,13 @@ public partial class FormulaService
                 Icone = "GS",
                 Descricao = "Modelo com cinética autocatalítica cúbica. Riquíssima variedade de padrões: manchas, listras, labirintos, solitons, caos espaço-temporal. F = taxa de alimentação, k = taxa de remoção.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Du", Nome = "Du", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "lapU", Nome = "Laplaciano de u", ValorPadrao = -0.1 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1.2 }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 0.7 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 0.04 } ],
+                Variaveis = [ new() { Simbolo = "Du", Nome = "Du", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lapU", Nome = "Laplaciano de u", ValorPadrao = -0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "u", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "v", Nome = "v", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 0.04, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂u/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Du"] * vars["lapU"] - vars["u"] * vars["v"] * vars["v"] + vars["F"] * (1 - vars["u"])
+                Calcular = vars => vars["Du"] * vars["lapU"] - vars["u"] * vars["v"] * vars["v"] + vars["F"] * (1 - vars["u"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -81,10 +89,11 @@ public partial class FormulaService
                 Criador = "Jack Swift / Pierre Hohenberg",
                 AnoOrigin = "1977",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 0.8 }, new() { Simbolo = "epsilon", Nome = "ε", ValorPadrao = 0.3 }, new() { Simbolo = "k4u", Nome = "(1+∇²)^2u", ValorPadrao = 0.6 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "u", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "epsilon", Nome = "ε", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "k4u", Nome = "(1+∇²)^2u", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂u/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["epsilon"] * vars["u"] - vars["k4u"] - vars["u"] * vars["u"] * vars["u"]
+                Calcular = vars => vars["epsilon"] * vars["u"] - vars["k4u"] - vars["u"] * vars["u"] * vars["u"],
+                Unidades = "",
             },
             new Formula
             {
@@ -96,10 +105,11 @@ public partial class FormulaService
                 Criador = "John Cahn / John Hilliard",
                 AnoOrigin = "1958",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "M", Nome = "Mobilidade M", ValorPadrao = 0.2, ValorMin = 0 }, new() { Simbolo = "dFdc", Nome = "∂F/∂c", ValorPadrao = 0.5 }, new() { Simbolo = "kappa", Nome = "κ", ValorPadrao = 0.1, ValorMin = 0 }, new() { Simbolo = "lapC", Nome = "∇²c", ValorPadrao = -0.3 } ],
+                Variaveis = [ new() { Simbolo = "M", Nome = "Mobilidade M", ValorPadrao = 0.2, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dFdc", Nome = "∂F/∂c", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "kappa", Nome = "κ", ValorPadrao = 0.1, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lapC", Nome = "∇²c", ValorPadrao = -0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂c/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["M"] * (vars["dFdc"] - vars["kappa"] * vars["lapC"])
+                Calcular = vars => vars["M"] * (vars["dFdc"] - vars["kappa"] * vars["lapC"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -111,10 +121,11 @@ public partial class FormulaService
                 Criador = "Evelyn Keller / Lee Segel",
                 AnoOrigin = "1970",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "D", Nome = "D", ValorPadrao = 0.8, ValorMin = 0 }, new() { Simbolo = "lapRho", Nome = "∇²ρ", ValorPadrao = -0.2 }, new() { Simbolo = "chi", Nome = "χ", ValorPadrao = 0.5 }, new() { Simbolo = "rho", Nome = "ρ", ValorPadrao = 1.2 }, new() { Simbolo = "grad", Nome = "∇·(ρ∇c)", ValorPadrao = 0.4 } ],
+                Variaveis = [ new() { Simbolo = "D", Nome = "D", ValorPadrao = 0.8, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lapRho", Nome = "∇²ρ", ValorPadrao = -0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "chi", Nome = "χ", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "rho", Nome = "ρ", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "grad", Nome = "∇·(ρ∇c)", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂ρ/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => vars["D"] * vars["lapRho"] - vars["chi"] * vars["grad"]
+                Calcular = vars => vars["D"] * vars["lapRho"] - vars["chi"] * vars["grad"],
+                Unidades = "",
             },
             new Formula
             {
@@ -126,10 +137,11 @@ public partial class FormulaService
                 Criador = "Fisher / Kolmogorov-Petrovsky-Piskunov",
                 AnoOrigin = "1937",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "r", Nome = "Taxa de crescimento r", ValorPadrao = 0.5, ValorMin = 0 }, new() { Simbolo = "D", Nome = "Difusividade D", ValorPadrao = 1.2, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "r", Nome = "Taxa de crescimento r", ValorPadrao = 0.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "D", Nome = "Difusividade D", ValorPadrao = 1.2, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "c*",
                 UnidadeResultado = "",
-                Calcular = vars => 2 * Math.Sqrt(vars["r"] * vars["D"])
+                Calcular = vars => 2 * Math.Sqrt(vars["r"] * vars["D"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -139,10 +151,13 @@ public partial class FormulaService
                 Icone = "RD",
                 Descricao = "Razão de difusão entre inibidor e ativador; valores altos favorecem padrões de Turing.",
                 ExemploPratico = "Exemplo: Dv=10 e Du=1 => RD=10.",
-                Variaveis = [ new() { Simbolo = "Dv", Nome = "Difusão do inibidor Dv", ValorPadrao = 10, ValorMin = 0.0001 }, new() { Simbolo = "Du", Nome = "Difusão do ativador Du", ValorPadrao = 1, ValorMin = 0.0001 } ],
+                Variaveis = [ new() { Simbolo = "Dv", Nome = "Difusão do inibidor Dv", ValorPadrao = 10, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Du", Nome = "Difusão do ativador Du", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "R_D",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Dv"] / vars["Du"]
+                Calcular = vars => vars["Dv"] / vars["Du"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -152,10 +167,13 @@ public partial class FormulaService
                 Icone = "f",
                 Descricao = "Função de reação do morfogênio ativador no sistema reação-difusão.",
                 ExemploPratico = "Exemplo: u=1.1, v=0.6, α=0.8, β=0.3.",
-                Variaveis = [ new() { Simbolo = "u", Nome = "Ativador u", ValorPadrao = 1.1 }, new() { Simbolo = "v", Nome = "Inibidor v", ValorPadrao = 0.6 }, new() { Simbolo = "α", Nome = "Parâmetro α", ValorPadrao = 0.8 }, new() { Simbolo = "β", Nome = "Parâmetro β", ValorPadrao = 0.3 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "Ativador u", ValorPadrao = 1.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "v", Nome = "Inibidor v", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "α", Nome = "Parâmetro α", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "β", Nome = "Parâmetro β", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "f(u,v)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["α"] * vars["u"] - vars["β"] * vars["v"] + vars["u"] * vars["u"] * vars["v"]
+                Calcular = vars => vars["α"] * vars["u"] - vars["β"] * vars["v"] + vars["u"] * vars["u"] * vars["v"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -165,10 +183,13 @@ public partial class FormulaService
                 Icone = "g",
                 Descricao = "Função de reação do inibidor no sistema reação-difusão.",
                 ExemploPratico = "Exemplo: u=1.1, v=0.6, γ=0.5, δ=0.2.",
-                Variaveis = [ new() { Simbolo = "u", Nome = "Ativador u", ValorPadrao = 1.1 }, new() { Simbolo = "v", Nome = "Inibidor v", ValorPadrao = 0.6 }, new() { Simbolo = "γ", Nome = "Parâmetro γ", ValorPadrao = 0.5 }, new() { Simbolo = "δ", Nome = "Parâmetro δ", ValorPadrao = 0.2 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "Ativador u", ValorPadrao = 1.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "v", Nome = "Inibidor v", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "γ", Nome = "Parâmetro γ", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "δ", Nome = "Parâmetro δ", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "g(u,v)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["γ"] * vars["u"] - vars["δ"] * vars["v"] - vars["u"] * vars["u"] * vars["v"]
+                Calcular = vars => vars["γ"] * vars["u"] - vars["δ"] * vars["v"] - vars["u"] * vars["u"] * vars["v"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -178,10 +199,13 @@ public partial class FormulaService
                 Icone = "kc",
                 Descricao = "Escala espacial dominante do padrão gerado por instabilidade de Turing.",
                 ExemploPratico = "Exemplo: Dv=12, Du=1, fu=0.9, gv=-0.1.",
-                Variaveis = [ new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 12, ValorMin = 0.0001 }, new() { Simbolo = "Du", Nome = "Du", ValorPadrao = 1, ValorMin = 0.0001 }, new() { Simbolo = "fu", Nome = "Derivada fu", ValorPadrao = 0.9 }, new() { Simbolo = "gv", Nome = "Derivada gv", ValorPadrao = -0.1 } ],
+                Variaveis = [ new() { Simbolo = "Dv", Nome = "Dv", ValorPadrao = 12, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Du", Nome = "Du", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "fu", Nome = "Derivada fu", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "gv", Nome = "Derivada gv", ValorPadrao = -0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "k_c",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(Math.Abs((vars["Dv"] * vars["fu"] + vars["Du"] * vars["gv"]) / (2 * vars["Du"] * vars["Dv"])))
+                Calcular = vars => Math.Sqrt(Math.Abs((vars["Dv"] * vars["fu"] + vars["Du"] * vars["gv"]) / (2 * vars["Du"] * vars["Dv"]))),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -191,10 +215,13 @@ public partial class FormulaService
                 Icone = "λ",
                 Descricao = "Escala espacial típica de manchas/listras produzidas pelo modo mais instável.",
                 ExemploPratico = "Exemplo: kc=0.8 => λ≈7.85.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "Número de onda k", ValorPadrao = 0.8, ValorMin = 0.0001 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "Número de onda k", ValorPadrao = 0.8, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "λ",
                 UnidadeResultado = "",
-                Calcular = vars => 2 * Math.PI / vars["k"]
+                Calcular = vars => 2 * Math.PI / vars["k"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -204,10 +231,13 @@ public partial class FormulaService
                 Icone = "σ",
                 Descricao = "Taxa de crescimento inicial de um modo perturbado; σ>0 indica instabilidade.",
                 ExemploPratico = "Exemplo: δ0=0.01, σ=0.4, t=5 => δ≈0.0739.",
-                Variaveis = [ new() { Simbolo = "δ0", Nome = "Perturbação inicial", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "σ", Nome = "Taxa σ", ValorPadrao = 0.4 }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 5, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "δ0", Nome = "Perturbação inicial", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "σ", Nome = "Taxa σ", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "δ(t)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["δ0"] * Math.Exp(vars["σ"] * vars["t"])
+                Calcular = vars => vars["δ0"] * Math.Exp(vars["σ"] * vars["t"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 19.2 Redes Neurais Biológicas
             new Formula
@@ -220,10 +250,11 @@ public partial class FormulaService
                 Criador = "Hugh Wilson / Jack Cowan",
                 AnoOrigin = "1972",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τe", ValorPadrao = 10, ValorMin = 0.001 }, new() { Simbolo = "E", Nome = "Atividade E", ValorPadrao = 0.4 }, new() { Simbolo = "I", Nome = "Atividade I", ValorPadrao = 0.3 }, new() { Simbolo = "wEE", Nome = "Peso wEE", ValorPadrao = 1.5 }, new() { Simbolo = "wEI", Nome = "Peso wEI", ValorPadrao = 1.1 }, new() { Simbolo = "Iext", Nome = "Entrada externa", ValorPadrao = 0.2 } ],
+                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τe", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "E", Nome = "Atividade E", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Atividade I", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wEE", Nome = "Peso wEE", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wEI", Nome = "Peso wEI", ValorPadrao = 1.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Iext", Nome = "Entrada externa", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Ė",
                 UnidadeResultado = "",
-                Calcular = vars => (-vars["E"] + 1.0 / (1.0 + Math.Exp(-(vars["wEE"] * vars["E"] - vars["wEI"] * vars["I"] + vars["Iext"])))) / vars["τ"]
+                Calcular = vars => (-vars["E"] + 1.0 / (1.0 + Math.Exp(-(vars["wEE"] * vars["E"] - vars["wEI"] * vars["I"] + vars["Iext"])))) / vars["τ"],
+                Unidades = "",
             },
             new Formula
             {
@@ -233,10 +264,13 @@ public partial class FormulaService
                 Icone = "WCi",
                 Descricao = "População inibitória I recebe excitação de E (wie) e auto-inibição (wii). Balanço E/I crucial: desequilíbrio → epilepsia (excesso E) ou coma (excesso I).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τi", ValorPadrao = 12, ValorMin = 0.001 }, new() { Simbolo = "E", Nome = "Atividade E", ValorPadrao = 0.4 }, new() { Simbolo = "I", Nome = "Atividade I", ValorPadrao = 0.3 }, new() { Simbolo = "wIE", Nome = "Peso wIE", ValorPadrao = 1.2 }, new() { Simbolo = "wII", Nome = "Peso wII", ValorPadrao = 0.8 }, new() { Simbolo = "Iext", Nome = "Entrada externa", ValorPadrao = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τi", ValorPadrao = 12, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "E", Nome = "Atividade E", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Atividade I", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wIE", Nome = "Peso wIE", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wII", Nome = "Peso wII", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Iext", Nome = "Entrada externa", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "İ",
                 UnidadeResultado = "",
-                Calcular = vars => (-vars["I"] + 1.0 / (1.0 + Math.Exp(-(vars["wIE"] * vars["E"] - vars["wII"] * vars["I"] + vars["Iext"])))) / vars["τ"]
+                Calcular = vars => (-vars["I"] + 1.0 / (1.0 + Math.Exp(-(vars["wIE"] * vars["E"] - vars["wII"] * vars["I"] + vars["Iext"])))) / vars["τ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -246,10 +280,13 @@ public partial class FormulaService
                 Icone = "Hopf",
                 Descricao = "Transição de ponto fixo estável para ciclo limite: par de autovalores complexos cruza eixo imaginário. Gera ritmos cerebrais (α~10Hz, γ~40Hz). Supercrítica = suave, subcrítica = abrupta.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "detJ", Nome = "Determinante de J", ValorPadrao = 9, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "detJ", Nome = "Determinante de J", ValorPadrao = 9, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ω",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["detJ"])
+                Calcular = vars => Math.Sqrt(vars["detJ"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -261,10 +298,11 @@ public partial class FormulaService
                 Criador = "Shun-ichi Amari",
                 AnoOrigin = "1977",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante τ", ValorPadrao = 10, ValorMin = 0.001 }, new() { Simbolo = "u", Nome = "Estado u", ValorPadrao = 0.5 }, new() { Simbolo = "wS", Nome = "Termo integral", ValorPadrao = 0.9 }, new() { Simbolo = "I", Nome = "Entrada I", ValorPadrao = 0.2 } ],
+                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante τ", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "Estado u", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wS", Nome = "Termo integral", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Entrada I", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂u/∂t",
                 UnidadeResultado = "",
-                Calcular = vars => (-vars["u"] + vars["wS"] + vars["I"]) / vars["τ"]
+                Calcular = vars => (-vars["u"] + vars["wS"] + vars["I"]) / vars["τ"],
+                Unidades = "",
             },
             new Formula
             {
@@ -276,10 +314,11 @@ public partial class FormulaService
                 Criador = "Richard FitzHugh / Jinichi Nagumo",
                 AnoOrigin = "1961",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 0.7 }, new() { Simbolo = "w", Nome = "w", ValorPadrao = 0.3 }, new() { Simbolo = "I", Nome = "Corrente I", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "w", Nome = "w", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Corrente I", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "v̇",
                 UnidadeResultado = "",
-                Calcular = vars => vars["v"] - vars["v"] * vars["v"] * vars["v"] / 3.0 - vars["w"] + vars["I"]
+                Calcular = vars => vars["v"] - vars["v"] * vars["v"] * vars["v"] / 3.0 - vars["w"] + vars["I"],
+                Unidades = "",
             },
             new Formula
             {
@@ -291,10 +330,11 @@ public partial class FormulaService
                 Criador = "Eugene Izhikevich",
                 AnoOrigin = "2003",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = -60 }, new() { Simbolo = "u", Nome = "u", ValorPadrao = -12 }, new() { Simbolo = "I", Nome = "Corrente I", ValorPadrao = 10 } ],
+                Variaveis = [ new() { Simbolo = "v", Nome = "v", ValorPadrao = -60, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "u", ValorPadrao = -12, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Corrente I", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "v̇",
                 UnidadeResultado = "",
-                Calcular = vars => 0.04 * vars["v"] * vars["v"] + 5 * vars["v"] + 140 - vars["u"] + vars["I"]
+                Calcular = vars => 0.04 * vars["v"] * vars["v"] + 5 * vars["v"] + 140 - vars["u"] + vars["I"],
+                Unidades = "",
             },
             new Formula
             {
@@ -304,10 +344,13 @@ public partial class FormulaService
                 Icone = "Eq",
                 Descricao = "Ponto fixo populacional para as taxas de excitação/inibição.",
                 ExemploPratico = "Exemplo: E*=0.55 e I*=0.35 => balanço EI=0.20.",
-                Variaveis = [ new() { Simbolo = "E", Nome = "Atividade excitatória E", ValorPadrao = 0.55, ValorMin = 0 }, new() { Simbolo = "I", Nome = "Atividade inibitória I", ValorPadrao = 0.35, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "E", Nome = "Atividade excitatória E", ValorPadrao = 0.55, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Atividade inibitória I", ValorPadrao = 0.35, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "E-I",
                 UnidadeResultado = "",
-                Calcular = vars => vars["E"] - vars["I"]
+                Calcular = vars => vars["E"] - vars["I"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -317,10 +360,13 @@ public partial class FormulaService
                 Icone = "τ",
                 Descricao = "Escala temporal efetiva após realimentação recorrente na dinâmica de E.",
                 ExemploPratico = "Exemplo: τ=10, wee=0.25, wei=0.1 => τeff≈4.",
-                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τ", ValorPadrao = 10, ValorMin = 0.001 }, new() { Simbolo = "wEE", Nome = "Peso excitatório wEE", ValorPadrao = 0.25 }, new() { Simbolo = "wEI", Nome = "Peso inibitório wEI", ValorPadrao = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "τ", Nome = "Constante de tempo τ", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wEE", Nome = "Peso excitatório wEE", ValorPadrao = 0.25, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "wEI", Nome = "Peso inibitório wEI", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "τ_eff",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 / ((1.0 / vars["τ"]) + vars["wEE"] - vars["wEI"])
+                Calcular = vars => 1.0 / ((1.0 / vars["τ"]) + vars["wEE"] - vars["wEI"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -342,10 +388,11 @@ public partial class FormulaService
                 Criador = "Johann Radon",
                 AnoOrigin = "1917",
                 ExemploPratico = "Exemplo: Para 100 subdivisões entre 0 e 1: Δ = 1/100 = 0.01 (comprimento de linha por subdivisão)",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δ_linha",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -355,10 +402,13 @@ public partial class FormulaService
                 Icone = "FST",
                 Descricao = "Transformada de Fourier 1D da projeção no ângulo θ = fatia da TF 2D de f na mesma direção. Base teórica de todos os métodos de reconstrução tomográfica.",
                 ExemploPratico = "Exemplo: Componente FT=5.0 no ângulo θ=30° → FT_2D = 5.0 (componente da transformada 2D)",
-                Variaveis = [ new() { Simbolo = "FT", Nome = "Componente FT 1D", ValorPadrao = 5.0 }, new() { Simbolo = "theta", Nome = "Ângulo θ (graus)", ValorPadrao = 30 } ],
+                Variaveis = [ new() { Simbolo = "FT", Nome = "Componente FT 1D", ValorPadrao = 5.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "theta", Nome = "Ângulo θ (graus)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "FT_2D",
                 UnidadeResultado = "",
-                Calcular = vars => vars["FT"]
+                Calcular = vars => vars["FT"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -368,10 +418,13 @@ public partial class FormulaService
                 Icone = "FBP",
                 Descricao = "Algoritmo padrão de CT: filtrar projeções com kernel rampa (|ω|) e retroprojetar. O(N³) para imagem N×N. Rápido e robusto. Usado em scanners clínicos desde anos 1970.",
                 ExemploPratico = "Exemplo: Integral de 0 a π com 100 subdivisões: Δθ = π/100 ≈ 0.0314 rad/passo",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior (π)", ValorPadrao = 3.14159 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior (π)", ValorPadrao = 3.14159, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δθ",
                 UnidadeResultado = "rad",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -381,10 +434,13 @@ public partial class FormulaService
                 Icone = "MBIR",
                 Descricao = "Reconstrução model-based: A = operador de projeção, b = sinograma medido, R = regularização (TV, wavelets). Superior a FBP para dose baixa e dados incompletos. Custo: iterações O(N²) de projeção.",
                 ExemploPratico = "Exemplo: Imagem x com norma ‖Ax-b‖²=10.5 e regularização λR=2.0 → custo total = 12.5",
-                Variaveis = [ new() { Simbolo = "norm", Nome = "‖Ax-b‖²", ValorPadrao = 10.5, ValorMin = 0 }, new() { Simbolo = "reg", Nome = "λR(x)", ValorPadrao = 2.0, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "norm", Nome = "‖Ax-b‖²", ValorPadrao = 10.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "reg", Nome = "λR(x)", ValorPadrao = 2.0, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Custo total",
                 UnidadeResultado = "",
-                Calcular = vars => vars["norm"] + vars["reg"]
+                Calcular = vars => vars["norm"] + vars["reg"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -396,10 +452,11 @@ public partial class FormulaService
                 Criador = "Godfrey Hounsfield",
                 AnoOrigin = "1971",
                 ExemploPratico = "Exemplo: Tecido com μ=0.22 cm⁻¹, água μ=0.20 cm⁻¹ → HU = 1000×(0.22-0.20)/0.20 = 100 HU",
-                Variaveis = [ new() { Simbolo = "mu", Nome = "μ tecido (cm⁻¹)", ValorPadrao = 0.22, ValorMin = 0 }, new() { Simbolo = "mu_w", Nome = "μ água (cm⁻¹)", ValorPadrao = 0.20, ValorMin = 0.0001 } ],
+                Variaveis = [ new() { Simbolo = "mu", Nome = "μ tecido (cm⁻¹)", ValorPadrao = 0.22, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu_w", Nome = "μ água (cm⁻¹)", ValorPadrao = 0.20, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "HU",
                 UnidadeResultado = "HU",
-                Calcular = vars => 1000 * (vars["mu"] - vars["mu_w"]) / vars["mu_w"]
+                Calcular = vars => 1000 * (vars["mu"] - vars["mu_w"]) / vars["mu_w"],
+                Unidades = "",
             },
             new Formula
             {
@@ -409,10 +466,13 @@ public partial class FormulaService
                 Icone = "CTDI",
                 Descricao = "CT Dose Index: dose média de um corte. DLP = Dose Length Product = CTDI × comprimento scan. Dose efetiva E = k·DLP (k~0.015 mSv/mGy·cm para abdômen). Princípio ALARA.",
                 ExemploPratico = "Exemplo: Integral de dose ao longo de 10 cm com 50 subdivisões: Δz = 10/50 = 0.2 cm/amostra",
-                Variaveis = [ new() { Simbolo = "a", Nome = "z inicial (cm)", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "z final (cm)", ValorPadrao = 10 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 50, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "z inicial (cm)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "z final (cm)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 50, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δz",
                 UnidadeResultado = "cm",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 20.2 PET/SPECT
             new Formula
@@ -423,10 +483,13 @@ public partial class FormulaService
                 Icone = "PET",
                 Descricao = "Modelo linear de emissão/detecção: x = atividade no voxel j, a = system matrix (geometria+atenuação+PSF), r = randoms, s = scatter. Estatística Poisson: Yi ~ Poisson(λi).",
                 ExemploPratico = "Exemplo: Contagens esperadas na LOR i: Σ_j(a_ij×x_j)=50, randoms=5, scatter=3 → λ_i=58",
-                Variaveis = [ new() { Simbolo = "emis", Nome = "Σ_j(a_ij×x_j)", ValorPadrao = 50, ValorMin = 0 }, new() { Simbolo = "r", Nome = "Randoms r_i", ValorPadrao = 5, ValorMin = 0 }, new() { Simbolo = "s", Nome = "Scatter s_i", ValorPadrao = 3, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "emis", Nome = "Σ_j(a_ij×x_j)", ValorPadrao = 50, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "r", Nome = "Randoms r_i", ValorPadrao = 5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "s", Nome = "Scatter s_i", ValorPadrao = 3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "λ_i",
                 UnidadeResultado = "",
-                Calcular = vars => vars["emis"] + vars["r"] + vars["s"]
+                Calcular = vars => vars["emis"] + vars["r"] + vars["s"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -438,10 +501,11 @@ public partial class FormulaService
                 Criador = "Shepp / Vardi",
                 AnoOrigin = "1982",
                 ExemploPratico = "Exemplo: 1 iteração com normalização Σ_i(a_ij)=12.0 e update ratio=0.85 → fator = 0.85/12 ≈ 0.071",
-                Variaveis = [ new() { Simbolo = "norm", Nome = "Normalização Σa_ij", ValorPadrao = 12.0, ValorMin = 0.0001 }, new() { Simbolo = "ratio", Nome = "Ratio de update", ValorPadrao = 0.85 } ],
+                Variaveis = [ new() { Simbolo = "norm", Nome = "Normalização Σa_ij", ValorPadrao = 12.0, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ratio", Nome = "Ratio de update", ValorPadrao = 0.85, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Fator update",
                 UnidadeResultado = "",
-                Calcular = vars => vars["ratio"] / vars["norm"]
+                Calcular = vars => vars["ratio"] / vars["norm"],
+                Unidades = "",
             },
             new Formula
             {
@@ -453,10 +517,11 @@ public partial class FormulaService
                 Criador = "Hudson / Larkin",
                 AnoOrigin = "1994",
                 ExemploPratico = "Exemplo: OSEM com S=21 subsets acelera convergência por fator ≈ 21× vs MLEM padrão",
-                Variaveis = [ new() { Simbolo = "S", Nome = "Número de subsets S", ValorPadrao = 21, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "S", Nome = "Número de subsets S", ValorPadrao = 21, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Aceleração",
                 UnidadeResultado = "×",
-                Calcular = vars => vars["S"]
+                Calcular = vars => vars["S"],
+                Unidades = "",
             },
             new Formula
             {
@@ -466,10 +531,13 @@ public partial class FormulaService
                 Icone = "SUV",
                 Descricao = "PET semi-quantitativo: concentração no tecido normalizada por dose injetada/peso. SUV=1 → captação média. Tumores: SUV>2.5 suspeito de malignidade. Usado em oncologia/estadiamento.",
                 ExemploPratico = "Exemplo: C_tissue=3.5 kBq/mL, D_inj=400 MBq, W=70 kg → SUV = 3.5/(400000/70) ≈ 0.61",
-                Variaveis = [ new() { Simbolo = "C_tissue", Nome = "Conc. tecido (kBq/mL)", ValorPadrao = 3.5, ValorMin = 0 }, new() { Simbolo = "D_inj", Nome = "Dose injetada (MBq)", ValorPadrao = 400, ValorMin = 0.001 }, new() { Simbolo = "W", Nome = "Peso paciente (kg)", ValorPadrao = 70, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "C_tissue", Nome = "Conc. tecido (kBq/mL)", ValorPadrao = 3.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "D_inj", Nome = "Dose injetada (MBq)", ValorPadrao = 400, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "W", Nome = "Peso paciente (kg)", ValorPadrao = 70, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "SUV",
                 UnidadeResultado = "",
-                Calcular = vars => vars["C_tissue"] / ((vars["D_inj"] * 1000) / vars["W"])
+                Calcular = vars => vars["C_tissue"] / ((vars["D_inj"] * 1000) / vars["W"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 20.3 Formulações gerais de imagem médica
             new Formula
@@ -480,25 +548,70 @@ public partial class FormulaService
                 Icone = "I",
                 Descricao = "Lei de atenuação da intensidade em meios absorventes.",
                 ExemploPratico = "Exemplo: I0=100, μ=0.2, x=3 => I≈54.88.",
-                Variaveis = [ new() { Simbolo = "I0", Nome = "Intensidade inicial I0", ValorPadrao = 100, ValorMin = 0 }, new() { Simbolo = "μ", Nome = "Coeficiente de atenuação μ", ValorPadrao = 0.2, ValorMin = 0 }, new() { Simbolo = "x", Nome = "Espessura x", ValorPadrao = 3, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "I0", Nome = "Intensidade inicial I0", ValorPadrao = 100, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "μ", Nome = "Coeficiente de atenuação μ", ValorPadrao = 0.2, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "Espessura x", ValorPadrao = 3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "I",
                 UnidadeResultado = "",
-                Calcular = vars => vars["I0"] * Math.Exp(-vars["μ"] * vars["x"])
+                Calcular = vars => vars["I0"] * Math.Exp(-vars["μ"] * vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
-            new Formula { Id = "4_im02", Nome = "Contraste de Intensidade", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "C=(Imax-Imin)/(Imax+Imin)", ExprTexto = "C=(Imax-Imin)/(Imax+Imin)", Icone = "C", Descricao = "Métrica simples de contraste entre tecidos.", ExemploPratico = "Exemplo: Imax=180 e Imin=60 => C=0.5.", Variaveis = [ new() { Simbolo = "Imax", Nome = "Intensidade máxima", ValorPadrao = 180, ValorMin = 0 }, new() { Simbolo = "Imin", Nome = "Intensidade mínima", ValorPadrao = 60, ValorMin = 0 } ], VariavelResultado = "C", UnidadeResultado = "", Calcular = vars => (vars["Imax"] - vars["Imin"]) / (vars["Imax"] + vars["Imin"]) },
-            new Formula { Id = "4_im03", Nome = "SNR", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "SNR=μ_sinal/σ_ruído", ExprTexto = "snr=mu/ sigma", Icone = "SNR", Descricao = "Relação sinal-ruído de imagem.", ExemploPratico = "Exemplo: μ=120 e σ=15 => SNR=8.", Variaveis = [ new() { Simbolo = "μ", Nome = "Média do sinal", ValorPadrao = 120, ValorMin = 0 }, new() { Simbolo = "σ", Nome = "Desvio do ruído", ValorPadrao = 15, ValorMin = 0.0001 } ], VariavelResultado = "SNR", UnidadeResultado = "", Calcular = vars => vars["μ"] / vars["σ"] },
-            new Formula { Id = "4_im04", Nome = "PSNR", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "PSNR=20log10(Imax)-10log10(MSE)", ExprTexto = "psnr=20log10(Imax)-10log10(mse)", Icone = "PSNR", Descricao = "Qualidade de reconstrução por erro quadrático médio.", ExemploPratico = "Exemplo: Imax=4095 e MSE=25.", Variaveis = [ new() { Simbolo = "Imax", Nome = "Pico de intensidade", ValorPadrao = 4095, ValorMin = 1 }, new() { Simbolo = "MSE", Nome = "Erro quadrático médio", ValorPadrao = 25, ValorMin = 0.0001 } ], VariavelResultado = "PSNR", UnidadeResultado = "dB", Calcular = vars => 20 * Math.Log10(vars["Imax"]) - 10 * Math.Log10(vars["MSE"]) },
-            new Formula { Id = "4_im05", Nome = "RMSE", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "RMSE=\u221a(MSE)", ExprTexto = "rmse=sqrt(mse)", Icone = "RMSE", Descricao = "Raiz do erro quadrático médio entre imagem reconstruída e referência.", ExemploPratico = "Exemplo: MSE=9 => RMSE=3.", Variaveis = [ new() { Simbolo = "MSE", Nome = "Erro quadrático médio", ValorPadrao = 9, ValorMin = 0 } ], VariavelResultado = "RMSE", UnidadeResultado = "", Calcular = vars => Math.Sqrt(vars["MSE"]) },
-            new Formula { Id = "4_im06", Nome = "Amostragem em k-space", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Δx=1/(N·Δk)", ExprTexto = "dx=1/(N*dk)", Icone = "k", Descricao = "Relação entre passo em frequência espacial e resolução de pixel em MRI.", ExemploPratico = "Exemplo: N=256, Δk=0.5 => Δx=0.0078125.", Variaveis = [ new() { Simbolo = "N", Nome = "Número de amostras N", ValorPadrao = 256, ValorMin = 1 }, new() { Simbolo = "Δk", Nome = "Passo em k-space", ValorPadrao = 0.5, ValorMin = 0.0001 } ], VariavelResultado = "Δx", UnidadeResultado = "", Calcular = vars => 1.0 / (vars["N"] * vars["Δk"]) },
-            new Formula { Id = "4_im07", Nome = "Extensão de Campo de Visão", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "FOV=1/Δk", ExprTexto = "fov=1/dk", Icone = "FOV", Descricao = "Campo de visão determinado pela amostragem em k-space.", ExemploPratico = "Exemplo: Δk=0.4 => FOV=2.5.", Variaveis = [ new() { Simbolo = "Δk", Nome = "Passo em k-space", ValorPadrao = 0.4, ValorMin = 0.0001 } ], VariavelResultado = "FOV", UnidadeResultado = "", Calcular = vars => 1.0 / vars["Δk"] },
-            new Formula { Id = "4_im08", Nome = "Sinal MRI (T1/T2)", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "S=M0(1-e^{-TR/T1})e^{-TE/T2}", ExprTexto = "S=M0*(1-exp(-TR/T1))*exp(-TE/T2)", Icone = "MRI", Descricao = "Modelo simplificado do sinal de spin-echo em MRI.", ExemploPratico = "Exemplo: M0=1000, TR=2000, T1=1000, TE=80, T2=100.", Variaveis = [ new() { Simbolo = "M0", Nome = "Magnetização M0", ValorPadrao = 1000, ValorMin = 0 }, new() { Simbolo = "TR", Nome = "Tempo de repetição TR", ValorPadrao = 2000, ValorMin = 0.001 }, new() { Simbolo = "T1", Nome = "Constante T1", ValorPadrao = 1000, ValorMin = 0.001 }, new() { Simbolo = "TE", Nome = "Tempo de eco TE", ValorPadrao = 80, ValorMin = 0.001 }, new() { Simbolo = "T2", Nome = "Constante T2", ValorPadrao = 100, ValorMin = 0.001 } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["M0"] * (1 - Math.Exp(-vars["TR"] / vars["T1"])) * Math.Exp(-vars["TE"] / vars["T2"]) },
-            new Formula { Id = "4_im09", Nome = "Tempo de Relaxamento Longitudinal", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Mz(t)=M0(1-e^{-t/T1})", ExprTexto = "Mz=M0*(1-exp(-t/T1))", Icone = "T1", Descricao = "Recuperação da magnetização longitudinal em MRI.", ExemploPratico = "Exemplo: M0=1, t=1000, T1=800.", Variaveis = [ new() { Simbolo = "M0", Nome = "Magnetização de equilíbrio", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 1000, ValorMin = 0 }, new() { Simbolo = "T1", Nome = "Constante T1", ValorPadrao = 800, ValorMin = 0.001 } ], VariavelResultado = "Mz", UnidadeResultado = "", Calcular = vars => vars["M0"] * (1 - Math.Exp(-vars["t"] / vars["T1"])) },
-            new Formula { Id = "4_im10", Nome = "Tempo de Relaxamento Transversal", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Mxy(t)=Mxy0e^{-t/T2}", ExprTexto = "Mxy=Mxy0*exp(-t/T2)", Icone = "T2", Descricao = "Decaimento da magnetização transversal em MRI.", ExemploPratico = "Exemplo: Mxy0=1, t=120, T2=90.", Variaveis = [ new() { Simbolo = "Mxy0", Nome = "Magnetização inicial", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 120, ValorMin = 0 }, new() { Simbolo = "T2", Nome = "Constante T2", ValorPadrao = 90, ValorMin = 0.001 } ], VariavelResultado = "Mxy", UnidadeResultado = "", Calcular = vars => vars["Mxy0"] * Math.Exp(-vars["t"] / vars["T2"]) },
-            new Formula { Id = "4_im11", Nome = "Resolução Espacial", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Res=FOV/N", ExprTexto = "res=fov/N", Icone = "Res", Descricao = "Tamanho de voxel/pixel aproximado em uma dimensão.", ExemploPratico = "Exemplo: FOV=240, N=512 => 0.469.", Variaveis = [ new() { Simbolo = "FOV", Nome = "Campo de visão", ValorPadrao = 240, ValorMin = 0.001 }, new() { Simbolo = "N", Nome = "Número de amostras", ValorPadrao = 512, ValorMin = 1 } ], VariavelResultado = "Res", UnidadeResultado = "", Calcular = vars => vars["FOV"] / vars["N"] },
-            new Formula { Id = "4_im12", Nome = "Janela de Intensidade", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Iclip=min(max(I,L-W/2),L+W/2)", ExprTexto = "Iclip=clip(I,L-W/2,L+W/2)", Icone = "Win", Descricao = "Window/Level para visualização de tecidos em CT/MRI.", ExemploPratico = "Exemplo: I=250, L=100, W=300 => Iclip=250.", Variaveis = [ new() { Simbolo = "I", Nome = "Intensidade I", ValorPadrao = 250 }, new() { Simbolo = "L", Nome = "Nível L", ValorPadrao = 100 }, new() { Simbolo = "W", Nome = "Largura W", ValorPadrao = 300, ValorMin = 0.001 } ], VariavelResultado = "Iclip", UnidadeResultado = "", Calcular = vars => Math.Min(Math.Max(vars["I"], vars["L"] - vars["W"] / 2.0), vars["L"] + vars["W"] / 2.0) },
-            new Formula { Id = "4_im13", Nome = "Coeficiente de Dice", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Dice=2|A∩B|/(|A|+|B|)", ExprTexto = "dice=2*inter/(A+B)", Icone = "Dice", Descricao = "Métrica de sobreposição para segmentação médica.", ExemploPratico = "Exemplo: inter=80, A=100, B=90 => Dice≈0.842.", Variaveis = [ new() { Simbolo = "I", Nome = "Interseção |A∩B|", ValorPadrao = 80, ValorMin = 0 }, new() { Simbolo = "A", Nome = "Volume A", ValorPadrao = 100, ValorMin = 0.001 }, new() { Simbolo = "B", Nome = "Volume B", ValorPadrao = 90, ValorMin = 0.001 } ], VariavelResultado = "Dice", UnidadeResultado = "", Calcular = vars => 2 * vars["I"] / (vars["A"] + vars["B"]) },
-            new Formula { Id = "4_im14", Nome = "Erro de Reconstrução", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "E=‖Irec-Iref‖₂/‖Iref‖₂", ExprTexto = "E=norm(Irec-Iref)/norm(Iref)", Icone = "Err", Descricao = "Erro relativo de reconstrução de imagem.", ExemploPratico = "Exemplo: num=12, den=80 => E=0.15.", Variaveis = [ new() { Simbolo = "num", Nome = "Norma do erro", ValorPadrao = 12, ValorMin = 0 }, new() { Simbolo = "den", Nome = "Norma de referência", ValorPadrao = 80, ValorMin = 0.0001 } ], VariavelResultado = "E", UnidadeResultado = "", Calcular = vars => vars["num"] / vars["den"] },
-            new Formula { Id = "4_im15", Nome = "Tempo de Aquisição", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Tacq=TR·Nphase·NEX", ExprTexto = "Tacq=TR*Nphase*NEX", Icone = "Tacq", Descricao = "Estimativa de tempo de aquisição em sequências MRI.", ExemploPratico = "Exemplo: TR=0.6s, Nphase=256, NEX=2 => 307.2s.", Variaveis = [ new() { Simbolo = "TR", Nome = "TR (s)", ValorPadrao = 0.6, ValorMin = 0.0001 }, new() { Simbolo = "Nph", Nome = "Linhas de fase", ValorPadrao = 256, ValorMin = 1 }, new() { Simbolo = "NEX", Nome = "Médias NEX", ValorPadrao = 2, ValorMin = 1 } ], VariavelResultado = "Tacq", UnidadeResultado = "s", Calcular = vars => vars["TR"] * vars["Nph"] * vars["NEX"] },
+            new Formula { Id = "4_im02", Nome = "Contraste de Intensidade", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "C=(Imax-Imin)/(Imax+Imin)", ExprTexto = "C=(Imax-Imin)/(Imax+Imin)", Icone = "C", Descricao = "Métrica simples de contraste entre tecidos.", ExemploPratico = "Exemplo: Imax=180 e Imin=60 => C=0.5.", Variaveis = [ new() { Simbolo = "Imax", Nome = "Intensidade máxima", ValorPadrao = 180, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Imin", Nome = "Intensidade mínima", ValorPadrao = 60, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "C", UnidadeResultado = "", Calcular = vars => (vars["Imax"] - vars["Imin"]) / (vars["Imax"] + vars["Imin"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im03", Nome = "SNR", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "SNR=μ_sinal/σ_ruído", ExprTexto = "snr=mu/ sigma", Icone = "SNR", Descricao = "Relação sinal-ruído de imagem.", ExemploPratico = "Exemplo: μ=120 e σ=15 => SNR=8.", Variaveis = [ new() { Simbolo = "μ", Nome = "Média do sinal", ValorPadrao = 120, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "σ", Nome = "Desvio do ruído", ValorPadrao = 15, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "SNR", UnidadeResultado = "", Calcular = vars => vars["μ"] / vars["σ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im04", Nome = "PSNR", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "PSNR=20log10(Imax)-10log10(MSE)", ExprTexto = "psnr=20log10(Imax)-10log10(mse)", Icone = "PSNR", Descricao = "Qualidade de reconstrução por erro quadrático médio.", ExemploPratico = "Exemplo: Imax=4095 e MSE=25.", Variaveis = [ new() { Simbolo = "Imax", Nome = "Pico de intensidade", ValorPadrao = 4095, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "MSE", Nome = "Erro quadrático médio", ValorPadrao = 25, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "PSNR", UnidadeResultado = "dB", Calcular = vars => 20 * Math.Log10(vars["Imax"]) - 10 * Math.Log10(vars["MSE"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im05", Nome = "RMSE", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "RMSE=\u221a(MSE)", ExprTexto = "rmse=sqrt(mse)", Icone = "RMSE", Descricao = "Raiz do erro quadrático médio entre imagem reconstruída e referência.", ExemploPratico = "Exemplo: MSE=9 => RMSE=3.", Variaveis = [ new() { Simbolo = "MSE", Nome = "Erro quadrático médio", ValorPadrao = 9, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "RMSE", UnidadeResultado = "", Calcular = vars => Math.Sqrt(vars["MSE"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im06", Nome = "Amostragem em k-space", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Δx=1/(N·Δk)", ExprTexto = "dx=1/(N*dk)", Icone = "k", Descricao = "Relação entre passo em frequência espacial e resolução de pixel em MRI.", ExemploPratico = "Exemplo: N=256, Δk=0.5 => Δx=0.0078125.", Variaveis = [ new() { Simbolo = "N", Nome = "Número de amostras N", ValorPadrao = 256, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Δk", Nome = "Passo em k-space", ValorPadrao = 0.5, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Δx", UnidadeResultado = "", Calcular = vars => 1.0 / (vars["N"] * vars["Δk"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im07", Nome = "Extensão de Campo de Visão", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "FOV=1/Δk", ExprTexto = "fov=1/dk", Icone = "FOV", Descricao = "Campo de visão determinado pela amostragem em k-space.", ExemploPratico = "Exemplo: Δk=0.4 => FOV=2.5.", Variaveis = [ new() { Simbolo = "Δk", Nome = "Passo em k-space", ValorPadrao = 0.4, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "FOV", UnidadeResultado = "", Calcular = vars => 1.0 / vars["Δk"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im08", Nome = "Sinal MRI (T1/T2)", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "S=M0(1-e^{-TR/T1})e^{-TE/T2}", ExprTexto = "S=M0*(1-exp(-TR/T1))*exp(-TE/T2)", Icone = "MRI", Descricao = "Modelo simplificado do sinal de spin-echo em MRI.", ExemploPratico = "Exemplo: M0=1000, TR=2000, T1=1000, TE=80, T2=100.", Variaveis = [ new() { Simbolo = "M0", Nome = "Magnetização M0", ValorPadrao = 1000, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "TR", Nome = "Tempo de repetição TR", ValorPadrao = 2000, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "T1", Nome = "Constante T1", ValorPadrao = 1000, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "TE", Nome = "Tempo de eco TE", ValorPadrao = 80, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "T2", Nome = "Constante T2", ValorPadrao = 100, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["M0"] * (1 - Math.Exp(-vars["TR"] / vars["T1"])) * Math.Exp(-vars["TE"] / vars["T2"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im09", Nome = "Tempo de Relaxamento Longitudinal", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Mz(t)=M0(1-e^{-t/T1})", ExprTexto = "Mz=M0*(1-exp(-t/T1))", Icone = "T1", Descricao = "Recuperação da magnetização longitudinal em MRI.", ExemploPratico = "Exemplo: M0=1, t=1000, T1=800.", Variaveis = [ new() { Simbolo = "M0", Nome = "Magnetização de equilíbrio", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 1000, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "T1", Nome = "Constante T1", ValorPadrao = 800, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Mz", UnidadeResultado = "", Calcular = vars => vars["M0"] * (1 - Math.Exp(-vars["t"] / vars["T1"])),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im10", Nome = "Tempo de Relaxamento Transversal", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Mxy(t)=Mxy0e^{-t/T2}", ExprTexto = "Mxy=Mxy0*exp(-t/T2)", Icone = "T2", Descricao = "Decaimento da magnetização transversal em MRI.", ExemploPratico = "Exemplo: Mxy0=1, t=120, T2=90.", Variaveis = [ new() { Simbolo = "Mxy0", Nome = "Magnetização inicial", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "Tempo t", ValorPadrao = 120, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "T2", Nome = "Constante T2", ValorPadrao = 90, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Mxy", UnidadeResultado = "", Calcular = vars => vars["Mxy0"] * Math.Exp(-vars["t"] / vars["T2"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im11", Nome = "Resolução Espacial", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Res=FOV/N", ExprTexto = "res=fov/N", Icone = "Res", Descricao = "Tamanho de voxel/pixel aproximado em uma dimensão.", ExemploPratico = "Exemplo: FOV=240, N=512 => 0.469.", Variaveis = [ new() { Simbolo = "FOV", Nome = "Campo de visão", ValorPadrao = 240, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "N", Nome = "Número de amostras", ValorPadrao = 512, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Res", UnidadeResultado = "", Calcular = vars => vars["FOV"] / vars["N"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im12", Nome = "Janela de Intensidade", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Iclip=min(max(I,L-W/2),L+W/2)", ExprTexto = "Iclip=clip(I,L-W/2,L+W/2)", Icone = "Win", Descricao = "Window/Level para visualização de tecidos em CT/MRI.", ExemploPratico = "Exemplo: I=250, L=100, W=300 => Iclip=250.", Variaveis = [ new() { Simbolo = "I", Nome = "Intensidade I", ValorPadrao = 250, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "L", Nome = "Nível L", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "W", Nome = "Largura W", ValorPadrao = 300, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Iclip", UnidadeResultado = "", Calcular = vars => Math.Min(Math.Max(vars["I"], vars["L"] - vars["W"] / 2.0), vars["L"] + vars["W"] / 2.0),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im13", Nome = "Coeficiente de Dice", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Dice=2|A∩B|/(|A|+|B|)", ExprTexto = "dice=2*inter/(A+B)", Icone = "Dice", Descricao = "Métrica de sobreposição para segmentação médica.", ExemploPratico = "Exemplo: inter=80, A=100, B=90 => Dice≈0.842.", Variaveis = [ new() { Simbolo = "I", Nome = "Interseção |A∩B|", ValorPadrao = 80, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Volume A", ValorPadrao = 100, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "B", Nome = "Volume B", ValorPadrao = 90, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Dice", UnidadeResultado = "", Calcular = vars => 2 * vars["I"] / (vars["A"] + vars["B"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im14", Nome = "Erro de Reconstrução", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "E=‖Irec-Iref‖₂/‖Iref‖₂", ExprTexto = "E=norm(Irec-Iref)/norm(Iref)", Icone = "Err", Descricao = "Erro relativo de reconstrução de imagem.", ExemploPratico = "Exemplo: num=12, den=80 => E=0.15.", Variaveis = [ new() { Simbolo = "num", Nome = "Norma do erro", ValorPadrao = 12, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "den", Nome = "Norma de referência", ValorPadrao = 80, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "E", UnidadeResultado = "", Calcular = vars => vars["num"] / vars["den"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_im15", Nome = "Tempo de Aquisição", Categoria = "Imagem Médica", SubCategoria = "Imagem Médica Geral", Expressao = "Tacq=TR·Nphase·NEX", ExprTexto = "Tacq=TR*Nphase*NEX", Icone = "Tacq", Descricao = "Estimativa de tempo de aquisição em sequências MRI.", ExemploPratico = "Exemplo: TR=0.6s, Nphase=256, NEX=2 => 307.2s.", Variaveis = [ new() { Simbolo = "TR", Nome = "TR (s)", ValorPadrao = 0.6, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Nph", Nome = "Linhas de fase", ValorPadrao = 256, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "NEX", Nome = "Médias NEX", ValorPadrao = 2, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "Tacq", UnidadeResultado = "s", Calcular = vars => vars["TR"] * vars["Nph"] * vars["NEX"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
             // 20.3 Biomecânica / Imagem Funcional
             new Formula
             {
@@ -508,10 +621,13 @@ public partial class FormulaService
                 Icone = "W",
                 Descricao = "Materiais hiperelásticos: tensão derivada de potencial de energia de deformação W. S = 2º Piola-Kirchhoff, P = 1º PK, F = gradiente de deformação. Tecidos biológicos, elastômeros.",
                 ExemploPratico = "Exemplo: Tensão S=100 MPa e energia de deformação W=50 MJ/m³ → qualidade ajuste ≈ 2.0 (adimensional)",
-                Variaveis = [ new() { Simbolo = "S", Nome = "Tensão S (MPa)", ValorPadrao = 100 }, new() { Simbolo = "W", Nome = "Energia W (MJ/m³)", ValorPadrao = 50, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "S", Nome = "Tensão S (MPa)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "W", Nome = "Energia W (MJ/m³)", ValorPadrao = 50, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "S/W",
                 UnidadeResultado = "",
-                Calcular = vars => vars["S"] / vars["W"]
+                Calcular = vars => vars["S"] / vars["W"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -521,10 +637,13 @@ public partial class FormulaService
                 Icone = "NH",
                 Descricao = "Modelo hiperelástico mais simples: μ = módulo de cisalhamento, κ = bulk modulus, I₁ = primeiro invariante de C, J = det(F). Boa para deformações ~30%. Base para modelos mais complexos.",
                 ExemploPratico = "Exemplo: μ=0.5 MPa, I₁=5.0, κ=10 MPa, J=1.02 → W = 0.5×(5-3)/2 + 10×(1.02-1)²/2 ≈ 0.502 MJ/m³",
-                Variaveis = [ new() { Simbolo = "μ", Nome = "Módulo cisalhamento μ (MPa)", ValorPadrao = 0.5, ValorMin = 0 }, new() { Simbolo = "I1", Nome = "1º invariante I₁", ValorPadrao = 5.0 }, new() { Simbolo = "κ", Nome = "Bulk modulus κ (MPa)", ValorPadrao = 10, ValorMin = 0.001 }, new() { Simbolo = "J", Nome = "det(F)=J", ValorPadrao = 1.02 } ],
+                Variaveis = [ new() { Simbolo = "μ", Nome = "Módulo cisalhamento μ (MPa)", ValorPadrao = 0.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I1", Nome = "1º invariante I₁", ValorPadrao = 5.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "κ", Nome = "Bulk modulus κ (MPa)", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "J", Nome = "det(F)=J", ValorPadrao = 1.02, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "W",
                 UnidadeResultado = "MJ/m³",
-                Calcular = vars => (vars["μ"] / 2.0) * (vars["I1"] - 3.0) + (vars["κ"] / 2.0) * Math.Pow(vars["J"] - 1.0, 2)
+                Calcular = vars => (vars["μ"] / 2.0) * (vars["I1"] - 3.0) + (vars["κ"] / 2.0) * Math.Pow(vars["J"] - 1.0, 2),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -535,10 +654,12 @@ public partial class FormulaService
                 Descricao = "Extensão de Neo-Hookean com segundo invariante I₂. Dois parâmetros materiais. Melhor ajuste para borrachas e tecidos moles para deformações moderadas (~100%).",
                 Criador = "Melvin Mooney / Ronald Rivlin",
                 ExemploPratico = "Exemplo: C₁₀=0.3 MPa, C₀₁=0.1 MPa, Ī₁=5.2, Ī₂=4.8 → W = 0.3×(5.2-3)+0.1×(4.8-3) = 0.84 MJ/m³",
-                Variaveis = [ new() { Simbolo = "C10", Nome = "Parâmetro C₁₀ (MPa)", ValorPadrao = 0.3, ValorMin = 0 }, new() { Simbolo = "C01", Nome = "Parâmetro C₀₁ (MPa)", ValorPadrao = 0.1, ValorMin = 0 }, new() { Simbolo = "I1", Nome = "Invariante Ī₁", ValorPadrao = 5.2 }, new() { Simbolo = "I2", Nome = "Invariante Ī₂", ValorPadrao = 4.8 } ],
+                Variaveis = [ new() { Simbolo = "C10", Nome = "Parâmetro C₁₀ (MPa)", ValorPadrao = 0.3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "C01", Nome = "Parâmetro C₀₁ (MPa)", ValorPadrao = 0.1, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I1", Nome = "Invariante Ī₁", ValorPadrao = 5.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I2", Nome = "Invariante Ī₂", ValorPadrao = 4.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "W",
                 UnidadeResultado = "MJ/m³",
-                Calcular = vars => vars["C10"] * (vars["I1"] - 3.0) + vars["C01"] * (vars["I2"] - 3.0)
+                Calcular = vars => vars["C10"] * (vars["I1"] - 3.0) + vars["C01"] * (vars["I2"] - 3.0),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -550,10 +671,11 @@ public partial class FormulaService
                 Criador = "Raymond Ogden",
                 AnoOrigin = "1972",
                 ExemploPratico = "Exemplo: μ₁=1.2 MPa, α₁=2.5, λ₁=1.15, λ₂=0.95, λ₃=1.05 → W=1.2/2.5×((1.15^2.5+0.95^2.5+1.05^2.5)-3)≈0.18 MJ/m³",
-                Variaveis = [ new() { Simbolo = "μ1", Nome = "Parâmetro μ₁ (MPa)", ValorPadrao = 1.2, ValorMin = 0 }, new() { Simbolo = "α1", Nome = "Expoente α₁", ValorPadrao = 2.5, ValorMin = 0.001 }, new() { Simbolo = "λ1", Nome = "Stretch λ₁", ValorPadrao = 1.15, ValorMin = 0.01 }, new() { Simbolo = "λ2", Nome = "Stretch λ₂", ValorPadrao = 0.95, ValorMin = 0.01 }, new() { Simbolo = "λ3", Nome = "Stretch λ₃", ValorPadrao = 1.05, ValorMin = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "μ1", Nome = "Parâmetro μ₁ (MPa)", ValorPadrao = 1.2, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "α1", Nome = "Expoente α₁", ValorPadrao = 2.5, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "λ1", Nome = "Stretch λ₁", ValorPadrao = 1.15, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "λ2", Nome = "Stretch λ₂", ValorPadrao = 0.95, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "λ3", Nome = "Stretch λ₃", ValorPadrao = 1.05, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "W",
                 UnidadeResultado = "MJ/m³",
-                Calcular = vars => (vars["μ1"] / vars["α1"]) * (Math.Pow(vars["λ1"], vars["α1"]) + Math.Pow(vars["λ2"], vars["α1"]) + Math.Pow(vars["λ3"], vars["α1"]) - 3.0)
+                Calcular = vars => (vars["μ1"] / vars["α1"]) * (Math.Pow(vars["λ1"], vars["α1"]) + Math.Pow(vars["λ2"], vars["α1"]) + Math.Pow(vars["λ3"], vars["α1"]) - 3.0),
+                Unidades = "",
             },
             new Formula
             {
@@ -563,10 +685,13 @@ public partial class FormulaService
                 Icone = "Mx",
                 Descricao = "Material viscoelástico: relaxação exponencial σ(t)=σ₀e^{-t/τ}, τ=η/E. Fluido sob carga constante (creep ilimitado). Série de Maxwell: espectro de relaxação.",
                 ExemploPratico = "Exemplo: E=50 MPa, η=10 MPa·s, ε̇=0.02 s⁻¹; tempo rel. τ=η/E=10/50=0.2 s",
-                Variaveis = [ new() { Simbolo = "E", Nome = "Módulo elástico E (MPa)", ValorPadrao = 50, ValorMin = 0.001 }, new() { Simbolo = "η", Nome = "Viscosidade η (MPa·s)", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "E", Nome = "Módulo elástico E (MPa)", ValorPadrao = 50, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "η", Nome = "Viscosidade η (MPa·s)", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "τ",
                 UnidadeResultado = "s",
-                Calcular = vars => vars["η"] / vars["E"]
+                Calcular = vars => vars["η"] / vars["E"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -576,10 +701,13 @@ public partial class FormulaService
                 Icone = "KV",
                 Descricao = "Sólido viscoelástico: creep limitado ε(t)=(σ₀/E)(1-e^{-t/τ}). Não relaxa tensão sob deformação constante. Modelo de tecidos biológicos sob carga cíclica.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Eε", Nome = "Eε", ValorPadrao = 10 }, new() { Simbolo = "ηε", Nome = "ηε", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Eε", Nome = "Eε", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ηε", Nome = "ηε", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "σ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Eε"] + vars["ηε"]
+                Calcular = vars => vars["Eε"] + vars["ηε"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -589,10 +717,13 @@ public partial class FormulaService
                 Icone = "SWE",
                 Descricao = "Imagem de rigidez tecidual via ultrassom: mede velocidade de onda de cisalhamento vs. E~3ρvs² (tecido mole ~incompressível). Fibrose hepática: F0~5kPa, F4~25kPa. Não-invasivo.",
                 ExemploPratico = "Exemplo: Onda de cisalhamento vs=2.5 m/s, densidade ρ=1050 kg/m³ → E ≈ 3×1050×2.5² ≈ 19.7 kPa",
-                Variaveis = [ new() { Simbolo = "ρ", Nome = "Densidade ρ (kg/m³)", ValorPadrao = 1050, ValorMin = 10 }, new() { Simbolo = "vs", Nome = "Velocidade vs (m/s)", ValorPadrao = 2.5, ValorMin = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "ρ", Nome = "Densidade ρ (kg/m³)", ValorPadrao = 1050, ValorMin = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "vs", Nome = "Velocidade vs (m/s)", ValorPadrao = 2.5, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "E",
                 UnidadeResultado = "kPa",
-                Calcular = vars => 3.0 * vars["ρ"] * vars["vs"] * vars["vs"] / 1000.0
+                Calcular = vars => 3.0 * vars["ρ"] * vars["vs"] * vars["vs"] / 1000.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -614,10 +745,11 @@ public partial class FormulaService
                 Criador = "Georg Rasch",
                 AnoOrigin = "1960",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8 }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "P(X=1|θ)",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 / (1.0 + Math.Exp(-(vars["θ"] - vars["b"])))
+                Calcular = vars => 1.0 / (1.0 + Math.Exp(-(vars["θ"] - vars["b"]))),
+                Unidades = "",
             },
             new Formula
             {
@@ -627,10 +759,13 @@ public partial class FormulaService
                 Icone = "2PL",
                 Descricao = "Dois parâmetros: a = discriminação (inclinação), b = dificuldade. a alto → curva mais íngreme → item discrimina melhor entre θ vizinhos. Lord & Novick (1968).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8 }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001 }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "P(X=1|θ)",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"])))
+                Calcular = vars => 1.0 / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"]))),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -642,10 +777,11 @@ public partial class FormulaService
                 Criador = "Allan Birnbaum",
                 AnoOrigin = "1968",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8 }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001 }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5 }, new() { Simbolo = "c", Nome = "Pseudo-adivinhação c", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "c", Nome = "Pseudo-adivinhação c", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "P(X=1|θ)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["c"] + (1 - vars["c"]) / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"])))
+                Calcular = vars => vars["c"] + (1 - vars["c"]) / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"]))),
+                Unidades = "",
             },
             new Formula
             {
@@ -655,10 +791,13 @@ public partial class FormulaService
                 Icone = "4PL",
                 Descricao = "Quatro parâmetros: + d = assíntota superior (d<1: desatenção/erro em θ alto). Raramente usado na prática (sobreparametrizado). Modela comportamento de respondentes descuidados.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8 }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001 }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5 }, new() { Simbolo = "c", Nome = "Pseudo-adivinhação c", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "d", Nome = "Assíntota superior d", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "c", Nome = "Pseudo-adivinhação c", ValorPadrao = 0.2, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "d", Nome = "Assíntota superior d", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "P(X=1|θ)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["c"] + (vars["d"] - vars["c"]) / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"])))
+                Calcular = vars => vars["c"] + (vars["d"] - vars["c"]) / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"]))),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -668,10 +807,13 @@ public partial class FormulaService
                 Icone = "I(θ)",
                 Descricao = "Informação de Fisher para um item: quanta informação sobre θ o item fornece. Máxima em θ≈b. Para 2PL: I_max=a²/4 em θ=b. Base para seleção de itens em CAT.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.3, ValorMin = 0.0001 }, new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.3, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "I(θ)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["a"] * vars["a"] * vars["P"] * (1 - vars["P"])
+                Calcular = vars => vars["a"] * vars["a"] * vars["P"] * (1 - vars["P"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -681,10 +823,13 @@ public partial class FormulaService
                 Icone = "SE",
                 Descricao = "Soma das informações dos itens (independência local). SE = erro padrão de medida: diminui com mais itens informativos naquele θ. Design de teste: maximizar I na faixa de θ desejada.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Itest", Nome = "Informação total", ValorPadrao = 16, ValorMin = 0.0001 } ],
+                Variaveis = [ new() { Simbolo = "Itest", Nome = "Informação total", ValorPadrao = 16, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "SE(θ)",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 / Math.Sqrt(vars["Itest"])
+                Calcular = vars => 1.0 / Math.Sqrt(vars["Itest"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -694,10 +839,13 @@ public partial class FormulaService
                 Icone = "MLE",
                 Descricao = "Máxima verossimilhança para estimar habilidade. Resolve ∂logL/∂θ=0 (Newton-Raphson). Não definido para scores perfeitos (0 ou n). Alternativa: EAP (Bayes com prior).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade atual", ValorPadrao = 0.4 }, new() { Simbolo = "U", Nome = "Score U(θ)", ValorPadrao = 0.9 }, new() { Simbolo = "I", Nome = "Informação I(θ)", ValorPadrao = 6, ValorMin = 0.0001 } ],
+                Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade atual", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "U", Nome = "Score U(θ)", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Informação I(θ)", ValorPadrao = 6, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "θ̂_new",
                 UnidadeResultado = "",
-                Calcular = vars => vars["θ"] + vars["U"] / vars["I"]
+                Calcular = vars => vars["θ"] + vars["U"] / vars["I"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -707,24 +855,63 @@ public partial class FormulaService
                 Icone = "DIF",
                 Descricao = "Item funciona diferentemente em grupos (sexo, etnia, etc.) controlando por θ. Uniforme (b difere) ou não-uniforme (a difere). Métodos: Mantel-Haenszel, logistic regression, LR IRT.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "P1", Nome = "P(X=1|θ,grupo1)", ValorPadrao = 0.72, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "P2", Nome = "P(X=1|θ,grupo2)", ValorPadrao = 0.61, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "P1", Nome = "P(X=1|θ,grupo1)", ValorPadrao = 0.72, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "P2", Nome = "P(X=1|θ,grupo2)", ValorPadrao = 0.61, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "|ΔP|",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Abs(vars["P1"] - vars["P2"])
+                Calcular = vars => Math.Abs(vars["P1"] - vars["P2"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 21.2 Psicometria (formas canônicas)
-            new Formula { Id = "4_ps01", Nome = "Função Logística IRT", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "P(θ)=1/(1+e^{-a(θ-b)})", ExprTexto = "P=1/(1+exp(-a*(theta-b)))", Icone = "PS", Descricao = "Probabilidade de acerto com habilidade θ, discriminação a e dificuldade b.", ExemploPratico = "Exemplo: θ=0.8, a=1.2, b=0.5.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8 }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.001 }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5 } ], VariavelResultado = "P(θ)", UnidadeResultado = "", Calcular = vars => 1.0 / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"]))) },
-            new Formula { Id = "4_ps02", Nome = "Inclinação no Ponto b", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "P'(b)=a/4", ExprTexto = "dPdb = a/4", Icone = "a", Descricao = "No modelo 2PL, a inclinação máxima da curva logística é a/4.", ExemploPratico = "Exemplo: a=1.6 => 0.4.", Variaveis = [ new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.6, ValorMin = 0.001 } ], VariavelResultado = "P'(b)", UnidadeResultado = "", Calcular = vars => vars["a"] / 4.0 },
-            new Formula { Id = "4_ps03", Nome = "Efeito de Dificuldade", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ΔP≈a·Δθ/4 em θ≈b", ExprTexto = "dP approx a*dtheta/4", Icone = "b", Descricao = "Aproximação local do impacto de mudanças de habilidade perto de b.", ExemploPratico = "Exemplo: a=1.2 e Δθ=0.5 => ΔP≈0.15.", Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.2 }, new() { Simbolo = "Δθ", Nome = "Variação de habilidade", ValorPadrao = 0.5 } ], VariavelResultado = "ΔP", UnidadeResultado = "", Calcular = vars => vars["a"] * vars["Δθ"] / 4.0 },
-            new Formula { Id = "4_ps04", Nome = "Informação do Item (2PL)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "I(θ)=a²P(1-P)", ExprTexto = "I=a^2*P*(1-P)", Icone = "Iθ", Descricao = "Informação de Fisher de um item no 2PL.", ExemploPratico = "Exemplo: a=1.3, P=0.7 => I≈0.355.", Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.3 }, new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1 } ], VariavelResultado = "I(θ)", UnidadeResultado = "", Calcular = vars => vars["a"] * vars["a"] * vars["P"] * (1 - vars["P"]) },
-            new Formula { Id = "4_ps05", Nome = "Erro Padrão da Habilidade", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "SE(θ)=1/\u221aI_test(θ)", ExprTexto = "SE=1/sqrt(Itest)", Icone = "SE", Descricao = "Erro padrão associado à estimativa de habilidade.", ExemploPratico = "Exemplo: Itest=16 => SE=0.25.", Variaveis = [ new() { Simbolo = "I", Nome = "Informação total", ValorPadrao = 16, ValorMin = 0.0001 } ], VariavelResultado = "SE", UnidadeResultado = "", Calcular = vars => 1.0 / Math.Sqrt(vars["I"]) },
-            new Formula { Id = "4_ps06", Nome = "Atualização de Newton para θ", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "θ_{new}=θ+U(θ)/I(θ)", ExprTexto = "theta_new=theta+U/I", Icone = "NR", Descricao = "Passo de Newton-Raphson para MLE de habilidade.", ExemploPratico = "Exemplo: θ=0.4, U=0.9, I=6 => 0.55.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade atual", ValorPadrao = 0.4 }, new() { Simbolo = "U", Nome = "Score U(θ)", ValorPadrao = 0.9 }, new() { Simbolo = "I", Nome = "Informação I(θ)", ValorPadrao = 6, ValorMin = 0.0001 } ], VariavelResultado = "θ_new", UnidadeResultado = "", Calcular = vars => vars["θ"] + vars["U"] / vars["I"] },
-            new Formula { Id = "4_ps07", Nome = "Índice de Dificuldade Médio", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "b̄=(1/m)Σb_i", ExprTexto = "bbar = mean(bi)", Icone = "b̄", Descricao = "Resumo da dificuldade global de um banco de itens.", ExemploPratico = "Exemplo: soma b=24 em m=30 itens => 0.8.", Variaveis = [ new() { Simbolo = "Σb", Nome = "Soma das dificuldades", ValorPadrao = 24 }, new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1 } ], VariavelResultado = "b̄", UnidadeResultado = "", Calcular = vars => vars["Σb"] / vars["m"] },
-            new Formula { Id = "4_ps08", Nome = "Discriminação Média", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ā=(1/m)Σa_i", ExprTexto = "abar = mean(ai)", Icone = "ā", Descricao = "Resumo da capacidade de discriminação dos itens.", ExemploPratico = "Exemplo: Σa=42 em m=30 => 1.4.", Variaveis = [ new() { Simbolo = "Σa", Nome = "Soma das discriminações", ValorPadrao = 42 }, new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1 } ], VariavelResultado = "ā", UnidadeResultado = "", Calcular = vars => vars["Σa"] / vars["m"] },
-            new Formula { Id = "4_ps09", Nome = "Diferença de Habilidade (ITE Psic.)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ITE_i=Y_i(1)-Y_i(0)", ExprTexto = "ITE = Y1 - Y0", Icone = "ITE", Descricao = "Efeito individual (análogo causal) para mudança de intervenção educacional.", ExemploPratico = "Exemplo: Y1=0.82, Y0=0.65 => 0.17.", Variaveis = [ new() { Simbolo = "Y1", Nome = "Resultado com intervenção", ValorPadrao = 0.82 }, new() { Simbolo = "Y0", Nome = "Resultado sem intervenção", ValorPadrao = 0.65 } ], VariavelResultado = "ITE", UnidadeResultado = "", Calcular = vars => vars["Y1"] - vars["Y0"] },
-            new Formula { Id = "4_ps10", Nome = "Efeito Médio (ATE Psic.)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ATE=(1/n)ΣITE_i", ExprTexto = "ATE = mean(ITE)", Icone = "ATE", Descricao = "Efeito médio da intervenção no desempenho psicométrico.", ExemploPratico = "Exemplo: soma ITE=12 com n=80 => 0.15.", Variaveis = [ new() { Simbolo = "ΣITE", Nome = "Soma dos ITE", ValorPadrao = 12 }, new() { Simbolo = "n", Nome = "Amostra n", ValorPadrao = 80, ValorMin = 1 } ], VariavelResultado = "ATE", UnidadeResultado = "", Calcular = vars => vars["ΣITE"] / vars["n"] },
-            new Formula { Id = "4_ps11", Nome = "Parâmetro de Habilidade Padronizado", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "z=(θ-μ_θ)/σ_θ", ExprTexto = "z=(theta-mu)/sigma", Icone = "z", Descricao = "Padronização da habilidade para comparação entre grupos.", ExemploPratico = "Exemplo: θ=0.9, μ=0.5, σ=0.2 => z=2.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.9 }, new() { Simbolo = "μ", Nome = "Média μθ", ValorPadrao = 0.5 }, new() { Simbolo = "σ", Nome = "Desvio σθ", ValorPadrao = 0.2, ValorMin = 0.0001 } ], VariavelResultado = "z", UnidadeResultado = "", Calcular = vars => (vars["θ"] - vars["μ"]) / vars["σ"] },
-            new Formula { Id = "4_ps12", Nome = "Função de Informação Agregada", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "I_total(θ)=Σ_j a_j²P_j(1-P_j)", ExprTexto = "Itotal=sum aj^2*Pj*(1-Pj)", Icone = "It", Descricao = "Resumo final da precisão do teste para um valor de θ.", ExemploPratico = "Exemplo: m=30, info média item=0.35 => Itotal=10.5.", Variaveis = [ new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1 }, new() { Simbolo = "Ī", Nome = "Informação média por item", ValorPadrao = 0.35, ValorMin = 0 } ], VariavelResultado = "I_total", UnidadeResultado = "", Calcular = vars => vars["m"] * vars["Ī"] },
+            new Formula { Id = "4_ps01", Nome = "Função Logística IRT", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "P(θ)=1/(1+e^{-a(θ-b)})", ExprTexto = "P=1/(1+exp(-a*(theta-b)))", Icone = "PS", Descricao = "Probabilidade de acerto com habilidade θ, discriminação a e dificuldade b.", ExemploPratico = "Exemplo: θ=0.8, a=1.2, b=0.5.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Dificuldade b", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "P(θ)", UnidadeResultado = "", Calcular = vars => 1.0 / (1.0 + Math.Exp(-vars["a"] * (vars["θ"] - vars["b"]))),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps02", Nome = "Inclinação no Ponto b", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "P'(b)=a/4", ExprTexto = "dPdb = a/4", Icone = "a", Descricao = "No modelo 2PL, a inclinação máxima da curva logística é a/4.", ExemploPratico = "Exemplo: a=1.6 => 0.4.", Variaveis = [ new() { Simbolo = "a", Nome = "Discriminação a", ValorPadrao = 1.6, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "P'(b)", UnidadeResultado = "", Calcular = vars => vars["a"] / 4.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps03", Nome = "Efeito de Dificuldade", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ΔP≈a·Δθ/4 em θ≈b", ExprTexto = "dP approx a*dtheta/4", Icone = "b", Descricao = "Aproximação local do impacto de mudanças de habilidade perto de b.", ExemploPratico = "Exemplo: a=1.2 e Δθ=0.5 => ΔP≈0.15.", Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Δθ", Nome = "Variação de habilidade", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ΔP", UnidadeResultado = "", Calcular = vars => vars["a"] * vars["Δθ"] / 4.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps04", Nome = "Informação do Item (2PL)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "I(θ)=a²P(1-P)", ExprTexto = "I=a^2*P*(1-P)", Icone = "Iθ", Descricao = "Informação de Fisher de um item no 2PL.", ExemploPratico = "Exemplo: a=1.3, P=0.7 => I≈0.355.", Variaveis = [ new() { Simbolo = "a", Nome = "a", ValorPadrao = 1.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 0.7, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "I(θ)", UnidadeResultado = "", Calcular = vars => vars["a"] * vars["a"] * vars["P"] * (1 - vars["P"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps05", Nome = "Erro Padrão da Habilidade", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "SE(θ)=1/\u221aI_test(θ)", ExprTexto = "SE=1/sqrt(Itest)", Icone = "SE", Descricao = "Erro padrão associado à estimativa de habilidade.", ExemploPratico = "Exemplo: Itest=16 => SE=0.25.", Variaveis = [ new() { Simbolo = "I", Nome = "Informação total", ValorPadrao = 16, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "SE", UnidadeResultado = "", Calcular = vars => 1.0 / Math.Sqrt(vars["I"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps06", Nome = "Atualização de Newton para θ", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "θ_{new}=θ+U(θ)/I(θ)", ExprTexto = "theta_new=theta+U/I", Icone = "NR", Descricao = "Passo de Newton-Raphson para MLE de habilidade.", ExemploPratico = "Exemplo: θ=0.4, U=0.9, I=6 => 0.55.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade atual", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "U", Nome = "Score U(θ)", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "I", Nome = "Informação I(θ)", ValorPadrao = 6, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "θ_new", UnidadeResultado = "", Calcular = vars => vars["θ"] + vars["U"] / vars["I"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps07", Nome = "Índice de Dificuldade Médio", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "b̄=(1/m)Σb_i", ExprTexto = "bbar = mean(bi)", Icone = "b̄", Descricao = "Resumo da dificuldade global de um banco de itens.", ExemploPratico = "Exemplo: soma b=24 em m=30 itens => 0.8.", Variaveis = [ new() { Simbolo = "Σb", Nome = "Soma das dificuldades", ValorPadrao = 24, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "b̄", UnidadeResultado = "", Calcular = vars => vars["Σb"] / vars["m"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps08", Nome = "Discriminação Média", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ā=(1/m)Σa_i", ExprTexto = "abar = mean(ai)", Icone = "ā", Descricao = "Resumo da capacidade de discriminação dos itens.", ExemploPratico = "Exemplo: Σa=42 em m=30 => 1.4.", Variaveis = [ new() { Simbolo = "Σa", Nome = "Soma das discriminações", ValorPadrao = 42, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ā", UnidadeResultado = "", Calcular = vars => vars["Σa"] / vars["m"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps09", Nome = "Diferença de Habilidade (ITE Psic.)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ITE_i=Y_i(1)-Y_i(0)", ExprTexto = "ITE = Y1 - Y0", Icone = "ITE", Descricao = "Efeito individual (análogo causal) para mudança de intervenção educacional.", ExemploPratico = "Exemplo: Y1=0.82, Y0=0.65 => 0.17.", Variaveis = [ new() { Simbolo = "Y1", Nome = "Resultado com intervenção", ValorPadrao = 0.82, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Y0", Nome = "Resultado sem intervenção", ValorPadrao = 0.65, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ITE", UnidadeResultado = "", Calcular = vars => vars["Y1"] - vars["Y0"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps10", Nome = "Efeito Médio (ATE Psic.)", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "ATE=(1/n)ΣITE_i", ExprTexto = "ATE = mean(ITE)", Icone = "ATE", Descricao = "Efeito médio da intervenção no desempenho psicométrico.", ExemploPratico = "Exemplo: soma ITE=12 com n=80 => 0.15.", Variaveis = [ new() { Simbolo = "ΣITE", Nome = "Soma dos ITE", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Amostra n", ValorPadrao = 80, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ATE", UnidadeResultado = "", Calcular = vars => vars["ΣITE"] / vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps11", Nome = "Parâmetro de Habilidade Padronizado", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "z=(θ-μ_θ)/σ_θ", ExprTexto = "z=(theta-mu)/sigma", Icone = "z", Descricao = "Padronização da habilidade para comparação entre grupos.", ExemploPratico = "Exemplo: θ=0.9, μ=0.5, σ=0.2 => z=2.", Variaveis = [ new() { Simbolo = "θ", Nome = "Habilidade θ", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "μ", Nome = "Média μθ", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "σ", Nome = "Desvio σθ", ValorPadrao = 0.2, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "z", UnidadeResultado = "", Calcular = vars => (vars["θ"] - vars["μ"]) / vars["σ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ps12", Nome = "Função de Informação Agregada", Categoria = "Psicometria e IRT", SubCategoria = "Psicometria", Expressao = "I_total(θ)=Σ_j a_j²P_j(1-P_j)", ExprTexto = "Itotal=sum aj^2*Pj*(1-Pj)", Icone = "It", Descricao = "Resumo final da precisão do teste para um valor de θ.", ExemploPratico = "Exemplo: m=30, info média item=0.35 => Itotal=10.5.", Variaveis = [ new() { Simbolo = "m", Nome = "Número de itens", ValorPadrao = 30, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Ī", Nome = "Informação média por item", ValorPadrao = 0.35, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "I_total", UnidadeResultado = "", Calcular = vars => vars["m"] * vars["Ī"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
             // 21.2 SEM (Modelagem de Equações Estruturais)
             new Formula
             {
@@ -734,10 +921,13 @@ public partial class FormulaService
                 Icone = "CFA",
                 Descricao = "Modelo de medida: x = indicadores observados, ξ = fatores latentes, Λ = cargas fatoriais, Φ = covariância entre fatores, Θ = variância dos erros. Confirma estrutura teórica.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Λξ", Nome = "Λξ", ValorPadrao = 10 }, new() { Simbolo = "δ", Nome = "δ", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Λξ", Nome = "Λξ", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "δ", Nome = "δ", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "x",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Λξ"] + vars["δ"]
+                Calcular = vars => vars["Λξ"] + vars["δ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -747,10 +937,13 @@ public partial class FormulaService
                 Icone = "SEM",
                 Descricao = "Equações estruturais entre variáveis latentes: η = endógenas, ξ = exógenas, B = efeitos entre endógenas, Γ = efeitos de exógenas, ζ = distúrbios. Path analysis com latentes.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Bη", Nome = "Bη", ValorPadrao = 10 }, new() { Simbolo = "Γξ", Nome = "Γξ", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Bη", Nome = "Bη", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Γξ", Nome = "Γξ", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "η",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Bη"] + vars["Γξ"]
+                Calcular = vars => vars["Bη"] + vars["Γξ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -760,10 +953,13 @@ public partial class FormulaService
                 Icone = "meas",
                 Descricao = "Modelo completo LISREL: dois modelos de medida (x→ξ, y→η) + modelo estrutural (ξ→η). Estimação: ML, WLS, DWLS. Identificação: regra 3-indicadores ou marker variable.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Λxξ", Nome = "Λxξ", ValorPadrao = 10 }, new() { Simbolo = "δ", Nome = "δ", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Λxξ", Nome = "Λxξ", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "δ", Nome = "δ", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "x",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Λxξ"] + vars["δ"]
+                Calcular = vars => vars["Λxξ"] + vars["δ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -773,10 +969,13 @@ public partial class FormulaService
                 Icone = "fit",
                 Descricao = "CFI≥0.95 (comparativo), RMSEA≤0.06 (aproximação), SRMR≤0.08 (resíduos), TLI≥0.95. χ² = discrepância modelo vs dados. Hu & Bentler (1999): cutoffs combinados.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "CFI", Nome = "CFI", ValorPadrao = 1 }, new() { Simbolo = "TLI", Nome = "TLI", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "CFI", Nome = "CFI", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "TLI", Nome = "TLI", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["CFI"] + vars["TLI"]
+                Calcular = vars => vars["CFI"] + vars["TLI"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }

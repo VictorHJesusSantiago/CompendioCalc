@@ -26,12 +26,12 @@ public partial class FormulaService
                 AnoOrigin = "1998",
                 ExemploPratico = "Dia típico tropical: ET₀ ≈ 4-6 mm/dia",
                 Variaveis = [
-                    new() { Simbolo = "Rn", Nome = "Radiação líquida (MJ/m²/dia)", ValorPadrao = 15 },
-                    new() { Simbolo = "T", Nome = "Temperatura média (°C)", ValorPadrao = 25 },
-                    new() { Simbolo = "u2", Nome = "Vel. vento a 2m (m/s)", ValorPadrao = 2 },
-                    new() { Simbolo = "deficit", Nome = "Déficit pressão vapor (kPa)", Descricao = "eₛ − eₐ", ValorPadrao = 1.5 },
-                    new() { Simbolo = "delta", Nome = "Declividade curva pressão (Δ)", Descricao = "kPa/°C", ValorPadrao = 0.189 },
-                    new() { Simbolo = "gamma", Nome = "Constante psicrométrica (γ)", Descricao = "kPa/°C", ValorPadrao = 0.067 },
+                    new() { Simbolo = "Rn", Nome = "Radiação líquida (MJ/m²/dia)", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T", Nome = "Temperatura média (°C)", ValorPadrao = 25, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "u2", Nome = "Vel. vento a 2m (m/s)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "deficit", Nome = "Déficit pressão vapor (kPa)", Descricao = "eₛ − eₐ", ValorPadrao = 1.5, Unidade = "adim" },
+                    new() { Simbolo = "delta", Nome = "Declividade curva pressão (Δ)", Descricao = "kPa/°C", ValorPadrao = 0.189, Unidade = "adim" },
+                    new() { Simbolo = "gamma", Nome = "Constante psicrométrica (γ)", Descricao = "kPa/°C", ValorPadrao = 0.067, Unidade = "adim" },
                 ],
                 VariavelResultado = "ET₀ (mm/dia)",
                 UnidadeResultado = "mm/dia",
@@ -41,7 +41,9 @@ public partial class FormulaService
                     double num = 0.408 * d * Rn + g * (900.0 / (T + 273)) * u2 * def;
                     double den = d + g * (1 + 0.34 * u2);
                     return num / den;
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 039 Produtividade da Água ──
             new Formula
@@ -55,12 +57,14 @@ public partial class FormulaService
                 AnoOrigin = "1997",
                 ExemploPratico = "Milho: 8 ton/ha, ET=500 mm: WP = 8000/500 = 16 kg/m³",
                 Variaveis = [
-                    new() { Simbolo = "Y", Nome = "Produtividade (kg/ha)", ValorPadrao = 8000 },
-                    new() { Simbolo = "ET", Nome = "Evapotranspiração (mm)", ValorPadrao = 500, ValorMin = 1 },
+                    new() { Simbolo = "Y", Nome = "Produtividade (kg/ha)", ValorPadrao = 8000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "ET", Nome = "Evapotranspiração (mm)", ValorPadrao = 500, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "WP",
                 UnidadeResultado = "kg/ha/mm",
-                Calcular = vars => vars["Y"] / vars["ET"]
+                Calcular = vars => vars["Y"] / vars["ET"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 040 Necessidade de Calagem (PRNT) ──
             new Formula
@@ -74,14 +78,16 @@ public partial class FormulaService
                 AnoOrigin = "1996",
                 ExemploPratico = "V₁=40%, V₂=70%, CTC=10 cmolc/dm³, PRNT=80%: NC = (70-40)×10/(10×80) = 0,375 → ~3,75 t/ha",
                 Variaveis = [
-                    new() { Simbolo = "V2", Nome = "V% desejada", Descricao = "Saturação por bases alvo (%)", ValorPadrao = 70 },
-                    new() { Simbolo = "V1", Nome = "V% atual", Descricao = "Saturação por bases atual (%)", ValorPadrao = 40 },
-                    new() { Simbolo = "CTC", Nome = "CTC (cmolc/dm³)", Descricao = "Capacidade de troca catiônica", ValorPadrao = 10 },
-                    new() { Simbolo = "PRNT", Nome = "PRNT (%)", Descricao = "Poder Relativo Neutralização Total", ValorPadrao = 80, ValorMin = 1 },
+                    new() { Simbolo = "V2", Nome = "V% desejada", Descricao = "Saturação por bases alvo (%)", ValorPadrao = 70, Unidade = "adim" },
+                    new() { Simbolo = "V1", Nome = "V% atual", Descricao = "Saturação por bases atual (%)", ValorPadrao = 40, Unidade = "adim" },
+                    new() { Simbolo = "CTC", Nome = "CTC (cmolc/dm³)", Descricao = "Capacidade de troca catiônica", ValorPadrao = 10, Unidade = "adim" },
+                    new() { Simbolo = "PRNT", Nome = "PRNT (%)", Descricao = "Poder Relativo Neutralização Total", ValorPadrao = 80, ValorMin = 1, Unidade = "adim" },
                 ],
                 VariavelResultado = "NC (t/ha)",
                 UnidadeResultado = "t/ha",
-                Calcular = vars => (vars["V2"] - vars["V1"]) * vars["CTC"] / (10 * vars["PRNT"])
+                Calcular = vars => (vars["V2"] - vars["V1"]) * vars["CTC"] / (10 * vars["PRNT"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 041 Equação Universal de Perda de Solo (USLE) ──
             new Formula
@@ -95,15 +101,17 @@ public partial class FormulaService
                 AnoOrigin = "1978",
                 ExemploPratico = "R=600, K=0,03, LS=2,5, C=0,5, P=0,8: A = 600×0,03×2,5×0,5×0,8 = 18 t/ha/ano",
                 Variaveis = [
-                    new() { Simbolo = "R", Nome = "Erosividade (R)", Descricao = "MJ·mm/(ha·h·ano)", ValorPadrao = 600 },
-                    new() { Simbolo = "K", Nome = "Erodibilidade (K)", Descricao = "t·h/(MJ·mm)", ValorPadrao = 0.03 },
-                    new() { Simbolo = "LS", Nome = "Fator topográfico (LS)", ValorPadrao = 2.5 },
-                    new() { Simbolo = "C", Nome = "Fator de cobertura (C)", ValorPadrao = 0.5 },
-                    new() { Simbolo = "P", Nome = "Fator de práticas (P)", ValorPadrao = 0.8 },
+                    new() { Simbolo = "R", Nome = "Erosividade (R)", Descricao = "MJ·mm/(ha·h·ano)", ValorPadrao = 600, Unidade = "adim" },
+                    new() { Simbolo = "K", Nome = "Erodibilidade (K)", Descricao = "t·h/(MJ·mm)", ValorPadrao = 0.03, Unidade = "adim" },
+                    new() { Simbolo = "LS", Nome = "Fator topográfico (LS)", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "C", Nome = "Fator de cobertura (C)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "P", Nome = "Fator de práticas (P)", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "A (t/ha/ano)",
                 UnidadeResultado = "t/ha/ano",
-                Calcular = vars => vars["R"] * vars["K"] * vars["LS"] * vars["C"] * vars["P"]
+                Calcular = vars => vars["R"] * vars["K"] * vars["LS"] * vars["C"] * vars["P"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 042 Graus-Dia Acumulados ──
             new Formula
@@ -117,13 +125,15 @@ public partial class FormulaService
                 AnoOrigin = "1735",
                 ExemploPratico = "Dia: Tmax=30°C, Tmin=18°C, Tb=10°C: GDD = (30+18)/2−10 = 14 graus-dia",
                 Variaveis = [
-                    new() { Simbolo = "Tmax", Nome = "Temp. máxima (°C)", ValorPadrao = 30 },
-                    new() { Simbolo = "Tmin", Nome = "Temp. mínima (°C)", ValorPadrao = 18 },
-                    new() { Simbolo = "Tb", Nome = "Temp. base (°C)", Descricao = "Temperatura base da cultura", ValorPadrao = 10 },
+                    new() { Simbolo = "Tmax", Nome = "Temp. máxima (°C)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Tmin", Nome = "Temp. mínima (°C)", ValorPadrao = 18, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Tb", Nome = "Temp. base (°C)", Descricao = "Temperatura base da cultura", ValorPadrao = 10, Unidade = "adim" },
                 ],
                 VariavelResultado = "GDD (graus-dia)",
                 UnidadeResultado = "°C·dia",
-                Calcular = vars => Math.Max((vars["Tmax"] + vars["Tmin"]) / 2.0 - vars["Tb"], 0)
+                Calcular = vars => Math.Max((vars["Tmax"] + vars["Tmin"]) / 2.0 - vars["Tb"], 0),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ CIÊNCIAS FLORESTAIS (7 fórmulas) ═══
@@ -140,11 +150,13 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "CAP = 94,2 cm: DAP = 94,2/π ≈ 30 cm",
                 Variaveis = [
-                    new() { Simbolo = "CAP", Nome = "Circunf. à Altura do Peito (cm)", ValorPadrao = 94.2 },
+                    new() { Simbolo = "CAP", Nome = "Circunf. à Altura do Peito (cm)", ValorPadrao = 94.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "DAP (cm)",
                 UnidadeResultado = "cm",
-                Calcular = vars => vars["CAP"] / Math.PI
+                Calcular = vars => vars["CAP"] / Math.PI,
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 044 Área Basal ──
             new Formula
@@ -158,11 +170,13 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "DAP=30 cm: g = π×(0,15)² = 0,0707 m²",
                 Variaveis = [
-                    new() { Simbolo = "DAP", Nome = "DAP (cm)", ValorPadrao = 30 },
+                    new() { Simbolo = "DAP", Nome = "DAP (cm)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "g (m²)",
                 UnidadeResultado = "m²",
-                Calcular = vars => Math.PI * Math.Pow(vars["DAP"] / 200.0, 2)
+                Calcular = vars => Math.PI * Math.Pow(vars["DAP"] / 200.0, 2),
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 045 Volume de Árvore (Huber) ──
             new Formula
@@ -176,12 +190,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "Seção média g=0,05 m², L=6 m: V = 0,05×6 = 0,30 m³",
                 Variaveis = [
-                    new() { Simbolo = "gm", Nome = "Área da seção média (m²)", ValorPadrao = 0.05 },
-                    new() { Simbolo = "L", Nome = "Comprimento (m)", ValorPadrao = 6 },
+                    new() { Simbolo = "gm", Nome = "Área da seção média (m²)", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Comprimento (m)", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "V (m³)",
                 UnidadeResultado = "m³",
-                Calcular = vars => vars["gm"] * vars["L"]
+                Calcular = vars => vars["gm"] * vars["L"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 046 Índice de Sítio ──
             new Formula
@@ -195,14 +211,16 @@ public partial class FormulaService
                 AnoOrigin = "1959",
                 ExemploPratico = "Eucalipto: A=35, b=0,15, c=1,3, I=7 anos: H = 35×(1−e^(−1,05))^1,3 ≈ 22,5 m",
                 Variaveis = [
-                    new() { Simbolo = "A", Nome = "Assíntota (A)", Descricao = "Altura máxima potencial (m)", ValorPadrao = 35 },
-                    new() { Simbolo = "b", Nome = "Parâmetro b", Descricao = "Taxa de crescimento", ValorPadrao = 0.15 },
-                    new() { Simbolo = "c", Nome = "Parâmetro c", Descricao = "Forma da curva", ValorPadrao = 1.3 },
-                    new() { Simbolo = "I", Nome = "Idade (anos)", ValorPadrao = 7 },
+                    new() { Simbolo = "A", Nome = "Assíntota (A)", Descricao = "Altura máxima potencial (m)", ValorPadrao = 35, Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Parâmetro b", Descricao = "Taxa de crescimento", ValorPadrao = 0.15, Unidade = "adim" },
+                    new() { Simbolo = "c", Nome = "Parâmetro c", Descricao = "Forma da curva", ValorPadrao = 1.3, Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Idade (anos)", ValorPadrao = 7, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "H (m)",
                 UnidadeResultado = "m",
-                Calcular = vars => vars["A"] * Math.Pow(1 - Math.Exp(-vars["b"] * vars["I"]), vars["c"])
+                Calcular = vars => vars["A"] * Math.Pow(1 - Math.Exp(-vars["b"] * vars["I"]), vars["c"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 047 Incremento Médio Anual ──
             new Formula
@@ -216,12 +234,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Eucalipto: 250 m³/ha aos 7 anos: IMA = 250/7 ≈ 35,7 m³/ha/ano",
                 Variaveis = [
-                    new() { Simbolo = "V", Nome = "Volume total (m³/ha)", ValorPadrao = 250 },
-                    new() { Simbolo = "I", Nome = "Idade (anos)", ValorPadrao = 7, ValorMin = 1 },
+                    new() { Simbolo = "V", Nome = "Volume total (m³/ha)", ValorPadrao = 250, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Idade (anos)", ValorPadrao = 7, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "IMA",
                 UnidadeResultado = "m³/ha/ano",
-                Calcular = vars => vars["V"] / vars["I"]
+                Calcular = vars => vars["V"] / vars["I"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 048 Índice de Diversidade de Shannon ──
             new Formula
@@ -235,9 +255,9 @@ public partial class FormulaService
                 AnoOrigin = "1948",
                 ExemploPratico = "3 espécies com p=0,5; 0,3; 0,2: H' = −(0,5×ln0,5+0,3×ln0,3+0,2×ln0,2) ≈ 1,03",
                 Variaveis = [
-                    new() { Simbolo = "p1", Nome = "Proporção espécie 1", ValorPadrao = 0.5 },
-                    new() { Simbolo = "p2", Nome = "Proporção espécie 2", ValorPadrao = 0.3 },
-                    new() { Simbolo = "p3", Nome = "Proporção espécie 3", ValorPadrao = 0.2 },
+                    new() { Simbolo = "p1", Nome = "Proporção espécie 1", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "p2", Nome = "Proporção espécie 2", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "p3", Nome = "Proporção espécie 3", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "H'",
                 Calcular = vars => {
@@ -248,7 +268,9 @@ public partial class FormulaService
                         if (p > 0) h -= p * Math.Log(p);
                     }
                     return h;
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 049 Fator de Forma ──
             new Formula
@@ -262,12 +284,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "V real=0,45 m³, g=0,07 m², h=12 m: f = 0,45/(0,07×12) = 0,536",
                 Variaveis = [
-                    new() { Simbolo = "Vreal", Nome = "Volume real (m³)", ValorPadrao = 0.45 },
-                    new() { Simbolo = "g", Nome = "Área basal (m²)", ValorPadrao = 0.07 },
-                    new() { Simbolo = "h", Nome = "Altura (m)", ValorPadrao = 12, ValorMin = 0.1 },
+                    new() { Simbolo = "Vreal", Nome = "Volume real (m³)", ValorPadrao = 0.45, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "g", Nome = "Área basal (m²)", ValorPadrao = 0.07, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "h", Nome = "Altura (m)", ValorPadrao = 12, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "f",
-                Calcular = vars => vars["Vreal"] / (vars["g"] * vars["h"])
+                Calcular = vars => vars["Vreal"] / (vars["g"] * vars["h"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA AMBIENTAL (8 fórmulas) ═══
@@ -284,13 +308,15 @@ public partial class FormulaService
                 AnoOrigin = "1925",
                 ExemploPratico = "L₀=300 mg/L, k₁=0,23 d⁻¹, t=5d: Lt = 300×e^(−1,15) ≈ 95 mg/L",
                 Variaveis = [
-                    new() { Simbolo = "L0", Nome = "DBO última (L₀, mg/L)", ValorPadrao = 300 },
-                    new() { Simbolo = "k1", Nome = "Coef. desoxigenação (k₁)", Descricao = "d⁻¹", ValorPadrao = 0.23 },
-                    new() { Simbolo = "t", Nome = "Tempo (dias)", ValorPadrao = 5 },
+                    new() { Simbolo = "L0", Nome = "DBO última (L₀, mg/L)", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k1", Nome = "Coef. desoxigenação (k₁)", Descricao = "d⁻¹", ValorPadrao = 0.23, Unidade = "adim" },
+                    new() { Simbolo = "t", Nome = "Tempo (dias)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Lt (mg/L)",
                 UnidadeResultado = "mg/L",
-                Calcular = vars => vars["L0"] * Math.Exp(-vars["k1"] * vars["t"])
+                Calcular = vars => vars["L0"] * Math.Exp(-vars["k1"] * vars["t"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 051 Déficit de Oxigênio ──
             new Formula
@@ -304,18 +330,20 @@ public partial class FormulaService
                 AnoOrigin = "1925",
                 ExemploPratico = "Ponto crítico: tc = ln(k₂/k₁)/(k₂−k₁) para encontrar o máximo déficit",
                 Variaveis = [
-                    new() { Simbolo = "k1", Nome = "Coef. desoxigenação (k₁)", ValorPadrao = 0.23 },
-                    new() { Simbolo = "k2", Nome = "Coef. reaeração (k₂)", ValorPadrao = 0.46 },
-                    new() { Simbolo = "L0", Nome = "DBO última (L₀, mg/L)", ValorPadrao = 300 },
-                    new() { Simbolo = "D0", Nome = "Déficit inicial (D₀, mg/L)", ValorPadrao = 2 },
-                    new() { Simbolo = "t", Nome = "Tempo (dias)", ValorPadrao = 3 },
+                    new() { Simbolo = "k1", Nome = "Coef. desoxigenação (k₁)", ValorPadrao = 0.23, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k2", Nome = "Coef. reaeração (k₂)", ValorPadrao = 0.46, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L0", Nome = "DBO última (L₀, mg/L)", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "D0", Nome = "Déficit inicial (D₀, mg/L)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t", Nome = "Tempo (dias)", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "D(t) (mg/L)",
                 UnidadeResultado = "mg/L",
                 Calcular = vars => {
                     double k1 = vars["k1"], k2 = vars["k2"], L0 = vars["L0"], D0 = vars["D0"], t = vars["t"];
                     return (k1 * L0 / (k2 - k1)) * (Math.Exp(-k1 * t) - Math.Exp(-k2 * t)) + D0 * Math.Exp(-k2 * t);
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 052 Índice de Qualidade da Água (IQA) ──
             new Formula
@@ -329,15 +357,17 @@ public partial class FormulaService
                 AnoOrigin = "1970",
                 ExemploPratico = "IQA simplificado: q1=80(w=0,17), q2=60(w=0,15), q3=90(w=0,12)... → IQA ≈ 72 (boa)",
                 Variaveis = [
-                    new() { Simbolo = "q1", Nome = "Qualidade param. 1 (q₁)", ValorPadrao = 80 },
-                    new() { Simbolo = "w1", Nome = "Peso param. 1 (w₁)", ValorPadrao = 0.17 },
-                    new() { Simbolo = "q2", Nome = "Qualidade param. 2 (q₂)", ValorPadrao = 60 },
-                    new() { Simbolo = "w2", Nome = "Peso param. 2 (w₂)", ValorPadrao = 0.15 },
-                    new() { Simbolo = "q3", Nome = "Qualidade param. 3 (q₃)", ValorPadrao = 90 },
-                    new() { Simbolo = "w3", Nome = "Peso param. 3 (w₃)", ValorPadrao = 0.12 },
+                    new() { Simbolo = "q1", Nome = "Qualidade param. 1 (q₁)", ValorPadrao = 80, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "w1", Nome = "Peso param. 1 (w₁)", ValorPadrao = 0.17, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "q2", Nome = "Qualidade param. 2 (q₂)", ValorPadrao = 60, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "w2", Nome = "Peso param. 2 (w₂)", ValorPadrao = 0.15, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "q3", Nome = "Qualidade param. 3 (q₃)", ValorPadrao = 90, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "w3", Nome = "Peso param. 3 (w₃)", ValorPadrao = 0.12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "IQA (parcial)",
-                Calcular = vars => Math.Pow(vars["q1"], vars["w1"]) * Math.Pow(vars["q2"], vars["w2"]) * Math.Pow(vars["q3"], vars["w3"])
+                Calcular = vars => Math.Pow(vars["q1"], vars["w1"]) * Math.Pow(vars["q2"], vars["w2"]) * Math.Pow(vars["q3"], vars["w3"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 053 Equação de Manning (Escoamento) ──
             new Formula
@@ -351,14 +381,16 @@ public partial class FormulaService
                 AnoOrigin = "1891",
                 ExemploPratico = "Canal: A=2m², R=0,5m, S=0,001, n=0,013: Q = 2×0,63×0,032/0,013 ≈ 3,06 m³/s",
                 Variaveis = [
-                    new() { Simbolo = "A", Nome = "Área da seção (m²)", ValorPadrao = 2 },
-                    new() { Simbolo = "R", Nome = "Raio hidráulico (m)", ValorPadrao = 0.5 },
-                    new() { Simbolo = "S", Nome = "Declividade (m/m)", ValorPadrao = 0.001 },
-                    new() { Simbolo = "n", Nome = "Coef. Manning (n)", ValorPadrao = 0.013, ValorMin = 0.001 },
+                    new() { Simbolo = "A", Nome = "Área da seção (m²)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "R", Nome = "Raio hidráulico (m)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "S", Nome = "Declividade (m/m)", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "n", Nome = "Coef. Manning (n)", ValorPadrao = 0.013, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Q (m³/s)",
                 UnidadeResultado = "m³/s",
-                Calcular = vars => (vars["A"] * Math.Pow(vars["R"], 2.0 / 3.0) * Math.Sqrt(vars["S"])) / vars["n"]
+                Calcular = vars => (vars["A"] * Math.Pow(vars["R"], 2.0 / 3.0) * Math.Sqrt(vars["S"])) / vars["n"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 054 Tempo de Detenção Hidráulico ──
             new Formula
@@ -372,12 +404,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Lagoa de 5000 m³, vazão 500 m³/dia: TDH = 5000/500 = 10 dias",
                 Variaveis = [
-                    new() { Simbolo = "V", Nome = "Volume do reator (m³)", ValorPadrao = 5000 },
-                    new() { Simbolo = "Q", Nome = "Vazão (m³/dia)", ValorPadrao = 500, ValorMin = 0.1 },
+                    new() { Simbolo = "V", Nome = "Volume do reator (m³)", ValorPadrao = 5000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Q", Nome = "Vazão (m³/dia)", ValorPadrao = 500, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "TDH (dias)",
                 UnidadeResultado = "dias",
-                Calcular = vars => vars["V"] / vars["Q"]
+                Calcular = vars => vars["V"] / vars["Q"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 055 Eficiência de Remoção ──
             new Formula
@@ -391,12 +425,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "DBO: C₀=300 mg/L, Cf=30 mg/L: E = (300-30)/300×100 = 90%",
                 Variaveis = [
-                    new() { Simbolo = "C0", Nome = "Concentração afluente (C₀)", ValorPadrao = 300 },
-                    new() { Simbolo = "Cf", Nome = "Concentração efluente (Cf)", ValorPadrao = 30 },
+                    new() { Simbolo = "C0", Nome = "Concentração afluente (C₀)", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Cf", Nome = "Concentração efluente (Cf)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "E (%)",
                 UnidadeResultado = "%",
-                Calcular = vars => (vars["C0"] - vars["Cf"]) / vars["C0"] * 100
+                Calcular = vars => (vars["C0"] - vars["Cf"]) / vars["C0"] * 100,
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 056 Dispersão Atmosférica (Gaussiana) ──
             new Formula
@@ -410,18 +446,20 @@ public partial class FormulaService
                 AnoOrigin = "1961",
                 ExemploPratico = "Chaminé H=50m, Q=100 g/s, u=5 m/s, σy=50, σz=30 (x=1km): C no eixo ≈ 21 μg/m³",
                 Variaveis = [
-                    new() { Simbolo = "Qe", Nome = "Taxa de emissão (g/s)", ValorPadrao = 100 },
-                    new() { Simbolo = "u", Nome = "Velocidade do vento (m/s)", ValorPadrao = 5, ValorMin = 0.1 },
-                    new() { Simbolo = "sy", Nome = "Dispersão horizontal σy (m)", ValorPadrao = 50 },
-                    new() { Simbolo = "sz", Nome = "Dispersão vertical σz (m)", ValorPadrao = 30 },
-                    new() { Simbolo = "H", Nome = "Altura efetiva (m)", ValorPadrao = 50 },
+                    new() { Simbolo = "Qe", Nome = "Taxa de emissão (g/s)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "u", Nome = "Velocidade do vento (m/s)", ValorPadrao = 5, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "sy", Nome = "Dispersão horizontal σy (m)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "sz", Nome = "Dispersão vertical σz (m)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "H", Nome = "Altura efetiva (m)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "C (g/m³) no eixo",
                 UnidadeResultado = "g/m³",
                 Calcular = vars => {
                     double Q = vars["Qe"], u = vars["u"], sy = vars["sy"], sz = vars["sz"], H = vars["H"];
                     return (Q / (2 * Math.PI * u * sy * sz)) * Math.Exp(-H * H / (2 * sz * sz));
-                }
+                },
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 057 Pegada de Carbono ──
             new Formula
@@ -435,14 +473,16 @@ public partial class FormulaService
                 AnoOrigin = "1997",
                 ExemploPratico = "1000 kWh (FE=0,5 kgCO₂/kWh) + 500 km carro (FE=0,21 kgCO₂/km): CO₂eq = 500+105 = 605 kg",
                 Variaveis = [
-                    new() { Simbolo = "ativ1", Nome = "Atividade 1 (unidade)", ValorPadrao = 1000 },
-                    new() { Simbolo = "FE1", Nome = "Fator de emissão 1", Descricao = "kgCO₂eq/unidade", ValorPadrao = 0.5 },
-                    new() { Simbolo = "ativ2", Nome = "Atividade 2 (unidade)", ValorPadrao = 500 },
-                    new() { Simbolo = "FE2", Nome = "Fator de emissão 2", ValorPadrao = 0.21 },
+                    new() { Simbolo = "ativ1", Nome = "Atividade 1 (unidade)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "FE1", Nome = "Fator de emissão 1", Descricao = "kgCO₂eq/unidade", ValorPadrao = 0.5, Unidade = "adim" },
+                    new() { Simbolo = "ativ2", Nome = "Atividade 2 (unidade)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "FE2", Nome = "Fator de emissão 2", ValorPadrao = 0.21, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "CO₂eq (kg)",
                 UnidadeResultado = "kgCO₂eq",
-                Calcular = vars => vars["ativ1"] * vars["FE1"] + vars["ativ2"] * vars["FE2"]
+                Calcular = vars => vars["ativ1"] * vars["FE1"] + vars["ativ2"] * vars["FE2"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ EPIDEMIOLOGIA (6 fórmulas) ═══
@@ -459,14 +499,16 @@ public partial class FormulaService
                 AnoOrigin = "1927",
                 ExemploPratico = "N=10000, β=0,3, γ=0,1, I₀=10: dI/dt positivo → epidemia cresce (R₀=3)",
                 Variaveis = [
-                    new() { Simbolo = "beta", Nome = "Taxa de transmissão (β)", ValorPadrao = 0.3 },
-                    new() { Simbolo = "gamma", Nome = "Taxa de recuperação (γ)", ValorPadrao = 0.1 },
-                    new() { Simbolo = "S", Nome = "Suscetíveis (S)", ValorPadrao = 9990 },
-                    new() { Simbolo = "I", Nome = "Infectados (I)", ValorPadrao = 10 },
-                    new() { Simbolo = "N", Nome = "População total (N)", ValorPadrao = 10000, ValorMin = 1 },
+                    new() { Simbolo = "beta", Nome = "Taxa de transmissão (β)", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "gamma", Nome = "Taxa de recuperação (γ)", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "S", Nome = "Suscetíveis (S)", ValorPadrao = 9990, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Infectados (I)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "N", Nome = "População total (N)", ValorPadrao = 10000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "dI/dt",
-                Calcular = vars => vars["beta"] * vars["S"] * vars["I"] / vars["N"] - vars["gamma"] * vars["I"]
+                Calcular = vars => vars["beta"] * vars["S"] * vars["I"] / vars["N"] - vars["gamma"] * vars["I"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 059 Número Reprodutivo Básico ──
             new Formula
@@ -480,11 +522,13 @@ public partial class FormulaService
                 AnoOrigin = "1927",
                 ExemploPratico = "COVID-19 (cepa original): β≈0,4, γ≈0,14 → R₀ ≈ 2,9",
                 Variaveis = [
-                    new() { Simbolo = "beta", Nome = "Taxa de transmissão (β)", ValorPadrao = 0.4 },
-                    new() { Simbolo = "gamma", Nome = "Taxa de recuperação (γ)", ValorPadrao = 0.14, ValorMin = 0.001 },
+                    new() { Simbolo = "beta", Nome = "Taxa de transmissão (β)", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "gamma", Nome = "Taxa de recuperação (γ)", ValorPadrao = 0.14, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "R₀",
-                Calcular = vars => vars["beta"] / vars["gamma"]
+                Calcular = vars => vars["beta"] / vars["gamma"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 060 Equilíbrio de Hardy-Weinberg ──
             new Formula
@@ -498,10 +542,12 @@ public partial class FormulaService
                 AnoOrigin = "1908",
                 ExemploPratico = "Se q=0,3 (alelo recessivo): q²=0,09 (9% homozigotos recessivos), 2pq=0,42 (42% heterozigotos)",
                 Variaveis = [
-                    new() { Simbolo = "p", Nome = "Frequência alelo dominante (p)", ValorPadrao = 0.7 },
+                    new() { Simbolo = "p", Nome = "Frequência alelo dominante (p)", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "q² (homozig. recessivos)",
-                Calcular = vars => { double q = 1 - vars["p"]; return q * q; }
+                Calcular = vars => { double q = 1 - vars["p"]; return q * q; },
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 061 Incidência ──
             new Formula
@@ -515,12 +561,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "50 novos casos em 100.000 pessoas/ano: TI = 50/100.000 = 0,05% ou 50 por 100 mil",
                 Variaveis = [
-                    new() { Simbolo = "casos", Nome = "Casos novos", ValorPadrao = 50 },
-                    new() { Simbolo = "pop", Nome = "População em risco", ValorPadrao = 100000, ValorMin = 1 },
-                    new() { Simbolo = "k", Nome = "Multiplicador (k)", Descricao = "Ex: 100.000", ValorPadrao = 100000 },
+                    new() { Simbolo = "casos", Nome = "Casos novos", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "pop", Nome = "População em risco", ValorPadrao = 100000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "Multiplicador (k)", Descricao = "Ex: 100.000", ValorPadrao = 100000, Unidade = "adim" },
                 ],
                 VariavelResultado = "TI (por k hab.)",
-                Calcular = vars => (vars["casos"] / vars["pop"]) * vars["k"]
+                Calcular = vars => (vars["casos"] / vars["pop"]) * vars["k"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 062 Prevalência ──
             new Formula
@@ -534,12 +582,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "500 diabéticos em cidade de 20.000: P = 500/20.000×100 = 2,5%",
                 Variaveis = [
-                    new() { Simbolo = "casos", Nome = "Casos existentes", ValorPadrao = 500 },
-                    new() { Simbolo = "pop", Nome = "População total", ValorPadrao = 20000, ValorMin = 1 },
-                    new() { Simbolo = "k", Nome = "Multiplicador (k)", ValorPadrao = 100 },
+                    new() { Simbolo = "casos", Nome = "Casos existentes", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "pop", Nome = "População total", ValorPadrao = 20000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "Multiplicador (k)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P (por k)",
-                Calcular = vars => (vars["casos"] / vars["pop"]) * vars["k"]
+                Calcular = vars => (vars["casos"] / vars["pop"]) * vars["k"],
+                SubCategoria = "",
+                Unidades = "",
             },
             // ── 063 Odds Ratio ──
             new Formula
@@ -553,13 +603,15 @@ public partial class FormulaService
                 AnoOrigin = "1951",
                 ExemploPratico = "a=30(caso+expo), b=10(caso−expo), c=20(controle+expo), d=40(controle−expo): OR = (30×40)/(10×20) = 6,0",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Casos expostos (a)", ValorPadrao = 30 },
-                    new() { Simbolo = "b", Nome = "Casos não-expostos (b)", ValorPadrao = 10 },
-                    new() { Simbolo = "c", Nome = "Controles expostos (c)", ValorPadrao = 20, ValorMin = 1 },
-                    new() { Simbolo = "d", Nome = "Controles não-expostos (d)", ValorPadrao = 40 },
+                    new() { Simbolo = "a", Nome = "Casos expostos (a)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Casos não-expostos (b)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "c", Nome = "Controles expostos (c)", ValorPadrao = 20, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "d", Nome = "Controles não-expostos (d)", ValorPadrao = 40, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "OR",
-                Calcular = vars => (vars["a"] * vars["d"]) / (vars["b"] * vars["c"])
+                Calcular = vars => (vars["a"] * vars["d"]) / (vars["b"] * vars["c"]),
+                SubCategoria = "",
+                Unidades = "",
             },
         ]);
     }

@@ -43,7 +43,8 @@ public partial class FormulaService
                 double IDF = Math.Log(N / df_t);
                 
                 return TF * IDF;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -79,7 +80,8 @@ public partial class FormulaService
                 double edits = inputs["edits"];
                 
                 return Math.Max(Math.Abs(len1 - len2), edits);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -114,7 +116,8 @@ public partial class FormulaService
                 double norm_B = inputs["norm_B"];
                 
                 return dot_product / (norm_A * norm_B);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -147,7 +150,8 @@ public partial class FormulaService
                 double Z = inputs["Z"];
                 
                 return Math.Exp(v_dot) / Z; // Softmax simplificado
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -178,7 +182,8 @@ public partial class FormulaService
                 double d_k = inputs["d_k"];
                 
                 return 1.0 / Math.Sqrt(d_k);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -211,7 +216,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 
                 return d_model / h;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -255,7 +261,8 @@ public partial class FormulaService
                 double geo_mean = Math.Pow(p1 * p2 * p3 * p4, 0.25);
                 
                 return BP * geo_mean;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -286,7 +293,8 @@ public partial class FormulaService
                 double avg_log_prob = inputs["avg_log_prob"];
                 
                 return Math.Exp(-avg_log_prob);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -319,7 +327,8 @@ public partial class FormulaService
                 double count_unigram = inputs["count_unigram"];
                 
                 return count_bigram / count_unigram;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -354,7 +363,8 @@ public partial class FormulaService
                 double V = inputs["V"];
                 
                 return (count_bigram + 1) / (count_unigram + V);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -389,7 +399,8 @@ public partial class FormulaService
                 if (Precision + Recall == 0) return 0;
                 
                 return 2 * (Precision * Recall) / (Precision + Recall);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -430,7 +441,8 @@ public partial class FormulaService
                 if (total == 0) return 0;
                 
                 return (TP + TN) / total;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -461,7 +473,8 @@ public partial class FormulaService
                 double p_true_class = inputs["p_true_class"];
                 
                 return -Math.Log(p_true_class);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -494,7 +507,8 @@ public partial class FormulaService
                 double n_merges = inputs["n_merges"];
                 
                 return initial_chars + n_merges;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -531,7 +545,8 @@ public partial class FormulaService
                 double denom = Math.Pow(10000, (2 * i) / d_model);
                 
                 return Math.Sin(pos / denom);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -570,7 +585,8 @@ public partial class FormulaService
                 double beta = inputs["beta"];
                 
                 return gamma * ((x - mu) / sigma) + beta;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -604,7 +620,8 @@ public partial class FormulaService
                 double inner = sqrt_2_pi * (x + 0.044715 * Math.Pow(x, 3));
                 
                 return 0.5 * x * (1 + Math.Tanh(inner));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -635,7 +652,8 @@ public partial class FormulaService
                 double p = inputs["p"];
                 
                 return 1.0 / (1 - p);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -670,7 +688,8 @@ public partial class FormulaService
                 double g_t = inputs["g_t"];
                 
                 return beta1 * m_prev + (1 - beta1) * g_t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -705,7 +724,8 @@ public partial class FormulaService
                 double g_t_sq = inputs["g_t_sq"];
                 
                 return beta2 * v_prev + (1 - beta2) * g_t_sq;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -742,7 +762,8 @@ public partial class FormulaService
                 if (t >= warmup_steps) return lr_max;
                 
                 return lr_max * (t / warmup_steps);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

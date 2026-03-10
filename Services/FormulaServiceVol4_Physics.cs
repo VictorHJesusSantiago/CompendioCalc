@@ -25,10 +25,11 @@ public partial class FormulaService
                 Criador = "Gerard 't Hooft / Martinus Veltman",
                 AnoOrigin = "1972",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "4", Nome = "4", ValorPadrao = 10 }, new() { Simbolo = "ε", Nome = "ε", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "4", Nome = "4", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ε", Nome = "ε", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "d",
                 UnidadeResultado = "",
-                Calcular = vars => vars["4"] - vars["ε"]
+                Calcular = vars => vars["4"] - vars["ε"],
+                Unidades = "",
             },
             new Formula
             {
@@ -38,10 +39,13 @@ public partial class FormulaService
                 Icone = "MS̄",
                 Descricao = "Subtração mínima modificada: remove polo 1/ε mais constantes universais. Esquema mais usado em QCD. Parâmetros dependem da escala μ.",
                 ExemploPratico = "Exemplo: Com ε=0.1, subtração MS̄ = 1/ε - γ_E + ln(4π) ≈ 10.0 - 0.577 + 2.531 ≈ 11.95",
-                Variaveis = [ new() { Simbolo = "ε", Nome = "Parâmetro dimensional ε", ValorPadrao = 0.1, ValorMin = 0.001 }, new() { Simbolo = "γE", Nome = "Constante de Euler-Mascheroni", ValorPadrao = 0.5772 } ],
+                Variaveis = [ new() { Simbolo = "ε", Nome = "Parâmetro dimensional ε", ValorPadrao = 0.1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "γE", Nome = "Constante de Euler-Mascheroni", ValorPadrao = 0.5772, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Subtração MS̄",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0/vars["ε"] - vars["γE"] + Math.Log(4 * Math.PI)
+                Calcular = vars => 1.0/vars["ε"] - vars["γE"] + Math.Log(4 * Math.PI),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -53,10 +57,11 @@ public partial class FormulaService
                 Criador = "Curtis Callan / Kurt Symanzik",
                 AnoOrigin = "1970",
                 ExemploPratico = "Exemplo: Para n=4 pontos, β(g)=0.05, γ=0.1 → termo anômalo n·γ = 4×0.1 = 0.4",
-                Variaveis = [ new() { Simbolo = "n", Nome = "Número de pontos externos", ValorPadrao = 4, ValorMin = 2 }, new() { Simbolo = "β", Nome = "Função β(g)", ValorPadrao = 0.05 }, new() { Simbolo = "γ", Nome = "Dimensão anômala γ(g)", ValorPadrao = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "Número de pontos externos", ValorPadrao = 4, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "β", Nome = "Função β(g)", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "γ", Nome = "Dimensão anômala γ(g)", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "n·γ (contribuição anômala)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] * vars["γ"]
+                Calcular = vars => vars["n"] * vars["γ"],
+                Unidades = "",
             },
             new Formula
             {
@@ -68,10 +73,11 @@ public partial class FormulaService
                 Criador = "Murray Gell-Mann / Francis Low",
                 AnoOrigin = "1954",
                 ExemploPratico = "Exemplo: Para e=0.3 (≈√α), β(e) = (0.3)³/(12π²) ≈ 0.027/118.4 ≈ 0.00023 (positivo → cresce)",
-                Variaveis = [ new() { Simbolo = "e", Nome = "Constante de acoplamento e", ValorPadrao = 0.3, ValorMin = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "e", Nome = "Constante de acoplamento e", ValorPadrao = 0.3, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "β(e)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["e"], 3) / (12 * Math.PI * Math.PI)
+                Calcular = vars => Math.Pow(vars["e"], 3) / (12 * Math.PI * Math.PI),
+                Unidades = "",
             },
             new Formula
             {
@@ -83,10 +89,11 @@ public partial class FormulaService
                 Criador = "David Gross / Frank Wilczek / David Politzer",
                 AnoOrigin = "1973",
                 ExemploPratico = "Exemplo: QCD com Nf=6 quarks, g=1.0 → β = -1.0³×(11-2×6/3)/(16π²) = -(11-4)/157.9 ≈ -0.044 (negativo!)",
-                Variaveis = [ new() { Simbolo = "g", Nome = "Constante de acoplamento g", ValorPadrao = 1.0 }, new() { Simbolo = "Nf", Nome = "Número de sabores Nf", ValorPadrao = 6, ValorMin = 1, ValorMax = 16 } ],
+                Variaveis = [ new() { Simbolo = "g", Nome = "Constante de acoplamento g", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Nf", Nome = "Número de sabores Nf", ValorPadrao = 6, ValorMin = 1, ValorMax = 16, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "β(g) QCD",
                 UnidadeResultado = "",
-                Calcular = vars => -Math.Pow(vars["g"], 3) * (11.0 - 2.0*vars["Nf"]/3.0) / (16 * Math.PI * Math.PI)
+                Calcular = vars => -Math.Pow(vars["g"], 3) * (11.0 - 2.0*vars["Nf"]/3.0) / (16 * Math.PI * Math.PI),
+                Unidades = "",
             },
             new Formula
             {
@@ -96,10 +103,13 @@ public partial class FormulaService
                 Icone = "αₛ",
                 Descricao = "Evolução da constante de acoplamento forte com a energia Q. β₀=(33-2Nf)/6π. Λ_QCD ≈ 200 MeV define a escala de confinamento.",
                 ExemploPratico = "Exemplo: Escala inicial μ=91 GeV (Z), escala final Q=1000 GeV, αₛ(μ)=0.118, β₀=23/12π para Nf=5 → αₛ(Q) evoluído",
-                Variaveis = [ new() { Simbolo = "αₛμ", Nome = "αₛ(μ²)", ValorPadrao = 0.118, ValorMin = 0.001 }, new() { Simbolo = "β₀", Nome = "β₀", ValorPadrao = 0.61 }, new() { Simbolo = "lnQ", Nome = "ln(Q²/μ²)", ValorPadrao = 4.6 } ],
+                Variaveis = [ new() { Simbolo = "αₛμ", Nome = "αₛ(μ²)", ValorPadrao = 0.118, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "β₀", Nome = "β₀", ValorPadrao = 0.61, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "lnQ", Nome = "ln(Q²/μ²)", ValorPadrao = 4.6, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "αₛ(Q²)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["αₛμ"] / (1.0 + (vars["β₀"] * vars["αₛμ"] * vars["lnQ"] / (2 * Math.PI)))
+                Calcular = vars => vars["αₛμ"] / (1.0 + (vars["β₀"] * vars["αₛμ"] * vars["lnQ"] / (2 * Math.PI))),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -109,10 +119,13 @@ public partial class FormulaService
                 Icone = "γ",
                 Descricao = "Desvio da dimensão clássica (engenharia) de um operador/campo. Resultado quântico: operadores adquirem dimensões fracionárias. [O] = Δ_cl + γ.",
                 ExemploPratico = "Exemplo: Fator de renormalização Z=1.15, escala μ=100 GeV, derivada dZ/dμ=0.005/GeV → γ = μ/Z × 0.005 ≈ 0.435",
-                Variaveis = [ new() { Simbolo = "μ", Nome = "Escala μ (GeV)", ValorPadrao = 100 }, new() { Simbolo = "Z", Nome = "Fator Z", ValorPadrao = 1.15, ValorMin = 0.1 }, new() { Simbolo = "dZ_dμ", Nome = "dZ/dμ (1/GeV)", ValorPadrao = 0.005 } ],
+                Variaveis = [ new() { Simbolo = "μ", Nome = "Escala μ (GeV)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Z", Nome = "Fator Z", ValorPadrao = 1.15, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dZ_dμ", Nome = "dZ/dμ (1/GeV)", ValorPadrao = 0.005, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "γ (dimensão anômala)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["μ"] * vars["dZ_dμ"] / vars["Z"]
+                Calcular = vars => vars["μ"] * vars["dZ_dμ"] / vars["Z"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -122,10 +135,13 @@ public partial class FormulaService
                 Icone = "CT",
                 Descricao = "Contratemos absorvem divergências: adicionados à Lagrangiana para cancelar infinitos. Teoria renormalizável: número finito de contratermos.",
                 ExemploPratico = "Exemplo: Lagrangiana bare ℒ=10.0, fator de renormalização Z=1.05 → contratermo ℒ_CT = (1.05-1)×10 = 0.5",
-                Variaveis = [ new() { Simbolo = "Z", Nome = "Fator de renormalização Z", ValorPadrao = 1.05, ValorMin = 1.0 }, new() { Simbolo = "Lbare", Nome = "Lagrangiana bare ℒ_bare", ValorPadrao = 10.0 } ],
+                Variaveis = [ new() { Simbolo = "Z", Nome = "Fator de renormalização Z", ValorPadrao = 1.05, ValorMin = 1.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Lbare", Nome = "Lagrangiana bare ℒ_bare", ValorPadrao = 10.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ℒ_CT",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["Z"] - 1.0) * vars["Lbare"]
+                Calcular = vars => (vars["Z"] - 1.0) * vars["Lbare"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 6.2 Grupo de Renormalização
             new Formula
@@ -138,10 +154,11 @@ public partial class FormulaService
                 Criador = "Kenneth Wilson",
                 AnoOrigin = "1971",
                 ExemploPratico = "Exemplo: Cutoff inicial Λ=1000 MeV, fator de reescala b=2 → novo cutoff Λ/b = 500 MeV",
-                Variaveis = [ new() { Simbolo = "Λ", Nome = "Cutoff de energia Λ (MeV)", ValorPadrao = 1000 }, new() { Simbolo = "b", Nome = "Fator de reescala b", ValorPadrao = 2, ValorMin = 1.1 } ],
+                Variaveis = [ new() { Simbolo = "Λ", Nome = "Cutoff de energia Λ (MeV)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Fator de reescala b", ValorPadrao = 2, ValorMin = 1.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Λ/b (novo cutoff)",
                 UnidadeResultado = "MeV",
-                Calcular = vars => vars["Λ"] / vars["b"]
+                Calcular = vars => vars["Λ"] / vars["b"],
+                Unidades = "",
             },
             new Formula
             {
@@ -151,10 +168,13 @@ public partial class FormulaService
                 Icone = "g*",
                 Descricao = "Teoria no ponto fixo é invariante de escala (conforme). UV fixo: teoria bem definida em todas escalas (safety). IR fixo: comportamento de longo alcance universal.",
                 ExemploPratico = "Exemplo: Se β(g) = g - g* → ponto fixo em g* onde β=0. Com g*=1.5: verificação β(g*) ≈ 0",
-                Variaveis = [ new() { Simbolo = "g*", Nome = "Acoplamento no ponto fixo g*", ValorPadrao = 1.5 } ],
+                Variaveis = [ new() { Simbolo = "g*", Nome = "Acoplamento no ponto fixo g*", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "β(g*)",
                 UnidadeResultado = "",
-                Calcular = vars => 0.0
+                Calcular = vars => 0.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -164,10 +184,13 @@ public partial class FormulaService
                 Icone = "rel",
                 Descricao = "Operador com dimensão < d (dimensão do espaço-tempo): sua perturbação cresce em baixas energias. Massa é relevante (Δ=2<4). Determina universalidade.",
                 ExemploPratico = "Exemplo: Operador com Δ=2.5 em d=4 dimensões → relevante pois 2.5 < 4 (margin = 4-2.5 = 1.5)",
-                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 2.5 }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "d - Δ (relevância)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["d"] - vars["Δ"]
+                Calcular = vars => vars["d"] - vars["Δ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -177,10 +200,13 @@ public partial class FormulaService
                 Icone = "irr",
                 Descricao = "Operador com dimensão > d: perturbação decresce em baixas energias. Teorias efetivas: operadores de dimensão >4 são suprimidos por potências de Λ.",
                 ExemploPratico = "Exemplo: Operador com Δ=5.2 em d=4 → irrelevante pois 5.2 > 4 (irrelevância = 5.2-4 = 1.2)",
-                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 5.2 }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 5.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δ - d (irrelevância)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Δ"] - vars["d"]
+                Calcular = vars => vars["Δ"] - vars["d"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -190,10 +216,13 @@ public partial class FormulaService
                 Icone = "mar",
                 Descricao = "Dimensão = d: comportamento determinado por correções quânticas (dimensões anômalas). QCD: gluon é marginal mas marginalmente irrelevante (liberdade assintótica).",
                 ExemploPratico = "Exemplo: Operador com Δ=4.0 em d=4 → marginal, classificação depende de γ anômala. |Δ-d|<0.01 → região marginal",
-                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 4.0 }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4.0 } ],
+                Variaveis = [ new() { Simbolo = "Δ", Nome = "Dimensão do operador Δ", ValorPadrao = 4.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "d", Nome = "Dimensão do espaço-tempo d", ValorPadrao = 4.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "|Δ-d| (marginalidade)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Abs(vars["Δ"] - vars["d"])
+                Calcular = vars => Math.Abs(vars["Δ"] - vars["d"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -203,10 +232,13 @@ public partial class FormulaService
                 Icone = "univ",
                 Descricao = "Sistemas diferentes com mesma dimensão, simetria e tipo de parâmetro de ordem pertencem à mesma classe de universalidade. Expoentes críticos idênticos (ex.: água e imã Ising 3D).",
                 ExemploPratico = "Exemplo: Classe Ising 3D: d=3, N=1 (Ising), simetria Z₂ → expoentes: α≈0.11, β≈0.33, ν≈0.63 (codificar simbolicamente)",
-                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão espacial d", ValorPadrao = 3 }, new() { Simbolo = "N", Nome = "N de componentes N", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão espacial d", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "N", Nome = "N de componentes N", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Classe de univ. (d,N)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["d"] * 10 + vars["N"]
+                Calcular = vars => vars["d"] * 10 + vars["N"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 6.3 Supersimetria
             new Formula
@@ -219,10 +251,11 @@ public partial class FormulaService
                 Criador = "Julius Wess / Bruno Zumino",
                 AnoOrigin = "1974",
                 ExemploPratico = "Exemplo: Normalização {Q,Q̄} ∝ Pμ, com momento P=1.0 GeV → normalização anticomutador = 2×1.0 = 2.0 GeV",
-                Variaveis = [ new() { Simbolo = "P", Nome = "Momento Pμ (componente)", ValorPadrao = 1.0 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "Momento Pμ (componente)", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "2P (normalização {Q,Q̄})",
                 UnidadeResultado = "GeV",
-                Calcular = vars => 2.0 * vars["P"]
+                Calcular = vars => 2.0 * vars["P"],
+                Unidades = "",
             },
             new Formula
             {
@@ -232,10 +265,13 @@ public partial class FormulaService
                 Icone = "Φ",
                 Descricao = "Supercampo que satisfaz D̄Φ=0. Componentes: escalar φ, férmion ψ (parceiro SUSY), campo auxiliar F (sem dinâmica). y=x+iθσθ̄.",
                 ExemploPratico = "Exemplo: Supercampo comp. escalar Φ=2.0, férmion ψ=1.5, campo F=0.8 → composição (simplificada) = 2.0 + √2×1.5 ≈ 4.12",
-                Variaveis = [ new() { Simbolo = "φ", Nome = "Componente escalar φ", ValorPadrao = 2.0 }, new() { Simbolo = "ψ", Nome = "Componente férmion ψ", ValorPadrao = 1.5 } ],
+                Variaveis = [ new() { Simbolo = "φ", Nome = "Componente escalar φ", ValorPadrao = 2.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ψ", Nome = "Componente férmion ψ", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Φ (simplificado)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["φ"] + Math.Sqrt(2) * vars["ψ"]
+                Calcular = vars => vars["φ"] + Math.Sqrt(2) * vars["ψ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -245,10 +281,13 @@ public partial class FormulaService
                 Icone = "W",
                 Descricao = "Função holomorfa dos supercampos quirais. Não recebe correções radiativas perturbativas (teorema de não-renormalização). Determina o potencial escalar e acoplamentos de Yukawa.",
                 ExemploPratico = "Exemplo: Supercampo Φ=2.0, massa m=0.5, acoplamento λ=0.1 → W = 0.5×4 + 0.1×8 = 2.0 + 0.8 = 2.8",
-                Variaveis = [ new() { Simbolo = "Φ", Nome = "Supercampo Φ", ValorPadrao = 2.0 }, new() { Simbolo = "m", Nome = "Massa m", ValorPadrao = 0.5 }, new() { Simbolo = "λ", Nome = "Acoplamento λ", ValorPadrao = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "Φ", Nome = "Supercampo Φ", ValorPadrao = 2.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "m", Nome = "Massa m", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "λ", Nome = "Acoplamento λ", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "W(Φ)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["m"] * vars["Φ"] * vars["Φ"] + vars["λ"] * Math.Pow(vars["Φ"], 3)
+                Calcular = vars => vars["m"] * vars["Φ"] * vars["Φ"] + vars["λ"] * Math.Pow(vars["Φ"], 3),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -258,10 +297,13 @@ public partial class FormulaService
                 Icone = "V",
                 Descricao = "Potencial escalar = termos F (derivadas do superpotencial) + termos D (auxiliares de gauge). SUSY não-quebrada ⟹ V=0 ⟹ ∂W/∂φᵢ=0 e Dₐ=0.",
                 ExemploPratico = "Exemplo: |dW/dφ|=1.5, termo D=0.5 → V = 1.5² + 0.5×0.5²/2 = 2.25 + 0.0625 = 2.3125",
-                Variaveis = [ new() { Simbolo = "dW", Nome = "|∂W/∂φ|", ValorPadrao = 1.5 }, new() { Simbolo = "D", Nome = "Campo auxiliar D", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "dW", Nome = "|∂W/∂φ|", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "D", Nome = "Campo auxiliar D", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "V (potencial)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dW"] * vars["dW"] + 0.5 * vars["D"] * vars["D"]
+                Calcular = vars => vars["dW"] * vars["dW"] + 0.5 * vars["D"] * vars["D"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -271,10 +313,13 @@ public partial class FormulaService
                 Icone = "soft",
                 Descricao = "SUSY deve ser quebrada (parceiros não observados). Termos suaves mantêm cancelamento de divergências quadráticas (solução do problema de hierarquia). Massas ~TeV.",
                 ExemploPratico = "Exemplo: Massa de escalar m²=500 GeV², |escalar|=1.0 → termo soft = 500×1² = 500 GeV²",
-                Variaveis = [ new() { Simbolo = "m²", Nome = "Massa quadrada m²", ValorPadrao = 500 }, new() { Simbolo = "|φ|", Nome = "Valor do campo |φ|", ValorPadrao = 1.0 } ],
+                Variaveis = [ new() { Simbolo = "m²", Nome = "Massa quadrada m²", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "|φ|", Nome = "Valor do campo |φ|", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Termo soft",
                 UnidadeResultado = "GeV²",
-                Calcular = vars => vars["m²"] * vars["|φ|"] * vars["|φ|"]
+                Calcular = vars => vars["m²"] * vars["|φ|"] * vars["|φ|"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -284,10 +329,13 @@ public partial class FormulaService
                 Icone = "GUT",
                 Descricao = "No MSSM (modelo padrão SUSY mínimo), as três constantes de acoplamento convergem precisamente em ~10¹⁶ GeV. No SM sem SUSY, não convergem. Evidência indireta para SUSY.",
                 ExemploPratico = "Exemplo: Escala de unificação M_GUT = 2×10¹⁶ GeV, log₁₀(M_GUT) ≈ 16.3",
-                Variaveis = [ new() { Simbolo = "M_GUT", Nome = "Escala GUT M_GUT", ValorPadrao = 2.0e16 } ],
+                Variaveis = [ new() { Simbolo = "M_GUT", Nome = "Escala GUT M_GUT", ValorPadrao = 2.0e16, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "log₁₀(M_GUT)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log10(vars["M_GUT"])
+                Calcular = vars => Math.Log10(vars["M_GUT"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -299,10 +347,11 @@ public partial class FormulaService
                 Criador = "Nathan Seiberg",
                 AnoOrigin = "1993",
                 ExemploPratico = "Exemplo: Correção perturbativa δW = 0 (teorema), contribuição não-pert ~ exp(-8π²/g²) = exp(-8π²/1²) ≈ 3.4×10⁻³⁵",
-                Variaveis = [ new() { Simbolo = "g²", Nome = "Acoplamento quadrado g²", ValorPadrao = 1.0, ValorMin = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "g²", Nome = "Acoplamento quadrado g²", ValorPadrao = 1.0, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Correção não-pert (simbolica)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Exp(-8 * Math.PI * Math.PI / vars["g²"])
+                Calcular = vars => Math.Exp(-8 * Math.PI * Math.PI / vars["g²"]),
+                Unidades = "",
             },
         ]);
     }
@@ -323,10 +372,11 @@ public partial class FormulaService
                 Criador = "Juan Maldacena",
                 AnoOrigin = "1997",
                 ExemploPratico = "Exemplo: AdS₅ (d+1=5) ↔ CFT₄ no bordo (d=4). Dimensionalidade: bulk 5D ↔ boundary 4D",
-                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão da CFT (boundary) d", ValorPadrao = 4, ValorMin = 2, ValorMax = 10 } ],
+                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão da CFT (boundary) d", ValorPadrao = 4, ValorMin = 2, ValorMax = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "d+1 (bulk AdS)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["d"] + 1
+                Calcular = vars => vars["d"] + 1,
+                Unidades = "",
             },
             new Formula
             {
@@ -336,10 +386,13 @@ public partial class FormulaService
                 Icone = "N=4",
                 Descricao = "Caso mais estudado: cordas tipo IIB em AdS₅×S⁵ ↔ teoria N=4 Super Yang-Mills em 4D com grupo SU(N). N grande ↔ gravidade clássica. λ grande ↔ supergravidade.",
                 ExemploPratico = "Exemplo: SU(N) com N=10 cores, constante de 't Hooft λ=g²N com g=0.5 → λ=0.25×10=2.5",
-                Variaveis = [ new() { Simbolo = "N", Nome = "Número de cores N", ValorPadrao = 10, ValorMin = 2 }, new() { Simbolo = "g", Nome = "Acoplamento g", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "N", Nome = "Número de cores N", ValorPadrao = 10, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "g", Nome = "Acoplamento g", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "λ = g²N ('t Hooft)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["g"] * vars["g"] * vars["N"]
+                Calcular = vars => vars["g"] * vars["g"] * vars["N"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -349,10 +402,13 @@ public partial class FormulaService
                 Icone = "dict",
                 Descricao = "O gerador de funções de correlação na CFT = função de partição gravitacional com condições de bordo. Campo bulk φ ↔ operador O na CFT. Massa no bulk → dimensão conforme Δ.",
                 ExemploPratico = "Exemplo: Valor de bordo φ₀=2.5, integral CFT INT=15.0 → ⟨exp(INT)⟩ = exp(15.0) (argumento ilustrativo)",
-                Variaveis = [ new() { Simbolo = "INT", Nome = "∫φ₀O (ação CFT)", ValorPadrao = 15.0 } ],
+                Variaveis = [ new() { Simbolo = "INT", Nome = "∫φ₀O (ação CFT)", ValorPadrao = 15.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "⟨exp(INT)⟩",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Exp(vars["INT"])
+                Calcular = vars => Math.Exp(vars["INT"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -362,10 +418,13 @@ public partial class FormulaService
                 Icone = "Δ",
                 Descricao = "Massa do campo escalar no bulk ↔ dimensão conforme na CFT. L = raio de AdS. Forma: Δ = d/2 + √(d²/4 + m²L²). m²<0 permitido (bound de BF).",
                 ExemploPratico = "Exemplo: d=4, m²L²=3.0 → Δ(Δ-4) = 3 → Δ²-4Δ-3=0 → Δ = (4+√(16+12))/2 ≈ 4.65",
-                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão d", ValorPadrao = 4 }, new() { Simbolo = "m²L²", Nome = "m²L² (massa escalar)", ValorPadrao = 3.0 } ],
+                Variaveis = [ new() { Simbolo = "d", Nome = "Dimensão d", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "m²L²", Nome = "m²L² (massa escalar)", ValorPadrao = 3.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δ (dimensão conforme)",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["d"] + Math.Sqrt(vars["d"] * vars["d"] + 4 * vars["m²L²"])) / 2.0
+                Calcular = vars => (vars["d"] + Math.Sqrt(vars["d"] * vars["d"] + 4 * vars["m²L²"])) / 2.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -375,10 +434,13 @@ public partial class FormulaService
                 Icone = "ds²",
                 Descricao = "Coordenadas de Poincaré: bordo em z→0, horizonte em z→∞. L = raio de curvatura. Espaço de curvatura constante negativa, maximalmente simétrico.",
                 ExemploPratico = "Exemplo: Raio AdS L=1.0, coordenada z=0.5 → fator de escala (L/z)² = (1/0.5)² = 4.0",
-                Variaveis = [ new() { Simbolo = "L", Nome = "Raio de AdS L", ValorPadrao = 1.0, ValorMin = 0.1 }, new() { Simbolo = "z", Nome = "Coordenada radial z", ValorPadrao = 0.5, ValorMin = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "L", Nome = "Raio de AdS L", ValorPadrao = 1.0, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "z", Nome = "Coordenada radial z", ValorPadrao = 0.5, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "(L/z)² (fator escala)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["L"] / vars["z"], 2)
+                Calcular = vars => Math.Pow(vars["L"] / vars["z"], 2),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -390,10 +452,11 @@ public partial class FormulaService
                 Criador = "Gerard 't Hooft",
                 AnoOrigin = "1974",
                 ExemploPratico = "Exemplo: Acoplamento g=0.8, N=15 cores → λ = g²N = 0.64×15 = 9.6 (constante de 't Hooft)",
-                Variaveis = [ new() { Simbolo = "g²", Nome = "Acoplamento quad. g²", ValorPadrao = 0.64 }, new() { Simbolo = "N", Nome = "Número de cores N", ValorPadrao = 15, ValorMin = 2 } ],
+                Variaveis = [ new() { Simbolo = "g²", Nome = "Acoplamento quad. g²", ValorPadrao = 0.64, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "N", Nome = "Número de cores N", ValorPadrao = 15, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "λ = g²N",
                 UnidadeResultado = "",
-                Calcular = vars => vars["g²"] * vars["N"]
+                Calcular = vars => vars["g²"] * vars["N"],
+                Unidades = "",
             },
             new Formula
             {
@@ -405,10 +468,11 @@ public partial class FormulaService
                 Criador = "Shinsei Ryu / Tadashi Takayanagi",
                 AnoOrigin = "2006",
                 ExemploPratico = "Exemplo: Área mínima γ_A=400 (Planck²), G_N=1 → S(A) = 400/(4×1) = 100 (entropia de emaranhamento)",
-                Variaveis = [ new() { Simbolo = "Area", Nome = "Área γ_A (unid. Planck²)", ValorPadrao = 400, ValorMin = 0 }, new() { Simbolo = "GN", Nome = "G_N", ValorPadrao = 1, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "Area", Nome = "Área γ_A (unid. Planck²)", ValorPadrao = 400, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "GN", Nome = "G_N", ValorPadrao = 1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "S(A)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Area"] / (4 * vars["GN"])
+                Calcular = vars => vars["Area"] / (4 * vars["GN"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -420,10 +484,11 @@ public partial class FormulaService
                 Criador = "Jacob Bekenstein / Stephen Hawking",
                 AnoOrigin = "1973/1975",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 10 }, new() { Simbolo = "4ℏG", Nome = "4ℏG", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "4ℏG", Nome = "4ℏG", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "S_BH",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] / vars["4ℏG"]
+                Calcular = vars => vars["A"] / vars["4ℏG"],
+                Unidades = "",
             },
             new Formula
             {
@@ -435,10 +500,11 @@ public partial class FormulaService
                 Criador = "Juan Maldacena / Leonard Susskind",
                 AnoOrigin = "2013",
                 ExemploPratico = "Exemplo: Emaranhamento EPR medido como entropia S_EPR=8.5, relevância geométrica wormhole prop. exp(S) ≈ exp(8.5)",
-                Variaveis = [ new() { Simbolo = "S_EPR", Nome = "Entropia EPR S", ValorPadrao = 8.5 } ],
+                Variaveis = [ new() { Simbolo = "S_EPR", Nome = "Entropia EPR S", ValorPadrao = 8.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "exp(S) (escala geométrica)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Exp(vars["S_EPR"])
+                Calcular = vars => Math.Exp(vars["S_EPR"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -448,10 +514,13 @@ public partial class FormulaService
                 Icone = "C=V",
                 Descricao = "Complexidade computacional do estado na CFT ∝ volume da fatia maximal no bulk. Captura informação além da entropia: continua crescendo após termalização.",
                 ExemploPratico = "Exemplo: Volume maximal Σ=250 (Planck³), G_N=1, L=1 → C ∝ V/(G_N L) = 250/(1×1) = 250",
-                Variaveis = [ new() { Simbolo = "V", Nome = "Volume Σ (Planck³)", ValorPadrao = 250, ValorMin = 0 }, new() { Simbolo = "GN", Nome = "G_N", ValorPadrao = 1, ValorMin = 0.001 }, new() { Simbolo = "L", Nome = "Raio AdS L", ValorPadrao = 1, ValorMin = 0.1 } ],
+                Variaveis = [ new() { Simbolo = "V", Nome = "Volume Σ (Planck³)", ValorPadrao = 250, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "GN", Nome = "G_N", ValorPadrao = 1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "L", Nome = "Raio AdS L", ValorPadrao = 1, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "C (complexidade)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V"] / (vars["GN"] * vars["L"])
+                Calcular = vars => vars["V"] / (vars["GN"] * vars["L"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -461,10 +530,13 @@ public partial class FormulaService
                 Icone = "C=A",
                 Descricao = "Proposta alternativa: complexidade = ação gravitacional na Wheeler-DeWitt patch. Satisfaz bound de Lloyd: dC/dt ≤ 2E/πℏ.",
                 ExemploPratico = "Exemplo: Ação na Wheeler-DeWitt patch I_WDW=31.4, ℏ=1 → C = 31.4/π ≈ 10",
-                Variaveis = [ new() { Simbolo = "I_WDW", Nome = "Ação I_WDW", ValorPadrao = 31.4 }, new() { Simbolo = "h", Nome = "ℏ (constante Planck reduzida)", ValorPadrao = 1, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "I_WDW", Nome = "Ação I_WDW", ValorPadrao = 31.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "h", Nome = "ℏ (constante Planck reduzida)", ValorPadrao = 1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "C (complexidade)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["I_WDW"] / (Math.PI * vars["h"])
+                Calcular = vars => vars["I_WDW"] / (Math.PI * vars["h"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -484,10 +556,13 @@ public partial class FormulaService
                 Icone = "φ",
                 Descricao = "Equação de Klein-Gordon para campo escalar em FRW. Termo 3Hφ̇ = 'atrito' Hubble. Inflação ocorre quando V domina sobre energia cinética: slow-roll.",
                 ExemploPratico = "Exemplo: φ̈=-2.0, H=0.5, φ̇=1.2, V'=0.8 → Equação: -2.0 + 3×0.5×1.2 + 0.8 = -2.0 + 1.8 + 0.8 = 0.6 (residual)",
-                Variaveis = [ new() { Simbolo = "φ̈", Nome = "Aceleração φ̈", ValorPadrao = -2.0 }, new() { Simbolo = "H", Nome = "Hubble H", ValorPadrao = 0.5 }, new() { Simbolo = "φ̇", Nome = "Velocidade φ̇", ValorPadrao = 1.2 }, new() { Simbolo = "V'", Nome = "dV/dφ", ValorPadrao = 0.8 } ],
+                Variaveis = [ new() { Simbolo = "φ̈", Nome = "Aceleração φ̈", ValorPadrao = -2.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "H", Nome = "Hubble H", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "φ̇", Nome = "Velocidade φ̇", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V'", Nome = "dV/dφ", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Residual (φ̈+3Hφ̇+V')",
                 UnidadeResultado = "",
-                Calcular = vars => vars["φ̈"] + 3 * vars["H"] * vars["φ̇"] + vars["V'"]
+                Calcular = vars => vars["φ̈"] + 3 * vars["H"] * vars["φ̇"] + vars["V'"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -497,10 +572,13 @@ public partial class FormulaService
                 Icone = "H²",
                 Descricao = "Taxa de expansão Hubble determinada pela densidade de energia do inflaton. Durante slow-roll: H² ≈ 8πGV/3 (quase constante → expansão exponencial).",
                 ExemploPratico = "Exemplo: x=1, y=1 → H² ≈ x+y = 2.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] + vars["y"]
+                Calcular = vars => vars["x"] + vars["y"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -510,10 +588,13 @@ public partial class FormulaService
                 Icone = "ε,η",
                 Descricao = "Condições para inflação: potencial plano (V' pequeno) e pouco curvado (V'' pequeno). Inflação termina quando ε~1. ε controla razão tensor/escalar r=16ε.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Mₚ", Nome = "Mₚ", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Mₚ", Nome = "Mₚ", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "η",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Mₚ"] * vars["Mₚ"]
+                Calcular = vars => vars["Mₚ"] * vars["Mₚ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -523,10 +604,13 @@ public partial class FormulaService
                 Icone = "N",
                 Descricao = "Fator de expansão durante inflação: a(t_f)/a(t_i) = e^N. N≳60 necessário para resolver problemas do horizonte e planura. a expande por fator ~10²⁶.",
                 ExemploPratico = "Exemplo: Integral ∫Hdt com H=2.0 entre t_i=0 e t_f=1 via Simpson, n=100 divisões → N ≈ H×Δt = 2.0×1 = 2.0 (simplificado)",
-                Variaveis = [ new() { Simbolo = "H", Nome = "Taxa Hubble H (média)", ValorPadrao = 2.0 }, new() { Simbolo = "Δt", Nome = "Intervalo tempo Δt", ValorPadrao = 1.0 } ],
+                Variaveis = [ new() { Simbolo = "H", Nome = "Taxa Hubble H (média)", ValorPadrao = 2.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Δt", Nome = "Intervalo tempo Δt", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "N (e-folds, aproximado)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["H"] * vars["Δt"]
+                Calcular = vars => vars["H"] * vars["Δt"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -536,10 +620,13 @@ public partial class FormulaService
                 Icone = "Pₛ",
                 Descricao = "Flutuações quânticas do inflaton geram perturbações de densidade. Avaliado no horizon crossing k=aH. Pₛ ≈ 2.1×10⁻⁹ (observado por Planck/WMAP).",
                 ExemploPratico = "Exemplo: H²=150, ε=0.01, M_P²=2.4e18 → Pₛ(k) = 150/(8π²×0.01×2.4e18) ≈ 2.5×10⁻¹⁹ (ordem de grandeza)",
-                Variaveis = [ new() { Simbolo = "H²", Nome = "H² (GeV²)", ValorPadrao = 150 }, new() { Simbolo = "ε", Nome = "Parâmetro slow-roll ε", ValorPadrao = 0.01, ValorMin = 0.001 }, new() { Simbolo = "MP²", Nome = "M_P² (GeV²)", ValorPadrao = 2.4e18 } ],
+                Variaveis = [ new() { Simbolo = "H²", Nome = "H² (GeV²)", ValorPadrao = 150, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ε", Nome = "Parâmetro slow-roll ε", ValorPadrao = 0.01, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "MP²", Nome = "M_P² (GeV²)", ValorPadrao = 2.4e18, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Pₛ (simplificado)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["H²"] / (8 * Math.PI * Math.PI * vars["ε"] * vars["MP²"])
+                Calcular = vars => vars["H²"] / (8 * Math.PI * Math.PI * vars["ε"] * vars["MP²"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -549,10 +636,13 @@ public partial class FormulaService
                 Icone = "nₛ",
                 Descricao = "Desvio de escala-invariância (nₛ=1). nₛ<1 (red tilt) observado por Planck: confirma slow-roll. Discrimina modelos de inflação.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10 }, new() { Simbolo = "6ε", Nome = "6ε", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "1", Nome = "1", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "6ε", Nome = "6ε", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "nₛ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["1"] - vars["6ε"]
+                Calcular = vars => vars["1"] - vars["6ε"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -562,10 +652,13 @@ public partial class FormulaService
                 Icone = "r",
                 Descricao = "Amplitude relativa de ondas gravitacionais primordiais. r<0.036 (Planck+BICEP). Modelos de campo grande: r~0.01; campo pequeno: r muito menor.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "P_T", Nome = "P_T", ValorPadrao = 10 }, new() { Simbolo = "P_S", Nome = "P_S", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "P_T", Nome = "P_T", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "P_S", Nome = "P_S", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "r",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P_T"] / vars["P_S"]
+                Calcular = vars => vars["P_T"] / vars["P_S"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -575,18 +668,42 @@ public partial class FormulaService
                 Icone = "nₜ",
                 Descricao = "Inclinação do espectro tensorial ligada a r. Previsão robusta de inflação de campo único. Violação indicaria multi-campo ou física exótica.",
                 ExemploPratico = "Exemplo: x=1, y=1 → nₜ ≈ -x/y = -1.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => -vars["x"] / vars["y"]
+                Calcular = vars => -vars["x"] / vars["y"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
-            new Formula { Id = "4_ci09", Nome = "Parâmetro Hubble Inflacionário", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "H\u2248\u221a(V/3M_P^2)", ExprTexto = "H=sqrt(V/(3Mp^2))", Icone = "H", Descricao = "Relação aproximada entre potencial inflacionário e taxa de expansão.", ExemploPratico = "Exemplo: V=3, Mp=1 => H=1.", Variaveis = [ new() { Simbolo = "V", Nome = "Potencial V", ValorPadrao = 3, ValorMin = 0 }, new() { Simbolo = "M", Nome = "M_P", ValorPadrao = 1, ValorMin = 0.0001 } ], VariavelResultado = "H", UnidadeResultado = "", Calcular = vars => Math.Sqrt(vars["V"] / (3 * vars["M"] * vars["M"])) },
-            new Formula { Id = "4_ci10", Nome = "Energia do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "ρ_φ=½φ̇²+V(φ)", ExprTexto = "rho=0.5 phidot^2 + V", Icone = "ρ", Descricao = "Densidade total do campo inflaton.", ExemploPratico = "Exemplo: φdot=0.4, V=2 => 2.08.", Variaveis = [ new() { Simbolo = "φ̇", Nome = "Derivada φ", ValorPadrao = 0.4 }, new() { Simbolo = "V", Nome = "Potencial", ValorPadrao = 2 } ], VariavelResultado = "ρ_φ", UnidadeResultado = "", Calcular = vars => 0.5 * vars["φ̇"] * vars["φ̇"] + vars["V"] },
-            new Formula { Id = "4_ci11", Nome = "Pressão do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "p_φ=½φ̇²−V(φ)", ExprTexto = "p=0.5 phidot^2 - V", Icone = "p", Descricao = "Pressão efetiva do inflaton; inflação requer pressão negativa.", ExemploPratico = "Exemplo: φdot=0.4, V=2 => -1.92.", Variaveis = [ new() { Simbolo = "φ̇", Nome = "Derivada φ", ValorPadrao = 0.4 }, new() { Simbolo = "V", Nome = "Potencial", ValorPadrao = 2 } ], VariavelResultado = "p_φ", UnidadeResultado = "", Calcular = vars => 0.5 * vars["φ̇"] * vars["φ̇"] - vars["V"] },
-            new Formula { Id = "4_ci12", Nome = "Equação de Estado do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "w_φ=p_φ/ρ_φ", ExprTexto = "w = p/rho", Icone = "w", Descricao = "Parâmetro de estado do inflaton; próximo de -1 em slow-roll.", ExemploPratico = "Exemplo: p=-1.92,rho=2.08 => -0.923.", Variaveis = [ new() { Simbolo = "p", Nome = "Pressão pφ", ValorPadrao = -1.92 }, new() { Simbolo = "ρ", Nome = "Densidade ρφ", ValorPadrao = 2.08, ValorMin = 0.0001 } ], VariavelResultado = "w_φ", UnidadeResultado = "", Calcular = vars => vars["p"] / vars["ρ"] },
-            new Formula { Id = "4_ci13", Nome = "Potencial Quadrático", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "V(φ)=½m²φ²", ExprTexto = "V=0.5*m^2*phi^2", Icone = "m²", Descricao = "Modelo clássico de inflação caótica com potencial quadrático.", ExemploPratico = "Exemplo: m=1e-5, φ=15 => 1.125e-8.", Variaveis = [ new() { Simbolo = "m", Nome = "Massa m", ValorPadrao = 0.00001 }, new() { Simbolo = "φ", Nome = "Campo φ", ValorPadrao = 15 } ], VariavelResultado = "V(φ)", UnidadeResultado = "", Calcular = vars => 0.5 * vars["m"] * vars["m"] * vars["φ"] * vars["φ"] },
-            new Formula { Id = "4_ci14", Nome = "Potencial de Higgs-like", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "V(φ)=λ(φ²-v²)²/4", ExprTexto = "V=lambda*(phi^2-v^2)^2/4", Icone = "λ", Descricao = "Potencial tipo double-well usado em cenários de inflação de campo único.", ExemploPratico = "Exemplo: λ=0.01,φ=3,v=1 => 0.16.", Variaveis = [ new() { Simbolo = "λ", Nome = "Acoplamento λ", ValorPadrao = 0.01, ValorMin = 0 }, new() { Simbolo = "φ", Nome = "Campo φ", ValorPadrao = 3 }, new() { Simbolo = "v", Nome = "Escala v", ValorPadrao = 1 } ], VariavelResultado = "V(φ)", UnidadeResultado = "", Calcular = vars => vars["λ"] * Math.Pow(vars["φ"] * vars["φ"] - vars["v"] * vars["v"], 2) / 4.0 },
-            new Formula { Id = "4_ci15", Nome = "Escala de Energia Inflacionária", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "E_inf=V^{1/4}", ExprTexto = "E=V^(1/4)", Icone = "E", Descricao = "Escala característica da inflação a partir do potencial efetivo.", ExemploPratico = "Exemplo: V=1e-12 => E=1e-3.", Variaveis = [ new() { Simbolo = "V", Nome = "Potencial V", ValorPadrao = 0.000000000001, ValorMin = 0 } ], VariavelResultado = "E_inf", UnidadeResultado = "", Calcular = vars => Math.Pow(vars["V"], 0.25) },
+            new Formula { Id = "4_ci09", Nome = "Parâmetro Hubble Inflacionário", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "H\u2248\u221a(V/3M_P^2)", ExprTexto = "H=sqrt(V/(3Mp^2))", Icone = "H", Descricao = "Relação aproximada entre potencial inflacionário e taxa de expansão.", ExemploPratico = "Exemplo: V=3, Mp=1 => H=1.", Variaveis = [ new() { Simbolo = "V", Nome = "Potencial V", ValorPadrao = 3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "M", Nome = "M_P", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "H", UnidadeResultado = "", Calcular = vars => Math.Sqrt(vars["V"] / (3 * vars["M"] * vars["M"])),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci10", Nome = "Energia do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "ρ_φ=½φ̇²+V(φ)", ExprTexto = "rho=0.5 phidot^2 + V", Icone = "ρ", Descricao = "Densidade total do campo inflaton.", ExemploPratico = "Exemplo: φdot=0.4, V=2 => 2.08.", Variaveis = [ new() { Simbolo = "φ̇", Nome = "Derivada φ", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V", Nome = "Potencial", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ρ_φ", UnidadeResultado = "", Calcular = vars => 0.5 * vars["φ̇"] * vars["φ̇"] + vars["V"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci11", Nome = "Pressão do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "p_φ=½φ̇²−V(φ)", ExprTexto = "p=0.5 phidot^2 - V", Icone = "p", Descricao = "Pressão efetiva do inflaton; inflação requer pressão negativa.", ExemploPratico = "Exemplo: φdot=0.4, V=2 => -1.92.", Variaveis = [ new() { Simbolo = "φ̇", Nome = "Derivada φ", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V", Nome = "Potencial", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "p_φ", UnidadeResultado = "", Calcular = vars => 0.5 * vars["φ̇"] * vars["φ̇"] - vars["V"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci12", Nome = "Equação de Estado do Inflaton", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "w_φ=p_φ/ρ_φ", ExprTexto = "w = p/rho", Icone = "w", Descricao = "Parâmetro de estado do inflaton; próximo de -1 em slow-roll.", ExemploPratico = "Exemplo: p=-1.92,rho=2.08 => -0.923.", Variaveis = [ new() { Simbolo = "p", Nome = "Pressão pφ", ValorPadrao = -1.92, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ρ", Nome = "Densidade ρφ", ValorPadrao = 2.08, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "w_φ", UnidadeResultado = "", Calcular = vars => vars["p"] / vars["ρ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci13", Nome = "Potencial Quadrático", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "V(φ)=½m²φ²", ExprTexto = "V=0.5*m^2*phi^2", Icone = "m²", Descricao = "Modelo clássico de inflação caótica com potencial quadrático.", ExemploPratico = "Exemplo: m=1e-5, φ=15 => 1.125e-8.", Variaveis = [ new() { Simbolo = "m", Nome = "Massa m", ValorPadrao = 0.00001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "φ", Nome = "Campo φ", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "V(φ)", UnidadeResultado = "", Calcular = vars => 0.5 * vars["m"] * vars["m"] * vars["φ"] * vars["φ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci14", Nome = "Potencial de Higgs-like", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "V(φ)=λ(φ²-v²)²/4", ExprTexto = "V=lambda*(phi^2-v^2)^2/4", Icone = "λ", Descricao = "Potencial tipo double-well usado em cenários de inflação de campo único.", ExemploPratico = "Exemplo: λ=0.01,φ=3,v=1 => 0.16.", Variaveis = [ new() { Simbolo = "λ", Nome = "Acoplamento λ", ValorPadrao = 0.01, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "φ", Nome = "Campo φ", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "v", Nome = "Escala v", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "V(φ)", UnidadeResultado = "", Calcular = vars => vars["λ"] * Math.Pow(vars["φ"] * vars["φ"] - vars["v"] * vars["v"], 2) / 4.0,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_ci15", Nome = "Escala de Energia Inflacionária", Categoria = "Cosmologia Inflacionária", SubCategoria = "Inflação", Expressao = "E_inf=V^{1/4}", ExprTexto = "E=V^(1/4)", Icone = "E", Descricao = "Escala característica da inflação a partir do potencial efetivo.", ExemploPratico = "Exemplo: V=1e-12 => E=1e-3.", Variaveis = [ new() { Simbolo = "V", Nome = "Potencial V", ValorPadrao = 0.000000000001, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "E_inf", UnidadeResultado = "", Calcular = vars => Math.Pow(vars["V"], 0.25),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
             // 8.2 Além do Modelo Padrão
             new Formula
             {
@@ -596,10 +713,13 @@ public partial class FormulaService
                 Icone = "Ω_DM",
                 Descricao = "WIMP miracle: partícula com σ~escala fraca dá Ω~0.1 (observado!). Freeze-out quando taxa de aniquilação < expansão. ⟨σv⟩ ≈ 3×10⁻²⁶ cm³/s para Ωh²≈0.12.",
                 ExemploPratico = "Exemplo: ⟨σv⟩=3e-26 cm³/s (normalização WIMP miracle) → Ωh² ≈ 3×10⁻²⁷/(3×10⁻²⁶) = 0.1 (observado!)",
-                Variaveis = [ new() { Simbolo = "σv", Nome = "⟨σv⟩ (cm³/s)", ValorPadrao = 3e-26, ValorMin = 1e-30 } ],
+                Variaveis = [ new() { Simbolo = "σv", Nome = "⟨σv⟩ (cm³/s)", ValorPadrao = 3e-26, ValorMin = 1e-30, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Ωh² (densidade relíquia)",
                 UnidadeResultado = "",
-                Calcular = vars => 3e-27 / vars["σv"]
+                Calcular = vars => 3e-27 / vars["σv"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -611,10 +731,11 @@ public partial class FormulaService
                 Criador = "Roberto Peccei / Helen Quinn / Steven Weinberg / Frank Wilczek",
                 AnoOrigin = "1977/1978",
                 ExemploPratico = "Exemplo: Escala PQ fₐ=1e12 GeV → mₐ ≈ 6 μeV × (1e12/1e12) = 6 μeV (massa do axion)",
-                Variaveis = [ new() { Simbolo = "fₐ", Nome = "Escala PQ fₐ (GeV)", ValorPadrao = 1e12, ValorMin = 1e9 } ],
+                Variaveis = [ new() { Simbolo = "fₐ", Nome = "Escala PQ fₐ (GeV)", ValorPadrao = 1e12, ValorMin = 1e9, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "mₐ (μeV)",
                 UnidadeResultado = "μeV",
-                Calcular = vars => 6.0 * (1e12 / vars["fₐ"])
+                Calcular = vars => 6.0 * (1e12 / vars["fₐ"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -624,10 +745,13 @@ public partial class FormulaService
                 Icone = "w",
                 Descricao = "w=-1: constante cosmológica (energia do vácuo). w≠-1: quintessência ou energia escura dinâmica. Parametrização CPL: w(a)=w₀+wₐ(1-a). Planck: w₀≈-1.03±0.03.",
                 ExemploPratico = "Exemplo: Pressão p=-0.98, densidade ρ=1.0 → w = p/ρ = -0.98 (próximo de -1, constante cosmológica)",
-                Variaveis = [ new() { Simbolo = "p", Nome = "Pressão p", ValorPadrao = -0.98 }, new() { Simbolo = "ρ", Nome = "Densidade ρ", ValorPadrao = 1.0, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "p", Nome = "Pressão p", ValorPadrao = -0.98, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ρ", Nome = "Densidade ρ", ValorPadrao = 1.0, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "w (equação de estado)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["p"] / vars["ρ"]
+                Calcular = vars => vars["p"] / vars["ρ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -638,10 +762,12 @@ public partial class FormulaService
                 Descricao = "Explica pequenez das massas de neutrinos: mν ~ (v_EW)²/M_R. Se M_R~10¹⁴ GeV → mν~0.01 eV (observado). Requer neutrino de Majorana pesado.",
                 Criador = "Peter Minkowski / Tsutomu Yanagida / Murray Gell-Mann / Rabindra Mohapatra / Goran Senjanović",
                 ExemploPratico = "Exemplo: Acoplamento Dirac m_D=100 GeV, Majorana M_R=1e14 GeV → mν ≈ 100²/(1e14) = 1e-10 GeV = 0.1 eV",
-                Variaveis = [ new() { Simbolo = "m_D", Nome = "Massa Dirac m_D (GeV)", ValorPadrao = 100 }, new() { Simbolo = "M_R", Nome = "Massa Majorana M_R (GeV)", ValorPadrao = 1e14, ValorMin = 1e10 } ],
+                Variaveis = [ new() { Simbolo = "m_D", Nome = "Massa Dirac m_D (GeV)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "M_R", Nome = "Massa Majorana M_R (GeV)", ValorPadrao = 1e14, ValorMin = 1e10, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "mν (GeV, massa neutrino)",
                 UnidadeResultado = "GeV",
-                Calcular = vars => vars["m_D"] * vars["m_D"] / vars["M_R"]
+                Calcular = vars => vars["m_D"] * vars["m_D"] / vars["M_R"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -653,10 +779,11 @@ public partial class FormulaService
                 Criador = "Howard Georgi / Sheldon Glashow",
                 AnoOrigin = "1974",
                 ExemploPratico = "Exemplo: Dimensões SU(5)=24, SU(3)=8, SU(2)=3, U(1)=1 → dim(SU(3)×SU(2)×U(1)) = 8+3+1 = 12 < 24 (quebra)",
-                Variaveis = [ new() { Simbolo = "dim_GUT", Nome = "Dimensão SU(5)", ValorPadrao = 24 }, new() { Simbolo = "dim_SM", Nome = "Dim. SU(3)×SU(2)×U(1)", ValorPadrao = 12 } ],
+                Variaveis = [ new() { Simbolo = "dim_GUT", Nome = "Dimensão SU(5)", ValorPadrao = 24, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dim_SM", Nome = "Dim. SU(3)×SU(2)×U(1)", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δdim (quebra de simetria)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dim_GUT"] - vars["dim_SM"]
+                Calcular = vars => vars["dim_GUT"] - vars["dim_SM"],
+                Unidades = "",
             },
             new Formula
             {
@@ -666,10 +793,13 @@ public partial class FormulaService
                 Icone = "p→",
                 Descricao = "GUTs preveem que p→e⁺π⁰ (violação de número bariônico). Limite experimental (Super-Kamiokande): τ>10³⁴ anos. Exclui GUT SU(5) mínimo mas permite extensões SUSY.",
                 ExemploPratico = "Exemplo: Tempo de vida próton τ_p (limite exp.) > 1e34 anos → log₁₀(τ_p) > 34 (limite inferior)",
-                Variaveis = [ new() { Simbolo = "log_τp", Nome = "log₁₀(τ_p em anos)", ValorPadrao = 34 } ],
+                Variaveis = [ new() { Simbolo = "log_τp", Nome = "log₁₀(τ_p em anos)", ValorPadrao = 34, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "τ_p (log₁₀, anos)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["log_τp"]
+                Calcular = vars => vars["log_τp"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -681,10 +811,11 @@ public partial class FormulaService
                 Criador = "Andrei Sakharov",
                 AnoOrigin = "1967",
                 ExemploPratico = "Exemplo: x=1, y=1 → condições Sakharov ≈ x*y = 1.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] * vars["y"]
+                Calcular = vars => vars["x"] * vars["y"],
+                Unidades = "",
             },
         ]);
     }
@@ -696,16 +827,46 @@ public partial class FormulaService
     {
         _formulas.AddRange([
             // 9.1 Gravidade Quântica (geral)
-            new Formula { Id = "4_gq01", Nome = "Comprimento de Planck", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "l_p=\u221a(ħG/c^3)", ExprTexto = "lp=sqrt(hbar*G/c^3)", Icone = "lp", Descricao = "Escala fundamental de comprimento na gravidade quântica.", ExemploPratico = "Exemplo: l_p≈1.616e-35 m.", Variaveis = [ new() { Simbolo = "l_p", Nome = "Comprimento de Planck", ValorPadrao = 1.616e-35 } ], VariavelResultado = "l_p", UnidadeResultado = "m", Calcular = vars => vars["l_p"] },
-            new Formula { Id = "4_gq02", Nome = "Área de Planck", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "A_p=l_p^2", ExprTexto = "Ap=lp^2", Icone = "Ap", Descricao = "Unidade elementar de área em regimes quânticos gravitacionais.", ExemploPratico = "Exemplo: lp=1.6e-35 => Ap≈2.56e-70.", Variaveis = [ new() { Simbolo = "l_p", Nome = "Comprimento de Planck", ValorPadrao = 1.6e-35 } ], VariavelResultado = "A_p", UnidadeResultado = "m²", Calcular = vars => vars["l_p"] * vars["l_p"] },
-            new Formula { Id = "4_gq03", Nome = "Entropia de Bekenstein-Hawking", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "S=A/(4l_p^2)", ExprTexto = "S=A/(4lp^2)", Icone = "S", Descricao = "Entropia de horizonte em unidades naturais.", ExemploPratico = "Exemplo: A=100, lp=1 => S=25.", Variaveis = [ new() { Simbolo = "A", Nome = "Área do horizonte A", ValorPadrao = 100, ValorMin = 0 }, new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 1, ValorMin = 0.0001 } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["A"] / (4 * vars["l_p"] * vars["l_p"]) },
-            new Formula { Id = "4_gq04", Nome = "Número de Microestados", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "N\u2248e^S", ExprTexto = "N=exp(S)", Icone = "N", Descricao = "Contagem efetiva de microestados gravitacionais para dada entropia.", ExemploPratico = "Exemplo: S=5 => N≈148.4.", Variaveis = [ new() { Simbolo = "S", Nome = "Entropia S", ValorPadrao = 5 } ], VariavelResultado = "N", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["S"]) },
-            new Formula { Id = "4_gq05", Nome = "Ação de Einstein-Hilbert", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "S=(1/16πG)∫R\u221a(-g)d^4x", ExprTexto = "SEH proportional to integral R", Icone = "EH", Descricao = "Ação clássica de gravidade que fundamenta quantização canônica e por caminho.", ExemploPratico = "Exemplo: integral=50,G=1 => S≈0.995.", Variaveis = [ new() { Simbolo = "I", Nome = "Integral geométrica", ValorPadrao = 50 }, new() { Simbolo = "G", Nome = "Constante G", ValorPadrao = 1, ValorMin = 0.0001 } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["I"] / (16 * Math.PI * vars["G"]) },
-            new Formula { Id = "4_gq06", Nome = "Partição Quântica", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "Z=∫Dg e^{iS[g]/ħ}", ExprTexto = "Z path integral", Icone = "Z", Descricao = "Funcional de partição para soma sobre geometrias.", ExemploPratico = "Exemplo: S=1,ħ=1 => |e^{iS}|=1.", Variaveis = [ new() { Simbolo = "S", Nome = "Ação S", ValorPadrao = 1 } ], VariavelResultado = "cos(S)", UnidadeResultado = "", Calcular = vars => Math.Cos(vars["S"]) },
-            new Formula { Id = "4_gq07", Nome = "Escala de Curvatura", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "R_q\u22481/l_p^2", ExprTexto = "Rq=1/lp^2", Icone = "R", Descricao = "Escala de curvatura onde efeitos quânticos tornam-se dominantes.", ExemploPratico = "Exemplo: lp=1e-3 => Rq=1e6.", Variaveis = [ new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 0.001, ValorMin = 0.000001 } ], VariavelResultado = "R_q", UnidadeResultado = "", Calcular = vars => 1.0 / (vars["l_p"] * vars["l_p"]) },
-            new Formula { Id = "4_gq08", Nome = "Critério Semiclássico", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "L>>l_p", ExprTexto = "epsilon=lp/L", Icone = "eps", Descricao = "Regime semiclássico quando escala característica L é muito maior que l_p.", ExemploPratico = "Exemplo: lp=1e-3,L=10 => eps=1e-4.", Variaveis = [ new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 0.001 }, new() { Simbolo = "L", Nome = "Escala L", ValorPadrao = 10, ValorMin = 0.0001 } ], VariavelResultado = "ε", UnidadeResultado = "", Calcular = vars => vars["l_p"] / vars["L"] },
-            new Formula { Id = "4_gq09", Nome = "Quanta de Área", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "A_n\u2248nA_p", ExprTexto = "An=n*Ap", Icone = "An", Descricao = "Modelo discreto simplificado para espectro de áreas.", ExemploPratico = "Exemplo: n=20,Ap=0.5 => 10.", Variaveis = [ new() { Simbolo = "n", Nome = "Nível n", ValorPadrao = 20, ValorMin = 1 }, new() { Simbolo = "A_p", Nome = "Área de Planck", ValorPadrao = 0.5, ValorMin = 0 } ], VariavelResultado = "A_n", UnidadeResultado = "", Calcular = vars => vars["n"] * vars["A_p"] },
-            new Formula { Id = "4_gq10", Nome = "Densidade de Estados", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "ρ(E)\u223ce^{S(E)}", ExprTexto = "rho(E)=exp(S)", Icone = "ρ", Descricao = "Escala assintótica da densidade de estados em sistemas gravitacionais.", ExemploPratico = "Exemplo: S=8 => 2980.96.", Variaveis = [ new() { Simbolo = "S", Nome = "Entropia S(E)", ValorPadrao = 8 } ], VariavelResultado = "ρ(E)", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["S"]) },
+            new Formula { Id = "4_gq01", Nome = "Comprimento de Planck", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "l_p=\u221a(ħG/c^3)", ExprTexto = "lp=sqrt(hbar*G/c^3)", Icone = "lp", Descricao = "Escala fundamental de comprimento na gravidade quântica.", ExemploPratico = "Exemplo: l_p≈1.616e-35 m.", Variaveis = [ new() { Simbolo = "l_p", Nome = "Comprimento de Planck", ValorPadrao = 1.616e-35, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "l_p", UnidadeResultado = "m", Calcular = vars => vars["l_p"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq02", Nome = "Área de Planck", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "A_p=l_p^2", ExprTexto = "Ap=lp^2", Icone = "Ap", Descricao = "Unidade elementar de área em regimes quânticos gravitacionais.", ExemploPratico = "Exemplo: lp=1.6e-35 => Ap≈2.56e-70.", Variaveis = [ new() { Simbolo = "l_p", Nome = "Comprimento de Planck", ValorPadrao = 1.6e-35, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "A_p", UnidadeResultado = "m²", Calcular = vars => vars["l_p"] * vars["l_p"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq03", Nome = "Entropia de Bekenstein-Hawking", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "S=A/(4l_p^2)", ExprTexto = "S=A/(4lp^2)", Icone = "S", Descricao = "Entropia de horizonte em unidades naturais.", ExemploPratico = "Exemplo: A=100, lp=1 => S=25.", Variaveis = [ new() { Simbolo = "A", Nome = "Área do horizonte A", ValorPadrao = 100, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["A"] / (4 * vars["l_p"] * vars["l_p"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq04", Nome = "Número de Microestados", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "N\u2248e^S", ExprTexto = "N=exp(S)", Icone = "N", Descricao = "Contagem efetiva de microestados gravitacionais para dada entropia.", ExemploPratico = "Exemplo: S=5 => N≈148.4.", Variaveis = [ new() { Simbolo = "S", Nome = "Entropia S", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "N", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["S"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq05", Nome = "Ação de Einstein-Hilbert", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "S=(1/16πG)∫R\u221a(-g)d^4x", ExprTexto = "SEH proportional to integral R", Icone = "EH", Descricao = "Ação clássica de gravidade que fundamenta quantização canônica e por caminho.", ExemploPratico = "Exemplo: integral=50,G=1 => S≈0.995.", Variaveis = [ new() { Simbolo = "I", Nome = "Integral geométrica", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "G", Nome = "Constante G", ValorPadrao = 1, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "S", UnidadeResultado = "", Calcular = vars => vars["I"] / (16 * Math.PI * vars["G"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq06", Nome = "Partição Quântica", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "Z=∫Dg e^{iS[g]/ħ}", ExprTexto = "Z path integral", Icone = "Z", Descricao = "Funcional de partição para soma sobre geometrias.", ExemploPratico = "Exemplo: S=1,ħ=1 => |e^{iS}|=1.", Variaveis = [ new() { Simbolo = "S", Nome = "Ação S", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "cos(S)", UnidadeResultado = "", Calcular = vars => Math.Cos(vars["S"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq07", Nome = "Escala de Curvatura", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "R_q\u22481/l_p^2", ExprTexto = "Rq=1/lp^2", Icone = "R", Descricao = "Escala de curvatura onde efeitos quânticos tornam-se dominantes.", ExemploPratico = "Exemplo: lp=1e-3 => Rq=1e6.", Variaveis = [ new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 0.001, ValorMin = 0.000001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "R_q", UnidadeResultado = "", Calcular = vars => 1.0 / (vars["l_p"] * vars["l_p"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq08", Nome = "Critério Semiclássico", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "L>>l_p", ExprTexto = "epsilon=lp/L", Icone = "eps", Descricao = "Regime semiclássico quando escala característica L é muito maior que l_p.", ExemploPratico = "Exemplo: lp=1e-3,L=10 => eps=1e-4.", Variaveis = [ new() { Simbolo = "l_p", Nome = "l_p", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "L", Nome = "Escala L", ValorPadrao = 10, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ε", UnidadeResultado = "", Calcular = vars => vars["l_p"] / vars["L"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq09", Nome = "Quanta de Área", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "A_n\u2248nA_p", ExprTexto = "An=n*Ap", Icone = "An", Descricao = "Modelo discreto simplificado para espectro de áreas.", ExemploPratico = "Exemplo: n=20,Ap=0.5 => 10.", Variaveis = [ new() { Simbolo = "n", Nome = "Nível n", ValorPadrao = 20, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A_p", Nome = "Área de Planck", ValorPadrao = 0.5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "A_n", UnidadeResultado = "", Calcular = vars => vars["n"] * vars["A_p"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_gq10", Nome = "Densidade de Estados", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Gravidade Quântica", Expressao = "ρ(E)\u223ce^{S(E)}", ExprTexto = "rho(E)=exp(S)", Icone = "ρ", Descricao = "Escala assintótica da densidade de estados em sistemas gravitacionais.", ExemploPratico = "Exemplo: S=8 => 2980.96.", Variaveis = [ new() { Simbolo = "S", Nome = "Entropia S(E)", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "ρ(E)", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["S"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
             // 9.1 Gravidade Quântica em Loop (LQG)
             new Formula
             {
@@ -717,10 +878,11 @@ public partial class FormulaService
                 Criador = "Abhay Ashtekar",
                 AnoOrigin = "1986",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Γ", Nome = "Γ", ValorPadrao = 10 }, new() { Simbolo = "γK", Nome = "γK", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "Γ", Nome = "Γ", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "γK", Nome = "γK", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "A",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Γ"] + vars["γK"]
+                Calcular = vars => vars["Γ"] + vars["γK"],
+                Unidades = "",
             },
             new Formula
             {
@@ -730,10 +892,13 @@ public partial class FormulaService
                 Icone = "hₑ",
                 Descricao = "Transporte paralelo ao longo de aresta e: variável quântica fundamental em LQG (substituindo A(x)). Espaço de Hilbert construído sobre grafos/spin networks.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -745,9 +910,10 @@ public partial class FormulaService
                 Criador = "Roger Penrose (conceito) / Carlo Rovelli / Lee Smolin (LQG)",
                 AnoOrigin = "1971/1995",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -757,10 +923,13 @@ public partial class FormulaService
                 Icone = "Â",
                 Descricao = "Área é quantizada! Espectro discreto: menor área não-nula = 4√3 πγl²_P (j=½). l_P = comprimento de Planck ≈ 10⁻³⁵m. Previsão central da LQG.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -770,10 +939,13 @@ public partial class FormulaService
                 Icone = "V̂",
                 Descricao = "Volume também é quantizado com espectro discreto. Volume reside nos vértices do spin network (arestas = área, vértices = volume). Espaço é granular na escala de Planck.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -783,9 +955,12 @@ public partial class FormulaService
                 Icone = "Ĥ",
                 Descricao = "Versão quântica: sem evolução temporal (problema do tempo). Dinâmica codificada nos vínculos. Implementação por Thiemann usando holonomias.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -795,9 +970,12 @@ public partial class FormulaService
                 Icone = "S_LQG",
                 Descricao = "Contagem de micro-estados de spin networks perfurando o horizonte reproduz Bekenstein-Hawking S=A/4G se γ≈0.2375 (fixa parâmetro de Barbero-Immirzi).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -807,9 +985,12 @@ public partial class FormulaService
                 Icone = "LQC",
                 Descricao = "Equação de Friedmann modificada: quando ρ→ρ_c, H=0 e o universo 'quica' (Big Bounce ao invés de singularidade). Resolve singularidade do Big Bang.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -819,9 +1000,12 @@ public partial class FormulaService
                 Icone = "foam",
                 Descricao = "Integral de caminho para LQG: soma sobre histórias de spin networks (2-complexos). Faces=representações, arestas=intertwiners. Modelo EPRL é o mais estudado.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 9.2 Teoria de Cordas
             new Formula
@@ -834,10 +1018,11 @@ public partial class FormulaService
                 Criador = "Yoichiro Nambu / Tetsuo Goto",
                 AnoOrigin = "1970",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -849,10 +1034,11 @@ public partial class FormulaService
                 Criador = "Alexander Polyakov / Lars Brink / Paolo Di Vecchia / Paul Howe",
                 AnoOrigin = "1981",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -862,9 +1048,12 @@ public partial class FormulaService
                 Icone = "d=10",
                 Descricao = "Anomalia conforme cancela apenas em d=26 (bosônica) ou d=10 (supersimétrica). 6 dimensões extras devem ser compactificadas (Calabi-Yau, etc.).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -874,9 +1063,12 @@ public partial class FormulaService
                 Icone = "M²",
                 Descricao = "N=0: tachyon (instabilidade, ausente em supercordas). N=1: massless (fóton, graviton). N>1: torre de Regge de estados massivos. α' = (comprimento da corda)².",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -886,9 +1078,12 @@ public partial class FormulaService
                 Icone = "Vir",
                 Descricao = "Álgebra de Lie dos geradores conformes na worldsheet. Carga central c determina anomalia conforme. c=d para d bósons livres. Requer d=26 para consistência.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -898,9 +1093,12 @@ public partial class FormulaService
                 Icone = "T",
                 Descricao = "Cordas em círculo de raio R são equivalentes a raio α'/R. Troca modos de momento ↔ winding. Implica distância mínima ~√α'. Não existe em partículas pontuais.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -910,9 +1108,12 @@ public partial class FormulaService
                 Icone = "S",
                 Descricao = "Dualidade forte-fraco: física em acoplamento forte de uma teoria = acoplamento fraco de outra. Conecta tipo I ↔ SO(32) heterótica, tipo IIB consigo mesma.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -924,12 +1125,19 @@ public partial class FormulaService
                 Criador = "Joseph Polchinski",
                 AnoOrigin = "1995",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Parâmetro x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Parâmetro y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
-                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"]
+                UnidadeResultado = "", Calcular = vars => vars["x"] + vars["n"],
+                Unidades = "",
             },
-            new Formula { Id = "4_st09", Nome = "Acoplamento de Corda", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Cordas", Expressao = "g_s=e^{\u03C6}", ExprTexto = "gs=exp(phi)", Icone = "gs", Descricao = "Acoplamento efetivo de cordas definido pelo dilaton.", ExemploPratico = "Exemplo: φ=-1 => gs≈0.368.", Variaveis = [ new() { Simbolo = "φ", Nome = "Dilaton φ", ValorPadrao = -1 } ], VariavelResultado = "g_s", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["φ"]) },
-            new Formula { Id = "4_st10", Nome = "Massa de Corda Fundamental", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Cordas", Expressao = "M_s=1/\u221a(\u03B1')", ExprTexto = "Ms=1/sqrt(alpha')", Icone = "Ms", Descricao = "Escala de massa característica do espectro de cordas.", ExemploPratico = "Exemplo: α'=0.04 => Ms=5.", Variaveis = [ new() { Simbolo = "α'", Nome = "Parâmetro α'", ValorPadrao = 0.04, ValorMin = 0.000001 } ], VariavelResultado = "M_s", UnidadeResultado = "", Calcular = vars => 1.0 / Math.Sqrt(vars["α'"]) },
+            new Formula { Id = "4_st09", Nome = "Acoplamento de Corda", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Cordas", Expressao = "g_s=e^{\u03C6}", ExprTexto = "gs=exp(phi)", Icone = "gs", Descricao = "Acoplamento efetivo de cordas definido pelo dilaton.", ExemploPratico = "Exemplo: φ=-1 => gs≈0.368.", Variaveis = [ new() { Simbolo = "φ", Nome = "Dilaton φ", ValorPadrao = -1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "g_s", UnidadeResultado = "", Calcular = vars => Math.Exp(vars["φ"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
+            new Formula { Id = "4_st10", Nome = "Massa de Corda Fundamental", Categoria = "Gravidade Quântica e Cordas", SubCategoria = "Cordas", Expressao = "M_s=1/\u221a(\u03B1')", ExprTexto = "Ms=1/sqrt(alpha')", Icone = "Ms", Descricao = "Escala de massa característica do espectro de cordas.", ExemploPratico = "Exemplo: α'=0.04 => Ms=5.", Variaveis = [ new() { Simbolo = "α'", Nome = "Parâmetro α'", ValorPadrao = 0.04, ValorMin = 0.000001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ], VariavelResultado = "M_s", UnidadeResultado = "", Calcular = vars => 1.0 / Math.Sqrt(vars["α'"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "", },
         ]);
     }
 }

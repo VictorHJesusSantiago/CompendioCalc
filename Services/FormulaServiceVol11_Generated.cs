@@ -39,10 +39,10 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -68,9 +68,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -96,10 +96,10 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -125,9 +125,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -153,10 +153,10 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -182,8 +182,8 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -209,9 +209,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -237,9 +237,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -265,9 +265,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -293,9 +293,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -321,10 +321,10 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -350,9 +350,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -378,9 +378,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -406,9 +406,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -434,8 +434,8 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -461,9 +461,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -489,8 +489,8 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -516,9 +516,9 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -544,8 +544,8 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -571,8 +571,8 @@ namespace CompendioCalc.Services
                 Icone = "★",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em balanco radiativo e evolucao estelar; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -600,10 +600,10 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -629,9 +629,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -657,10 +657,10 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -686,9 +686,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -714,10 +714,10 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -743,8 +743,8 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -770,9 +770,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -798,9 +798,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -826,9 +826,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -854,9 +854,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -882,10 +882,10 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -911,9 +911,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -939,9 +939,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -967,9 +967,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -995,8 +995,8 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1022,9 +1022,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1050,8 +1050,8 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1077,9 +1077,9 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1105,8 +1105,8 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1132,8 +1132,8 @@ namespace CompendioCalc.Services
                 Icone = "☢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em ignicao e confinamento de plasma; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1161,10 +1161,10 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1190,9 +1190,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1218,10 +1218,10 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1247,9 +1247,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1275,10 +1275,10 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1304,8 +1304,8 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1331,9 +1331,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1359,9 +1359,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1387,9 +1387,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1415,9 +1415,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1443,10 +1443,10 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1472,9 +1472,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1500,9 +1500,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1528,9 +1528,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1556,8 +1556,8 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1583,9 +1583,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1611,8 +1611,8 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1638,9 +1638,9 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1666,8 +1666,8 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1693,8 +1693,8 @@ namespace CompendioCalc.Services
                 Icone = "🛢",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em escoamento multifasico em reservatorios; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1722,10 +1722,10 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1751,9 +1751,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1779,10 +1779,10 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1808,9 +1808,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1836,10 +1836,10 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1865,8 +1865,8 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1892,9 +1892,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1920,9 +1920,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1948,9 +1948,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -1976,9 +1976,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2004,10 +2004,10 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2033,9 +2033,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2061,9 +2061,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2089,9 +2089,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2117,8 +2117,8 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2144,9 +2144,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2172,8 +2172,8 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2199,9 +2199,9 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2227,8 +2227,8 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2254,8 +2254,8 @@ namespace CompendioCalc.Services
                 Icone = "🧪",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em cinetica e reologia de polimeros; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2283,10 +2283,10 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2312,9 +2312,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2340,10 +2340,10 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2369,9 +2369,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2397,10 +2397,10 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2426,8 +2426,8 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2453,9 +2453,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2481,9 +2481,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2509,9 +2509,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2537,9 +2537,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2565,10 +2565,10 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2594,9 +2594,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2622,9 +2622,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2650,9 +2650,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2678,8 +2678,8 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2705,9 +2705,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2733,8 +2733,8 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2760,9 +2760,9 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2788,8 +2788,8 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2815,8 +2815,8 @@ namespace CompendioCalc.Services
                 Icone = "🌍",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em propagacao de ondas e risco sismico; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2844,10 +2844,10 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2873,9 +2873,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2901,10 +2901,10 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2930,9 +2930,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2958,10 +2958,10 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -2987,8 +2987,8 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3014,9 +3014,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3042,9 +3042,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3070,9 +3070,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3098,9 +3098,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3126,10 +3126,10 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3155,9 +3155,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3183,9 +3183,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3211,9 +3211,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3239,8 +3239,8 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3266,9 +3266,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3294,8 +3294,8 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3321,9 +3321,9 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3349,8 +3349,8 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3376,8 +3376,8 @@ namespace CompendioCalc.Services
                 Icone = "💡",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em transporte optico e coerencia quantica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3405,10 +3405,10 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3434,9 +3434,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3462,10 +3462,10 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3491,9 +3491,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3519,10 +3519,10 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3548,8 +3548,8 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3575,9 +3575,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3603,9 +3603,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3631,9 +3631,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3659,9 +3659,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3687,10 +3687,10 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3716,9 +3716,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3744,9 +3744,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3772,9 +3772,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3800,8 +3800,8 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3827,9 +3827,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3855,8 +3855,8 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3882,9 +3882,9 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3910,8 +3910,8 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3937,8 +3937,8 @@ namespace CompendioCalc.Services
                 Icone = "🧠",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em calibracao estatistica e inferencia preditiva; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3966,10 +3966,10 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -3995,9 +3995,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4023,10 +4023,10 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4052,9 +4052,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4080,10 +4080,10 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4109,8 +4109,8 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4136,9 +4136,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4164,9 +4164,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4192,9 +4192,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4220,9 +4220,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4248,10 +4248,10 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4277,9 +4277,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4305,9 +4305,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4333,9 +4333,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4361,8 +4361,8 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4388,9 +4388,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4416,8 +4416,8 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4443,9 +4443,9 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4471,8 +4471,8 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4498,8 +4498,8 @@ namespace CompendioCalc.Services
                 Icone = "🫀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em hemodinamica e tensoes cardiovasculares; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4527,10 +4527,10 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4556,9 +4556,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4584,10 +4584,10 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4613,9 +4613,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4641,10 +4641,10 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4670,8 +4670,8 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4697,9 +4697,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4725,9 +4725,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4753,9 +4753,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4781,9 +4781,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4809,10 +4809,10 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4838,9 +4838,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4866,9 +4866,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4894,9 +4894,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4922,8 +4922,8 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4949,9 +4949,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -4977,8 +4977,8 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5004,9 +5004,9 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5032,8 +5032,8 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5059,8 +5059,8 @@ namespace CompendioCalc.Services
                 Icone = "🎛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em estabilidade e robustez de malha fechada; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5088,10 +5088,10 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5117,9 +5117,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5145,10 +5145,10 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5174,9 +5174,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5202,10 +5202,10 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5231,8 +5231,8 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5258,9 +5258,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5286,9 +5286,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5314,9 +5314,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5342,9 +5342,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5370,10 +5370,10 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5399,9 +5399,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5427,9 +5427,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5455,9 +5455,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5483,8 +5483,8 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5510,9 +5510,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5538,8 +5538,8 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5565,9 +5565,9 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5593,8 +5593,8 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5620,8 +5620,8 @@ namespace CompendioCalc.Services
                 Icone = "♻",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em balancos de contaminantes e remocao; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5649,10 +5649,10 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5678,9 +5678,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5706,10 +5706,10 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5735,9 +5735,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5763,10 +5763,10 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5792,8 +5792,8 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5819,9 +5819,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5847,9 +5847,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5875,9 +5875,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5903,9 +5903,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5931,10 +5931,10 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5960,9 +5960,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -5988,9 +5988,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6016,9 +6016,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6044,8 +6044,8 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6071,9 +6071,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6099,8 +6099,8 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6126,9 +6126,9 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6154,8 +6154,8 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6181,8 +6181,8 @@ namespace CompendioCalc.Services
                 Icone = "⚛",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em criticidade e margem termohidraulica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6210,10 +6210,10 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6239,9 +6239,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6267,10 +6267,10 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6296,9 +6296,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6324,10 +6324,10 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6353,8 +6353,8 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6380,9 +6380,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6408,9 +6408,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6436,9 +6436,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6464,9 +6464,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6492,10 +6492,10 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6521,9 +6521,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6549,9 +6549,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6577,9 +6577,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6605,8 +6605,8 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6632,9 +6632,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6660,8 +6660,8 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6687,9 +6687,9 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6715,8 +6715,8 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6742,8 +6742,8 @@ namespace CompendioCalc.Services
                 Icone = "🌦",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em forcantes atmosfericas e variabilidade climatica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6771,10 +6771,10 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6800,9 +6800,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6828,10 +6828,10 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6857,9 +6857,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6885,10 +6885,10 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6914,8 +6914,8 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6941,9 +6941,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6969,9 +6969,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -6997,9 +6997,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7025,9 +7025,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7053,10 +7053,10 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7082,9 +7082,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7110,9 +7110,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7138,9 +7138,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7166,8 +7166,8 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7193,9 +7193,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7221,8 +7221,8 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7248,9 +7248,9 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7276,8 +7276,8 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7303,8 +7303,8 @@ namespace CompendioCalc.Services
                 Icone = "🔋",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em transporte de portadores e operacao de dispositivos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7332,10 +7332,10 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7361,9 +7361,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7389,10 +7389,10 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7418,9 +7418,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7446,10 +7446,10 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7475,8 +7475,8 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7502,9 +7502,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7530,9 +7530,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7558,9 +7558,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7586,9 +7586,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7614,10 +7614,10 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7643,9 +7643,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7671,9 +7671,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7699,9 +7699,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7727,8 +7727,8 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7754,9 +7754,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7782,8 +7782,8 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7809,9 +7809,9 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7837,8 +7837,8 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7864,8 +7864,8 @@ namespace CompendioCalc.Services
                 Icone = "🗣",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em incerteza lexical e modelagem de linguagem; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7893,10 +7893,10 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7922,9 +7922,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7950,10 +7950,10 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -7979,9 +7979,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8007,10 +8007,10 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8036,8 +8036,8 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8063,9 +8063,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8091,9 +8091,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8119,9 +8119,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8147,9 +8147,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8175,10 +8175,10 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8204,9 +8204,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8232,9 +8232,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8260,9 +8260,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8288,8 +8288,8 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8315,9 +8315,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8343,8 +8343,8 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8370,9 +8370,9 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8398,8 +8398,8 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8425,8 +8425,8 @@ namespace CompendioCalc.Services
                 Icone = "🧫",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em escoamento em microcanais e bioprocessos; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8454,10 +8454,10 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8483,9 +8483,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8511,10 +8511,10 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8540,9 +8540,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8568,10 +8568,10 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8597,8 +8597,8 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8624,9 +8624,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8652,9 +8652,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8680,9 +8680,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8708,9 +8708,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8736,10 +8736,10 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8765,9 +8765,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8793,9 +8793,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8821,9 +8821,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8849,8 +8849,8 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8876,9 +8876,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8904,8 +8904,8 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8931,9 +8931,9 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8959,8 +8959,8 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -8986,8 +8986,8 @@ namespace CompendioCalc.Services
                 Icone = "☀",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em captacao de recurso e eficiencia energetica; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9015,10 +9015,10 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9044,9 +9044,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9072,10 +9072,10 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9101,9 +9101,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9129,10 +9129,10 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9158,8 +9158,8 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9185,9 +9185,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9213,9 +9213,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9241,9 +9241,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9269,9 +9269,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9297,10 +9297,10 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9326,9 +9326,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9354,9 +9354,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9382,9 +9382,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9410,8 +9410,8 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9437,9 +9437,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9465,8 +9465,8 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9492,9 +9492,9 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9520,8 +9520,8 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9547,8 +9547,8 @@ namespace CompendioCalc.Services
                 Icone = "🌐",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em estabilidade magnetica e transporte anomalo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9576,10 +9576,10 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9605,9 +9605,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9633,10 +9633,10 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9662,9 +9662,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9690,10 +9690,10 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9719,8 +9719,8 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9746,9 +9746,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9774,9 +9774,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9802,9 +9802,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9830,9 +9830,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9858,10 +9858,10 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9887,9 +9887,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9915,9 +9915,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9943,9 +9943,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9971,8 +9971,8 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -9998,9 +9998,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10026,8 +10026,8 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10053,9 +10053,9 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10081,8 +10081,8 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10108,8 +10108,8 @@ namespace CompendioCalc.Services
                 Icone = "💰",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em desconto temporal e controle de risco; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10137,10 +10137,10 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10166,9 +10166,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10194,10 +10194,10 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10223,9 +10223,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10251,10 +10251,10 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10280,8 +10280,8 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10307,9 +10307,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10335,9 +10335,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10363,9 +10363,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10391,9 +10391,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10419,10 +10419,10 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10448,9 +10448,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10476,9 +10476,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10504,9 +10504,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10532,8 +10532,8 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10559,9 +10559,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10587,8 +10587,8 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10614,9 +10614,9 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10642,8 +10642,8 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10669,8 +10669,8 @@ namespace CompendioCalc.Services
                 Icone = "✈",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em desempenho aerodinamico e propulsivo; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10698,10 +10698,10 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0 },
-                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5 },
-                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4 },
-                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
+                    new Variavel { Simbolo = "entrada", Nome = "Taxa de entrada", Descricao = "Taxa de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 12.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "saida", Nome = "Taxa de saida", Descricao = "Taxa de saida: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 8.5, Unidade = "adim" },
+                    new Variavel { Simbolo = "geracao", Nome = "Geracao interna", Descricao = "Geracao interna: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "consumo", Nome = "Consumo interno", Descricao = "Consumo interno: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10727,9 +10727,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0 },
-                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente angular", Descricao = "Coeficiente angular: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.35, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 18.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Offset", Descricao = "Offset: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10755,10 +10755,10 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04 },
-                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2 },
-                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0 },
+                    new Variavel { Simbolo = "a", Nome = "Coeficiente quadratico", Descricao = "Coeficiente quadratico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.04, Unidade = "adim" },
+                    new Variavel { Simbolo = "b", Nome = "Coeficiente linear", Descricao = "Coeficiente linear: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "c", Nome = "Constante", Descricao = "Constante: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 3.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "x", Nome = "Variavel de entrada", Descricao = "Variavel de entrada: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 16.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10784,9 +10784,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0 },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 100.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa especifica", Descricao = "Taxa especifica: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.12, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 15.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10812,10 +10812,10 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0 },
-                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0 },
-                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0 },
+                    new Variavel { Simbolo = "K", Nome = "Capacidade maxima", Descricao = "Capacidade maxima: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "N0", Nome = "Valor inicial", Descricao = "Valor inicial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 120.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "r", Nome = "Taxa intrinseca", Descricao = "Taxa intrinseca: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "t", Nome = "Tempo", Descricao = "Tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 20.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10841,8 +10841,8 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0 },
-                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0 },
+                    new Variavel { Simbolo = "util", Nome = "Saida util", Descricao = "Saida util: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 78.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "total", Nome = "Entrada total", Descricao = "Entrada total: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 95.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10868,9 +10868,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0 },
-                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0 },
-                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0 },
+                    new Variavel { Simbolo = "A", Nome = "Pre-exponencial", Descricao = "Pre-exponencial: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1000000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Ea", Nome = "Energia de ativacao", Descricao = "Energia de ativacao: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 42000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "T", Nome = "Temperatura", Descricao = "Temperatura: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 330.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10896,9 +10896,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45 },
+                    new Variavel { Simbolo = "C", Nome = "Concentracao", Descricao = "Concentracao: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.3, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.45, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10924,9 +10924,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2 },
-                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0 },
+                    new Variavel { Simbolo = "D", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.2e-05, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.2, Unidade = "adim" },
+                    new Variavel { Simbolo = "dCdx", Nome = "Gradiente", Descricao = "Gradiente: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 35.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10952,9 +10952,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0 },
-                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24 },
-                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0 },
+                    new Variavel { Simbolo = "k", Nome = "Condutividade", Descricao = "Condutividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 32.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "A", Nome = "Area", Descricao = "Area: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.24, Unidade = "adim" },
+                    new Variavel { Simbolo = "dTdx", Nome = "Gradiente termico", Descricao = "Gradiente termico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 28.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -10980,10 +10980,10 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0 },
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06 },
-                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001 },
+                    new Variavel { Simbolo = "rho", Nome = "Densidade", Descricao = "Densidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 998.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.9, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento caracteristico", Descricao = "Comprimento caracteristico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.06, Unidade = "adim" },
+                    new Variavel { Simbolo = "mu", Nome = "Viscosidade dinamica", Descricao = "Viscosidade dinamica: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.001, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11009,9 +11009,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7 },
-                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05 },
-                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05 },
+                    new Variavel { Simbolo = "v", Nome = "Velocidade", Descricao = "Velocidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.7, Unidade = "adim" },
+                    new Variavel { Simbolo = "L", Nome = "Comprimento", Descricao = "Comprimento: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.05, Unidade = "adim" },
+                    new Variavel { Simbolo = "alpha", Nome = "Difusividade", Descricao = "Difusividade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.1e-05, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11037,9 +11037,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4 },
-                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8 },
-                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6 },
+                    new Variavel { Simbolo = "K", Nome = "Ganho estatico", Descricao = "Ganho estatico: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 2.4, Unidade = "adim" },
+                    new Variavel { Simbolo = "tau", Nome = "Constante de tempo", Descricao = "Constante de tempo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "s", Nome = "Frequencia de analise", Descricao = "Frequencia de analise: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.6, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11065,9 +11065,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8 },
-                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6 },
-                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3 },
+                    new Variavel { Simbolo = "e1", Nome = "Erro 1", Descricao = "Erro 1: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.8, Unidade = "adim" },
+                    new Variavel { Simbolo = "e2", Nome = "Erro 2", Descricao = "Erro 2: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = -0.6, Unidade = "adim" },
+                    new Variavel { Simbolo = "e3", Nome = "Erro 3", Descricao = "Erro 3: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.3, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11093,8 +11093,8 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16 },
-                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0 },
+                    new Variavel { Simbolo = "prob", Nome = "Probabilidade", Descricao = "Probabilidade: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.16, Unidade = "adim" },
+                    new Variavel { Simbolo = "impacto", Nome = "Impacto", Descricao = "Impacto: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 4200000.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11120,9 +11120,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0 },
-                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11 },
-                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0 },
+                    new Variavel { Simbolo = "VF", Nome = "Valor futuro", Descricao = "Valor futuro: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 850000.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "i", Nome = "Taxa por periodo", Descricao = "Taxa por periodo: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.11, Unidade = "adim" },
+                    new Variavel { Simbolo = "n", Nome = "Numero de periodos", Descricao = "Numero de periodos: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 6.0, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11148,8 +11148,8 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0 },
-                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "Ps", Nome = "Potencia do sinal", Descricao = "Potencia do sinal: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 14.0, Unidade = "adim" },
+                    new Variavel { Simbolo = "Pn", Nome = "Potencia de ruido", Descricao = "Potencia de ruido: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11175,9 +11175,9 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88 },
-                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22 },
-                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31 },
+                    new Variavel { Simbolo = "PD_H", Nome = "P(D|H)", Descricao = "P(D|H): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.88, Unidade = "adim" },
+                    new Variavel { Simbolo = "PH", Nome = "P(H)", Descricao = "P(H): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.22, Unidade = "adim" },
+                    new Variavel { Simbolo = "PD", Nome = "P(D)", Descricao = "P(D): parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.31, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11203,8 +11203,8 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65 },
-                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35 },
+                    new Variavel { Simbolo = "p1", Nome = "Probabilidade 1", Descricao = "Probabilidade 1: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.65, Unidade = "adim" },
+                    new Variavel { Simbolo = "p2", Nome = "Probabilidade 2", Descricao = "Probabilidade 2: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 0.35, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {
@@ -11230,8 +11230,8 @@ namespace CompendioCalc.Services
                 Icone = "∞",
                 Variaveis = new List<Variavel>
                 {
-                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024 },
-                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018 },
+                    new Variavel { Simbolo = "xk", Nome = "Iteracao atual", Descricao = "Iteracao atual: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.024, Unidade = "adim" },
+                    new Variavel { Simbolo = "xkm1", Nome = "Iteracao anterior", Descricao = "Iteracao anterior: parametro de entrada para modelagem em convergencia numerica e estrutura abstrata; use faixa operacional validada e registre incerteza de medicao no contexto disciplinar.", ValorPadrao = 1.018, Unidade = "adim" },
                 },
                 Calcular = v =>
                 {

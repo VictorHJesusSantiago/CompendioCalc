@@ -29,8 +29,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1991",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "MM produto (g/mol)", Simbolo = "MM_p", Unidade = "g/mol", ValorPadrao = 100 },
-                        new Variavel { Nome = "Σ MM reagentes (g/mol)", Simbolo = "MM_r", Unidade = "g/mol", ValorPadrao = 150 }
+                        new Variavel { Nome = "MM produto (g/mol)", Simbolo = "MM_p", Unidade = "g/mol", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σ MM reagentes (g/mol)", Simbolo = "MM_r", Unidade = "g/mol", ValorPadrao = 150, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "AE",
                     UnidadeResultado = "%",
@@ -42,7 +42,8 @@ namespace CompendioCalc.Services
                         double AE = (MM_produto / Math.Max(MM_reagentes, 1)) * 100;
                         return AE;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-320: Fator E (Sheldon)
@@ -62,8 +63,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kg/kg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_resíduo (kg)", Simbolo = "m_r", Unidade = "kg", ValorPadrao = 500 },
-                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 20 }
+                        new Variavel { Nome = "m_resíduo (kg)", Simbolo = "m_r", Unidade = "kg", ValorPadrao = 500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -72,7 +73,8 @@ namespace CompendioCalc.Services
                         if (m_p <= 0) return 0;
                         return m_r / m_p;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-321: PMI Process Mass Intensity
@@ -92,8 +94,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kg/kg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_total entradas (kg)", Simbolo = "m_in", Unidade = "kg", ValorPadrao = 1500 },
-                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 50 }
+                        new Variavel { Nome = "m_total entradas (kg)", Simbolo = "m_in", Unidade = "kg", ValorPadrao = 1500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -102,7 +104,8 @@ namespace CompendioCalc.Services
                         if (m_p <= 0) return 0;
                         return m_in / m_p;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-322: RME Reaction Mass Efficiency
@@ -122,8 +125,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_produto (g)", Simbolo = "m_p", Unidade = "g", ValorPadrao = 80 },
-                        new Variavel { Nome = "Σm_reagentes (g)", Simbolo = "m_r", Unidade = "g", ValorPadrao = 200 }
+                        new Variavel { Nome = "m_produto (g)", Simbolo = "m_p", Unidade = "g", ValorPadrao = 80, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σm_reagentes (g)", Simbolo = "m_r", Unidade = "g", ValorPadrao = 200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -132,7 +135,8 @@ namespace CompendioCalc.Services
                         if (m_r <= 0) return 0;
                         return 100 * m_p / m_r;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-323: EcoScale
@@ -152,14 +156,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Σ penalidades", Simbolo = "P", Unidade = "", ValorPadrao = 28 }
+                        new Variavel { Nome = "Σ penalidades", Simbolo = "P", Unidade = "", ValorPadrao = 28, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double P = inputs["Σ penalidades"];
                         return Math.Max(0, 100 - P);
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-324: Eficiência Energética
@@ -179,8 +184,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kWh/kg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "E consumida (kWh)", Simbolo = "E", Unidade = "kWh", ValorPadrao = 500 },
-                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 25 }
+                        new Variavel { Nome = "E consumida (kWh)", Simbolo = "E", Unidade = "kWh", ValorPadrao = 500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 25, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -189,7 +194,8 @@ namespace CompendioCalc.Services
                         if (m_p <= 0) return 0;
                         return E / m_p;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-325: Carbon Intensity
@@ -209,8 +215,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kgCO₂e/kg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "CO₂e total (kg)", Simbolo = "co2", Unidade = "kg", ValorPadrao = 12000 },
-                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 4000 }
+                        new Variavel { Nome = "CO₂e total (kg)", Simbolo = "co2", Unidade = "kg", ValorPadrao = 12000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 4000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -219,7 +225,8 @@ namespace CompendioCalc.Services
                         if (m_p <= 0) return 0;
                         return co2 / m_p;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-326: Solvent Intensity
@@ -239,8 +246,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kg/kg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_solventes (kg)", Simbolo = "m_s", Unidade = "kg", ValorPadrao = 900 },
-                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 30 }
+                        new Variavel { Nome = "m_solventes (kg)", Simbolo = "m_s", Unidade = "kg", ValorPadrao = 900, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (kg)", Simbolo = "m_p", Unidade = "kg", ValorPadrao = 30, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -249,7 +256,8 @@ namespace CompendioCalc.Services
                         if (m_p <= 0) return 0;
                         return m_s / m_p;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-327: Recuperação de Solvente
@@ -269,8 +277,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_recuperado (kg)", Simbolo = "m_rec", Unidade = "kg", ValorPadrao = 375 },
-                        new Variavel { Nome = "m_usado (kg)", Simbolo = "m_use", Unidade = "kg", ValorPadrao = 500 }
+                        new Variavel { Nome = "m_recuperado (kg)", Simbolo = "m_rec", Unidade = "kg", ValorPadrao = 375, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_usado (kg)", Simbolo = "m_use", Unidade = "kg", ValorPadrao = 500, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -279,7 +287,8 @@ namespace CompendioCalc.Services
                         if (m_use <= 0) return 0;
                         return 100 * m_rec / m_use;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-328: Toxicidade Aguda LD50
@@ -299,7 +308,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kg/mg",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "LD50 (mg/kg)", Simbolo = "LD50", Unidade = "mg/kg", ValorPadrao = 50 }
+                        new Variavel { Nome = "LD50 (mg/kg)", Simbolo = "LD50", Unidade = "mg/kg", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -307,7 +316,8 @@ namespace CompendioCalc.Services
                         if (ld50 <= 0) return 0;
                         return 1.0 / ld50;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-329: Catalytic Efficiency Gain
@@ -327,8 +337,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Rendimento base (%)", Simbolo = "Yb", Unidade = "%", ValorPadrao = 62 },
-                        new Variavel { Nome = "Rendimento catalítico (%)", Simbolo = "Yc", Unidade = "%", ValorPadrao = 88 }
+                        new Variavel { Nome = "Rendimento base (%)", Simbolo = "Yb", Unidade = "%", ValorPadrao = 62, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Rendimento catalítico (%)", Simbolo = "Yc", Unidade = "%", ValorPadrao = 88, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -337,7 +347,8 @@ namespace CompendioCalc.Services
                         if (Yb <= 0) return 0;
                         return 100 * (Yc - Yb) / Yb;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-330: Renewable Carbon Index
@@ -357,8 +368,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C renovável (mol C)", Simbolo = "Cr", Unidade = "mol", ValorPadrao = 9 },
-                        new Variavel { Nome = "C total (mol C)", Simbolo = "Ct", Unidade = "mol", ValorPadrao = 12 }
+                        new Variavel { Nome = "C renovável (mol C)", Simbolo = "Cr", Unidade = "mol", ValorPadrao = 9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "C total (mol C)", Simbolo = "Ct", Unidade = "mol", ValorPadrao = 12, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -367,7 +378,8 @@ namespace CompendioCalc.Services
                         if (Ct <= 0) return 0;
                         return 100 * Cr / Ct;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-331: Water Intensity
@@ -387,8 +399,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m³/t",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V_água (m³)", Simbolo = "Vw", Unidade = "m³", ValorPadrao = 120 },
-                        new Variavel { Nome = "m_produto (t)", Simbolo = "mp", Unidade = "t", ValorPadrao = 40 }
+                        new Variavel { Nome = "V_água (m³)", Simbolo = "Vw", Unidade = "m³", ValorPadrao = 120, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_produto (t)", Simbolo = "mp", Unidade = "t", ValorPadrao = 40, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -397,7 +409,8 @@ namespace CompendioCalc.Services
                         if (mp <= 0) return 0;
                         return Vw / mp;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-332: Biodegradabilidade
@@ -417,8 +430,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "BOD5 (mg/L)", Simbolo = "BOD", Unidade = "mg/L", ValorPadrao = 180 },
-                        new Variavel { Nome = "COD (mg/L)", Simbolo = "COD", Unidade = "mg/L", ValorPadrao = 400 }
+                        new Variavel { Nome = "BOD5 (mg/L)", Simbolo = "BOD", Unidade = "mg/L", ValorPadrao = 180, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "COD (mg/L)", Simbolo = "COD", Unidade = "mg/L", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -427,7 +440,8 @@ namespace CompendioCalc.Services
                         if (COD <= 0) return 0;
                         return BOD / COD;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-333: Yield-Corrected AE
@@ -447,8 +461,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "AE (%)", Simbolo = "AE", Unidade = "%", ValorPadrao = 82 },
-                        new Variavel { Nome = "Rendimento Y (%)", Simbolo = "Y", Unidade = "%", ValorPadrao = 75 }
+                        new Variavel { Nome = "AE (%)", Simbolo = "AE", Unidade = "%", ValorPadrao = 82, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Rendimento Y (%)", Simbolo = "Y", Unidade = "%", ValorPadrao = 75, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -456,7 +470,8 @@ namespace CompendioCalc.Services
                         double Y = inputs["Rendimento Y (%)"];
                         return AE * (Y / 100.0);
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-334: Solvent Selection Score
@@ -476,12 +491,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "H (0-10)", Simbolo = "H", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "S (0-10)", Simbolo = "S", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "E (0-10)", Simbolo = "E", Unidade = "", ValorPadrao = 4 },
-                        new Variavel { Nome = "w_H", Simbolo = "wH", Unidade = "", ValorPadrao = 0.4 },
-                        new Variavel { Nome = "w_S", Simbolo = "wS", Unidade = "", ValorPadrao = 0.3 },
-                        new Variavel { Nome = "w_E", Simbolo = "wE", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "H (0-10)", Simbolo = "H", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "S (0-10)", Simbolo = "S", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "E (0-10)", Simbolo = "E", Unidade = "", ValorPadrao = 4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "w_H", Simbolo = "wH", Unidade = "", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "w_S", Simbolo = "wS", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "w_E", Simbolo = "wE", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -493,7 +508,8 @@ namespace CompendioCalc.Services
                         double wE = inputs["w_E"];
                         return wH * H + wS * S + wE * E;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-335: Environmental Quotient (EQ)
@@ -513,8 +529,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "E-factor", Simbolo = "E", Unidade = "", ValorPadrao = 8 },
-                        new Variavel { Nome = "Q periculosidade", Simbolo = "Q", Unidade = "", ValorPadrao = 25 }
+                        new Variavel { Nome = "E-factor", Simbolo = "E", Unidade = "", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Q periculosidade", Simbolo = "Q", Unidade = "", ValorPadrao = 25, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -522,7 +538,8 @@ namespace CompendioCalc.Services
                         double Q = inputs["Q periculosidade"];
                         return E * Q;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-336: Circularity Index
@@ -542,9 +559,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m_reuso (kg)", Simbolo = "mr", Unidade = "kg", ValorPadrao = 300 },
-                        new Variavel { Nome = "m_reciclo (kg)", Simbolo = "mc", Unidade = "kg", ValorPadrao = 200 },
-                        new Variavel { Nome = "m_total (kg)", Simbolo = "mt", Unidade = "kg", ValorPadrao = 800 }
+                        new Variavel { Nome = "m_reuso (kg)", Simbolo = "mr", Unidade = "kg", ValorPadrao = 300, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_reciclo (kg)", Simbolo = "mc", Unidade = "kg", ValorPadrao = 200, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m_total (kg)", Simbolo = "mt", Unidade = "kg", ValorPadrao = 800, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -554,7 +571,8 @@ namespace CompendioCalc.Services
                         if (mt <= 0) return 0;
                         return (mr + mc) / mt;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 },
 
                 // V10-337: Compliance 12 Principles Score
@@ -574,7 +592,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Itens atendidos (0-12)", Simbolo = "n", Unidade = "", ValorPadrao = 9 }
+                        new Variavel { Nome = "Itens atendidos (0-12)", Simbolo = "n", Unidade = "", ValorPadrao = 9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -583,7 +601,8 @@ namespace CompendioCalc.Services
                         if (n > 12) n = 12;
                         return 100 * n / 12.0;
                     },
-                    Icone = "🌱"
+                    Icone = "🌱",
+                    Unidades = "",
                 }
             });
         }

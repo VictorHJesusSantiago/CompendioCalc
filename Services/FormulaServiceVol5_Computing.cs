@@ -23,10 +23,13 @@ public partial class FormulaService
                 Icone = "ρ",
                 Descricao = "Razão de aproximação: pior caso da razão entre solução do algoritmo e ótimo. ρ-aproximação garante solução dentro de fator ρ do ótimo.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "C", Nome = "C", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["rho"] + vars["C"]
+                Calcular = vars => vars["rho"] + vars["C"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -36,10 +39,13 @@ public partial class FormulaService
                 Icone = "VC",
                 Descricao = "Vertex Cover 2-aproximação: encontre matching maximal e tome ambos vértices de cada aresta. Simples, 2-aproximação. Melhorar para 2-ε é aberto.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "VC", Nome = "VC", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "VC", Nome = "VC", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["VC"]
+                Calcular = vars => vars["VC"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -51,10 +57,11 @@ public partial class FormulaService
                 Criador = "Nicos Christofides",
                 AnoOrigin = "1976",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "TSP", Nome = "TSP", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "TSP", Nome = "TSP", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["TSP"]
+                Calcular = vars => vars["TSP"],
+                Unidades = "",
             },
             new Formula
             {
@@ -64,10 +71,13 @@ public partial class FormulaService
                 Icone = "SC",
                 Descricao = "Set Cover: algoritmo guloso (escolha conjunto que cobre mais) atinge razão H(n)≈ln(n). Essencialmente ótimo sob P≠NP.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -77,10 +87,13 @@ public partial class FormulaService
                 Icone = "FP",
                 Descricao = "FPTAS para Knapsack: escala e arredonda lucros, aplica PD. (1-ε)-aproximação em tempo polinomial em n e 1/ε. Melhor possível para NP-hard.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1 }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "epsilon", Nome = "epsilon", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "em", Nome = "em", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["epsilon"] + vars["em"]
+                Calcular = vars => vars["epsilon"] + vars["em"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -90,10 +103,13 @@ public partial class FormulaService
                 Icone = "LP",
                 Descricao = "Relaxação LP: resolve versão contínua (LP) do problema inteiro. Gap de integralidade limita a razão. Arredondamento probabilístico ou determinístico.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "LP", Nome = "LP", ValorPadrao = 1 }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "LP", Nome = "LP", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "rho", Nome = "rho", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["LP"] + vars["rho"]
+                Calcular = vars => vars["LP"] + vars["rho"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -103,10 +119,13 @@ public partial class FormulaService
                 Icone = "PCP",
                 Descricao = "Teorema PCP: toda prova NP pode ser verificada lendo O(1) bits aleatórios. Implica inaproximabilidade de MAX-3SAT dentro de fator 7/8+ε.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -118,10 +137,11 @@ public partial class FormulaService
                 Criador = "Subhash Khot",
                 AnoOrigin = "2002",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "UGC", Nome = "UGC", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "Indicador de dificuldade", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "UGC", Nome = "UGC", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "de", Nome = "Indicador de dificuldade", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["UGC"] + vars["de"]
+                Calcular = vars => vars["UGC"] + vars["de"],
+                Unidades = "",
             },
 
             // 12.2 Complexidade de Circuitos
@@ -133,10 +153,13 @@ public partial class FormulaService
                 Icone = "⊞",
                 Descricao = "Circuito booleano: DAG de portas lógicas. Tamanho = nº de portas. Profundidade = maior caminho entrada-saída. Modelo não-uniforme de computação.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1 }, new() { Simbolo = "OR", Nome = "Porta OR", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "C", Nome = "C", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "OR", Nome = "Porta OR", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["C"] + vars["OR"]
+                Calcular = vars => vars["C"] + vars["OR"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -146,10 +169,13 @@ public partial class FormulaService
                 Icone = "P/",
                 Descricao = "P/poly: classe de linguagens decidíveis por famílias de circuitos de tamanho polinomial. Contém P e linguagens unárias. BPP ⊂ P/poly.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Tamanho da entrada n", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "P", Nome = "Probabilidade P", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Tamanho da entrada n", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["P"] + vars["n"]
+                Calcular = vars => vars["P"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -161,10 +187,11 @@ public partial class FormulaService
                 Criador = "Claude Shannon",
                 AnoOrigin = "1949",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "f", Nome = "Função alvo f", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "f", Nome = "Função alvo f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["f"] + vars["n"]
+                Calcular = vars => vars["f"] + vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -174,10 +201,13 @@ public partial class FormulaService
                 Icone = "AC⁰",
                 Descricao = "AC⁰: circuitos de profundidade constante e fan-in ilimitado, tamanho polinomial. Não computa paridade (Furst-Saxe-Sipser / Håstad).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] + vars["y"]
+                Calcular = vars => vars["x"] + vars["y"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -187,10 +217,13 @@ public partial class FormulaService
                 Icone = "NC",
                 Descricao = "NC (Nick's Class): problemas eficientemente paralelizáveis. NC¹⊂NC²⊂...⊂P. NC = P? é questão aberta fundamental (P-completude).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -200,10 +233,13 @@ public partial class FormulaService
                 Icone = "F≤C",
                 Descricao = "Fórmula: circuito em árvore (cada porta usada uma vez). Tamanho de fórmula L(f) ≥ tamanho de circuito C(f). Separação parcial com Andreev.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1 }, new() { Simbolo = "f", Nome = "Função alvo f", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "L", Nome = "L", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "f", Nome = "Função alvo f", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["L"] + vars["f"]
+                Calcular = vars => vars["L"] + vars["f"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -213,10 +249,13 @@ public partial class FormulaService
                 Icone = "CC",
                 Descricao = "Conexão: limitantes inferiores em complexidade de comunicação implicam limitantes para profundidade de circuitos. Técnica de Karchmer-Wigderson.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "de", Nome = "Indicador de dificuldade", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "de", Nome = "Indicador de dificuldade", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["de"]
+                Calcular = vars => vars["de"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -236,10 +275,13 @@ public partial class FormulaService
                 Icone = "OSI",
                 Descricao = "Modelo OSI: arquitetura de referência com 7 camadas. Cada camada provê serviços à superior. Encapsulamento de protocolos em stack.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -249,10 +291,13 @@ public partial class FormulaService
                 Icone = "TCP",
                 Descricao = "Modelo TCP/IP: pilha prática de 4 camadas. IP na camada Internet (roteamento), TCP/UDP no transporte, HTTP/DNS/etc na aplicação.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -264,10 +309,11 @@ public partial class FormulaService
                 Criador = "Claude Shannon",
                 AnoOrigin = "1948",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "B", Nome = "Largura de banda B (Hz)", ValorPadrao = 5 }, new() { Simbolo = "SNR", Nome = "Relacao sinal-ruido SNR", ValorPadrao = 3, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "B", Nome = "Largura de banda B (Hz)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "SNR", Nome = "Relacao sinal-ruido SNR", ValorPadrao = 3, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "C",
                 UnidadeResultado = "",
-                Calcular = vars => vars["B"] * Math.Log(1 + vars["SNR"], 2)
+                Calcular = vars => vars["B"] * Math.Log(1 + vars["SNR"], 2),
+                Unidades = "",
             },
             new Formula
             {
@@ -277,10 +323,13 @@ public partial class FormulaService
                 Icone = "D",
                 Descricao = "Componentes de atraso: propagação (distância/velocidade), transmissão (bits/taxa), fila e processamento. BDP = produto largura-atraso.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -290,10 +339,13 @@ public partial class FormulaService
                 Icone = "CD",
                 Descricao = "CSMA/CD: protocolo de acesso ao meio da Ethernet. Escuta antes de transmitir, detecta colisão e aplica backoff exponencial binário.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -303,10 +355,13 @@ public partial class FormulaService
                 Icone = "SPF",
                 Descricao = "Dijkstra para roteamento OSPF (link-state): calcula árvore de menores caminhos. Complexidade O((V+E)logV) com heap. Cada roteador tem visão global.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 13.2 Protocolos de Transporte
@@ -318,10 +373,13 @@ public partial class FormulaService
                 Icone = "cwnd",
                 Descricao = "TCP AIMD (Additive Increase, Multiplicative Decrease): janela cresce linearmente, cai pela metade em perda. Convergência a fair-share provada.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -331,10 +389,13 @@ public partial class FormulaService
                 Icone = "SS",
                 Descricao = "TCP Slow Start: crescimento exponencial da janela de congestionamento até atingir limiar ssthresh, depois cresce linearmente (congestion avoidance).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -344,10 +405,13 @@ public partial class FormulaService
                 Icone = "T",
                 Descricao = "Fórmula de Mathis: throughput TCP limitado por MSS/(RTT·√p), onde p=taxa de perda. Mostra dependência inversa em latência e raiz de perda.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -357,10 +421,13 @@ public partial class FormulaService
                 Icone = "FR",
                 Descricao = "Fast Retransmit: ao receber 3 ACKs duplicados, retransmite segmento sem esperar timeout. Fast Recovery: ssthresh=cwnd/2 e continua.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -372,10 +439,11 @@ public partial class FormulaService
                 Criador = "Google / Neal Cardwell",
                 AnoOrigin = "2016",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
         ]);
     }
@@ -397,10 +465,11 @@ public partial class FormulaService
                 Criador = "Noam Chomsky",
                 AnoOrigin = "1956",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] + vars["y"]
+                Calcular = vars => vars["x"] + vars["y"],
+                Unidades = "",
             },
             new Formula
             {
@@ -410,10 +479,13 @@ public partial class FormulaService
                 Icone = "AFD",
                 Descricao = "AFD: máquina de estados finitos determinística. Reconhece linguagens regulares. Equivalente a expressões regulares (Kleene).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "AFD", Nome = "AFD", ValorPadrao = 1 }, new() { Simbolo = "Q", Nome = "Q", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "AFD", Nome = "AFD", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Q", Nome = "Q", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["AFD"] + vars["Q"]
+                Calcular = vars => vars["AFD"] + vars["Q"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -423,10 +495,13 @@ public partial class FormulaService
                 Icone = "PL",
                 Descricao = "Pumping Lemma para linguagens regulares: toda palavra suficientemente longa tem substring que pode ser 'bombeada'. Prova que certas linguagens não são regulares.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "w", Nome = "w", ValorPadrao = 1 }, new() { Simbolo = "xyz", Nome = "xyz", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "w", Nome = "w", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "xyz", Nome = "xyz", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["w"] + vars["xyz"]
+                Calcular = vars => vars["w"] + vars["xyz"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -436,10 +511,13 @@ public partial class FormulaService
                 Icone = "PDA",
                 Descricao = "Autômato de pilha: autômato finito com pilha auxiliar. Reconhece linguagens livres de contexto. Equivale a gramáticas livres de contexto (CFG).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "PDA", Nome = "PDA", ValorPadrao = 1 }, new() { Simbolo = "AFD", Nome = "AFD", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "PDA", Nome = "PDA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "AFD", Nome = "AFD", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["PDA"] + vars["AFD"]
+                Calcular = vars => vars["PDA"] + vars["AFD"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -449,10 +527,13 @@ public partial class FormulaService
                 Icone = "CFG",
                 Descricao = "CFG: regras de produção A→α. Cada regra substitui um não-terminal. Descreve linguagens de programação, XML, etc. Base de parsers.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "G", Nome = "G", ValorPadrao = 1 }, new() { Simbolo = "V", Nome = "V", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "G", Nome = "G", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V", Nome = "V", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["G"] + vars["V"]
+                Calcular = vars => vars["G"] + vars["V"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -462,10 +543,13 @@ public partial class FormulaService
                 Icone = "CYK",
                 Descricao = "Algoritmo de Cocke-Younger-Kasami: parsing bottom-up para CFG em forma normal de Chomsky. Programação dinâmica em O(n³) no comprimento da string.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "CYK", Nome = "CYK", ValorPadrao = 1 }, new() { Simbolo = "O", Nome = "Ordem assintótica", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "CYK", Nome = "CYK", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "O", Nome = "Ordem assintótica", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["CYK"] + vars["O"]
+                Calcular = vars => vars["CYK"] + vars["O"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 14.2 Compiladores
@@ -477,10 +561,13 @@ public partial class FormulaService
                 Icone = "Lex",
                 Descricao = "Análise léxica: converte cadeia de caracteres em tokens usando autômatos finitos. Ferramentas: lex/flex. Baseada em expressões regulares.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "NFA", Nome = "NFA", ValorPadrao = 1 }, new() { Simbolo = "DFA", Nome = "DFA", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "NFA", Nome = "NFA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "DFA", Nome = "DFA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["NFA"] + vars["DFA"]
+                Calcular = vars => vars["NFA"] + vars["DFA"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -490,10 +577,13 @@ public partial class FormulaService
                 Icone = "LL",
                 Descricao = "Parser LL(1): análise sintática top-down preditivo. Lê da esquerda, produz derivação esquerda, 1 token de lookahead. Requer gramática não-ambígua.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "LL", Nome = "LL", ValorPadrao = 1 }, new() { Simbolo = "top", Nome = "Direção top-down", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "LL", Nome = "LL", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "top", Nome = "Direção top-down", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["LL"] + vars["top"]
+                Calcular = vars => vars["LL"] + vars["top"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -503,10 +593,13 @@ public partial class FormulaService
                 Icone = "LR",
                 Descricao = "Parser LR(1): análise bottom-up com autômato de items. Mais poderoso que LL(1). Variantes: SLR, LALR(1) (usado em yacc/bison).",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "LR", Nome = "LR", ValorPadrao = 1 }, new() { Simbolo = "up", Nome = "Direção bottom-up", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "LR", Nome = "LR", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "up", Nome = "Direção bottom-up", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["LR"] + vars["up"]
+                Calcular = vars => vars["LR"] + vars["up"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -516,10 +609,13 @@ public partial class FormulaService
                 Icone = "SSA",
                 Descricao = "SSA: representação intermediária onde cada variável é atribuída uma vez. Simplifica otimizações. φ-funções selecionam valores em pontos de junção do CFG.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "SSA", Nome = "SSA", ValorPadrao = 1 }, new() { Simbolo = "def", Nome = "def", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "SSA", Nome = "SSA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "def", Nome = "def", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["SSA"] + vars["def"]
+                Calcular = vars => vars["SSA"] + vars["def"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -529,10 +625,13 @@ public partial class FormulaService
                 Icone = "Reg",
                 Descricao = "Alocação de registradores via coloração de grafos: variáveis que coexistem formam arestas. k-coloração atribui k registradores. NP-hard, heurísticas eficazes.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1 }, new() { Simbolo = "do", Nome = "do", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "k", Nome = "k", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "do", Nome = "do", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k"] + vars["do"]
+                Calcular = vars => vars["k"] + vars["do"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -542,10 +641,13 @@ public partial class FormulaService
                 Icone = "CC",
                 Descricao = "Pipeline clássico de compilação: análise léxica, sintática, semântica, geração de representação intermediária, otimizações e geração de código final.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "Lex", Nome = "Lex", ValorPadrao = 1 }, new() { Simbolo = "IR", Nome = "IR", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Lex", Nome = "Lex", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "IR", Nome = "IR", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Lex"] + vars["IR"]
+                Calcular = vars => vars["Lex"] + vars["IR"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -567,10 +669,11 @@ public partial class FormulaService
                 Criador = "Gene Amdahl",
                 AnoOrigin = "1967",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -582,10 +685,11 @@ public partial class FormulaService
                 Criador = "John Gustafson",
                 AnoOrigin = "1988",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -595,10 +699,13 @@ public partial class FormulaService
                 Icone = "E",
                 Descricao = "Eficiência: fração do speedup linear atingido. E=1 ideal. Overhead paralelo (comunicação, sincronização, desequilíbrio) reduz E.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -608,10 +715,13 @@ public partial class FormulaService
                 Icone = "WS",
                 Descricao = "Modelo Work-Span: T₁=trabalho total, T∞=profundidade (caminho crítico). Paralelismo=T₁/T∞. Teorema de Brent limita Tp.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -623,10 +733,11 @@ public partial class FormulaService
                 Criador = "Leslie Valiant",
                 AnoOrigin = "1990",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -636,10 +747,13 @@ public partial class FormulaService
                 Icone = "P",
                 Descricao = "PRAM: modelo teórico com memória compartilhada. EREW (exclusive read/write), CREW (concurrent read), CRCW (concurrent read/write). Simula algoritmos paralelos.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -651,10 +765,11 @@ public partial class FormulaService
                 Criador = "Jeffrey Dean / Sanjay Ghemawat",
                 AnoOrigin = "2004",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -664,10 +779,13 @@ public partial class FormulaService
                 Icone = "αβ",
                 Descricao = "Modelo de comunicação ponto-a-ponto: α=latência (startup), β=inverso de bandwidth. Custo de enviar n palavras: α+nβ.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "α", Nome = "α", ValorPadrao = 10 }, new() { Simbolo = "nβ", Nome = "nβ", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "α", Nome = "α", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "nβ", Nome = "nβ", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Tcomm",
                 UnidadeResultado = "",
-                Calcular = vars => vars["α"] + vars["nβ"]
+                Calcular = vars => vars["α"] + vars["nβ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
 
             // 15.2 Algoritmos Distribuídos
@@ -681,10 +799,11 @@ public partial class FormulaService
                 Criador = "Fischer / Lynch / Paterson",
                 AnoOrigin = "1985",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -696,10 +815,11 @@ public partial class FormulaService
                 Criador = "Leslie Lamport",
                 AnoOrigin = "1989",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -711,10 +831,11 @@ public partial class FormulaService
                 Criador = "Diego Ongaro / John Ousterhout",
                 AnoOrigin = "2014",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -726,10 +847,11 @@ public partial class FormulaService
                 Criador = "Leslie Lamport",
                 AnoOrigin = "1978",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
             new Formula
             {
@@ -739,10 +861,13 @@ public partial class FormulaService
                 Icone = "V",
                 Descricao = "Relógios vetoriais: captam causalidade completa. V(a) < V(b) ↔ a→b. Detectam concorrência (eventos incomparáveis). Usados em BD distribuído.",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -754,10 +879,11 @@ public partial class FormulaService
                 Criador = "Eric Brewer",
                 AnoOrigin = "2000",
                 ExemploPratico = "Exemplo: use parâmetros do algoritmo ou protocolo, execute o cálculo e valide o resultado para o cenário computacional analisado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1 }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável de entrada x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Variável de apoio y", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Valor calculado",
                 UnidadeResultado = "",
-                Calcular = CalculoPadrao
+                Calcular = CalculoPadrao,
+                Unidades = "",
             },
         ]);
     }

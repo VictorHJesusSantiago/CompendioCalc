@@ -23,10 +23,13 @@ public partial class FormulaService
                 Icone = "FBL",
                 Descricao = "Transforma sistema não-linear em linear via mudança de variáveis e controle u. Derivadas de Lie Lf: grau relativo r = ordem mínima onde entrada aparece. Sistema SISO com r=n: linearização exata.",
                 ExemploPratico = "Exemplo: v_ref=10, Lf^n h=3, LgLf^(n-1) h=2 → u = (10−3)/2 = 3.5",
-                Variaveis = [ new() { Simbolo = "v", Nome = "Entrada virtual v", ValorPadrao = 10 }, new() { Simbolo = "Lfh", Nome = "Lf^n h", ValorPadrao = 3 }, new() { Simbolo = "LgLfh", Nome = "LgLf^(n-1) h", ValorPadrao = 2, ValorMin = 0.01 } ],
+                Variaveis = [ new() { Simbolo = "v", Nome = "Entrada virtual v", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Lfh", Nome = "Lf^n h", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "LgLfh", Nome = "LgLf^(n-1) h", ValorPadrao = 2, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u (controle)",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["v"] - vars["Lfh"]) / vars["LgLfh"]
+                Calcular = vars => (vars["v"] - vars["Lfh"]) / vars["LgLfh"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -36,10 +39,13 @@ public partial class FormulaService
                 Icone = "Lf",
                 Descricao = "Derivada direcional ao longo do campo vetorial f. Essencial em controle não-linear: acessibilidade, observabilidade, grau relativo são expressos via derivadas de Lie.",
                 ExemploPratico = "Exemplo: ∇h=[1, 2], f=[3, 4] → Lf h = ∇h·f = 1×3 + 2×4 = 11",
-                Variaveis = [ new() { Simbolo = "∇h1", Nome = "∇h componente 1", ValorPadrao = 1 }, new() { Simbolo = "∇h2", Nome = "∇h componente 2", ValorPadrao = 2 }, new() { Simbolo = "f1", Nome = "f componente 1", ValorPadrao = 3 }, new() { Simbolo = "f2", Nome = "f componente 2", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "∇h1", Nome = "∇h componente 1", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "∇h2", Nome = "∇h componente 2", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "f1", Nome = "f componente 1", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "f2", Nome = "f componente 2", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Lf h",
                 UnidadeResultado = "",
-                Calcular = vars => vars["∇h1"] * vars["f1"] + vars["∇h2"] * vars["f2"]
+                Calcular = vars => vars["∇h1"] * vars["f1"] + vars["∇h2"] * vars["f2"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -49,10 +55,13 @@ public partial class FormulaService
                 Icone = "←",
                 Descricao = "Design recursivo para sistemas em forma cascata estrita: trata cada estado como 'controle virtual' do subsistema anterior. Soma funções de Lyapunov parciais. Garante estabilidade global.",
                 ExemploPratico = "Exemplo: 3 etapas recursivas, cada adiciona termo kᵢ² à Lyapunov → V_total = k₁² + k₂² + k₃²",
-                Variaveis = [ new() { Simbolo = "k1", Nome = "Ganho etapa 1 k₁", ValorPadrao = 2 }, new() { Simbolo = "k2", Nome = "Ganho etapa 2 k₂", ValorPadrao = 1.5 }, new() { Simbolo = "k3", Nome = "Ganho etapa 3 k₃", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "k1", Nome = "Ganho etapa 1 k₁", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "k2", Nome = "Ganho etapa 2 k₂", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "k3", Nome = "Ganho etapa 3 k₃", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "V_total (Lyapunov)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["k1"]*vars["k1"] + vars["k2"]*vars["k2"] + vars["k3"]*vars["k3"]
+                Calcular = vars => vars["k1"]*vars["k1"] + vars["k2"]*vars["k2"] + vars["k3"]*vars["k3"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -62,10 +71,13 @@ public partial class FormulaService
                 Icone = "SMC",
                 Descricao = "Força trajetória para superfície de deslizamento s=0 via controle descontínuo. Robusto a incertezas e perturbações matching. Chattering = vibração de alta frequência (solução: boundary layer).",
                 ExemploPratico = "Exemplo: u_eq=5, K=3, s=2 → u_sw = −3×sign(2) = −3 → u = 5−3 = 2",
-                Variaveis = [ new() { Simbolo = "u_eq", Nome = "Controle equivalente u_eq", ValorPadrao = 5 }, new() { Simbolo = "K", Nome = "Ganho chaveamento K", ValorPadrao = 3 }, new() { Simbolo = "s", Nome = "Superfície s", ValorPadrao = 2 } ],
+                Variaveis = [ new() { Simbolo = "u_eq", Nome = "Controle equivalente u_eq", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "K", Nome = "Ganho chaveamento K", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "s", Nome = "Superfície s", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u (controle)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u_eq"] - vars["K"] * Math.Sign(vars["s"])
+                Calcular = vars => vars["u_eq"] - vars["K"] * Math.Sign(vars["s"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -75,10 +87,13 @@ public partial class FormulaService
                 Icone = "MRAC",
                 Descricao = "Model Reference Adaptive Control: ajusta parâmetros θ online para rastrear modelo de referência. Γ = ganho de adaptação. Baseado em Lyapunov ou passividade.",
                 ExemploPratico = "Exemplo: y_planta=10, y_modelo=8 → e = 10−8 = 2 (erro rastreamento)",
-                Variaveis = [ new() { Simbolo = "y", Nome = "Saída planta y", ValorPadrao = 10 }, new() { Simbolo = "y_m", Nome = "Saída modelo y_m", ValorPadrao = 8 } ],
+                Variaveis = [ new() { Simbolo = "y", Nome = "Saída planta y", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y_m", Nome = "Saída modelo y_m", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "e (erro)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["y"] - vars["yₘ"]
+                Calcular = vars => vars["y"] - vars["yₘ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -88,10 +103,13 @@ public partial class FormulaService
                 Icone = "V̇",
                 Descricao = "Função de Lyapunov: 'energia generalizada' que decresce ao longo de trajetórias. V>0 e V̇<0 ⟹ equilíbrio estável. LaSalle: V̇≤0 basta se {V̇=0} não contém trajetórias não-triviais.",
                 ExemploPratico = "Exemplo: V=x²+y²=5, V̇=-2x²-3y²=-13 → V̇<0 confirma estabilidade assintótica",
-                Variaveis = [ new() { Simbolo = "V", Nome = "Lyapunov V(x)", ValorPadrao = 5, ValorMin = 0.001 }, new() { Simbolo = "V̇", Nome = "Derivada V̇(x)", ValorPadrao = -13 } ],
+                Variaveis = [ new() { Simbolo = "V", Nome = "Lyapunov V(x)", ValorPadrao = 5, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V̇", Nome = "Derivada V̇(x)", ValorPadrao = -13, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Razão V̇/V",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V̇"] / vars["V"]
+                Calcular = vars => vars["V̇"] / vars["V"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -103,10 +121,11 @@ public partial class FormulaService
                 Criador = "Eduardo Sontag",
                 AnoOrigin = "1983",
                 ExemploPratico = "Exemplo: LfV=2, LgV=3, k=1 → u_Sontag = −1×3 = −3 (controle estabilizante)",
-                Variaveis = [ new() { Simbolo = "LfV", Nome = "LfV", ValorPadrao = 2 }, new() { Simbolo = "LgV", Nome = "LgV", ValorPadrao = 3 }, new() { Simbolo = "k", Nome = "Ganho k", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "LfV", Nome = "LfV", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "LgV", Nome = "LgV", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "k", Nome = "Ganho k", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u_Sontag",
                 UnidadeResultado = "",
-                Calcular = vars => -vars["k"] * vars["LgV"]
+                Calcular = vars => -vars["k"] * vars["LgV"],
+                Unidades = "",
             },
             new Formula
             {
@@ -116,10 +135,13 @@ public partial class FormulaService
                 Icone = "CBF",
                 Descricao = "Garante que estado nunca sai do conjunto seguro {B(x)≥0}. Combinado com CLF via QP: min ‖u-u_nom‖² s.t. CLF e CBF. Controle seguro com garantias formais.",
                 ExemploPratico = "Exemplo: LfB=-2, LgB=1, u=5, α(B)=0.5 → -2+1×5+0.5 = 3.5 ≥ 0 (seguro)",
-                Variaveis = [ new() { Simbolo = "LfB", Nome = "LfB", ValorPadrao = -2 }, new() { Simbolo = "LgB", Nome = "LgB", ValorPadrao = 1 }, new() { Simbolo = "u", Nome = "Controle u", ValorPadrao = 5 }, new() { Simbolo = "αB", Nome = "α(B)", ValorPadrao = 0.5 } ],
+                Variaveis = [ new() { Simbolo = "LfB", Nome = "LfB", ValorPadrao = -2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "LgB", Nome = "LgB", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "Controle u", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "αB", Nome = "α(B)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "condição CBF",
                 UnidadeResultado = "",
-                Calcular = vars => vars["LfB"] + vars["LgB"] * vars["u"] + vars["αB"]
+                Calcular = vars => vars["LfB"] + vars["LgB"] * vars["u"] + vars["αB"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -129,10 +151,13 @@ public partial class FormulaService
                 Icone = "pass",
                 Descricao = "Sistema passivo: energia armazenada ≤ energia fornecida. Interconexão de sistemas passivos é passiva. Feedback negativo de passivo → estável. Teoria de portas (Willems).",
                 ExemploPratico = "Exemplo: u=10, y=8, V̇=70 → excesso = u'y−V̇ = 10×8−70 = 10 ≥ 0 (passivo)",
-                Variaveis = [ new() { Simbolo = "u", Nome = "Entrada u", ValorPadrao = 10 }, new() { Simbolo = "y", Nome = "Saída y", ValorPadrao = 8 }, new() { Simbolo = "V̇", Nome = "V̇ storage", ValorPadrao = 70 } ],
+                Variaveis = [ new() { Simbolo = "u", Nome = "Entrada u", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "y", Nome = "Saída y", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V̇", Nome = "V̇ storage", ValorPadrao = 70, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "excesso u'y−V̇",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u"] * vars["y"] - vars["V̇"]
+                Calcular = vars => vars["u"] * vars["y"] - vars["V̇"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -142,10 +167,13 @@ public partial class FormulaService
                 Icone = "GS",
                 Descricao = "Família de controladores lineares K(ρ) parametrizada por variável de scheduling ρ (ponto de operação). LPV → interpola entre múltiplos designs lineares. Usado em aviação, motores.",
                 ExemploPratico = "Exemplo: K(ρ)=2ρ, x=5, ρ=1.5 → u = K(ρ)×x = 2×1.5×5 = 15",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Estado x", ValorPadrao = 5 }, new() { Simbolo = "ρ", Nome = "Scheduling ρ", ValorPadrao = 1.5 }, new() { Simbolo = "c", Nome = "Coef K(ρ)=c×ρ", ValorPadrao = 2 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Estado x", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ρ", Nome = "Scheduling ρ", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "c", Nome = "Coef K(ρ)=c×ρ", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u (controle)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["c"] * vars["ρ"] * vars["x"]
+                Calcular = vars => vars["c"] * vars["ρ"] * vars["x"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 15.2 Controle Ótimo
             new Formula
@@ -158,10 +186,11 @@ public partial class FormulaService
                 Criador = "Lev Pontryagin et al.",
                 AnoOrigin = "1956",
                 ExemploPratico = "Exemplo: ∂H/∂x=-5, ∂H/∂p=3 → ṗ=−(−5)=5, ẋ=3 (equações adjuntas)",
-                Variaveis = [ new() { Simbolo = "∂Hx", Nome = "∂H/∂x", ValorPadrao = -5 }, new() { Simbolo = "∂Hp", Nome = "∂H/∂p", ValorPadrao = 3 } ],
+                Variaveis = [ new() { Simbolo = "∂Hx", Nome = "∂H/∂x", ValorPadrao = -5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "∂Hp", Nome = "∂H/∂p", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ṗ (adjunto)",
                 UnidadeResultado = "",
-                Calcular = vars => -vars["∂Hx"]
+                Calcular = vars => -vars["∂Hx"],
+                Unidades = "",
             },
             new Formula
             {
@@ -171,10 +200,13 @@ public partial class FormulaService
                 Icone = "LQR",
                 Descricao = "Controle ótimo para sistema linear com custo quadrático: solução em forma de feedback u=-Kx. P = solução da equação algébrica de Riccati. Margens de estabilidade garantidas (60° fase, ∞ ganho).",
                 ExemploPratico = "Exemplo: R=2, B'Px=6 → u* = −(1/2)×6 = −3 (controle ótimo LQR)",
-                Variaveis = [ new() { Simbolo = "R", Nome = "Peso controle R", ValorPadrao = 2, ValorMin = 0.01 }, new() { Simbolo = "BPx", Nome = "B'Px", ValorPadrao = 6 } ],
+                Variaveis = [ new() { Simbolo = "R", Nome = "Peso controle R", ValorPadrao = 2, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "BPx", Nome = "B'Px", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u* (ótimo)",
                 UnidadeResultado = "",
-                Calcular = vars => -(1.0 / vars["R"]) * vars["BPx"]
+                Calcular = vars => -(1.0 / vars["R"]) * vars["BPx"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -184,10 +216,13 @@ public partial class FormulaService
                 Icone = "ARE",
                 Descricao = "Equação algébrica (tempo infinito) ou diferencial (tempo finito) de Riccati. Solução P define ganho ótimo K=R⁻¹B'P. Existência: (A,B) controlável, (A,Q½) observável.",
                 ExemploPratico = "Exemplo: A'P+PA=10, −PBR⁻¹B'P=-3, Q=8 → soma = 10−3+8 = 15 (deve ser 0)",
-                Variaveis = [ new() { Simbolo = "AP", Nome = "A'P+PA", ValorPadrao = 10 }, new() { Simbolo = "PBP", Nome = "−PBR⁻¹B'P", ValorPadrao = -3 }, new() { Simbolo = "Q", Nome = "Peso Q", ValorPadrao = 8 } ],
+                Variaveis = [ new() { Simbolo = "AP", Nome = "A'P+PA", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "PBP", Nome = "−PBR⁻¹B'P", ValorPadrao = -3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Q", Nome = "Peso Q", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "residual Riccati",
                 UnidadeResultado = "",
-                Calcular = vars => vars["AP"] + vars["PBP"] + vars["Q"]
+                Calcular = vars => vars["AP"] + vars["PBP"] + vars["Q"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -197,10 +232,13 @@ public partial class FormulaService
                 Icone = "HJB",
                 Descricao = "EDP para função valor ótima V(x,t). Suficiente (não apenas necessário como PMP). Caso linear-quadrático → Riccati. Em geral: maldição da dimensionalidade. Soluções viscosas.",
                 ExemploPratico = "Exemplo: L(x,u)=5, ∇V·f=12 → HJB = min_u[5+12] = 17 (deve ser 0)",
-                Variaveis = [ new() { Simbolo = "L", Nome = "Custo L(x,u)", ValorPadrao = 5 }, new() { Simbolo = "∇Vf", Nome = "∇V·f", ValorPadrao = 12 } ],
+                Variaveis = [ new() { Simbolo = "L", Nome = "Custo L(x,u)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "∇Vf", Nome = "∇V·f", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "HJB lado esquerdo",
                 UnidadeResultado = "",
-                Calcular = vars => vars["L"] + vars["∇Vf"]
+                Calcular = vars => vars["L"] + vars["∇Vf"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -210,10 +248,13 @@ public partial class FormulaService
                 Icone = "⬛",
                 Descricao = "Quando H é linear em u com u limitado: controle ótimo alterna entre extremos. Solução típica de tempo mínimo com saturação. Número de switchings determinado pela dimensão.",
                 ExemploPratico = "Exemplo: u_max=10, p'g=−2 → u* = 10×sign(−2) = 10×(−1) = −10",
-                Variaveis = [ new() { Simbolo = "u_max", Nome = "Limite u_max", ValorPadrao = 10 }, new() { Simbolo = "pg", Nome = "p'g", ValorPadrao = -2 } ],
+                Variaveis = [ new() { Simbolo = "u_max", Nome = "Limite u_max", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "pg", Nome = "p'g", ValorPadrao = -2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "u* (bang-bang)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["u_max"] * Math.Sign(vars["pg"])
+                Calcular = vars => vars["u_max"] * Math.Sign(vars["pg"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -223,10 +264,13 @@ public partial class FormulaService
                 Icone = "MPC",
                 Descricao = "Otimização online em horizonte finito N: resolve a cada passo, aplica u₀, recede horizonte. Trata restrições de estado/controle explicitamente. Padrão industrial (processos químicos, robótica).",
                 ExemploPratico = "Exemplo: Horizonte N=10, custo/passo l=2, V_f=15 → custo total ≈ 10×2+15 = 35",
-                Variaveis = [ new() { Simbolo = "N", Nome = "Horizonte N", ValorPadrao = 10, ValorMin = 1 }, new() { Simbolo = "l", Nome = "Custo/passo l", ValorPadrao = 2 }, new() { Simbolo = "V_f", Nome = "Custo terminal V_f", ValorPadrao = 15 } ],
+                Variaveis = [ new() { Simbolo = "N", Nome = "Horizonte N", ValorPadrao = 10, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "l", Nome = "Custo/passo l", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V_f", Nome = "Custo terminal V_f", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Custo total (aprox)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["N"] * vars["l"] + vars["V_f"]
+                Calcular = vars => vars["N"] * vars["l"] + vars["V_f"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -238,10 +282,11 @@ public partial class FormulaService
                 Criador = "Richard Bellman",
                 AnoOrigin = "1957",
                 ExemploPratico = "Exemplo: Custo imediato l=3, V* futuro=18 → V* corrente = min[3+18] = 21",
-                Variaveis = [ new() { Simbolo = "l", Nome = "Custo imediato l", ValorPadrao = 3 }, new() { Simbolo = "V_next", Nome = "V* futuro", ValorPadrao = 18 } ],
+                Variaveis = [ new() { Simbolo = "l", Nome = "Custo imediato l", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "V_next", Nome = "V* futuro", ValorPadrao = 18, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "V* (ótimo)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["l"] + vars["V_next"]
+                Calcular = vars => vars["l"] + vars["V_next"],
+                Unidades = "",
             },
         ]);
     }
@@ -260,10 +305,13 @@ public partial class FormulaService
                 Icone = "∇²",
                 Descricao = "Relaciona potencial eletrostático φ com densidades de carga: buracos p, elétrons n, doadores ionizados N_D⁺, aceitadores N_A⁻. Base da simulação de dispositivos.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "phi", Nome = "phi", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["phi"] + vars["q"]
+                Calcular = vars => vars["phi"] + vars["q"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -273,10 +321,13 @@ public partial class FormulaService
                 Icone = "∂n",
                 Descricao = "Conservação de portadores: variação temporal = divergência de corrente + geração G - recombinação R. Analogamente para buracos com sinal oposto da corrente.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "n", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "t", Nome = "t", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] + vars["t"]
+                Calcular = vars => vars["n"] + vars["t"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -286,10 +337,13 @@ public partial class FormulaService
                 Icone = "J",
                 Descricao = "Corrente = drift (campo E) + difusão (gradiente de concentração). μ = mobilidade, D = coeficiente de difusão. Modelo padrão para simulação de dispositivos.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "qn", Nome = "qn", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "qn", Nome = "qn", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["qn"] + vars["mu"]
+                Calcular = vars => vars["qn"] + vars["mu"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -299,10 +353,13 @@ public partial class FormulaService
                 Icone = "V_T",
                 Descricao = "Relaciona difusão e mobilidade via potencial térmico. V_T = kT/q ≈ 26 mV a 300K. Consequência do equilíbrio termodinâmico (fluctuation-dissipation).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "kT", Nome = "kT", ValorPadrao = 10 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "kT", Nome = "kT", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "μ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["kT"] / vars["q"]
+                Calcular = vars => vars["kT"] / vars["q"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -314,10 +371,11 @@ public partial class FormulaService
                 Criador = "Shockley / Read / Hall",
                 AnoOrigin = "1952",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "np", Nome = "np", ValorPadrao = 1 }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "np", Nome = "np", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["np"] + vars["tau"]
+                Calcular = vars => vars["np"] + vars["tau"],
+                Unidades = "",
             },
             new Formula
             {
@@ -329,10 +387,11 @@ public partial class FormulaService
                 Criador = "William Shockley",
                 AnoOrigin = "1949",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Expoente x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Amplitude A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * Math.Exp(vars["x"])
+                Calcular = vars => vars["A"] * Math.Exp(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -342,10 +401,13 @@ public partial class FormulaService
                 Icone = "W",
                 Descricao = "Zona de depleção em junção p-n abrupta. Vbi = potencial built-in. Cresce com reversa (V<0), diminui com direta. C = εA/W → capacitância variável (varactor).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -355,10 +417,13 @@ public partial class FormulaService
                 Icone = "Vbi",
                 Descricao = "Barreira de potencial no equilíbrio: ~0.7V para Si, ~0.3V para Ge, ~1.1V para GaAs. Determina tensão de threshold do diodo e capacitância de depleção.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -368,10 +433,13 @@ public partial class FormulaService
                 Icone = "Iₛ",
                 Descricao = "Corrente reversa de saturação: portadores minoritários difundindo pela junção. A = área, L = comprimento de difusão (√Dτ). Muito sensível à temperatura (dobra a cada ~10°C).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "qA", Nome = "qA", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "qA", Nome = "qA", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["qA"]
+                Calcular = vars => vars["qA"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -381,10 +449,13 @@ public partial class FormulaService
                 Icone = "MOS",
                 Descricao = "Região triodo (linear): V_DS < V_GS-V_th. Transistor age como resistência controlada. Cox = capacitância do óxido de gate. W/L = razão de aspecto.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "I_D", Nome = "I_D", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "I_D", Nome = "I_D", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["I_D"] + vars["mu"]
+                Calcular = vars => vars["I_D"] + vars["mu"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -394,10 +465,13 @@ public partial class FormulaService
                 Icone = "sat",
                 Descricao = "Região de saturação: V_DS ≥ V_GS-V_th. Corrente 'constante' (modulação de canal λ: I_D·(1+λV_DS)). Base de amplificadores e circuitos digitais. Quadrática em Vgs-Vth.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "I_D", Nome = "I_D", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "I_D", Nome = "I_D", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["I_D"] + vars["mu"]
+                Calcular = vars => vars["I_D"] + vars["mu"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -407,10 +481,13 @@ public partial class FormulaService
                 Icone = "Vth",
                 Descricao = "Tensão de gate para inversão do canal. VFB = flat-band, φF = potencial de Fermi no bulk, Qd = carga de depleção. Ajuste por implantação iônica.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "VFB", Nome = "VFB", ValorPadrao = 10 }, new() { Simbolo = "2φF", Nome = "2φF", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "VFB", Nome = "VFB", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "2φF", Nome = "2φF", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Vth",
                 UnidadeResultado = "",
-                Calcular = vars => vars["VFB"] + vars["2φF"]
+                Calcular = vars => vars["VFB"] + vars["2φF"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -420,10 +497,13 @@ public partial class FormulaService
                 Icone = "BJT",
                 Descricao = "Transistor bipolar na região ativa: corrente de coletor exponencial na tensão base-emissor. β = IC/IB = ganho de corrente. Modelo de Ebers-Moll para todas regiões.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "IS", Nome = "IS", ValorPadrao = 5 }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 3 } ],
+                Variaveis = [ new() { Simbolo = "IS", Nome = "IS", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "e", Nome = "e", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "IC",
                 UnidadeResultado = "",
-                Calcular = vars => vars["IS"] * vars["e"]
+                Calcular = vars => vars["IS"] * vars["e"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -433,10 +513,13 @@ public partial class FormulaService
                 Icone = "FN",
                 Descricao = "Tunelamento Fowler-Nordheim: corrente exponencial em 1/E. Limitante em óxidos ultrafinos (<2nm). Mecanismo de escrita em memórias Flash. A,B = constantes do material.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "AE", Nome = "AE", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "AE", Nome = "AE", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "J_FN",
                 UnidadeResultado = "",
-                Calcular = vars => vars["AE"] * vars["AE"]
+                Calcular = vars => vars["AE"] * vars["AE"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -458,10 +541,11 @@ public partial class FormulaService
                 Criador = "Claude Shannon",
                 AnoOrigin = "1948",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["x"])
+                Calcular = vars => Math.Log(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -473,10 +557,11 @@ public partial class FormulaService
                 Criador = "Richard Hamming",
                 AnoOrigin = "1950",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "d", Nome = "d", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "d", Nome = "d", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["d"] + vars["x"]
+                Calcular = vars => vars["d"] + vars["x"],
+                Unidades = "",
             },
             new Formula
             {
@@ -486,10 +571,13 @@ public partial class FormulaService
                 Icone = "Sing",
                 Descricao = "Limite superior: distância mínima ≤ n-k+1. Códigos MDS (Maximum Distance Separable: Reed-Solomon) atingem igualdade. n=comprimento, k=dimensão.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "d", Nome = "d", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "d", Nome = "d", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "n", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["d"] + vars["n"]
+                Calcular = vars => vars["d"] + vars["n"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -500,10 +588,12 @@ public partial class FormulaService
                 Descricao = "Low-Density Parity-Check: matriz de paridade H esparsa. Decodificação iterativa por passagem de mensagens no grafo de Tanner. Performance próxima de Shannon. 5G NR, Wi-Fi 6.",
                 Criador = "Robert Gallager (1963) / redescoberto 1990s",
                 ExemploPratico = "Exemplo: Matriz de paridade H com 1000 bits e eficiência de verificação check=0.95 → score = 950",
-                Variaveis = [ new() { Simbolo = "H", Nome = "Tamanho matriz H", ValorPadrao = 1000, ValorMin = 1 }, new() { Simbolo = "check", Nome = "Eficiência check", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1 } ],
+                Variaveis = [ new() { Simbolo = "H", Nome = "Tamanho matriz H", ValorPadrao = 1000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "check", Nome = "Eficiência check", ValorPadrao = 0.95, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Score",
                 UnidadeResultado = "",
-                Calcular = vars => vars["H"] * vars["check"]
+                Calcular = vars => vars["H"] * vars["check"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -515,10 +605,11 @@ public partial class FormulaService
                 Criador = "Claude Berrou / Alain Glavieux",
                 AnoOrigin = "1993",
                 ExemploPratico = "Exemplo: 2 codificadores RSC recursivos com ganho=3.5 dB cada → ganho total ≈ 7.0 dB",
-                Variaveis = [ new() { Simbolo = "RSC", Nome = "Número de RSC", ValorPadrao = 2, ValorMin = 1, ValorMax = 4 }, new() { Simbolo = "gain", Nome = "Ganho por RSC (dB)", ValorPadrao = 3.5 } ],
+                Variaveis = [ new() { Simbolo = "RSC", Nome = "Número de RSC", ValorPadrao = 2, ValorMin = 1, ValorMax = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "gain", Nome = "Ganho por RSC (dB)", ValorPadrao = 3.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Ganho total",
                 UnidadeResultado = "dB",
-                Calcular = vars => vars["RSC"] * vars["gain"]
+                Calcular = vars => vars["RSC"] * vars["gain"],
+                Unidades = "",
             },
             new Formula
             {
@@ -530,10 +621,11 @@ public partial class FormulaService
                 Criador = "Erdal Arıkan",
                 AnoOrigin = "2009",
                 ExemploPratico = "Exemplo: Canal com capacidade W=100 Mbps → polarização produz W⁺ e W⁻: soma W⁺+W⁻=W=100",
-                Variaveis = [ new() { Simbolo = "W", Nome = "Capacidade W (Mbps)", ValorPadrao = 100, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "W", Nome = "Capacidade W (Mbps)", ValorPadrao = 100, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "W (conservado)",
                 UnidadeResultado = "Mbps",
-                Calcular = vars => vars["W"]
+                Calcular = vars => vars["W"],
+                Unidades = "",
             },
             new Formula
             {
@@ -543,10 +635,13 @@ public partial class FormulaService
                 Icone = "MIMO",
                 Descricao = "Capacidade cresce linearmente com min(Nₜ,Nᵣ) antenas (multiplexação espacial). H = matriz de canal Nr×Nt. Massive MIMO (5G): centenas de antenas na estação base.",
                 ExemploPratico = "Exemplo: SNR=20 dB=100 linear, determinante det(I+SNR×HH†)=16 → C=log₂(16)=4 bits/s/Hz",
-                Variaveis = [ new() { Simbolo = "det", Nome = "det(I+SNR×HH†)", ValorPadrao = 16, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "det", Nome = "det(I+SNR×HH†)", ValorPadrao = 16, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "C",
                 UnidadeResultado = "bits/s/Hz",
-                Calcular = vars => Math.Log(vars["det"], 2)
+                Calcular = vars => Math.Log(vars["det"], 2),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -558,10 +653,11 @@ public partial class FormulaService
                 Criador = "Siavash Alamouti",
                 AnoOrigin = "1998",
                 ExemploPratico = "Exemplo: Matriz Alamouti 2×2 fornece ganho de diversidade Order=2 (duas antenas, duas cópias)",
-                Variaveis = [ new() { Simbolo = "Nt", Nome = "Número antenas Tx", ValorPadrao = 2, ValorMin = 2, ValorMax = 4 } ],
+                Variaveis = [ new() { Simbolo = "Nt", Nome = "Número antenas Tx", ValorPadrao = 2, ValorMin = 2, ValorMax = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Ordem divers.",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Nt"]
+                Calcular = vars => vars["Nt"],
+                Unidades = "",
             },
             // 17.2 OFDM e Comunicações
             new Formula
@@ -572,10 +668,13 @@ public partial class FormulaService
                 Icone = "OFDM",
                 Descricao = "Divide banda larga em subportadoras ortogonais estreitas: canal seletivo em frequência → múltiplos canais planos. IFFT no transmissor, FFT no receptor. 4G/5G, Wi-Fi, DVB.",
                 ExemploPratico = "Exemplo: Símbolo OFDM de duração T=50 μs → espaçamento de subportadoras Δf=1/T=1/(50e-6)=20 kHz",
-                Variaveis = [ new() { Simbolo = "T", Nome = "Duração símb. T (μs)", ValorPadrao = 50, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "T", Nome = "Duração símb. T (μs)", ValorPadrao = 50, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Δf",
                 UnidadeResultado = "kHz",
-                Calcular = vars => 1000.0 / vars["T"]
+                Calcular = vars => 1000.0 / vars["T"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -585,10 +684,13 @@ public partial class FormulaService
                 Icone = "CP",
                 Descricao = "Cópia da cauda do símbolo OFDM adicionada ao início. Transforma convolução linear do canal em circular → multiplicação no domínio da frequência. Elimina ISI entre símbolos.",
                 ExemploPratico = "Exemplo: Delay spread máx τ_max=5 μs, T=64 μs → L_CP ≥ 5 μs; fracção overhead = 5/64 ≈ 7.8%",
-                Variaveis = [ new() { Simbolo = "tau", Nome = "Delay spread τ (μs)", ValorPadrao = 5, ValorMin = 0 }, new() { Simbolo = "T", Nome = "Duração T (μs)", ValorPadrao = 64, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "tau", Nome = "Delay spread τ (μs)", ValorPadrao = 5, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "T", Nome = "Duração T (μs)", ValorPadrao = 64, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Overhead %",
                 UnidadeResultado = "%",
-                Calcular = vars => 100 * vars["tau"] / vars["T"]
+                Calcular = vars => 100 * vars["tau"] / vars["T"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -598,10 +700,13 @@ public partial class FormulaService
                 Icone = "PAPR",
                 Descricao = "Problema do OFDM: soma de N subcarriers pode ter picos altos (até N·Pmédia). Requer amplificador com grande back-off → ineficiente. Soluções: clipping, SLM, PTS.",
                 ExemploPratico = "Exemplo: OFDM com N=64 subportadoras → PAPR_max = 10×log₁₀(64) = 18.1 dB (limite superior)",
-                Variaveis = [ new() { Simbolo = "N", Nome = "N subportadoras", ValorPadrao = 64, ValorMin = 2 } ],
+                Variaveis = [ new() { Simbolo = "N", Nome = "N subportadoras", ValorPadrao = 64, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "PAPR_max",
                 UnidadeResultado = "dB",
-                Calcular = vars => 10 * Math.Log10(vars["N"])
+                Calcular = vars => 10 * Math.Log10(vars["N"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -611,10 +716,13 @@ public partial class FormulaService
                 Icone = "eq",
                 Descricao = "Graças ao CP, equalização no domínio da frequência é simples: dividir por Hₖ (resposta do canal na subcarrier k). O(N log N) vs O(N²) para equalização temporal.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Yₖ", Nome = "Yₖ", ValorPadrao = 10 }, new() { Simbolo = "Hₖ", Nome = "Hₖ", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "Yₖ", Nome = "Yₖ", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Hₖ", Nome = "Hₖ", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ₖ",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Yₖ"] / vars["Hₖ"]
+                Calcular = vars => vars["Yₖ"] / vars["Hₖ"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -624,10 +732,13 @@ public partial class FormulaService
                 Icone = "QAM",
                 Descricao = "Quadrature Amplitude Modulation: modula amplitude em I e Q. M-QAM: 16, 64, 256, 1024 pontos na constelação. Maior M → mais bits mas mais sensível a ruído. BER ~ erfc(√(3SNR/2(M-1))).",
                 ExemploPratico = "Exemplo: 256-QAM → log₂(256) = 8 bits/símbolo (alta eficiência espectral, requer alto SNR)",
-                Variaveis = [ new() { Simbolo = "M", Nome = "Constelação M-QAM", ValorPadrao = 256, ValorMin = 2 } ],
+                Variaveis = [ new() { Simbolo = "M", Nome = "Constelação M-QAM", ValorPadrao = 256, ValorMin = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "bits/símb",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Log(vars["M"], 2)
+                Calcular = vars => Math.Log(vars["M"], 2),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }
@@ -649,10 +760,11 @@ public partial class FormulaService
                 Criador = "Adhémar de Saint-Venant",
                 AnoOrigin = "1871",
                 ExemploPratico = "Exemplo: Profundidade h=2.5 m, velocidade u=1.2 m/s, declividade fundo S₀=0.001 rad → flux hu=3.0 m²/s",
-                Variaveis = [ new() { Simbolo = "h", Nome = "Profundidade h (m)", ValorPadrao = 2.5, ValorMin = 0.001 }, new() { Simbolo = "u", Nome = "Velocidade u (m/s)", ValorPadrao = 1.2 } ],
+                Variaveis = [ new() { Simbolo = "h", Nome = "Profundidade h (m)", ValorPadrao = 2.5, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "u", Nome = "Velocidade u (m/s)", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "hu",
                 UnidadeResultado = "m²/s",
-                Calcular = vars => vars["h"] * vars["u"]
+                Calcular = vars => vars["h"] * vars["u"],
+                Unidades = "",
             },
             new Formula
             {
@@ -664,10 +776,11 @@ public partial class FormulaService
                 Criador = "Robert Manning",
                 AnoOrigin = "1889",
                 ExemploPratico = "Exemplo: n=0.03 (concreto), Rh=1.5 m, S=0.002 → V = (1/0.03)×1.5^{2/3}×0.002^{1/2} ≈ 1.75 m/s",
-                Variaveis = [ new() { Simbolo = "n", Nome = "Coef. Manning n", ValorPadrao = 0.03, ValorMin = 0.001 }, new() { Simbolo = "Rh", Nome = "Raio hidráulico Rh (m)", ValorPadrao = 1.5, ValorMin = 0.001 }, new() { Simbolo = "S", Nome = "Declividade S", ValorPadrao = 0.002, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "Coef. Manning n", ValorPadrao = 0.03, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Rh", Nome = "Raio hidráulico Rh (m)", ValorPadrao = 1.5, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "S", Nome = "Declividade S", ValorPadrao = 0.002, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "V",
                 UnidadeResultado = "m/s",
-                Calcular = vars => (1.0 / vars["n"]) * Math.Pow(vars["Rh"], 2.0 / 3.0) * Math.Pow(vars["S"], 0.5)
+                Calcular = vars => (1.0 / vars["n"]) * Math.Pow(vars["Rh"], 2.0 / 3.0) * Math.Pow(vars["S"], 0.5),
+                Unidades = "",
             },
             new Formula
             {
@@ -679,10 +792,11 @@ public partial class FormulaService
                 Criador = "Henry Darcy",
                 AnoOrigin = "1856",
                 ExemploPratico = "Exemplo: K=1e-4 m/s, A=50 m², dh/dL=0.05 → Q = 1e-4×50×0.05 = 2.5e-4 m³/s",
-                Variaveis = [ new() { Simbolo = "K", Nome = "Condutividade K (m/s)", ValorPadrao = 0.0001, ValorMin = 0 }, new() { Simbolo = "A", Nome = "Área A (m²)", ValorPadrao = 50, ValorMin = 0.001 }, new() { Simbolo = "dh_dL", Nome = "Gradiente dh/dL", ValorPadrao = 0.05 } ],
+                Variaveis = [ new() { Simbolo = "K", Nome = "Condutividade K (m/s)", ValorPadrao = 0.0001, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "Área A (m²)", ValorPadrao = 50, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dh_dL", Nome = "Gradiente dh/dL", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Q",
                 UnidadeResultado = "m³/s",
-                Calcular = vars => vars["K"] * vars["A"] * vars["dh_dL"]
+                Calcular = vars => vars["K"] * vars["A"] * vars["dh_dL"],
+                Unidades = "",
             },
             new Formula
             {
@@ -694,10 +808,11 @@ public partial class FormulaService
                 Criador = "Lorenzo Richards",
                 AnoOrigin = "1931",
                 ExemploPratico = "Exemplo: Umidade θ inicial=0.25, variação Δθ/Δt=-0.001 s⁻¹ (secando) → |Δθ/Δt|=0.001",
-                Variaveis = [ new() { Simbolo = "theta", Nome = "Umidade θ", ValorPadrao = 0.25, ValorMin = 0, ValorMax = 1 }, new() { Simbolo = "dtheta", Nome = "Δθ/Δt", ValorPadrao = -0.001 } ],
+                Variaveis = [ new() { Simbolo = "theta", Nome = "Umidade θ", ValorPadrao = 0.25, ValorMin = 0, ValorMax = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dtheta", Nome = "Δθ/Δt", ValorPadrao = -0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "|Δθ/Δt|",
                 UnidadeResultado = "s⁻¹",
-                Calcular = vars => Math.Abs(vars["dtheta"])
+                Calcular = vars => Math.Abs(vars["dtheta"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -709,10 +824,11 @@ public partial class FormulaService
                 Criador = "Martinus van Genuchten",
                 AnoOrigin = "1980",
                 ExemploPratico = "Exemplo: n=1.5 → m = 1-1/1.5 = 1-0.667 = 0.333 (parâmetro m de van Genuchten)",
-                Variaveis = [ new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 1.5, ValorMin = 1.001 } ],
+                Variaveis = [ new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 1.5, ValorMin = 1.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "m",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 - 1.0 / vars["n"]
+                Calcular = vars => 1.0 - 1.0 / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -722,10 +838,13 @@ public partial class FormulaService
                 Icone = "ADE",
                 Descricao = "Transporte de solutos em meios porosos: advecção (v·∇C) + dispersão (D∇²C) + reações R. D = dispersão mecânica + difusão molecular. Modelagem de contaminação de aquíferos.",
                 ExemploPratico = "Exemplo: Concentração C=50 mg/L varia por dispersão D∇²C=-2.0 e advecção v·∇C=3.5 → ∂C/∂t=-5.5 mg/L/s",
-                Variaveis = [ new() { Simbolo = "D_lap", Nome = "D∇²C", ValorPadrao = -2.0 }, new() { Simbolo = "v_grad", Nome = "v·∇C", ValorPadrao = 3.5 }, new() { Simbolo = "R", Nome = "Reação R", ValorPadrao = 0 } ],
+                Variaveis = [ new() { Simbolo = "D_lap", Nome = "D∇²C", ValorPadrao = -2.0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "v_grad", Nome = "v·∇C", ValorPadrao = 3.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "R", Nome = "Reação R", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "∂C/∂t",
                 UnidadeResultado = "mg/L/s",
-                Calcular = vars => vars["D_lap"] - vars["v_grad"] + vars["R"]
+                Calcular = vars => vars["D_lap"] - vars["v_grad"] + vars["R"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             // 18.2 Plasticidade
             new Formula
@@ -738,10 +857,11 @@ public partial class FormulaService
                 Criador = "Richard von Mises",
                 AnoOrigin = "1913",
                 ExemploPratico = "Exemplo: 2º invariante desviador J₂=90 MPa² → σ_eq = √(3×90) = 16.43 MPa",
-                Variaveis = [ new() { Simbolo = "J2", Nome = "2º invari. desviador J₂ (MPa²)", ValorPadrao = 90, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "J2", Nome = "2º invari. desviador J₂ (MPa²)", ValorPadrao = 90, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "σ_eq",
                 UnidadeResultado = "MPa",
-                Calcular = vars => Math.Sqrt(3 * vars["J2"])
+                Calcular = vars => Math.Sqrt(3 * vars["J2"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -753,10 +873,11 @@ public partial class FormulaService
                 Criador = "Henri Tresca",
                 AnoOrigin = "1864",
                 ExemploPratico = "Exemplo: σ₁=100 MPa, σ₃=40 MPa → τ_max = (100-40)/2 = 30 MPa",
-                Variaveis = [ new() { Simbolo = "sigma1", Nome = "Tensão princ. σ₁ (MPa)", ValorPadrao = 100 }, new() { Simbolo = "sigma3", Nome = "Tensão princ. σ₃ (MPa)", ValorPadrao = 40 } ],
+                Variaveis = [ new() { Simbolo = "sigma1", Nome = "Tensão princ. σ₁ (MPa)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "sigma3", Nome = "Tensão princ. σ₃ (MPa)", ValorPadrao = 40, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "τ_max",
                 UnidadeResultado = "MPa",
-                Calcular = vars => (vars["sigma1"] - vars["sigma3"]) / 2.0
+                Calcular = vars => (vars["sigma1"] - vars["sigma3"]) / 2.0,
+                Unidades = "",
             },
             new Formula
             {
@@ -766,10 +887,13 @@ public partial class FormulaService
                 Icone = "ε̇ᵖ",
                 Descricao = "Deformação plástica normal à superfície de escoamento f(σ)=0 no espaço de tensões. λ̇≥0 (multiplicador plástico) determinado pela condição de consistência. Princípio de Hill.",
                 ExemploPratico = "Exemplo: Multiplicador plástico λ̇=0.005, gradiente ∂f/∂σ=12 → ε̇ᵖ = 0.005×12 = 0.06 s⁻¹",
-                Variaveis = [ new() { Simbolo = "lambda_", Nome = "Multiplic. λ̇ (s⁻¹)", ValorPadrao = 0.005, ValorMin = 0 }, new() { Simbolo = "df_dsigma", Nome = "Grad. ∂f/∂σ", ValorPadrao = 12 } ],
+                Variaveis = [ new() { Simbolo = "lambda_", Nome = "Multiplic. λ̇ (s⁻¹)", ValorPadrao = 0.005, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "df_dsigma", Nome = "Grad. ∂f/∂σ", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "ε̇ᵖ",
                 UnidadeResultado = "s⁻¹",
-                Calcular = vars => vars["lambda_"] * vars["df_dsigma"]
+                Calcular = vars => vars["lambda_"] * vars["df_dsigma"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -779,10 +903,13 @@ public partial class FormulaService
                 Icone = "κ",
                 Descricao = "Superfície de escoamento expande uniformemente com deformação plástica acumulada κ. σY(κ) = curva tensão-deformação. Não captura efeito Bauschinger.",
                 ExemploPratico = "Exemplo: Tensão equiv. σ_eq=250 MPa, limite escoam. σ_Y(κ)=200 MPa → f = 250-200 = 50 MPa (elasto-plástico)",
-                Variaveis = [ new() { Simbolo = "σeq", Nome = "Tensão equiv. σ_eq (MPa)", ValorPadrao = 250 }, new() { Simbolo = "σY", Nome = "Limite σ_Y(κ) (MPa)", ValorPadrao = 200 } ],
+                Variaveis = [ new() { Simbolo = "σeq", Nome = "Tensão equiv. σ_eq (MPa)", ValorPadrao = 250, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "σY", Nome = "Limite σ_Y(κ) (MPa)", ValorPadrao = 200, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "f",
                 UnidadeResultado = "MPa",
-                Calcular = vars => vars["σeq"] - vars["σY"]
+                Calcular = vars => vars["σeq"] - vars["σY"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -792,10 +919,13 @@ public partial class FormulaService
                 Icone = "α",
                 Descricao = "Superfície translada (não expande): center α move na direção da deformação plástica. Captura efeito Bauschinger (limite menor em reversão). Modelo de Prager, Armstrong-Frederick.",
                 ExemploPratico = "Exemplo: Centro backstress α=20 MPa desloca superfície de escoamento → tensão efetiva σ-α controla",
-                Variaveis = [ new() { Simbolo = "σ", Nome = "Tensão σ (MPa)", ValorPadrao = 250 }, new() { Simbolo = "α", Nome = "Backstress α (MPa)", ValorPadrao = 20 } ],
+                Variaveis = [ new() { Simbolo = "σ", Nome = "Tensão σ (MPa)", ValorPadrao = 250, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "α", Nome = "Backstress α (MPa)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "σ-α",
                 UnidadeResultado = "MPa",
-                Calcular = vars => vars["σ"] - vars["α"]
+                Calcular = vars => vars["σ"] - vars["α"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -807,10 +937,11 @@ public partial class FormulaService
                 Criador = "Daniel Drucker / William Prager",
                 AnoOrigin = "1952",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             // 18.3 Combustão
             new Formula
@@ -821,10 +952,13 @@ public partial class FormulaService
                 Icone = "Da",
                 Descricao = "Razão entre tempos de transporte e reação. Da≫1: reação rápida, mistura controla. Da≪1: reação lenta, cinética controla. Da~1: regime mais complexo (interação).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "Da", Nome = "Da", ValorPadrao = 1 }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Da", Nome = "Da", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "tau", Nome = "tau", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Da"] + vars["tau"]
+                Calcular = vars => vars["Da"] + vars["tau"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -836,10 +970,11 @@ public partial class FormulaService
                 Criador = "Yakov Zeldovich",
                 AnoOrigin = "1946",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "O", Nome = "O", ValorPadrao = 1 }, new() { Simbolo = "NO", Nome = "NO", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "O", Nome = "O", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "NO", Nome = "NO", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["O"] + vars["NO"]
+                Calcular = vars => vars["O"] + vars["NO"],
+                Unidades = "",
             },
             new Formula
             {
@@ -849,10 +984,13 @@ public partial class FormulaService
                 Icone = "SL",
                 Descricao = "Velocidade de propagação de chama pré-misturada. Balanço difusão-reação: SL aumenta com difusividade térmica e taxa de reação. CH₄/ar: ~40 cm/s. H₂/ar: ~200 cm/s.",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -864,10 +1002,11 @@ public partial class FormulaService
                 Criador = "Svante Arrhenius",
                 AnoOrigin = "1889",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 2 }, new() { Simbolo = "Tⁿ", Nome = "Tⁿ", ValorPadrao = 3 }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 4 } ],
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "Tⁿ", Nome = "Tⁿ", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "exp", Nome = "exp", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "k",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] * vars["Tⁿ"] * vars["exp"]
+                Calcular = vars => vars["A"] * vars["Tⁿ"] * vars["exp"],
+                Unidades = "",
             },
             new Formula
             {
@@ -877,10 +1016,13 @@ public partial class FormulaService
                 Icone = "δ",
                 Descricao = "Espessura de chama laminar: ~0.1-1 mm para hidrocarbonetos em condições atmosféricas. Escala onde difusão molecular e reação se equilibram. Ka = (δL/η)² = número de Karlovitz (turbulência).",
                 ExemploPratico = "Exemplo: substitua as variáveis pelos valores do seu cenário para obter o resultado numérico desta fórmula.",
-                Variaveis = [ new() { Simbolo = "α", Nome = "α", ValorPadrao = 10 }, new() { Simbolo = "SL", Nome = "SL", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "α", Nome = "α", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "SL", Nome = "SL", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "δL",
                 UnidadeResultado = "",
-                Calcular = vars => vars["α"] / vars["SL"]
+                Calcular = vars => vars["α"] / vars["SL"],
+                Criador = "Equipe CompendioCalc",
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
         ]);
     }

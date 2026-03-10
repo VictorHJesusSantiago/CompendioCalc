@@ -29,11 +29,11 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1973",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "S₀ Preço ativo", Simbolo = "S₀", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "Strike K", Simbolo = "K", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "Taxa r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "Volatilidade σ (%)", Simbolo = "σ", Unidade = "%", ValorPadrao = 20 },
-                        new Variavel { Nome = "Tempo T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "S₀ Preço ativo", Simbolo = "S₀", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Strike K", Simbolo = "K", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Taxa r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Volatilidade σ (%)", Simbolo = "σ", Unidade = "%", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -66,7 +66,8 @@ namespace CompendioCalc.Services
                         double C = S0 * N(d1) - K * Math.Exp(-r * T) * N(d2);
                         return C;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-162: Delta de Opção
@@ -86,11 +87,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "S₀", Simbolo = "S0", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "K", Simbolo = "K", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20 },
-                        new Variavel { Nome = "T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "S₀", Simbolo = "S0", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K", Simbolo = "K", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -116,7 +117,8 @@ namespace CompendioCalc.Services
                         double delta_call = N(d1);
                         return delta_call;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-163: Value at Risk (VaR)
@@ -136,11 +138,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Portfolio P ($)", Simbolo = "P", Unidade = "$", ValorPadrao = 10e6 },
-                        new Variavel { Nome = "μ retorno anual (%)", Simbolo = "mu", Unidade = "%", ValorPadrao = 8 },
-                        new Variavel { Nome = "σ volat anual (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 15 },
-                        new Variavel { Nome = "Confiança (%)", Simbolo = "alpha", Unidade = "%", ValorPadrao = 95 },
-                        new Variavel { Nome = "Dias", Simbolo = "days", Unidade = "dias", ValorPadrao = 1 }
+                        new Variavel { Nome = "Portfolio P ($)", Simbolo = "P", Unidade = "$", ValorPadrao = 10e6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ retorno anual (%)", Simbolo = "mu", Unidade = "%", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ volat anual (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Confiança (%)", Simbolo = "alpha", Unidade = "%", ValorPadrao = 95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Dias", Simbolo = "days", Unidade = "dias", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -168,7 +170,8 @@ namespace CompendioCalc.Services
                         double VaR = P * (mu - z_alpha * sigma);
                         return -VaR; // positive VaR = loss
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-164: Sharpe Ratio
@@ -188,9 +191,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R_p (%)", Simbolo = "Rp", Unidade = "%", ValorPadrao = 15 },
-                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2 },
-                        new Variavel { Nome = "σ_p (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 10 }
+                        new Variavel { Nome = "R_p (%)", Simbolo = "Rp", Unidade = "%", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_p (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -202,7 +205,8 @@ namespace CompendioCalc.Services
                         double SR = (Rp - Rf) / sigma;
                         return SR;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-165: CAPM — Capital Asset Pricing Model
@@ -222,9 +226,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2 },
-                        new Variavel { Nome = "β_i", Simbolo = "beta", Unidade = "", ValorPadrao = 1.5 },
-                        new Variavel { Nome = "E(R_m) (%)", Simbolo = "Rm", Unidade = "%", ValorPadrao = 10 }
+                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β_i", Simbolo = "beta", Unidade = "", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "E(R_m) (%)", Simbolo = "Rm", Unidade = "%", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -235,7 +239,8 @@ namespace CompendioCalc.Services
                         double E_Ri = Rf + beta * (Rm - Rf);
                         return E_Ri;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-166: Volatilidade Implícita
@@ -255,11 +260,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$/σ",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "S₀", Simbolo = "S0", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "K", Simbolo = "K", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20 },
-                        new Variavel { Nome = "T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "S₀", Simbolo = "S0", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K", Simbolo = "K", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r (%)", Simbolo = "r", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -277,7 +282,8 @@ namespace CompendioCalc.Services
                         double vega = S0 * phi_d1 * Math.Sqrt(T) / 100; // per 1% vol
                         return vega;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-167: Modelo Binomial (Cox-Ross-Rubinstein)
@@ -297,8 +303,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20 },
-                        new Variavel { Nome = "Δt (anos)", Simbolo = "dt", Unidade = "anos", ValorPadrao = 1.0 / 12 }
+                        new Variavel { Nome = "σ (%)", Simbolo = "sigma", Unidade = "%", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Δt (anos)", Simbolo = "dt", Unidade = "anos", ValorPadrao = 1.0 / 12, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -308,7 +314,8 @@ namespace CompendioCalc.Services
                         double u = Math.Exp(sigma * Math.Sqrt(dt));
                         return u;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-168: Duration de Macaulay
@@ -328,9 +335,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "anos",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Maturity T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 10 },
-                        new Variavel { Nome = "Coupon c (%)", Simbolo = "c", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "Yield y (%)", Simbolo = "y", Unidade = "%", ValorPadrao = 4 }
+                        new Variavel { Nome = "Maturity T (anos)", Simbolo = "T", Unidade = "anos", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Coupon c (%)", Simbolo = "c", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Yield y (%)", Simbolo = "y", Unidade = "%", ValorPadrao = 4, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -356,7 +363,8 @@ namespace CompendioCalc.Services
                         double D = weighted_sum / P;
                         return D;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-169: Modelo Vasicek (Taxa de Juros)
@@ -376,10 +384,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "r₀ (%)", Simbolo = "r0", Unidade = "%", ValorPadrao = 3 },
-                        new Variavel { Nome = "a", Simbolo = "a", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "b (%)", Simbolo = "b", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "r₀ (%)", Simbolo = "r0", Unidade = "%", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "a", Simbolo = "a", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "b (%)", Simbolo = "b", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -391,7 +399,8 @@ namespace CompendioCalc.Services
                         double E_r = r0 * Math.Exp(-a * t) + b * (1 - Math.Exp(-a * t));
                         return E_r;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-170: Correlação e Copulas
@@ -411,9 +420,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "PD₁ (%)", Simbolo = "PD1", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "PD₂ (%)", Simbolo = "PD2", Unidade = "%", ValorPadrao = 5 },
-                        new Variavel { Nome = "ρ", Simbolo = "rho", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "PD₁ (%)", Simbolo = "PD1", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "PD₂ (%)", Simbolo = "PD2", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ρ", Simbolo = "rho", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -430,7 +439,8 @@ namespace CompendioCalc.Services
                         
                         return P_joint * 100; // percentage
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-171: Limite de Kelly
@@ -450,8 +460,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p (prob win)", Simbolo = "p", Unidade = "", ValorPadrao = 0.55 },
-                        new Variavel { Nome = "b (odds)", Simbolo = "b", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "p (prob win)", Simbolo = "p", Unidade = "", ValorPadrao = 0.55, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "b (odds)", Simbolo = "b", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -466,7 +476,8 @@ namespace CompendioCalc.Services
                         
                         return f_star * 100; // percentage
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-172: Modelo Heston (Volatilidade Estocástica)
@@ -486,10 +497,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "(σ%)²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v₀ (σ%²)", Simbolo = "v0", Unidade = "(σ%)²", ValorPadrao = 0.04 },
-                        new Variavel { Nome = "κ", Simbolo = "kappa", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "θ (σ%²)", Simbolo = "theta", Unidade = "(σ%)²", ValorPadrao = 0.04 },
-                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "v₀ (σ%²)", Simbolo = "v0", Unidade = "(σ%)²", ValorPadrao = 0.04, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "κ", Simbolo = "kappa", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ (σ%²)", Simbolo = "theta", Unidade = "(σ%)²", ValorPadrao = 0.04, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -501,7 +512,8 @@ namespace CompendioCalc.Services
                         double E_v = v0 * Math.Exp(-kappa * t) + theta * (1 - Math.Exp(-kappa * t));
                         return E_v;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-173: Information Ratio
@@ -521,9 +533,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R_p (%)", Simbolo = "Rp", Unidade = "%", ValorPadrao = 12 },
-                        new Variavel { Nome = "R_b (%)", Simbolo = "Rb", Unidade = "%", ValorPadrao = 10 },
-                        new Variavel { Nome = "ω tracking error (%)", Simbolo = "omega", Unidade = "%", ValorPadrao = 3 }
+                        new Variavel { Nome = "R_p (%)", Simbolo = "Rp", Unidade = "%", ValorPadrao = 12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R_b (%)", Simbolo = "Rb", Unidade = "%", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ω tracking error (%)", Simbolo = "omega", Unidade = "%", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -537,7 +549,8 @@ namespace CompendioCalc.Services
                         double IR = alpha / omega;
                         return IR;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-174: Efficient Frontier (Markowitz)
@@ -557,10 +570,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ₁ (%)", Simbolo = "sigma1", Unidade = "%", ValorPadrao = 20 },
-                        new Variavel { Nome = "σ₂ (%)", Simbolo = "sigma2", Unidade = "%", ValorPadrao = 10 },
-                        new Variavel { Nome = "w₁", Simbolo = "w1", Unidade = "", ValorPadrao = 0.6 },
-                        new Variavel { Nome = "ρ", Simbolo = "rho", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "σ₁ (%)", Simbolo = "sigma1", Unidade = "%", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ₂ (%)", Simbolo = "sigma2", Unidade = "%", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "w₁", Simbolo = "w1", Unidade = "", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ρ", Simbolo = "rho", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -578,7 +591,8 @@ namespace CompendioCalc.Services
                         double sigma_p = Math.Sqrt(var_p) * 100;
                         return sigma_p;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-175: Jump Diffusion (Merton)
@@ -598,14 +612,15 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "jumps/ano",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ (jumps/ano)", Simbolo = "lambda", Unidade = "jumps/ano", ValorPadrao = 1 }
+                        new Variavel { Nome = "λ (jumps/ano)", Simbolo = "lambda", Unidade = "jumps/ano", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         double lambda = inputs["λ (jumps/ano)"];
                         return lambda;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-176: Medida de Risco CVaR
@@ -625,8 +640,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "VaR ($)", Simbolo = "VaR", Unidade = "$", ValorPadrao = 100e3 },
-                        new Variavel { Nome = "Tail ratio", Simbolo = "ratio", Unidade = "", ValorPadrao = 1.5 }
+                        new Variavel { Nome = "VaR ($)", Simbolo = "VaR", Unidade = "$", ValorPadrao = 100e3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tail ratio", Simbolo = "ratio", Unidade = "", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -636,7 +651,8 @@ namespace CompendioCalc.Services
                         double CVaR = VaR * ratio;
                         return CVaR;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-177: Processo de Ornstein-Uhlenbeck
@@ -656,10 +672,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "$",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "X₀", Simbolo = "X0", Unidade = "$", ValorPadrao = 80 },
-                        new Variavel { Nome = "θ", Simbolo = "theta", Unidade = "", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "μ", Simbolo = "mu", Unidade = "$", ValorPadrao = 70 },
-                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1 }
+                        new Variavel { Nome = "X₀", Simbolo = "X0", Unidade = "$", ValorPadrao = 80, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "θ", Simbolo = "theta", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ", Simbolo = "mu", Unidade = "$", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t (anos)", Simbolo = "t", Unidade = "anos", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -671,7 +687,8 @@ namespace CompendioCalc.Services
                         double E_X = X0 * Math.Exp(-theta * t) + mu * (1 - Math.Exp(-theta * t));
                         return E_X;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-178: Maximum Drawdown
@@ -691,8 +708,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Peak", Simbolo = "peak", Unidade = "$", ValorPadrao = 100 },
-                        new Variavel { Nome = "Trough", Simbolo = "trough", Unidade = "$", ValorPadrao = 60 }
+                        new Variavel { Nome = "Peak", Simbolo = "peak", Unidade = "$", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Trough", Simbolo = "trough", Unidade = "$", ValorPadrao = 60, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -704,7 +721,8 @@ namespace CompendioCalc.Services
                         double MDD = ((peak - trough) / peak) * 100;
                         return MDD;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-179: Spread de Crédito (CDS)
@@ -724,8 +742,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "bps",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ (%)", Simbolo = "lambda", Unidade = "%", ValorPadrao = 2 },
-                        new Variavel { Nome = "LGD (%)", Simbolo = "LGD", Unidade = "%", ValorPadrao = 60 }
+                        new Variavel { Nome = "λ (%)", Simbolo = "lambda", Unidade = "%", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "LGD (%)", Simbolo = "LGD", Unidade = "%", ValorPadrao = 60, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -735,7 +753,8 @@ namespace CompendioCalc.Services
                         double s = lambda * LGD * 10000; // bps
                         return s;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 },
 
                 // V10-180: Modelo Fama-French (3 Fatores)
@@ -755,13 +774,13 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2 },
-                        new Variavel { Nome = "β_m", Simbolo = "beta_m", Unidade = "", ValorPadrao = 1.2 },
-                        new Variavel { Nome = "R_m−R_f (%)", Simbolo = "mkt_prem", Unidade = "%", ValorPadrao = 8 },
-                        new Variavel { Nome = "β_s", Simbolo = "beta_s", Unidade = "", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "SMB (%)", Simbolo = "SMB", Unidade = "%", ValorPadrao = 3 },
-                        new Variavel { Nome = "β_v", Simbolo = "beta_v", Unidade = "", ValorPadrao = 0.8 },
-                        new Variavel { Nome = "HML (%)", Simbolo = "HML", Unidade = "%", ValorPadrao = 5 }
+                        new Variavel { Nome = "R_f (%)", Simbolo = "Rf", Unidade = "%", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β_m", Simbolo = "beta_m", Unidade = "", ValorPadrao = 1.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R_m−R_f (%)", Simbolo = "mkt_prem", Unidade = "%", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β_s", Simbolo = "beta_s", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "SMB (%)", Simbolo = "SMB", Unidade = "%", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β_v", Simbolo = "beta_v", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "HML (%)", Simbolo = "HML", Unidade = "%", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -776,7 +795,8 @@ namespace CompendioCalc.Services
                         double E_Ri = Rf + beta_m * mkt_prem + beta_s * SMB + beta_v * HML;
                         return E_Ri;
                     },
-                    Icone = "💰"
+                    Icone = "💰",
+                    Unidades = "",
                 }
             });
         }

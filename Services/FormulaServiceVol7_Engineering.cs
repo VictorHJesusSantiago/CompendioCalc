@@ -24,12 +24,14 @@ public partial class FormulaService
                 AnoOrigin = "1822",
                 ExemploPratico = "Pilar: F=500 kN, A=0,04 m²: σ = 500/0,04 = 12.500 kPa = 12,5 MPa",
                 Variaveis = [
-                    new() { Simbolo = "F", Nome = "Força axial (kN)", ValorPadrao = 500 },
-                    new() { Simbolo = "A", Nome = "Área da seção (m²)", ValorPadrao = 0.04, ValorMin = 0.0001 },
+                    new() { Simbolo = "F", Nome = "Força axial (kN)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "Área da seção (m²)", ValorPadrao = 0.04, ValorMin = 0.0001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "σ (kPa)",
                 UnidadeResultado = "kPa",
-                Calcular = vars => vars["F"] / vars["A"]
+                Calcular = vars => vars["F"] / vars["A"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -42,12 +44,14 @@ public partial class FormulaService
                 AnoOrigin = "1750",
                 ExemploPratico = "Viga L=6m, q=10 kN/m: Mmax = 10×36/8 = 45 kN·m",
                 Variaveis = [
-                    new() { Simbolo = "q", Nome = "Carga distribuída (kN/m)", ValorPadrao = 10 },
-                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 6 },
+                    new() { Simbolo = "q", Nome = "Carga distribuída (kN/m)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 6, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "M_max (kN·m)",
                 UnidadeResultado = "kN·m",
-                Calcular = vars => vars["q"] * vars["L"] * vars["L"] / 8.0
+                Calcular = vars => vars["q"] * vars["L"] * vars["L"] / 8.0,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -60,12 +64,14 @@ public partial class FormulaService
                 AnoOrigin = "1676",
                 ExemploPratico = "Aço E=200 GPa, ε=0,001: σ = 200.000×0,001 = 200 MPa",
                 Variaveis = [
-                    new() { Simbolo = "E", Nome = "Módulo de Young (MPa)", ValorPadrao = 200000 },
-                    new() { Simbolo = "eps", Nome = "Deformação (ε)", Descricao = "Adimensional", ValorPadrao = 0.001 },
+                    new() { Simbolo = "E", Nome = "Módulo de Young (MPa)", ValorPadrao = 200000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "eps", Nome = "Deformação (ε)", Descricao = "Adimensional", ValorPadrao = 0.001, Unidade = "adim" },
                 ],
                 VariavelResultado = "σ (MPa)",
                 UnidadeResultado = "MPa",
-                Calcular = vars => vars["E"] * vars["eps"]
+                Calcular = vars => vars["E"] * vars["eps"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -78,16 +84,18 @@ public partial class FormulaService
                 AnoOrigin = "1943",
                 ExemploPratico = "Solo: c=20 kPa, q=18 kPa, γ=18 kN/m³, B=2m, Nc=14,8, Nq=6,4, Nγ=5,4: qult = 296+115+97 = 508 kPa",
                 Variaveis = [
-                    new() { Simbolo = "c", Nome = "Coesão (kPa)", ValorPadrao = 20 },
-                    new() { Simbolo = "Nc", Nome = "Fator Nc", ValorPadrao = 14.8 },
-                    new() { Simbolo = "q", Nome = "Sobrecarga (kPa)", ValorPadrao = 18 },
-                    new() { Simbolo = "Nq", Nome = "Fator Nq", ValorPadrao = 6.4 },
-                    new() { Simbolo = "gamma", Nome = "Peso específico γ (kN/m³)", ValorPadrao = 18 },
-                    new() { Simbolo = "B", Nome = "Largura B (m)", ValorPadrao = 2 },
+                    new() { Simbolo = "c", Nome = "Coesão (kPa)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Nc", Nome = "Fator Nc", ValorPadrao = 14.8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "q", Nome = "Sobrecarga (kPa)", ValorPadrao = 18, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Nq", Nome = "Fator Nq", ValorPadrao = 6.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "gamma", Nome = "Peso específico γ (kN/m³)", ValorPadrao = 18, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "B", Nome = "Largura B (m)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "q_ult (kPa)",
                 UnidadeResultado = "kPa",
-                Calcular = vars => vars["c"] * vars["Nc"] + vars["q"] * vars["Nq"] + 0.5 * vars["gamma"] * vars["B"] * 5.4
+                Calcular = vars => vars["c"] * vars["Nc"] + vars["q"] * vars["Nq"] + 0.5 * vars["gamma"] * vars["B"] * 5.4,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -100,12 +108,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "fcm=35 MPa, Sd=4 MPa: fck = 35−1,65×4 = 28,4 MPa → classe C30",
                 Variaveis = [
-                    new() { Simbolo = "fcm", Nome = "Resistência média (MPa)", ValorPadrao = 35 },
-                    new() { Simbolo = "Sd", Nome = "Desvio padrão (MPa)", ValorPadrao = 4 },
+                    new() { Simbolo = "fcm", Nome = "Resistência média (MPa)", ValorPadrao = 35, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Sd", Nome = "Desvio padrão (MPa)", ValorPadrao = 4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "fck (MPa)",
                 UnidadeResultado = "MPa",
-                Calcular = vars => vars["fcm"] - 1.65 * vars["Sd"]
+                Calcular = vars => vars["fcm"] - 1.65 * vars["Sd"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -118,14 +128,16 @@ public partial class FormulaService
                 AnoOrigin = "1750",
                 ExemploPratico = "L=5m, q=20 kN/m, E=25 GPa, I=0,003 m⁴: δ = 5×20×625/(384×25e6×0,003) ≈ 2,2 mm",
                 Variaveis = [
-                    new() { Simbolo = "q", Nome = "Carga (kN/m)", ValorPadrao = 20 },
-                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 5 },
-                    new() { Simbolo = "E", Nome = "Módulo E (kPa)", ValorPadrao = 25000000 },
-                    new() { Simbolo = "I", Nome = "Momento de inércia (m⁴)", ValorPadrao = 0.003, ValorMin = 0.00001 },
+                    new() { Simbolo = "q", Nome = "Carga (kN/m)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Vão (m)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "E", Nome = "Módulo E (kPa)", ValorPadrao = 25000000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Momento de inércia (m⁴)", ValorPadrao = 0.003, ValorMin = 0.00001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "δ (m)",
                 UnidadeResultado = "m",
-                Calcular = vars => 5 * vars["q"] * Math.Pow(vars["L"], 4) / (384 * vars["E"] * vars["I"])
+                Calcular = vars => 5 * vars["q"] * Math.Pow(vars["L"], 4) / (384 * vars["E"] * vars["I"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA ELÉTRICA (5 fórmulas) ═══
@@ -141,12 +153,14 @@ public partial class FormulaService
                 AnoOrigin = "1827",
                 ExemploPratico = "R=100Ω, I=0,5A: V = 100×0,5 = 50 V",
                 Variaveis = [
-                    new() { Simbolo = "R", Nome = "Resistência (Ω)", ValorPadrao = 100 },
-                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "R", Nome = "Resistência (Ω)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "V (Volts)",
                 UnidadeResultado = "V",
-                Calcular = vars => vars["R"] * vars["I"]
+                Calcular = vars => vars["R"] * vars["I"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -159,12 +173,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "Chuveiro: V=220V, I=30A: P = 220×30 = 6600 W = 6,6 kW",
                 Variaveis = [
-                    new() { Simbolo = "V", Nome = "Tensão (V)", ValorPadrao = 220 },
-                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 30 },
+                    new() { Simbolo = "V", Nome = "Tensão (V)", ValorPadrao = 220, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "I", Nome = "Corrente (A)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => vars["V"] * vars["I"]
+                Calcular = vars => vars["V"] * vars["I"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -177,13 +193,15 @@ public partial class FormulaService
                 AnoOrigin = "1893",
                 ExemploPratico = "R=30Ω, XL=50Ω, XC=10Ω: Z = √(900+1600) = 50Ω",
                 Variaveis = [
-                    new() { Simbolo = "R", Nome = "Resistência R (Ω)", ValorPadrao = 30 },
-                    new() { Simbolo = "XL", Nome = "Reatância indutiva XL (Ω)", ValorPadrao = 50 },
-                    new() { Simbolo = "XC", Nome = "Reatância capacitiva XC (Ω)", ValorPadrao = 10 },
+                    new() { Simbolo = "R", Nome = "Resistência R (Ω)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "XL", Nome = "Reatância indutiva XL (Ω)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "XC", Nome = "Reatância capacitiva XC (Ω)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Z (Ω)",
                 UnidadeResultado = "Ω",
-                Calcular = vars => Math.Sqrt(vars["R"] * vars["R"] + Math.Pow(vars["XL"] - vars["XC"], 2))
+                Calcular = vars => Math.Sqrt(vars["R"] * vars["R"] + Math.Pow(vars["XL"] - vars["XC"], 2)),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -196,13 +214,15 @@ public partial class FormulaService
                 AnoOrigin = "1831",
                 ExemploPratico = "V₁=13.800V, N₁=1000, N₂=15: V₂ = 13.800×15/1000 = 207 V",
                 Variaveis = [
-                    new() { Simbolo = "V1", Nome = "Tensão primária (V₁)", ValorPadrao = 13800 },
-                    new() { Simbolo = "N1", Nome = "Espiras primário (N₁)", ValorPadrao = 1000, ValorMin = 1 },
-                    new() { Simbolo = "N2", Nome = "Espiras secundário (N₂)", ValorPadrao = 15 },
+                    new() { Simbolo = "V1", Nome = "Tensão primária (V₁)", ValorPadrao = 13800, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "N1", Nome = "Espiras primário (N₁)", ValorPadrao = 1000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "N2", Nome = "Espiras secundário (N₂)", ValorPadrao = 15, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "V₂ (V)",
                 UnidadeResultado = "V",
-                Calcular = vars => vars["V1"] * vars["N2"] / vars["N1"]
+                Calcular = vars => vars["V1"] * vars["N2"] / vars["N1"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -215,12 +235,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Motor 5 cv: P_entrada=4,2 kW, P_saída=3,73 kW: η = 3,73/4,2×100 = 88,8%",
                 Variaveis = [
-                    new() { Simbolo = "Pout", Nome = "Potência de saída (kW)", ValorPadrao = 3.73 },
-                    new() { Simbolo = "Pin", Nome = "Potência de entrada (kW)", ValorPadrao = 4.2, ValorMin = 0.001 },
+                    new() { Simbolo = "Pout", Nome = "Potência de saída (kW)", ValorPadrao = 3.73, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Pin", Nome = "Potência de entrada (kW)", ValorPadrao = 4.2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "η (%)",
                 UnidadeResultado = "%",
-                Calcular = vars => (vars["Pout"] / vars["Pin"]) * 100
+                Calcular = vars => (vars["Pout"] / vars["Pin"]) * 100,
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA MECÂNICA (6 fórmulas) ═══
@@ -236,12 +258,14 @@ public partial class FormulaService
                 AnoOrigin = "1822",
                 ExemploPratico = "Parafuso: V=20 kN, A=0,000201 m² (⌀16mm): τ = 99,5 MPa",
                 Variaveis = [
-                    new() { Simbolo = "V", Nome = "Força cortante (kN)", ValorPadrao = 20 },
-                    new() { Simbolo = "A", Nome = "Área de cisalhamento (m²)", ValorPadrao = 0.000201, ValorMin = 0.000001 },
+                    new() { Simbolo = "V", Nome = "Força cortante (kN)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "Área de cisalhamento (m²)", ValorPadrao = 0.000201, ValorMin = 0.000001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "τ (kPa)",
                 UnidadeResultado = "kPa",
-                Calcular = vars => vars["V"] / vars["A"]
+                Calcular = vars => vars["V"] / vars["A"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -254,13 +278,15 @@ public partial class FormulaService
                 AnoOrigin = "~250 a.C.",
                 ExemploPratico = "Chave de roda: F=200N, d=0,3m, θ=90°: T = 200×0,3×1 = 60 N·m",
                 Variaveis = [
-                    new() { Simbolo = "F", Nome = "Força (N)", ValorPadrao = 200 },
-                    new() { Simbolo = "d", Nome = "Braço de alavanca (m)", ValorPadrao = 0.3 },
-                    new() { Simbolo = "theta", Nome = "Ângulo θ (graus)", ValorPadrao = 90 },
+                    new() { Simbolo = "F", Nome = "Força (N)", ValorPadrao = 200, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "d", Nome = "Braço de alavanca (m)", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "theta", Nome = "Ângulo θ (graus)", ValorPadrao = 90, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "T (N·m)",
                 UnidadeResultado = "N·m",
-                Calcular = vars => vars["F"] * vars["d"] * Math.Sin(vars["theta"] * Math.PI / 180.0)
+                Calcular = vars => vars["F"] * vars["d"] * Math.Sin(vars["theta"] * Math.PI / 180.0),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -273,12 +299,14 @@ public partial class FormulaService
                 AnoOrigin = "1782",
                 ExemploPratico = "Motor: T=50 N·m, n=1750 rpm: P = 50×2π×1750/60 = 9163 W ≈ 12,3 cv",
                 Variaveis = [
-                    new() { Simbolo = "T", Nome = "Torque (N·m)", ValorPadrao = 50 },
-                    new() { Simbolo = "n", Nome = "Rotação (rpm)", ValorPadrao = 1750 },
+                    new() { Simbolo = "T", Nome = "Torque (N·m)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "n", Nome = "Rotação (rpm)", ValorPadrao = 1750, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => vars["T"] * 2 * Math.PI * vars["n"] / 60.0
+                Calcular = vars => vars["T"] * 2 * Math.PI * vars["n"] / 60.0,
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -291,11 +319,13 @@ public partial class FormulaService
                 AnoOrigin = "1824",
                 ExemploPratico = "Motor: T_quente=600K, T_frio=300K: η = 1−300/600 = 50%",
                 Variaveis = [
-                    new() { Simbolo = "Tq", Nome = "Temp. quente (K)", ValorPadrao = 600, ValorMin = 1 },
-                    new() { Simbolo = "Tf", Nome = "Temp. fria (K)", ValorPadrao = 300 },
+                    new() { Simbolo = "Tq", Nome = "Temp. quente (K)", ValorPadrao = 600, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Tf", Nome = "Temp. fria (K)", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "η_Carnot",
-                Calcular = vars => 1 - vars["Tf"] / vars["Tq"]
+                Calcular = vars => 1 - vars["Tf"] / vars["Tq"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -308,11 +338,13 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "Aço: σ_adm=250 MPa, σ_trab=100 MPa: CS = 2,5 (seguro)",
                 Variaveis = [
-                    new() { Simbolo = "sigma_adm", Nome = "Tensão admissível (MPa)", ValorPadrao = 250 },
-                    new() { Simbolo = "sigma_trab", Nome = "Tensão de trabalho (MPa)", ValorPadrao = 100, ValorMin = 0.01 },
+                    new() { Simbolo = "sigma_adm", Nome = "Tensão admissível (MPa)", ValorPadrao = 250, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "sigma_trab", Nome = "Tensão de trabalho (MPa)", ValorPadrao = 100, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "CS",
-                Calcular = vars => vars["sigma_adm"] / vars["sigma_trab"]
+                Calcular = vars => vars["sigma_adm"] / vars["sigma_trab"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -325,13 +357,15 @@ public partial class FormulaService
                 AnoOrigin = "1860",
                 ExemploPratico = "Se=300 MPa, σa=200 MPa, b=−0,1: N = (300/200)^(1/−0,1) ≈ 57.665 ciclos",
                 Variaveis = [
-                    new() { Simbolo = "Se", Nome = "Limite de endurance (MPa)", ValorPadrao = 300 },
-                    new() { Simbolo = "sa", Nome = "Tensão alternada σa (MPa)", ValorPadrao = 200, ValorMin = 0.01 },
-                    new() { Simbolo = "b", Nome = "Expoente de fadiga (b)", Descricao = "Negativo, tipicamente −0,05 a −0,12", ValorPadrao = -0.1 },
+                    new() { Simbolo = "Se", Nome = "Limite de endurance (MPa)", ValorPadrao = 300, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "sa", Nome = "Tensão alternada σa (MPa)", ValorPadrao = 200, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Expoente de fadiga (b)", Descricao = "Negativo, tipicamente −0,05 a −0,12", ValorPadrao = -0.1, Unidade = "adim" },
                 ],
                 VariavelResultado = "N (ciclos)",
                 UnidadeResultado = "ciclos",
-                Calcular = vars => Math.Pow(vars["Se"] / vars["sa"], 1.0 / vars["b"])
+                Calcular = vars => Math.Pow(vars["Se"] / vars["sa"], 1.0 / vars["b"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA QUÍMICA (7 fórmulas) ═══
@@ -347,12 +381,14 @@ public partial class FormulaService
                 AnoOrigin = "1889",
                 ExemploPratico = "A=10¹³ s⁻¹, Ea=75 kJ/mol, T=300K: k = 10¹³×e^(−75000/(8,314×300)) ≈ 9,4×10⁻¹ s⁻¹",
                 Variaveis = [
-                    new() { Simbolo = "Af", Nome = "Fator pré-exponencial (A)", ValorPadrao = 1e13 },
-                    new() { Simbolo = "Ea", Nome = "Energia de ativação (J/mol)", ValorPadrao = 75000 },
-                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 300, ValorMin = 1 },
+                    new() { Simbolo = "Af", Nome = "Fator pré-exponencial (A)", ValorPadrao = 1e13, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Ea", Nome = "Energia de ativação (J/mol)", ValorPadrao = 75000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 300, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "k",
-                Calcular = vars => vars["Af"] * Math.Exp(-vars["Ea"] / (8.314 * vars["T"]))
+                Calcular = vars => vars["Af"] * Math.Exp(-vars["Ea"] / (8.314 * vars["T"])),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -365,13 +401,15 @@ public partial class FormulaService
                 AnoOrigin = "1962",
                 ExemploPratico = "FA₀=5 mol/s, X=0,8, −rA=0,5 mol/(L·s): V = 5×0,8/0,5 = 8 L",
                 Variaveis = [
-                    new() { Simbolo = "FA0", Nome = "Vazão molar entrada (mol/s)", ValorPadrao = 5 },
-                    new() { Simbolo = "X", Nome = "Conversão (X)", Descricao = "0 a 1", ValorPadrao = 0.8 },
-                    new() { Simbolo = "rA", Nome = "Taxa de reação (−rA, mol/L·s)", ValorPadrao = 0.5, ValorMin = 0.001 },
+                    new() { Simbolo = "FA0", Nome = "Vazão molar entrada (mol/s)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "X", Nome = "Conversão (X)", Descricao = "0 a 1", ValorPadrao = 0.8, Unidade = "adim" },
+                    new() { Simbolo = "rA", Nome = "Taxa de reação (−rA, mol/L·s)", ValorPadrao = 0.5, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "V (L)",
                 UnidadeResultado = "L",
-                Calcular = vars => vars["FA0"] * vars["X"] / vars["rA"]
+                Calcular = vars => vars["FA0"] * vars["X"] / vars["rA"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -384,13 +422,15 @@ public partial class FormulaService
                 AnoOrigin = "1883",
                 ExemploPratico = "Água: ρ=1000, v=2 m/s, D=0,05m, μ=0,001 Pa·s: Re = 100.000 (turbulento)",
                 Variaveis = [
-                    new() { Simbolo = "rho", Nome = "Densidade (kg/m³)", ValorPadrao = 1000 },
-                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 2 },
-                    new() { Simbolo = "D", Nome = "Diâmetro (m)", ValorPadrao = 0.05 },
-                    new() { Simbolo = "mu", Nome = "Viscosidade μ (Pa·s)", ValorPadrao = 0.001, ValorMin = 0.000001 },
+                    new() { Simbolo = "rho", Nome = "Densidade (kg/m³)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "D", Nome = "Diâmetro (m)", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "mu", Nome = "Viscosidade μ (Pa·s)", ValorPadrao = 0.001, ValorMin = 0.000001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Re",
-                Calcular = vars => vars["rho"] * vars["v"] * vars["D"] / vars["mu"]
+                Calcular = vars => vars["rho"] * vars["v"] * vars["D"] / vars["mu"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -403,12 +443,14 @@ public partial class FormulaService
                 AnoOrigin = "1887",
                 ExemploPratico = "Etanol x=0,4, P°=5,95 kPa: p = 0,4×5,95 = 2,38 kPa",
                 Variaveis = [
-                    new() { Simbolo = "x", Nome = "Fração molar (xᵢ)", ValorPadrao = 0.4 },
-                    new() { Simbolo = "Psat", Nome = "Pressão de vapor P°ᵢ (kPa)", ValorPadrao = 5.95 },
+                    new() { Simbolo = "x", Nome = "Fração molar (xᵢ)", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Psat", Nome = "Pressão de vapor P°ᵢ (kPa)", ValorPadrao = 5.95, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "pᵢ (kPa)",
                 UnidadeResultado = "kPa",
-                Calcular = vars => vars["x"] * vars["Psat"]
+                Calcular = vars => vars["x"] * vars["Psat"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -421,14 +463,16 @@ public partial class FormulaService
                 AnoOrigin = "1834",
                 ExemploPratico = "Água: ΔH=40.700 J/mol, T₁=373K, P₁=101,3 kPa, T₂=353K → P₂ ≈ 47 kPa",
                 Variaveis = [
-                    new() { Simbolo = "P1", Nome = "Pressão ref. P₁ (kPa)", ValorPadrao = 101.3 },
-                    new() { Simbolo = "T1", Nome = "Temperatura ref. T₁ (K)", ValorPadrao = 373, ValorMin = 1 },
-                    new() { Simbolo = "T2", Nome = "Temperatura alvo T₂ (K)", ValorPadrao = 353, ValorMin = 1 },
-                    new() { Simbolo = "dH", Nome = "ΔHvap (J/mol)", ValorPadrao = 40700 },
+                    new() { Simbolo = "P1", Nome = "Pressão ref. P₁ (kPa)", ValorPadrao = 101.3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T1", Nome = "Temperatura ref. T₁ (K)", ValorPadrao = 373, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T2", Nome = "Temperatura alvo T₂ (K)", ValorPadrao = 353, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dH", Nome = "ΔHvap (J/mol)", ValorPadrao = 40700, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P₂ (kPa)",
                 UnidadeResultado = "kPa",
-                Calcular = vars => vars["P1"] * Math.Exp(-vars["dH"] / 8.314 * (1.0 / vars["T2"] - 1.0 / vars["T1"]))
+                Calcular = vars => vars["P1"] * Math.Exp(-vars["dH"] / 8.314 * (1.0 / vars["T2"] - 1.0 / vars["T1"])),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -441,13 +485,15 @@ public partial class FormulaService
                 AnoOrigin = "1932",
                 ExemploPratico = "xD=0,95, xB=0,05, α=2,5: Nmin = ln[(0,95×0,95)/(0,05×0,05)]/ln(2,5) ≈ 6,4 estágios",
                 Variaveis = [
-                    new() { Simbolo = "xD", Nome = "Fração destilado (xD)", ValorPadrao = 0.95 },
-                    new() { Simbolo = "xB", Nome = "Fração resíduo (xB)", ValorPadrao = 0.05, ValorMin = 0.001 },
-                    new() { Simbolo = "alpha", Nome = "Volatilidade relativa (α)", ValorPadrao = 2.5, ValorMin = 1.001 },
+                    new() { Simbolo = "xD", Nome = "Fração destilado (xD)", ValorPadrao = 0.95, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "xB", Nome = "Fração resíduo (xB)", ValorPadrao = 0.05, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "alpha", Nome = "Volatilidade relativa (α)", ValorPadrao = 2.5, ValorMin = 1.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "N_min",
                 UnidadeResultado = "estágios",
-                Calcular = vars => Math.Log((vars["xD"] / vars["xB"]) * ((1 - vars["xB"]) / (1 - vars["xD"]))) / Math.Log(vars["alpha"])
+                Calcular = vars => Math.Log((vars["xD"] / vars["xB"]) * ((1 - vars["xB"]) / (1 - vars["xD"]))) / Math.Log(vars["alpha"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -460,13 +506,15 @@ public partial class FormulaService
                 AnoOrigin = "1950",
                 ExemploPratico = "U=500 W/m²K, A=10 m², ΔTLM=30 K: Q = 500×10×30 = 150 kW",
                 Variaveis = [
-                    new() { Simbolo = "U", Nome = "Coef. global U (W/m²K)", ValorPadrao = 500 },
-                    new() { Simbolo = "A", Nome = "Área de troca (m²)", ValorPadrao = 10 },
-                    new() { Simbolo = "DTLM", Nome = "ΔTLM (K)", ValorPadrao = 30 },
+                    new() { Simbolo = "U", Nome = "Coef. global U (W/m²K)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "Área de troca (m²)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "DTLM", Nome = "ΔTLM (K)", ValorPadrao = 30, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Q (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => vars["U"] * vars["A"] * vars["DTLM"]
+                Calcular = vars => vars["U"] * vars["A"] * vars["DTLM"],
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA AEROESPACIAL (4 fórmulas) ═══
@@ -482,14 +530,16 @@ public partial class FormulaService
                 AnoOrigin = "1904",
                 ExemploPratico = "ρ=1,225 kg/m³, v=70 m/s, S=20 m², CL=1,5: L = 0,5×1,225×4900×20×1,5 = 90.037 N ≈ 9,2 tonf",
                 Variaveis = [
-                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225 },
-                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 70 },
-                    new() { Simbolo = "S", Nome = "Área alar (m²)", ValorPadrao = 20 },
-                    new() { Simbolo = "CL", Nome = "Coef. sustentação (CL)", ValorPadrao = 1.5 },
+                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 70, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "S", Nome = "Área alar (m²)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "CL", Nome = "Coef. sustentação (CL)", ValorPadrao = 1.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "L (N)",
                 UnidadeResultado = "N",
-                Calcular = vars => 0.5 * vars["rho"] * vars["v"] * vars["v"] * vars["S"] * vars["CL"]
+                Calcular = vars => 0.5 * vars["rho"] * vars["v"] * vars["v"] * vars["S"] * vars["CL"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -502,13 +552,15 @@ public partial class FormulaService
                 AnoOrigin = "1903",
                 ExemploPratico = "ve=3000 m/s, m₀=100 ton, mf=20 ton: Δv = 3000×ln(5) = 4828 m/s",
                 Variaveis = [
-                    new() { Simbolo = "ve", Nome = "Vel. de escape (m/s)", ValorPadrao = 3000 },
-                    new() { Simbolo = "m0", Nome = "Massa inicial (kg)", ValorPadrao = 100000 },
-                    new() { Simbolo = "mf", Nome = "Massa final (kg)", ValorPadrao = 20000, ValorMin = 1 },
+                    new() { Simbolo = "ve", Nome = "Vel. de escape (m/s)", ValorPadrao = 3000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "m0", Nome = "Massa inicial (kg)", ValorPadrao = 100000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "mf", Nome = "Massa final (kg)", ValorPadrao = 20000, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Δv (m/s)",
                 UnidadeResultado = "m/s",
-                Calcular = vars => vars["ve"] * Math.Log(vars["m0"] / vars["mf"])
+                Calcular = vars => vars["ve"] * Math.Log(vars["m0"] / vars["mf"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -521,11 +573,13 @@ public partial class FormulaService
                 AnoOrigin = "1887",
                 ExemploPratico = "Avião a 850 km/h (236 m/s), som a 340 m/s: Ma = 236/340 = 0,69 (subsônico)",
                 Variaveis = [
-                    new() { Simbolo = "v", Nome = "Velocidade do objeto (m/s)", ValorPadrao = 236 },
-                    new() { Simbolo = "a", Nome = "Velocidade do som (m/s)", ValorPadrao = 340, ValorMin = 1 },
+                    new() { Simbolo = "v", Nome = "Velocidade do objeto (m/s)", ValorPadrao = 236, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a", Nome = "Velocidade do som (m/s)", ValorPadrao = 340, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Ma",
-                Calcular = vars => vars["v"] / vars["a"]
+                Calcular = vars => vars["v"] / vars["a"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -538,12 +592,14 @@ public partial class FormulaService
                 AnoOrigin = "1940s",
                 ExemploPratico = "F=2MN, ṁ=750 kg/s: Isp = 2.000.000/(750×9,81) = 272 s",
                 Variaveis = [
-                    new() { Simbolo = "F", Nome = "Empuxo (N)", ValorPadrao = 2000000 },
-                    new() { Simbolo = "mdot", Nome = "Vazão mássica (kg/s)", ValorPadrao = 750, ValorMin = 0.001 },
+                    new() { Simbolo = "F", Nome = "Empuxo (N)", ValorPadrao = 2000000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "mdot", Nome = "Vazão mássica (kg/s)", ValorPadrao = 750, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Isp (s)",
                 UnidadeResultado = "s",
-                Calcular = vars => vars["F"] / (vars["mdot"] * 9.80665)
+                Calcular = vars => vars["F"] / (vars["mdot"] * 9.80665),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA NAVAL (2 fórmulas) ═══
@@ -559,12 +615,14 @@ public partial class FormulaService
                 AnoOrigin = "~250 a.C.",
                 ExemploPratico = "Navio V=5000 m³ em água do mar (1025 kg/m³): E = 1025×9,81×5000 ≈ 50.276 kN",
                 Variaveis = [
-                    new() { Simbolo = "rho", Nome = "Densidade do fluido (kg/m³)", ValorPadrao = 1025 },
-                    new() { Simbolo = "V", Nome = "Volume deslocado (m³)", ValorPadrao = 5000 },
+                    new() { Simbolo = "rho", Nome = "Densidade do fluido (kg/m³)", ValorPadrao = 1025, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "V", Nome = "Volume deslocado (m³)", ValorPadrao = 5000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "E (N)",
                 UnidadeResultado = "N",
-                Calcular = vars => vars["rho"] * 9.80665 * vars["V"]
+                Calcular = vars => vars["rho"] * 9.80665 * vars["V"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -577,11 +635,13 @@ public partial class FormulaService
                 AnoOrigin = "1861",
                 ExemploPratico = "Navio v=8 m/s, L=100m: Fr = 8/√(9,81×100) = 8/31,3 = 0,256",
                 Variaveis = [
-                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 8 },
-                    new() { Simbolo = "L", Nome = "Comprimento na linha d'água (m)", ValorPadrao = 100, ValorMin = 0.1 },
+                    new() { Simbolo = "v", Nome = "Velocidade (m/s)", ValorPadrao = 8, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "L", Nome = "Comprimento na linha d'água (m)", ValorPadrao = 100, ValorMin = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Fr",
-                Calcular = vars => vars["v"] / Math.Sqrt(9.80665 * vars["L"])
+                Calcular = vars => vars["v"] / Math.Sqrt(9.80665 * vars["L"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENGENHARIA DE CONTROLE (5 fórmulas) ═══
@@ -597,15 +657,17 @@ public partial class FormulaService
                 AnoOrigin = "1922",
                 ExemploPratico = "Kp=2, Ki=0,5, Kd=0,1, erro=5, integral=10, derivada=−2: u = 10+5−0,2 = 14,8",
                 Variaveis = [
-                    new() { Simbolo = "Kp", Nome = "Ganho proporcional (Kp)", ValorPadrao = 2 },
-                    new() { Simbolo = "Ki", Nome = "Ganho integral (Ki)", ValorPadrao = 0.5 },
-                    new() { Simbolo = "Kd", Nome = "Ganho derivativo (Kd)", ValorPadrao = 0.1 },
-                    new() { Simbolo = "e", Nome = "Erro atual e(t)", ValorPadrao = 5 },
-                    new() { Simbolo = "intE", Nome = "Integral do erro ∫e·dt", ValorPadrao = 10 },
-                    new() { Simbolo = "dedt", Nome = "Derivada do erro de/dt", ValorPadrao = -2 },
+                    new() { Simbolo = "Kp", Nome = "Ganho proporcional (Kp)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Ki", Nome = "Ganho integral (Ki)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Kd", Nome = "Ganho derivativo (Kd)", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "Erro atual e(t)", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "intE", Nome = "Integral do erro ∫e·dt", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dedt", Nome = "Derivada do erro de/dt", ValorPadrao = -2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "u(t)",
-                Calcular = vars => vars["Kp"] * vars["e"] + vars["Ki"] * vars["intE"] + vars["Kd"] * vars["dedt"]
+                Calcular = vars => vars["Kp"] * vars["e"] + vars["Ki"] * vars["intE"] + vars["Kd"] * vars["dedt"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -618,13 +680,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "K=2, τ=5s, degrau u=10, t=10s: y = 2×10×(1−e⁻²) = 17,3",
                 Variaveis = [
-                    new() { Simbolo = "K", Nome = "Ganho estático (K)", ValorPadrao = 2 },
-                    new() { Simbolo = "tau", Nome = "Constante de tempo τ (s)", ValorPadrao = 5, ValorMin = 0.01 },
-                    new() { Simbolo = "u", Nome = "Amplitude do degrau", ValorPadrao = 10 },
-                    new() { Simbolo = "t", Nome = "Tempo (s)", ValorPadrao = 10 },
+                    new() { Simbolo = "K", Nome = "Ganho estático (K)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "tau", Nome = "Constante de tempo τ (s)", ValorPadrao = 5, ValorMin = 0.01, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "u", Nome = "Amplitude do degrau", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "t", Nome = "Tempo (s)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "y(t)",
-                Calcular = vars => vars["K"] * vars["u"] * (1 - Math.Exp(-vars["t"] / vars["tau"]))
+                Calcular = vars => vars["K"] * vars["u"] * (1 - Math.Exp(-vars["t"] / vars["tau"])),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -637,13 +701,15 @@ public partial class FormulaService
                 AnoOrigin = "1877",
                 ExemploPratico = "s³+3s²+3s+1: col.1=[1,3,8/3,1] → todos positivos → estável",
                 Variaveis = [
-                    new() { Simbolo = "a3", Nome = "Coef. s³", ValorPadrao = 1 },
-                    new() { Simbolo = "a2", Nome = "Coef. s²", ValorPadrao = 3, ValorMin = 0.001 },
-                    new() { Simbolo = "a1", Nome = "Coef. s¹", ValorPadrao = 3 },
-                    new() { Simbolo = "a0", Nome = "Coef. s⁰", ValorPadrao = 1 },
+                    new() { Simbolo = "a3", Nome = "Coef. s³", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a2", Nome = "Coef. s²", ValorPadrao = 3, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a1", Nome = "Coef. s¹", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a0", Nome = "Coef. s⁰", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "b₁ (1ª coluna, linha 3)",
-                Calcular = vars => (vars["a2"] * vars["a1"] - vars["a3"] * vars["a0"]) / vars["a2"]
+                Calcular = vars => (vars["a2"] * vars["a1"] - vars["a3"] * vars["a0"]) / vars["a2"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -656,11 +722,13 @@ public partial class FormulaService
                 AnoOrigin = "1945",
                 ExemploPratico = "|G|=0,5 na freq. fase-180°: MG = 1/0,5 = 2 → 6 dB de margem",
                 Variaveis = [
-                    new() { Simbolo = "Gpc", Nome = "|G(jωpc)|", Descricao = "Módulo na freq. cruzamento de fase", ValorPadrao = 0.5, ValorMin = 0.001 },
+                    new() { Simbolo = "Gpc", Nome = "|G(jωpc)|", Descricao = "Módulo na freq. cruzamento de fase", ValorPadrao = 0.5, ValorMin = 0.001, Unidade = "adim" },
                 ],
                 VariavelResultado = "MG (dB)",
                 UnidadeResultado = "dB",
-                Calcular = vars => 20 * Math.Log10(1.0 / vars["Gpc"])
+                Calcular = vars => 20 * Math.Log10(1.0 / vars["Gpc"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -673,10 +741,12 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "G(s) com Kp=9: ess = 1/(1+9) = 0,1 = 10% de erro",
                 Variaveis = [
-                    new() { Simbolo = "Kp", Nome = "Ganho de posição (Kp)", ValorPadrao = 9 },
+                    new() { Simbolo = "Kp", Nome = "Ganho de posição (Kp)", ValorPadrao = 9, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "ess",
-                Calcular = vars => 1.0 / (1 + vars["Kp"])
+                Calcular = vars => 1.0 / (1 + vars["Kp"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ FENÔMENOS DE TRANSPORTE (4 fórmulas) ═══
@@ -692,13 +762,15 @@ public partial class FormulaService
                 AnoOrigin = "1822",
                 ExemploPratico = "Parede: k=0,5 W/mK, ΔT=20°C, Δx=0,2m: q = 0,5×20/0,2 = 50 W/m²",
                 Variaveis = [
-                    new() { Simbolo = "k", Nome = "Condutividade térmica (W/m·K)", ValorPadrao = 0.5 },
-                    new() { Simbolo = "dT", Nome = "Diferença de temperatura (°C)", ValorPadrao = 20 },
-                    new() { Simbolo = "dx", Nome = "Espessura (m)", ValorPadrao = 0.2, ValorMin = 0.001 },
+                    new() { Simbolo = "k", Nome = "Condutividade térmica (W/m·K)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dT", Nome = "Diferença de temperatura (°C)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dx", Nome = "Espessura (m)", ValorPadrao = 0.2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "q (W/m²)",
                 UnidadeResultado = "W/m²",
-                Calcular = vars => vars["k"] * vars["dT"] / vars["dx"]
+                Calcular = vars => vars["k"] * vars["dT"] / vars["dx"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -711,13 +783,15 @@ public partial class FormulaService
                 AnoOrigin = "1855",
                 ExemploPratico = "D=1,5×10⁻⁹ m²/s, ΔC=0,5 mol/L, Δx=0,001m: J = 7,5×10⁻⁷ mol/(m²·s)",
                 Variaveis = [
-                    new() { Simbolo = "D", Nome = "Coef. difusão (m²/s)", ValorPadrao = 1.5e-9 },
-                    new() { Simbolo = "dC", Nome = "Diferença de concentração", ValorPadrao = 500 },
-                    new() { Simbolo = "dx", Nome = "Distância (m)", ValorPadrao = 0.001, ValorMin = 0.00001 },
+                    new() { Simbolo = "D", Nome = "Coef. difusão (m²/s)", ValorPadrao = 1.5e-9, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dC", Nome = "Diferença de concentração", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "dx", Nome = "Distância (m)", ValorPadrao = 0.001, ValorMin = 0.00001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "J (mol/m²·s)",
                 UnidadeResultado = "mol/(m²·s)",
-                Calcular = vars => vars["D"] * vars["dC"] / vars["dx"]
+                Calcular = vars => vars["D"] * vars["dC"] / vars["dx"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -730,13 +804,15 @@ public partial class FormulaService
                 AnoOrigin = "1701",
                 ExemploPratico = "h=50 W/m²K, Ts=80°C, T∞=20°C: q = 50×60 = 3000 W/m²",
                 Variaveis = [
-                    new() { Simbolo = "hc", Nome = "Coef. convecção h (W/m²K)", ValorPadrao = 50 },
-                    new() { Simbolo = "Ts", Nome = "Temp. superfície (°C)", ValorPadrao = 80 },
-                    new() { Simbolo = "Tinf", Nome = "Temp. fluido (°C)", ValorPadrao = 20 },
+                    new() { Simbolo = "hc", Nome = "Coef. convecção h (W/m²K)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Ts", Nome = "Temp. superfície (°C)", ValorPadrao = 80, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Tinf", Nome = "Temp. fluido (°C)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "q (W/m²)",
                 UnidadeResultado = "W/m²",
-                Calcular = vars => vars["hc"] * (vars["Ts"] - vars["Tinf"])
+                Calcular = vars => vars["hc"] * (vars["Ts"] - vars["Tinf"]),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -749,12 +825,14 @@ public partial class FormulaService
                 AnoOrigin = "1884",
                 ExemploPratico = "ε=0,9, T=500K: q = 0,9×5,67e-8×500⁴ = 3189 W/m²",
                 Variaveis = [
-                    new() { Simbolo = "eps", Nome = "Emissividade (ε)", Descricao = "0 a 1", ValorPadrao = 0.9 },
-                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 500 },
+                    new() { Simbolo = "eps", Nome = "Emissividade (ε)", Descricao = "0 a 1", ValorPadrao = 0.9, Unidade = "adim" },
+                    new() { Simbolo = "T", Nome = "Temperatura (K)", ValorPadrao = 500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "q (W/m²)",
                 UnidadeResultado = "W/m²",
-                Calcular = vars => vars["eps"] * 5.670374419e-8 * Math.Pow(vars["T"], 4)
+                Calcular = vars => vars["eps"] * 5.670374419e-8 * Math.Pow(vars["T"], 4),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ ENERGIA RENOVÁVEL (5 fórmulas) ═══
@@ -770,13 +848,15 @@ public partial class FormulaService
                 AnoOrigin = "1954",
                 ExemploPratico = "η=0,20, A=10 m², G=800 W/m²: P = 0,20×10×800 = 1600 W = 1,6 kWp",
                 Variaveis = [
-                    new() { Simbolo = "eta", Nome = "Eficiência (η)", Descricao = "0 a 1", ValorPadrao = 0.20 },
-                    new() { Simbolo = "A", Nome = "Área do painel (m²)", ValorPadrao = 10 },
-                    new() { Simbolo = "G", Nome = "Irradiância (W/m²)", ValorPadrao = 800 },
+                    new() { Simbolo = "eta", Nome = "Eficiência (η)", Descricao = "0 a 1", ValorPadrao = 0.20, Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "Área do painel (m²)", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "G", Nome = "Irradiância (W/m²)", ValorPadrao = 800, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => vars["eta"] * vars["A"] * vars["G"]
+                Calcular = vars => vars["eta"] * vars["A"] * vars["G"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -789,14 +869,16 @@ public partial class FormulaService
                 AnoOrigin = "1919",
                 ExemploPratico = "ρ=1,225, rotor ⌀80m (A=5027m²), v=12 m/s, Cp=0,45: P = 0,5×1,225×5027×1728×0,45 ≈ 2,39 MW",
                 Variaveis = [
-                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225 },
-                    new() { Simbolo = "A", Nome = "Área do rotor (m²)", ValorPadrao = 5027 },
-                    new() { Simbolo = "v", Nome = "Velocidade do vento (m/s)", ValorPadrao = 12 },
-                    new() { Simbolo = "Cp", Nome = "Coef. de potência (Cp)", Descricao = "≤ 0,593", ValorPadrao = 0.45 },
+                    new() { Simbolo = "rho", Nome = "Densidade do ar (kg/m³)", ValorPadrao = 1.225, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "A", Nome = "Área do rotor (m²)", ValorPadrao = 5027, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "v", Nome = "Velocidade do vento (m/s)", ValorPadrao = 12, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Cp", Nome = "Coef. de potência (Cp)", Descricao = "≤ 0,593", ValorPadrao = 0.45, Unidade = "adim" },
                 ],
                 VariavelResultado = "P (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => 0.5 * vars["rho"] * vars["A"] * Math.Pow(vars["v"], 3) * vars["Cp"]
+                Calcular = vars => 0.5 * vars["rho"] * vars["A"] * Math.Pow(vars["v"], 3) * vars["Cp"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -809,13 +891,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XIX",
                 ExemploPratico = "η=0,9, Q=100 m³/s, H=50m: P = 0,9×1000×9,81×100×50 = 44.145 kW ≈ 44 MW",
                 Variaveis = [
-                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.9 },
-                    new() { Simbolo = "Q", Nome = "Vazão (m³/s)", ValorPadrao = 100 },
-                    new() { Simbolo = "H", Nome = "Queda/Altura (m)", ValorPadrao = 50 },
+                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Q", Nome = "Vazão (m³/s)", ValorPadrao = 100, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "H", Nome = "Queda/Altura (m)", ValorPadrao = 50, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "P (W)",
                 UnidadeResultado = "W",
-                Calcular = vars => vars["eta"] * 1000 * 9.80665 * vars["Q"] * vars["H"]
+                Calcular = vars => vars["eta"] * 1000 * 9.80665 * vars["Q"] * vars["H"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -828,13 +912,15 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "1 ton bagaço (PCI=7.500 kJ/kg), η=0,75: E = 1000×7500×0,75 = 5.625.000 kJ = 1.563 kWh",
                 Variaveis = [
-                    new() { Simbolo = "m", Nome = "Massa de biomassa (kg)", ValorPadrao = 1000 },
-                    new() { Simbolo = "PCI", Nome = "PCI (kJ/kg)", ValorPadrao = 7500 },
-                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.75 },
+                    new() { Simbolo = "m", Nome = "Massa de biomassa (kg)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "PCI", Nome = "PCI (kJ/kg)", ValorPadrao = 7500, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "eta", Nome = "Rendimento (η)", ValorPadrao = 0.75, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "E (kJ)",
                 UnidadeResultado = "kJ",
-                Calcular = vars => vars["m"] * vars["PCI"] * vars["eta"]
+                Calcular = vars => vars["m"] * vars["PCI"] * vars["eta"],
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -847,12 +933,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "Eólica 2 MW gera 5.256 MWh/ano: FC = 5256/(2×8760) = 30%",
                 Variaveis = [
-                    new() { Simbolo = "Ereal", Nome = "Energia gerada (MWh)", ValorPadrao = 5256 },
-                    new() { Simbolo = "Pnom", Nome = "Potência nominal (MW)", ValorPadrao = 2 },
-                    new() { Simbolo = "T", Nome = "Período (horas)", Descricao = "8760h = 1 ano", ValorPadrao = 8760, ValorMin = 1 },
+                    new() { Simbolo = "Ereal", Nome = "Energia gerada (MWh)", ValorPadrao = 5256, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "Pnom", Nome = "Potência nominal (MW)", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "T", Nome = "Período (horas)", Descricao = "8760h = 1 ano", ValorPadrao = 8760, ValorMin = 1, Unidade = "adim" },
                 ],
                 VariavelResultado = "FC",
-                Calcular = vars => vars["Ereal"] / (vars["Pnom"] * vars["T"])
+                Calcular = vars => vars["Ereal"] / (vars["Pnom"] * vars["T"]),
+                SubCategoria = "",
+                Unidades = "",
             },
 
             // ═══ MECÂNICA DAS VIBRAÇÕES (2 fórmulas) ═══
@@ -868,12 +956,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XVIII",
                 ExemploPratico = "k=1000 N/m, m=10 kg: fn = √(100)/(2π) = 10/6,28 ≈ 1,59 Hz",
                 Variaveis = [
-                    new() { Simbolo = "k", Nome = "Rigidez da mola (N/m)", ValorPadrao = 1000 },
-                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001 },
+                    new() { Simbolo = "k", Nome = "Rigidez da mola (N/m)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "fn (Hz)",
                 UnidadeResultado = "Hz",
-                Calcular = vars => Math.Sqrt(vars["k"] / vars["m"]) / (2 * Math.PI)
+                Calcular = vars => Math.Sqrt(vars["k"] / vars["m"]) / (2 * Math.PI),
+                SubCategoria = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -886,12 +976,14 @@ public partial class FormulaService
                 AnoOrigin = "Séc. XX",
                 ExemploPratico = "c=20 N·s/m, k=1000 N/m, m=10 kg: ζ = 20/(2×√10000) = 20/200 = 0,1 (pouco amortecido)",
                 Variaveis = [
-                    new() { Simbolo = "c", Nome = "Coef. amortecimento (N·s/m)", ValorPadrao = 20 },
-                    new() { Simbolo = "k", Nome = "Rigidez (N/m)", ValorPadrao = 1000 },
-                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001 },
+                    new() { Simbolo = "c", Nome = "Coef. amortecimento (N·s/m)", ValorPadrao = 20, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "k", Nome = "Rigidez (N/m)", ValorPadrao = 1000, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "m", Nome = "Massa (kg)", ValorPadrao = 10, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "ζ",
-                Calcular = vars => vars["c"] / (2 * Math.Sqrt(vars["k"] * vars["m"]))
+                Calcular = vars => vars["c"] / (2 * Math.Sqrt(vars["k"] * vars["m"])),
+                SubCategoria = "",
+                Unidades = "",
             },
         ]);
     }

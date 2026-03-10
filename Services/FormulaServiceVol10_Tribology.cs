@@ -29,8 +29,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1785",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Coef atrito μ", Simbolo = "μ", Unidade = "", ValorPadrao = 0.6 },
-                        new Variavel { Nome = "Força normal N (N)", Simbolo = "N", Unidade = "N", ValorPadrao = 100 }
+                        new Variavel { Nome = "Coef atrito μ", Simbolo = "μ", Unidade = "", ValorPadrao = 0.6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Força normal N (N)", Simbolo = "N", Unidade = "N", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "F_f",
                     UnidadeResultado = "N",
@@ -41,7 +41,8 @@ namespace CompendioCalc.Services
                         double F_f = mu * N;
                         return F_f;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-240: Curva de Stribeck
@@ -61,9 +62,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "η viscosidade (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10 },
-                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 5 }
+                        new Variavel { Nome = "η viscosidade (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -79,7 +80,8 @@ namespace CompendioCalc.Services
                         double regime = S < 1 ? 0 : (S < 10 ? 1 : 2);
                         return regime;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-241: Desgaste por Archard
@@ -99,10 +101,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm³",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k coef", Simbolo = "k", Unidade = "", ValorPadrao = 1e-5 },
-                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 100 },
-                        new Variavel { Nome = "s distância (m)", Simbolo = "s", Unidade = "m", ValorPadrao = 1000 },
-                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 2 }
+                        new Variavel { Nome = "k coef", Simbolo = "k", Unidade = "", ValorPadrao = 1e-5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "s distância (m)", Simbolo = "s", Unidade = "m", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -117,7 +119,8 @@ namespace CompendioCalc.Services
                         double V_mm3 = V_m3 * 1e9;
                         return V_mm3;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-242: Número de Reynolds (Lubrificação)
@@ -137,10 +140,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 900 },
-                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 5 },
-                        new Variavel { Nome = "h espessura (µm)", Simbolo = "h", Unidade = "µm", ValorPadrao = 50 },
-                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.05 }
+                        new Variavel { Nome = "ρ (kg/m³)", Simbolo = "rho", Unidade = "kg/m³", ValorPadrao = 900, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "h espessura (µm)", Simbolo = "h", Unidade = "µm", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -154,7 +157,8 @@ namespace CompendioCalc.Services
                         double Re = rho * v * h_m / eta;
                         return Re;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-243: Sommerfeld Number
@@ -174,11 +178,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.03 },
-                        new Variavel { Nome = "n rotação (rps)", Simbolo = "n", Unidade = "rps", ValorPadrao = 50 },
-                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 2 },
-                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 50 },
-                        new Variavel { Nome = "C folga (mm)", Simbolo = "C", Unidade = "mm", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.03, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n rotação (rps)", Simbolo = "n", Unidade = "rps", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "C folga (mm)", Simbolo = "C", Unidade = "mm", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -194,7 +198,8 @@ namespace CompendioCalc.Services
                         double S = (eta * n / p_Pa) * ratio * ratio;
                         return S;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-244: Espessura de Filme (EHD)
@@ -214,10 +219,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "µm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 10 },
-                        new Variavel { Nome = "u velocidade (m/s)", Simbolo = "u", Unidade = "m/s", ValorPadrao = 1 },
-                        new Variavel { Nome = "η₀ (Pa·s)", Simbolo = "eta0", Unidade = "Pa·s", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 1000 }
+                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "u velocidade (m/s)", Simbolo = "u", Unidade = "m/s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "η₀ (Pa·s)", Simbolo = "eta0", Unidade = "Pa·s", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -236,7 +241,8 @@ namespace CompendioCalc.Services
                         double h_min_um = h_min * 1e6;
                         return h_min_um;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-245: Razão Lambda (λ)
@@ -256,9 +262,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "h_min (µm)", Simbolo = "h", Unidade = "µm", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "σ₁ rugosidade 1 (µm)", Simbolo = "sigma1", Unidade = "µm", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "σ₂ rugosidade 2 (µm)", Simbolo = "sigma2", Unidade = "µm", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "h_min (µm)", Simbolo = "h", Unidade = "µm", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ₁ rugosidade 1 (µm)", Simbolo = "sigma1", Unidade = "µm", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ₂ rugosidade 2 (µm)", Simbolo = "sigma2", Unidade = "µm", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -272,7 +278,8 @@ namespace CompendioCalc.Services
                         double lambda = h / sigma_comb;
                         return lambda;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-246: Índice de Viscosidade (VI)
@@ -292,8 +299,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ν(40°C) (cSt)", Simbolo = "nu40", Unidade = "cSt", ValorPadrao = 100 },
-                        new Variavel { Nome = "ν(100°C) (cSt)", Simbolo = "nu100", Unidade = "cSt", ValorPadrao = 10 }
+                        new Variavel { Nome = "ν(40°C) (cSt)", Simbolo = "nu40", Unidade = "cSt", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ν(100°C) (cSt)", Simbolo = "nu100", Unidade = "cSt", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -307,7 +314,8 @@ namespace CompendioCalc.Services
                         if (VI > 200) VI = 200;
                         return VI;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-247: Pressão de Hertz
@@ -327,9 +335,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "GPa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 100 },
-                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 10 },
-                        new Variavel { Nome = "E' módulo (GPa)", Simbolo = "E_prime", Unidade = "GPa", ValorPadrao = 200 }
+                        new Variavel { Nome = "W carga (N)", Simbolo = "W", Unidade = "N", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R raio (mm)", Simbolo = "R", Unidade = "mm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "E' módulo (GPa)", Simbolo = "E_prime", Unidade = "GPa", ValorPadrao = 200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -346,7 +354,8 @@ namespace CompendioCalc.Services
                         double p_max_GPa = p_max / 1e9;
                         return p_max_GPa;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-248: Temperatura Flash
@@ -366,10 +375,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°C",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ", Simbolo = "mu", Unidade = "", ValorPadrao = 0.4 },
-                        new Variavel { Nome = "p pressão (GPa)", Simbolo = "p", Unidade = "GPa", ValorPadrao = 1 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10 },
-                        new Variavel { Nome = "a contato (µm)", Simbolo = "a", Unidade = "µm", ValorPadrao = 10 }
+                        new Variavel { Nome = "μ", Simbolo = "mu", Unidade = "", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p pressão (GPa)", Simbolo = "p", Unidade = "GPa", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "a contato (µm)", Simbolo = "a", Unidade = "µm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -389,7 +398,8 @@ namespace CompendioCalc.Services
                         double delta_T = 0.5 * mu * p_Pa * v * Math.Sqrt(a_m / (k * rho * c * v));
                         return delta_T;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-249: Taxa de Desgaste Abrasivo (Rabinowicz)
@@ -409,9 +419,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm³/m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k_ab", Simbolo = "k_ab", Unidade = "", ValorPadrao = 0.2 },
-                        new Variavel { Nome = "W carga (kN)", Simbolo = "W", Unidade = "kN", ValorPadrao = 10 },
-                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 5 }
+                        new Variavel { Nome = "k_ab", Simbolo = "k_ab", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "W carga (kN)", Simbolo = "W", Unidade = "kN", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -427,7 +437,8 @@ namespace CompendioCalc.Services
                         double V_per_s_mm3 = V_per_s_m3 * 1e9;
                         return V_per_s_mm3;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-250: Coeficiente de Atrito Estático vs Dinâmico
@@ -447,8 +458,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "μ_s estático", Simbolo = "mu_s", Unidade = "", ValorPadrao = 1.0 },
-                        new Variavel { Nome = "μ_k cinético", Simbolo = "mu_k", Unidade = "", ValorPadrao = 0.7 }
+                        new Variavel { Nome = "μ_s estático", Simbolo = "mu_s", Unidade = "", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ_k cinético", Simbolo = "mu_k", Unidade = "", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -459,7 +470,8 @@ namespace CompendioCalc.Services
                         double ratio = mu_s / mu_k;
                         return ratio;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-251: Espessura Ótima de Lubrificante
@@ -479,7 +491,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "nm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tipo (1=polar,2=AW)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Tipo (1=polar,2=AW)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -488,7 +500,8 @@ namespace CompendioCalc.Services
                         double h_opt = tipo == 1 ? 10 : 75; // nm (monocamada vs tribofilm)
                         return h_opt;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-252: Taxa de Desgaste Oxidativo
@@ -508,7 +521,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Temperatura (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 400 }
+                        new Variavel { Nome = "Temperatura (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -520,7 +533,8 @@ namespace CompendioCalc.Services
                         if (k_oxide > 1e-5) k_oxide = 1e-5; // cap
                         return k_oxide;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-253: Número de Hersey
@@ -540,9 +554,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "N rotação (rpm)", Simbolo = "N", Unidade = "rpm", ValorPadrao = 1000 },
-                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 2 }
+                        new Variavel { Nome = "η (Pa·s)", Simbolo = "eta", Unidade = "Pa·s", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "N rotação (rpm)", Simbolo = "N", Unidade = "rpm", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -557,7 +571,8 @@ namespace CompendioCalc.Services
                         double Hersey = eta * N_rps / p_Pa;
                         return Hersey;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-254: Fadiga de Contato (Rolamento)
@@ -577,9 +592,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Mrev",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C capacidade (kN)", Simbolo = "C", Unidade = "kN", ValorPadrao = 10 },
-                        new Variavel { Nome = "P carga (kN)", Simbolo = "P", Unidade = "kN", ValorPadrao = 2 },
-                        new Variavel { Nome = "Tipo (3=ball,3.33=roller)", Simbolo = "p", Unidade = "", ValorPadrao = 3 }
+                        new Variavel { Nome = "C capacidade (kN)", Simbolo = "C", Unidade = "kN", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "P carga (kN)", Simbolo = "P", Unidade = "kN", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo (3=ball,3.33=roller)", Simbolo = "p", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -592,7 +607,8 @@ namespace CompendioCalc.Services
                         double L10 = Math.Pow(C / P, p); // em milhões de revoluções
                         return L10;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-255: Relação de Mistura (Engrenagens)
@@ -612,8 +628,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v₁ (m/s)", Simbolo = "v1", Unidade = "m/s", ValorPadrao = 15 },
-                        new Variavel { Nome = "v₂ (m/s)", Simbolo = "v2", Unidade = "m/s", ValorPadrao = 10 }
+                        new Variavel { Nome = "v₁ (m/s)", Simbolo = "v1", Unidade = "m/s", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v₂ (m/s)", Simbolo = "v2", Unidade = "m/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -626,7 +642,8 @@ namespace CompendioCalc.Services
                         double SRR = Math.Abs(v1 - v2) / v_mean;
                         return SRR;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-256: Energia de Fretting
@@ -646,8 +663,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mJ/cycle",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "F força (N)", Simbolo = "F", Unidade = "N", ValorPadrao = 100 },
-                        new Variavel { Nome = "δ amplitude (µm)", Simbolo = "delta", Unidade = "µm", ValorPadrao = 50 }
+                        new Variavel { Nome = "F força (N)", Simbolo = "F", Unidade = "N", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "δ amplitude (µm)", Simbolo = "delta", Unidade = "µm", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -660,7 +677,8 @@ namespace CompendioCalc.Services
                         double E_d_mJ = E_d_J * 1000;
                         return E_d_mJ;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-257: Eficiência de Transmissão
@@ -680,8 +698,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "P_in (kW)", Simbolo = "P_in", Unidade = "kW", ValorPadrao = 100 },
-                        new Variavel { Nome = "P_out (kW)", Simbolo = "P_out", Unidade = "kW", ValorPadrao = 94 }
+                        new Variavel { Nome = "P_in (kW)", Simbolo = "P_in", Unidade = "kW", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "P_out (kW)", Simbolo = "P_out", Unidade = "kW", ValorPadrao = 94, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -692,7 +710,8 @@ namespace CompendioCalc.Services
                         double eta = (P_out / P_in) * 100;
                         return eta;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-258: Coeficiente de Atrito Adesivo (Bowden-Tabor)
@@ -712,8 +731,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "τ shear (MPa)", Simbolo = "tau", Unidade = "MPa", ValorPadrao = 50 },
-                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 2 }
+                        new Variavel { Nome = "τ shear (MPa)", Simbolo = "tau", Unidade = "MPa", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H dureza (GPa)", Simbolo = "H", Unidade = "GPa", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -729,7 +748,8 @@ namespace CompendioCalc.Services
                         double mu_calc = tau_Pa / H_Pa;
                         return mu_calc;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 },
 
                 // V10-259: Critério de Scuffing (PV limit)
@@ -749,8 +769,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MPa·m/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 5 },
-                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "p pressão (MPa)", Simbolo = "p", Unidade = "MPa", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v velocidade (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -760,7 +780,8 @@ namespace CompendioCalc.Services
                         double PV = p * v;
                         return PV;
                     },
-                    Icone = "⚙️"
+                    Icone = "⚙️",
+                    Unidades = "",
                 }
             });
         }

@@ -44,7 +44,8 @@ public partial class FormulaService
                 double e = 1.602e-19; // C
                 
                 return Math.Sqrt((epsilon_0 * k_B * T_e) / (n_e * e * e));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -79,7 +80,8 @@ public partial class FormulaService
                 double m_e = 9.109e-31; // kg
                 
                 return Math.Sqrt((n_e * e * e) / (epsilon_0 * m_e));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -114,7 +116,8 @@ public partial class FormulaService
                 double m = inputs["m"];
                 
                 return (q * B) / m;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -151,7 +154,8 @@ public partial class FormulaService
                 double B = inputs["B"];
                 
                 return (m * v_perp) / (q * B);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -186,7 +190,8 @@ public partial class FormulaService
                 double mu_0 = 4 * Math.PI * 1e-7; // H/m
                 
                 return B / Math.Sqrt(mu_0 * rho);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -221,7 +226,8 @@ public partial class FormulaService
                 double mu_0 = 4 * Math.PI * 1e-7;
                 
                 return (2 * mu_0 * p) / (B * B);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -254,7 +260,8 @@ public partial class FormulaService
                 double tau_E = inputs["tau_E"];
                 
                 return n * tau_E;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -289,7 +296,8 @@ public partial class FormulaService
                 double sigma_v = inputs["sigma_v"];
                 
                 return n_D * n_T * sigma_v;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -324,7 +332,8 @@ public partial class FormulaService
                 double V = inputs["V"];
                 
                 return R * E_fus * V;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -357,7 +366,8 @@ public partial class FormulaService
                 double P_heat = inputs["P_heat"];
                 
                 return P_fus / P_heat;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -394,7 +404,8 @@ public partial class FormulaService
                 
                 // Parte exponencial (dominante)
                 return Math.Exp(-E_ion / (k_B * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -430,7 +441,8 @@ public partial class FormulaService
                 double e = 1.602e-19;
                 
                 return (1.0 / 16.0) * (k_B * T_e) / (e * B);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -463,7 +475,8 @@ public partial class FormulaService
                 double B = inputs["B"];
                 
                 return E / B; // Magnitude |E×B|/B² assumindo E⊥B
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -496,7 +509,8 @@ public partial class FormulaService
                 double P_loss = inputs["P_loss"];
                 
                 return W / P_loss;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -529,7 +543,8 @@ public partial class FormulaService
                 double mu_0 = 4 * Math.PI * 1e-7;
                 
                 return (B * B) / (2 * mu_0);
-            }
+            },
+            Icone = "∑",
         };
     }
 }

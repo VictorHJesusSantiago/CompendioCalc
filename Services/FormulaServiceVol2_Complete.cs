@@ -34,7 +34,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "AIC",
                 UnidadeResultado = "",
-                Calcular = vars => -2 * vars["lnL"] + 2 * vars["k"]
+                Calcular = vars => -2 * vars["lnL"] + 2 * vars["k"],
+                Unidades = "",
             },
 
             new Formula
@@ -55,7 +56,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "BIC",
                 UnidadeResultado = "",
-                Calcular = vars => -2 * vars["lnL"] + vars["k"] * Math.Log(vars["n"])
+                Calcular = vars => -2 * vars["lnL"] + vars["k"] * Math.Log(vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -83,7 +85,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Proporção variância",
                 UnidadeResultado = "",
-                Calcular = vars => vars["lambda_k"] / vars["soma_lambda"]
+                Calcular = vars => vars["lambda_k"] / vars["soma_lambda"],
+                Unidades = "",
             },
 
             new Formula
@@ -105,7 +108,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "d² (Σ=I)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x1"] - vars["y1"], 2) + Math.Pow(vars["x2"] - vars["y2"], 2)
+                Calcular = vars => Math.Pow(vars["x1"] - vars["y1"], 2) + Math.Pow(vars["x2"] - vars["y2"], 2),
+                Unidades = "",
             },
         ]);
     }
@@ -134,7 +138,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "p(θ|x)",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["L"] * vars["prior"]) / vars["px"]
+                Calcular = vars => (vars["L"] * vars["prior"]) / vars["px"],
+                Unidades = "",
             },
         ]);
     }
@@ -161,7 +166,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Σ deg(v)",
                 UnidadeResultado = "",
-                Calcular = vars => 2 * vars["m"]
+                Calcular = vars => 2 * vars["m"],
+                Unidades = "",
             },
 
             new Formula
@@ -183,7 +189,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double n = vars["n"];
                     return n * (n - 1) / 2.0;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -204,7 +211,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "χ (Euler)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["V"] - vars["E"] + vars["F"]
+                Calcular = vars => vars["V"] - vars["E"] + vars["F"],
+                Unidades = "",
             },
 
             new Formula
@@ -223,7 +231,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "m (arestas)",
                 UnidadeResultado = "",
-                Calcular = vars => vars["n"] - 1
+                Calcular = vars => vars["n"] - 1,
+                Unidades = "",
             },
 
             new Formula
@@ -242,7 +251,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "T(n)",
                 UnidadeResultado = "árvores",
-                Calcular = vars => Math.Pow(vars["n"], vars["n"] - 2)
+                Calcular = vars => Math.Pow(vars["n"], vars["n"] - 2),
+                Unidades = "",
             },
         ]);
     }
@@ -269,7 +279,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "fs_min",
                 UnidadeResultado = "Hz",
-                Calcular = vars => 2 * vars["fmax"]
+                Calcular = vars => 2 * vars["fmax"],
+                Unidades = "",
             },
 
             new Formula
@@ -288,7 +299,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "fN",
                 UnidadeResultado = "Hz",
-                Calcular = vars => vars["fs"] / 2.0
+                Calcular = vars => vars["fs"] / 2.0,
+                Unidades = "",
             },
         ]);
     }
@@ -320,7 +332,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "u(t)",
                 UnidadeResultado = "unidade",
-                Calcular = vars => vars["Kp"] * vars["e"] + vars["Ki"] * vars["int_e"] + vars["Kd"] * vars["de"]
+                Calcular = vars => vars["Kp"] * vars["e"] + vars["Ki"] * vars["int_e"] + vars["Kd"] * vars["de"],
+                Unidades = "",
             },
 
             new Formula
@@ -340,7 +353,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "ts",
                 UnidadeResultado = "s",
-                Calcular = vars => 4.0 / (vars["zeta"] * vars["omega_n"])
+                Calcular = vars => 4.0 / (vars["zeta"] * vars["omega_n"]),
+                Unidades = "",
             },
 
             new Formula
@@ -363,7 +377,8 @@ public partial class FormulaService
                     double zeta = vars["zeta"];
                     if (zeta >= 1) return 0; // Sobreamortecido/criticamente amortecido
                     return 100 * Math.Exp(-Math.PI * zeta / Math.Sqrt(1 - zeta * zeta));
-                }
+                },
+                Unidades = "",
             },
         ]);
     }
@@ -392,7 +407,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "N(t)",
                 UnidadeResultado = "indivíduos",
-                Calcular = vars => vars["N0"] * Math.Exp(vars["r"] * vars["t"])
+                Calcular = vars => vars["N0"] * Math.Exp(vars["r"] * vars["t"]),
+                Unidades = "",
             },
 
             new Formula
@@ -417,7 +433,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double K = vars["K"], N0 = vars["N0"], r = vars["r"], t = vars["t"];
                     return K / (1 + (K / N0 - 1) * Math.Exp(-r * t));
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -437,7 +454,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "R₀",
                 UnidadeResultado = "",
-                Calcular = vars => vars["beta"] / vars["gamma"]
+                Calcular = vars => vars["beta"] / vars["gamma"],
+                Unidades = "",
             },
 
             new Formula
@@ -456,7 +474,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "p_crit",
                 UnidadeResultado = "",
-                Calcular = vars => 1 - 1.0 / vars["R0"]
+                Calcular = vars => 1 - 1.0 / vars["R0"],
+                Unidades = "",
             },
         ]);
     }
@@ -483,7 +502,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "t₁/₂",
                 UnidadeResultado = "h",
-                Calcular = vars => Math.Log(2) / vars["K"]
+                Calcular = vars => Math.Log(2) / vars["K"],
+                Unidades = "",
             },
 
             new Formula
@@ -503,7 +523,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Cl",
                 UnidadeResultado = "L/h",
-                Calcular = vars => vars["K"] * vars["Vd"]
+                Calcular = vars => vars["K"] * vars["Vd"],
+                Unidades = "",
             },
 
             new Formula
@@ -524,7 +545,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "C(t)",
                 UnidadeResultado = "mg/L",
-                Calcular = vars => vars["C0"] * Math.Exp(-vars["K"] * vars["t"])
+                Calcular = vars => vars["C0"] * Math.Exp(-vars["K"] * vars["t"]),
+                Unidades = "",
             },
         ]);
     }
@@ -558,7 +580,8 @@ public partial class FormulaService
                     double R = 8.314, F = 96485;
                     double factor = (R * vars["T"]) / (vars["z"] * F);
                     return factor * Math.Log(vars["X_out"] / vars["X_in"]) * 1000; // Converter V para mV
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -578,7 +601,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "ΔV",
                 UnidadeResultado = "mV",
-                Calcular = vars => vars["V_peak"] - vars["V_rest"]
+                Calcular = vars => vars["V_peak"] - vars["V_rest"],
+                Unidades = "",
             },
         ]);
     }

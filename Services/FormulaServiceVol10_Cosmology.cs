@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1922",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70 },
-                        new Variavel { Nome = "Ω_m", Simbolo = "Ω_m", Unidade = "", ValorPadrao = 0.32 },
-                        new Variavel { Nome = "Ω_Λ", Simbolo = "Ω_Λ", Unidade = "", ValorPadrao = 0.68 }
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_m", Simbolo = "Ω_m", Unidade = "", ValorPadrao = 0.32, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_Λ", Simbolo = "Ω_Λ", Unidade = "", ValorPadrao = 0.68, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "Idade_Gyr",
                     UnidadeResultado = "Gyr",
@@ -49,7 +49,8 @@ namespace CompendioCalc.Services
                         
                         return t_Gyr;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-083: Distância de Luminosidade
@@ -69,8 +70,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Gpc",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70 }
+                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -87,7 +88,8 @@ namespace CompendioCalc.Services
                         
                         return d_L / 1000; // convert to Gpc
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-084: Parâmetro de Densidade
@@ -107,7 +109,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kg/m³",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70 }
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -120,7 +122,8 @@ namespace CompendioCalc.Services
                         
                         return rho_crit;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-085: Inflação — Número de e-folds
@@ -140,7 +143,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "e-folds",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "a_final/a_inicial", Simbolo = "a_ratio", Unidade = "", ValorPadrao = 1e26 }
+                        new Variavel { Nome = "a_final/a_inicial", Simbolo = "a_ratio", Unidade = "", ValorPadrao = 1e26, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -149,7 +152,8 @@ namespace CompendioCalc.Services
                         double N = Math.Log(a_ratio);
                         return N;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-086: Potencial Inflacionário
@@ -169,8 +173,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "φ/M_pl", Simbolo = "phi", Unidade = "", ValorPadrao = 15 },
-                        new Variavel { Nome = "Tipo potencial (1=quad,2=exp)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "φ/M_pl", Simbolo = "phi", Unidade = "", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tipo potencial (1=quad,2=exp)", Simbolo = "tipo", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -190,7 +194,8 @@ namespace CompendioCalc.Services
                         
                         return epsilon;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-087: Flutuações Primordiais
@@ -210,8 +215,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k (Mpc^-1)", Simbolo = "k", Unidade = "Mpc^-1", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "n_s", Simbolo = "n_s", Unidade = "", ValorPadrao = 0.965 }
+                        new Variavel { Nome = "k (Mpc^-1)", Simbolo = "k", Unidade = "Mpc^-1", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n_s", Simbolo = "n_s", Unidade = "", ValorPadrao = 0.965, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -225,7 +230,8 @@ namespace CompendioCalc.Services
                         
                         return P_R * 1e9; // scaled for readability
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-088: Temperatura CMB
@@ -245,7 +251,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "K",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1089 }
+                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1089, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -254,7 +260,8 @@ namespace CompendioCalc.Services
                         double T_CMB = T0 * (1 + z);
                         return T_CMB;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-089: Idade do Universo
@@ -274,9 +281,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Gyr",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70 },
-                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3 },
-                        new Variavel { Nome = "Ω_Λ", Simbolo = "OL", Unidade = "", ValorPadrao = 0.7 }
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_Λ", Simbolo = "OL", Unidade = "", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -297,7 +304,8 @@ namespace CompendioCalc.Services
                         
                         return t0_Gyr;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-090: Equação de Estado w
@@ -317,7 +325,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tipo (1=mat,2=rad,3=Λ,4=quint)", Simbolo = "tipo", Unidade = "", ValorPadrao = 3 }
+                        new Variavel { Nome = "Tipo (1=mat,2=rad,3=Λ,4=quint)", Simbolo = "tipo", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -334,7 +342,8 @@ namespace CompendioCalc.Services
                         
                         return w;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-091: Redshift de Igualdade Matéria-Radiação
@@ -354,8 +363,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Ω_m h²", Simbolo = "Omh2", Unidade = "", ValorPadrao = 0.143 },
-                        new Variavel { Nome = "Ω_r h²", Simbolo = "Orh2", Unidade = "", ValorPadrao = 4.2e-5 }
+                        new Variavel { Nome = "Ω_m h²", Simbolo = "Omh2", Unidade = "", ValorPadrao = 0.143, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_r h²", Simbolo = "Orh2", Unidade = "", ValorPadrao = 4.2e-5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -367,7 +376,8 @@ namespace CompendioCalc.Services
                         
                         return z_eq;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-092: Horizonte de Partículas
@@ -387,8 +397,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Gly",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Idade t₀ (Gyr)", Simbolo = "t0", Unidade = "Gyr", ValorPadrao = 13.8 },
-                        new Variavel { Nome = "Expansão média ⟨a⟩", Simbolo = "a_avg", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "Idade t₀ (Gyr)", Simbolo = "t0", Unidade = "Gyr", ValorPadrao = 13.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Expansão média ⟨a⟩", Simbolo = "a_avg", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -401,7 +411,8 @@ namespace CompendioCalc.Services
                         
                         return d_p;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-093: Acoustic Scale (BAO)
@@ -421,8 +432,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Mpc",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Velocidade som c_s/c", Simbolo = "cs", Unidade = "", ValorPadrao = 0.57 },
-                        new Variavel { Nome = "Tempo drag (kyr)", Simbolo = "t_drag", Unidade = "kyr", ValorPadrao = 370 }
+                        new Variavel { Nome = "Velocidade som c_s/c", Simbolo = "cs", Unidade = "", ValorPadrao = 0.57, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo drag (kyr)", Simbolo = "t_drag", Unidade = "kyr", ValorPadrao = 370, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -441,7 +452,8 @@ namespace CompendioCalc.Services
                         
                         return r_s_Mpc;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-094: Lente Gravitacional Fraca
@@ -461,8 +473,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "g/cm²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Distância lens D_l (Gpc)", Simbolo = "D_l", Unidade = "Gpc", ValorPadrao = 1 },
-                        new Variavel { Nome = "Distância source D_s (Gpc)", Simbolo = "D_s", Unidade = "Gpc", ValorPadrao = 2 }
+                        new Variavel { Nome = "Distância lens D_l (Gpc)", Simbolo = "D_l", Unidade = "Gpc", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Distância source D_s (Gpc)", Simbolo = "D_s", Unidade = "Gpc", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -488,7 +500,8 @@ namespace CompendioCalc.Services
                         
                         return Sigma_crit_g_cm2;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-095: Espectro de Potência da Matéria
@@ -508,8 +521,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "(Mpc/h)³",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k (h/Mpc)", Simbolo = "k", Unidade = "h/Mpc", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "σ₈", Simbolo = "σ8", Unidade = "", ValorPadrao = 0.81 }
+                        new Variavel { Nome = "k (h/Mpc)", Simbolo = "k", Unidade = "h/Mpc", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ₈", Simbolo = "σ8", Unidade = "", ValorPadrao = 0.81, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -527,7 +540,8 @@ namespace CompendioCalc.Services
                         
                         return P_k;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-096: Crescimento de Estruturas
@@ -547,8 +561,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -564,7 +578,8 @@ namespace CompendioCalc.Services
                         
                         return D_z;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-097: Efeito Sunyaev-Zel'dovich (SZ)
@@ -584,8 +599,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mK",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Parâmetro y", Simbolo = "y", Unidade = "", ValorPadrao = 2e-4 },
-                        new Variavel { Nome = "T_CMB (K)", Simbolo = "T_CMB", Unidade = "K", ValorPadrao = 2.725 }
+                        new Variavel { Nome = "Parâmetro y", Simbolo = "y", Unidade = "", ValorPadrao = 2e-4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T_CMB (K)", Simbolo = "T_CMB", Unidade = "K", ValorPadrao = 2.725, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -599,7 +614,8 @@ namespace CompendioCalc.Services
                         
                         return deltaT_mK;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-098: Massa de Neutrinos (Limite Cosmológico)
@@ -619,8 +635,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Σm_ν (eV)", Simbolo = "sum_mnu", Unidade = "eV", ValorPadrao = 0.06 },
-                        new Variavel { Nome = "h", Simbolo = "h", Unidade = "", ValorPadrao = 0.7 }
+                        new Variavel { Nome = "Σm_ν (eV)", Simbolo = "sum_mnu", Unidade = "eV", ValorPadrao = 0.06, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "h", Simbolo = "h", Unidade = "", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -631,7 +647,8 @@ namespace CompendioCalc.Services
                         
                         return Omega_nu;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-099: Função de Massa de Halos
@@ -651,8 +668,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Mpc^-3",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "log₁₀(M/M_☉)", Simbolo = "log_M", Unidade = "", ValorPadrao = 14 },
-                        new Variavel { Nome = "σ(M)", Simbolo = "σ", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "log₁₀(M/M_☉)", Simbolo = "log_M", Unidade = "", ValorPadrao = 14, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ(M)", Simbolo = "σ", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -676,7 +693,8 @@ namespace CompendioCalc.Services
                         
                         return n_halos;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-100: Parâmetro de Hubble Normalizado E(z)
@@ -696,9 +714,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3 },
-                        new Variavel { Nome = "Ω_Λ", Simbolo = "OL", Unidade = "", ValorPadrao = 0.7 }
+                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_m", Simbolo = "Om", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ω_Λ", Simbolo = "OL", Unidade = "", ValorPadrao = 0.7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -710,7 +728,8 @@ namespace CompendioCalc.Services
                         
                         return E_z;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 },
 
                 // V10-101: Tempo de Lookback
@@ -730,8 +749,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Gyr",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70 }
+                        new Variavel { Nome = "Redshift z", Simbolo = "z", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "H0 (km/s/Mpc)", Simbolo = "H0", Unidade = "km/s/Mpc", ValorPadrao = 70, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -761,7 +780,8 @@ namespace CompendioCalc.Services
                         
                         return t_L_Gyr;
                     },
-                    Icone = "🌌"
+                    Icone = "🌌",
+                    Unidades = "",
                 }
             });
         }

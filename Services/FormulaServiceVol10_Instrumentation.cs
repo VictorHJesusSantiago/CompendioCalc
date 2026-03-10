@@ -29,8 +29,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1995",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "u(x₁)", Simbolo = "u1", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "u(x₂)", Simbolo = "u2", Unidade = "", ValorPadrao = 0.2 }
+                        new Variavel { Nome = "u(x₁)", Simbolo = "u1", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "u(x₂)", Simbolo = "u2", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "u_c",
                     UnidadeResultado = "",
@@ -42,7 +42,8 @@ namespace CompendioCalc.Services
                         double u_c = Math.Sqrt(u1 * u1 + u2 * u2);
                         return u_c;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-261: Ponte de Wheatstone
@@ -62,9 +63,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ε strain (µε)", Simbolo = "epsilon", Unidade = "µε", ValorPadrao = 1000 },
-                        new Variavel { Nome = "k gage factor", Simbolo = "k", Unidade = "", ValorPadrao = 2 },
-                        new Variavel { Nome = "V_in (V)", Simbolo = "Vin", Unidade = "V", ValorPadrao = 10 }
+                        new Variavel { Nome = "ε strain (µε)", Simbolo = "epsilon", Unidade = "µε", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k gage factor", Simbolo = "k", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "V_in (V)", Simbolo = "Vin", Unidade = "V", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -78,7 +79,8 @@ namespace CompendioCalc.Services
                         double V_out_mV = dV * 1000;
                         return V_out_mV;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-262: LVDT (Linear Variable Differential Transformer)
@@ -98,8 +100,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "S sensibil (mV/mm)", Simbolo = "S", Unidade = "mV/mm", ValorPadrao = 100 },
-                        new Variavel { Nome = "x deslocamento (mm)", Simbolo = "x", Unidade = "mm", ValorPadrao = 2 }
+                        new Variavel { Nome = "S sensibil (mV/mm)", Simbolo = "S", Unidade = "mV/mm", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x deslocamento (mm)", Simbolo = "x", Unidade = "mm", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -109,7 +111,8 @@ namespace CompendioCalc.Services
                         double V_out = S * x;
                         return V_out;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-263: Termopar (Seebeck)
@@ -129,8 +132,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "α coef (µV/°C)", Simbolo = "alpha", Unidade = "µV/°C", ValorPadrao = 41 },
-                        new Variavel { Nome = "ΔT (°C)", Simbolo = "dT", Unidade = "°C", ValorPadrao = 500 }
+                        new Variavel { Nome = "α coef (µV/°C)", Simbolo = "alpha", Unidade = "µV/°C", ValorPadrao = 41, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔT (°C)", Simbolo = "dT", Unidade = "°C", ValorPadrao = 500, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -141,7 +144,8 @@ namespace CompendioCalc.Services
                         double V_mV = V_uV / 1000;
                         return V_mV;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-264: RTD (Resistance Temperature Detector)
@@ -161,9 +165,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Ω",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "T temperatura (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 100 },
-                        new Variavel { Nome = "R₀ (Ω)", Simbolo = "R0", Unidade = "Ω", ValorPadrao = 100 },
-                        new Variavel { Nome = "α (/°C)", Simbolo = "alpha", Unidade = "/°C", ValorPadrao = 0.00385 }
+                        new Variavel { Nome = "T temperatura (°C)", Simbolo = "T", Unidade = "°C", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R₀ (Ω)", Simbolo = "R0", Unidade = "Ω", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α (/°C)", Simbolo = "alpha", Unidade = "/°C", ValorPadrao = 0.00385, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -174,7 +178,8 @@ namespace CompendioCalc.Services
                         double R = R0 * (1 + alpha * T);
                         return R;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-265: Piezoelétrico
@@ -194,8 +199,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "pC",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "d constante (pC/N)", Simbolo = "d", Unidade = "pC/N", ValorPadrao = 400 },
-                        new Variavel { Nome = "F força (N)", Simbolo = "F", Unidade = "N", ValorPadrao = 9.8 }
+                        new Variavel { Nome = "d constante (pC/N)", Simbolo = "d", Unidade = "pC/N", ValorPadrao = 400, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "F força (N)", Simbolo = "F", Unidade = "N", ValorPadrao = 9.8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -205,7 +210,8 @@ namespace CompendioCalc.Services
                         double Q = d * F;
                         return Q;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-266: Capacitivo (Deslocamento)
@@ -225,9 +231,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "pF",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "A área (cm²)", Simbolo = "A", Unidade = "cm²", ValorPadrao = 1 },
-                        new Variavel { Nome = "d gap (mm)", Simbolo = "d", Unidade = "mm", ValorPadrao = 1 },
-                        new Variavel { Nome = "ε_r", Simbolo = "epsilon_r", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "A área (cm²)", Simbolo = "A", Unidade = "cm²", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "d gap (mm)", Simbolo = "d", Unidade = "mm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ε_r", Simbolo = "epsilon_r", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -243,7 +249,8 @@ namespace CompendioCalc.Services
                         double C_pF = C * 1e12;
                         return C_pF;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-267: Encoder Óptico
@@ -263,8 +270,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N PPR", Simbolo = "N", Unidade = "", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Quadrature (1=não,4=sim)", Simbolo = "quad", Unidade = "", ValorPadrao = 4 }
+                        new Variavel { Nome = "N PPR", Simbolo = "N", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Quadrature (1=não,4=sim)", Simbolo = "quad", Unidade = "", ValorPadrao = 4, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -274,7 +281,8 @@ namespace CompendioCalc.Services
                         double delta_theta = 360.0 / (N * quad);
                         return delta_theta;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-268: Amplificador de Instrumentação (CMRR)
@@ -294,8 +302,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "A_d ganho dif", Simbolo = "Ad", Unidade = "", ValorPadrao = 1000 },
-                        new Variavel { Nome = "A_cm ganho comum", Simbolo = "Acm", Unidade = "", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "A_d ganho dif", Simbolo = "Ad", Unidade = "", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "A_cm ganho comum", Simbolo = "Acm", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -306,7 +314,8 @@ namespace CompendioCalc.Services
                         double CMRR = 20 * Math.Log10(Ad / Acm);
                         return CMRR;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-269: ADC Resolução
@@ -326,8 +335,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V_ref (V)", Simbolo = "Vref", Unidade = "V", ValorPadrao = 5 },
-                        new Variavel { Nome = "n bits", Simbolo = "n", Unidade = "", ValorPadrao = 12 }
+                        new Variavel { Nome = "V_ref (V)", Simbolo = "Vref", Unidade = "V", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n bits", Simbolo = "n", Unidade = "", ValorPadrao = 12, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -338,7 +347,8 @@ namespace CompendioCalc.Services
                         double LSB_mV = LSB * 1000;
                         return LSB_mV;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-270: Teorema de Nyquist
@@ -358,8 +368,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Hz",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f_max (Hz)", Simbolo = "fmax", Unidade = "Hz", ValorPadrao = 1000 },
-                        new Variavel { Nome = "Fator oversample", Simbolo = "factor", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "f_max (Hz)", Simbolo = "fmax", Unidade = "Hz", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fator oversample", Simbolo = "factor", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -369,7 +379,8 @@ namespace CompendioCalc.Services
                         double f_s = factor * fmax;
                         return f_s;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-271: Filtro Anti-Aliasing
@@ -389,8 +400,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Hz",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "f_s amostragem (Hz)", Simbolo = "fs", Unidade = "Hz", ValorPadrao = 10000 },
-                        new Variavel { Nome = "Margem fator", Simbolo = "margin", Unidade = "", ValorPadrao = 0.8 }
+                        new Variavel { Nome = "f_s amostragem (Hz)", Simbolo = "fs", Unidade = "Hz", ValorPadrao = 10000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Margem fator", Simbolo = "margin", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -400,7 +411,8 @@ namespace CompendioCalc.Services
                         double f_c = (fs / 2) * margin;
                         return f_c;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-272: Calibração Linear (Least Squares)
@@ -420,11 +432,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "n pontos", Simbolo = "n", Unidade = "", ValorPadrao = 5 },
-                        new Variavel { Nome = "Σxy", Simbolo = "sum_xy", Unidade = "", ValorPadrao = 100 },
-                        new Variavel { Nome = "Σx", Simbolo = "sum_x", Unidade = "", ValorPadrao = 500 },
-                        new Variavel { Nome = "Σy", Simbolo = "sum_y", Unidade = "", ValorPadrao = 20 },
-                        new Variavel { Nome = "Σx²", Simbolo = "sum_x2", Unidade = "", ValorPadrao = 75000 }
+                        new Variavel { Nome = "n pontos", Simbolo = "n", Unidade = "", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σxy", Simbolo = "sum_xy", Unidade = "", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σx", Simbolo = "sum_x", Unidade = "", ValorPadrao = 500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σy", Simbolo = "sum_y", Unidade = "", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Σx²", Simbolo = "sum_x2", Unidade = "", ValorPadrao = 75000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -440,7 +452,8 @@ namespace CompendioCalc.Services
                         double a = (n * sum_xy - sum_x * sum_y) / denom;
                         return a;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-273: Coeficiente de Temperatura
@@ -460,8 +473,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ppm/°C",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V₀ nominal (V)", Simbolo = "V0", Unidade = "V", ValorPadrao = 5 },
-                        new Variavel { Nome = "dV/dT (mV/°C)", Simbolo = "dVdT", Unidade = "mV/°C", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "V₀ nominal (V)", Simbolo = "V0", Unidade = "V", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "dV/dT (mV/°C)", Simbolo = "dVdT", Unidade = "mV/°C", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -474,7 +487,8 @@ namespace CompendioCalc.Services
                         double TCO = (dVdT / V0) * 1e6;
                         return TCO;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-274: Histerese
@@ -494,8 +508,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%FS",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "max diff (V)", Simbolo = "diff", Unidade = "V", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "span (V)", Simbolo = "span", Unidade = "V", ValorPadrao = 5 }
+                        new Variavel { Nome = "max diff (V)", Simbolo = "diff", Unidade = "V", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "span (V)", Simbolo = "span", Unidade = "V", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -506,7 +520,8 @@ namespace CompendioCalc.Services
                         double H = (diff / span) * 100;
                         return H;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-275: Linearidade (INL)
@@ -526,8 +541,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "LSB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "max deviation (mV)", Simbolo = "dev", Unidade = "mV", ValorPadrao = 0.61 },
-                        new Variavel { Nome = "LSB (mV)", Simbolo = "LSB", Unidade = "mV", ValorPadrao = 1.22 }
+                        new Variavel { Nome = "max deviation (mV)", Simbolo = "dev", Unidade = "mV", ValorPadrao = 0.61, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "LSB (mV)", Simbolo = "LSB", Unidade = "mV", ValorPadrao = 1.22, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -538,7 +553,8 @@ namespace CompendioCalc.Services
                         double INL = dev / LSB;
                         return INL;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-276: Tempo de Resposta (τ)
@@ -558,8 +574,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "% final",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "t tempo (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 1 },
-                        new Variavel { Nome = "τ constante (s)", Simbolo = "tau", Unidade = "s", ValorPadrao = 1 }
+                        new Variavel { Nome = "t tempo (s)", Simbolo = "t", Unidade = "s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "τ constante (s)", Simbolo = "tau", Unidade = "s", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -571,7 +587,8 @@ namespace CompendioCalc.Services
                         double percent = fraction * 100;
                         return percent;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-277: Ruído (rms)
@@ -591,8 +608,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "µV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ desvio padrão (µV)", Simbolo = "sigma", Unidade = "µV", ValorPadrao = 500 },
-                        new Variavel { Nome = "n samples average", Simbolo = "n", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "σ desvio padrão (µV)", Simbolo = "sigma", Unidade = "µV", ValorPadrao = 500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n samples average", Simbolo = "n", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -602,7 +619,8 @@ namespace CompendioCalc.Services
                         double V_rms = sigma / Math.Sqrt(n);
                         return V_rms;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-278: Rastreabilidade (Cadeia Calibração)
@@ -622,9 +640,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ppm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "u_ref (ppm)", Simbolo = "uref", Unidade = "ppm", ValorPadrao = 10 },
-                        new Variavel { Nome = "u_transfer (ppm)", Simbolo = "utrans", Unidade = "ppm", ValorPadrao = 20 },
-                        new Variavel { Nome = "u_drift (ppm)", Simbolo = "udrift", Unidade = "ppm", ValorPadrao = 50 }
+                        new Variavel { Nome = "u_ref (ppm)", Simbolo = "uref", Unidade = "ppm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "u_transfer (ppm)", Simbolo = "utrans", Unidade = "ppm", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "u_drift (ppm)", Simbolo = "udrift", Unidade = "ppm", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -635,7 +653,8 @@ namespace CompendioCalc.Services
                         double u_total = Math.Sqrt(uref * uref + utrans * utrans + udrift * udrift);
                         return u_total;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 },
 
                 // V10-279: Relação Sinal-Ruído (SNR)
@@ -655,8 +674,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "dB",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "V_signal (V)", Simbolo = "Vsig", Unidade = "V", ValorPadrao = 5 },
-                        new Variavel { Nome = "V_noise (mV)", Simbolo = "Vnoise", Unidade = "mV", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "V_signal (V)", Simbolo = "Vsig", Unidade = "V", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "V_noise (mV)", Simbolo = "Vnoise", Unidade = "mV", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -669,7 +688,8 @@ namespace CompendioCalc.Services
                         double SNR = 20 * Math.Log10(Vsig / Vnoise);
                         return SNR;
                     },
-                    Icone = "📐"
+                    Icone = "📐",
+                    Unidades = "",
                 }
             });
         }

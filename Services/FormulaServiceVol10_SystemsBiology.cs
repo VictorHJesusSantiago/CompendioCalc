@@ -31,9 +31,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Concentração [L]", Simbolo = "[L]", Unidade = "M", ValorPadrao = 0.001 },
-                        new Variavel { Nome = "K_d", Simbolo = "K_d", Unidade = "M", ValorPadrao = 0.001 },
-                        new Variavel { Nome = "Coef Hill n", Simbolo = "n", Unidade = "", ValorPadrao = 2.8 }
+                        new Variavel { Nome = "Concentração [L]", Simbolo = "[L]", Unidade = "M", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_d", Simbolo = "K_d", Unidade = "M", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Coef Hill n", Simbolo = "n", Unidade = "", ValorPadrao = 2.8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -43,7 +43,8 @@ namespace CompendioCalc.Services
                         double theta = Math.Pow(L, n) / (Math.Pow(Kd, n) + Math.Pow(L, n));
                         return theta;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-103: Michaelis-Menten
@@ -63,9 +64,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "μM/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "[S] (mM)", Simbolo = "S", Unidade = "mM", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "V_max (μM/s)", Simbolo = "Vmax", Unidade = "μM/s", ValorPadrao = 100 },
-                        new Variavel { Nome = "K_m (mM)", Simbolo = "Km", Unidade = "mM", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "[S] (mM)", Simbolo = "S", Unidade = "mM", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "V_max (μM/s)", Simbolo = "Vmax", Unidade = "μM/s", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_m (mM)", Simbolo = "Km", Unidade = "mM", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -76,7 +77,8 @@ namespace CompendioCalc.Services
                         double v = (Vmax * S) / (Km + S);
                         return v;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-104: Modelo Logístico — Crescimento Populacional
@@ -96,10 +98,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "células",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N₀ (células)", Simbolo = "N0", Unidade = "células", ValorPadrao = 1e6 },
-                        new Variavel { Nome = "r (1/h)", Simbolo = "r", Unidade = "1/h", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "K (capacidade)", Simbolo = "K", Unidade = "células", ValorPadrao = 1e9 },
-                        new Variavel { Nome = "Tempo t (h)", Simbolo = "t", Unidade = "h", ValorPadrao = 10 }
+                        new Variavel { Nome = "N₀ (células)", Simbolo = "N0", Unidade = "células", ValorPadrao = 1e6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "r (1/h)", Simbolo = "r", Unidade = "1/h", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K (capacidade)", Simbolo = "K", Unidade = "células", ValorPadrao = 1e9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Tempo t (h)", Simbolo = "t", Unidade = "h", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -113,7 +115,8 @@ namespace CompendioCalc.Services
                         
                         return N_t;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-105: Taxa de Mutação
@@ -133,9 +136,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mutações",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tamanho genoma (bp)", Simbolo = "L", Unidade = "bp", ValorPadrao = 3e9 },
-                        new Variavel { Nome = "μ (/bp/geração)", Simbolo = "mu", Unidade = "", ValorPadrao = 1e-8 },
-                        new Variavel { Nome = "Gerações", Simbolo = "n_gen", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Tamanho genoma (bp)", Simbolo = "L", Unidade = "bp", ValorPadrao = 3e9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ (/bp/geração)", Simbolo = "mu", Unidade = "", ValorPadrao = 1e-8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Gerações", Simbolo = "n_gen", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -146,7 +149,8 @@ namespace CompendioCalc.Services
                         double mutacoes = L * mu * n_gen;
                         return mutacoes;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-106: Seleção Natural (Fitness)
@@ -166,8 +170,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Fitness mutante w_mut", Simbolo = "w_mut", Unidade = "", ValorPadrao = 0.9 },
-                        new Variavel { Nome = "Fitness WT w_WT", Simbolo = "w_WT", Unidade = "", ValorPadrao = 1.0 }
+                        new Variavel { Nome = "Fitness mutante w_mut", Simbolo = "w_mut", Unidade = "", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fitness WT w_WT", Simbolo = "w_WT", Unidade = "", ValorPadrao = 1.0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -178,7 +182,8 @@ namespace CompendioCalc.Services
                         double s = 1 - (w_mut / w_WT);
                         return s;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-107: Rede Metabólica — Flux Balance Analysis (FBA)
@@ -198,8 +203,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "1/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Glicose uptake (mmol/gDW/h)", Simbolo = "v_glc", Unidade = "mmol/gDW/h", ValorPadrao = 10 },
-                        new Variavel { Nome = "Eficiência conversão", Simbolo = "Y", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "Glicose uptake (mmol/gDW/h)", Simbolo = "v_glc", Unidade = "mmol/gDW/h", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Eficiência conversão", Simbolo = "Y", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -210,7 +215,8 @@ namespace CompendioCalc.Services
                         double mu = v_glc * Y * 0.1; // growth rate
                         return mu;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-108: Oscilador Repressilator
@@ -230,9 +236,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "nM",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "α (prod rate)", Simbolo = "alpha", Unidade = "nM/min", ValorPadrao = 1000 },
-                        new Variavel { Nome = "X_{i-1} (nM)", Simbolo = "X_prev", Unidade = "nM", ValorPadrao = 100 },
-                        new Variavel { Nome = "Coef Hill n", Simbolo = "n", Unidade = "", ValorPadrao = 2.5 }
+                        new Variavel { Nome = "α (prod rate)", Simbolo = "alpha", Unidade = "nM/min", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "X_{i-1} (nM)", Simbolo = "X_prev", Unidade = "nM", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Coef Hill n", Simbolo = "n", Unidade = "", ValorPadrao = 2.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -246,7 +252,8 @@ namespace CompendioCalc.Services
                         
                         return X;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-109: Taxa de Transcrição — Modelo RNAP
@@ -266,9 +273,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mRNA/min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "[RNAP] (nM)", Simbolo = "RNAP", Unidade = "nM", ValorPadrao = 100 },
-                        new Variavel { Nome = "k_on (1/nM/min)", Simbolo = "k_on", Unidade = "1/nM/min", ValorPadrao = 0.01 },
-                        new Variavel { Nome = "P_promoter", Simbolo = "P", Unidade = "", ValorPadrao = 0.8 }
+                        new Variavel { Nome = "[RNAP] (nM)", Simbolo = "RNAP", Unidade = "nM", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_on (1/nM/min)", Simbolo = "k_on", Unidade = "1/nM/min", ValorPadrao = 0.01, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "P_promoter", Simbolo = "P", Unidade = "", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -279,7 +286,8 @@ namespace CompendioCalc.Services
                         double r_tx = k_on * RNAP * P;
                         return r_tx;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-110: Tradução — Eficiência Ribossomal
@@ -299,9 +307,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "proteína/min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "[mRNA] (nM)", Simbolo = "mRNA", Unidade = "nM", ValorPadrao = 10 },
-                        new Variavel { Nome = "[Ribosome]_free (nM)", Simbolo = "Ribo", Unidade = "nM", ValorPadrao = 500 },
-                        new Variavel { Nome = "k_tl (1/nM/min)", Simbolo = "k_tl", Unidade = "1/nM/min", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "[mRNA] (nM)", Simbolo = "mRNA", Unidade = "nM", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "[Ribosome]_free (nM)", Simbolo = "Ribo", Unidade = "nM", ValorPadrao = 500, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_tl (1/nM/min)", Simbolo = "k_tl", Unidade = "1/nM/min", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -312,7 +320,8 @@ namespace CompendioCalc.Services
                         double r_tl = k_tl * mRNA * Ribo;
                         return r_tl;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-111: Degradação de mRNA/Proteína
@@ -332,7 +341,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k_deg (1/min)", Simbolo = "k_deg", Unidade = "1/min", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "k_deg (1/min)", Simbolo = "k_deg", Unidade = "1/min", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -342,7 +351,8 @@ namespace CompendioCalc.Services
                         double t_half = Math.Log(2) / k_deg;
                         return t_half;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-112: Sinalização — Cascata MAPK
@@ -362,9 +372,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_nível1", Simbolo = "K1", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "K_nível2", Simbolo = "K2", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "K_nível3", Simbolo = "K3", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "K_nível1", Simbolo = "K1", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_nível2", Simbolo = "K2", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_nível3", Simbolo = "K3", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -375,7 +385,8 @@ namespace CompendioCalc.Services
                         double amplificacao = K1 * K2 * K3;
                         return amplificacao;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-113: Quorum Sensing
@@ -395,9 +406,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "nM",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Densidade N (cells/mL)", Simbolo = "N", Unidade = "cells/mL", ValorPadrao = 1e8 },
-                        new Variavel { Nome = "k_prod (nM/cell)", Simbolo = "k_prod", Unidade = "nM/cell", ValorPadrao = 1e-6 },
-                        new Variavel { Nome = "k_deg+k_diff (1/min)", Simbolo = "k_loss", Unidade = "1/min", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "Densidade N (cells/mL)", Simbolo = "N", Unidade = "cells/mL", ValorPadrao = 1e8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_prod (nM/cell)", Simbolo = "k_prod", Unidade = "nM/cell", ValorPadrao = 1e-6, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_deg+k_diff (1/min)", Simbolo = "k_loss", Unidade = "1/min", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -409,7 +420,8 @@ namespace CompendioCalc.Services
                         double AI_eq = (k_prod * N) / k_loss;
                         return AI_eq;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-114: Ciclo Celular — Controle de Cheque Points
@@ -429,10 +441,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "T_G1 (h)", Simbolo = "T_G1", Unidade = "h", ValorPadrao = 11 },
-                        new Variavel { Nome = "T_S (h)", Simbolo = "T_S", Unidade = "h", ValorPadrao = 8 },
-                        new Variavel { Nome = "T_G2 (h)", Simbolo = "T_G2", Unidade = "h", ValorPadrao = 4 },
-                        new Variavel { Nome = "T_M (h)", Simbolo = "T_M", Unidade = "h", ValorPadrao = 1 }
+                        new Variavel { Nome = "T_G1 (h)", Simbolo = "T_G1", Unidade = "h", ValorPadrao = 11, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T_S (h)", Simbolo = "T_S", Unidade = "h", ValorPadrao = 8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T_G2 (h)", Simbolo = "T_G2", Unidade = "h", ValorPadrao = 4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T_M (h)", Simbolo = "T_M", Unidade = "h", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -444,7 +456,8 @@ namespace CompendioCalc.Services
                         double T_cycle = T_G1 + T_S + T_G2 + T_M;
                         return T_cycle;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-115: Modelo SIR — Epidemiologia
@@ -464,10 +477,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "pessoas/dia",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "S (susceptíveis)", Simbolo = "S", Unidade = "pessoas", ValorPadrao = 990 },
-                        new Variavel { Nome = "I (infectados)", Simbolo = "I", Unidade = "pessoas", ValorPadrao = 10 },
-                        new Variavel { Nome = "β (1/pessoa/dia)", Simbolo = "beta", Unidade = "1/pessoa/dia", ValorPadrao = 0.0005 },
-                        new Variavel { Nome = "γ (1/dia)", Simbolo = "gamma", Unidade = "1/dia", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "S (susceptíveis)", Simbolo = "S", Unidade = "pessoas", ValorPadrao = 990, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "I (infectados)", Simbolo = "I", Unidade = "pessoas", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β (1/pessoa/dia)", Simbolo = "beta", Unidade = "1/pessoa/dia", ValorPadrao = 0.0005, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ (1/dia)", Simbolo = "gamma", Unidade = "1/dia", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -479,7 +492,8 @@ namespace CompendioCalc.Services
                         double dI_dt = beta * S * I - gamma * I;
                         return dI_dt;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-116: Diversidade — Índice de Shannon
@@ -499,10 +513,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "p₁", Simbolo = "p1", Unidade = "", ValorPadrao = 0.4 },
-                        new Variavel { Nome = "p₂", Simbolo = "p2", Unidade = "", ValorPadrao = 0.3 },
-                        new Variavel { Nome = "p₃", Simbolo = "p3", Unidade = "", ValorPadrao = 0.2 },
-                        new Variavel { Nome = "p₄", Simbolo = "p4", Unidade = "", ValorPadrao = 0.1 }
+                        new Variavel { Nome = "p₁", Simbolo = "p1", Unidade = "", ValorPadrao = 0.4, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p₂", Simbolo = "p2", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p₃", Simbolo = "p3", Unidade = "", ValorPadrao = 0.2, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "p₄", Simbolo = "p4", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -519,7 +533,8 @@ namespace CompendioCalc.Services
                         
                         return H;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-117: Difusão de Morfógenos
@@ -539,8 +554,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "μm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "D (μm²/s)", Simbolo = "D", Unidade = "μm²/s", ValorPadrao = 10 },
-                        new Variavel { Nome = "k_deg (1/s)", Simbolo = "k_deg", Unidade = "1/s", ValorPadrao = 0.001 }
+                        new Variavel { Nome = "D (μm²/s)", Simbolo = "D", Unidade = "μm²/s", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_deg (1/s)", Simbolo = "k_deg", Unidade = "1/s", ValorPadrao = 0.001, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -552,7 +567,8 @@ namespace CompendioCalc.Services
                         
                         return lambda;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-118: Expressão Gênica — Ruído (Noise)
@@ -572,7 +588,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "⟨n⟩ (moléculas)", Simbolo = "n_avg", Unidade = "moléculas", ValorPadrao = 100 }
+                        new Variavel { Nome = "⟨n⟩ (moléculas)", Simbolo = "n_avg", Unidade = "moléculas", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -582,7 +598,8 @@ namespace CompendioCalc.Services
                         double eta2 = 1.0 / n_avg;
                         return eta2;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-119: PCR — Amplificação Exponencial
@@ -602,9 +619,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "cópias",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N₀ (cópias iniciais)", Simbolo = "N0", Unidade = "cópias", ValorPadrao = 1 },
-                        new Variavel { Nome = "Eficiência E", Simbolo = "E", Unidade = "", ValorPadrao = 0.95 },
-                        new Variavel { Nome = "Ciclos n", Simbolo = "n", Unidade = "", ValorPadrao = 30 }
+                        new Variavel { Nome = "N₀ (cópias iniciais)", Simbolo = "N0", Unidade = "cópias", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Eficiência E", Simbolo = "E", Unidade = "", ValorPadrao = 0.95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Ciclos n", Simbolo = "n", Unidade = "", ValorPadrao = 30, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -615,7 +632,8 @@ namespace CompendioCalc.Services
                         double N_final = N0 * Math.Pow(1 + E, n);
                         return N_final;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-120: CRISPR — Eficiência de Edição
@@ -635,8 +653,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Células editadas", Simbolo = "n_edit", Unidade = "células", ValorPadrao = 70 },
-                        new Variavel { Nome = "Células totais", Simbolo = "n_total", Unidade = "células", ValorPadrao = 100 }
+                        new Variavel { Nome = "Células editadas", Simbolo = "n_edit", Unidade = "células", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Células totais", Simbolo = "n_total", Unidade = "células", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -647,7 +665,8 @@ namespace CompendioCalc.Services
                         double eta = (n_edit / n_total) * 100;
                         return eta;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 },
 
                 // V10-121: Modelo de Lotka-Volterra (Predador-Presa)
@@ -667,10 +686,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "indivíduos/ano",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "N (presas)", Simbolo = "N", Unidade = "indivíduos", ValorPadrao = 1000 },
-                        new Variavel { Nome = "P (predadores)", Simbolo = "P", Unidade = "indivíduos", ValorPadrao = 50 },
-                        new Variavel { Nome = "α (natalidade)", Simbolo = "alpha", Unidade = "1/ano", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "β (predação)", Simbolo = "beta", Unidade = "1/(ind·ano)", ValorPadrao = 0.02 }
+                        new Variavel { Nome = "N (presas)", Simbolo = "N", Unidade = "indivíduos", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "P (predadores)", Simbolo = "P", Unidade = "indivíduos", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α (natalidade)", Simbolo = "alpha", Unidade = "1/ano", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β (predação)", Simbolo = "beta", Unidade = "1/(ind·ano)", ValorPadrao = 0.02, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -682,7 +701,8 @@ namespace CompendioCalc.Services
                         double dN_dt = alpha * N - beta * N * P;
                         return dN_dt;
                     },
-                    Icone = "🧬"
+                    Icone = "🧬",
+                    Unidades = "",
                 }
             });
         }

@@ -39,7 +39,8 @@ public partial class FormulaService
                 double lambda = inputs["lambda"];
                 
                 return Math.PI * w0 * w0 / lambda;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -74,7 +75,8 @@ public partial class FormulaService
                 double z_R = inputs["z_R"];
                 
                 return w0 * Math.Sqrt(1 + (z / z_R) * (z / z_R));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -107,7 +109,8 @@ public partial class FormulaService
                 double w0 = inputs["w0"];
                 
                 return lambda / (Math.PI * w0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -142,7 +145,8 @@ public partial class FormulaService
                 double NA = inputs["NA"];
                 
                 return (2 * Math.PI * a / lambda) * NA;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -175,7 +179,8 @@ public partial class FormulaService
                 double n2 = inputs["n2"];
                 
                 return Math.Sqrt(n1 * n1 - n2 * n2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -210,7 +215,8 @@ public partial class FormulaService
                 double L = inputs["L"];
                 
                 return P_in * Math.Pow(10, -alpha * L / 10);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -245,7 +251,8 @@ public partial class FormulaService
                 double L = inputs["L"];
                 
                 return D * delta_lambda * L;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -281,7 +288,8 @@ public partial class FormulaService
                 double epsilon_0 = 8.854e-12;
                 
                 return epsilon_0 * chi2 * E * E;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -316,7 +324,8 @@ public partial class FormulaService
                 double I = inputs["I"];
                 
                 return n0 + n2 * I;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -349,7 +358,8 @@ public partial class FormulaService
                 double delta_lambda = inputs["delta_lambda"];
                 
                 return lambda * lambda / delta_lambda;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -382,7 +392,8 @@ public partial class FormulaService
                 double I_min = inputs["I_min"];
                 
                 return (I_max - I_min) / (I_max + I_min);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -415,7 +426,8 @@ public partial class FormulaService
                 double D = inputs["D"];
                 
                 return 1.22 * lambda / D;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -450,7 +462,8 @@ public partial class FormulaService
                 double phase_error = 2 * Math.PI * sigma / lambda;
                 
                 return Math.Exp(-phase_error * phase_error);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -483,7 +496,8 @@ public partial class FormulaService
                 double delta_nu = inputs["delta_nu"];
                 
                 return nu / delta_nu;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -518,7 +532,8 @@ public partial class FormulaService
                 double c = 299792458; // m/s
                 
                 return c / (2 * L * n);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -553,7 +568,8 @@ public partial class FormulaService
                 double w = inputs["w"];
                 
                 return I0 * Math.Exp(-2 * r * r / (w * w));
-            }
+            },
+            Icone = "∑",
         };
     }
 }

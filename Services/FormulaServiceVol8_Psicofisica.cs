@@ -41,7 +41,8 @@ public partial class FormulaService
                 double I0 = inputs["I0"];
                 
                 return k * Math.Log(I / I0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -78,7 +79,8 @@ public partial class FormulaService
                 double beta = inputs["beta"];
                 
                 return k * Math.Pow(phi - phi0, beta);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -111,7 +113,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 
                 return k * I;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -148,7 +151,8 @@ public partial class FormulaService
                 double Z_fa = -1.0 * Math.Sqrt(2) * ErfInv(1 - 2 * fa_rate);
                 
                 return Z_hit - Z_fa;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -192,7 +196,8 @@ public partial class FormulaService
                 double f_noise = inputs["f_noise"];
                 
                 return f_signal / f_noise;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -221,7 +226,8 @@ public partial class FormulaService
             Calcular = inputs =>
             {
                 return inputs["I0"];
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -254,7 +260,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 
                 return k * I;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -291,7 +298,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return S0 * Math.Exp(-t / tau) + S_inf;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -328,7 +336,8 @@ public partial class FormulaService
                 double Phi = 0.5 * (1 + Erf(z / Math.Sqrt(2)));
                 
                 return Phi;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -383,7 +392,8 @@ public partial class FormulaService
                 double beta = inputs["beta"];
                 
                 return k * Math.Pow(phi, beta);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -414,7 +424,8 @@ public partial class FormulaService
                 double C_threshold = inputs["C_threshold"];
                 
                 return 1.0 / C_threshold;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -449,7 +460,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 
                 return a + b * Math.Log2(n);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -488,7 +500,8 @@ public partial class FormulaService
                 double ID = Math.Log2(D / W + 1);
                 
                 return a + b * ID;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -523,7 +536,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 
                 return a + b * n;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -552,7 +566,8 @@ public partial class FormulaService
             Calcular = inputs =>
             {
                 return inputs["capacity"];
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -594,7 +609,8 @@ public partial class FormulaService
                 double Phi = 0.5 * (1 + Erf(z / Math.Sqrt(2)));
                 
                 return gamma + (1 - gamma - lambda) * Phi;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

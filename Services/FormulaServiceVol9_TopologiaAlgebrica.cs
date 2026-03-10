@@ -46,7 +46,8 @@ namespace CompendioCalc.Services
                     return chi; // 2=esfera/convexo, 0=toro, <0=genus alto
                 },
                 VariavelResultado = "Característica Euler χ",
-                UnidadeResultado = "adimensional"
+                UnidadeResultado = "adimensional",
+                Icone = "∑",
             };
         }
 
@@ -89,7 +90,8 @@ namespace CompendioCalc.Services
                     return diferenca; // 0=satisfaz Gauss-Bonnet
                 },
                 VariavelResultado = "Erro Gauss-Bonnet",
-                UnidadeResultado = "adimensional"
+                UnidadeResultado = "adimensional",
+                Icone = "∑",
             };
         }
 
@@ -129,7 +131,8 @@ namespace CompendioCalc.Services
                     return K; // curvatura escalar intrínseca
                 },
                 VariavelResultado = "Curvatura Gaussiana K",
-                UnidadeResultado = "1/m²"
+                UnidadeResultado = "1/m²",
+                Icone = "∑",
             };
         }
 
@@ -169,7 +172,8 @@ namespace CompendioCalc.Services
                     return chi; // toro: 1−2+1=0; esfera: 1−0+1=2
                 },
                 VariavelResultado = "Característica Euler χ",
-                UnidadeResultado = "adimensional"
+                UnidadeResultado = "adimensional",
+                Icone = "∑",
             };
         }
 
@@ -207,7 +211,8 @@ namespace CompendioCalc.Services
                     return diferenca; // 0=satisfaz Stokes
                 },
                 VariavelResultado = "Erro Stokes",
-                UnidadeResultado = "unidades da forma"
+                UnidadeResultado = "unidades da forma",
+                Icone = "∑",
             };
         }
 
@@ -248,7 +253,8 @@ namespace CompendioCalc.Services
                     return Gamma_r_theta_theta;
                 },
                 VariavelResultado = "Γ^r_{θθ}",
-                UnidadeResultado = "m"
+                UnidadeResultado = "m",
+                Icone = "∑",
             };
         }
 
@@ -284,7 +290,8 @@ namespace CompendioCalc.Services
                     return n; // n=1: loop padrão, n=−1: reverso, n=2: dupla volta
                 },
                 VariavelResultado = "Classe homotopia [γ]∈ℤ",
-                UnidadeResultado = "contagem"
+                UnidadeResultado = "contagem",
+                Icone = "∑",
             };
         }
 
@@ -326,7 +333,8 @@ namespace CompendioCalc.Services
                     return dim_uniao;
                 },
                 VariavelResultado = "dim H_n(A∪B) aprox",
-                UnidadeResultado = "dimensão"
+                UnidadeResultado = "dimensão",
+                Icone = "∑",
             };
         }
 
@@ -368,7 +376,8 @@ namespace CompendioCalc.Services
                     // Retorna apenas dim harmônica (finita)
                 },
                 VariavelResultado = "Número Betti b_k",
-                UnidadeResultado = "dimensão"
+                UnidadeResultado = "dimensão",
+                Icone = "∑",
             };
         }
 
@@ -419,7 +428,8 @@ namespace CompendioCalc.Services
                     return diferenca; // 0=satisfaz EFE
                 },
                 VariavelResultado = "Resíduo EFE",
-                UnidadeResultado = "1/m²"
+                UnidadeResultado = "1/m²",
+                Icone = "∑",
             };
         }
 
@@ -460,7 +470,8 @@ namespace CompendioCalc.Services
                     return grau_aprox;
                 },
                 VariavelResultado = "Grau polinômio aprox",
-                UnidadeResultado = "grau"
+                UnidadeResultado = "grau",
+                Icone = "∑",
             };
         }
 
@@ -496,7 +507,8 @@ namespace CompendioCalc.Services
                     return h; // 1=Hopf original, 2=suspensão, etc.
                 },
                 VariavelResultado = "Hopf invariant h∈π₃(S²)",
-                UnidadeResultado = "contagem"
+                UnidadeResultado = "contagem",
+                Icone = "∑",
             };
         }
 
@@ -532,7 +544,8 @@ namespace CompendioCalc.Services
                     return c1; // inteiro para fibrados quantizados
                 },
                 VariavelResultado = "c₁ integrado",
-                UnidadeResultado = "adimensional (∈ℤ)"
+                UnidadeResultado = "adimensional (∈ℤ)",
+                Icone = "∑",
             };
         }
 
@@ -571,7 +584,8 @@ namespace CompendioCalc.Services
                     return densidade_acao;
                 },
                 VariavelResultado = "Densidade ação YM",
-                UnidadeResultado = "campo²"
+                UnidadeResultado = "campo²",
+                Icone = "∑",
             };
         }
 
@@ -611,7 +625,8 @@ namespace CompendioCalc.Services
                     return dim_rep;
                 },
                 VariavelResultado = "Dimensão rep (2l+1)",
-                UnidadeResultado = "dimensão"
+                UnidadeResultado = "dimensão",
+                Icone = "∑",
             };
         }
 
@@ -654,7 +669,8 @@ namespace CompendioCalc.Services
                     return K;
                 },
                 VariavelResultado = "Curvatura seccional K(π)",
-                UnidadeResultado = "1/m²"
+                UnidadeResultado = "1/m²",
+                Icone = "∑",
             };
         }
 
@@ -710,7 +726,8 @@ namespace CompendioCalc.Services
                     return J_t;
                 },
                 VariavelResultado = "Desvio J(t)",
-                UnidadeResultado = "m"
+                UnidadeResultado = "m",
+                Icone = "∑",
             };
         }
 
@@ -747,7 +764,8 @@ namespace CompendioCalc.Services
                     return index; // inteiro, invariante topológico
                 },
                 VariavelResultado = "Índice ind(D)",
-                UnidadeResultado = "adimensional (∈ℤ)"
+                UnidadeResultado = "adimensional (∈ℤ)",
+                Icone = "∑",
             };
         }
 
@@ -789,7 +807,8 @@ namespace CompendioCalc.Services
                     return redshift; // z do objeto em coordenada comóvel r
                 },
                 VariavelResultado = "Redshift z",
-                UnidadeResultado = "adimensional"
+                UnidadeResultado = "adimensional",
+                Icone = "∑",
             };
         }
 
@@ -828,7 +847,8 @@ namespace CompendioCalc.Services
                     return persistence; // features com persistence alto são significativas
                 },
                 VariavelResultado = "Persistence (lifetime)",
-                UnidadeResultado = "unidades distância"
+                UnidadeResultado = "unidades distância",
+                Icone = "∑",
             };
         }
 
@@ -868,7 +888,8 @@ namespace CompendioCalc.Services
                     return grau_produto; // retorna grau do produto
                 },
                 VariavelResultado = "Grau (ω∧η)",
-                UnidadeResultado = "grau"
+                UnidadeResultado = "grau",
+                Icone = "∑",
             };
         }
     }

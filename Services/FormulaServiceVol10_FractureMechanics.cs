@@ -29,9 +29,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1957",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tensão σ (MPa)", Simbolo = "σ", Unidade = "MPa", ValorPadrao = 100 },
-                        new Variavel { Nome = "Comprimento a (mm)", Simbolo = "a", Unidade = "mm", ValorPadrao = 10 },
-                        new Variavel { Nome = "Fator Y", Simbolo = "Y", Unidade = "", ValorPadrao = 1.12 }
+                        new Variavel { Nome = "Tensão σ (MPa)", Simbolo = "σ", Unidade = "MPa", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Comprimento a (mm)", Simbolo = "a", Unidade = "mm", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fator Y", Simbolo = "Y", Unidade = "", ValorPadrao = 1.12, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "K_I",
                     UnidadeResultado = "MPa√m",
@@ -45,7 +45,8 @@ namespace CompendioCalc.Services
                         double K_I = Y * sigma * Math.Sqrt(Math.PI * a_m);
                         return K_I;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-301: Tenacidade à Fratura K_IC
@@ -65,8 +66,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 19.8 },
-                        new Variavel { Nome = "K_IC material (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50 }
+                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 19.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_IC material (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -77,7 +78,8 @@ namespace CompendioCalc.Services
                         double margem = KIC / KI;
                         return margem;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-302: Critério de Griffith
@@ -97,9 +99,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MPa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "E módulo (GPa)", Simbolo = "E", Unidade = "GPa", ValorPadrao = 70 },
-                        new Variavel { Nome = "γ energia sup (J/m²)", Simbolo = "gamma", Unidade = "J/m²", ValorPadrao = 1 },
-                        new Variavel { Nome = "a comprimento (mm)", Simbolo = "a", Unidade = "mm", ValorPadrao = 1 }
+                        new Variavel { Nome = "E módulo (GPa)", Simbolo = "E", Unidade = "GPa", ValorPadrao = 70, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "γ energia sup (J/m²)", Simbolo = "gamma", Unidade = "J/m²", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "a comprimento (mm)", Simbolo = "a", Unidade = "mm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -114,7 +116,8 @@ namespace CompendioCalc.Services
                         double sigma_f_MPa = sigma_f_Pa / 1e6;
                         return sigma_f_MPa;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-303: Integral J (Rice)
@@ -134,8 +137,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kJ/m²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 50 },
-                        new Variavel { Nome = "E' efetivo (GPa)", Simbolo = "Ep", Unidade = "GPa", ValorPadrao = 200 }
+                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "E' efetivo (GPa)", Simbolo = "Ep", Unidade = "GPa", ValorPadrao = 200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -149,7 +152,8 @@ namespace CompendioCalc.Services
                         double J_kJ = J / 1000;
                         return J_kJ;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-304: Lei de Paris (Fadiga)
@@ -169,9 +173,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/ciclo (×10^-8)",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C constante (×10^-12)", Simbolo = "C", Unidade = "×10^-12", ValorPadrao = 3 },
-                        new Variavel { Nome = "m expoente", Simbolo = "m", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "ΔK (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 20 }
+                        new Variavel { Nome = "C constante (×10^-12)", Simbolo = "C", Unidade = "×10^-12", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m expoente", Simbolo = "m", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔK (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -184,7 +188,8 @@ namespace CompendioCalc.Services
                         double da_dN_e8 = da_dN * 1e8;
                         return da_dN_e8;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-305: Zona Plástica de Irwin
@@ -204,8 +209,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 40 },
-                        new Variavel { Nome = "σ_y escoamento (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400 }
+                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 40, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_y escoamento (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -216,7 +221,8 @@ namespace CompendioCalc.Services
                         double r_p_mm = r_p_m * 1000;
                         return r_p_mm;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-306: CTOD Crack Tip Opening Displacement
@@ -236,9 +242,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 50 },
-                        new Variavel { Nome = "E' (GPa)", Simbolo = "Ep", Unidade = "GPa", ValorPadrao = 200 },
-                        new Variavel { Nome = "σ_y (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400 }
+                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "E' (GPa)", Simbolo = "Ep", Unidade = "GPa", ValorPadrao = 200, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_y (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -254,7 +260,8 @@ namespace CompendioCalc.Services
                         double delta_mm = delta_m * 1000;
                         return delta_mm;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-307: Charpy V-notch Impact
@@ -274,10 +281,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "J",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "m pêndulo (kg)", Simbolo = "m", Unidade = "kg", ValorPadrao = 25 },
-                        new Variavel { Nome = "h altura (m)", Simbolo = "h", Unidade = "m", ValorPadrao = 0.8 },
-                        new Variavel { Nome = "α inicial (°)", Simbolo = "alpha", Unidade = "°", ValorPadrao = 150 },
-                        new Variavel { Nome = "β final (°)", Simbolo = "beta", Unidade = "°", ValorPadrao = 120 }
+                        new Variavel { Nome = "m pêndulo (kg)", Simbolo = "m", Unidade = "kg", ValorPadrao = 25, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "h altura (m)", Simbolo = "h", Unidade = "m", ValorPadrao = 0.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "α inicial (°)", Simbolo = "alpha", Unidade = "°", ValorPadrao = 150, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "β final (°)", Simbolo = "beta", Unidade = "°", ValorPadrao = 120, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -293,7 +300,8 @@ namespace CompendioCalc.Services
                         double CVN = m * g * h * (Math.Cos(beta_rad) - Math.Cos(alpha_rad));
                         return CVN;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-308: Transição Dúctil-Frágil (DBTT)
@@ -313,8 +321,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "°C",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "T operação (°C)", Simbolo = "T_op", Unidade = "°C", ValorPadrao = -10 },
-                        new Variavel { Nome = "T_DBTT material (°C)", Simbolo = "T_DBTT", Unidade = "°C", ValorPadrao = 0 }
+                        new Variavel { Nome = "T operação (°C)", Simbolo = "T_op", Unidade = "°C", ValorPadrao = -10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "T_DBTT material (°C)", Simbolo = "T_DBTT", Unidade = "°C", ValorPadrao = 0, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -324,7 +332,8 @@ namespace CompendioCalc.Services
                         double margin = T_op - T_DBTT;
                         return margin;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-309: Curva R (Resistência)
@@ -344,10 +353,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kJ/m²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "J₀ inicial (kJ/m²)", Simbolo = "J0", Unidade = "kJ/m²", ValorPadrao = 100 },
-                        new Variavel { Nome = "C₁ (kJ/m³)", Simbolo = "C1", Unidade = "kJ/m³", ValorPadrao = 5000 },
-                        new Variavel { Nome = "C₂ expoente", Simbolo = "C2", Unidade = "", ValorPadrao = 0.5 },
-                        new Variavel { Nome = "Δa extensão (mm)", Simbolo = "Da", Unidade = "mm", ValorPadrao = 2 }
+                        new Variavel { Nome = "J₀ inicial (kJ/m²)", Simbolo = "J0", Unidade = "kJ/m²", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "C₁ (kJ/m³)", Simbolo = "C1", Unidade = "kJ/m³", ValorPadrao = 5000, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "C₂ expoente", Simbolo = "C2", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Δa extensão (mm)", Simbolo = "Da", Unidade = "mm", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -360,7 +369,8 @@ namespace CompendioCalc.Services
                         double J_R = J0 + C1 * Math.Pow(Da_m, C2);
                         return J_R;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-310: Modo Misto (K_eq)
@@ -380,10 +390,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MPa√m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 30 },
-                        new Variavel { Nome = "K_II (MPa√m)", Simbolo = "KII", Unidade = "MPa√m", ValorPadrao = 20 },
-                        new Variavel { Nome = "K_III (MPa√m)", Simbolo = "KIII", Unidade = "MPa√m", ValorPadrao = 10 },
-                        new Variavel { Nome = "ν Poisson", Simbolo = "nu", Unidade = "", ValorPadrao = 0.3 }
+                        new Variavel { Nome = "K_I (MPa√m)", Simbolo = "KI", Unidade = "MPa√m", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_II (MPa√m)", Simbolo = "KII", Unidade = "MPa√m", ValorPadrao = 20, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_III (MPa√m)", Simbolo = "KIII", Unidade = "MPa√m", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ν Poisson", Simbolo = "nu", Unidade = "", ValorPadrao = 0.3, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -395,7 +405,8 @@ namespace CompendioCalc.Services
                         double K_eq = Math.Sqrt(KI * KI + KII * KII + (KIII * KIII) / (1 + nu));
                         return K_eq;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-311: Compact Tension C(T) Specimen
@@ -415,10 +426,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MPa√m",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "P carga (kN)", Simbolo = "P", Unidade = "kN", ValorPadrao = 10 },
-                        new Variavel { Nome = "B espessura (mm)", Simbolo = "B", Unidade = "mm", ValorPadrao = 25 },
-                        new Variavel { Nome = "W largura (mm)", Simbolo = "W", Unidade = "mm", ValorPadrao = 50 },
-                        new Variavel { Nome = "f(a/W) função", Simbolo = "f", Unidade = "", ValorPadrao = 9.4 }
+                        new Variavel { Nome = "P carga (kN)", Simbolo = "P", Unidade = "kN", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "B espessura (mm)", Simbolo = "B", Unidade = "mm", ValorPadrao = 25, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "W largura (mm)", Simbolo = "W", Unidade = "mm", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f(a/W) função", Simbolo = "f", Unidade = "", ValorPadrao = 9.4, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -432,7 +443,8 @@ namespace CompendioCalc.Services
                         double K_I_MPa = K_I_SI * Math.Sqrt(1000) / 1000;
                         return K_I_MPa;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-312: Weibull Statistics (Failure Probability)
@@ -452,9 +464,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ aplicada (MPa)", Simbolo = "sigma", Unidade = "MPa", ValorPadrao = 250 },
-                        new Variavel { Nome = "σ₀ escala (MPa)", Simbolo = "sigma0", Unidade = "MPa", ValorPadrao = 300 },
-                        new Variavel { Nome = "m módulo Weibull", Simbolo = "m", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "σ aplicada (MPa)", Simbolo = "sigma", Unidade = "MPa", ValorPadrao = 250, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ₀ escala (MPa)", Simbolo = "sigma0", Unidade = "MPa", ValorPadrao = 300, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "m módulo Weibull", Simbolo = "m", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -467,7 +479,8 @@ namespace CompendioCalc.Services
                         double P_f_pct = P_f * 100;
                         return P_f_pct;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-313: T-Stress (Constraint)
@@ -487,8 +500,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "MPa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "σ_ref tensão ref (MPa)", Simbolo = "sigma_ref", Unidade = "MPa", ValorPadrao = 100 },
-                        new Variavel { Nome = "Fator geométrico β", Simbolo = "beta", Unidade = "", ValorPadrao = -0.5 }
+                        new Variavel { Nome = "σ_ref tensão ref (MPa)", Simbolo = "sigma_ref", Unidade = "MPa", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Fator geométrico β", Simbolo = "beta", Unidade = "", ValorPadrao = -0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -498,7 +511,8 @@ namespace CompendioCalc.Services
                         double T = beta * sigma_ref;
                         return T;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-314: Threshold ΔK_th (Fadiga)
@@ -518,8 +532,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "ΔK aplicado (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 5 },
-                        new Variavel { Nome = "ΔK_th material (MPa√m)", Simbolo = "DKth", Unidade = "MPa√m", ValorPadrao = 7 }
+                        new Variavel { Nome = "ΔK aplicado (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 5, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔK_th material (MPa√m)", Simbolo = "DKth", Unidade = "MPa√m", ValorPadrao = 7, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -530,7 +544,8 @@ namespace CompendioCalc.Services
                         double arrest = DK < DKth ? 1 : 0;
                         return arrest;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-315: Forman Equation (Região III)
@@ -550,11 +565,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/ciclo (×10^-6)",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "C constante (×10^-11)", Simbolo = "C", Unidade = "×10^-11", ValorPadrao = 1 },
-                        new Variavel { Nome = "n expoente", Simbolo = "n", Unidade = "", ValorPadrao = 3 },
-                        new Variavel { Nome = "ΔK (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 30 },
-                        new Variavel { Nome = "R ratio", Simbolo = "R", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "K_IC (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50 }
+                        new Variavel { Nome = "C constante (×10^-11)", Simbolo = "C", Unidade = "×10^-11", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "n expoente", Simbolo = "n", Unidade = "", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "ΔK (MPa√m)", Simbolo = "DK", Unidade = "MPa√m", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "R ratio", Simbolo = "R", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_IC (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -572,7 +587,8 @@ namespace CompendioCalc.Services
                         double da_dN_e6 = da_dN * 1e6;
                         return da_dN_e6;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-316: HRR Field (Elastic-Plastic)
@@ -592,8 +608,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "J (kJ/m²)", Simbolo = "J", Unidade = "kJ/m²", ValorPadrao = 100 },
-                        new Variavel { Nome = "σ_y escoamento (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400 }
+                        new Variavel { Nome = "J (kJ/m²)", Simbolo = "J", Unidade = "kJ/m²", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_y escoamento (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -607,7 +623,8 @@ namespace CompendioCalc.Services
                         double r_mm = r_m * 1000;
                         return r_mm;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-317: Vida à Fadiga N_f (Integração Paris)
@@ -627,8 +644,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "ciclos (×10^5)",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "a₀ inicial (mm)", Simbolo = "a0", Unidade = "mm", ValorPadrao = 1 },
-                        new Variavel { Nome = "a_c crítica (mm)", Simbolo = "ac", Unidade = "mm", ValorPadrao = 52.1 }
+                        new Variavel { Nome = "a₀ inicial (mm)", Simbolo = "a0", Unidade = "mm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "a_c crítica (mm)", Simbolo = "ac", Unidade = "mm", ValorPadrao = 52.1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -649,7 +666,8 @@ namespace CompendioCalc.Services
                         double N_f_e5 = N_f / 1e5;
                         return N_f_e5;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 },
 
                 // V10-318: Small-Scale Yielding (SSY) Criterion
@@ -669,8 +687,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "mm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "K_IC (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50 },
-                        new Variavel { Nome = "σ_y (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400 }
+                        new Variavel { Nome = "K_IC (MPa√m)", Simbolo = "KIC", Unidade = "MPa√m", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "σ_y (MPa)", Simbolo = "sigma_y", Unidade = "MPa", ValorPadrao = 400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -682,7 +700,8 @@ namespace CompendioCalc.Services
                         double dim_min_mm = dim_min_m * 1000;
                         return dim_min_mm;
                     },
-                    Icone = "🔧"
+                    Icone = "🔧",
+                    Unidades = "",
                 }
             });
         }

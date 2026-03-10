@@ -29,8 +29,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1935",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Densidade k (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 50 },
-                        new Variavel { Nome = "Velocidade v (km/h)", Simbolo = "v", Unidade = "km/h", ValorPadrao = 60 }
+                        new Variavel { Nome = "Densidade k (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Velocidade v (km/h)", Simbolo = "v", Unidade = "km/h", ValorPadrao = 60, Descricao = "Parâmetro de entrada." }
                     },
                     VariavelResultado = "q",
                     UnidadeResultado = "veíc/h",
@@ -42,7 +42,8 @@ namespace CompendioCalc.Services
                         double q = k * v;
                         return q;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-359: Modelo de Greenshields
@@ -62,9 +63,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "km/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v_f livre (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 100 },
-                        new Variavel { Nome = "k densidade (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 60 },
-                        new Variavel { Nome = "k_j jam (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 150 }
+                        new Variavel { Nome = "v_f livre (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k densidade (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 60, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_j jam (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 150, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -74,7 +75,8 @@ namespace CompendioCalc.Services
                         if (kj <= 0) return 0;
                         return vf * (1 - k / kj);
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-360: Fluxo máximo Greenshields
@@ -94,11 +96,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "veíc/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v_f (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 100 },
-                        new Variavel { Nome = "k_j (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 160 }
+                        new Variavel { Nome = "v_f (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k_j (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 160, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["v_f (km/h)"] * inputs["k_j (veíc/km)"] / 4.0,
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-361: Densidade crítica
@@ -118,10 +121,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "veíc/km",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k_j (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 140 }
+                        new Variavel { Nome = "k_j (veíc/km)", Simbolo = "kj", Unidade = "veíc/km", ValorPadrao = 140, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["k_j (veíc/km)"] / 2.0,
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-362: Velocidade crítica
@@ -141,10 +145,11 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "km/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v_f (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 90 }
+                        new Variavel { Nome = "v_f (km/h)", Simbolo = "vf", Unidade = "km/h", ValorPadrao = 90, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["v_f (km/h)"] / 2.0,
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-363: Headway temporal
@@ -164,7 +169,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "q (veíc/h)", Simbolo = "q", Unidade = "veíc/h", ValorPadrao = 1800 }
+                        new Variavel { Nome = "q (veíc/h)", Simbolo = "q", Unidade = "veíc/h", ValorPadrao = 1800, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -172,7 +177,8 @@ namespace CompendioCalc.Services
                         if (q <= 0) return 0;
                         return 3600 / q;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-364: Espaçamento espacial
@@ -192,7 +198,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/veíc",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "k (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 40 }
+                        new Variavel { Nome = "k (veíc/km)", Simbolo = "k", Unidade = "veíc/km", ValorPadrao = 40, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -200,7 +206,8 @@ namespace CompendioCalc.Services
                         if (k <= 0) return 0;
                         return 1000 / k;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-365: Tempo de viagem
@@ -220,8 +227,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "min",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "L (km)", Simbolo = "L", Unidade = "km", ValorPadrao = 15 },
-                        new Variavel { Nome = "v (km/h)", Simbolo = "v", Unidade = "km/h", ValorPadrao = 45 }
+                        new Variavel { Nome = "L (km)", Simbolo = "L", Unidade = "km", ValorPadrao = 15, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v (km/h)", Simbolo = "v", Unidade = "km/h", ValorPadrao = 45, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -230,7 +237,8 @@ namespace CompendioCalc.Services
                         if (v <= 0) return 0;
                         return 60 * L / v;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-366: Atraso de controle
@@ -250,9 +258,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s/veíc",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "c ciclo (s)", Simbolo = "c", Unidade = "s", ValorPadrao = 90 },
-                        new Variavel { Nome = "g verde efetivo (s)", Simbolo = "g", Unidade = "s", ValorPadrao = 40 },
-                        new Variavel { Nome = "x grau saturação", Simbolo = "x", Unidade = "", ValorPadrao = 0.75 }
+                        new Variavel { Nome = "c ciclo (s)", Simbolo = "c", Unidade = "s", ValorPadrao = 90, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "g verde efetivo (s)", Simbolo = "g", Unidade = "s", ValorPadrao = 40, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "x grau saturação", Simbolo = "x", Unidade = "", ValorPadrao = 0.75, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -263,7 +271,8 @@ namespace CompendioCalc.Services
                         double ratio = g / c;
                         return c * Math.Pow(1 - ratio, 2) / (2 * (1 - x));
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-367: Ciclo ótimo de Webster
@@ -283,8 +292,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "L perdas (s)", Simbolo = "L", Unidade = "s", ValorPadrao = 12 },
-                        new Variavel { Nome = "Y soma fluxos", Simbolo = "Y", Unidade = "", ValorPadrao = 0.75 }
+                        new Variavel { Nome = "L perdas (s)", Simbolo = "L", Unidade = "s", ValorPadrao = 12, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Y soma fluxos", Simbolo = "Y", Unidade = "", ValorPadrao = 0.75, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -293,7 +302,8 @@ namespace CompendioCalc.Services
                         if (Y >= 1) return 0;
                         return (1.5 * L + 5) / (1 - Y);
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-368: Grau de saturação
@@ -313,8 +323,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v demanda (veíc/h)", Simbolo = "v", Unidade = "veíc/h", ValorPadrao = 900 },
-                        new Variavel { Nome = "c capacidade (veíc/h)", Simbolo = "c", Unidade = "veíc/h", ValorPadrao = 1200 }
+                        new Variavel { Nome = "v demanda (veíc/h)", Simbolo = "v", Unidade = "veíc/h", ValorPadrao = 900, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c capacidade (veíc/h)", Simbolo = "c", Unidade = "veíc/h", ValorPadrao = 1200, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -323,7 +333,8 @@ namespace CompendioCalc.Services
                         if (c <= 0) return 0;
                         return v / c;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-369: Choque de tráfego (shockwave)
@@ -343,10 +354,10 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "km/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "q1 (veíc/h)", Simbolo = "q1", Unidade = "veíc/h", ValorPadrao = 1800 },
-                        new Variavel { Nome = "k1 (veíc/km)", Simbolo = "k1", Unidade = "veíc/km", ValorPadrao = 30 },
-                        new Variavel { Nome = "q2 (veíc/h)", Simbolo = "q2", Unidade = "veíc/h", ValorPadrao = 600 },
-                        new Variavel { Nome = "k2 (veíc/km)", Simbolo = "k2", Unidade = "veíc/km", ValorPadrao = 90 }
+                        new Variavel { Nome = "q1 (veíc/h)", Simbolo = "q1", Unidade = "veíc/h", ValorPadrao = 1800, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k1 (veíc/km)", Simbolo = "k1", Unidade = "veíc/km", ValorPadrao = 30, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "q2 (veíc/h)", Simbolo = "q2", Unidade = "veíc/h", ValorPadrao = 600, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "k2 (veíc/km)", Simbolo = "k2", Unidade = "veíc/km", ValorPadrao = 90, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -358,7 +369,8 @@ namespace CompendioCalc.Services
                         if (den == 0) return 0;
                         return (q2 - q1) / den;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-370: Fila média M/M/1
@@ -378,8 +390,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "veíc",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ chegadas (veíc/h)", Simbolo = "lambda", Unidade = "veíc/h", ValorPadrao = 800 },
-                        new Variavel { Nome = "μ serviço (veíc/h)", Simbolo = "mu", Unidade = "veíc/h", ValorPadrao = 1000 }
+                        new Variavel { Nome = "λ chegadas (veíc/h)", Simbolo = "lambda", Unidade = "veíc/h", ValorPadrao = 800, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ serviço (veíc/h)", Simbolo = "mu", Unidade = "veíc/h", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -390,7 +402,8 @@ namespace CompendioCalc.Services
                         if (rho >= 1) return 9999;
                         return rho / (1 - rho);
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-371: Tempo médio no sistema M/M/1
@@ -410,8 +423,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ (veíc/h)", Simbolo = "lambda", Unidade = "veíc/h", ValorPadrao = 700 },
-                        new Variavel { Nome = "μ (veíc/h)", Simbolo = "mu", Unidade = "veíc/h", ValorPadrao = 1000 }
+                        new Variavel { Nome = "λ (veíc/h)", Simbolo = "lambda", Unidade = "veíc/h", ValorPadrao = 700, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "μ (veíc/h)", Simbolo = "mu", Unidade = "veíc/h", ValorPadrao = 1000, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -421,7 +434,8 @@ namespace CompendioCalc.Services
                         double hours = 1.0 / (mu - lambda);
                         return hours * 3600;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-372: LOS por v/c (aprox.)
@@ -441,8 +455,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "v (veíc/h)", Simbolo = "v", Unidade = "veíc/h", ValorPadrao = 1100 },
-                        new Variavel { Nome = "c (veíc/h)", Simbolo = "c", Unidade = "veíc/h", ValorPadrao = 1400 }
+                        new Variavel { Nome = "v (veíc/h)", Simbolo = "v", Unidade = "veíc/h", ValorPadrao = 1100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "c (veíc/h)", Simbolo = "c", Unidade = "veíc/h", ValorPadrao = 1400, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -451,7 +465,8 @@ namespace CompendioCalc.Services
                         if (c <= 0) return 0;
                         return v / c;
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-373: Saturation flow por faixa
@@ -471,13 +486,14 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "veíc/h/faixa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "s0 base", Simbolo = "s0", Unidade = "veíc/h/faixa", ValorPadrao = 1900 },
-                        new Variavel { Nome = "f_w", Simbolo = "fw", Unidade = "", ValorPadrao = 0.95 },
-                        new Variavel { Nome = "f_hv", Simbolo = "fhv", Unidade = "", ValorPadrao = 0.9 },
-                        new Variavel { Nome = "f_g", Simbolo = "fg", Unidade = "", ValorPadrao = 0.98 }
+                        new Variavel { Nome = "s0 base", Simbolo = "s0", Unidade = "veíc/h/faixa", ValorPadrao = 1900, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f_w", Simbolo = "fw", Unidade = "", ValorPadrao = 0.95, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f_hv", Simbolo = "fhv", Unidade = "", ValorPadrao = 0.9, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "f_g", Simbolo = "fg", Unidade = "", ValorPadrao = 0.98, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => inputs["s0 base"] * inputs["f_w"] * inputs["f_hv"] * inputs["f_g"],
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-374: Gap acceptance
@@ -497,11 +513,12 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "λ principal (veíc/s)", Simbolo = "lambda", Unidade = "veíc/s", ValorPadrao = 0.25 },
-                        new Variavel { Nome = "t_c crítico (s)", Simbolo = "tc", Unidade = "s", ValorPadrao = 5 }
+                        new Variavel { Nome = "λ principal (veíc/s)", Simbolo = "lambda", Unidade = "veíc/s", ValorPadrao = 0.25, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "t_c crítico (s)", Simbolo = "tc", Unidade = "s", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs => Math.Exp(-inputs["λ principal (veíc/s)"] * inputs["t_c crítico (s)"]),
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-375: Occupancy aproximada
@@ -521,9 +538,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "%",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "q (veíc/h)", Simbolo = "q", Unidade = "veíc/h", ValorPadrao = 1800 },
-                        new Variavel { Nome = "L_eff (m)", Simbolo = "Le", Unidade = "m", ValorPadrao = 7 },
-                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 20 }
+                        new Variavel { Nome = "q (veíc/h)", Simbolo = "q", Unidade = "veíc/h", ValorPadrao = 1800, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "L_eff (m)", Simbolo = "Le", Unidade = "m", ValorPadrao = 7, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "v (m/s)", Simbolo = "v", Unidade = "m/s", ValorPadrao = 20, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -534,7 +551,8 @@ namespace CompendioCalc.Services
                         double qs = qh / 3600.0;
                         return 100 * qs * (Le / v);
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 },
 
                 // V10-376: ALINEA (ramp metering)
@@ -554,16 +572,17 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "veíc/h",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "r_prev (veíc/h)", Simbolo = "rp", Unidade = "veíc/h", ValorPadrao = 700 },
-                        new Variavel { Nome = "K_R", Simbolo = "KR", Unidade = "", ValorPadrao = 60 },
-                        new Variavel { Nome = "O_ref", Simbolo = "Or", Unidade = "", ValorPadrao = 0.22 },
-                        new Variavel { Nome = "O_out", Simbolo = "Oo", Unidade = "", ValorPadrao = 0.27 }
+                        new Variavel { Nome = "r_prev (veíc/h)", Simbolo = "rp", Unidade = "veíc/h", ValorPadrao = 700, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "K_R", Simbolo = "KR", Unidade = "", ValorPadrao = 60, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "O_ref", Simbolo = "Or", Unidade = "", ValorPadrao = 0.22, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "O_out", Simbolo = "Oo", Unidade = "", ValorPadrao = 0.27, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
                         return inputs["r_prev (veíc/h)"] + inputs["K_R"] * (inputs["O_ref"] - inputs["O_out"]);
                     },
-                    Icone = "🚗"
+                    Icone = "🚗",
+                    Unidades = "",
                 }
             });
         }

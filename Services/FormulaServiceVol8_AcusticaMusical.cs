@@ -35,7 +35,8 @@ public partial class FormulaService
             Calcular = inputs =>
             {
                 return 2 * inputs["f1"];
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -64,7 +65,8 @@ public partial class FormulaService
             Calcular = inputs =>
             {
                 return (3.0 / 2.0) * inputs["f1"];
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -97,7 +99,8 @@ public partial class FormulaService
                 double n = inputs["n"];
                 
                 return f0 * Math.Pow(2, n / 12);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -130,7 +133,8 @@ public partial class FormulaService
                 double f0 = inputs["f0"];
                 
                 return n * f0;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -165,7 +169,8 @@ public partial class FormulaService
                 double mu = inputs["mu"];
                 
                 return (1 / (2 * L)) * Math.Sqrt(T / mu);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -200,7 +205,8 @@ public partial class FormulaService
                 double L = inputs["L"];
                 
                 return n * v / (2 * L);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -235,7 +241,8 @@ public partial class FormulaService
                 double L = inputs["L"];
                 
                 return (2 * n - 1) * v / (4 * L);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -272,7 +279,8 @@ public partial class FormulaService
                 double L_eff = inputs["L_eff"];
                 
                 return (v / (2 * Math.PI)) * Math.Sqrt(A / (V * L_eff));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -307,7 +315,8 @@ public partial class FormulaService
                 double rho = inputs["rho"];
                 
                 return Math.Sqrt(gamma * P / rho);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -342,7 +351,8 @@ public partial class FormulaService
                 double v = inputs["v"];
                 
                 return P * P / (2 * rho * v);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -375,7 +385,8 @@ public partial class FormulaService
                 double P_ref = inputs["P_ref"];
                 
                 return 20 * Math.Log10(P / P_ref);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -412,7 +423,8 @@ public partial class FormulaService
                 double v_fonte = inputs["v_fonte"];
                 
                 return f * (v + v_obs) / (v - v_fonte);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -445,7 +457,8 @@ public partial class FormulaService
                 double f2 = inputs["f2"];
                 
                 return Math.Abs(f1 - f2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -478,7 +491,8 @@ public partial class FormulaService
                 double A = inputs["A"];
                 
                 return 0.161 * V / A;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -511,7 +525,8 @@ public partial class FormulaService
                 double E_inc = inputs["E_inc"];
                 
                 return E_abs / E_inc;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -544,7 +559,8 @@ public partial class FormulaService
                 double f2 = inputs["f2"];
                 
                 return 1200 * Math.Log2(f2 / f1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -577,7 +593,8 @@ public partial class FormulaService
                 double v = inputs["v"];
                 
                 return rho * v;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -610,7 +627,8 @@ public partial class FormulaService
                 double Z2 = inputs["Z2"];
                 
                 return (Z2 - Z1) / (Z2 + Z1);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -643,7 +661,8 @@ public partial class FormulaService
                 double f = inputs["f"];
                 
                 return v / f;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

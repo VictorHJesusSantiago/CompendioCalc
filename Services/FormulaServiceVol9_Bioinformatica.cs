@@ -50,7 +50,8 @@ namespace CompendioCalc.Services
                     return resultado;
                 },
                 VariavelResultado = "Score max local",
-                UnidadeResultado = "score"
+                UnidadeResultado = "score",
+                Icone = "∑",
             };
         }
 
@@ -85,7 +86,8 @@ namespace CompendioCalc.Services
                     return Math.Max(f_diagonal, Math.Max(f_cima, f_esquerda));
                 },
                 VariavelResultado = "Score global ótimo",
-                UnidadeResultado = "score"
+                UnidadeResultado = "score",
+                Icone = "∑",
             };
         }
 
@@ -121,7 +123,8 @@ namespace CompendioCalc.Services
                     return m * n * Math.Exp(-lambda * S);
                 },
                 VariavelResultado = "E-value",
-                UnidadeResultado = "esperança de hits aleatórios"
+                UnidadeResultado = "esperança de hits aleatórios",
+                Icone = "∑",
             };
         }
 
@@ -156,7 +159,8 @@ namespace CompendioCalc.Services
                     return delta_prev + Math.Log(a_ij) + Math.Log(e_j);
                 },
                 VariavelResultado = "δ_t(j)",
-                UnidadeResultado = "log-probabilidade"
+                UnidadeResultado = "log-probabilidade",
+                Icone = "∑",
             };
         }
 
@@ -187,7 +191,8 @@ namespace CompendioCalc.Services
                     return -(3.0 / 4.0) * Math.Log(1 - (4 * p / 3));
                 },
                 VariavelResultado = "Distância evol. corrigida",
-                UnidadeResultado = "subst/sítio"
+                UnidadeResultado = "subst/sítio",
+                Icone = "∑",
             };
         }
 
@@ -219,7 +224,8 @@ namespace CompendioCalc.Services
                     return ln_P * n_sites; // log-likelihood total
                 },
                 VariavelResultado = "ln(L)",
-                UnidadeResultado = "log-likelihood"
+                UnidadeResultado = "log-likelihood",
+                Icone = "∑",
             };
         }
 
@@ -252,7 +258,8 @@ namespace CompendioCalc.Services
                     return c_n2 * Math.Exp(-c_n2 * t);
                 },
                 VariavelResultado = "Taxa coalescência",
-                UnidadeResultado = "eventos/(2N_e)"
+                UnidadeResultado = "eventos/(2N_e)",
+                Icone = "∑",
             };
         }
 
@@ -289,7 +296,8 @@ namespace CompendioCalc.Services
                     return dist_alpha / 10.0; // normaliza para ~kcal/mol
                 },
                 VariavelResultado = "Energia relativa",
-                UnidadeResultado = "kcal/mol (relativo)"
+                UnidadeResultado = "kcal/mol (relativo)",
+                Icone = "∑",
             };
         }
 
@@ -321,7 +329,8 @@ namespace CompendioCalc.Services
                     return 1.0 / (1.0 + Math.Pow(d_i / d_0, 2)); // componente TM-score
                 },
                 VariavelResultado = "Contribuição TM-score",
-                UnidadeResultado = "adimensional [0,1]"
+                UnidadeResultado = "adimensional [0,1]",
+                Icone = "∑",
             };
         }
 
@@ -361,7 +370,8 @@ namespace CompendioCalc.Services
                     return numerador / denominador;
                 },
                 VariavelResultado = "χ²",
-                UnidadeResultado = "estatística qui-quadrado"
+                UnidadeResultado = "estatística qui-quadrado",
+                Icone = "∑",
             };
         }
 
@@ -396,7 +406,8 @@ namespace CompendioCalc.Services
                     return Math.Log(mu_trat / mu_ctrl, 2); // log₂ fold-change
                 },
                 VariavelResultado = "log₂(FC)",
-                UnidadeResultado = "log₂"
+                UnidadeResultado = "log₂",
+                Icone = "∑",
             };
         }
 
@@ -429,7 +440,8 @@ namespace CompendioCalc.Services
                     return (contig_length / genome_size) * 100; // percentual
                 },
                 VariavelResultado = "% genoma no contig",
-                UnidadeResultado = "percentual"
+                UnidadeResultado = "percentual",
+                Icone = "∑",
             };
         }
 

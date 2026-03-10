@@ -31,7 +31,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "ReLU(x)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Max(0, vars["x"])
+                Calcular = vars => Math.Max(0, vars["x"]),
+                Unidades = "",
             },
 
             new Formula
@@ -50,7 +51,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "σ(x)",
                 UnidadeResultado = "",
-                Calcular = vars => 1.0 / (1 + Math.Exp(-vars["x"]))
+                Calcular = vars => 1.0 / (1 + Math.Exp(-vars["x"])),
+                Unidades = "",
             },
 
             new Formula
@@ -69,7 +71,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "tanh(x)",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Tanh(vars["x"])
+                Calcular = vars => Math.Tanh(vars["x"]),
+                Unidades = "",
             },
 
             new Formula
@@ -89,7 +92,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Erro²",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["y"] - vars["y_hat"], 2)
+                Calcular = vars => Math.Pow(vars["y"] - vars["y_hat"], 2),
+                Unidades = "",
             },
 
             new Formula
@@ -108,7 +112,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "H",
                 UnidadeResultado = "",
-                Calcular = vars => -Math.Log(vars["q_pred"])
+                Calcular = vars => -Math.Log(vars["q_pred"]),
+                Unidades = "",
             },
 
             new Formula
@@ -129,7 +134,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "θ_new",
                 UnidadeResultado = "",
-                Calcular = vars => vars["theta"] - vars["eta"] * vars["grad"]
+                Calcular = vars => vars["theta"] - vars["eta"] * vars["grad"],
+                Unidades = "",
             },
 
             new Formula
@@ -150,7 +156,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "v_new",
                 UnidadeResultado = "",
-                Calcular = vars => vars["beta"] * vars["v"] + vars["grad"]
+                Calcular = vars => vars["beta"] * vars["v"] + vars["grad"],
+                Unidades = "",
             },
 
             new Formula
@@ -171,7 +178,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "y_train",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x"] * vars["active"] // Durante treino
+                Calcular = vars => vars["x"] * vars["active"],
+                Unidades = "", // Durante treino
             },
         ]);
     }
@@ -199,7 +207,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "|α|² + |β|²",
                 UnidadeResultado = "",
-                Calcular = vars => vars["alpha"] * vars["alpha"] + vars["beta"] * vars["beta"]
+                Calcular = vars => vars["alpha"] * vars["alpha"] + vars["beta"] * vars["beta"],
+                Unidades = "",
             },
 
             new Formula
@@ -221,7 +230,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double input = vars["input"];
                     return (input == 0) ? 1.0 / Math.Sqrt(2) : 1.0 / Math.Sqrt(2); // Coeficiente de |0⟩
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -240,7 +250,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Prob. |00⟩ ou |11⟩",
                 UnidadeResultado = "",
-                Calcular = vars => 0.5 // Probabilidade de medir |00⟩ ou |11⟩
+                Calcular = vars => 0.5,
+                Unidades = "", // Probabilidade de medir |00⟩ ou |11⟩
             },
 
             new Formula
@@ -259,7 +270,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "Iterações",
                 UnidadeResultado = "",
-                Calcular = vars => (Math.PI / 4.0) * Math.Sqrt(vars["N"])
+                Calcular = vars => (Math.PI / 4.0) * Math.Sqrt(vars["N"]),
+                Unidades = "",
             },
         ]);
     }
@@ -293,7 +305,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double factor = vars["lambda"] / (4 * Math.PI * vars["d"]);
                     return vars["Pt"] * vars["Gt"] * vars["Gr"] * factor * factor;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -313,7 +326,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "FSPL",
                 UnidadeResultado = "dB",
-                Calcular = vars => 20 * Math.Log10(vars["d_km"]) + 20 * Math.Log10(vars["f_MHz"]) + 32.45
+                Calcular = vars => 20 * Math.Log10(vars["d_km"]) + 20 * Math.Log10(vars["f_MHz"]) + 32.45,
+                Unidades = "",
             },
 
             new Formula
@@ -333,7 +347,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "G",
                 UnidadeResultado = "",
-                Calcular = vars => (4 * Math.PI * vars["A"]) / (vars["lambda"] * vars["lambda"])
+                Calcular = vars => (4 * Math.PI * vars["A"]) / (vars["lambda"] * vars["lambda"]),
+                Unidades = "",
             },
         ]);
     }
@@ -368,7 +383,8 @@ public partial class FormulaService
                     double norm = 1.0 / (2 * Math.PI * sigma * sigma);
                     double exponent = -(x * x + y * y) / (2 * sigma * sigma);
                     return norm * Math.Exp(exponent);
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -388,7 +404,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "|∇I|",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["Gx"] * vars["Gx"] + vars["Gy"] * vars["Gy"])
+                Calcular = vars => Math.Sqrt(vars["Gx"] * vars["Gx"] + vars["Gy"] * vars["Gy"]),
+                Unidades = "",
             },
         ]);
     }

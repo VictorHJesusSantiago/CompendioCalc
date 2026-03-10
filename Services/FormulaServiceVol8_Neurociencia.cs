@@ -63,7 +63,8 @@ public partial class FormulaService
                 double IL = gL * (EL - V);
                 
                 return (INa + IK + IL + I) / C;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -100,7 +101,8 @@ public partial class FormulaService
                 double w = inputs["w"];
                 double I = inputs["I"];
                 return v - Math.Pow(v, 3) / 3 - w + I;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -136,7 +138,8 @@ public partial class FormulaService
                 double u = inputs["u"];
                 double I = inputs["I"];
                 return 0.04 * v * v + 5 * v + 140 - u + I;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -174,7 +177,8 @@ public partial class FormulaService
                 double R = inputs["R"];
                 double I = inputs["I"];
                 return (-(V - Vrest) + R * I) / tau;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -220,7 +224,8 @@ public partial class FormulaService
                 if (numerador <= 0 || denominador <= 0) return 0;
                 
                 return 1000.0 / (tau * Math.Log(numerador / denominador)); // 1000 para converter ms -> Hz
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -258,7 +263,8 @@ public partial class FormulaService
                 double Vpost = inputs["Vpost"];
                 double Esyn = inputs["Esyn"];
                 return g * Math.Exp(-t / tau) * (Vpost - Esyn);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -292,7 +298,8 @@ public partial class FormulaService
                 double Delta_t = inputs["Delta_t"];
                 double tau = inputs["tau"];
                 return A * Math.Exp(-Math.Abs(Delta_t) / tau) * Math.Sign(Delta_t);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -326,7 +333,8 @@ public partial class FormulaService
                 double xi = inputs["xi"];
                 double yj = inputs["yj"];
                 return eta * xi * yj;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -364,7 +372,8 @@ public partial class FormulaService
                 double F = 1.0 / (1.0 + Math.Exp(-F_input));
                 
                 return (-r + F) / tau;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -408,7 +417,8 @@ public partial class FormulaService
                 double Se = 1.0 / (1.0 + Math.Exp(-input_E));
                 
                 return -E + Se;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -442,7 +452,8 @@ public partial class FormulaService
                 double ra = inputs["ra"];
                 double re = inputs["re"];
                 return Math.Sqrt(rm / (ra + re)) * 10000; // cm→µm
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -482,7 +493,8 @@ public partial class FormulaService
                 double sum_cos = r1 * Math.Cos(theta1) + r2 * Math.Cos(theta2);
                 
                 return Math.Atan2(sum_sin, sum_cos) * 180 / Math.PI;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -521,7 +533,8 @@ public partial class FormulaService
                 double theta_pref = inputs["theta_pref"] * Math.PI / 180;
                 
                 return r0 + rmax * Math.Exp(kappa * (Math.Cos(theta - theta_pref) - 1));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -558,7 +571,8 @@ public partial class FormulaService
                 if (p_r == 0) return 0;
                 
                 return p_s * p_r_given_s * Math.Log(p_r_given_s / p_r, 2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -590,7 +604,8 @@ public partial class FormulaService
                 double Var_n = inputs["Var_n"];
                 double E_n = inputs["E_n"];
                 return Var_n / E_n;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -622,7 +637,8 @@ public partial class FormulaService
                 double sigma_ISI = inputs["sigma_ISI"];
                 double mu_ISI = inputs["mu_ISI"];
                 return sigma_ISI / mu_ISI;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -656,7 +672,8 @@ public partial class FormulaService
                 double N1 = inputs["N1"];
                 double N2 = inputs["N2"];
                 return sum_sp1_sp2 / Math.Sqrt(N1 * N2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -688,7 +705,8 @@ public partial class FormulaService
                 double sum_cos_phi = inputs["sum_cos_phi"];
                 double sum_sin_phi = inputs["sum_sin_phi"];
                 return Math.Sqrt(sum_cos_phi * sum_cos_phi + sum_sin_phi * sum_sin_phi);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -724,7 +742,8 @@ public partial class FormulaService
                 
                 // Taxa média (spikes/ms → Hz)
                 return (spike_count / window) * 1000;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -758,7 +777,8 @@ public partial class FormulaService
                 double ISI_mode = inputs["ISI_mode"];
                 double ISI_SD = inputs["ISI_SD"];
                 return (ISI_mean - ISI_mode) / ISI_SD;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -790,7 +810,8 @@ public partial class FormulaService
                 double Rm = inputs["Rm"];
                 double Cm = inputs["Cm"];
                 return Rm * Cm / 1000; // MΩ*pF = ns → ms
-            }
+            },
+            Icone = "∑",
         };
     }
 }

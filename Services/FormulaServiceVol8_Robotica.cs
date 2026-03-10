@@ -43,7 +43,8 @@ public partial class FormulaService
                 double theta2 = inputs["theta2"] * Math.PI / 180;
                 
                 return L1 * Math.Cos(theta1) + L2 * Math.Cos(theta1 + theta2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -83,7 +84,8 @@ public partial class FormulaService
                 cos_theta2 = Math.Max(-1, Math.Min(1, cos_theta2)); // Clamping para evitar erro em acos
                 
                 return Math.Acos(cos_theta2) * 180 / Math.PI;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -127,7 +129,8 @@ public partial class FormulaService
                 double J12 = -L2 * Math.Sin(theta1 + theta2);
                 
                 return J11 * dtheta1 + J12 * dtheta2;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -166,7 +169,8 @@ public partial class FormulaService
                 double g_theta = inputs["g_theta"];
                 
                 return I * alpha + b * omega + g_theta;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -207,7 +211,8 @@ public partial class FormulaService
                 double de_dt = inputs["de_dt"];
                 
                 return Kp * e + Ki * integral_e + Kd * de_dt;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -246,7 +251,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return a0 + a1 * t + a2 * t * t + a3 * t * t * t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -286,7 +292,8 @@ public partial class FormulaService
                 double diff2 = theta2 - theta2_prime;
                 
                 return Math.Sqrt(diff1 * diff1 + diff2 * diff2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -321,7 +328,8 @@ public partial class FormulaService
                 if (Math.Abs(delta) < 0.001) return double.PositiveInfinity; // Aproximadamente reto
                 
                 return L / Math.Tan(delta);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -354,7 +362,8 @@ public partial class FormulaService
                 double vL = inputs["vL"];
                 
                 return (vR + vL) / 2;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -391,7 +400,8 @@ public partial class FormulaService
                 double Delta_theta = inputs["Delta_theta"] * Math.PI / 180;
                 
                 return x + Delta_s * Math.Cos(theta + Delta_theta / 2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -424,7 +434,8 @@ public partial class FormulaService
                 double d = inputs["d"];
                 
                 return 0.5 * k_att * d * d;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -462,7 +473,8 @@ public partial class FormulaService
                 
                 double term = 1.0 / d - 1.0 / d0;
                 return 0.5 * k_rep * term * term;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -499,7 +511,8 @@ public partial class FormulaService
                 double y2 = inputs["y2"];
                 
                 return Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -536,7 +549,8 @@ public partial class FormulaService
                 double z = inputs["z"];
                 
                 return Math.Sqrt(w * w + x * x + y * y + z * z);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -570,7 +584,8 @@ public partial class FormulaService
                 
                 // Simplificado: apenas translação (sem rotação)
                 return x + tx;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -601,7 +616,8 @@ public partial class FormulaService
                 double det_JJT = inputs["det_JJT"];
                 
                 return Math.Sqrt(Math.Max(0, det_JJT));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -638,7 +654,8 @@ public partial class FormulaService
                 double theta = inputs["theta"] * Math.PI / 180;
                 
                 return m * g * r * Math.Cos(theta);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -677,7 +694,8 @@ public partial class FormulaService
                 double h = inputs["h"];
                 
                 return 0.5 * I * omega * omega + m * g * h;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -711,7 +729,8 @@ public partial class FormulaService
                 
                 // Simplificado: escalar (na prática é produto matricial)
                 return J_inv * v_des_x;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -745,7 +764,8 @@ public partial class FormulaService
                 
                 // Simplificado: escalar
                 return JT_element * tau1;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

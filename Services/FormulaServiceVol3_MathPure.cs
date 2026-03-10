@@ -25,10 +25,11 @@ public partial class FormulaService
                 Criador = "Stefan Banach",
                 AnoOrigin = "1920",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -40,10 +41,11 @@ public partial class FormulaService
                 Criador = "Stefan Banach",
                 AnoOrigin = "1922",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -55,12 +57,14 @@ public partial class FormulaService
                 Criador = "Frigyes Riesz",
                 AnoOrigin = "1910",
                 Variaveis = [
-                    new() { Simbolo = "x1", Nome = "x₁", Descricao = "Componente 1", ValorPadrao = 3 },
-                    new() { Simbolo = "x2", Nome = "x₂", Descricao = "Componente 2", ValorPadrao = 4 },
-                    new() { Simbolo = "p", Nome = "p", Descricao = "Expoente (≥1)", ValorPadrao = 2, ValorMin = 1 },
+                    new() { Simbolo = "x1", Nome = "x₁", Descricao = "Componente 1", ValorPadrao = 3, Unidade = "adim" },
+                    new() { Simbolo = "x2", Nome = "x₂", Descricao = "Componente 2", ValorPadrao = 4, Unidade = "adim" },
+                    new() { Simbolo = "p", Nome = "p", Descricao = "Expoente (≥1)", ValorPadrao = 2, ValorMin = 1, Unidade = "adim" },
                 ],
                 VariavelResultado = "‖x‖_p",
-                Calcular = v => Math.Pow(Math.Pow(Math.Abs(v["x1"]), v["p"]) + Math.Pow(Math.Abs(v["x2"]), v["p"]), 1.0 / v["p"])
+                Calcular = v => Math.Pow(Math.Pow(Math.Abs(v["x1"]), v["p"]) + Math.Pow(Math.Abs(v["x2"]), v["p"]), 1.0 / v["p"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -72,10 +76,11 @@ public partial class FormulaService
                 Criador = "Pafnuty Chebyshev",
                 AnoOrigin = "~1850",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -87,10 +92,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue / Frigyes Riesz",
                 AnoOrigin = "1910",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -102,10 +108,11 @@ public partial class FormulaService
                 Criador = "Otto Hölder",
                 AnoOrigin = "1889",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -117,10 +124,11 @@ public partial class FormulaService
                 Criador = "Hermann Minkowski",
                 AnoOrigin = "1896",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -132,10 +140,11 @@ public partial class FormulaService
                 Criador = "Hans Hahn / Stefan Banach",
                 AnoOrigin = "1927-1929",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -147,10 +156,11 @@ public partial class FormulaService
                 Criador = "Juliusz Schauder",
                 AnoOrigin = "1930",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -162,10 +172,11 @@ public partial class FormulaService
                 Criador = "Stefan Banach / Hugo Steinhaus",
                 AnoOrigin = "1927",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -177,10 +188,11 @@ public partial class FormulaService
                 Criador = "Stefan Banach / Juliusz Schauder",
                 AnoOrigin = "1929-1930",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -192,10 +204,11 @@ public partial class FormulaService
                 Criador = "Stefan Banach",
                 AnoOrigin = "1932",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 1.2 Espaços de Hilbert
             new Formula
@@ -208,10 +221,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -223,10 +237,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -238,10 +253,11 @@ public partial class FormulaService
                 Criador = "Augustin-Louis Cauchy / Hermann Schwarz",
                 AnoOrigin = "1821-1885",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -253,10 +269,11 @@ public partial class FormulaService
                 Criador = "John von Neumann / Pascual Jordan",
                 AnoOrigin = "1935",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -268,10 +285,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1904",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -283,10 +301,11 @@ public partial class FormulaService
                 Criador = "David Hilbert / Erhard Schmidt",
                 AnoOrigin = "1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -298,10 +317,11 @@ public partial class FormulaService
                 Criador = "Frigyes Riesz",
                 AnoOrigin = "1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -313,10 +333,11 @@ public partial class FormulaService
                 Criador = "Erhard Schmidt",
                 AnoOrigin = "1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -328,10 +349,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -343,10 +365,11 @@ public partial class FormulaService
                 Criador = "Marc-Antoine Parseval",
                 AnoOrigin = "1799 (generalizado ~1907)",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -358,10 +381,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue / Frigyes Riesz",
                 AnoOrigin = "~1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             // 1.3 Teoria Espectral
             new Formula
@@ -374,10 +398,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -389,10 +414,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -404,10 +430,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -419,10 +446,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -434,10 +462,11 @@ public partial class FormulaService
                 Criador = "David Hilbert / John von Neumann",
                 AnoOrigin = "1906-1932",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -449,10 +478,11 @@ public partial class FormulaService
                 Criador = "Frigyes Riesz / David Hilbert",
                 AnoOrigin = "~1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -464,10 +494,11 @@ public partial class FormulaService
                 Criador = "Erhard Schmidt",
                 AnoOrigin = "1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -479,10 +510,11 @@ public partial class FormulaService
                 Criador = "Erik Ivar Fredholm",
                 AnoOrigin = "1903",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -504,10 +536,11 @@ public partial class FormulaService
                 Criador = "Émile Borel / Henri Lebesgue",
                 AnoOrigin = "~1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "F", Nome = "F", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "A", Nome = "A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["F"] + vars["A"]
+                Calcular = vars => vars["F"] + vars["A"],
+                Unidades = "",
             },
             new Formula
             {
@@ -519,10 +552,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["mu"] + vars["sigma"]
+                Calcular = vars => vars["mu"] + vars["sigma"],
+                Unidades = "",
             },
             new Formula
             {
@@ -534,10 +568,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "Omega", Nome = "Omega", ValorPadrao = 1 }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "Omega", Nome = "Omega", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "F", Nome = "F", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["Omega"] + vars["F"]
+                Calcular = vars => vars["Omega"] + vars["F"],
+                Unidades = "",
             },
             new Formula
             {
@@ -549,11 +584,13 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Extremo inferior", ValorPadrao = 0 },
-                    new() { Simbolo = "b", Nome = "Extremo superior", ValorPadrao = 1 },
+                    new() { Simbolo = "a", Nome = "Extremo inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Extremo superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "m([a,b])",
-                Calcular = v => v["b"] - v["a"]
+                Calcular = v => v["b"] - v["a"],
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -565,10 +602,11 @@ public partial class FormulaService
                 Criador = "Émile Borel",
                 AnoOrigin = "1898",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1 }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "sigma", Nome = "sigma", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "de", Nome = "de", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["sigma"] + vars["de"]
+                Calcular = vars => vars["sigma"] + vars["de"],
+                Unidades = "",
             },
             new Formula
             {
@@ -579,10 +617,12 @@ public partial class FormulaService
                 Descricao = "Atribui a cada ponto peso 1. A medida de um conjunto é seu número de elementos. A integral em relação a ela é a soma.",
                 Criador = "Teoria de medida clássica",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x", Nome = "x", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["mu"] + vars["x"]
+                Calcular = vars => vars["mu"] + vars["x"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -594,10 +634,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] + vars["mu"]
+                Calcular = vars => vars["A"] + vars["mu"],
+                Unidades = "",
             },
             new Formula
             {
@@ -609,10 +650,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "A", Nome = "A", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["A"] + vars["mu"]
+                Calcular = vars => vars["A"] + vars["mu"],
+                Unidades = "",
             },
             // 2.2 Integral de Lebesgue
             new Formula
@@ -625,10 +667,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -640,10 +683,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1902",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -655,10 +699,11 @@ public partial class FormulaService
                 Criador = "Beppo Levi",
                 AnoOrigin = "1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -670,10 +715,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "1910",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -685,10 +731,11 @@ public partial class FormulaService
                 Criador = "Pierre Fatou",
                 AnoOrigin = "1906",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -700,10 +747,11 @@ public partial class FormulaService
                 Criador = "Guido Fubini",
                 AnoOrigin = "1907",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -715,10 +763,11 @@ public partial class FormulaService
                 Criador = "Leonida Tonelli",
                 AnoOrigin = "1909",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             // 2.3 Derivada de Radon-Nikodym
             new Formula
@@ -731,10 +780,11 @@ public partial class FormulaService
                 Criador = "Johann Radon / Otto Nikodym",
                 AnoOrigin = "1913-1930",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1 }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "nu", Nome = "nu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["nu"] + vars["mu"]
+                Calcular = vars => vars["nu"] + vars["mu"],
+                Unidades = "",
             },
             new Formula
             {
@@ -746,10 +796,11 @@ public partial class FormulaService
                 Criador = "Johann Radon / Otto Nikodym",
                 AnoOrigin = "1913-1930",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "dν", Nome = "dν", ValorPadrao = 10 }, new() { Simbolo = "dμ", Nome = "dμ", ValorPadrao = 2, ValorMin = 0.001 } ],
+                Variaveis = [ new() { Simbolo = "dν", Nome = "dν", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "dμ", Nome = "dμ", ValorPadrao = 2, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "f",
                 UnidadeResultado = "",
-                Calcular = vars => vars["dν"] / vars["dμ"]
+                Calcular = vars => vars["dν"] / vars["dμ"],
+                Unidades = "",
             },
             new Formula
             {
@@ -761,10 +812,11 @@ public partial class FormulaService
                 Criador = "Henri Lebesgue",
                 AnoOrigin = "~1910",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1 }, new() { Simbolo = "_ac", Nome = "_ac", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "mu", Nome = "mu", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "_ac", Nome = "_ac", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["mu"] + vars["_ac"]
+                Calcular = vars => vars["mu"] + vars["_ac"],
+                Unidades = "",
             },
             new Formula
             {
@@ -776,10 +828,11 @@ public partial class FormulaService
                 Criador = "Frigyes Riesz",
                 AnoOrigin = "~1910",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1 }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1 } ],
+                Variaveis = [ new() { Simbolo = "p", Nome = "p", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "q", Nome = "q", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => vars["p"] + vars["q"]
+                Calcular = vars => vars["p"] + vars["q"],
+                Unidades = "",
             },
         ]);
     }
@@ -801,10 +854,11 @@ public partial class FormulaService
                 Criador = "Samuel Eilenberg / Saunders Mac Lane",
                 AnoOrigin = "1945",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -816,10 +870,11 @@ public partial class FormulaService
                 Criador = "Samuel Eilenberg / Saunders Mac Lane",
                 AnoOrigin = "1945",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -831,10 +886,11 @@ public partial class FormulaService
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -846,10 +902,11 @@ public partial class FormulaService
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -861,10 +918,11 @@ public partial class FormulaService
                 Criador = "Eilenberg / Mac Lane",
                 AnoOrigin = "1945",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 3.2 Construções Universais
             new Formula
@@ -877,10 +935,11 @@ public partial class FormulaService
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1950",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -892,10 +951,11 @@ public partial class FormulaService
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1950",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -907,10 +967,11 @@ public partial class FormulaService
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1960",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -922,10 +983,11 @@ public partial class FormulaService
                 Criador = "Saunders Mac Lane",
                 AnoOrigin = "~1960",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -937,10 +999,11 @@ public partial class FormulaService
                 Criador = "Daniel Kan",
                 AnoOrigin = "1958",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -952,10 +1015,11 @@ public partial class FormulaService
                 Criador = "Nobuo Yoneda",
                 AnoOrigin = "1954",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -967,10 +1031,11 @@ public partial class FormulaService
                 Criador = "Alexander Grothendieck / F. William Lawvere",
                 AnoOrigin = "1963-1970",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -992,11 +1057,11 @@ public partial class FormulaService
                 Criador = "Joseph-Louis Lagrange",
                 AnoOrigin = "1795",
                 Variaveis = [
-                    new() { Simbolo = "x0", Nome = "x₀", ValorPadrao = 0 },
-                    new() { Simbolo = "y0", Nome = "f(x₀)", ValorPadrao = 1 },
-                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1 },
-                    new() { Simbolo = "y1", Nome = "f(x₁)", ValorPadrao = 3 },
-                    new() { Simbolo = "x", Nome = "x (avaliar)", ValorPadrao = 0.5 },
+                    new() { Simbolo = "x0", Nome = "x₀", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y0", Nome = "f(x₀)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y1", Nome = "f(x₁)", ValorPadrao = 3, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "x", Nome = "x (avaliar)", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "p(x)",
                 Calcular = v => {
@@ -1004,7 +1069,9 @@ public partial class FormulaService
                     double L0 = (x - v["x1"]) / (v["x0"] - v["x1"]);
                     double L1 = (x - v["x0"]) / (v["x1"] - v["x0"]);
                     return v["y0"] * L0 + v["y1"] * L1;
-                }
+                },
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1016,10 +1083,11 @@ public partial class FormulaService
                 Criador = "Joseph-Louis Lagrange",
                 AnoOrigin = "~1795",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1031,10 +1099,11 @@ public partial class FormulaService
                 Criador = "Isaac Newton",
                 AnoOrigin = "~1687",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1046,10 +1115,11 @@ public partial class FormulaService
                 Criador = "Isaac Jacob Schoenberg",
                 AnoOrigin = "1946",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1061,10 +1131,11 @@ public partial class FormulaService
                 Criador = "Pafnuty Chebyshev",
                 AnoOrigin = "~1854",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1076,10 +1147,11 @@ public partial class FormulaService
                 Criador = "Carl Friedrich Gauss / Adrien-Marie Legendre",
                 AnoOrigin = "1795-1809",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 4.2 Integração Numérica
             new Formula
@@ -1092,13 +1164,15 @@ public partial class FormulaService
                 Criador = "Método clássico; formalizado por Euler e Newton-Cotes",
                 AnoOrigin = "~1700",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 },
-                    new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 },
-                    new() { Simbolo = "fa", Nome = "f(a)", ValorPadrao = 0 },
-                    new() { Simbolo = "fb", Nome = "f(b)", ValorPadrao = 1 },
+                    new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "fa", Nome = "f(a)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "fb", Nome = "f(b)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "∫f",
-                Calcular = v => (v["b"] - v["a"]) / 2.0 * (v["fa"] + v["fb"])
+                Calcular = v => (v["b"] - v["a"]) / 2.0 * (v["fa"] + v["fb"]),
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1109,10 +1183,12 @@ public partial class FormulaService
                 Descricao = "O erro é proporcional a h² e à segunda derivada de f. Funções com f''=0 (lineares) são integradas exatamente.",
                 Criador = "Análise de erro Newton-Cotes",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -1124,17 +1200,19 @@ public partial class FormulaService
                 Criador = "Thomas Simpson",
                 AnoOrigin = "1743",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 },
-                    new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 },
-                    new() { Simbolo = "fa", Nome = "f(a)", ValorPadrao = 0 },
-                    new() { Simbolo = "fm", Nome = "f(m)", Descricao = "Valor no ponto médio", ValorPadrao = 0.5 },
-                    new() { Simbolo = "fb", Nome = "f(b)", ValorPadrao = 1 },
+                    new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "fa", Nome = "f(a)", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "fm", Nome = "f(m)", Descricao = "Valor no ponto médio", ValorPadrao = 0.5, Unidade = "adim" },
+                    new() { Simbolo = "fb", Nome = "f(b)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "∫f",
                 Calcular = v => {
                     double h = (v["b"] - v["a"]) / 2.0;
                     return h / 3.0 * (v["fa"] + 4 * v["fm"] + v["fb"]);
-                }
+                },
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1145,10 +1223,12 @@ public partial class FormulaService
                 Descricao = "Erro proporcional a h⁴ e à quarta derivada. Polinômios de grau ≤3 são integrados exatamente (precisão superior à esperada).",
                 Criador = "Thomas Simpson / Análise de erro",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -1160,10 +1240,11 @@ public partial class FormulaService
                 Criador = "Carl Friedrich Gauss",
                 AnoOrigin = "1814",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0 }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1 }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "a", Nome = "Limite inferior", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "b", Nome = "Limite superior", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Subdivisões", ValorPadrao = 100, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"]
+                Calcular = vars => (vars["b"] - vars["a"]) / vars["n"],
+                Unidades = "",
             },
             new Formula
             {
@@ -1175,10 +1256,11 @@ public partial class FormulaService
                 Criador = "Werner Romberg",
                 AnoOrigin = "1955",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 4.3 EDOs Numéricas
             new Formula
@@ -1191,12 +1273,14 @@ public partial class FormulaService
                 Criador = "Leonhard Euler",
                 AnoOrigin = "1768",
                 Variaveis = [
-                    new() { Simbolo = "yn", Nome = "yₙ (estado atual)", ValorPadrao = 1 },
-                    new() { Simbolo = "h", Nome = "Passo h", ValorPadrao = 0.1, ValorMin = 0.001 },
-                    new() { Simbolo = "fn", Nome = "f(tₙ,yₙ)", Descricao = "Valor da derivada", ValorPadrao = -1 },
+                    new() { Simbolo = "yn", Nome = "yₙ (estado atual)", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "h", Nome = "Passo h", ValorPadrao = 0.1, ValorMin = 0.001, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "fn", Nome = "f(tₙ,yₙ)", Descricao = "Valor da derivada", ValorPadrao = -1, Unidade = "adim" },
                 ],
                 VariavelResultado = "yₙ₊₁",
-                Calcular = v => v["yn"] + v["h"] * v["fn"]
+                Calcular = v => v["yn"] + v["h"] * v["fn"],
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1208,10 +1292,11 @@ public partial class FormulaService
                 Criador = "Carl Runge / Martin Kutta",
                 AnoOrigin = "1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1223,10 +1308,11 @@ public partial class FormulaService
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1238,10 +1324,11 @@ public partial class FormulaService
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1253,10 +1340,11 @@ public partial class FormulaService
                 Criador = "Runge / Kutta",
                 AnoOrigin = "1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1268,10 +1356,11 @@ public partial class FormulaService
                 Criador = "John Couch Adams / Francis Bashforth",
                 AnoOrigin = "1883",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1283,10 +1372,11 @@ public partial class FormulaService
                 Criador = "Germund Dahlquist",
                 AnoOrigin = "1956",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 4.4 Álgebra Linear Numérica e Elementos Finitos
             new Formula
@@ -1299,10 +1389,11 @@ public partial class FormulaService
                 Criador = "Magnus Hestenes / Eduard Stiefel",
                 AnoOrigin = "1952",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1314,10 +1405,11 @@ public partial class FormulaService
                 Criador = "Yousef Saad / Martin Schultz",
                 AnoOrigin = "1986",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1329,11 +1421,13 @@ public partial class FormulaService
                 Criador = "Alan Turing / John von Neumann",
                 AnoOrigin = "~1948",
                 Variaveis = [
-                    new() { Simbolo = "smax", Nome = "σ_max", Descricao = "Maior valor singular", ValorPadrao = 10, ValorMin = 0.001 },
-                    new() { Simbolo = "smin", Nome = "σ_min", Descricao = "Menor valor singular", ValorPadrao = 0.01, ValorMin = 0.001 },
+                    new() { Simbolo = "smax", Nome = "σ_max", Descricao = "Maior valor singular", ValorPadrao = 10, ValorMin = 0.001, Unidade = "adim" },
+                    new() { Simbolo = "smin", Nome = "σ_min", Descricao = "Menor valor singular", ValorPadrao = 0.01, ValorMin = 0.001, Unidade = "adim" },
                 ],
                 VariavelResultado = "κ(A)",
-                Calcular = v => v["smax"] / v["smin"]
+                Calcular = v => v["smax"] / v["smin"],
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1345,10 +1439,11 @@ public partial class FormulaService
                 Criador = "Alexander Hrennikoff / Richard Courant",
                 AnoOrigin = "1941-1943",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1360,10 +1455,11 @@ public partial class FormulaService
                 Criador = "Boris Galerkin",
                 AnoOrigin = "1915",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1375,10 +1471,11 @@ public partial class FormulaService
                 Criador = "Jean Céa / Gilbert Strang",
                 AnoOrigin = "1964-1972",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -1400,10 +1497,11 @@ public partial class FormulaService
                 Criador = "David Hilbert / André Weil",
                 AnoOrigin = "~1890-1946",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1415,10 +1513,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "~1893",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1430,10 +1529,11 @@ public partial class FormulaService
                 Criador = "David Hilbert",
                 AnoOrigin = "1893",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Valor x", ValorPadrao = 4, ValorMin = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Sqrt(vars["x"])
+                Calcular = vars => Math.Sqrt(vars["x"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1444,10 +1544,12 @@ public partial class FormulaService
                 Descricao = "A dimensão algébrica é o grau de transcendência do corpo de funções racionais sobre k. Coincide com a dimensão topológica para variedades suaves.",
                 Criador = "Alexander Grothendieck / Emmy Noether",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -1459,11 +1561,13 @@ public partial class FormulaService
                 Criador = "Étienne Bézout",
                 AnoOrigin = "1779",
                 Variaveis = [
-                    new() { Simbolo = "d", Nome = "deg(f)", Descricao = "Grau da 1ª curva", ValorPadrao = 2, ValorMin = 1 },
-                    new() { Simbolo = "e", Nome = "deg(g)", Descricao = "Grau da 2ª curva", ValorPadrao = 3, ValorMin = 1 },
+                    new() { Simbolo = "d", Nome = "deg(f)", Descricao = "Grau da 1ª curva", ValorPadrao = 2, ValorMin = 1, Unidade = "adim" },
+                    new() { Simbolo = "e", Nome = "deg(g)", Descricao = "Grau da 2ª curva", ValorPadrao = 3, ValorMin = 1, Unidade = "adim" },
                 ],
                 VariavelResultado = "Interseções",
-                Calcular = v => v["d"] * v["e"]
+                Calcular = v => v["d"] * v["e"],
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1475,10 +1579,12 @@ public partial class FormulaService
                 Criador = "Bernhard Riemann / Max Noether",
                 AnoOrigin = "~1857",
                 Variaveis = [
-                    new() { Simbolo = "d", Nome = "Grau d", ValorPadrao = 3, ValorMin = 1 },
+                    new() { Simbolo = "d", Nome = "Grau d", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Gênero g",
-                Calcular = v => (v["d"] - 1) * (v["d"] - 2) / 2.0
+                Calcular = v => (v["d"] - 1) * (v["d"] - 2) / 2.0,
+                ExemploPratico = "",
+                Unidades = "",
             },
             // 5.2 Curvas Elípticas
             new Formula
@@ -1491,10 +1597,11 @@ public partial class FormulaService
                 Criador = "Karl Weierstrass",
                 AnoOrigin = "~1860",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 10 }, new() { Simbolo = "ax", Nome = "ax", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "x³", Nome = "x³", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "ax", Nome = "ax", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "y²",
                 UnidadeResultado = "",
-                Calcular = vars => vars["x³"] + vars["ax"]
+                Calcular = vars => vars["x³"] + vars["ax"],
+                Unidades = "",
             },
             new Formula
             {
@@ -1505,11 +1612,14 @@ public partial class FormulaService
                 Descricao = "Para a curva ser não-singular (elíptica), o discriminante deve ser não-nulo. Δ=0 implica ponto singular (cúspide ou nó).",
                 Criador = "Teoria clássica de curvas",
                 Variaveis = [
-                    new() { Simbolo = "a", Nome = "Coeficiente a", ValorPadrao = -1 },
-                    new() { Simbolo = "b", Nome = "Coeficiente b", ValorPadrao = 1 },
+                    new() { Simbolo = "a", Nome = "Coeficiente a", ValorPadrao = -1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "b", Nome = "Coeficiente b", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "Δ",
-                Calcular = v => -16.0 * (4 * Math.Pow(v["a"], 3) + 27 * Math.Pow(v["b"], 2))
+                Calcular = v => -16.0 * (4 * Math.Pow(v["a"], 3) + 27 * Math.Pow(v["b"], 2)),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1521,10 +1631,11 @@ public partial class FormulaService
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1535,13 +1646,16 @@ public partial class FormulaService
                 Descricao = "Inclinação da reta secante passando por dois pontos distintos da curva. Usada no cálculo de P+Q.",
                 Criador = "Método da corda",
                 Variaveis = [
-                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 0 },
-                    new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 1 },
-                    new() { Simbolo = "x2", Nome = "x₂", ValorPadrao = 1 },
-                    new() { Simbolo = "y2", Nome = "y₂", ValorPadrao = 1 },
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 0, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "x2", Nome = "x₂", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y2", Nome = "y₂", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "λ",
-                Calcular = v => (v["y2"] - v["y1"]) / (v["x2"] - v["x1"])
+                Calcular = v => (v["y2"] - v["y1"]) / (v["x2"] - v["x1"]),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1552,12 +1666,15 @@ public partial class FormulaService
                 Descricao = "Inclinação da tangente à curva em P, usada para calcular P+P=2P (duplicação de ponto). Derivada implícita de y²=x³+ax+b.",
                 Criador = "Cálculo diferencial aplicado",
                 Variaveis = [
-                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1 },
-                    new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 1 },
-                    new() { Simbolo = "a", Nome = "a", ValorPadrao = -1 },
+                    new() { Simbolo = "x1", Nome = "x₁", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "y1", Nome = "y₁", ValorPadrao = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
+                    new() { Simbolo = "a", Nome = "a", ValorPadrao = -1, Descricao = "Parâmetro de entrada.", Unidade = "adim" },
                 ],
                 VariavelResultado = "λ",
-                Calcular = v => (3 * v["x1"] * v["x1"] + v["a"]) / (2 * v["y1"])
+                Calcular = v => (3 * v["x1"] * v["x1"] + v["a"]) / (2 * v["y1"]),
+                AnoOrigin = "Séc. XX",
+                ExemploPratico = "",
+                Unidades = "",
             },
             new Formula
             {
@@ -1568,10 +1685,12 @@ public partial class FormulaService
                 Descricao = "Fórmulas explícitas para as coordenadas de P+Q a partir de λ. x₃ vem de Vieta; y₃ da equação da reta substituída na curva.",
                 Criador = "Aritmética de curvas elípticas",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "λ²", Nome = "λ²", ValorPadrao = 10 }, new() { Simbolo = "x₁", Nome = "x₁", ValorPadrao = 5 } ],
+                Variaveis = [ new() { Simbolo = "λ²", Nome = "λ²", ValorPadrao = 10, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "x₁", Nome = "x₁", ValorPadrao = 5, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "x₃",
                 UnidadeResultado = "",
-                Calcular = vars => vars["λ²"] - vars["x₁"]
+                Calcular = vars => vars["λ²"] - vars["x₁"],
+                AnoOrigin = "Séc. XX",
+                Unidades = "",
             },
             new Formula
             {
@@ -1583,10 +1702,11 @@ public partial class FormulaService
                 Criador = "Henri Poincaré",
                 AnoOrigin = "~1901",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1598,10 +1718,11 @@ public partial class FormulaService
                 Criador = "Louis Mordell / André Weil",
                 AnoOrigin = "1922-1928",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1613,10 +1734,11 @@ public partial class FormulaService
                 Criador = "Louis Mordell",
                 AnoOrigin = "1922",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1628,10 +1750,11 @@ public partial class FormulaService
                 Criador = "Neal Koblitz / Victor Miller",
                 AnoOrigin = "1985",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }
@@ -1653,10 +1776,11 @@ public partial class FormulaService
                 Criador = "Gottlob Frege",
                 AnoOrigin = "1879",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1668,10 +1792,11 @@ public partial class FormulaService
                 Criador = "Alfred Tarski",
                 AnoOrigin = "1933",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1683,10 +1808,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1929",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1698,10 +1824,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel (consequência da completude)",
                 AnoOrigin = "1930",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1713,10 +1840,11 @@ public partial class FormulaService
                 Criador = "Leopold Löwenheim / Thoralf Skolem",
                 AnoOrigin = "1915-1920",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             // 6.2 Incompletude de Gödel
             new Formula
@@ -1729,10 +1857,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1744,10 +1873,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1759,10 +1889,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1774,10 +1905,11 @@ public partial class FormulaService
                 Criador = "Kurt Gödel",
                 AnoOrigin = "1931",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
             new Formula
             {
@@ -1789,10 +1921,11 @@ public partial class FormulaService
                 Criador = "Alfred Tarski",
                 AnoOrigin = "1936",
                 ExemploPratico = "Utilize os valores padrão para calcular o resultado.",
-                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2 }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1 } ],
+                Variaveis = [ new() { Simbolo = "x", Nome = "Variável x", ValorPadrao = 2, Descricao = "Parâmetro de entrada.", Unidade = "adim" }, new() { Simbolo = "n", Nome = "Parâmetro n", ValorPadrao = 3, ValorMin = 1, Descricao = "Parâmetro de entrada.", Unidade = "adim" } ],
                 VariavelResultado = "Resultado",
                 UnidadeResultado = "",
-                Calcular = vars => Math.Pow(vars["x"], vars["n"])
+                Calcular = vars => Math.Pow(vars["x"], vars["n"]),
+                Unidades = "",
             },
         ]);
     }

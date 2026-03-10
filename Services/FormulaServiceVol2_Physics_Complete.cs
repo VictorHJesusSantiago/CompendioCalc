@@ -38,7 +38,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "L",
                 UnidadeResultado = "J",
-                Calcular = vars => vars["T"] - vars["V"]
+                Calcular = vars => vars["T"] - vars["V"],
+                Unidades = "",
             },
 
             new Formula
@@ -58,7 +59,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "T",
                 UnidadeResultado = "J",
-                Calcular = vars => 0.5 * vars["m"] * vars["v"] * vars["v"]
+                Calcular = vars => 0.5 * vars["m"] * vars["v"] * vars["v"],
+                Unidades = "",
             },
 
             new Formula
@@ -78,7 +80,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "p",
                 UnidadeResultado = "kg·m/s",
-                Calcular = vars => vars["m"] * vars["v"]
+                Calcular = vars => vars["m"] * vars["v"],
+                Unidades = "",
             },
 
             new Formula
@@ -103,7 +106,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double p = vars["p"], m = vars["m"], omega = vars["omega"], q = vars["q"];
                     return (p * p) / (2 * m) + 0.5 * m * omega * omega * q * q;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -123,7 +127,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "δᵢⱼ",
                 UnidadeResultado = "",
-                Calcular = vars => ((int)vars["i"] == (int)vars["j"]) ? 1.0 : 0.0
+                Calcular = vars => ((int)vars["i"] == (int)vars["j"]) ? 1.0 : 0.0,
+                Unidades = "",
             },
         ]);
     }
@@ -151,7 +156,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "S",
                 UnidadeResultado = "J/K",
-                Calcular = vars => vars["kB"] * Math.Log(vars["Omega"])
+                Calcular = vars => vars["kB"] * Math.Log(vars["Omega"]),
+                Unidades = "",
             },
 
             new Formula
@@ -172,7 +178,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "F",
                 UnidadeResultado = "J",
-                Calcular = vars => -vars["kB"] * vars["T"] * Math.Log(vars["Z"])
+                Calcular = vars => -vars["kB"] * vars["T"] * Math.Log(vars["Z"]),
+                Unidades = "",
             },
 
             new Formula
@@ -196,7 +203,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double eps = vars["eps"], beta = 1.0 / (vars["kB"] * vars["T"]);
                     return eps / (Math.Exp(beta * eps) + 1);
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -222,7 +230,8 @@ public partial class FormulaService
                     double beta = 1.0 / (vars["kB"] * vars["T"]);
                     double exponent = beta * (vars["eps"] - vars["mu"]);
                     return 1.0 / (Math.Exp(exponent) + 1);
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -250,7 +259,8 @@ public partial class FormulaService
                     double denom = Math.Exp(exponent) - 1;
                     if (denom <= 0) return double.PositiveInfinity;
                     return 1.0 / denom;
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -274,7 +284,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double hbar = vars["hbar"], m = vars["m"], n = vars["n"];
                     return (hbar * hbar / (2 * m)) * Math.Pow(3 * Math.PI * Math.PI * n, 2.0 / 3.0);
-                }
+                },
+                Unidades = "",
             },
         ]);
     }
@@ -303,7 +314,8 @@ public partial class FormulaService
                 ],
                 VariavelResultado = "rs",
                 UnidadeResultado = "m",
-                Calcular = vars => 2 * vars["G"] * vars["M"] / (vars["c"] * vars["c"])
+                Calcular = vars => 2 * vars["G"] * vars["M"] / (vars["c"] * vars["c"]),
+                Unidades = "",
             },
 
             new Formula
@@ -329,7 +341,8 @@ public partial class FormulaService
                 Calcular = vars => {
                     double hbar = vars["hbar"], c = vars["c"], G = vars["G"], M = vars["M"], kB = vars["kB"];
                     return (hbar * c * c * c) / (8 * Math.PI * G * M * kB);
-                }
+                },
+                Unidades = "",
             },
 
             new Formula
@@ -355,7 +368,8 @@ public partial class FormulaService
                     double rs = 2 * vars["G"] * vars["M"] / (vars["c"] * vars["c"]);
                     if (vars["r"] <= rs) return 0; // Dentro do horizonte
                     return Math.Sqrt(1 - rs / vars["r"]);
-                }
+                },
+                Unidades = "",
             },
         ]);
     }

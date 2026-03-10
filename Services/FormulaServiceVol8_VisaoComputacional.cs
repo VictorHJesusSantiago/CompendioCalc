@@ -44,7 +44,8 @@ public partial class FormulaService
                 double exponent = -(x * x + y * y) / (2 * sigma * sigma);
                 
                 return coef * Math.Exp(exponent);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -77,7 +78,8 @@ public partial class FormulaService
                 double Gy = inputs["Gy"];
                 
                 return Math.Sqrt(Gx * Gx + Gy * Gy);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -112,7 +114,8 @@ public partial class FormulaService
                 double k = inputs["k"];
                 
                 return det_M - k * trace_M * trace_M;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -145,7 +148,8 @@ public partial class FormulaService
                 double G_sigma = inputs["G_sigma"];
                 
                 return G_k_sigma - G_sigma;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -178,7 +182,8 @@ public partial class FormulaService
                 double binWidth = inputs["binWidth"];
                 
                 return Math.Floor(theta / binWidth);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -216,7 +221,8 @@ public partial class FormulaService
                 if (denom == 0) return 0;
                 
                 return sum_IT / denom;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -256,7 +262,8 @@ public partial class FormulaService
                 
                 // l'_a = F11*x + F12*y + F13*1
                 return F11 * x + F12 * y + F13;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -291,7 +298,8 @@ public partial class FormulaService
                 double d = inputs["d"];
                 
                 return (b * f) / d;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -337,7 +345,8 @@ public partial class FormulaService
                 
                 double w = H31 * x + H32 * y + H33;
                 return (H11 * x + H12 * y + H13) / w;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -377,7 +386,8 @@ public partial class FormulaService
                 double dy = y_obs - y_proj;
                 
                 return Math.Sqrt(dx * dx + dy * dy);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -420,7 +430,8 @@ public partial class FormulaService
                 double r6 = r2 * r4;
                 
                 return x * (1 + k1 * r2 + k2 * r4 + k3 * r6);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -453,7 +464,8 @@ public partial class FormulaService
                 double area_union = inputs["area_union"];
                 
                 return area_intersection / area_union;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -490,7 +502,8 @@ public partial class FormulaService
                 double NMS_threshold = inputs["NMS_threshold"];
                 
                 return (score > threshold && IoU < NMS_threshold) ? 1 : 0;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -524,7 +537,8 @@ public partial class FormulaService
                 
                 // Simplificado: u ≈ (A^T·A)^-1 · A^T·b
                 return At_A_inv_11 * At_b_1;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -557,7 +571,8 @@ public partial class FormulaService
                 double sum_Ix2 = inputs["sum_Ix2"];
                 
                 return sum_Ix2; // Retorna J11
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -603,7 +618,8 @@ public partial class FormulaService
                 double denominator = (mu_x * mu_x + mu_y * mu_y + C1) * (sigma_x * sigma_x + sigma_y * sigma_y + C2);
                 
                 return numerator / denominator;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -636,7 +652,8 @@ public partial class FormulaService
                 double MSE = inputs["MSE"];
                 
                 return 10 * Math.Log10((MAX * MAX) / MSE);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -671,7 +688,8 @@ public partial class FormulaService
                 double wa = inputs["wa"];
                 
                 return (x - xa) / wa;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -706,7 +724,8 @@ public partial class FormulaService
                 double gamma = inputs["gamma"];
                 
                 return -alpha * Math.Pow(1 - pt, gamma) * Math.Log(pt);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -739,7 +758,8 @@ public partial class FormulaService
                 double d_k = inputs["d_k"];
                 
                 return QK_dot / Math.Sqrt(d_k);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -774,7 +794,8 @@ public partial class FormulaService
                 double stride_product = inputs["stride_product"];
                 
                 return RF_in + (kernel_size - 1) * stride_product;
-            }
+            },
+            Icone = "∑",
         };
     }
 }

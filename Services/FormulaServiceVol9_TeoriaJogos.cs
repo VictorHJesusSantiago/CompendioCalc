@@ -47,7 +47,8 @@ namespace CompendioCalc.Services
                     return diferencial <= 0 ? 1.0 : 0.0; // 1=é Nash, 0=não é Nash
                 },
                 VariavelResultado = "Teste Nash",
-                UnidadeResultado = "booleano (1=Nash, 0=não-Nash)"
+                UnidadeResultado = "booleano (1=Nash, 0=não-Nash)",
+                Icone = "∑",
             };
         }
 
@@ -93,7 +94,8 @@ namespace CompendioCalc.Services
                     return diferenca; // 0=Nash equilibrio, >0=não-Nash
                 },
                 VariavelResultado = "Desvio uniformidade",
-                UnidadeResultado = "diferença probabilidades"
+                UnidadeResultado = "diferença probabilidades",
+                Icone = "∑",
             };
         }
 
@@ -142,7 +144,8 @@ namespace CompendioCalc.Services
                     return phi1;
                 },
                 VariavelResultado = "Shapley jogador 1",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
 
@@ -187,7 +190,8 @@ namespace CompendioCalc.Services
                     return segundo_maior;
                 },
                 VariavelResultado = "Pagamento VCG vencedor",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
 
@@ -226,7 +230,8 @@ namespace CompendioCalc.Services
                     return payoff;
                 },
                 VariavelResultado = "Payoff esperado",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
 
@@ -264,7 +269,8 @@ namespace CompendioCalc.Services
                     return lance_equilibrio;
                 },
                 VariavelResultado = "Lance BNE",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
 
@@ -311,7 +317,8 @@ namespace CompendioCalc.Services
                     return valor_jogo;
                 },
                 VariavelResultado = "Valor minimax v*",
-                UnidadeResultado = "utils"
+                UnidadeResultado = "utils",
+                Icone = "∑",
             };
         }
 
@@ -350,7 +357,8 @@ namespace CompendioCalc.Services
                     return 1.0; // casos triviais: n_alt<3 ou n_vot=1 (ditador)
                 },
                 VariavelResultado = "Possibilidade SWF",
-                UnidadeResultado = "booleano (0=impossível, 1=possível)"
+                UnidadeResultado = "booleano (0=impossível, 1=possível)",
+                Icone = "∑",
             };
         }
 
@@ -389,7 +397,8 @@ namespace CompendioCalc.Services
                     return preco_equilibrio;
                 },
                 VariavelResultado = "Preço de equilíbrio p*",
-                UnidadeResultado = "$/unidade"
+                UnidadeResultado = "$/unidade",
+                Icone = "∑",
             };
         }
 
@@ -432,7 +441,8 @@ namespace CompendioCalc.Services
                     return lucro_lider; // retorna lucro do líder
                 },
                 VariavelResultado = "Lucro do líder πL",
-                UnidadeResultado = "$"
+                UnidadeResultado = "$",
+                Icone = "∑",
             };
         }
 
@@ -483,7 +493,8 @@ namespace CompendioCalc.Services
                     return separador ? 1.0 : 0.0; // 1=equilíbrio separador, 0=não
                 },
                 VariavelResultado = "Equilíbrio separador",
-                UnidadeResultado = "booleano (1=sim, 0=não)"
+                UnidadeResultado = "booleano (1=sim, 0=não)",
+                Icone = "∑",
             };
         }
 
@@ -531,7 +542,8 @@ namespace CompendioCalc.Services
                     return sustentavel ? 1.0 : 0.0; // 1=cooperação sustentável, 0=não
                 },
                 VariavelResultado = "Cooperação sustentável",
-                UnidadeResultado = "booleano (1=sim, 0=não)"
+                UnidadeResultado = "booleano (1=sim, 0=não)",
+                Icone = "∑",
             };
         }
 
@@ -571,7 +583,8 @@ namespace CompendioCalc.Services
                     return preco_virtual;
                 },
                 VariavelResultado = "Preço virtual p*(v)",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
 
@@ -615,7 +628,8 @@ namespace CompendioCalc.Services
                     return payoff_esperado; // CE eficiente tem p_vr=p_rv=0.5, p_vv=p_rr=0
                 },
                 VariavelResultado = "Payoff esperado",
-                UnidadeResultado = "utils"
+                UnidadeResultado = "utils",
+                Icone = "∑",
             };
         }
 
@@ -662,7 +676,8 @@ namespace CompendioCalc.Services
                     return dx_h_dt; // >0: falcões crescem; <0: pombas crescem; =0: equilíbrio
                 },
                 VariavelResultado = "Taxa crescimento falcões",
-                UnidadeResultado = "Δfração/tempo"
+                UnidadeResultado = "Δfração/tempo",
+                Icone = "∑",
             };
         }
 
@@ -707,7 +722,8 @@ namespace CompendioCalc.Services
                     return eh_ESS ? 1.0 : 0.0; // 1=é ESS, 0=não é ESS
                 },
                 VariavelResultado = "É ESS",
-                UnidadeResultado = "booleano (1=sim, 0=não)"
+                UnidadeResultado = "booleano (1=sim, 0=não)",
+                Icone = "∑",
             };
         }
 
@@ -749,7 +765,8 @@ namespace CompendioCalc.Services
                     return produto_nash; // maior produto = melhor acordo
                 },
                 VariavelResultado = "Produto de Nash",
-                UnidadeResultado = "utils²"
+                UnidadeResultado = "utils²",
+                Icone = "∑",
             };
         }
 
@@ -791,7 +808,8 @@ namespace CompendioCalc.Services
                     return VP_hiperbolico; // comparar opções: maior VP preferido
                 },
                 VariavelResultado = "Valor presente percebido",
-                UnidadeResultado = "utils"
+                UnidadeResultado = "utils",
+                Icone = "∑",
             };
         }
 
@@ -837,7 +855,8 @@ namespace CompendioCalc.Services
                     return utilidade_esperada;
                 },
                 VariavelResultado = "Utilidade esperada U(L)",
-                UnidadeResultado = "utils"
+                UnidadeResultado = "utils",
+                Icone = "∑",
             };
         }
 
@@ -874,7 +893,8 @@ namespace CompendioCalc.Services
                     return poder_banzhaf; // poder normalizado ∈[0,1]
                 },
                 VariavelResultado = "Poder de Banzhaf βᵢ",
-                UnidadeResultado = "fração"
+                UnidadeResultado = "fração",
+                Icone = "∑",
             };
         }
 
@@ -915,7 +935,8 @@ namespace CompendioCalc.Services
                     return preco_venda; // preço de venda ≈ segunda maior valoração
                 },
                 VariavelResultado = "Preço de venda",
-                UnidadeResultado = "valor"
+                UnidadeResultado = "valor",
+                Icone = "∑",
             };
         }
     }

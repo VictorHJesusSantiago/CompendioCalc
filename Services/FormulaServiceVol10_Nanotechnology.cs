@@ -31,9 +31,9 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1928",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Largura barreira a (nm)", Simbolo = "a", Unidade = "nm", ValorPadrao = 1 },
-                        new Variavel { Nome = "Altura barreira V-E (eV)", Simbolo = "ΔV", Unidade = "eV", ValorPadrao = 1 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m/m_e", Unidade = "", ValorPadrao = 0.067 }
+                        new Variavel { Nome = "Largura barreira a (nm)", Simbolo = "a", Unidade = "nm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Altura barreira V-E (eV)", Simbolo = "ΔV", Unidade = "eV", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m/m_e", Unidade = "", ValorPadrao = 0.067, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -63,7 +63,8 @@ namespace CompendioCalc.Services
                         
                         return T;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-023: Comprimento de Penetração de London
@@ -81,8 +82,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1935",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Densidade Cooper n_s (m^-3)", Simbolo = "n_s", Unidade = "m^-3", ValorPadrao = 1e28 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 2 }
+                        new Variavel { Nome = "Densidade Cooper n_s (m^-3)", Simbolo = "n_s", Unidade = "m^-3", ValorPadrao = 1e28, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 2, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -110,7 +111,8 @@ namespace CompendioCalc.Services
                         
                         return lambda_L * 1e9;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-024: Quantização de Condutância
@@ -128,8 +130,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1957",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Número de canais N", Simbolo = "N", Unidade = "", ValorPadrao = 1 },
-                        new Variavel { Nome = "Transmissão média T", Simbolo = "T", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Número de canais N", Simbolo = "N", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Transmissão média T", Simbolo = "T", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -152,7 +154,8 @@ namespace CompendioCalc.Services
                         
                         return G;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-025: Densidade de Estados 1D
@@ -170,8 +173,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1953",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Energia E (eV)", Simbolo = "E", Unidade = "eV", ValorPadrao = 1 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "Energia E (eV)", Simbolo = "E", Unidade = "eV", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -196,7 +199,8 @@ namespace CompendioCalc.Services
                         
                         return rho_1D;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // Mais 16 fórmulas de nanotecnologia...
@@ -217,8 +221,8 @@ namespace CompendioCalc.Services
                     AnoOrigin = "1924",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Energia cinética (eV)", Simbolo = "E", Unidade = "eV", ValorPadrao = 0.026 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.067 }
+                        new Variavel { Nome = "Energia cinética (eV)", Simbolo = "E", Unidade = "eV", ValorPadrao = 0.026, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.067, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -247,7 +251,8 @@ namespace CompendioCalc.Services
                         
                         return lambda_dB * 1e9;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-027: Coulomb Blockade
@@ -267,7 +272,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Capacitância C (aF)", Simbolo = "C", Unidade = "aF", ValorPadrao = 1 }
+                        new Variavel { Nome = "Capacitância C (aF)", Simbolo = "C", Unidade = "aF", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -283,7 +288,8 @@ namespace CompendioCalc.Services
                         
                         return EC_eV;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-028: Quantum Dot Energy Levels
@@ -303,9 +309,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Tamanho L (nm)", Simbolo = "L", Unidade = "nm", ValorPadrao = 3 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.13 },
-                        new Variavel { Nome = "Número quântico n", Simbolo = "n", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Tamanho L (nm)", Simbolo = "L", Unidade = "nm", ValorPadrao = 3, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.13, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número quântico n", Simbolo = "n", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -325,7 +331,8 @@ namespace CompendioCalc.Services
                         
                         return E_eV;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-029: Exciton Binding Energy
@@ -345,8 +352,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "meV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Massa reduzida μ/m_e", Simbolo = "μ", Unidade = "", ValorPadrao = 0.05 },
-                        new Variavel { Nome = "Permissividade ε_r", Simbolo = "ε_r", Unidade = "", ValorPadrao = 12.9 }
+                        new Variavel { Nome = "Massa reduzida μ/m_e", Simbolo = "μ", Unidade = "", ValorPadrao = 0.05, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Permissividade ε_r", Simbolo = "ε_r", Unidade = "", ValorPadrao = 12.9, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -364,7 +371,8 @@ namespace CompendioCalc.Services
                         
                         return E_b_meV;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-030: Surface Plasmon Resonance
@@ -384,8 +392,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "nm",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Frequência plasma ω_p (rad/s)", Simbolo = "ω_p", Unidade = "rad/s", ValorPadrao = 1.37e16 }, // Au
-                        new Variavel { Nome = "Constante dielétrica ε_m", Simbolo = "ε_m", Unidade = "", ValorPadrao = 1.77 }
+                        new Variavel { Nome = "Frequência plasma ω_p (rad/s)", Simbolo = "ω_p", Unidade = "rad/s", ValorPadrao = 1.37e16, Descricao = "Parâmetro de entrada." }, // Au
+                        new Variavel { Nome = "Constante dielétrica ε_m", Simbolo = "ε_m", Unidade = "", ValorPadrao = 1.77, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -402,7 +410,8 @@ namespace CompendioCalc.Services
                         
                         return lambda_SPR * 1e9; // convert to nm
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-031: Casimir Force
@@ -422,7 +431,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "Pa",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Distância d (nm)", Simbolo = "d", Unidade = "nm", ValorPadrao = 100 }
+                        new Variavel { Nome = "Distância d (nm)", Simbolo = "d", Unidade = "nm", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -439,7 +448,8 @@ namespace CompendioCalc.Services
                         
                         return F_over_A;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-032: Fermi Velocity in Graphene
@@ -459,8 +469,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Parâmetro hopping t (eV)", Simbolo = "t", Unidade = "eV", ValorPadrao = 2.8 },
-                        new Variavel { Nome = "Perímetro lattice a (nm)", Simbolo = "a", Unidade = "nm", ValorPadrao = 0.246 }
+                        new Variavel { Nome = "Parâmetro hopping t (eV)", Simbolo = "t", Unidade = "eV", ValorPadrao = 2.8, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Perímetro lattice a (nm)", Simbolo = "a", Unidade = "nm", ValorPadrao = 0.246, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -481,7 +491,8 @@ namespace CompendioCalc.Services
                         
                         return v_F;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-033: Landau Levels
@@ -501,9 +512,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "meV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Campo magnético B (T)", Simbolo = "B", Unidade = "T", ValorPadrao = 10 },
-                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.067 },
-                        new Variavel { Nome = "Número quântico n", Simbolo = "n", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Campo magnético B (T)", Simbolo = "B", Unidade = "T", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Massa efetiva/m_e", Simbolo = "m*", Unidade = "", ValorPadrao = 0.067, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Número quântico n", Simbolo = "n", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -527,7 +538,8 @@ namespace CompendioCalc.Services
                         
                         return E_meV;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-034: Carbon Nanotube Band Structure
@@ -547,8 +559,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Índice n", Simbolo = "n", Unidade = "", ValorPadrao = 10 },
-                        new Variavel { Nome = "Índice m", Simbolo = "m", Unidade = "", ValorPadrao = 10 }
+                        new Variavel { Nome = "Índice n", Simbolo = "n", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Índice m", Simbolo = "m", Unidade = "", ValorPadrao = 10, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -573,7 +585,8 @@ namespace CompendioCalc.Services
                         
                         return metalico ? 1.0 : 0.0;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-035: Quantum Hall Effect
@@ -593,7 +606,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "kΩ",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Fator preenchimento ν", Simbolo = "ν", Unidade = "", ValorPadrao = 1 }
+                        new Variavel { Nome = "Fator preenchimento ν", Simbolo = "ν", Unidade = "", ValorPadrao = 1, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -610,7 +623,8 @@ namespace CompendioCalc.Services
                         
                         return R_H / 1000; // convert to kΩ
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-036: Single Electron Transistor (SET)
@@ -630,9 +644,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "pA",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Energia Coulomb E_C (meV)", Simbolo = "E_C", Unidade = "meV", ValorPadrao = 50 },
-                        new Variavel { Nome = "Resistência tunelamento (kΩ)", Simbolo = "R_t", Unidade = "kΩ", ValorPadrao = 100 },
-                        new Variavel { Nome = "Temperatura (mK)", Simbolo = "T", Unidade = "mK", ValorPadrao = 100 }
+                        new Variavel { Nome = "Energia Coulomb E_C (meV)", Simbolo = "E_C", Unidade = "meV", ValorPadrao = 50, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Resistência tunelamento (kΩ)", Simbolo = "R_t", Unidade = "kΩ", ValorPadrao = 100, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Temperatura (mK)", Simbolo = "T", Unidade = "mK", ValorPadrao = 100, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -658,7 +672,8 @@ namespace CompendioCalc.Services
                         
                         return I_pk_pA;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-037: Molecular Conductance
@@ -678,9 +693,9 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Acoplamento |t|²", Simbolo = "|t|²", Unidade = "", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "Desalinhamento |ε−ε₀| (eV)", Simbolo = "Δε", Unidade = "eV", ValorPadrao = 1 },
-                        new Variavel { Nome = "Largura Γ (eV)", Simbolo = "Γ", Unidade = "eV", ValorPadrao = 0.5 }
+                        new Variavel { Nome = "Acoplamento |t|²", Simbolo = "|t|²", Unidade = "", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Desalinhamento |ε−ε₀| (eV)", Simbolo = "Δε", Unidade = "eV", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Largura Γ (eV)", Simbolo = "Γ", Unidade = "eV", ValorPadrao = 0.5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -694,7 +709,8 @@ namespace CompendioCalc.Services
                         
                         return G_ratio;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-038: Spin-Orbit Coupling
@@ -714,8 +730,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "eV·Å",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Campo elétrico (V/nm)", Simbolo = "E", Unidade = "V/nm", ValorPadrao = 1 },
-                        new Variavel { Nome = "Parâmetro material", Simbolo = "γ", Unidade = "eV·Å²", ValorPadrao = 5 }
+                        new Variavel { Nome = "Campo elétrico (V/nm)", Simbolo = "E", Unidade = "V/nm", ValorPadrao = 1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Parâmetro material", Simbolo = "γ", Unidade = "eV·Å²", ValorPadrao = 5, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -732,7 +748,8 @@ namespace CompendioCalc.Services
                         
                         return alpha_R;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-039: Rashba Effect
@@ -752,8 +769,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "meV",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Vetor k (nm^-1)", Simbolo = "k", Unidade = "nm^-1", ValorPadrao = 0.1 },
-                        new Variavel { Nome = "Parâmetro Rashba (eV·Å)", Simbolo = "α_R", Unidade = "eV·Å", ValorPadrao = 0.55 }
+                        new Variavel { Nome = "Vetor k (nm^-1)", Simbolo = "k", Unidade = "nm^-1", ValorPadrao = 0.1, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Parâmetro Rashba (eV·Å)", Simbolo = "α_R", Unidade = "eV·Å", ValorPadrao = 0.55, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -770,7 +787,8 @@ namespace CompendioCalc.Services
                         
                         return delta_E_meV;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-040: Quantum Capacitance
@@ -790,7 +808,7 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "μF/cm²",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "DOS no Fermi (estados/eV/cm²)", Simbolo = "DOS", Unidade = "estados/eV/cm²", ValorPadrao = 1e13 }
+                        new Variavel { Nome = "DOS no Fermi (estados/eV/cm²)", Simbolo = "DOS", Unidade = "estados/eV/cm²", ValorPadrao = 1e13, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -808,7 +826,8 @@ namespace CompendioCalc.Services
                         
                         return C_Q_uF_cm2;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 },
 
                 // V10-041: Phonon Dispersion in Nanowire
@@ -828,8 +847,8 @@ namespace CompendioCalc.Services
                     UnidadeResultado = "m/s",
                     Variaveis = new List<Variavel>
                     {
-                        new Variavel { Nome = "Módulo Young E (GPa)", Simbolo = "E", Unidade = "GPa", ValorPadrao = 130 },
-                        new Variavel { Nome = "Densidade ρ (g/cm³)", Simbolo = "ρ", Unidade = "g/cm³", ValorPadrao = 2.33 }
+                        new Variavel { Nome = "Módulo Young E (GPa)", Simbolo = "E", Unidade = "GPa", ValorPadrao = 130, Descricao = "Parâmetro de entrada." },
+                        new Variavel { Nome = "Densidade ρ (g/cm³)", Simbolo = "ρ", Unidade = "g/cm³", ValorPadrao = 2.33, Descricao = "Parâmetro de entrada." }
                     },
                     Calcular = inputs =>
                     {
@@ -849,7 +868,8 @@ namespace CompendioCalc.Services
                         
                         return v_s;
                     },
-                    Icone = "🔬"
+                    Icone = "🔬",
+                    Unidades = "",
                 }
             });
         }

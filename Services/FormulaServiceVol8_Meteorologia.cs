@@ -47,7 +47,8 @@ public partial class FormulaService
                 double T = inputs["T"];
                 
                 return P0 * Math.Exp(-M * g * h / (R * T));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -78,7 +79,8 @@ public partial class FormulaService
                 double T = inputs["T"];
                 
                 return 611 * Math.Exp((17.27 * T) / (T + 237.3));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -111,7 +113,8 @@ public partial class FormulaService
                 double es = inputs["es"];
                 
                 return (e / es) * 100;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -144,7 +147,8 @@ public partial class FormulaService
                 double ln_e_611 = Math.Log(e / 611);
                 
                 return (237.3 * ln_e_611) / (17.27 - ln_e_611);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -177,7 +181,8 @@ public partial class FormulaService
                 double P = inputs["P"];
                 
                 return 0.622 * (e / (P - e));
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -214,7 +219,8 @@ public partial class FormulaService
                 double kappa = inputs["kappa"];
                 
                 return T * Math.Pow(P0 / P, kappa);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -247,7 +253,8 @@ public partial class FormulaService
                 double cp = inputs["cp"];
                 
                 return g / cp;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -284,7 +291,8 @@ public partial class FormulaService
                 if (Math.Abs(f * rho) < 1e-10) return 0;
                 
                 return (1 / (f * rho)) * dP_dn;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -317,7 +325,8 @@ public partial class FormulaService
                 double phi = inputs["phi"];
                 
                 return 2 * Omega * Math.Sin(phi);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -352,7 +361,8 @@ public partial class FormulaService
                 double L = inputs["L"];
                 
                 return U / (f * L);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -385,7 +395,8 @@ public partial class FormulaService
                 double delta_t = inputs["delta_t"];
                 
                 return v_som * delta_t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -414,7 +425,8 @@ public partial class FormulaService
             Calcular = inputs =>
             {
                 return inputs["dtheta_dz"];
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -449,7 +461,8 @@ public partial class FormulaService
                 double delta_z = inputs["delta_z"];
                 
                 return g * delta_T_avg * delta_z;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -482,7 +495,8 @@ public partial class FormulaService
                 double t = inputs["t"];
                 
                 return h / t;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -517,7 +531,8 @@ public partial class FormulaService
                 double b = inputs["b"];
                 
                 return a * Math.Pow(R, b);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -552,7 +567,8 @@ public partial class FormulaService
                 double f = inputs["f"];
                 
                 return k * u_star / f;
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -593,7 +609,8 @@ public partial class FormulaService
                 if (Math.Abs(H0) < 1e-10) return double.PositiveInfinity; // Neutro
                 
                 return -(u_star * u_star * u_star * T) / (k_vonKarman * g * H0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -626,7 +643,8 @@ public partial class FormulaService
                 double rho = inputs["rho"];
                 
                 return Math.Sqrt(tau_0 / rho);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -665,7 +683,8 @@ public partial class FormulaService
                 if (z <= z0) return 0;
                 
                 return (u_star / k) * Math.Log(z / z0);
-            }
+            },
+            Icone = "∑",
         };
     }
 
@@ -704,7 +723,8 @@ public partial class FormulaService
                 double rho_air = inputs["rho_air"];
                 
                 return Math.Sqrt((4 * g * r * delta_rho) / (3 * Cd * rho_air));
-            }
+            },
+            Icone = "∑",
         };
     }
 }

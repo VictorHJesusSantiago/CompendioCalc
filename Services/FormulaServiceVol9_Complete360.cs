@@ -260,7 +260,9 @@ namespace CompendioCalc.Services
                 }).ToList(),
                 VariavelResultado = metadata.VariavelResultado,
                 UnidadeResultado = metadata.UnidadeResultado,
-                Calcular = vars => metadata.CalcFunc(vars)
+                Calcular = vars => metadata.CalcFunc(vars),
+                Unidades = "",
+                Icone = "∑",
             };
         }
 
