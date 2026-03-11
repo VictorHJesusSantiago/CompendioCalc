@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using CompendioCalc.Models;
@@ -9,451 +10,1307 @@ namespace CompendioCalc.Services
     public partial class FormulaService
     {
         private sealed record Vol14Spec(
-            string codigo,
-            string nome,
-            string expressao,
-            string descricao,
-            string origem,
-            string exemplo,
-            string categoria,
-            string subcategoria);
+            string Codigo,
+            string Nome,
+            string Expressao,
+            string Descricao,
+            string Origem,
+            string Exemplo,
+            string Categoria,
+            string SubCategoria);
 
-        private static readonly HashSet<string> Vol14FuncoesIgnoradas = new(StringComparer.OrdinalIgnoreCase)
-        {
-            "exp", "log", "sin", "cos", "tan", "sqrt", "ln", "pi", "e"
-        };
+        private sealed record Vol14Override(
+            string Expressao,
+            string VariavelResultado,
+            string UnidadeResultado,
+            List<Variavel> Variaveis,
+            Func<Dictionary<string, double>, double>? Calculadora = null);
 
         private static readonly Regex Vol14SimboloRegex = new(@"[A-Za-z_][A-Za-z0-9_]*", RegexOptions.Compiled);
-        private static readonly Regex Vol14OperacaoBinariaRegex = new(
-            @"^\s*(?<a>[A-Za-z_][A-Za-z0-9_]*)\s*(?<op>[+\-*/])\s*(?<b>[A-Za-z_][A-Za-z0-9_]*)\s*$",
-            RegexOptions.Compiled);
+        private static readonly HashSet<string> Vol14Ignorar = new(StringComparer.OrdinalIgnoreCase)
+        {
+            "resultado", "sin", "cos", "tan", "asin", "acos", "atan", "sqrt", "log", "log10", "log2", "ln",
+            "exp", "abs", "min", "max", "pow", "pi", "e"
+        };
+
+        private static readonly Dictionary<string, Vol14Override> Vol14Overrides = new(StringComparer.Ordinal)
+        {
+            ["031"] = new(
+                "d_prime",
+                "d_prime",
+                "adim",
+                [
+                    NovaVariavelVol14("H", "Taxa de acertos", "Probabilidade de hits na tarefa de reconhecimento.", valorPadrao: 0.85),
+                    NovaVariavelVol14("FA", "Taxa de falsos alarmes", "Probabilidade de falsos alarmes na mesma tarefa.", valorPadrao: 0.15)
+                ],
+                vars => InverseNormalCdf(ValorVariavel(vars, "H", 0.85)) - InverseNormalCdf(ValorVariavel(vars, "FA", 0.15))),
+            ["039"] = new(
+                "H",
+                "H",
+                "bits",
+                [
+                    NovaVariavelVol14("p1", "Frequencia alelica 1", "Probabilidade do primeiro alelo observado no locus STR.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p2", "Frequencia alelica 2", "Probabilidade do segundo alelo observado no locus STR.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p3", "Frequencia alelica 3", "Probabilidade do terceiro alelo observado no locus STR.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p4", "Frequencia alelica 4", "Probabilidade do quarto alelo observado no locus STR.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p5", "Frequencia alelica 5", "Probabilidade do quinto alelo observado no locus STR.", valorPadrao: 0.2)
+                ],
+                vars => ShannonEntropyVol14(true,
+                    ValorVariavel(vars, "p1", 0.2),
+                    ValorVariavel(vars, "p2", 0.2),
+                    ValorVariavel(vars, "p3", 0.2),
+                    ValorVariavel(vars, "p4", 0.2),
+                    ValorVariavel(vars, "p5", 0.2))),
+            ["105"] = new(
+                "H",
+                "H",
+                "nats",
+                [
+                    NovaVariavelVol14("p1", "Proporcao ceramica 1", "Frequencia relativa do primeiro tipo ceramico.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p2", "Proporcao ceramica 2", "Frequencia relativa do segundo tipo ceramico.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p3", "Proporcao ceramica 3", "Frequencia relativa do terceiro tipo ceramico.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p4", "Proporcao ceramica 4", "Frequencia relativa do quarto tipo ceramico.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p5", "Proporcao ceramica 5", "Frequencia relativa do quinto tipo ceramico.", valorPadrao: 0.2)
+                ],
+                vars => ShannonEntropyVol14(false,
+                    ValorVariavel(vars, "p1", 0.2),
+                    ValorVariavel(vars, "p2", 0.2),
+                    ValorVariavel(vars, "p3", 0.2),
+                    ValorVariavel(vars, "p4", 0.2),
+                    ValorVariavel(vars, "p5", 0.2))),
+            ["107"] = new(
+                "(abs_d1+abs_d2+abs_d3+abs_d4+abs_d5)/n",
+                "Ra",
+                "um",
+                [
+                    NovaVariavelVol14("abs_d1", "Desvio absoluto 1", "Desvio absoluto do primeiro ponto do perfil em relação à linha média.", "um", 0.8),
+                    NovaVariavelVol14("abs_d2", "Desvio absoluto 2", "Desvio absoluto do segundo ponto do perfil em relação à linha média.", "um", 1.1),
+                    NovaVariavelVol14("abs_d3", "Desvio absoluto 3", "Desvio absoluto do terceiro ponto do perfil em relação à linha média.", "um", 0.9),
+                    NovaVariavelVol14("abs_d4", "Desvio absoluto 4", "Desvio absoluto do quarto ponto do perfil em relação à linha média.", "um", 1.2),
+                    NovaVariavelVol14("abs_d5", "Desvio absoluto 5", "Desvio absoluto do quinto ponto do perfil em relação à linha média.", "um", 1.0),
+                    NovaVariavelVol14("n", "Numero de amostras", "Quantidade de pontos ou janelas usadas no perfil de rugosidade.", valorPadrao: 5)
+                ]),
+            ["109"] = new(
+                "MNI",
+                "MNI",
+                "adim",
+                [
+                    NovaVariavelVol14("freq_direito", "Frequencia lado direito", "Maior contagem de um elemento anatômico no lado direito.", valorPadrao: 12),
+                    NovaVariavelVol14("freq_esquerdo", "Frequencia lado esquerdo", "Maior contagem do mesmo elemento no lado esquerdo.", valorPadrao: 10),
+                    NovaVariavelVol14("freq_superior", "Frequencia superior", "Contagem máxima do elemento na porção superior.", valorPadrao: 8),
+                    NovaVariavelVol14("freq_inferior", "Frequencia inferior", "Contagem máxima do elemento na porção inferior.", valorPadrao: 7)
+                ],
+                vars => new[]
+                {
+                    ValorVariavel(vars, "freq_direito", 12),
+                    ValorVariavel(vars, "freq_esquerdo", 10),
+                    ValorVariavel(vars, "freq_superior", 8),
+                    ValorVariavel(vars, "freq_inferior", 7)
+                }.Max()),
+            ["115"] = new(
+                "(w1*c1+w2*c2+w3*c3+w4*c4)/(w1+w2+w3+w4)",
+                "SPI",
+                "adim",
+                [
+                    NovaVariavelVol14("c1", "Criterio 1", "Critério espacial ou ambiental do modelo preditivo.", valorPadrao: 0.8),
+                    NovaVariavelVol14("w1", "Peso 1", "Peso atribuído ao critério 1.", valorPadrao: 0.35),
+                    NovaVariavelVol14("c2", "Criterio 2", "Segundo critério do modelo preditivo.", valorPadrao: 0.7),
+                    NovaVariavelVol14("w2", "Peso 2", "Peso atribuído ao critério 2.", valorPadrao: 0.25),
+                    NovaVariavelVol14("c3", "Criterio 3", "Terceiro critério do modelo preditivo.", valorPadrao: 0.9),
+                    NovaVariavelVol14("w3", "Peso 3", "Peso atribuído ao critério 3.", valorPadrao: 0.25),
+                    NovaVariavelVol14("c4", "Criterio 4", "Quarto critério do modelo preditivo.", valorPadrao: 0.6),
+                    NovaVariavelVol14("w4", "Peso 4", "Peso atribuído ao critério 4.", valorPadrao: 0.15)
+                ]),
+            ["112"] = new(
+                "chi2",
+                "chi2",
+                "adim",
+                [
+                    NovaVariavelVol14("O11", "Observado 11", "Frequência observada na célula 1,1 da tabela de correspondência.", valorPadrao: 20),
+                    NovaVariavelVol14("E11", "Esperado 11", "Frequência esperada na célula 1,1 sob independência.", valorPadrao: 18),
+                    NovaVariavelVol14("O12", "Observado 12", "Frequência observada na célula 1,2 da tabela de correspondência.", valorPadrao: 15),
+                    NovaVariavelVol14("E12", "Esperado 12", "Frequência esperada na célula 1,2 sob independência.", valorPadrao: 17),
+                    NovaVariavelVol14("O21", "Observado 21", "Frequência observada na célula 2,1 da tabela de correspondência.", valorPadrao: 12),
+                    NovaVariavelVol14("E21", "Esperado 21", "Frequência esperada na célula 2,1 sob independência.", valorPadrao: 14),
+                    NovaVariavelVol14("O22", "Observado 22", "Frequência observada na célula 2,2 da tabela de correspondência.", valorPadrao: 18),
+                    NovaVariavelVol14("E22", "Esperado 22", "Frequência esperada na célula 2,2 sob independência.", valorPadrao: 16)
+                ],
+                vars =>
+                    ChiQuadradoTermoVol14(ValorVariavel(vars, "O11", 20), ValorVariavel(vars, "E11", 18))
+                    + ChiQuadradoTermoVol14(ValorVariavel(vars, "O12", 15), ValorVariavel(vars, "E12", 17))
+                    + ChiQuadradoTermoVol14(ValorVariavel(vars, "O21", 12), ValorVariavel(vars, "E21", 14))
+                    + ChiQuadradoTermoVol14(ValorVariavel(vars, "O22", 18), ValorVariavel(vars, "E22", 16))),
+            ["147"] = new(
+                "T_bs*atan(0.151977*sqrt(RH+8.313659))+atan(T_bs+RH)-atan(RH-1.676331)+0.00391838*RH^1.5*atan(0.023101*RH)-4.686035",
+                "T_bu",
+                "C",
+                [
+                    NovaVariavelVol14("T_bs", "Temperatura de bulbo seco", "Temperatura do ar em graus Celsius.", "C", 30),
+                    NovaVariavelVol14("RH", "Umidade relativa", "Umidade relativa do ar em porcentagem.", "%", 70)
+                ]),
+            ["151"] = new(
+                "(ssta_mes1+ssta_mes2+ssta_mes3)/3",
+                "ONI",
+                "C",
+                [
+                    NovaVariavelVol14("ssta_mes1", "Anomalia do mes 1", "Primeira anomalia mensal de SST na regiao Nino 3.4.", "C", 0),
+                    NovaVariavelVol14("ssta_mes2", "Anomalia do mes 2", "Segunda anomalia mensal de SST na regiao Nino 3.4.", "C", 0),
+                    NovaVariavelVol14("ssta_mes3", "Anomalia do mes 3", "Terceira anomalia mensal de SST na regiao Nino 3.4.", "C", 0)
+                ]),
+            ["163"] = new(
+                "MTTF",
+                "MTTF",
+                "h",
+                [
+                    NovaVariavelVol14("eta", "Escala Weibull", "Vida caracteristica do componente.", "h", 5000),
+                    NovaVariavelVol14("beta", "Forma Weibull", "Parametro de forma da distribuicao de Weibull.", "adim", 2)
+                ],
+                vars => ValorVariavel(vars, "eta", 5000) * GammaFunction(1 + 1 / Math.Max(ValorVariavel(vars, "beta", 2), 1e-9))),
+            ["169"] = new(
+                "f_evento",
+                "f_evento",
+                "1/ano",
+                [
+                    NovaVariavelVol14("f_iniciador", "Frequencia iniciadora", "Frequência anual do evento iniciador.", "1/ano", 0.1),
+                    NovaVariavelVol14("PFD1", "PFD camada 1", "Probabilidade de falha sob demanda da primeira camada independente.", valorPadrao: 0.01),
+                    NovaVariavelVol14("PFD2", "PFD camada 2", "Probabilidade de falha sob demanda da segunda camada independente.", valorPadrao: 0.01),
+                    NovaVariavelVol14("PFD3", "PFD camada 3", "Probabilidade de falha sob demanda de uma terceira camada opcional.", valorPadrao: 0),
+                    NovaVariavelVol14("M1", "Modificador 1", "Primeiro modificador de exposição ou ocupação.", valorPadrao: 1),
+                    NovaVariavelVol14("M2", "Modificador 2", "Segundo modificador de consequência ou ignição.", valorPadrao: 1)
+                ],
+                vars =>
+                {
+                    var pfd1 = Math.Clamp(ValorVariavel(vars, "PFD1", 0.01), 0, 1);
+                    var pfd2 = Math.Clamp(ValorVariavel(vars, "PFD2", 0.01), 0, 1);
+                    var pfd3 = Math.Clamp(ValorVariavel(vars, "PFD3", 0), 0, 1);
+                    return ValorVariavel(vars, "f_iniciador", 0.1)
+                        * ProdutoValoresVol14(1 - pfd1, 1 - pfd2, 1 - pfd3)
+                        * ProdutoValoresVol14(ValorVariavel(vars, "M1", 1), ValorVariavel(vars, "M2", 1));
+                }),
+            ["171"] = new(
+                "P_k",
+                "P_k",
+                "adim",
+                [
+                    NovaVariavelVol14("lambda", "Taxa media", "Numero medio esperado de ocorrencias no intervalo.", "adim", 0.1),
+                    NovaVariavelVol14("k", "Numero de eventos", "Quantidade inteira de eventos observados.", "adim", 0)
+                ],
+                vars =>
+                {
+                    var lambda = Math.Max(ValorVariavel(vars, "lambda", 0.1), 0);
+                    var k = Math.Max(0, (int)Math.Round(ValorVariavel(vars, "k", 0)));
+                    return Math.Pow(lambda, k) * Math.Exp(-lambda) / Factorial(k);
+                }),
+            ["172"] = new(
+                "MTBF_sistema",
+                "MTBF_sistema",
+                "h",
+                [
+                    NovaVariavelVol14("MTBF1", "MTBF componente 1", "Tempo médio entre falhas do primeiro componente em série.", "h", 1000),
+                    NovaVariavelVol14("MTBF2", "MTBF componente 2", "Tempo médio entre falhas do segundo componente em série.", "h", 1000),
+                    NovaVariavelVol14("MTBF3", "MTBF componente 3", "Tempo médio entre falhas do terceiro componente em série.", "h", 1000)
+                ],
+                vars =>
+                {
+                    var somaTaxas = 1 / Math.Max(ValorVariavel(vars, "MTBF1", 1000), 1e-9)
+                        + 1 / Math.Max(ValorVariavel(vars, "MTBF2", 1000), 1e-9)
+                        + 1 / Math.Max(ValorVariavel(vars, "MTBF3", 1000), 1e-9);
+                    return somaTaxas <= 0 ? 0 : 1 / somaTaxas;
+                }),
+            ["175"] = new(
+                "P_f",
+                "P_f",
+                "adim",
+                [
+                    NovaVariavelVol14("beta", "Indice de confiabilidade", "Indice beta de Hasofer-Lind.", "adim", 3.5)
+                ],
+                vars => NormalCdf(-ValorVariavel(vars, "beta", 3.5))),
+            ["178"] = new(
+                "(beta1/eta1)*(t/eta1)^(beta1-1)+(beta2/eta2)*(t/eta2)^(beta2-1)",
+                "h",
+                "1/h",
+                [
+                    NovaVariavelVol14("beta1", "Forma inicial", "Parametro de forma para falha precoce.", "adim", 0.5),
+                    NovaVariavelVol14("eta1", "Escala inicial", "Escala da fase de falha precoce.", "h", 1000),
+                    NovaVariavelVol14("beta2", "Forma de desgaste", "Parametro de forma para desgaste.", "adim", 3),
+                    NovaVariavelVol14("eta2", "Escala de desgaste", "Escala da fase de desgaste.", "h", 5000),
+                    NovaVariavelVol14("t", "Tempo", "Tempo de operacao avaliado.", "h", 1000)
+                ]),
+            ["179"] = new(
+                "Risco_coletivo",
+                "Risco_coletivo",
+                "fatalidades/ano",
+                [
+                    NovaVariavelVol14("f1", "Frequencia cenario 1", "Frequência anual do primeiro cenário acidental.", "1/ano", 1e-4),
+                    NovaVariavelVol14("n1", "Consequencia 1", "Fatalidades esperadas no primeiro cenário.", valorPadrao: 5),
+                    NovaVariavelVol14("f2", "Frequencia cenario 2", "Frequência anual do segundo cenário acidental.", "1/ano", 5e-5),
+                    NovaVariavelVol14("n2", "Consequencia 2", "Fatalidades esperadas no segundo cenário.", valorPadrao: 12),
+                    NovaVariavelVol14("f3", "Frequencia cenario 3", "Frequência anual do terceiro cenário acidental.", "1/ano", 2e-5),
+                    NovaVariavelVol14("n3", "Consequencia 3", "Fatalidades esperadas no terceiro cenário.", valorPadrao: 20),
+                    NovaVariavelVol14("f4", "Frequencia cenario 4", "Frequência anual do quarto cenário acidental.", "1/ano", 1e-5),
+                    NovaVariavelVol14("n4", "Consequencia 4", "Fatalidades esperadas no quarto cenário.", valorPadrao: 40)
+                ],
+                vars =>
+                    ValorVariavel(vars, "f1", 1e-4) * ValorVariavel(vars, "n1", 5)
+                    + ValorVariavel(vars, "f2", 5e-5) * ValorVariavel(vars, "n2", 12)
+                    + ValorVariavel(vars, "f3", 2e-5) * ValorVariavel(vars, "n3", 20)
+                    + ValorVariavel(vars, "f4", 1e-5) * ValorVariavel(vars, "n4", 40)),
+            ["180"] = new(
+                "R1*(1-(1-R2)*(1-R3))*R4",
+                "R_sistema",
+                "adim",
+                [
+                    NovaVariavelVol14("R1", "Confiabilidade do bloco 1", "Confiabilidade do primeiro bloco em série.", valorPadrao: 0.99),
+                    NovaVariavelVol14("R2", "Confiabilidade do bloco 2", "Confiabilidade do primeiro bloco do ramo paralelo.", valorPadrao: 0.96),
+                    NovaVariavelVol14("R3", "Confiabilidade do bloco 3", "Confiabilidade do segundo bloco do ramo paralelo.", valorPadrao: 0.95),
+                    NovaVariavelVol14("R4", "Confiabilidade do bloco 4", "Confiabilidade do bloco final em série.", valorPadrao: 0.98)
+                ]),
+            ["203"] = new(
+                "lambda1*Z1+lambda2*Z2+lambda3*Z3+lambda4*Z4",
+                "Z_estrela",
+                "adim",
+                [
+                    NovaVariavelVol14("lambda1", "Peso kriging 1", "Peso associado à primeira amostra vizinha.", valorPadrao: 0.35),
+                    NovaVariavelVol14("Z1", "Teor amostra 1", "Valor medido da primeira amostra vizinha.", valorPadrao: 1.2),
+                    NovaVariavelVol14("lambda2", "Peso kriging 2", "Peso associado à segunda amostra vizinha.", valorPadrao: 0.25),
+                    NovaVariavelVol14("Z2", "Teor amostra 2", "Valor medido da segunda amostra vizinha.", valorPadrao: 0.9),
+                    NovaVariavelVol14("lambda3", "Peso kriging 3", "Peso associado à terceira amostra vizinha.", valorPadrao: 0.2),
+                    NovaVariavelVol14("Z3", "Teor amostra 3", "Valor medido da terceira amostra vizinha.", valorPadrao: 1.4),
+                    NovaVariavelVol14("lambda4", "Peso kriging 4", "Peso associado à quarta amostra vizinha.", valorPadrao: 0.2),
+                    NovaVariavelVol14("Z4", "Teor amostra 4", "Valor medido da quarta amostra vizinha.", valorPadrao: 1.1)
+                ]),
+            ["209"] = new(
+                "(res1+res2+res3)/(sol1+sol2+sol3)",
+                "FS",
+                "adim",
+                [
+                    NovaVariavelVol14("res1", "Resistencia fatia 1", "Contribuição resistente da primeira fatia do talude.", valorPadrao: 120),
+                    NovaVariavelVol14("res2", "Resistencia fatia 2", "Contribuição resistente da segunda fatia do talude.", valorPadrao: 115),
+                    NovaVariavelVol14("res3", "Resistencia fatia 3", "Contribuição resistente da terceira fatia do talude.", valorPadrao: 110),
+                    NovaVariavelVol14("sol1", "Solicitacao fatia 1", "Momento ou força solicitante da primeira fatia.", valorPadrao: 80),
+                    NovaVariavelVol14("sol2", "Solicitacao fatia 2", "Momento ou força solicitante da segunda fatia.", valorPadrao: 75),
+                    NovaVariavelVol14("sol3", "Solicitacao fatia 3", "Momento ou força solicitante da terceira fatia.", valorPadrao: 70)
+                ]),
+            ["218"] = new(
+                "(CF1/(1+r)^1)+(CF2/(1+r)^2)+(CF3/(1+r)^3)+(CF4/(1+r)^4)-Investimento",
+                "NPV",
+                "moeda",
+                [
+                    NovaVariavelVol14("CF1", "Fluxo de caixa ano 1", "Fluxo de caixa líquido esperado no primeiro ano.", "moeda", 500000),
+                    NovaVariavelVol14("CF2", "Fluxo de caixa ano 2", "Fluxo de caixa líquido esperado no segundo ano.", "moeda", 600000),
+                    NovaVariavelVol14("CF3", "Fluxo de caixa ano 3", "Fluxo de caixa líquido esperado no terceiro ano.", "moeda", 700000),
+                    NovaVariavelVol14("CF4", "Fluxo de caixa ano 4", "Fluxo de caixa líquido esperado no quarto ano.", "moeda", 800000),
+                    NovaVariavelVol14("r", "Taxa de desconto", "Taxa anual de desconto do projeto de mineração.", "adim", 0.12),
+                    NovaVariavelVol14("Investimento", "Investimento inicial", "Capital inicial total para implantação do projeto.", "moeda", 1800000)
+                ]),
+            ["219"] = new(
+                "(soma_fragmentos_maiores_10cm/comprimento_total_testemunho)*100",
+                "RQD",
+                "%",
+                [
+                    NovaVariavelVol14("soma_fragmentos_maiores_10cm", "Soma de fragmentos >10 cm", "Comprimento acumulado de fragmentos de testemunho maiores que 10 cm.", "cm", 65),
+                    NovaVariavelVol14("comprimento_total_testemunho", "Comprimento total do testemunho", "Comprimento total do testemunho analisado.", "cm", 100)
+                ]),
+            ["230"] = new(
+                "soma_abs_Deltaz/L",
+                "IRI",
+                "m/km",
+                [
+                    NovaVariavelVol14("soma_abs_Deltaz", "Soma dos desvios absolutos", "Somatório dos desvios absolutos do perfil longitudinal.", "m", 1500),
+                    NovaVariavelVol14("L", "Extensão avaliada", "Extensão total do trecho avaliado.", "km", 1000)
+                ]),
+            ["233"] = new(
+                "IC+soma_MC_t_descontado+soma_RC_t_descontado+VR_descontado",
+                "LCC",
+                "moeda",
+                [
+                    NovaVariavelVol14("IC", "Custo inicial", "Investimento inicial de implantação do pavimento.", "moeda", 1000000),
+                    NovaVariavelVol14("soma_MC_t_descontado", "Manutenção descontada", "Somatório dos custos de manutenção descontados ao valor presente.", "moeda", 250000),
+                    NovaVariavelVol14("soma_RC_t_descontado", "Reabilitação descontada", "Somatório dos custos de reabilitação descontados ao valor presente.", "moeda", 300000),
+                    NovaVariavelVol14("VR_descontado", "Valor residual descontado", "Valor residual no fim do horizonte já convertido a valor presente.", "moeda", -120000)
+                ]),
+            ["246"] = new(
+                "(pi/4)*soma_DAP2/A_parcela",
+                "G",
+                "m2/ha",
+                [
+                    NovaVariavelVol14("soma_DAP2", "Soma de DAP ao quadrado", "Somatório dos diâmetros à altura do peito ao quadrado das árvores da parcela.", "cm2", 120000),
+                    NovaVariavelVol14("A_parcela", "Área da parcela", "Área total da parcela de inventário florestal.", "m2", 400)
+                ]),
+            ["248"] = new(
+                "(K1*H)/(1-K2*H)+K3*H",
+                "UE",
+                "%",
+                [
+                    NovaVariavelVol14("H", "Umidade relativa", "Umidade relativa do ar em fração decimal.", "adim", 0.65),
+                    NovaVariavelVol14("K1", "Constante K1", "Constante empírica da equação de Hailwood-Horrobin.", "adim", 0.805),
+                    NovaVariavelVol14("K2", "Constante K2", "Constante empírica da equação de Hailwood-Horrobin.", "adim", 0.55),
+                    NovaVariavelVol14("K3", "Constante K3", "Termo linear complementar da equação de umidade de equilíbrio.", "adim", 0.12)
+                ]),
+            ["288"] = new(
+                "R1+R2+R3+R4",
+                "R_tecido",
+                "m2K/W",
+                [
+                    NovaVariavelVol14("R1", "Resistência camada 1", "Resistência térmica da primeira camada do vestuário.", "m2K/W", 0.20),
+                    NovaVariavelVol14("R2", "Resistência camada 2", "Resistência térmica da segunda camada do vestuário.", "m2K/W", 0.18),
+                    NovaVariavelVol14("R3", "Resistência camada 3", "Resistência térmica da terceira camada do vestuário.", "m2K/W", 0.15),
+                    NovaVariavelVol14("R4", "Resistência camada 4", "Resistência térmica da quarta camada do vestuário.", "m2K/W", 0.12)
+                ]),
+            ["289"] = new(
+                "1-(8/pi^2)*(exp(-D*t/r^2)+exp(-9*D*t/r^2)/9+exp(-25*D*t/r^2)/25)",
+                "Mt_Minf",
+                "adim",
+                [
+                    NovaVariavelVol14("D", "Coeficiente de difusão", "Coeficiente efetivo de difusão do corante na fibra.", "m2/s", 1e-12),
+                    NovaVariavelVol14("t", "Tempo de tingimento", "Tempo decorrido de difusão.", "s", 3600),
+                    NovaVariavelVol14("r", "Raio da fibra", "Raio característico da fibra cilíndrica.", "m", 8e-6)
+                ]),
+            ["293"] = new(
+                "soma_abs_Deltaf/soma_f",
+                "ACI",
+                "adim",
+                [
+                    NovaVariavelVol14("soma_abs_Deltaf", "Soma de variações absolutas", "Somatório das diferenças absolutas entre bandas/frequências adjacentes.", valorPadrao: 1500),
+                    NovaVariavelVol14("soma_f", "Soma espectral", "Somatório total da energia espectral na janela analisada.", valorPadrao: 1000)
+                ]),
+            ["309"] = new(
+                "integral_RF_x/integral_RF_CO2",
+                "GWP_x",
+                "adim",
+                [
+                    NovaVariavelVol14("integral_RF_x", "Integral de RF do gás x", "Integral temporal do forçamento radiativo do gás analisado.", "Wm-2*ano", 280),
+                    NovaVariavelVol14("integral_RF_CO2", "Integral de RF do CO2", "Integral temporal do forçamento radiativo de referência do CO2.", "Wm-2*ano", 10)
+                ]),
+            ["252"] = new(
+                "(k/(k-1))*(1-soma_sigma2_i/sigma2_total)",
+                "alpha",
+                "adim",
+                [
+                    NovaVariavelVol14("k", "Numero de itens", "Quantidade de itens do instrumento.", "adim", 10),
+                    NovaVariavelVol14("soma_sigma2_i", "Soma das variancias dos itens", "Somatorio das variancias individuais dos itens.", "adim", 12),
+                    NovaVariavelVol14("sigma2_total", "Variancia total", "Variancia total do escore composto.", "adim", 20)
+                ]),
+            ["297"] = new(
+                "Hs",
+                "Hs",
+                "bits",
+                [
+                    NovaVariavelVol14("p1", "Energia relativa faixa 1", "Proporção espectral da primeira faixa de frequência.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p2", "Energia relativa faixa 2", "Proporção espectral da segunda faixa de frequência.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p3", "Energia relativa faixa 3", "Proporção espectral da terceira faixa de frequência.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p4", "Energia relativa faixa 4", "Proporção espectral da quarta faixa de frequência.", valorPadrao: 0.2),
+                    NovaVariavelVol14("p5", "Energia relativa faixa 5", "Proporção espectral da quinta faixa de frequência.", valorPadrao: 0.2)
+                ],
+                vars => ShannonEntropyVol14(true,
+                    ValorVariavel(vars, "p1", 0.2),
+                    ValorVariavel(vars, "p2", 0.2),
+                    ValorVariavel(vars, "p3", 0.2),
+                    ValorVariavel(vars, "p4", 0.2),
+                    ValorVariavel(vars, "p5", 0.2)))
+        };
 
         public void AdicionarFormulasVol14()
         {
-            var specsLiterais = ObterSpecsLiteraisVol14();
-            foreach (var spec in specsLiterais)
+            foreach (var spec in ObterSpecsLiteraisVol14())
             {
-                _formulas.Add(CriarFormulaVol14Literal(spec));
+                _formulas.Add(CriarFormulaVol14(spec));
             }
         }
 
-        private Formula CriarFormulaVol14Literal(Vol14Spec spec)
+        private static Formula CriarFormulaVol14(Vol14Spec spec)
         {
-            var codigoNumerico = int.TryParse(spec.codigo, out var codigo) ? codigo : 0;
-            var variaveis = ExtrairVariaveisDaExpressaoVol14(spec.expressao);
+            var codigoNumerico = int.TryParse(spec.Codigo, out var codigo) ? codigo : 0;
+            var overrideFormula = Vol14Overrides.TryGetValue(spec.Codigo, out var formulaOverride) ? formulaOverride : null;
+            var expressaoCalculavel = overrideFormula?.Expressao ?? NormalizarExpressaoCalculavelVol14(spec.Expressao);
+            var variavelResultado = overrideFormula?.VariavelResultado ?? ExtrairVariavelResultadoVol14(spec.Expressao);
+            var unidadeResultado = overrideFormula?.UnidadeResultado ?? "adim";
+            var variaveis = overrideFormula is null
+                ? ExtrairVariaveisVol14(expressaoCalculavel, spec.Descricao)
+                : ClonarVariaveisVol14(overrideFormula.Variaveis);
 
             return new Formula
             {
                 Id = $"v14_{codigoNumerico:000}",
                 CodigoCompendio = $"V14-{codigoNumerico:000}",
-                Nome = spec.nome,
-                Categoria = spec.categoria,
-                SubCategoria = spec.subcategoria,
-                Expressao = spec.expressao,
-                ExprTexto = spec.expressao,
-                Descricao = spec.descricao,
-                Criador = spec.origem,
+                Nome = spec.Nome,
+                Categoria = spec.Categoria,
+                SubCategoria = spec.SubCategoria,
+                Expressao = expressaoCalculavel,
+                ExprTexto = spec.Expressao,
+                Descricao = spec.Descricao,
+                Criador = spec.Origem,
                 AnoOrigin = "2026",
-                ExemploPratico = spec.exemplo,
+                ExemploPratico = spec.Exemplo,
                 Unidades = "Consistentes com as variaveis de entrada.",
-                VariavelResultado = "resultado",
-                UnidadeResultado = "adim",
+                VariavelResultado = variavelResultado,
+                UnidadeResultado = unidadeResultado,
                 Icone = "Fx",
                 Variaveis = variaveis,
-                Calcular = vars => CalcularExpressaoVol14(spec.expressao, variaveis, vars)
+                Calcular = overrideFormula?.Calculadora is null
+                    ? vars => CalcularExpressaoVol14(expressaoCalculavel, variaveis, vars)
+                    : vars => overrideFormula.Calculadora(vars)
             };
         }
 
-        private static List<Variavel> ExtrairVariaveisDaExpressaoVol14(string expressao)
-        {
-            var exprBase = ObterLadoDireitoVol14(expressao);
+        private static Variavel NovaVariavelVol14(string simbolo, string nome, string descricao, string unidade = "adim", double valorPadrao = 1)
+            => new()
+            {
+                Simbolo = simbolo,
+                Nome = nome,
+                Descricao = descricao,
+                Unidade = unidade,
+                ValorPadrao = valorPadrao
+            };
 
-            var simbolos = Vol14SimboloRegex
-                .Matches(exprBase)
-                .Select(m => m.Value)
-                .Where(s => !string.Equals(s, "resultado", StringComparison.OrdinalIgnoreCase))
-                .Where(s => !Vol14FuncoesIgnoradas.Contains(s))
-                .Distinct(StringComparer.Ordinal)
+        private static List<Variavel> ClonarVariaveisVol14(IEnumerable<Variavel> variaveis)
+            => variaveis
+                .Select(v => new Variavel
+                {
+                    Simbolo = v.Simbolo,
+                    Nome = v.Nome,
+                    Descricao = v.Descricao,
+                    Unidade = v.Unidade,
+                    ValorPadrao = v.ValorPadrao,
+                    ValorMin = v.ValorMin,
+                    ValorMax = v.ValorMax,
+                    Obrigatoria = v.Obrigatoria
+                })
                 .ToList();
 
-            return simbolos
-                .Select(s => new Variavel
+        private static List<Variavel> ExtrairVariaveisVol14(string expressao, string descricao)
+        {
+            var mapaDescricoes = ExtrairMapaVariaveisDaDescricaoVol14(descricao);
+
+            return Vol14SimboloRegex
+                .Matches(expressao)
+                .Select(m => m.Value)
+                .Where(v => !Vol14Ignorar.Contains(v))
+                .Distinct(StringComparer.Ordinal)
+                .Select(v => new Variavel
                 {
-                    Simbolo = s,
-                    Nome = $"Variavel {s}",
-                    Descricao = $"Parametro {s} da expressao.",
+                    Simbolo = v,
+                    Nome = mapaDescricoes.TryGetValue(v, out var texto) ? texto : $"Variavel {v}",
+                    Descricao = mapaDescricoes.TryGetValue(v, out var descricaoVariavel) ? descricaoVariavel : $"Parametro {v} da formula.",
                     Unidade = "adim",
                     ValorPadrao = 1
                 })
                 .ToList();
         }
 
-        private static double CalcularExpressaoVol14(string expressao, List<Variavel> variaveis, Dictionary<string, double> vars)
+        private static Dictionary<string, string> ExtrairMapaVariaveisDaDescricaoVol14(string descricao)
         {
-            if (vars.TryGetValue("resultado", out var resultadoInformado))
+            var mapa = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var normalizada = NormalizarExpressaoVol14(descricao);
+
+            foreach (Match match in Regex.Matches(normalizada, @"\b([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([^,.;]+)"))
             {
-                return resultadoInformado;
-            }
-
-            var exprBase = ObterLadoDireitoVol14(expressao);
-            var match = Vol14OperacaoBinariaRegex.Match(exprBase);
-
-            if (match.Success)
-            {
-                var simboloA = match.Groups["a"].Value;
-                var simboloB = match.Groups["b"].Value;
-                var op = match.Groups["op"].Value;
-
-                if (vars.TryGetValue(simboloA, out var a) && vars.TryGetValue(simboloB, out var b))
+                var simbolo = match.Groups[1].Value;
+                var texto = match.Groups[2].Value.Trim();
+                if (!Vol14Ignorar.Contains(simbolo) && !mapa.ContainsKey(simbolo))
                 {
-                    return op switch
-                    {
-                        "+" => a + b,
-                        "-" => a - b,
-                        "*" => a * b,
-                        "/" => Math.Abs(b) < 1e-12 ? 0 : a / b,
-                        _ => 0
-                    };
+                    mapa[simbolo] = texto;
                 }
             }
 
-            if (variaveis.Count > 0)
+            return mapa;
+        }
+
+        private static double CalcularExpressaoVol14(string expressao, List<Variavel> variaveis, Dictionary<string, double> vars)
+        {
+            if (vars.TryGetValue("resultado", out var resultado))
             {
-                var primeiro = variaveis[0].Simbolo;
-                return vars.TryGetValue(primeiro, out var valor) ? valor : 0;
+                return resultado;
+            }
+
+            var rhs = ObterLadoDireitoVol14(expressao);
+            if (TryAvaliarVol14(rhs, vars, out var valor))
+            {
+                return valor;
+            }
+
+            if (variaveis.Count > 0 && vars.TryGetValue(variaveis[0].Simbolo, out var fallback))
+            {
+                return fallback;
             }
 
             return 0;
         }
 
-        private static string ObterLadoDireitoVol14(string expressao)
+        private static bool TryAvaliarVol14(string expr, Dictionary<string, double> vars, out double resultado)
         {
-            var idx = expressao.IndexOf('=');
-            return idx >= 0 ? expressao[(idx + 1)..].Trim() : expressao.Trim();
+            resultado = 0;
+            var norm = NormalizarExpressaoVol14(expr);
+            if (string.IsNullOrWhiteSpace(norm))
+            {
+                return false;
+            }
+
+            try
+            {
+                var rpn = ParaRpnVol14(TokenizarVol14(norm));
+                var pilha = new Stack<double>();
+
+                foreach (var token in rpn)
+                {
+                    if (double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out var numero))
+                    {
+                        pilha.Push(numero);
+                        continue;
+                    }
+
+                    if (EhOperadorVol14(token))
+                    {
+                        if (pilha.Count < 2)
+                        {
+                            return false;
+                        }
+
+                        var b = pilha.Pop();
+                        var a = pilha.Pop();
+                        pilha.Push(token switch
+                        {
+                            "+" => a + b,
+                            "-" => a - b,
+                            "*" => a * b,
+                            "/" => Math.Abs(b) < 1e-12 ? 0 : a / b,
+                            "^" => Math.Pow(a, b),
+                            _ => 0
+                        });
+                        continue;
+                    }
+
+                    if (EhFuncaoVol14(token))
+                    {
+                        if (!AplicarFuncaoVol14(token, pilha))
+                        {
+                            return false;
+                        }
+                        continue;
+                    }
+
+                    if (string.Equals(token, "pi", StringComparison.OrdinalIgnoreCase))
+                    {
+                        pilha.Push(Math.PI);
+                        continue;
+                    }
+
+                    if (string.Equals(token, "e", StringComparison.OrdinalIgnoreCase))
+                    {
+                        pilha.Push(Math.E);
+                        continue;
+                    }
+
+                    pilha.Push(vars.TryGetValue(token, out var valorVariavel) ? valorVariavel : 1);
+                }
+
+                if (pilha.Count != 1)
+                {
+                    return false;
+                }
+
+                resultado = pilha.Pop();
+                return !double.IsNaN(resultado) && !double.IsInfinity(resultado);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        private static List<Vol14Spec> ObterSpecsLiteraisVol14() =>
-        [
-            new("001", "Formula XIV-001 - Relacao Quantitativa 1", "a1+b1", "Descricao completa da formula XIV-001: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a1=10 e b1=4, resultado esperado=14.", "Modelagem Interdisciplinar", "Bases e Relacoes"),
-            new("002", "Formula XIV-002 - Relacao Quantitativa 2", "a2-b2", "Descricao completa da formula XIV-002: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a2=10 e b2=4, resultado esperado=6.", "Modelagem Interdisciplinar", "Balancos e Taxas"),
-            new("003", "Formula XIV-003 - Relacao Quantitativa 3", "a3*b3", "Descricao completa da formula XIV-003: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a3=10 e b3=4, resultado esperado=40.", "Modelagem Interdisciplinar", "Escalonamento"),
-            new("004", "Formula XIV-004 - Relacao Quantitativa 4", "a4/b4", "Descricao completa da formula XIV-004: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a4=10 e b4=4, resultado esperado=2.5.", "Modelagem Interdisciplinar", "Estimativa Parametrica"),
-            new("005", "Formula XIV-005 - Relacao Quantitativa 5", "a5+b5", "Descricao completa da formula XIV-005: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a5=10 e b5=4, resultado esperado=14.", "Modelagem Interdisciplinar", "Diagnostico"),
-            new("006", "Formula XIV-006 - Relacao Quantitativa 6", "a6-b6", "Descricao completa da formula XIV-006: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a6=10 e b6=4, resultado esperado=6.", "Modelagem Interdisciplinar", "Calibracao"),
-            new("007", "Formula XIV-007 - Relacao Quantitativa 7", "a7*b7", "Descricao completa da formula XIV-007: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a7=10 e b7=4, resultado esperado=40.", "Modelagem Interdisciplinar", "Validacao"),
-            new("008", "Formula XIV-008 - Relacao Quantitativa 8", "a8/b8", "Descricao completa da formula XIV-008: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a8=10 e b8=4, resultado esperado=2.5.", "Modelagem Interdisciplinar", "Interpretacao"),
-            new("009", "Formula XIV-009 - Relacao Quantitativa 9", "a9+b9", "Descricao completa da formula XIV-009: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a9=10 e b9=4, resultado esperado=14.", "Modelagem Interdisciplinar", "Planejamento"),
-            new("010", "Formula XIV-010 - Relacao Quantitativa 10", "a10-b10", "Descricao completa da formula XIV-010: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a10=10 e b10=4, resultado esperado=6.", "Modelagem Interdisciplinar", "Desempenho"),
-            new("011", "Formula XIV-011 - Relacao Quantitativa 11", "a11*b11", "Descricao completa da formula XIV-011: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a11=10 e b11=4, resultado esperado=40.", "Modelagem Interdisciplinar", "Confiabilidade"),
-            new("012", "Formula XIV-012 - Relacao Quantitativa 12", "a12/b12", "Descricao completa da formula XIV-012: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a12=10 e b12=4, resultado esperado=2.5.", "Modelagem Interdisciplinar", "Integracao"),
-            new("013", "Formula XIV-013 - Relacao Quantitativa 13", "a13+b13", "Descricao completa da formula XIV-013: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a13=10 e b13=4, resultado esperado=14.", "Modelagem Interdisciplinar", "Observabilidade"),
-            new("014", "Formula XIV-014 - Relacao Quantitativa 14", "a14-b14", "Descricao completa da formula XIV-014: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a14=10 e b14=4, resultado esperado=6.", "Modelagem Interdisciplinar", "Robustez"),
-            new("015", "Formula XIV-015 - Relacao Quantitativa 15", "a15*b15", "Descricao completa da formula XIV-015: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a15=10 e b15=4, resultado esperado=40.", "Modelagem Interdisciplinar", "Ajuste"),
-            new("016", "Formula XIV-016 - Relacao Quantitativa 16", "a16/b16", "Descricao completa da formula XIV-016: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a16=10 e b16=4, resultado esperado=2.5.", "Modelagem Interdisciplinar", "Aplicacao"),
-            new("017", "Formula XIV-017 - Relacao Quantitativa 17", "a17+b17", "Descricao completa da formula XIV-017: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a17=10 e b17=4, resultado esperado=14.", "Modelagem Interdisciplinar", "Bases e Relacoes"),
-            new("018", "Formula XIV-018 - Relacao Quantitativa 18", "a18-b18", "Descricao completa da formula XIV-018: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a18=10 e b18=4, resultado esperado=6.", "Modelagem Interdisciplinar", "Balancos e Taxas"),
-            new("019", "Formula XIV-019 - Relacao Quantitativa 19", "a19*b19", "Descricao completa da formula XIV-019: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a19=10 e b19=4, resultado esperado=40.", "Modelagem Interdisciplinar", "Escalonamento"),
-            new("020", "Formula XIV-020 - Relacao Quantitativa 20", "a20/b20", "Descricao completa da formula XIV-020: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelagem Interdisciplinar", "Exemplo: a20=10 e b20=4, resultado esperado=2.5.", "Modelagem Interdisciplinar", "Estimativa Parametrica"),
-            new("021", "Formula XIV-021 - Relacao Quantitativa 21", "a21+b21", "Descricao completa da formula XIV-021: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a21=10 e b21=4, resultado esperado=14.", "Fenomenos Acoplados", "Diagnostico"),
-            new("022", "Formula XIV-022 - Relacao Quantitativa 22", "a22-b22", "Descricao completa da formula XIV-022: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a22=10 e b22=4, resultado esperado=6.", "Fenomenos Acoplados", "Calibracao"),
-            new("023", "Formula XIV-023 - Relacao Quantitativa 23", "a23*b23", "Descricao completa da formula XIV-023: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a23=10 e b23=4, resultado esperado=40.", "Fenomenos Acoplados", "Validacao"),
-            new("024", "Formula XIV-024 - Relacao Quantitativa 24", "a24/b24", "Descricao completa da formula XIV-024: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a24=10 e b24=4, resultado esperado=2.5.", "Fenomenos Acoplados", "Interpretacao"),
-            new("025", "Formula XIV-025 - Relacao Quantitativa 25", "a25+b25", "Descricao completa da formula XIV-025: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a25=10 e b25=4, resultado esperado=14.", "Fenomenos Acoplados", "Planejamento"),
-            new("026", "Formula XIV-026 - Relacao Quantitativa 26", "a26-b26", "Descricao completa da formula XIV-026: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a26=10 e b26=4, resultado esperado=6.", "Fenomenos Acoplados", "Desempenho"),
-            new("027", "Formula XIV-027 - Relacao Quantitativa 27", "a27*b27", "Descricao completa da formula XIV-027: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a27=10 e b27=4, resultado esperado=40.", "Fenomenos Acoplados", "Confiabilidade"),
-            new("028", "Formula XIV-028 - Relacao Quantitativa 28", "a28/b28", "Descricao completa da formula XIV-028: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a28=10 e b28=4, resultado esperado=2.5.", "Fenomenos Acoplados", "Integracao"),
-            new("029", "Formula XIV-029 - Relacao Quantitativa 29", "a29+b29", "Descricao completa da formula XIV-029: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a29=10 e b29=4, resultado esperado=14.", "Fenomenos Acoplados", "Observabilidade"),
-            new("030", "Formula XIV-030 - Relacao Quantitativa 30", "a30-b30", "Descricao completa da formula XIV-030: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a30=10 e b30=4, resultado esperado=6.", "Fenomenos Acoplados", "Robustez"),
-            new("031", "Formula XIV-031 - Relacao Quantitativa 31", "a31*b31", "Descricao completa da formula XIV-031: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a31=10 e b31=4, resultado esperado=40.", "Fenomenos Acoplados", "Ajuste"),
-            new("032", "Formula XIV-032 - Relacao Quantitativa 32", "a32/b32", "Descricao completa da formula XIV-032: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a32=10 e b32=4, resultado esperado=2.5.", "Fenomenos Acoplados", "Aplicacao"),
-            new("033", "Formula XIV-033 - Relacao Quantitativa 33", "a33+b33", "Descricao completa da formula XIV-033: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a33=10 e b33=4, resultado esperado=14.", "Fenomenos Acoplados", "Bases e Relacoes"),
-            new("034", "Formula XIV-034 - Relacao Quantitativa 34", "a34-b34", "Descricao completa da formula XIV-034: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a34=10 e b34=4, resultado esperado=6.", "Fenomenos Acoplados", "Balancos e Taxas"),
-            new("035", "Formula XIV-035 - Relacao Quantitativa 35", "a35*b35", "Descricao completa da formula XIV-035: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a35=10 e b35=4, resultado esperado=40.", "Fenomenos Acoplados", "Escalonamento"),
-            new("036", "Formula XIV-036 - Relacao Quantitativa 36", "a36/b36", "Descricao completa da formula XIV-036: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a36=10 e b36=4, resultado esperado=2.5.", "Fenomenos Acoplados", "Estimativa Parametrica"),
-            new("037", "Formula XIV-037 - Relacao Quantitativa 37", "a37+b37", "Descricao completa da formula XIV-037: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a37=10 e b37=4, resultado esperado=14.", "Fenomenos Acoplados", "Diagnostico"),
-            new("038", "Formula XIV-038 - Relacao Quantitativa 38", "a38-b38", "Descricao completa da formula XIV-038: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a38=10 e b38=4, resultado esperado=6.", "Fenomenos Acoplados", "Calibracao"),
-            new("039", "Formula XIV-039 - Relacao Quantitativa 39", "a39*b39", "Descricao completa da formula XIV-039: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a39=10 e b39=4, resultado esperado=40.", "Fenomenos Acoplados", "Validacao"),
-            new("040", "Formula XIV-040 - Relacao Quantitativa 40", "a40/b40", "Descricao completa da formula XIV-040: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Fenomenos Acoplados", "Exemplo: a40=10 e b40=4, resultado esperado=2.5.", "Fenomenos Acoplados", "Interpretacao"),
-            new("041", "Formula XIV-041 - Relacao Quantitativa 41", "a41+b41", "Descricao completa da formula XIV-041: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a41=10 e b41=4, resultado esperado=14.", "Analise Sistemica", "Planejamento"),
-            new("042", "Formula XIV-042 - Relacao Quantitativa 42", "a42-b42", "Descricao completa da formula XIV-042: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a42=10 e b42=4, resultado esperado=6.", "Analise Sistemica", "Desempenho"),
-            new("043", "Formula XIV-043 - Relacao Quantitativa 43", "a43*b43", "Descricao completa da formula XIV-043: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a43=10 e b43=4, resultado esperado=40.", "Analise Sistemica", "Confiabilidade"),
-            new("044", "Formula XIV-044 - Relacao Quantitativa 44", "a44/b44", "Descricao completa da formula XIV-044: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a44=10 e b44=4, resultado esperado=2.5.", "Analise Sistemica", "Integracao"),
-            new("045", "Formula XIV-045 - Relacao Quantitativa 45", "a45+b45", "Descricao completa da formula XIV-045: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a45=10 e b45=4, resultado esperado=14.", "Analise Sistemica", "Observabilidade"),
-            new("046", "Formula XIV-046 - Relacao Quantitativa 46", "a46-b46", "Descricao completa da formula XIV-046: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a46=10 e b46=4, resultado esperado=6.", "Analise Sistemica", "Robustez"),
-            new("047", "Formula XIV-047 - Relacao Quantitativa 47", "a47*b47", "Descricao completa da formula XIV-047: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a47=10 e b47=4, resultado esperado=40.", "Analise Sistemica", "Ajuste"),
-            new("048", "Formula XIV-048 - Relacao Quantitativa 48", "a48/b48", "Descricao completa da formula XIV-048: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a48=10 e b48=4, resultado esperado=2.5.", "Analise Sistemica", "Aplicacao"),
-            new("049", "Formula XIV-049 - Relacao Quantitativa 49", "a49+b49", "Descricao completa da formula XIV-049: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a49=10 e b49=4, resultado esperado=14.", "Analise Sistemica", "Bases e Relacoes"),
-            new("050", "Formula XIV-050 - Relacao Quantitativa 50", "a50-b50", "Descricao completa da formula XIV-050: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a50=10 e b50=4, resultado esperado=6.", "Analise Sistemica", "Balancos e Taxas"),
-            new("051", "Formula XIV-051 - Relacao Quantitativa 51", "a51*b51", "Descricao completa da formula XIV-051: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a51=10 e b51=4, resultado esperado=40.", "Analise Sistemica", "Escalonamento"),
-            new("052", "Formula XIV-052 - Relacao Quantitativa 52", "a52/b52", "Descricao completa da formula XIV-052: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a52=10 e b52=4, resultado esperado=2.5.", "Analise Sistemica", "Estimativa Parametrica"),
-            new("053", "Formula XIV-053 - Relacao Quantitativa 53", "a53+b53", "Descricao completa da formula XIV-053: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a53=10 e b53=4, resultado esperado=14.", "Analise Sistemica", "Diagnostico"),
-            new("054", "Formula XIV-054 - Relacao Quantitativa 54", "a54-b54", "Descricao completa da formula XIV-054: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a54=10 e b54=4, resultado esperado=6.", "Analise Sistemica", "Calibracao"),
-            new("055", "Formula XIV-055 - Relacao Quantitativa 55", "a55*b55", "Descricao completa da formula XIV-055: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a55=10 e b55=4, resultado esperado=40.", "Analise Sistemica", "Validacao"),
-            new("056", "Formula XIV-056 - Relacao Quantitativa 56", "a56/b56", "Descricao completa da formula XIV-056: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a56=10 e b56=4, resultado esperado=2.5.", "Analise Sistemica", "Interpretacao"),
-            new("057", "Formula XIV-057 - Relacao Quantitativa 57", "a57+b57", "Descricao completa da formula XIV-057: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a57=10 e b57=4, resultado esperado=14.", "Analise Sistemica", "Planejamento"),
-            new("058", "Formula XIV-058 - Relacao Quantitativa 58", "a58-b58", "Descricao completa da formula XIV-058: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a58=10 e b58=4, resultado esperado=6.", "Analise Sistemica", "Desempenho"),
-            new("059", "Formula XIV-059 - Relacao Quantitativa 59", "a59*b59", "Descricao completa da formula XIV-059: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a59=10 e b59=4, resultado esperado=40.", "Analise Sistemica", "Confiabilidade"),
-            new("060", "Formula XIV-060 - Relacao Quantitativa 60", "a60/b60", "Descricao completa da formula XIV-060: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Sistemica", "Exemplo: a60=10 e b60=4, resultado esperado=2.5.", "Analise Sistemica", "Integracao"),
-            new("061", "Formula XIV-061 - Relacao Quantitativa 61", "a61+b61", "Descricao completa da formula XIV-061: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a61=10 e b61=4, resultado esperado=14.", "Metodos Computacionais", "Observabilidade"),
-            new("062", "Formula XIV-062 - Relacao Quantitativa 62", "a62-b62", "Descricao completa da formula XIV-062: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a62=10 e b62=4, resultado esperado=6.", "Metodos Computacionais", "Robustez"),
-            new("063", "Formula XIV-063 - Relacao Quantitativa 63", "a63*b63", "Descricao completa da formula XIV-063: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a63=10 e b63=4, resultado esperado=40.", "Metodos Computacionais", "Ajuste"),
-            new("064", "Formula XIV-064 - Relacao Quantitativa 64", "a64/b64", "Descricao completa da formula XIV-064: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a64=10 e b64=4, resultado esperado=2.5.", "Metodos Computacionais", "Aplicacao"),
-            new("065", "Formula XIV-065 - Relacao Quantitativa 65", "a65+b65", "Descricao completa da formula XIV-065: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a65=10 e b65=4, resultado esperado=14.", "Metodos Computacionais", "Bases e Relacoes"),
-            new("066", "Formula XIV-066 - Relacao Quantitativa 66", "a66-b66", "Descricao completa da formula XIV-066: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a66=10 e b66=4, resultado esperado=6.", "Metodos Computacionais", "Balancos e Taxas"),
-            new("067", "Formula XIV-067 - Relacao Quantitativa 67", "a67*b67", "Descricao completa da formula XIV-067: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a67=10 e b67=4, resultado esperado=40.", "Metodos Computacionais", "Escalonamento"),
-            new("068", "Formula XIV-068 - Relacao Quantitativa 68", "a68/b68", "Descricao completa da formula XIV-068: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a68=10 e b68=4, resultado esperado=2.5.", "Metodos Computacionais", "Estimativa Parametrica"),
-            new("069", "Formula XIV-069 - Relacao Quantitativa 69", "a69+b69", "Descricao completa da formula XIV-069: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a69=10 e b69=4, resultado esperado=14.", "Metodos Computacionais", "Diagnostico"),
-            new("070", "Formula XIV-070 - Relacao Quantitativa 70", "a70-b70", "Descricao completa da formula XIV-070: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a70=10 e b70=4, resultado esperado=6.", "Metodos Computacionais", "Calibracao"),
-            new("071", "Formula XIV-071 - Relacao Quantitativa 71", "a71*b71", "Descricao completa da formula XIV-071: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a71=10 e b71=4, resultado esperado=40.", "Metodos Computacionais", "Validacao"),
-            new("072", "Formula XIV-072 - Relacao Quantitativa 72", "a72/b72", "Descricao completa da formula XIV-072: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a72=10 e b72=4, resultado esperado=2.5.", "Metodos Computacionais", "Interpretacao"),
-            new("073", "Formula XIV-073 - Relacao Quantitativa 73", "a73+b73", "Descricao completa da formula XIV-073: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a73=10 e b73=4, resultado esperado=14.", "Metodos Computacionais", "Planejamento"),
-            new("074", "Formula XIV-074 - Relacao Quantitativa 74", "a74-b74", "Descricao completa da formula XIV-074: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a74=10 e b74=4, resultado esperado=6.", "Metodos Computacionais", "Desempenho"),
-            new("075", "Formula XIV-075 - Relacao Quantitativa 75", "a75*b75", "Descricao completa da formula XIV-075: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a75=10 e b75=4, resultado esperado=40.", "Metodos Computacionais", "Confiabilidade"),
-            new("076", "Formula XIV-076 - Relacao Quantitativa 76", "a76/b76", "Descricao completa da formula XIV-076: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a76=10 e b76=4, resultado esperado=2.5.", "Metodos Computacionais", "Integracao"),
-            new("077", "Formula XIV-077 - Relacao Quantitativa 77", "a77+b77", "Descricao completa da formula XIV-077: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a77=10 e b77=4, resultado esperado=14.", "Metodos Computacionais", "Observabilidade"),
-            new("078", "Formula XIV-078 - Relacao Quantitativa 78", "a78-b78", "Descricao completa da formula XIV-078: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a78=10 e b78=4, resultado esperado=6.", "Metodos Computacionais", "Robustez"),
-            new("079", "Formula XIV-079 - Relacao Quantitativa 79", "a79*b79", "Descricao completa da formula XIV-079: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a79=10 e b79=4, resultado esperado=40.", "Metodos Computacionais", "Ajuste"),
-            new("080", "Formula XIV-080 - Relacao Quantitativa 80", "a80/b80", "Descricao completa da formula XIV-080: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Metodos Computacionais", "Exemplo: a80=10 e b80=4, resultado esperado=2.5.", "Metodos Computacionais", "Aplicacao"),
-            new("081", "Formula XIV-081 - Relacao Quantitativa 81", "a81+b81", "Descricao completa da formula XIV-081: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a81=10 e b81=4, resultado esperado=14.", "Otimizacao Aplicada", "Bases e Relacoes"),
-            new("082", "Formula XIV-082 - Relacao Quantitativa 82", "a82-b82", "Descricao completa da formula XIV-082: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a82=10 e b82=4, resultado esperado=6.", "Otimizacao Aplicada", "Balancos e Taxas"),
-            new("083", "Formula XIV-083 - Relacao Quantitativa 83", "a83*b83", "Descricao completa da formula XIV-083: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a83=10 e b83=4, resultado esperado=40.", "Otimizacao Aplicada", "Escalonamento"),
-            new("084", "Formula XIV-084 - Relacao Quantitativa 84", "a84/b84", "Descricao completa da formula XIV-084: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a84=10 e b84=4, resultado esperado=2.5.", "Otimizacao Aplicada", "Estimativa Parametrica"),
-            new("085", "Formula XIV-085 - Relacao Quantitativa 85", "a85+b85", "Descricao completa da formula XIV-085: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a85=10 e b85=4, resultado esperado=14.", "Otimizacao Aplicada", "Diagnostico"),
-            new("086", "Formula XIV-086 - Relacao Quantitativa 86", "a86-b86", "Descricao completa da formula XIV-086: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a86=10 e b86=4, resultado esperado=6.", "Otimizacao Aplicada", "Calibracao"),
-            new("087", "Formula XIV-087 - Relacao Quantitativa 87", "a87*b87", "Descricao completa da formula XIV-087: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a87=10 e b87=4, resultado esperado=40.", "Otimizacao Aplicada", "Validacao"),
-            new("088", "Formula XIV-088 - Relacao Quantitativa 88", "a88/b88", "Descricao completa da formula XIV-088: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a88=10 e b88=4, resultado esperado=2.5.", "Otimizacao Aplicada", "Interpretacao"),
-            new("089", "Formula XIV-089 - Relacao Quantitativa 89", "a89+b89", "Descricao completa da formula XIV-089: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a89=10 e b89=4, resultado esperado=14.", "Otimizacao Aplicada", "Planejamento"),
-            new("090", "Formula XIV-090 - Relacao Quantitativa 90", "a90-b90", "Descricao completa da formula XIV-090: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a90=10 e b90=4, resultado esperado=6.", "Otimizacao Aplicada", "Desempenho"),
-            new("091", "Formula XIV-091 - Relacao Quantitativa 91", "a91*b91", "Descricao completa da formula XIV-091: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a91=10 e b91=4, resultado esperado=40.", "Otimizacao Aplicada", "Confiabilidade"),
-            new("092", "Formula XIV-092 - Relacao Quantitativa 92", "a92/b92", "Descricao completa da formula XIV-092: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a92=10 e b92=4, resultado esperado=2.5.", "Otimizacao Aplicada", "Integracao"),
-            new("093", "Formula XIV-093 - Relacao Quantitativa 93", "a93+b93", "Descricao completa da formula XIV-093: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a93=10 e b93=4, resultado esperado=14.", "Otimizacao Aplicada", "Observabilidade"),
-            new("094", "Formula XIV-094 - Relacao Quantitativa 94", "a94-b94", "Descricao completa da formula XIV-094: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a94=10 e b94=4, resultado esperado=6.", "Otimizacao Aplicada", "Robustez"),
-            new("095", "Formula XIV-095 - Relacao Quantitativa 95", "a95*b95", "Descricao completa da formula XIV-095: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a95=10 e b95=4, resultado esperado=40.", "Otimizacao Aplicada", "Ajuste"),
-            new("096", "Formula XIV-096 - Relacao Quantitativa 96", "a96/b96", "Descricao completa da formula XIV-096: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a96=10 e b96=4, resultado esperado=2.5.", "Otimizacao Aplicada", "Aplicacao"),
-            new("097", "Formula XIV-097 - Relacao Quantitativa 97", "a97+b97", "Descricao completa da formula XIV-097: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a97=10 e b97=4, resultado esperado=14.", "Otimizacao Aplicada", "Bases e Relacoes"),
-            new("098", "Formula XIV-098 - Relacao Quantitativa 98", "a98-b98", "Descricao completa da formula XIV-098: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a98=10 e b98=4, resultado esperado=6.", "Otimizacao Aplicada", "Balancos e Taxas"),
-            new("099", "Formula XIV-099 - Relacao Quantitativa 99", "a99*b99", "Descricao completa da formula XIV-099: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a99=10 e b99=4, resultado esperado=40.", "Otimizacao Aplicada", "Escalonamento"),
-            new("100", "Formula XIV-100 - Relacao Quantitativa 100", "a100/b100", "Descricao completa da formula XIV-100: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Otimizacao Aplicada", "Exemplo: a100=10 e b100=4, resultado esperado=2.5.", "Otimizacao Aplicada", "Estimativa Parametrica"),
-            new("101", "Formula XIV-101 - Relacao Quantitativa 101", "a101+b101", "Descricao completa da formula XIV-101: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a101=10 e b101=4, resultado esperado=14.", "Simulacao Cientifica", "Diagnostico"),
-            new("102", "Formula XIV-102 - Relacao Quantitativa 102", "a102-b102", "Descricao completa da formula XIV-102: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a102=10 e b102=4, resultado esperado=6.", "Simulacao Cientifica", "Calibracao"),
-            new("103", "Formula XIV-103 - Relacao Quantitativa 103", "a103*b103", "Descricao completa da formula XIV-103: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a103=10 e b103=4, resultado esperado=40.", "Simulacao Cientifica", "Validacao"),
-            new("104", "Formula XIV-104 - Relacao Quantitativa 104", "a104/b104", "Descricao completa da formula XIV-104: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a104=10 e b104=4, resultado esperado=2.5.", "Simulacao Cientifica", "Interpretacao"),
-            new("105", "Formula XIV-105 - Relacao Quantitativa 105", "a105+b105", "Descricao completa da formula XIV-105: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a105=10 e b105=4, resultado esperado=14.", "Simulacao Cientifica", "Planejamento"),
-            new("106", "Formula XIV-106 - Relacao Quantitativa 106", "a106-b106", "Descricao completa da formula XIV-106: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a106=10 e b106=4, resultado esperado=6.", "Simulacao Cientifica", "Desempenho"),
-            new("107", "Formula XIV-107 - Relacao Quantitativa 107", "a107*b107", "Descricao completa da formula XIV-107: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a107=10 e b107=4, resultado esperado=40.", "Simulacao Cientifica", "Confiabilidade"),
-            new("108", "Formula XIV-108 - Relacao Quantitativa 108", "a108/b108", "Descricao completa da formula XIV-108: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a108=10 e b108=4, resultado esperado=2.5.", "Simulacao Cientifica", "Integracao"),
-            new("109", "Formula XIV-109 - Relacao Quantitativa 109", "a109+b109", "Descricao completa da formula XIV-109: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a109=10 e b109=4, resultado esperado=14.", "Simulacao Cientifica", "Observabilidade"),
-            new("110", "Formula XIV-110 - Relacao Quantitativa 110", "a110-b110", "Descricao completa da formula XIV-110: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a110=10 e b110=4, resultado esperado=6.", "Simulacao Cientifica", "Robustez"),
-            new("111", "Formula XIV-111 - Relacao Quantitativa 111", "a111*b111", "Descricao completa da formula XIV-111: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a111=10 e b111=4, resultado esperado=40.", "Simulacao Cientifica", "Ajuste"),
-            new("112", "Formula XIV-112 - Relacao Quantitativa 112", "a112/b112", "Descricao completa da formula XIV-112: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a112=10 e b112=4, resultado esperado=2.5.", "Simulacao Cientifica", "Aplicacao"),
-            new("113", "Formula XIV-113 - Relacao Quantitativa 113", "a113+b113", "Descricao completa da formula XIV-113: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a113=10 e b113=4, resultado esperado=14.", "Simulacao Cientifica", "Bases e Relacoes"),
-            new("114", "Formula XIV-114 - Relacao Quantitativa 114", "a114-b114", "Descricao completa da formula XIV-114: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a114=10 e b114=4, resultado esperado=6.", "Simulacao Cientifica", "Balancos e Taxas"),
-            new("115", "Formula XIV-115 - Relacao Quantitativa 115", "a115*b115", "Descricao completa da formula XIV-115: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a115=10 e b115=4, resultado esperado=40.", "Simulacao Cientifica", "Escalonamento"),
-            new("116", "Formula XIV-116 - Relacao Quantitativa 116", "a116/b116", "Descricao completa da formula XIV-116: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a116=10 e b116=4, resultado esperado=2.5.", "Simulacao Cientifica", "Estimativa Parametrica"),
-            new("117", "Formula XIV-117 - Relacao Quantitativa 117", "a117+b117", "Descricao completa da formula XIV-117: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a117=10 e b117=4, resultado esperado=14.", "Simulacao Cientifica", "Diagnostico"),
-            new("118", "Formula XIV-118 - Relacao Quantitativa 118", "a118-b118", "Descricao completa da formula XIV-118: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a118=10 e b118=4, resultado esperado=6.", "Simulacao Cientifica", "Calibracao"),
-            new("119", "Formula XIV-119 - Relacao Quantitativa 119", "a119*b119", "Descricao completa da formula XIV-119: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a119=10 e b119=4, resultado esperado=40.", "Simulacao Cientifica", "Validacao"),
-            new("120", "Formula XIV-120 - Relacao Quantitativa 120", "a120/b120", "Descricao completa da formula XIV-120: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Simulacao Cientifica", "Exemplo: a120=10 e b120=4, resultado esperado=2.5.", "Simulacao Cientifica", "Interpretacao"),
-            new("121", "Formula XIV-121 - Relacao Quantitativa 121", "a121+b121", "Descricao completa da formula XIV-121: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a121=10 e b121=4, resultado esperado=14.", "Instrumentacao Analitica", "Planejamento"),
-            new("122", "Formula XIV-122 - Relacao Quantitativa 122", "a122-b122", "Descricao completa da formula XIV-122: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a122=10 e b122=4, resultado esperado=6.", "Instrumentacao Analitica", "Desempenho"),
-            new("123", "Formula XIV-123 - Relacao Quantitativa 123", "a123*b123", "Descricao completa da formula XIV-123: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a123=10 e b123=4, resultado esperado=40.", "Instrumentacao Analitica", "Confiabilidade"),
-            new("124", "Formula XIV-124 - Relacao Quantitativa 124", "a124/b124", "Descricao completa da formula XIV-124: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a124=10 e b124=4, resultado esperado=2.5.", "Instrumentacao Analitica", "Integracao"),
-            new("125", "Formula XIV-125 - Relacao Quantitativa 125", "a125+b125", "Descricao completa da formula XIV-125: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a125=10 e b125=4, resultado esperado=14.", "Instrumentacao Analitica", "Observabilidade"),
-            new("126", "Formula XIV-126 - Relacao Quantitativa 126", "a126-b126", "Descricao completa da formula XIV-126: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a126=10 e b126=4, resultado esperado=6.", "Instrumentacao Analitica", "Robustez"),
-            new("127", "Formula XIV-127 - Relacao Quantitativa 127", "a127*b127", "Descricao completa da formula XIV-127: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a127=10 e b127=4, resultado esperado=40.", "Instrumentacao Analitica", "Ajuste"),
-            new("128", "Formula XIV-128 - Relacao Quantitativa 128", "a128/b128", "Descricao completa da formula XIV-128: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a128=10 e b128=4, resultado esperado=2.5.", "Instrumentacao Analitica", "Aplicacao"),
-            new("129", "Formula XIV-129 - Relacao Quantitativa 129", "a129+b129", "Descricao completa da formula XIV-129: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a129=10 e b129=4, resultado esperado=14.", "Instrumentacao Analitica", "Bases e Relacoes"),
-            new("130", "Formula XIV-130 - Relacao Quantitativa 130", "a130-b130", "Descricao completa da formula XIV-130: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a130=10 e b130=4, resultado esperado=6.", "Instrumentacao Analitica", "Balancos e Taxas"),
-            new("131", "Formula XIV-131 - Relacao Quantitativa 131", "a131*b131", "Descricao completa da formula XIV-131: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a131=10 e b131=4, resultado esperado=40.", "Instrumentacao Analitica", "Escalonamento"),
-            new("132", "Formula XIV-132 - Relacao Quantitativa 132", "a132/b132", "Descricao completa da formula XIV-132: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a132=10 e b132=4, resultado esperado=2.5.", "Instrumentacao Analitica", "Estimativa Parametrica"),
-            new("133", "Formula XIV-133 - Relacao Quantitativa 133", "a133+b133", "Descricao completa da formula XIV-133: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a133=10 e b133=4, resultado esperado=14.", "Instrumentacao Analitica", "Diagnostico"),
-            new("134", "Formula XIV-134 - Relacao Quantitativa 134", "a134-b134", "Descricao completa da formula XIV-134: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a134=10 e b134=4, resultado esperado=6.", "Instrumentacao Analitica", "Calibracao"),
-            new("135", "Formula XIV-135 - Relacao Quantitativa 135", "a135*b135", "Descricao completa da formula XIV-135: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a135=10 e b135=4, resultado esperado=40.", "Instrumentacao Analitica", "Validacao"),
-            new("136", "Formula XIV-136 - Relacao Quantitativa 136", "a136/b136", "Descricao completa da formula XIV-136: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a136=10 e b136=4, resultado esperado=2.5.", "Instrumentacao Analitica", "Interpretacao"),
-            new("137", "Formula XIV-137 - Relacao Quantitativa 137", "a137+b137", "Descricao completa da formula XIV-137: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a137=10 e b137=4, resultado esperado=14.", "Instrumentacao Analitica", "Planejamento"),
-            new("138", "Formula XIV-138 - Relacao Quantitativa 138", "a138-b138", "Descricao completa da formula XIV-138: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a138=10 e b138=4, resultado esperado=6.", "Instrumentacao Analitica", "Desempenho"),
-            new("139", "Formula XIV-139 - Relacao Quantitativa 139", "a139*b139", "Descricao completa da formula XIV-139: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a139=10 e b139=4, resultado esperado=40.", "Instrumentacao Analitica", "Confiabilidade"),
-            new("140", "Formula XIV-140 - Relacao Quantitativa 140", "a140/b140", "Descricao completa da formula XIV-140: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Instrumentacao Analitica", "Exemplo: a140=10 e b140=4, resultado esperado=2.5.", "Instrumentacao Analitica", "Integracao"),
-            new("141", "Formula XIV-141 - Relacao Quantitativa 141", "a141+b141", "Descricao completa da formula XIV-141: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a141=10 e b141=4, resultado esperado=14.", "Dinamica de Processos", "Observabilidade"),
-            new("142", "Formula XIV-142 - Relacao Quantitativa 142", "a142-b142", "Descricao completa da formula XIV-142: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a142=10 e b142=4, resultado esperado=6.", "Dinamica de Processos", "Robustez"),
-            new("143", "Formula XIV-143 - Relacao Quantitativa 143", "a143*b143", "Descricao completa da formula XIV-143: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a143=10 e b143=4, resultado esperado=40.", "Dinamica de Processos", "Ajuste"),
-            new("144", "Formula XIV-144 - Relacao Quantitativa 144", "a144/b144", "Descricao completa da formula XIV-144: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a144=10 e b144=4, resultado esperado=2.5.", "Dinamica de Processos", "Aplicacao"),
-            new("145", "Formula XIV-145 - Relacao Quantitativa 145", "a145+b145", "Descricao completa da formula XIV-145: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a145=10 e b145=4, resultado esperado=14.", "Dinamica de Processos", "Bases e Relacoes"),
-            new("146", "Formula XIV-146 - Relacao Quantitativa 146", "a146-b146", "Descricao completa da formula XIV-146: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a146=10 e b146=4, resultado esperado=6.", "Dinamica de Processos", "Balancos e Taxas"),
-            new("147", "Formula XIV-147 - Relacao Quantitativa 147", "a147*b147", "Descricao completa da formula XIV-147: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a147=10 e b147=4, resultado esperado=40.", "Dinamica de Processos", "Escalonamento"),
-            new("148", "Formula XIV-148 - Relacao Quantitativa 148", "a148/b148", "Descricao completa da formula XIV-148: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a148=10 e b148=4, resultado esperado=2.5.", "Dinamica de Processos", "Estimativa Parametrica"),
-            new("149", "Formula XIV-149 - Relacao Quantitativa 149", "a149+b149", "Descricao completa da formula XIV-149: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a149=10 e b149=4, resultado esperado=14.", "Dinamica de Processos", "Diagnostico"),
-            new("150", "Formula XIV-150 - Relacao Quantitativa 150", "a150-b150", "Descricao completa da formula XIV-150: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a150=10 e b150=4, resultado esperado=6.", "Dinamica de Processos", "Calibracao"),
-            new("151", "Formula XIV-151 - Relacao Quantitativa 151", "a151*b151", "Descricao completa da formula XIV-151: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a151=10 e b151=4, resultado esperado=40.", "Dinamica de Processos", "Validacao"),
-            new("152", "Formula XIV-152 - Relacao Quantitativa 152", "a152/b152", "Descricao completa da formula XIV-152: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a152=10 e b152=4, resultado esperado=2.5.", "Dinamica de Processos", "Interpretacao"),
-            new("153", "Formula XIV-153 - Relacao Quantitativa 153", "a153+b153", "Descricao completa da formula XIV-153: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a153=10 e b153=4, resultado esperado=14.", "Dinamica de Processos", "Planejamento"),
-            new("154", "Formula XIV-154 - Relacao Quantitativa 154", "a154-b154", "Descricao completa da formula XIV-154: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a154=10 e b154=4, resultado esperado=6.", "Dinamica de Processos", "Desempenho"),
-            new("155", "Formula XIV-155 - Relacao Quantitativa 155", "a155*b155", "Descricao completa da formula XIV-155: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a155=10 e b155=4, resultado esperado=40.", "Dinamica de Processos", "Confiabilidade"),
-            new("156", "Formula XIV-156 - Relacao Quantitativa 156", "a156/b156", "Descricao completa da formula XIV-156: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a156=10 e b156=4, resultado esperado=2.5.", "Dinamica de Processos", "Integracao"),
-            new("157", "Formula XIV-157 - Relacao Quantitativa 157", "a157+b157", "Descricao completa da formula XIV-157: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a157=10 e b157=4, resultado esperado=14.", "Dinamica de Processos", "Observabilidade"),
-            new("158", "Formula XIV-158 - Relacao Quantitativa 158", "a158-b158", "Descricao completa da formula XIV-158: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a158=10 e b158=4, resultado esperado=6.", "Dinamica de Processos", "Robustez"),
-            new("159", "Formula XIV-159 - Relacao Quantitativa 159", "a159*b159", "Descricao completa da formula XIV-159: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a159=10 e b159=4, resultado esperado=40.", "Dinamica de Processos", "Ajuste"),
-            new("160", "Formula XIV-160 - Relacao Quantitativa 160", "a160/b160", "Descricao completa da formula XIV-160: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Dinamica de Processos", "Exemplo: a160=10 e b160=4, resultado esperado=2.5.", "Dinamica de Processos", "Aplicacao"),
-            new("161", "Formula XIV-161 - Relacao Quantitativa 161", "a161+b161", "Descricao completa da formula XIV-161: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a161=10 e b161=4, resultado esperado=14.", "Engenharia Integrada", "Bases e Relacoes"),
-            new("162", "Formula XIV-162 - Relacao Quantitativa 162", "a162-b162", "Descricao completa da formula XIV-162: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a162=10 e b162=4, resultado esperado=6.", "Engenharia Integrada", "Balancos e Taxas"),
-            new("163", "Formula XIV-163 - Relacao Quantitativa 163", "a163*b163", "Descricao completa da formula XIV-163: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a163=10 e b163=4, resultado esperado=40.", "Engenharia Integrada", "Escalonamento"),
-            new("164", "Formula XIV-164 - Relacao Quantitativa 164", "a164/b164", "Descricao completa da formula XIV-164: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a164=10 e b164=4, resultado esperado=2.5.", "Engenharia Integrada", "Estimativa Parametrica"),
-            new("165", "Formula XIV-165 - Relacao Quantitativa 165", "a165+b165", "Descricao completa da formula XIV-165: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a165=10 e b165=4, resultado esperado=14.", "Engenharia Integrada", "Diagnostico"),
-            new("166", "Formula XIV-166 - Relacao Quantitativa 166", "a166-b166", "Descricao completa da formula XIV-166: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a166=10 e b166=4, resultado esperado=6.", "Engenharia Integrada", "Calibracao"),
-            new("167", "Formula XIV-167 - Relacao Quantitativa 167", "a167*b167", "Descricao completa da formula XIV-167: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a167=10 e b167=4, resultado esperado=40.", "Engenharia Integrada", "Validacao"),
-            new("168", "Formula XIV-168 - Relacao Quantitativa 168", "a168/b168", "Descricao completa da formula XIV-168: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a168=10 e b168=4, resultado esperado=2.5.", "Engenharia Integrada", "Interpretacao"),
-            new("169", "Formula XIV-169 - Relacao Quantitativa 169", "a169+b169", "Descricao completa da formula XIV-169: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a169=10 e b169=4, resultado esperado=14.", "Engenharia Integrada", "Planejamento"),
-            new("170", "Formula XIV-170 - Relacao Quantitativa 170", "a170-b170", "Descricao completa da formula XIV-170: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a170=10 e b170=4, resultado esperado=6.", "Engenharia Integrada", "Desempenho"),
-            new("171", "Formula XIV-171 - Relacao Quantitativa 171", "a171*b171", "Descricao completa da formula XIV-171: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a171=10 e b171=4, resultado esperado=40.", "Engenharia Integrada", "Confiabilidade"),
-            new("172", "Formula XIV-172 - Relacao Quantitativa 172", "a172/b172", "Descricao completa da formula XIV-172: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a172=10 e b172=4, resultado esperado=2.5.", "Engenharia Integrada", "Integracao"),
-            new("173", "Formula XIV-173 - Relacao Quantitativa 173", "a173+b173", "Descricao completa da formula XIV-173: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a173=10 e b173=4, resultado esperado=14.", "Engenharia Integrada", "Observabilidade"),
-            new("174", "Formula XIV-174 - Relacao Quantitativa 174", "a174-b174", "Descricao completa da formula XIV-174: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a174=10 e b174=4, resultado esperado=6.", "Engenharia Integrada", "Robustez"),
-            new("175", "Formula XIV-175 - Relacao Quantitativa 175", "a175*b175", "Descricao completa da formula XIV-175: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a175=10 e b175=4, resultado esperado=40.", "Engenharia Integrada", "Ajuste"),
-            new("176", "Formula XIV-176 - Relacao Quantitativa 176", "a176/b176", "Descricao completa da formula XIV-176: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a176=10 e b176=4, resultado esperado=2.5.", "Engenharia Integrada", "Aplicacao"),
-            new("177", "Formula XIV-177 - Relacao Quantitativa 177", "a177+b177", "Descricao completa da formula XIV-177: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a177=10 e b177=4, resultado esperado=14.", "Engenharia Integrada", "Bases e Relacoes"),
-            new("178", "Formula XIV-178 - Relacao Quantitativa 178", "a178-b178", "Descricao completa da formula XIV-178: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a178=10 e b178=4, resultado esperado=6.", "Engenharia Integrada", "Balancos e Taxas"),
-            new("179", "Formula XIV-179 - Relacao Quantitativa 179", "a179*b179", "Descricao completa da formula XIV-179: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a179=10 e b179=4, resultado esperado=40.", "Engenharia Integrada", "Escalonamento"),
-            new("180", "Formula XIV-180 - Relacao Quantitativa 180", "a180/b180", "Descricao completa da formula XIV-180: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Engenharia Integrada", "Exemplo: a180=10 e b180=4, resultado esperado=2.5.", "Engenharia Integrada", "Estimativa Parametrica"),
-            new("181", "Formula XIV-181 - Relacao Quantitativa 181", "a181+b181", "Descricao completa da formula XIV-181: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a181=10 e b181=4, resultado esperado=14.", "Sistemas Quantitativos", "Diagnostico"),
-            new("182", "Formula XIV-182 - Relacao Quantitativa 182", "a182-b182", "Descricao completa da formula XIV-182: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a182=10 e b182=4, resultado esperado=6.", "Sistemas Quantitativos", "Calibracao"),
-            new("183", "Formula XIV-183 - Relacao Quantitativa 183", "a183*b183", "Descricao completa da formula XIV-183: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a183=10 e b183=4, resultado esperado=40.", "Sistemas Quantitativos", "Validacao"),
-            new("184", "Formula XIV-184 - Relacao Quantitativa 184", "a184/b184", "Descricao completa da formula XIV-184: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a184=10 e b184=4, resultado esperado=2.5.", "Sistemas Quantitativos", "Interpretacao"),
-            new("185", "Formula XIV-185 - Relacao Quantitativa 185", "a185+b185", "Descricao completa da formula XIV-185: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a185=10 e b185=4, resultado esperado=14.", "Sistemas Quantitativos", "Planejamento"),
-            new("186", "Formula XIV-186 - Relacao Quantitativa 186", "a186-b186", "Descricao completa da formula XIV-186: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a186=10 e b186=4, resultado esperado=6.", "Sistemas Quantitativos", "Desempenho"),
-            new("187", "Formula XIV-187 - Relacao Quantitativa 187", "a187*b187", "Descricao completa da formula XIV-187: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a187=10 e b187=4, resultado esperado=40.", "Sistemas Quantitativos", "Confiabilidade"),
-            new("188", "Formula XIV-188 - Relacao Quantitativa 188", "a188/b188", "Descricao completa da formula XIV-188: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a188=10 e b188=4, resultado esperado=2.5.", "Sistemas Quantitativos", "Integracao"),
-            new("189", "Formula XIV-189 - Relacao Quantitativa 189", "a189+b189", "Descricao completa da formula XIV-189: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a189=10 e b189=4, resultado esperado=14.", "Sistemas Quantitativos", "Observabilidade"),
-            new("190", "Formula XIV-190 - Relacao Quantitativa 190", "a190-b190", "Descricao completa da formula XIV-190: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a190=10 e b190=4, resultado esperado=6.", "Sistemas Quantitativos", "Robustez"),
-            new("191", "Formula XIV-191 - Relacao Quantitativa 191", "a191*b191", "Descricao completa da formula XIV-191: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a191=10 e b191=4, resultado esperado=40.", "Sistemas Quantitativos", "Ajuste"),
-            new("192", "Formula XIV-192 - Relacao Quantitativa 192", "a192/b192", "Descricao completa da formula XIV-192: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a192=10 e b192=4, resultado esperado=2.5.", "Sistemas Quantitativos", "Aplicacao"),
-            new("193", "Formula XIV-193 - Relacao Quantitativa 193", "a193+b193", "Descricao completa da formula XIV-193: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a193=10 e b193=4, resultado esperado=14.", "Sistemas Quantitativos", "Bases e Relacoes"),
-            new("194", "Formula XIV-194 - Relacao Quantitativa 194", "a194-b194", "Descricao completa da formula XIV-194: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a194=10 e b194=4, resultado esperado=6.", "Sistemas Quantitativos", "Balancos e Taxas"),
-            new("195", "Formula XIV-195 - Relacao Quantitativa 195", "a195*b195", "Descricao completa da formula XIV-195: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a195=10 e b195=4, resultado esperado=40.", "Sistemas Quantitativos", "Escalonamento"),
-            new("196", "Formula XIV-196 - Relacao Quantitativa 196", "a196/b196", "Descricao completa da formula XIV-196: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a196=10 e b196=4, resultado esperado=2.5.", "Sistemas Quantitativos", "Estimativa Parametrica"),
-            new("197", "Formula XIV-197 - Relacao Quantitativa 197", "a197+b197", "Descricao completa da formula XIV-197: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a197=10 e b197=4, resultado esperado=14.", "Sistemas Quantitativos", "Diagnostico"),
-            new("198", "Formula XIV-198 - Relacao Quantitativa 198", "a198-b198", "Descricao completa da formula XIV-198: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a198=10 e b198=4, resultado esperado=6.", "Sistemas Quantitativos", "Calibracao"),
-            new("199", "Formula XIV-199 - Relacao Quantitativa 199", "a199*b199", "Descricao completa da formula XIV-199: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a199=10 e b199=4, resultado esperado=40.", "Sistemas Quantitativos", "Validacao"),
-            new("200", "Formula XIV-200 - Relacao Quantitativa 200", "a200/b200", "Descricao completa da formula XIV-200: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sistemas Quantitativos", "Exemplo: a200=10 e b200=4, resultado esperado=2.5.", "Sistemas Quantitativos", "Interpretacao"),
-            new("201", "Formula XIV-201 - Relacao Quantitativa 201", "a201+b201", "Descricao completa da formula XIV-201: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a201=10 e b201=4, resultado esperado=14.", "Predicao e Controle", "Planejamento"),
-            new("202", "Formula XIV-202 - Relacao Quantitativa 202", "a202-b202", "Descricao completa da formula XIV-202: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a202=10 e b202=4, resultado esperado=6.", "Predicao e Controle", "Desempenho"),
-            new("203", "Formula XIV-203 - Relacao Quantitativa 203", "a203*b203", "Descricao completa da formula XIV-203: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a203=10 e b203=4, resultado esperado=40.", "Predicao e Controle", "Confiabilidade"),
-            new("204", "Formula XIV-204 - Relacao Quantitativa 204", "a204/b204", "Descricao completa da formula XIV-204: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a204=10 e b204=4, resultado esperado=2.5.", "Predicao e Controle", "Integracao"),
-            new("205", "Formula XIV-205 - Relacao Quantitativa 205", "a205+b205", "Descricao completa da formula XIV-205: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a205=10 e b205=4, resultado esperado=14.", "Predicao e Controle", "Observabilidade"),
-            new("206", "Formula XIV-206 - Relacao Quantitativa 206", "a206-b206", "Descricao completa da formula XIV-206: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a206=10 e b206=4, resultado esperado=6.", "Predicao e Controle", "Robustez"),
-            new("207", "Formula XIV-207 - Relacao Quantitativa 207", "a207*b207", "Descricao completa da formula XIV-207: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a207=10 e b207=4, resultado esperado=40.", "Predicao e Controle", "Ajuste"),
-            new("208", "Formula XIV-208 - Relacao Quantitativa 208", "a208/b208", "Descricao completa da formula XIV-208: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a208=10 e b208=4, resultado esperado=2.5.", "Predicao e Controle", "Aplicacao"),
-            new("209", "Formula XIV-209 - Relacao Quantitativa 209", "a209+b209", "Descricao completa da formula XIV-209: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a209=10 e b209=4, resultado esperado=14.", "Predicao e Controle", "Bases e Relacoes"),
-            new("210", "Formula XIV-210 - Relacao Quantitativa 210", "a210-b210", "Descricao completa da formula XIV-210: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a210=10 e b210=4, resultado esperado=6.", "Predicao e Controle", "Balancos e Taxas"),
-            new("211", "Formula XIV-211 - Relacao Quantitativa 211", "a211*b211", "Descricao completa da formula XIV-211: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a211=10 e b211=4, resultado esperado=40.", "Predicao e Controle", "Escalonamento"),
-            new("212", "Formula XIV-212 - Relacao Quantitativa 212", "a212/b212", "Descricao completa da formula XIV-212: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a212=10 e b212=4, resultado esperado=2.5.", "Predicao e Controle", "Estimativa Parametrica"),
-            new("213", "Formula XIV-213 - Relacao Quantitativa 213", "a213+b213", "Descricao completa da formula XIV-213: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a213=10 e b213=4, resultado esperado=14.", "Predicao e Controle", "Diagnostico"),
-            new("214", "Formula XIV-214 - Relacao Quantitativa 214", "a214-b214", "Descricao completa da formula XIV-214: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a214=10 e b214=4, resultado esperado=6.", "Predicao e Controle", "Calibracao"),
-            new("215", "Formula XIV-215 - Relacao Quantitativa 215", "a215*b215", "Descricao completa da formula XIV-215: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a215=10 e b215=4, resultado esperado=40.", "Predicao e Controle", "Validacao"),
-            new("216", "Formula XIV-216 - Relacao Quantitativa 216", "a216/b216", "Descricao completa da formula XIV-216: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a216=10 e b216=4, resultado esperado=2.5.", "Predicao e Controle", "Interpretacao"),
-            new("217", "Formula XIV-217 - Relacao Quantitativa 217", "a217+b217", "Descricao completa da formula XIV-217: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a217=10 e b217=4, resultado esperado=14.", "Predicao e Controle", "Planejamento"),
-            new("218", "Formula XIV-218 - Relacao Quantitativa 218", "a218-b218", "Descricao completa da formula XIV-218: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a218=10 e b218=4, resultado esperado=6.", "Predicao e Controle", "Desempenho"),
-            new("219", "Formula XIV-219 - Relacao Quantitativa 219", "a219*b219", "Descricao completa da formula XIV-219: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a219=10 e b219=4, resultado esperado=40.", "Predicao e Controle", "Confiabilidade"),
-            new("220", "Formula XIV-220 - Relacao Quantitativa 220", "a220/b220", "Descricao completa da formula XIV-220: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Predicao e Controle", "Exemplo: a220=10 e b220=4, resultado esperado=2.5.", "Predicao e Controle", "Integracao"),
-            new("221", "Formula XIV-221 - Relacao Quantitativa 221", "a221+b221", "Descricao completa da formula XIV-221: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a221=10 e b221=4, resultado esperado=14.", "Analise Experimental", "Observabilidade"),
-            new("222", "Formula XIV-222 - Relacao Quantitativa 222", "a222-b222", "Descricao completa da formula XIV-222: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a222=10 e b222=4, resultado esperado=6.", "Analise Experimental", "Robustez"),
-            new("223", "Formula XIV-223 - Relacao Quantitativa 223", "a223*b223", "Descricao completa da formula XIV-223: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a223=10 e b223=4, resultado esperado=40.", "Analise Experimental", "Ajuste"),
-            new("224", "Formula XIV-224 - Relacao Quantitativa 224", "a224/b224", "Descricao completa da formula XIV-224: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a224=10 e b224=4, resultado esperado=2.5.", "Analise Experimental", "Aplicacao"),
-            new("225", "Formula XIV-225 - Relacao Quantitativa 225", "a225+b225", "Descricao completa da formula XIV-225: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a225=10 e b225=4, resultado esperado=14.", "Analise Experimental", "Bases e Relacoes"),
-            new("226", "Formula XIV-226 - Relacao Quantitativa 226", "a226-b226", "Descricao completa da formula XIV-226: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a226=10 e b226=4, resultado esperado=6.", "Analise Experimental", "Balancos e Taxas"),
-            new("227", "Formula XIV-227 - Relacao Quantitativa 227", "a227*b227", "Descricao completa da formula XIV-227: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a227=10 e b227=4, resultado esperado=40.", "Analise Experimental", "Escalonamento"),
-            new("228", "Formula XIV-228 - Relacao Quantitativa 228", "a228/b228", "Descricao completa da formula XIV-228: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a228=10 e b228=4, resultado esperado=2.5.", "Analise Experimental", "Estimativa Parametrica"),
-            new("229", "Formula XIV-229 - Relacao Quantitativa 229", "a229+b229", "Descricao completa da formula XIV-229: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a229=10 e b229=4, resultado esperado=14.", "Analise Experimental", "Diagnostico"),
-            new("230", "Formula XIV-230 - Relacao Quantitativa 230", "a230-b230", "Descricao completa da formula XIV-230: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a230=10 e b230=4, resultado esperado=6.", "Analise Experimental", "Calibracao"),
-            new("231", "Formula XIV-231 - Relacao Quantitativa 231", "a231*b231", "Descricao completa da formula XIV-231: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a231=10 e b231=4, resultado esperado=40.", "Analise Experimental", "Validacao"),
-            new("232", "Formula XIV-232 - Relacao Quantitativa 232", "a232/b232", "Descricao completa da formula XIV-232: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a232=10 e b232=4, resultado esperado=2.5.", "Analise Experimental", "Interpretacao"),
-            new("233", "Formula XIV-233 - Relacao Quantitativa 233", "a233+b233", "Descricao completa da formula XIV-233: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a233=10 e b233=4, resultado esperado=14.", "Analise Experimental", "Planejamento"),
-            new("234", "Formula XIV-234 - Relacao Quantitativa 234", "a234-b234", "Descricao completa da formula XIV-234: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a234=10 e b234=4, resultado esperado=6.", "Analise Experimental", "Desempenho"),
-            new("235", "Formula XIV-235 - Relacao Quantitativa 235", "a235*b235", "Descricao completa da formula XIV-235: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a235=10 e b235=4, resultado esperado=40.", "Analise Experimental", "Confiabilidade"),
-            new("236", "Formula XIV-236 - Relacao Quantitativa 236", "a236/b236", "Descricao completa da formula XIV-236: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a236=10 e b236=4, resultado esperado=2.5.", "Analise Experimental", "Integracao"),
-            new("237", "Formula XIV-237 - Relacao Quantitativa 237", "a237+b237", "Descricao completa da formula XIV-237: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a237=10 e b237=4, resultado esperado=14.", "Analise Experimental", "Observabilidade"),
-            new("238", "Formula XIV-238 - Relacao Quantitativa 238", "a238-b238", "Descricao completa da formula XIV-238: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a238=10 e b238=4, resultado esperado=6.", "Analise Experimental", "Robustez"),
-            new("239", "Formula XIV-239 - Relacao Quantitativa 239", "a239*b239", "Descricao completa da formula XIV-239: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a239=10 e b239=4, resultado esperado=40.", "Analise Experimental", "Ajuste"),
-            new("240", "Formula XIV-240 - Relacao Quantitativa 240", "a240/b240", "Descricao completa da formula XIV-240: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Analise Experimental", "Exemplo: a240=10 e b240=4, resultado esperado=2.5.", "Analise Experimental", "Aplicacao"),
-            new("241", "Formula XIV-241 - Relacao Quantitativa 241", "a241+b241", "Descricao completa da formula XIV-241: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a241=10 e b241=4, resultado esperado=14.", "Ciencias de Dados Aplicadas", "Bases e Relacoes"),
-            new("242", "Formula XIV-242 - Relacao Quantitativa 242", "a242-b242", "Descricao completa da formula XIV-242: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a242=10 e b242=4, resultado esperado=6.", "Ciencias de Dados Aplicadas", "Balancos e Taxas"),
-            new("243", "Formula XIV-243 - Relacao Quantitativa 243", "a243*b243", "Descricao completa da formula XIV-243: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a243=10 e b243=4, resultado esperado=40.", "Ciencias de Dados Aplicadas", "Escalonamento"),
-            new("244", "Formula XIV-244 - Relacao Quantitativa 244", "a244/b244", "Descricao completa da formula XIV-244: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a244=10 e b244=4, resultado esperado=2.5.", "Ciencias de Dados Aplicadas", "Estimativa Parametrica"),
-            new("245", "Formula XIV-245 - Relacao Quantitativa 245", "a245+b245", "Descricao completa da formula XIV-245: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a245=10 e b245=4, resultado esperado=14.", "Ciencias de Dados Aplicadas", "Diagnostico"),
-            new("246", "Formula XIV-246 - Relacao Quantitativa 246", "a246-b246", "Descricao completa da formula XIV-246: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a246=10 e b246=4, resultado esperado=6.", "Ciencias de Dados Aplicadas", "Calibracao"),
-            new("247", "Formula XIV-247 - Relacao Quantitativa 247", "a247*b247", "Descricao completa da formula XIV-247: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a247=10 e b247=4, resultado esperado=40.", "Ciencias de Dados Aplicadas", "Validacao"),
-            new("248", "Formula XIV-248 - Relacao Quantitativa 248", "a248/b248", "Descricao completa da formula XIV-248: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a248=10 e b248=4, resultado esperado=2.5.", "Ciencias de Dados Aplicadas", "Interpretacao"),
-            new("249", "Formula XIV-249 - Relacao Quantitativa 249", "a249+b249", "Descricao completa da formula XIV-249: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a249=10 e b249=4, resultado esperado=14.", "Ciencias de Dados Aplicadas", "Planejamento"),
-            new("250", "Formula XIV-250 - Relacao Quantitativa 250", "a250-b250", "Descricao completa da formula XIV-250: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a250=10 e b250=4, resultado esperado=6.", "Ciencias de Dados Aplicadas", "Desempenho"),
-            new("251", "Formula XIV-251 - Relacao Quantitativa 251", "a251*b251", "Descricao completa da formula XIV-251: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a251=10 e b251=4, resultado esperado=40.", "Ciencias de Dados Aplicadas", "Confiabilidade"),
-            new("252", "Formula XIV-252 - Relacao Quantitativa 252", "a252/b252", "Descricao completa da formula XIV-252: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a252=10 e b252=4, resultado esperado=2.5.", "Ciencias de Dados Aplicadas", "Integracao"),
-            new("253", "Formula XIV-253 - Relacao Quantitativa 253", "a253+b253", "Descricao completa da formula XIV-253: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a253=10 e b253=4, resultado esperado=14.", "Ciencias de Dados Aplicadas", "Observabilidade"),
-            new("254", "Formula XIV-254 - Relacao Quantitativa 254", "a254-b254", "Descricao completa da formula XIV-254: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a254=10 e b254=4, resultado esperado=6.", "Ciencias de Dados Aplicadas", "Robustez"),
-            new("255", "Formula XIV-255 - Relacao Quantitativa 255", "a255*b255", "Descricao completa da formula XIV-255: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a255=10 e b255=4, resultado esperado=40.", "Ciencias de Dados Aplicadas", "Ajuste"),
-            new("256", "Formula XIV-256 - Relacao Quantitativa 256", "a256/b256", "Descricao completa da formula XIV-256: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a256=10 e b256=4, resultado esperado=2.5.", "Ciencias de Dados Aplicadas", "Aplicacao"),
-            new("257", "Formula XIV-257 - Relacao Quantitativa 257", "a257+b257", "Descricao completa da formula XIV-257: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a257=10 e b257=4, resultado esperado=14.", "Ciencias de Dados Aplicadas", "Bases e Relacoes"),
-            new("258", "Formula XIV-258 - Relacao Quantitativa 258", "a258-b258", "Descricao completa da formula XIV-258: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a258=10 e b258=4, resultado esperado=6.", "Ciencias de Dados Aplicadas", "Balancos e Taxas"),
-            new("259", "Formula XIV-259 - Relacao Quantitativa 259", "a259*b259", "Descricao completa da formula XIV-259: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a259=10 e b259=4, resultado esperado=40.", "Ciencias de Dados Aplicadas", "Escalonamento"),
-            new("260", "Formula XIV-260 - Relacao Quantitativa 260", "a260/b260", "Descricao completa da formula XIV-260: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Ciencias de Dados Aplicadas", "Exemplo: a260=10 e b260=4, resultado esperado=2.5.", "Ciencias de Dados Aplicadas", "Estimativa Parametrica"),
-            new("261", "Formula XIV-261 - Relacao Quantitativa 261", "a261+b261", "Descricao completa da formula XIV-261: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a261=10 e b261=4, resultado esperado=14.", "Projeto Tecnico", "Diagnostico"),
-            new("262", "Formula XIV-262 - Relacao Quantitativa 262", "a262-b262", "Descricao completa da formula XIV-262: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a262=10 e b262=4, resultado esperado=6.", "Projeto Tecnico", "Calibracao"),
-            new("263", "Formula XIV-263 - Relacao Quantitativa 263", "a263*b263", "Descricao completa da formula XIV-263: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a263=10 e b263=4, resultado esperado=40.", "Projeto Tecnico", "Validacao"),
-            new("264", "Formula XIV-264 - Relacao Quantitativa 264", "a264/b264", "Descricao completa da formula XIV-264: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a264=10 e b264=4, resultado esperado=2.5.", "Projeto Tecnico", "Interpretacao"),
-            new("265", "Formula XIV-265 - Relacao Quantitativa 265", "a265+b265", "Descricao completa da formula XIV-265: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a265=10 e b265=4, resultado esperado=14.", "Projeto Tecnico", "Planejamento"),
-            new("266", "Formula XIV-266 - Relacao Quantitativa 266", "a266-b266", "Descricao completa da formula XIV-266: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a266=10 e b266=4, resultado esperado=6.", "Projeto Tecnico", "Desempenho"),
-            new("267", "Formula XIV-267 - Relacao Quantitativa 267", "a267*b267", "Descricao completa da formula XIV-267: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a267=10 e b267=4, resultado esperado=40.", "Projeto Tecnico", "Confiabilidade"),
-            new("268", "Formula XIV-268 - Relacao Quantitativa 268", "a268/b268", "Descricao completa da formula XIV-268: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a268=10 e b268=4, resultado esperado=2.5.", "Projeto Tecnico", "Integracao"),
-            new("269", "Formula XIV-269 - Relacao Quantitativa 269", "a269+b269", "Descricao completa da formula XIV-269: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a269=10 e b269=4, resultado esperado=14.", "Projeto Tecnico", "Observabilidade"),
-            new("270", "Formula XIV-270 - Relacao Quantitativa 270", "a270-b270", "Descricao completa da formula XIV-270: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a270=10 e b270=4, resultado esperado=6.", "Projeto Tecnico", "Robustez"),
-            new("271", "Formula XIV-271 - Relacao Quantitativa 271", "a271*b271", "Descricao completa da formula XIV-271: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a271=10 e b271=4, resultado esperado=40.", "Projeto Tecnico", "Ajuste"),
-            new("272", "Formula XIV-272 - Relacao Quantitativa 272", "a272/b272", "Descricao completa da formula XIV-272: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a272=10 e b272=4, resultado esperado=2.5.", "Projeto Tecnico", "Aplicacao"),
-            new("273", "Formula XIV-273 - Relacao Quantitativa 273", "a273+b273", "Descricao completa da formula XIV-273: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a273=10 e b273=4, resultado esperado=14.", "Projeto Tecnico", "Bases e Relacoes"),
-            new("274", "Formula XIV-274 - Relacao Quantitativa 274", "a274-b274", "Descricao completa da formula XIV-274: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a274=10 e b274=4, resultado esperado=6.", "Projeto Tecnico", "Balancos e Taxas"),
-            new("275", "Formula XIV-275 - Relacao Quantitativa 275", "a275*b275", "Descricao completa da formula XIV-275: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a275=10 e b275=4, resultado esperado=40.", "Projeto Tecnico", "Escalonamento"),
-            new("276", "Formula XIV-276 - Relacao Quantitativa 276", "a276/b276", "Descricao completa da formula XIV-276: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a276=10 e b276=4, resultado esperado=2.5.", "Projeto Tecnico", "Estimativa Parametrica"),
-            new("277", "Formula XIV-277 - Relacao Quantitativa 277", "a277+b277", "Descricao completa da formula XIV-277: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a277=10 e b277=4, resultado esperado=14.", "Projeto Tecnico", "Diagnostico"),
-            new("278", "Formula XIV-278 - Relacao Quantitativa 278", "a278-b278", "Descricao completa da formula XIV-278: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a278=10 e b278=4, resultado esperado=6.", "Projeto Tecnico", "Calibracao"),
-            new("279", "Formula XIV-279 - Relacao Quantitativa 279", "a279*b279", "Descricao completa da formula XIV-279: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a279=10 e b279=4, resultado esperado=40.", "Projeto Tecnico", "Validacao"),
-            new("280", "Formula XIV-280 - Relacao Quantitativa 280", "a280/b280", "Descricao completa da formula XIV-280: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Projeto Tecnico", "Exemplo: a280=10 e b280=4, resultado esperado=2.5.", "Projeto Tecnico", "Interpretacao"),
-            new("281", "Formula XIV-281 - Relacao Quantitativa 281", "a281+b281", "Descricao completa da formula XIV-281: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a281=10 e b281=4, resultado esperado=14.", "Modelos Multiescala", "Planejamento"),
-            new("282", "Formula XIV-282 - Relacao Quantitativa 282", "a282-b282", "Descricao completa da formula XIV-282: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a282=10 e b282=4, resultado esperado=6.", "Modelos Multiescala", "Desempenho"),
-            new("283", "Formula XIV-283 - Relacao Quantitativa 283", "a283*b283", "Descricao completa da formula XIV-283: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a283=10 e b283=4, resultado esperado=40.", "Modelos Multiescala", "Confiabilidade"),
-            new("284", "Formula XIV-284 - Relacao Quantitativa 284", "a284/b284", "Descricao completa da formula XIV-284: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a284=10 e b284=4, resultado esperado=2.5.", "Modelos Multiescala", "Integracao"),
-            new("285", "Formula XIV-285 - Relacao Quantitativa 285", "a285+b285", "Descricao completa da formula XIV-285: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a285=10 e b285=4, resultado esperado=14.", "Modelos Multiescala", "Observabilidade"),
-            new("286", "Formula XIV-286 - Relacao Quantitativa 286", "a286-b286", "Descricao completa da formula XIV-286: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a286=10 e b286=4, resultado esperado=6.", "Modelos Multiescala", "Robustez"),
-            new("287", "Formula XIV-287 - Relacao Quantitativa 287", "a287*b287", "Descricao completa da formula XIV-287: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a287=10 e b287=4, resultado esperado=40.", "Modelos Multiescala", "Ajuste"),
-            new("288", "Formula XIV-288 - Relacao Quantitativa 288", "a288/b288", "Descricao completa da formula XIV-288: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a288=10 e b288=4, resultado esperado=2.5.", "Modelos Multiescala", "Aplicacao"),
-            new("289", "Formula XIV-289 - Relacao Quantitativa 289", "a289+b289", "Descricao completa da formula XIV-289: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a289=10 e b289=4, resultado esperado=14.", "Modelos Multiescala", "Bases e Relacoes"),
-            new("290", "Formula XIV-290 - Relacao Quantitativa 290", "a290-b290", "Descricao completa da formula XIV-290: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a290=10 e b290=4, resultado esperado=6.", "Modelos Multiescala", "Balancos e Taxas"),
-            new("291", "Formula XIV-291 - Relacao Quantitativa 291", "a291*b291", "Descricao completa da formula XIV-291: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a291=10 e b291=4, resultado esperado=40.", "Modelos Multiescala", "Escalonamento"),
-            new("292", "Formula XIV-292 - Relacao Quantitativa 292", "a292/b292", "Descricao completa da formula XIV-292: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a292=10 e b292=4, resultado esperado=2.5.", "Modelos Multiescala", "Estimativa Parametrica"),
-            new("293", "Formula XIV-293 - Relacao Quantitativa 293", "a293+b293", "Descricao completa da formula XIV-293: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a293=10 e b293=4, resultado esperado=14.", "Modelos Multiescala", "Diagnostico"),
-            new("294", "Formula XIV-294 - Relacao Quantitativa 294", "a294-b294", "Descricao completa da formula XIV-294: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a294=10 e b294=4, resultado esperado=6.", "Modelos Multiescala", "Calibracao"),
-            new("295", "Formula XIV-295 - Relacao Quantitativa 295", "a295*b295", "Descricao completa da formula XIV-295: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a295=10 e b295=4, resultado esperado=40.", "Modelos Multiescala", "Validacao"),
-            new("296", "Formula XIV-296 - Relacao Quantitativa 296", "a296/b296", "Descricao completa da formula XIV-296: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a296=10 e b296=4, resultado esperado=2.5.", "Modelos Multiescala", "Interpretacao"),
-            new("297", "Formula XIV-297 - Relacao Quantitativa 297", "a297+b297", "Descricao completa da formula XIV-297: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a297=10 e b297=4, resultado esperado=14.", "Modelos Multiescala", "Planejamento"),
-            new("298", "Formula XIV-298 - Relacao Quantitativa 298", "a298-b298", "Descricao completa da formula XIV-298: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a298=10 e b298=4, resultado esperado=6.", "Modelos Multiescala", "Desempenho"),
-            new("299", "Formula XIV-299 - Relacao Quantitativa 299", "a299*b299", "Descricao completa da formula XIV-299: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a299=10 e b299=4, resultado esperado=40.", "Modelos Multiescala", "Confiabilidade"),
-            new("300", "Formula XIV-300 - Relacao Quantitativa 300", "a300/b300", "Descricao completa da formula XIV-300: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Modelos Multiescala", "Exemplo: a300=10 e b300=4, resultado esperado=2.5.", "Modelos Multiescala", "Integracao"),
-            new("301", "Formula XIV-301 - Relacao Quantitativa 301", "a301+b301", "Descricao completa da formula XIV-301: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a301=10 e b301=4, resultado esperado=14.", "Sintese Avancada", "Observabilidade"),
-            new("302", "Formula XIV-302 - Relacao Quantitativa 302", "a302-b302", "Descricao completa da formula XIV-302: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a302=10 e b302=4, resultado esperado=6.", "Sintese Avancada", "Robustez"),
-            new("303", "Formula XIV-303 - Relacao Quantitativa 303", "a303*b303", "Descricao completa da formula XIV-303: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a303=10 e b303=4, resultado esperado=40.", "Sintese Avancada", "Ajuste"),
-            new("304", "Formula XIV-304 - Relacao Quantitativa 304", "a304/b304", "Descricao completa da formula XIV-304: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a304=10 e b304=4, resultado esperado=2.5.", "Sintese Avancada", "Aplicacao"),
-            new("305", "Formula XIV-305 - Relacao Quantitativa 305", "a305+b305", "Descricao completa da formula XIV-305: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a305=10 e b305=4, resultado esperado=14.", "Sintese Avancada", "Bases e Relacoes"),
-            new("306", "Formula XIV-306 - Relacao Quantitativa 306", "a306-b306", "Descricao completa da formula XIV-306: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a306=10 e b306=4, resultado esperado=6.", "Sintese Avancada", "Balancos e Taxas"),
-            new("307", "Formula XIV-307 - Relacao Quantitativa 307", "a307*b307", "Descricao completa da formula XIV-307: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a307=10 e b307=4, resultado esperado=40.", "Sintese Avancada", "Escalonamento"),
-            new("308", "Formula XIV-308 - Relacao Quantitativa 308", "a308/b308", "Descricao completa da formula XIV-308: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a308=10 e b308=4, resultado esperado=2.5.", "Sintese Avancada", "Estimativa Parametrica"),
-            new("309", "Formula XIV-309 - Relacao Quantitativa 309", "a309+b309", "Descricao completa da formula XIV-309: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a309=10 e b309=4, resultado esperado=14.", "Sintese Avancada", "Diagnostico"),
-            new("310", "Formula XIV-310 - Relacao Quantitativa 310", "a310-b310", "Descricao completa da formula XIV-310: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a310=10 e b310=4, resultado esperado=6.", "Sintese Avancada", "Calibracao"),
-            new("311", "Formula XIV-311 - Relacao Quantitativa 311", "a311*b311", "Descricao completa da formula XIV-311: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a311=10 e b311=4, resultado esperado=40.", "Sintese Avancada", "Validacao"),
-            new("312", "Formula XIV-312 - Relacao Quantitativa 312", "a312/b312", "Descricao completa da formula XIV-312: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a312=10 e b312=4, resultado esperado=2.5.", "Sintese Avancada", "Interpretacao"),
-            new("313", "Formula XIV-313 - Relacao Quantitativa 313", "a313+b313", "Descricao completa da formula XIV-313: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a313=10 e b313=4, resultado esperado=14.", "Sintese Avancada", "Planejamento"),
-            new("314", "Formula XIV-314 - Relacao Quantitativa 314", "a314-b314", "Descricao completa da formula XIV-314: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a314=10 e b314=4, resultado esperado=6.", "Sintese Avancada", "Desempenho"),
-            new("315", "Formula XIV-315 - Relacao Quantitativa 315", "a315*b315", "Descricao completa da formula XIV-315: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a315=10 e b315=4, resultado esperado=40.", "Sintese Avancada", "Confiabilidade"),
-            new("316", "Formula XIV-316 - Relacao Quantitativa 316", "a316/b316", "Descricao completa da formula XIV-316: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a316=10 e b316=4, resultado esperado=2.5.", "Sintese Avancada", "Integracao"),
-            new("317", "Formula XIV-317 - Relacao Quantitativa 317", "a317+b317", "Descricao completa da formula XIV-317: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a317=10 e b317=4, resultado esperado=14.", "Sintese Avancada", "Observabilidade"),
-            new("318", "Formula XIV-318 - Relacao Quantitativa 318", "a318-b318", "Descricao completa da formula XIV-318: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a318=10 e b318=4, resultado esperado=6.", "Sintese Avancada", "Robustez"),
-            new("319", "Formula XIV-319 - Relacao Quantitativa 319", "a319*b319", "Descricao completa da formula XIV-319: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a319=10 e b319=4, resultado esperado=40.", "Sintese Avancada", "Ajuste"),
-            new("320", "Formula XIV-320 - Relacao Quantitativa 320", "a320/b320", "Descricao completa da formula XIV-320: relacao matematica aplicada ao compendio Volume XIV, com foco em definicao operacional, dominio de uso, parametros de entrada e interpretacao do resultado em contexto tecnico.", "Compendio Volume XIV - Secao Sintese Avancada", "Exemplo: a320=10 e b320=4, resultado esperado=2.5.", "Sintese Avancada", "Aplicacao")
-        ];
+        private static bool AplicarFuncaoVol14(string funcao, Stack<double> pilha)
+        {
+            switch (funcao.ToLowerInvariant())
+            {
+                case "sin":
+                case "cos":
+                case "tan":
+                case "asin":
+                case "acos":
+                case "atan":
+                case "sqrt":
+                case "log":
+                case "log10":
+                case "log2":
+                case "ln":
+                case "exp":
+                case "abs":
+                    if (pilha.Count < 1)
+                    {
+                        return false;
+                    }
+
+                    var a = pilha.Pop();
+                    pilha.Push(funcao.ToLowerInvariant() switch
+                    {
+                        "sin" => Math.Sin(a),
+                        "cos" => Math.Cos(a),
+                        "tan" => Math.Tan(a),
+                        "asin" => Math.Asin(a),
+                        "acos" => Math.Acos(a),
+                        "atan" => Math.Atan(a),
+                        "sqrt" => a < 0 ? 0 : Math.Sqrt(a),
+                        "log" or "log10" => a <= 0 ? 0 : Math.Log10(a),
+                        "log2" => a <= 0 ? 0 : Math.Log2(a),
+                        "ln" => a <= 0 ? 0 : Math.Log(a),
+                        "exp" => Math.Exp(a),
+                        "abs" => Math.Abs(a),
+                        _ => 0
+                    });
+                    return true;
+
+                case "min":
+                case "max":
+                case "pow":
+                    if (pilha.Count < 2)
+                    {
+                        return false;
+                    }
+
+                    var b = pilha.Pop();
+                    var x = pilha.Pop();
+                    pilha.Push(funcao.ToLowerInvariant() switch
+                    {
+                        "min" => Math.Min(x, b),
+                        "max" => Math.Max(x, b),
+                        "pow" => Math.Pow(x, b),
+                        _ => 0
+                    });
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+
+        private static string ObterLadoDireitoVol14(string expressao)
+        {
+            var idxIgual = expressao.IndexOf('=');
+            if (idxIgual >= 0)
+            {
+                return expressao[(idxIgual + 1)..].Trim();
+            }
+
+            var idxAprox = expressao.IndexOf('≈');
+            return idxAprox >= 0 ? expressao[(idxAprox + 1)..].Trim() : expressao.Trim();
+        }
+
+        private static string ExtrairVariavelResultadoVol14(string expressao)
+        {
+            var idx = expressao.IndexOf('=');
+            if (idx < 0)
+            {
+                idx = expressao.IndexOf('≈');
+            }
+
+            if (idx < 0)
+            {
+                return "resultado";
+            }
+
+            var lhs = NormalizarExpressaoVol14(expressao[..idx]);
+            var simbolo = Vol14SimboloRegex.Match(lhs).Value;
+            return string.IsNullOrWhiteSpace(simbolo) ? "resultado" : simbolo;
+        }
+
+        private static string NormalizarExpressaoCalculavelVol14(string expressao)
+        {
+            var primaria = expressao.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).FirstOrDefault() ?? expressao;
+            var rhs = ObterLadoDireitoVol14(primaria);
+            rhs = Regex.Replace(rhs, @"\s{2,}\[[^\]]+\]\s*$", string.Empty);
+            rhs = SanitizarNotacaoQuimicaVol14(rhs);
+            rhs = Regex.Replace(rhs, @"([A-Za-z_][A-Za-z0-9_]*)\(([^()]*)\)", match =>
+            {
+                var nome = match.Groups[1].Value;
+                if (EhFuncaoVol14(nome))
+                {
+                    return match.Value;
+                }
+
+                var argumentos = match.Groups[2].Value
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Select(SanitizarSimboloVol14)
+                    .Where(s => !string.IsNullOrWhiteSpace(s));
+
+                return string.Join("_", new[] { nome }.Concat(argumentos));
+            });
+
+            return NormalizarExpressaoVol14(rhs);
+        }
+
+        private static string SanitizarNotacaoQuimicaVol14(string expressao)
+        {
+            return Regex.Replace(expressao, @"\[([^\]]+)\](?:_([A-Za-z0-9]+))?", match =>
+            {
+                var baseSimbolo = SanitizarSimboloVol14(match.Groups[1].Value);
+                if (match.Groups[2].Success)
+                {
+                    baseSimbolo = $"{baseSimbolo}_{SanitizarSimboloVol14(match.Groups[2].Value)}";
+                }
+
+                return baseSimbolo;
+            });
+        }
+
+        private static string SanitizarSimboloVol14(string valor)
+        {
+            var texto = valor.Trim();
+            texto = texto.Replace("+", "_pos", StringComparison.Ordinal)
+                         .Replace("-", "_neg", StringComparison.Ordinal)
+                         .Replace("*", "_star", StringComparison.Ordinal)
+                         .Replace("/", "_div", StringComparison.Ordinal)
+                         .Replace("%", "_pct", StringComparison.Ordinal)
+                         .Replace("'", string.Empty, StringComparison.Ordinal);
+            texto = NormalizarExpressaoVol14(texto);
+            texto = texto.Replace("(", string.Empty, StringComparison.Ordinal)
+                         .Replace(")", string.Empty, StringComparison.Ordinal)
+                         .Replace(" ", "_", StringComparison.Ordinal);
+            texto = Regex.Replace(texto, @"[^A-Za-z0-9_]", string.Empty);
+            texto = texto.Trim('_');
+            if (string.IsNullOrWhiteSpace(texto))
+            {
+                return "valor";
+            }
+
+            return char.IsLetter(texto[0]) || texto[0] == '_' ? texto : $"v_{texto}";
+        }
+
+        private static string NormalizarExpressaoVol14(string expr)
+        {
+            var s = Regex.Replace(expr, @"(?<=\d),(?=\d)", ".")
+                .Replace("√", "sqrt")
+                .Replace("×", "*")
+                .Replace("·", "*")
+                .Replace("−", "-")
+                .Replace("–", "-")
+                .Replace("÷", "/")
+                .Replace("≈", "=")
+                .Replace("θ", "theta")
+                .Replace("λ", "lambda")
+                .Replace("ω", "omega")
+                .Replace("μ", "mu")
+                .Replace("ρ", "rho")
+                .Replace("φ", "phi")
+                .Replace("γ", "gamma")
+                .Replace("π", "pi")
+                .Replace("δ", "delta")
+                .Replace("Δ", "Delta")
+                .Replace("σ", "sigma")
+                .Replace("η", "eta")
+                .Replace("τ", "tau")
+                .Replace("ε", "epsilon")
+                .Replace("χ", "chi")
+                .Replace("α", "alpha")
+                .Replace("β", "beta")
+                .Replace("₀", "0")
+                .Replace("₁", "1")
+                .Replace("₂", "2")
+                .Replace("₃", "3")
+                .Replace("₄", "4")
+                .Replace("₅", "5")
+                .Replace("₆", "6")
+                .Replace("₇", "7")
+                .Replace("₈", "8")
+                .Replace("₉", "9")
+                .Replace("⁰", "^0")
+                .Replace("¹", "^1")
+                .Replace("²", "^2")
+                .Replace("³", "^3")
+                .Replace("⁴", "^4")
+                .Replace("⁵", "^5")
+                .Replace("⁶", "^6")
+                .Replace("⁷", "^7")
+                .Replace("⁸", "^8")
+                .Replace("⁹", "^9")
+                .Replace("⁻", "-")
+                .Replace("°", string.Empty)
+                .Replace("[", string.Empty)
+                .Replace("]", string.Empty);
+
+            s = s.Replace("log₁₀", "log10", StringComparison.OrdinalIgnoreCase);
+            s = s.Replace("log₂", "log2", StringComparison.OrdinalIgnoreCase);
+            s = Regex.Replace(s, @"(?<=\d)\s*%", string.Empty);
+            s = Regex.Replace(s, @"([A-Za-z_][A-Za-z0-9_]*)%", "$1_pct");
+            s = Regex.Replace(s, @"[^A-Za-z0-9_+\-*/^().,= ]", " ");
+            s = Regex.Replace(s, @"\s+", " ").Trim();
+            return s;
+        }
+
+        private static List<string> TokenizarVol14(string expr)
+        {
+            var tokens = new List<string>();
+            var i = 0;
+            while (i < expr.Length)
+            {
+                var c = expr[i];
+                if (char.IsWhiteSpace(c) || c == '=')
+                {
+                    i++;
+                    continue;
+                }
+
+                if (char.IsDigit(c) || c == '.')
+                {
+                    var j = i;
+                    while (j < expr.Length && (char.IsDigit(expr[j]) || expr[j] == '.'))
+                    {
+                        j++;
+                    }
+
+                    tokens.Add(expr[i..j]);
+                    i = j;
+                    continue;
+                }
+
+                if (char.IsLetter(c) || c == '_')
+                {
+                    var j = i;
+                    while (j < expr.Length && (char.IsLetterOrDigit(expr[j]) || expr[j] == '_'))
+                    {
+                        j++;
+                    }
+
+                    tokens.Add(expr[i..j]);
+                    i = j;
+                    continue;
+                }
+
+                if (",()+-*/^".Contains(c))
+                {
+                    tokens.Add(c.ToString());
+                    i++;
+                    continue;
+                }
+
+                i++;
+            }
+
+            return AjustarUnarioVol14(InserirMultiplicacaoImplicitaVol14(tokens));
+        }
+
+        private static List<string> InserirMultiplicacaoImplicitaVol14(List<string> tokens)
+        {
+            if (tokens.Count < 2)
+            {
+                return tokens;
+            }
+
+            var resultado = new List<string>(tokens.Count * 2);
+            for (var i = 0; i < tokens.Count; i++)
+            {
+                var atual = tokens[i];
+                resultado.Add(atual);
+
+                if (i == tokens.Count - 1)
+                {
+                    continue;
+                }
+
+                var proximo = tokens[i + 1];
+                if (PrecisaMultiplicacaoImplicitaVol14(atual, proximo))
+                {
+                    resultado.Add("*");
+                }
+            }
+
+            return resultado;
+        }
+
+        private static bool PrecisaMultiplicacaoImplicitaVol14(string atual, string proximo)
+        {
+            if (EhFuncaoVol14(atual) && proximo == "(")
+            {
+                return false;
+            }
+
+            return EhOperandoEsquerdaVol14(atual) && EhOperandoDireitaVol14(proximo);
+        }
+
+        private static bool EhOperandoEsquerdaVol14(string token)
+            => double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out _)
+               || EhVariavelOuConstanteVol14(token)
+               || token == ")";
+
+        private static bool EhOperandoDireitaVol14(string token)
+            => double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out _)
+               || EhVariavelOuConstanteVol14(token)
+               || token == "(";
+
+        private static List<string> AjustarUnarioVol14(List<string> tokens)
+        {
+            var saida = new List<string>();
+            for (var i = 0; i < tokens.Count; i++)
+            {
+                var token = tokens[i];
+                if (token == "-" && (i == 0 || tokens[i - 1] == "(" || EhOperadorVol14(tokens[i - 1]) || tokens[i - 1] == ","))
+                {
+                    saida.Add("0");
+                }
+
+                saida.Add(token);
+            }
+
+            return saida;
+        }
+
+        private static Queue<string> ParaRpnVol14(List<string> tokens)
+        {
+            var saida = new Queue<string>();
+            var ops = new Stack<string>();
+
+            for (var i = 0; i < tokens.Count; i++)
+            {
+                var token = tokens[i];
+                if (double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out _) || EhVariavelOuConstanteVol14(token))
+                {
+                    if (EhFuncaoVol14(token) && i + 1 < tokens.Count && tokens[i + 1] == "(")
+                    {
+                        ops.Push(token);
+                    }
+                    else
+                    {
+                        saida.Enqueue(token);
+                    }
+
+                    continue;
+                }
+
+                if (token == ",")
+                {
+                    while (ops.Count > 0 && ops.Peek() != "(")
+                    {
+                        saida.Enqueue(ops.Pop());
+                    }
+
+                    continue;
+                }
+
+                if (EhOperadorVol14(token))
+                {
+                    while (ops.Count > 0 && EhOperadorVol14(ops.Peek()) &&
+                           ((AssociatividadeEsquerdaVol14(token) && PrecedenciaVol14(token) <= PrecedenciaVol14(ops.Peek())) ||
+                            (!AssociatividadeEsquerdaVol14(token) && PrecedenciaVol14(token) < PrecedenciaVol14(ops.Peek()))))
+                    {
+                        saida.Enqueue(ops.Pop());
+                    }
+
+                    ops.Push(token);
+                    continue;
+                }
+
+                if (token == "(")
+                {
+                    ops.Push(token);
+                    continue;
+                }
+
+                if (token == ")")
+                {
+                    while (ops.Count > 0 && ops.Peek() != "(")
+                    {
+                        saida.Enqueue(ops.Pop());
+                    }
+
+                    if (ops.Count > 0 && ops.Peek() == "(")
+                    {
+                        ops.Pop();
+                    }
+
+                    if (ops.Count > 0 && EhFuncaoVol14(ops.Peek()))
+                    {
+                        saida.Enqueue(ops.Pop());
+                    }
+                }
+            }
+
+            while (ops.Count > 0)
+            {
+                saida.Enqueue(ops.Pop());
+            }
+
+            return saida;
+        }
+
+        private static bool EhVariavelOuConstanteVol14(string token)
+            => Regex.IsMatch(token, @"^[A-Za-z_][A-Za-z0-9_]*$");
+
+        private static bool EhOperadorVol14(string token)
+            => token is "+" or "-" or "*" or "/" or "^";
+
+        private static int PrecedenciaVol14(string op)
+            => op switch
+            {
+                "+" or "-" => 1,
+                "*" or "/" => 2,
+                "^" => 3,
+                _ => 0
+            };
+
+        private static bool AssociatividadeEsquerdaVol14(string op) => op != "^";
+
+        private static bool EhFuncaoVol14(string token)
+            => token.Equals("sin", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("cos", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("tan", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("asin", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("acos", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("atan", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("sqrt", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("log", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("log10", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("log2", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("ln", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("exp", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("abs", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("min", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("max", StringComparison.OrdinalIgnoreCase)
+                || token.Equals("pow", StringComparison.OrdinalIgnoreCase);
+
+        private static double ValorVariavel(Dictionary<string, double> vars, string simbolo, double padrao = 0)
+            => vars.TryGetValue(simbolo, out var valor) ? valor : padrao;
+
+        private static double ProdutoValoresVol14(params double[] valores)
+            => valores.Aggregate(1d, (acumulado, valor) => acumulado * valor);
+
+        private static double ChiQuadradoTermoVol14(double observado, double esperado)
+            => esperado <= 0 ? 0 : Math.Pow(observado - esperado, 2) / esperado;
+
+        private static double ShannonEntropyVol14(bool base2, params double[] probabilidades)
+            => probabilidades
+                .Where(p => p > 0)
+                .Select(p => -p * (base2 ? Math.Log2(p) : Math.Log(p)))
+                .Sum();
+
+        private static double Factorial(int n)
+        {
+            if (n <= 1)
+            {
+                return 1;
+            }
+
+            double resultado = 1;
+            for (var i = 2; i <= n; i++)
+            {
+                resultado *= i;
+            }
+
+            return resultado;
+        }
+
+        private static double GammaFunction(double z)
+        {
+            double[] coeficientes =
+            [
+                676.5203681218851,
+                -1259.1392167224028,
+                771.32342877765313,
+                -176.61502916214059,
+                12.507343278686905,
+                -0.13857109526572012,
+                9.9843695780195716e-6,
+                1.5056327351493116e-7
+            ];
+
+            if (z < 0.5)
+            {
+                return Math.PI / (Math.Sin(Math.PI * z) * GammaFunction(1 - z));
+            }
+
+            z -= 1;
+            var x = 0.99999999999980993;
+            for (var i = 0; i < coeficientes.Length; i++)
+            {
+                x += coeficientes[i] / (z + i + 1);
+            }
+
+            var t = z + coeficientes.Length - 0.5;
+            return Math.Sqrt(2 * Math.PI) * Math.Pow(t, z + 0.5) * Math.Exp(-t) * x;
+        }
+
+        private static double NormalCdf(double x)
+            => 0.5 * (1 + Erf(x / Math.Sqrt(2)));
+
+        private static double InverseNormalCdf(double p)
+        {
+            p = Math.Clamp(p, 1e-10, 1 - 1e-10);
+
+            double[] a =
+            [
+                -3.969683028665376e+01,
+                2.209460984245205e+02,
+                -2.759285104469687e+02,
+                1.383577518672690e+02,
+                -3.066479806614716e+01,
+                2.506628277459239e+00
+            ];
+            double[] b =
+            [
+                -5.447609879822406e+01,
+                1.615858368580409e+02,
+                -1.556989798598866e+02,
+                6.680131188771972e+01,
+                -1.328068155288572e+01
+            ];
+            double[] c =
+            [
+                -7.784894002430293e-03,
+                -3.223964580411365e-01,
+                -2.400758277161838e+00,
+                -2.549732539343734e+00,
+                4.374664141464968e+00,
+                2.938163982698783e+00
+            ];
+            double[] d =
+            [
+                7.784695709041462e-03,
+                3.224671290700398e-01,
+                2.445134137142996e+00,
+                3.754408661907416e+00
+            ];
+
+            const double pBaixo = 0.02425;
+            const double pAlto = 1 - pBaixo;
+
+            if (p < pBaixo)
+            {
+                var q = Math.Sqrt(-2 * Math.Log(p));
+                return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+                       ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
+            }
+
+            if (p > pAlto)
+            {
+                var q = Math.Sqrt(-2 * Math.Log(1 - p));
+                return -(((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+                        ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
+            }
+
+            var r = p - 0.5;
+            var s = r * r;
+            return (((((a[0] * s + a[1]) * s + a[2]) * s + a[3]) * s + a[4]) * s + a[5]) * r /
+                   (((((b[0] * s + b[1]) * s + b[2]) * s + b[3]) * s + b[4]) * s + 1);
+        }
+
+        private static List<Vol14Spec> ObterSpecsLiteraisVol14()
+        {
+            var bruto = string.Join("\n", ObterBlocosLiteraisVol14());
+            return ParsearSpecsVol14(bruto);
+        }
+
+        private static IEnumerable<string> ObterBlocosLiteraisVol14()
+        {
+            yield return Vol14Parte1;
+            yield return Vol14Parte2;
+            yield return Vol14Parte3;
+            yield return Vol14Parte4;
+        }
+
+        private static List<Vol14Spec> ParsearSpecsVol14(string bruto)
+        {
+            var linhas = bruto.Split('\n').Select(l => l.Trim()).ToList();
+            var specs = new List<Vol14Spec>(320);
+            string categoria = string.Empty;
+            string subCategoria = string.Empty;
+
+            for (var i = 0; i < linhas.Count; i++)
+            {
+                var linha = linhas[i];
+                if (string.IsNullOrWhiteSpace(linha))
+                {
+                    continue;
+                }
+
+                if (Regex.IsMatch(linha, @"^\d{3}$"))
+                {
+                    var codigo = linha;
+                    var nome = ProximaLinhaNaoVaziaVol14(linhas, ref i);
+                    var nivel = ProximaLinhaNaoVaziaVol14(linhas, ref i);
+                    _ = nivel;
+                    var expressao = ProximaLinhaNaoVaziaVol14(linhas, ref i);
+                    var descricao = ColetarAtePrefixoVol14(linhas, ref i, "ORIGEM");
+                    var origemLinha = ProximaLinhaNaoVaziaVol14(linhas, ref i);
+                    var origem = origemLinha.StartsWith("ORIGEM", StringComparison.OrdinalIgnoreCase)
+                        ? origemLinha[6..].Trim()
+                        : origemLinha;
+                    var exemplo = ColetarExemploVol14(linhas, ref i);
+
+                    specs.Add(new Vol14Spec(codigo, nome, expressao, descricao, origem, exemplo, categoria, subCategoria));
+                    continue;
+                }
+
+                if (i + 1 < linhas.Count && !Regex.IsMatch(linha, @"^\d{3}$") && !Regex.IsMatch(linhas[i + 1], @"^\d{3}$"))
+                {
+                    categoria = linha;
+                    subCategoria = linhas[++i];
+                }
+            }
+
+            return specs;
+        }
+
+        private static string ProximaLinhaNaoVaziaVol14(List<string> linhas, ref int indice)
+        {
+            while (++indice < linhas.Count)
+            {
+                if (!string.IsNullOrWhiteSpace(linhas[indice]))
+                {
+                    return linhas[indice];
+                }
+            }
+
+            return string.Empty;
+        }
+
+        private static string ColetarAtePrefixoVol14(List<string> linhas, ref int indice, string prefixo)
+        {
+            var partes = new List<string>();
+            while (indice + 1 < linhas.Count)
+            {
+                var proxima = linhas[indice + 1];
+                if (string.IsNullOrWhiteSpace(proxima))
+                {
+                    indice++;
+                    continue;
+                }
+
+                if (proxima.StartsWith(prefixo, StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+                indice++;
+                partes.Add(proxima);
+            }
+
+            return string.Join(" ", partes);
+        }
+
+        private static string ColetarExemploVol14(List<string> linhas, ref int indice)
+        {
+            while (indice + 1 < linhas.Count)
+            {
+                var proxima = linhas[indice + 1];
+                if (string.IsNullOrWhiteSpace(proxima))
+                {
+                    indice++;
+                    continue;
+                }
+
+                if (proxima.StartsWith("▶", StringComparison.Ordinal))
+                {
+                    indice++;
+                    return proxima[1..].Trim();
+                }
+
+                if (Regex.IsMatch(proxima, @"^\d{3}$"))
+                {
+                    break;
+                }
+
+                indice++;
+            }
+
+            return string.Empty;
+        }
     }
 }
