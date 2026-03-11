@@ -675,6 +675,7 @@ public partial class FormulaService
     // Horizontes do Conhecimento — Ciencias Integradas (Edicao 2026)
     AdicionarFormulasVol16();
     AdicionarFormulasVol17();
+    AdicionarFormulasVol18();
 
     // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total
