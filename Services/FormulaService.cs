@@ -671,6 +671,11 @@ public partial class FormulaService
     // Fronteiras Cientificas — Areas de Vanguarda (Edicao 2026)
     AdicionarFormulasVol15();
 
+    // ═══ VOLUME 16 — COMPÊNDIO GERAL DE EQUAÇÕES ═══
+    // Horizontes do Conhecimento — Ciencias Integradas (Edicao 2026)
+    AdicionarFormulasVol16();
+    AdicionarFormulasVol17();
+
     // ═══ FÓRMULAS FALTANTES (GERADOR AUTOMÁTICO) ═══
         // Adiciona 310 fórmulas dinâmicas para atingir 3588 total
         // 102 do V9 (001-102) + 65 V1-V7 distribuídas
