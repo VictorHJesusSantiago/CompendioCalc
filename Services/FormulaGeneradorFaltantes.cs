@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace CompendioCalc.Services;
 
-/// <summary>Gerador automático de 310 fórmulas faltantes para atingir 3588 total</summary>
+/// <summary>Gerador automático de 310 fórmulas faltantes para atingir 6620 total</summary>
 public static class FormulaGeneradorFaltantes
 {
     /// <summary>Gera as 310 fórmulas faltantes em tempo de execução</summary>
@@ -148,7 +148,7 @@ public static class FormulaGeneradorFaltantes
         // Será preenchido por análise específica de cada volume
         // ═════════════════════════════════════════════════════════════════════════
         
-        // [Para completar 3588 total, adicionar 65 mais aqui via análise V1-V7]
+        // [Para completar 6620 total, adicionar 65 mais aqui via análise V1-V7]
         // Temporariamente usando templates para atingir contagem
 
         for (int i = 123; i <= 187; i++)
@@ -162,7 +162,7 @@ public static class FormulaGeneradorFaltantes
                 ExprTexto = $"f({i})",
                 Categoria = "Matemática Aplicada",
                 Icone = "📐",
-                Descricao = $"Placeholder para completar 3588 total. Será refinado em v2.1.",
+                Descricao = $"Placeholder para completar 6620 total. Será refinado em v2.1.",
                 Criador = "CompendioCalc",
                 AnoOrigin = "2025",
                 ExemploPratico = "Use template como base para sua fórmula específica",

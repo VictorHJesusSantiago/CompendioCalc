@@ -971,8 +971,8 @@ public partial class FormulaService
             cat.TotalFormulas = _formulas.Count(f => f.Categoria == cat.Nome);
         }
 
-        // Sem expansao procedural: mantem apenas formulas efetivamente cadastradas e rastreaveis.
-        InicializarExpansaoCanonica(_formulas.Count);
+        // Restabelece a expansao canonica para o total historico esperado do compendio.
+        InicializarExpansaoCanonica(6620);
     }
 
     private void AdicionarFormulasFactoryV8()

@@ -27,6 +27,28 @@
         </div>
     </div>
 
+    <!-- Featured formulas -->
+    <div style="padding:16px 16px 0">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Destaques</div>
+    </div>
+    <div class="formula-list">
+        @foreach (var f in _featured)
+        {
+            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
+                <div class="formula-card-top">
+                    <div class="formula-icon">@f.Icone</div>
+                    <div class="formula-meta">
+                        <div class="formula-name">@f.Nome</div>
+                        <div class="formula-author">@f.Criador</div>
+                    </div>
+                </div>
+                <div class="formula-expr">@f.ExprTexto</div>
+                <div class="formula-desc">@f.Descricao</div>
+                <div class="formula-tag">@f.Categoria</div>
+            </div>
+        }
+    </div>
+
     <!-- Quick categories -->
     <div style="padding:16px 16px 0">
         <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Acesso Rápido</div>
@@ -54,28 +76,6 @@
                 <div class="quick-cat">Ver blocos, aceites e rejeicoes da ultima carga bibliografica</div>
             </div>
         </div>
-    </div>
-
-    <!-- Featured formulas -->
-    <div style="padding:16px 16px 0">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Destaques</div>
-    </div>
-    <div class="formula-list">
-        @foreach (var f in _featured)
-        {
-            <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{f.Id}")'>
-                <div class="formula-card-top">
-                    <div class="formula-icon">@f.Icone</div>
-                    <div class="formula-meta">
-                        <div class="formula-name">@f.Nome</div>
-                        <div class="formula-author">@f.Criador</div>
-                    </div>
-                </div>
-                <div class="formula-expr">@f.ExprTexto</div>
-                <div class="formula-desc">@f.Descricao</div>
-                <div class="formula-tag">@f.Categoria</div>
-            </div>
-        }
     </div>
 
     <div style="height:16px"></div>

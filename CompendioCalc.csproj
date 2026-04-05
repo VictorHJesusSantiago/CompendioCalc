@@ -47,7 +47,9 @@
 
   <ItemGroup>
     <Compile Remove="Services\FormulaServiceVol11_*.cs" />
-    <Compile Include="Services\FormulaServiceVol11_Generated.cs" />
+    <Compile Remove="Services\FormulaService_ControlEngineering.cs" />
+    <Compile Remove="Services\FormulaService_CrossDisciplinaryResearchCompendium.cs" />
+    <Compile Remove="Services\FormulaService_FinancialMathematics.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -82,25 +82,25 @@ namespace CompendioCalc.Services
         }
 
         // Os métodos parciais são definidos nos arquivos especializados:
-        // - FormulaServiceVol10_QuantumComputing.cs
-        // - FormulaServiceVol10_Nanotechnology.cs
-        // - FormulaServiceVol10_SoftwareEngineering.cs
-        // - FormulaServiceVol10_ComplexSystems.cs
-        // - FormulaServiceVol10_Cosmology.cs
-        // - FormulaServiceVol10_SystemsBiology.cs
-        // - FormulaServiceVol10_MathOptimization.cs
-        // - FormulaServiceVol10_QFT.cs
-        // - FormulaServiceVol10_QuantFinance.cs
-        // - FormulaServiceVol10_ProductionEngineering.cs
-        // - FormulaServiceVol10_NuclearMedicine.cs
-        // - FormulaServiceVol10_UnderwaterAcoustics.cs
-        // - FormulaServiceVol10_Tribology.cs
-        // - FormulaServiceVol10_Instrumentation.cs
-        // - FormulaServiceVol10_SurfacePhenomena.cs
-        // - FormulaServiceVol10_FractureMechanics.cs
-        // - FormulaServiceVol10_GreenChemistry.cs
-        // - FormulaServiceVol10_Neuroscience.cs
-        // - FormulaServiceVol10_TrafficEngineering.cs
-        // - FormulaServiceVol10_NonEquilibriumStatMech.cs
+        // - FormulaService_QuantumComputing.cs
+        // - FormulaService_Nanotechnology.cs
+        // - FormulaService_SoftwareEngineering.cs
+        // - FormulaService_ComplexSystems.cs
+        // - FormulaService_Cosmology.cs
+        // - FormulaService_SystemsBiology.cs
+        // - FormulaService_MathematicalOptimization.cs
+        // - FormulaService_QuantumFieldTheory.cs
+        // - FormulaService_QuantitativeFinance.cs
+        // - FormulaService_ProductionEngineering.cs
+        // - FormulaService_NuclearMedicine.cs
+        // - FormulaService_UnderwaterAcoustics.cs
+        // - FormulaService_Tribology.cs
+        // - FormulaService_Instrumentation.cs
+        // - FormulaService_SurfacePhenomena.cs
+        // - FormulaService_FractureMechanics.cs
+        // - FormulaService_GreenChemistry.cs
+        // - FormulaService_Neuroscience.cs
+        // - FormulaService_TrafficEngineering.cs
+        // - FormulaService_NonEquilibriumStatisticalMechanics.cs
     }
 }

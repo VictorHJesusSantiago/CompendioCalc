@@ -61,7 +61,7 @@
 
 - 2.887 fórmulas/equações distribuídas por domínios e subdomínios.
 - Busca em tempo real, favoritos e histórico de cálculos.
-- Arquitetura modular por serviços (`FormulaServiceVolX_*.cs`).
+- Arquitetura modular por serviços (`FormulaService_*.cs`).
 - Estrutura preparada para crescimento de conteúdo e melhoria de UX.
 
 ---
@@ -195,13 +195,8 @@ CompendioCalc/
 |   |-- CalculadoraService.cs
 |   |-- FormulaService.cs
 |   |-- FormulaService.CompendioAudit.cs
-|   |-- FormulaServiceVol1_Complete.cs
-|   |-- FormulaServiceVol2_*.cs
-|   |-- FormulaServiceVol3_*.cs
-|   |-- FormulaServiceVol4_*.cs
-|   |-- FormulaServiceVol5_*.cs
-|   |-- FormulaServiceVol6_*.cs
-|   `-- FormulaServiceVol7_*.cs
+|   |-- FormulaService_*.cs
+|   `-- FormulaServiceConsolidadas_*.cs
 |
 |-- Components/
 |   |-- App.razor
