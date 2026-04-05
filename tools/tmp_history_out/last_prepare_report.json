@@ -1,0 +1,55 @@
+{
+  "input": "Data/BibliographicBatches/0001_seed.jsonl",
+  "inputDir": null,
+  "glob": "*.jsonl,*.ndjson,*.json,*.csv",
+  "recursive": false,
+  "sourceCount": 1,
+  "sources": [
+    "Data/BibliographicBatches/0001_seed.jsonl"
+  ],
+  "skippedSourceCount": 0,
+  "skippedSources": [],
+  "outputDir": "tools/tmp_history_out",
+  "chunkSize": 10000,
+  "dryRun": false,
+  "ignoreExisting": false,
+  "read": 2,
+  "accepted": 0,
+  "rejected": 2,
+  "perSource": [
+    {
+      "source": "Data/BibliographicBatches/0001_seed.jsonl",
+      "read": 2,
+      "accepted": 0,
+      "rejected": 2,
+      "rejectReasons": {
+        "id-duplicado-ou-vazio": 2
+      }
+    }
+  ],
+  "rejectReasons": {
+    "id-duplicado-ou-vazio": 2
+  },
+  "writtenFiles": [],
+  "checkpoint": {
+    "enabled": false,
+    "resume": false,
+    "write": false,
+    "reset": false,
+    "file": null,
+    "contentHash": false
+  },
+  "history": {
+    "enabled": true,
+    "file": "tools/tmp_history_out/prepare_history.json",
+    "runCount": 2,
+    "totals": {
+      "read": 4,
+      "accepted": 2,
+      "rejected": 2,
+      "skippedSourceCount": 0,
+      "sourceCount": 2,
+      "writtenFileCount": 1
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "input": null,
+  "inputDir": "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in",
+  "glob": "*.jsonl",
+  "recursive": true,
+  "sourceCount": 1,
+  "sources": [
+    "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in/seed1.jsonl"
+  ],
+  "skippedSourceCount": 0,
+  "skippedSources": [],
+  "outputDir": "Data/BibliographicBatches",
+  "chunkSize": 10000,
+  "dryRun": true,
+  "ignoreExisting": false,
+  "read": 2,
+  "accepted": 0,
+  "rejected": 2,
+  "perSource": [
+    {
+      "source": "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in/seed1.jsonl",
+      "read": 2,
+      "accepted": 0,
+      "rejected": 2,
+      "rejectReasons": {
+        "id-duplicado-ou-vazio": 2
+      }
+    }
+  ],
+  "rejectReasons": {
+    "id-duplicado-ou-vazio": 2
+  },
+  "writtenFiles": [],
+  "splitByArea": false,
+  "areaRoot": null,
+  "writtenAreas": {},
+  "checkpoint": {
+    "enabled": true,
+    "resume": true,
+    "write": false,
+    "reset": false,
+    "file": "Data/BibliographicBatches/prepare_checkpoint.json",
+    "contentHash": false
+  },
+  "history": {
+    "enabled": true,
+    "file": "Data/BibliographicBatches/prepare_history.json",
+    "runCount": 6,
+    "totals": {
+      "read": 44,
+      "accepted": 41,
+      "rejected": 3,
+      "skippedSourceCount": 0,
+      "sourceCount": 7,
+      "writtenFileCount": 0
+    }
+  }
+}

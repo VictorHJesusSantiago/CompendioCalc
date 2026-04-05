@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "runCount": 1,
+  "totals": {
+    "read": 2,
+    "accepted": 2,
+    "rejected": 0,
+    "skippedSourceCount": 0,
+    "sourceCount": 1,
+    "writtenFileCount": 0
+  },
+  "runs": [
+    {
+      "runUtc": "2026-03-12T23:14:38.284521+00:00",
+      "dryRun": true,
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0001_seed.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    }
+  ],
+  "lastRunUtc": "2026-03-12T23:14:38.284521+00:00"
+}

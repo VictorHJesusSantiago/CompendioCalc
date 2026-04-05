@@ -1,0 +1,339 @@
+@page "/auditoria-ingestao"
+@inject FormulaService Fs
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<div class="page-section" style="padding:0">
+    <div class="section-header">
+        <div class="section-title">Auditoria de Ingestao</div>
+        <div class="section-sub">Relatorio da ultima execucao do pipeline bibliografico</div>
+    </div>
+
+    @if (_relatorio.InicioUtc == DateTimeOffset.MinValue)
+    {
+        <div class="empty-state" style="margin:16px">
+            <div class="empty-icon">i</div>
+            <div class="empty-title">Nenhuma ingestao executada ainda</div>
+            <div class="empty-sub">Execute o app com lotes em Data/BibliographicBatches para gerar auditoria.</div>
+        </div>
+    }
+    else
+    {
+        <div class="audit-controls">
+            <div class="audit-control-item">
+                <label class="audit-control-label">Filtro de rejeicao</label>
+                <select class="audit-control-input" value="@_filtroMotivo" @onchange="OnFiltroMotivoChanged">
+                    <option value="">Todos os motivos</option>
+                    @foreach (var motivo in _motivosDisponiveis)
+                    {
+                        <option value="@motivo">@motivo</option>
+                    }
+                </select>
+            </div>
+            <div class="audit-control-item">
+                <label class="audit-control-label">Blocos por pagina</label>
+                <select class="audit-control-input" value="@_blocosPorPagina" @onchange="OnBlocosPorPaginaChanged">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="audit-control-item audit-control-item-actions">
+                <button class="calc-btn" @onclick="ExportarRelatorioJson">Exportar JSON</button>
+                <button class="calc-btn secondary" @onclick="Recarregar">Atualizar</button>
+            </div>
+        </div>
+
+        <div class="audit-summary-grid">
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Inicio (UTC)</div>
+                <div class="audit-summary-value">@_relatorio.InicioUtc.ToString("yyyy-MM-dd HH:mm:ss")</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Duracao</div>
+                <div class="audit-summary-value">@FormatarDuracao(_relatorio.FimUtc - _relatorio.InicioUtc)</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Lidos</div>
+                <div class="audit-summary-value">@_relatorio.Lidos</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Aceitos</div>
+                <div class="audit-summary-value">@_relatorio.Aceitos</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Rejeitados</div>
+                <div class="audit-summary-value">@Math.Max(0, _relatorio.Lidos - _relatorio.Aceitos)</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Bloco</div>
+                <div class="audit-summary-value">@_relatorio.TamanhoBloco</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Total Antes</div>
+                <div class="audit-summary-value">@_relatorio.TotalAntes</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Total Depois</div>
+                <div class="audit-summary-value">@_relatorio.TotalDepois</div>
+            </div>
+            <div class="audit-summary-card">
+                <div class="audit-summary-label">Alvo</div>
+                <div class="audit-summary-value">@_relatorio.AlvoTotal</div>
+            </div>
+        </div>
+
+        <div class="audit-section">
+            <div class="audit-section-title">Rejeicoes por motivo</div>
+            @if (RejeicoesFiltradas().Count == 0)
+            {
+                <div class="audit-muted">Sem rejeicoes registradas.</div>
+            }
+            else
+            {
+                <div class="audit-chip-wrap">
+                    @foreach (var item in RejeicoesFiltradas())
+                    {
+                        <div class="audit-chip">@item.Key: @item.Value</div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="audit-section">
+            <div class="audit-section-title">Arquivos processados</div>
+            @if (ArquivosFiltrados().Count == 0)
+            {
+                <div class="audit-muted">Nenhum arquivo foi processado.</div>
+            }
+            else
+            {
+                @foreach (var arquivo in ArquivosFiltrados())
+                {
+                    var blocosFiltrados = BlocosFiltrados(arquivo);
+                    var totalPaginas = TotalPaginas(arquivo, blocosFiltrados.Count);
+                    var paginaAtual = PaginaAtual(arquivo, totalPaginas);
+                    var blocosPagina = blocosFiltrados
+                        .Skip((paginaAtual - 1) * _blocosPorPagina)
+                        .Take(_blocosPorPagina)
+                        .ToList();
+
+                    <div class="audit-file-card">
+                        <div class="audit-file-top">
+                            <div class="audit-file-name">@arquivo.Arquivo</div>
+                            <div class="audit-file-meta">@arquivo.Aceitos/@arquivo.Lidos aceitos · @blocosFiltrados.Count blocos visiveis</div>
+                        </div>
+
+                        @if (RejeicoesFiltradasArquivo(arquivo).Count > 0)
+                        {
+                            <div class="audit-chip-wrap" style="margin-top:8px">
+                                @foreach (var item in RejeicoesFiltradasArquivo(arquivo))
+                                {
+                                    <div class="audit-chip">@item.Key: @item.Value</div>
+                                }
+                            </div>
+                        }
+
+                        @if (blocosFiltrados.Count > 0)
+                        {
+                            <div class="audit-table-wrap">
+                                <table class="audit-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Bloco</th>
+                                            <th>Lidos</th>
+                                            <th>Aceitos</th>
+                                            <th>Rejeitados</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var b in blocosPagina)
+                                        {
+                                            var rejeitados = Math.Max(0, b.Lidos - b.Aceitos);
+                                            <tr>
+                                                <td>@b.Indice</td>
+                                                <td>@b.Lidos</td>
+                                                <td>@b.Aceitos</td>
+                                                <td>@rejeitados</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            @if (totalPaginas > 1)
+                            {
+                                <div class="audit-pagination">
+                                    <button class="calc-btn secondary" disabled="@(paginaAtual <= 1)" @onclick='() => MudarPagina(arquivo.Arquivo, -1, totalPaginas)'>Anterior</button>
+                                    <span class="audit-pagination-label">Pagina @paginaAtual de @totalPaginas</span>
+                                    <button class="calc-btn secondary" disabled="@(paginaAtual >= totalPaginas)" @onclick='() => MudarPagina(arquivo.Arquivo, 1, totalPaginas)'>Proxima</button>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            }
+        </div>
+    }
+
+    <div style="padding:12px 16px 20px">
+        <button class="calc-btn secondary" @onclick='() => Nav.NavigateTo("/")'>Voltar ao inicio</button>
+    </div>
+</div>
+
+@code {
+    FormulaService.BibliographicIngestionReport _relatorio = FormulaService.BibliographicIngestionReport.CriarVazio();
+    string _filtroMotivo = string.Empty;
+    int _blocosPorPagina = 20;
+    List<string> _motivosDisponiveis = [];
+    readonly Dictionary<string, int> _paginasPorArquivo = new(StringComparer.OrdinalIgnoreCase);
+
+    protected override void OnInitialized()
+    {
+        Recarregar();
+    }
+
+    async Task ExportarRelatorioJson()
+    {
+        var json = Fs.ObterUltimoRelatorioIngestaoJson();
+        var nome = $"relatorio-ingestao-{DateTime.UtcNow:yyyyMMdd-HHmmss}.json";
+        await JS.InvokeVoidAsync("compendioExport.downloadJson", nome, json);
+    }
+
+    void Recarregar()
+    {
+        _relatorio = Fs.ObterUltimoRelatorioIngestao();
+        _motivosDisponiveis = _relatorio.RejeicoesPorMotivo
+            .Keys
+            .OrderBy(x => x, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        _paginasPorArquivo.Clear();
+    }
+
+    void OnFiltroMotivoChanged(ChangeEventArgs e)
+    {
+        _filtroMotivo = e.Value?.ToString() ?? string.Empty;
+        _paginasPorArquivo.Clear();
+    }
+
+    void OnBlocosPorPaginaChanged(ChangeEventArgs e)
+    {
+        var txt = e.Value?.ToString() ?? "20";
+        if (!int.TryParse(txt, out var novo))
+        {
+            novo = 20;
+        }
+
+        _blocosPorPagina = Math.Clamp(novo, 1, 200);
+        _paginasPorArquivo.Clear();
+    }
+
+    List<KeyValuePair<string, int>> RejeicoesFiltradas()
+    {
+        IEnumerable<KeyValuePair<string, int>> baseItens = _relatorio.RejeicoesPorMotivo;
+        if (!string.IsNullOrWhiteSpace(_filtroMotivo))
+        {
+            baseItens = baseItens.Where(p => p.Key.Equals(_filtroMotivo, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return baseItens
+            .OrderByDescending(p => p.Value)
+            .ToList();
+    }
+
+    List<FormulaService.BibliographicIngestionFileReport> ArquivosFiltrados()
+    {
+        if (string.IsNullOrWhiteSpace(_filtroMotivo))
+        {
+            return _relatorio.Arquivos;
+        }
+
+        return _relatorio.Arquivos
+            .Where(a => a.RejeicoesPorMotivo.ContainsKey(_filtroMotivo)
+                || a.Blocos.Any(b => b.RejeicoesPorMotivo.ContainsKey(_filtroMotivo)))
+            .ToList();
+    }
+
+    List<KeyValuePair<string, int>> RejeicoesFiltradasArquivo(FormulaService.BibliographicIngestionFileReport arquivo)
+    {
+        IEnumerable<KeyValuePair<string, int>> baseItens = arquivo.RejeicoesPorMotivo;
+        if (!string.IsNullOrWhiteSpace(_filtroMotivo))
+        {
+            baseItens = baseItens.Where(p => p.Key.Equals(_filtroMotivo, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return baseItens.OrderByDescending(p => p.Value).ToList();
+    }
+
+    List<FormulaService.BibliographicIngestionBlockReport> BlocosFiltrados(FormulaService.BibliographicIngestionFileReport arquivo)
+    {
+        if (string.IsNullOrWhiteSpace(_filtroMotivo))
+        {
+            return arquivo.Blocos;
+        }
+
+        return arquivo.Blocos
+            .Where(b => b.RejeicoesPorMotivo.ContainsKey(_filtroMotivo))
+            .ToList();
+    }
+
+    int TotalPaginas(FormulaService.BibliographicIngestionFileReport arquivo, int totalBlocos)
+    {
+        if (totalBlocos <= 0)
+        {
+            return 1;
+        }
+
+        return (int)Math.Ceiling(totalBlocos / (double)_blocosPorPagina);
+    }
+
+    int PaginaAtual(FormulaService.BibliographicIngestionFileReport arquivo, int totalPaginas)
+    {
+        if (!_paginasPorArquivo.TryGetValue(arquivo.Arquivo, out var pagina))
+        {
+            pagina = 1;
+            _paginasPorArquivo[arquivo.Arquivo] = pagina;
+        }
+
+        if (pagina > totalPaginas)
+        {
+            pagina = totalPaginas;
+            _paginasPorArquivo[arquivo.Arquivo] = pagina;
+        }
+
+        if (pagina < 1)
+        {
+            pagina = 1;
+            _paginasPorArquivo[arquivo.Arquivo] = pagina;
+        }
+
+        return pagina;
+    }
+
+    void MudarPagina(string arquivo, int delta, int totalPaginas)
+    {
+        var atual = _paginasPorArquivo.TryGetValue(arquivo, out var pag) ? pag : 1;
+        _paginasPorArquivo[arquivo] = Math.Clamp(atual + delta, 1, Math.Max(1, totalPaginas));
+    }
+
+    private static string FormatarDuracao(TimeSpan duracao)
+    {
+        if (duracao.TotalSeconds < 1)
+        {
+            return "<1s";
+        }
+
+        if (duracao.TotalMinutes < 1)
+        {
+            return $"{duracao.TotalSeconds:F1}s";
+        }
+
+        if (duracao.TotalHours < 1)
+        {
+            return $"{(int)duracao.TotalMinutes}m {duracao.Seconds}s";
+        }
+
+        return $"{(int)duracao.TotalHours}h {duracao.Minutes}m";
+    }
+}

@@ -46,6 +46,16 @@
         }
     </div>
 
+    <div style="padding:10px 16px 0">
+        <div class="quick-card quick-card-cta" @onclick='() => Nav.NavigateTo("/auditoria-ingestao")'>
+            <div class="quick-icon" style="color:var(--teal);background:color-mix(in srgb,var(--teal) 14%,transparent)">◫</div>
+            <div class="quick-info">
+                <div class="quick-name">Auditoria de Ingestao</div>
+                <div class="quick-cat">Ver blocos, aceites e rejeicoes da ultima carga bibliografica</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Featured formulas -->
     <div style="padding:16px 16px 0">
         <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Destaques</div>
@@ -78,7 +88,7 @@
 
     protected override void OnInitialized()
     {
-        _total = Fs.ObterTodas().Count();
+        _total = Fs.ObterTotalFormulas();
         _cats  = Fs.ObterCategorias().Count();
         _favs  = Fs.ObterFavoritas().Count();
         _topCats = Fs.ObterCategorias().OrderByDescending(c => c.TotalFormulas).Take(6).ToList();

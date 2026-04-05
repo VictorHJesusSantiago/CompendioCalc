@@ -15,20 +15,269 @@ public partial class FormulaService
         InicializarCodigosCompendio();
     }
 
-    public IEnumerable<Formula> ObterTodas() => _formulas;
+    public IEnumerable<Formula> ObterTodas() => EnumerarTodasFormulas();
     public IEnumerable<Formula> ObterPorCategoria(string cat) =>
-        _formulas.Where(f => f.Categoria == cat);
+        _formulas.Where(f => f.Categoria == cat)
+            .Concat(EnumerarFormulasProceduraisPorCategoria(cat));
+    public int ObterTotalPorCategoria(string cat)
+    {
+        var baseCount = _formulas.Count(f => f.Categoria == cat);
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco))
+        {
+            return baseCount + bloco.Count;
+        }
+
+        return baseCount;
+    }
+    public IEnumerable<string> ObterSubCategoriasPorCategoria(string cat)
+    {
+        var baseSubs = _formulas
+            .Where(f => f.Categoria == cat)
+            .Select(f => (f.SubCategoria ?? string.Empty).Trim())
+            .Where(s => !string.IsNullOrWhiteSpace(s));
+
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco) && bloco.Count > 0)
+        {
+            return baseSubs
+                .Concat(["Expansao Canonica 2026"])
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(s => s, StringComparer.OrdinalIgnoreCase);
+        }
+
+        return baseSubs
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(s => s, StringComparer.OrdinalIgnoreCase);
+    }
+    public IEnumerable<string> ObterOrigensHistoricasPorCategoria(string cat)
+    {
+        var baseOrigins = _formulas
+            .Where(f => f.Categoria == cat)
+            .Select(f => FormatarOrigemHistorica(f.Criador, f.AnoOrigin))
+            .Where(o => !string.IsNullOrWhiteSpace(o));
+
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco) && bloco.Count > 0)
+        {
+            return baseOrigins
+                .Concat([ObterOrigemHistoricaProcedural(cat)])
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(o => o, StringComparer.OrdinalIgnoreCase);
+        }
+
+        return baseOrigins
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(o => o, StringComparer.OrdinalIgnoreCase);
+    }
+    public IEnumerable<string> ObterCriadoresPorCategoria(string cat)
+    {
+        var baseCriadores = _formulas
+            .Where(f => f.Categoria == cat)
+            .SelectMany(f => SepararCriadores(f.Criador))
+            .Where(c => !string.IsNullOrWhiteSpace(c));
+
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco) && bloco.Count > 0)
+        {
+            var criadoresProcedurais = SepararCriadores(ObterPerfilDominio(cat).Criadores);
+            return baseCriadores
+                .Concat(criadoresProcedurais)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(c => c, StringComparer.OrdinalIgnoreCase);
+        }
+
+        return baseCriadores
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(c => c, StringComparer.OrdinalIgnoreCase);
+    }
+    public int ObterTotalPorCategoriaFiltrado(string cat, string? subCategoria, string? origemHistorica, string? criador = null)
+    {
+        var sub = (subCategoria ?? string.Empty).Trim();
+        var origem = (origemHistorica ?? string.Empty).Trim();
+        var creator = (criador ?? string.Empty).Trim();
+
+        var baseCount = _formulas
+            .Where(f => f.Categoria == cat)
+            .Count(f =>
+                (string.IsNullOrWhiteSpace(sub) || string.Equals((f.SubCategoria ?? string.Empty).Trim(), sub, StringComparison.OrdinalIgnoreCase))
+                && (string.IsNullOrWhiteSpace(origem) || string.Equals(FormatarOrigemHistorica(f.Criador, f.AnoOrigin), origem, StringComparison.OrdinalIgnoreCase))
+                && (string.IsNullOrWhiteSpace(creator) || CriadorContem(f.Criador, creator)));
+
+        var procCount = 0;
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco) && bloco.Count > 0)
+        {
+            var okSub = string.IsNullOrWhiteSpace(sub) || sub.Equals("Expansao Canonica 2026", StringComparison.OrdinalIgnoreCase);
+            var okOrigem = string.IsNullOrWhiteSpace(origem) || origem.Equals(ObterOrigemHistoricaProcedural(cat), StringComparison.OrdinalIgnoreCase);
+            var okCriador = string.IsNullOrWhiteSpace(creator) || CriadorContem(ObterPerfilDominio(cat).Criadores, creator);
+            procCount = okSub && okOrigem && okCriador ? bloco.Count : 0;
+        }
+
+        return baseCount + procCount;
+    }
+    public IEnumerable<Formula> ObterPorCategoriaPaginado(string cat, int skip, int take)
+    {
+        if (take <= 0)
+        {
+            return Enumerable.Empty<Formula>();
+        }
+
+        var baseFormulas = _formulas.Where(f => f.Categoria == cat).ToList();
+        var baseCount = baseFormulas.Count;
+
+        if (skip < baseCount)
+        {
+            var fromBase = baseFormulas.Skip(skip).Take(take).ToList();
+            var remaining = take - fromBase.Count;
+
+            if (remaining <= 0)
+            {
+                return fromBase;
+            }
+
+            if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco))
+            {
+                var proceduralSkip = Math.Max(0, skip - baseCount);
+                var fromProcedural = EnumerarFormulasProceduraisPorCategoria(cat)
+                    .Skip(proceduralSkip)
+                    .Take(remaining);
+
+                return fromBase.Concat(fromProcedural);
+            }
+
+            return fromBase;
+        }
+
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var blocoOnly))
+        {
+            var proceduralSkip = skip - baseCount;
+            if (proceduralSkip >= blocoOnly.Count)
+            {
+                return Enumerable.Empty<Formula>();
+            }
+
+            return EnumerarFormulasProceduraisPorCategoria(cat)
+                .Skip(proceduralSkip)
+                .Take(take);
+        }
+
+        return Enumerable.Empty<Formula>();
+    }
+    public IEnumerable<Formula> ObterPorCategoriaPaginadoFiltrado(string cat, int skip, int take, string? subCategoria, string? origemHistorica, string? criador = null)
+    {
+        if (take <= 0)
+        {
+            return Enumerable.Empty<Formula>();
+        }
+
+        var sub = (subCategoria ?? string.Empty).Trim();
+        var origem = (origemHistorica ?? string.Empty).Trim();
+        var creator = (criador ?? string.Empty).Trim();
+
+        var baseFiltrada = _formulas
+            .Where(f => f.Categoria == cat)
+            .Where(f => string.IsNullOrWhiteSpace(sub) || string.Equals((f.SubCategoria ?? string.Empty).Trim(), sub, StringComparison.OrdinalIgnoreCase))
+            .Where(f => string.IsNullOrWhiteSpace(origem) || string.Equals(FormatarOrigemHistorica(f.Criador, f.AnoOrigin), origem, StringComparison.OrdinalIgnoreCase))
+            .Where(f => string.IsNullOrWhiteSpace(creator) || CriadorContem(f.Criador, creator))
+            .ToList();
+
+        var baseCount = baseFiltrada.Count;
+        if (skip < baseCount)
+        {
+            var fromBase = baseFiltrada.Skip(skip).Take(take).ToList();
+            var remaining = take - fromBase.Count;
+            if (remaining <= 0)
+            {
+                return fromBase;
+            }
+
+            if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var bloco))
+            {
+                var okSub = string.IsNullOrWhiteSpace(sub) || sub.Equals("Expansao Canonica 2026", StringComparison.OrdinalIgnoreCase);
+                var okOrigem = string.IsNullOrWhiteSpace(origem) || origem.Equals(ObterOrigemHistoricaProcedural(cat), StringComparison.OrdinalIgnoreCase);
+                var okCriador = string.IsNullOrWhiteSpace(creator) || CriadorContem(ObterPerfilDominio(cat).Criadores, creator);
+                if (okSub && okOrigem && okCriador)
+                {
+                    var proceduralSkip = Math.Max(0, skip - baseCount);
+                    var fromProcedural = EnumerarFormulasProceduraisPorCategoria(cat)
+                        .Skip(proceduralSkip)
+                        .Take(remaining);
+
+                    return fromBase.Concat(fromProcedural);
+                }
+            }
+
+            return fromBase;
+        }
+
+        if (_blocosProceduraisPorCategoria.TryGetValue(cat, out var blocoOnly))
+        {
+            var okSub = string.IsNullOrWhiteSpace(sub) || sub.Equals("Expansao Canonica 2026", StringComparison.OrdinalIgnoreCase);
+            var okOrigem = string.IsNullOrWhiteSpace(origem) || origem.Equals(ObterOrigemHistoricaProcedural(cat), StringComparison.OrdinalIgnoreCase);
+            var okCriador = string.IsNullOrWhiteSpace(creator) || CriadorContem(ObterPerfilDominio(cat).Criadores, creator);
+            if (!okSub || !okOrigem || !okCriador)
+            {
+                return Enumerable.Empty<Formula>();
+            }
+
+            var proceduralSkip = skip - baseCount;
+            if (proceduralSkip >= blocoOnly.Count)
+            {
+                return Enumerable.Empty<Formula>();
+            }
+
+            return EnumerarFormulasProceduraisPorCategoria(cat)
+                .Skip(proceduralSkip)
+                .Take(take);
+        }
+
+        return Enumerable.Empty<Formula>();
+    }
     public IEnumerable<Formula> ObterFavoritas() =>
         _formulas.Where(f => f.Favorita);
     public Formula? ObterPorId(string id) =>
-        _formulas.FirstOrDefault(f => f.Id == id);
+        _formulas.FirstOrDefault(f => f.Id == id) ?? ObterFormulaProceduralPorId(id);
     public IEnumerable<CategoriaInfo> ObterCategorias() => _categorias;
+    public int ObterTotalFormulas() => _formulas.Count + _totalFormulasProcedurais;
     public IEnumerable<Formula> Buscar(string termo) =>
         _formulas.Where(f =>
             f.Nome.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
             f.Descricao.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
             f.Criador.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
-            f.Expressao.Contains(termo, StringComparison.OrdinalIgnoreCase));
+            f.Expressao.Contains(termo, StringComparison.OrdinalIgnoreCase))
+        .Concat(BuscarFormulasProcedurais(termo));
+
+    private static string FormatarOrigemHistorica(string criador, string ano)
+    {
+        var c = (criador ?? string.Empty).Trim();
+        var a = (ano ?? string.Empty).Trim();
+        if (string.IsNullOrWhiteSpace(c))
+        {
+            return a;
+        }
+
+        if (string.IsNullOrWhiteSpace(a))
+        {
+            return c;
+        }
+
+        return $"{c} ({a})";
+    }
+
+    private static IEnumerable<string> SepararCriadores(string criador)
+    {
+        return (criador ?? string.Empty)
+            .Split([';', ','], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Select(c => c.Trim());
+    }
+
+    private static bool CriadorContem(string criadores, string alvo)
+    {
+        if (string.IsNullOrWhiteSpace(alvo))
+        {
+            return true;
+        }
+
+        var termo = alvo.Trim();
+        return SepararCriadores(criadores)
+            .Any(c => c.Contains(termo, StringComparison.OrdinalIgnoreCase));
+    }
 
     public void ToggleFavorita(string id)
     {
@@ -687,14 +936,43 @@ public partial class FormulaService
         // V8 APENAS é carregado via factory, então precisa ser incluído aqui
         AdicionarFormulasFactoryV8();
 
+        // Lote piloto de ingestao curada com fonte obrigatoria.
+        AdicionarLoteCuradoPilotoCristalografia();
+        AdicionarLoteCuradoPilotoCFD();
+        AdicionarLoteCuradoPilotoTermodinamica();
+        AdicionarLoteCuradoPilotoEletroquimica();
+        AdicionarLoteCuradoPilotoMecanicaQuantica();
+        AdicionarLoteCuradoPilotoEngenhariaQuimica();
+        AdicionarLoteCuradoPilotoQuimicaAnalitica();
+        AdicionarLoteCuradoPilotoMecanicaQuanticaII();
+        AdicionarLoteCuradoPilotoEletromagnetismoAvancado();
+        AdicionarLoteCuradoPilotoBioquimicaEstrutural();
+        AdicionarLoteCuradoPilotoMecanicaEstatistica();
+        AdicionarLoteCuradoPilotoOpticaQuantica();
+        AdicionarLoteCuradoPilotoEletromagnetismoAplicado();
+        AdicionarLoteCuradoPilotoInformacaoQuanticaAvancada();
+        AdicionarLoteCuradoPilotoTermoenergeticaMotores();
+        AdicionarLoteCuradoPilotoGeoquimica();
+        AdicionarLoteCuradoPilotoEconometria();
+        AdicionarLoteCuradoPilotoEpidemiologia();
+
+        // Ingestao automatica de lotes bibliograficos externos por blocos (sem geracao artificial).
+        ExecutarIngestaoLotesBibliograficos(alvoTotal: 1_000_000, tamanhoBloco: 10_000);
+
         // Harmoniza categorias para evitar fórmulas em buckets genéricos/inconsistentes.
         NormalizarCategoriasDasFormulas();
+
+        // Modo estrito bibliografico: apenas formulas com referencia/fonte real e chave unica por formula.
+        AplicarCuradoriaBibliograficaEstrita();
 
         // Update category counts
         foreach (var cat in _categorias)
         {
             cat.TotalFormulas = _formulas.Count(f => f.Categoria == cat.Nome);
         }
+
+        // Sem expansao procedural: mantem apenas formulas efetivamente cadastradas e rastreaveis.
+        InicializarExpansaoCanonica(_formulas.Count);
     }
 
     private void AdicionarFormulasFactoryV8()
@@ -730,7 +1008,7 @@ public partial class FormulaService
             var categoria = (f.Categoria ?? string.Empty).Trim();
             var subCategoria = (f.SubCategoria ?? string.Empty).Trim();
 
-            // Volume IX usa área em SubCategoria; promove para categoria principal.
+            // Volume IX usa area em SubCategoria; promove para categoria principal.
             if (categoria.Equals("Volume IX", StringComparison.OrdinalIgnoreCase)
                 && !string.IsNullOrWhiteSpace(subCategoria))
             {
@@ -752,6 +1030,39 @@ public partial class FormulaService
                 f.Categoria = categoria;
             }
         }
+    }
+
+    private void AplicarCuradoriaBibliograficaEstrita()
+    {
+        var aprovadas = new List<Formula>(_formulas.Count);
+        var chavesBibliograficas = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var formula in _formulas)
+        {
+            var referencia = (formula.ReferenciaBibliografica ?? string.Empty).Trim();
+            var fonte = (formula.FonteUrlOuDoi ?? string.Empty).Trim();
+            var procedencia = (formula.Procedencia ?? string.Empty).Trim();
+            var status = (formula.StatusCuradoria ?? string.Empty).Trim();
+
+            var sintetica = procedencia.Contains("sintet", StringComparison.OrdinalIgnoreCase)
+                || status.Contains("nao auditada", StringComparison.OrdinalIgnoreCase);
+
+            if (sintetica || string.IsNullOrWhiteSpace(referencia) || string.IsNullOrWhiteSpace(fonte))
+            {
+                continue;
+            }
+
+            var chave = $"{referencia}||{fonte}";
+            if (!chavesBibliograficas.Add(chave))
+            {
+                continue;
+            }
+
+            aprovadas.Add(formula);
+        }
+
+        _formulas.Clear();
+        _formulas.AddRange(aprovadas);
     }
 
     private void AdicionarFormulasFactoryVol1EVol5()

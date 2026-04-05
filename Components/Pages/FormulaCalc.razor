@@ -193,6 +193,34 @@
                     <div class="info-text">@_formula.AnoOrigin</div>
                 </div>
             }
+            @if (!string.IsNullOrEmpty(_formula.StatusCuradoria))
+            {
+                <div class="info-section">
+                    <div class="info-label">Status de Curadoria</div>
+                    <div class="info-text">@_formula.StatusCuradoria</div>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_formula.Procedencia))
+            {
+                <div class="info-section">
+                    <div class="info-label">Procedência</div>
+                    <div class="info-text">@_formula.Procedencia</div>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_formula.ReferenciaBibliografica))
+            {
+                <div class="info-section">
+                    <div class="info-label">Referência</div>
+                    <div class="info-text">@_formula.ReferenciaBibliografica</div>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_formula.FonteUrlOuDoi))
+            {
+                <div class="info-section">
+                    <div class="info-label">Fonte</div>
+                    <div class="info-text">@_formula.FonteUrlOuDoi</div>
+                </div>
+            }
             <div class="info-section">
                 <div class="info-label">Área do Conhecimento</div>
                 <div class="info-text">@_formula.Categoria → @_formula.SubCategoria</div>

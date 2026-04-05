@@ -12,6 +12,10 @@ public class Formula
     public string Descricao { get; set; } = "";
     public string Criador { get; set; } = "";
     public string AnoOrigin { get; set; } = "";
+    public string Procedencia { get; set; } = "";
+    public string ReferenciaBibliografica { get; set; } = "";
+    public string FonteUrlOuDoi { get; set; } = "";
+    public string StatusCuradoria { get; set; } = "";
     public string ExemploPratico { get; set; } = "";
     public string Unidades { get; set; } = "";
     public List<Variavel> Variaveis { get; set; } = [];

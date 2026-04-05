@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "runCount": 2,
+  "totals": {
+    "read": 24,
+    "accepted": 24,
+    "rejected": 0,
+    "skippedSourceCount": 0,
+    "sourceCount": 2,
+    "writtenFileCount": 0
+  },
+  "runs": [
+    {
+      "runUtc": "2026-03-12T23:49:04.367761+00:00",
+      "dryRun": true,
+      "read": 12,
+      "accepted": 12,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0005_resposta_lote_004.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:50:18.144703+00:00",
+      "dryRun": true,
+      "read": 12,
+      "accepted": 12,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0006_resposta_lote_005.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    }
+  ],
+  "lastRunUtc": "2026-03-12T23:50:18.144703+00:00"
+}

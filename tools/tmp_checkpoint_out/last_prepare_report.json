@@ -1,0 +1,31 @@
+{
+  "input": null,
+  "inputDir": "tools/tmp_checkpoint_in",
+  "glob": "*.jsonl",
+  "recursive": false,
+  "sourceCount": 1,
+  "sources": [
+    "tools/tmp_checkpoint_in/seed1.jsonl"
+  ],
+  "skippedSourceCount": 1,
+  "skippedSources": [
+    "tools/tmp_checkpoint_in/seed1.jsonl"
+  ],
+  "outputDir": "tools/tmp_checkpoint_out",
+  "chunkSize": 10000,
+  "dryRun": false,
+  "ignoreExisting": false,
+  "read": 0,
+  "accepted": 0,
+  "rejected": 0,
+  "perSource": [],
+  "rejectReasons": {},
+  "writtenFiles": [],
+  "checkpoint": {
+    "enabled": true,
+    "resume": true,
+    "write": true,
+    "reset": false,
+    "file": "tools/tmp_checkpoint_out/prepare_checkpoint.json"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "runCount": 6,
+  "totals": {
+    "read": 44,
+    "accepted": 41,
+    "rejected": 3,
+    "skippedSourceCount": 0,
+    "sourceCount": 7,
+    "writtenFileCount": 0
+  },
+  "runs": [
+    {
+      "runUtc": "2026-03-12T23:26:58.906888+00:00",
+      "dryRun": true,
+      "read": 3,
+      "accepted": 2,
+      "rejected": 1,
+      "sourceCount": 2,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": null,
+      "inputDir": "Data/BibliographicBatches",
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:27:14.066799+00:00",
+      "dryRun": true,
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": null,
+      "inputDir": "Data/BibliographicBatches",
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:37:37.231333+00:00",
+      "dryRun": true,
+      "read": 12,
+      "accepted": 12,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0002_resposta_lote_001.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:38:53.285400+00:00",
+      "dryRun": true,
+      "read": 10,
+      "accepted": 10,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0003_resposta_lote_002.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:45:06.038560+00:00",
+      "dryRun": true,
+      "read": 15,
+      "accepted": 15,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": "Data/BibliographicBatches/0004_resposta_lote_003.jsonl",
+      "inputDir": null,
+      "glob": "*.jsonl,*.ndjson,*.json,*.csv"
+    },
+    {
+      "runUtc": "2026-03-12T23:56:04.781634+00:00",
+      "dryRun": true,
+      "read": 2,
+      "accepted": 0,
+      "rejected": 2,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 0,
+      "input": null,
+      "inputDir": "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in",
+      "glob": "*.jsonl"
+    }
+  ],
+  "lastRunUtc": "2026-03-12T23:56:04.781634+00:00"
+}

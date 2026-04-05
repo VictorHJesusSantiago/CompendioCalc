@@ -1,0 +1,51 @@
+{
+  "input": "Data/BibliographicBatches/0006_resposta_lote_005.jsonl",
+  "inputDir": null,
+  "glob": "*.jsonl,*.ndjson,*.json,*.csv",
+  "recursive": false,
+  "sourceCount": 1,
+  "sources": [
+    "Data/BibliographicBatches/0006_resposta_lote_005.jsonl"
+  ],
+  "skippedSourceCount": 0,
+  "skippedSources": [],
+  "outputDir": "tools/tmp_batches_out",
+  "chunkSize": 10000,
+  "dryRun": true,
+  "ignoreExisting": false,
+  "read": 12,
+  "accepted": 12,
+  "rejected": 0,
+  "perSource": [
+    {
+      "source": "Data/BibliographicBatches/0006_resposta_lote_005.jsonl",
+      "read": 12,
+      "accepted": 12,
+      "rejected": 0,
+      "rejectReasons": {}
+    }
+  ],
+  "rejectReasons": {},
+  "writtenFiles": [],
+  "checkpoint": {
+    "enabled": false,
+    "resume": false,
+    "write": false,
+    "reset": false,
+    "file": null,
+    "contentHash": false
+  },
+  "history": {
+    "enabled": true,
+    "file": "tools/tmp_batches_out/prepare_history.json",
+    "runCount": 2,
+    "totals": {
+      "read": 24,
+      "accepted": 24,
+      "rejected": 0,
+      "skippedSourceCount": 0,
+      "sourceCount": 2,
+      "writtenFileCount": 0
+    }
+  }
+}

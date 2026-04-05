@@ -50,6 +50,10 @@
     <Compile Include="Services\FormulaServiceVol11_Generated.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Data\BibliographicBatches\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <!-- App Icon -->
   <ItemGroup>
     <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#111827" />

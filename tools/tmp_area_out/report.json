@@ -1,0 +1,60 @@
+{
+  "input": "Data/BibliographicBatches/0001_seed.jsonl",
+  "inputDir": null,
+  "glob": "*.jsonl,*.ndjson,*.json,*.csv",
+  "recursive": false,
+  "sourceCount": 1,
+  "sources": [
+    "Data/BibliographicBatches/0001_seed.jsonl"
+  ],
+  "skippedSourceCount": 0,
+  "skippedSources": [],
+  "outputDir": "tools/tmp_area_out",
+  "chunkSize": 10000,
+  "dryRun": false,
+  "ignoreExisting": false,
+  "read": 2,
+  "accepted": 2,
+  "rejected": 0,
+  "perSource": [
+    {
+      "source": "Data/BibliographicBatches/0001_seed.jsonl",
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "rejectReasons": {}
+    }
+  ],
+  "rejectReasons": {},
+  "writtenFiles": [
+    "tools/tmp_area_out/areas/econometria/0001_real_001.jsonl",
+    "tools/tmp_area_out/areas/epidemiologia/0001_real_001.jsonl"
+  ],
+  "splitByArea": true,
+  "areaRoot": "areas",
+  "writtenAreas": {
+    "Econometria": 1,
+    "Epidemiologia": 1
+  },
+  "checkpoint": {
+    "enabled": false,
+    "resume": false,
+    "write": false,
+    "reset": false,
+    "file": null,
+    "contentHash": false
+  },
+  "history": {
+    "enabled": true,
+    "file": "tools/tmp_area_out/prepare_history.json",
+    "runCount": 1,
+    "totals": {
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "skippedSourceCount": 0,
+      "sourceCount": 1,
+      "writtenFileCount": 2
+    }
+  }
+}

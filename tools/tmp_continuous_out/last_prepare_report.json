@@ -1,0 +1,73 @@
+{
+  "mode": "continuous",
+  "watchIntervalSeconds": 1,
+  "watchMaxIterations": 2,
+  "watchIdleExitCount": 0,
+  "iterations": [
+    {
+      "iteration": 1,
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 1,
+      "idle": false
+    },
+    {
+      "iteration": 2,
+      "read": 0,
+      "accepted": 0,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 1,
+      "writtenFileCount": 0,
+      "idle": true
+    }
+  ],
+  "lastReport": {
+    "input": null,
+    "inputDir": "tools/tmp_checkpoint_in",
+    "glob": "*.jsonl",
+    "recursive": false,
+    "sourceCount": 1,
+    "sources": [
+      "tools/tmp_checkpoint_in/seed1.jsonl"
+    ],
+    "skippedSourceCount": 1,
+    "skippedSources": [
+      "tools/tmp_checkpoint_in/seed1.jsonl"
+    ],
+    "outputDir": "tools/tmp_continuous_out",
+    "chunkSize": 10000,
+    "dryRun": false,
+    "ignoreExisting": false,
+    "read": 0,
+    "accepted": 0,
+    "rejected": 0,
+    "perSource": [],
+    "rejectReasons": {},
+    "writtenFiles": [],
+    "checkpoint": {
+      "enabled": true,
+      "resume": true,
+      "write": true,
+      "reset": false,
+      "file": "tools/tmp_continuous_out/prepare_checkpoint.json",
+      "contentHash": true
+    },
+    "history": {
+      "enabled": true,
+      "file": "tools/tmp_continuous_out/prepare_history.json",
+      "runCount": 2,
+      "totals": {
+        "read": 2,
+        "accepted": 2,
+        "rejected": 0,
+        "skippedSourceCount": 1,
+        "sourceCount": 2,
+        "writtenFileCount": 1
+      }
+    }
+  }
+}

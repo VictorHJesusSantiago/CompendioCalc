@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "files": {
+    "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in/seed1.jsonl": {
+      "path": "C:/Users/Victor/Downloads/CompendioCalc/CompendioCalc/tools/tmp_checkpoint_in/seed1.jsonl",
+      "size": 2877,
+      "mtimeNs": 1773352521169136200,
+      "completed": true,
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "processedAtUtc": "2026-03-12T23:02:43.500277+00:00"
+    }
+  }
+}

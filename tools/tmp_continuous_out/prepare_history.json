@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "runCount": 2,
+  "totals": {
+    "read": 2,
+    "accepted": 2,
+    "rejected": 0,
+    "skippedSourceCount": 1,
+    "sourceCount": 2,
+    "writtenFileCount": 1
+  },
+  "runs": [
+    {
+      "runUtc": "2026-03-12T23:14:54.087936+00:00",
+      "dryRun": false,
+      "read": 2,
+      "accepted": 2,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 0,
+      "writtenFileCount": 1,
+      "input": null,
+      "inputDir": "tools/tmp_checkpoint_in",
+      "glob": "*.jsonl"
+    },
+    {
+      "runUtc": "2026-03-12T23:14:55.111583+00:00",
+      "dryRun": false,
+      "read": 0,
+      "accepted": 0,
+      "rejected": 0,
+      "sourceCount": 1,
+      "skippedSourceCount": 1,
+      "writtenFileCount": 0,
+      "input": null,
+      "inputDir": "tools/tmp_checkpoint_in",
+      "glob": "*.jsonl"
+    }
+  ],
+  "lastRunUtc": "2026-03-12T23:14:55.111583+00:00"
+}
