@@ -1,0 +1,67 @@
+@page "/numerico-avancado"
+@inject AdvancedNumericsService Numerics
+
+<div class="section-header">
+    <div class="section-title">Numérico avançado</div>
+    <div class="section-sub">Exatidão, distribuições, funções especiais e otimização offline</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Racional ou decimal A</label>
+    <input class="calc-input" @bind="_a" placeholder="1/3" />
+    <label class="input-label">Racional ou decimal B</label>
+    <input class="calc-input" @bind="_b" placeholder="0.2" />
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="calc-btn" @onclick='() => Rational("+")'>A + B</button>
+        <button class="calc-btn" @onclick='() => Rational("-")'>A − B</button>
+        <button class="calc-btn" @onclick='() => Rational("*")'>A × B</button>
+        <button class="calc-btn" @onclick='() => Rational("/")'>A ÷ B</button>
+    </div>
+    <label class="input-label">Valor real</label>
+    <input class="calc-input" @bind="_valueText" inputmode="decimal" />
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="calc-btn" @onclick="Gamma">Gamma</button>
+        <button class="calc-btn" @onclick="NormalCdf">Normal CDF</button>
+        <button class="calc-btn" @onclick="Bessel">Bessel J₀</button>
+        <button class="calc-btn" @onclick="Optimize">Minimizar (x−3)²</button>
+    </div>
+    @if (!string.IsNullOrWhiteSpace(_result))
+    {
+        <div class="result-card" aria-live="polite">
+            <div class="result-label">@_method</div>
+            <div class="result-value">@_result</div>
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(_error)) { <div class="error-msg">@_error</div> }
+</div>
+
+@code {
+    string _a = "1/3";
+    string _b = "0.2";
+    string _valueText = "5";
+    string _method = "";
+    string _result = "";
+    string _error = "";
+
+    double Value() => double.Parse(_valueText.Replace(',', '.'),
+        System.Globalization.CultureInfo.InvariantCulture);
+    void Execute(string method, Func<string> operation)
+    {
+        try { _error = ""; _method = method; _result = operation(); }
+        catch (Exception ex) { _result = ""; _error = ex.Message; }
+    }
+    void Rational(string operation) => Execute("Aritmética racional exata", () =>
+    {
+        var a = ExactRational.Parse(_a);
+        var b = ExactRational.Parse(_b);
+        return (operation switch { "+" => a + b, "-" => a - b, "*" => a * b, "/" => a / b, _ => a }).ToString();
+    });
+    void Gamma() => Execute("Função gama", () => Numerics.Gamma(Value()).ToString("G15"));
+    void NormalCdf() => Execute("Distribuição normal acumulada", () => Numerics.NormalCdf(Value()).ToString("G15"));
+    void Bessel() => Execute("Função de Bessel J₀", () => Numerics.BesselJ(0, Value()).ToString("G15"));
+    void Optimize() => Execute("Seção áurea", () =>
+    {
+        var result = Numerics.GoldenSection(x => Math.Pow(x - 3, 2), -100, 100);
+        return $"x={result.Point[0]:G15}; f(x)={result.Value:G15}; {result.Iterations} iterações";
+    });
+}

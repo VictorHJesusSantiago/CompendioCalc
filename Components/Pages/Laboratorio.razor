@@ -1,0 +1,79 @@
+@page "/laboratorio"
+@inject OfflineMathService MathEngine
+
+<div class="section-header">
+    <div class="section-title">Laboratório matemático</div>
+    <div class="section-sub">Expressões, raízes e integrais sem executar código</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label" for="math-expression">Expressão em x</label>
+    <input id="math-expression" class="calc-input" @bind="_expression"
+           placeholder="Ex.: sin(x)^2 + cos(x)^2" />
+
+    <label class="input-label" for="math-x">Valor de x</label>
+    <input id="math-x" class="calc-input" inputmode="decimal" @bind="_xText" />
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="calc-btn" @onclick="Evaluate">Calcular</button>
+        <button class="calc-btn" @onclick="Root">Encontrar raiz</button>
+        <button class="calc-btn" @onclick="Integrate">Integrar de 0 a x</button>
+    </div>
+
+    @if (_result is not null)
+    {
+        <div class="result-card" aria-live="polite">
+            <div class="result-label">@_method</div>
+            <div class="result-value">@_result.Value.ToString("G15")</div>
+            @if (_result.Iterations > 0)
+            {
+                <div class="input-desc">Iterações/subdivisões: @_result.Iterations · Resíduo: @_result.Residual.ToString("G6")</div>
+            }
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(_error))
+    {
+        <div class="error-msg" role="alert">@_error</div>
+    }
+</div>
+
+@code {
+    string _expression = "sin(x)^2 + cos(x)^2";
+    string _xText = "1";
+    string _method = "";
+    string _error = "";
+    NumericResult? _result;
+
+    double ParseX() => double.Parse(_xText.Replace(',', '.'),
+        System.Globalization.CultureInfo.InvariantCulture);
+    double Function(double x) => MathEngine.Evaluate(_expression,
+        new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase) { ["x"] = x });
+
+    void Run(Func<NumericResult> action, string method)
+    {
+        try
+        {
+            _error = "";
+            _method = method;
+            _result = action();
+            if (!_result.Success) _error = _result.Error;
+        }
+        catch (Exception ex)
+        {
+            _result = null;
+            _error = ex.Message;
+        }
+    }
+
+    void Evaluate() => Run(() => new NumericResult(true, Function(ParseX()), "Avaliação"), "Avaliação");
+    void Root()
+    {
+        var limit = Math.Max(1, Math.Abs(ParseX()));
+        Run(() => MathEngine.FindRootBisection(Function, -limit, limit), "Raiz por bisseção");
+    }
+    void Integrate()
+    {
+        var x = ParseX();
+        Run(() => MathEngine.IntegrateSimpson(Function, 0, x), "Integral por Simpson");
+    }
+}
