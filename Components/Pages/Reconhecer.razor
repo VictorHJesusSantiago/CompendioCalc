@@ -1,0 +1,54 @@
+@page "/reconhecer"
+@inject MathematicalRecognitionService Recognition
+@inject OfflineMathService MathEngine
+
+<div class="section-header">
+    <div class="section-title">Reconhecimento matemático</div>
+    <div class="section-sub">Correção local de texto obtido por OCR, câmera ou colagem</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Texto reconhecido</label>
+    <textarea class="calc-input" rows="5" @bind="_raw" placeholder="Cole aqui o texto do OCR"></textarea>
+    <button class="calc-btn" @onclick="Normalize">Normalizar expressão</button>
+    <button class="calc-btn" @onclick="ParseTable">Interpretar tabela</button>
+    @if (_result is not null)
+    {
+        <div class="result-card">
+            <div class="result-label">Expressão normalizada</div>
+            <div class="result-value">@_result.Normalized</div>
+            <div class="input-desc">Confiança: @(_result.Confidence * 100).ToString("0")%</div>
+            @foreach (var correction in _result.Corrections) { <div class="input-desc">@correction</div> }
+            @if (_result.RequiresReview) { <div class="error-msg">Revise manualmente antes de calcular.</div> }
+        </div>
+    }
+    @if (_table is not null)
+    {
+        <div style="overflow:auto">
+            <table class="var-table">
+                <thead><tr>@foreach (var header in _table.Headers) { <th>@header</th> }</tr></thead>
+                <tbody>@foreach (var row in _table.Rows) { <tr>@foreach (var cell in row) { <td>@cell</td> }</tr> }</tbody>
+            </table>
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(_error)) { <div class="error-msg">@_error</div> }
+</div>
+
+@code {
+    string _raw = "x² + 2×3";
+    string _error = "";
+    RecognitionResult? _result;
+    RecognizedTable? _table;
+    void Normalize()
+    {
+        _error = ""; _table = null;
+        _result = Recognition.NormalizeExpression(_raw);
+        var validation = MathEngine.ValidateExpression(_result.Normalized.Replace("x", "1"));
+        if (!validation.Valid) _error = "A expressão ainda requer revisão: " + validation.Error;
+    }
+    void ParseTable()
+    {
+        try { _error = ""; _result = null; _table = Recognition.ParseTable(_raw); }
+        catch (Exception ex) { _table = null; _error = ex.Message; }
+    }
+}

@@ -1,0 +1,65 @@
+@page "/simbolico"
+@inject SymbolicMathService Symbolic
+@inject OfflineChartService Charts
+@inject OfflineMathService Numeric
+@inject IJSRuntime JS
+
+<div class="section-header">
+    <div class="section-title">Álgebra e gráficos</div>
+    <div class="section-sub">Polinômios simbólicos e visualização SVG totalmente offline</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Expressão polinomial em x</label>
+    <input class="calc-input" @bind="_expression" placeholder="Ex.: (x+1)*(x-1)" />
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="calc-btn" @onclick="Simplify">Simplificar</button>
+        <button class="calc-btn" @onclick="Differentiate">Derivar</button>
+        <button class="calc-btn" @onclick="Integrate">Integrar</button>
+        <button class="calc-btn" @onclick="Solve">Resolver = 0</button>
+        <button class="calc-btn" @onclick="Plot">Plotar</button>
+    </div>
+    @if (_symbolic is not null)
+    {
+        <div class="result-card" aria-live="polite">
+            <div class="result-label">Resultado simbólico</div>
+            <div class="result-value">@_symbolic.Expression</div>
+            @foreach (var step in _symbolic.Steps) { <div class="input-desc">@step</div> }
+            @if (!_symbolic.Success) { <div class="error-msg">@_symbolic.Limitation</div> }
+        </div>
+    }
+    @if (_solution is not null)
+    {
+        <div class="result-card">
+            <div class="result-label">Soluções reais</div>
+            <div class="result-value">@string.Join(", ", _solution.Roots.Select(value => value.ToString("G15")))</div>
+            <div class="input-desc">@_solution.Explanation</div>
+            @if (!string.IsNullOrWhiteSpace(_solution.Limitation)) { <div class="error-msg">@_solution.Limitation</div> }
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(_svg))
+    {
+        <div style="overflow:auto;margin-top:12px">@((MarkupString)_svg)</div>
+        <button class="calc-btn" @onclick="ExportSvg">Exportar SVG</button>
+    }
+</div>
+
+@code {
+    string _expression = "(x+1)*(x-1)";
+    string _svg = "";
+    SymbolicResult? _symbolic;
+    EquationSolution? _solution;
+
+    void Reset() { _symbolic = null; _solution = null; }
+    void Simplify() { Reset(); _symbolic = Symbolic.Simplify(_expression); }
+    void Differentiate() { Reset(); _symbolic = Symbolic.Differentiate(_expression); }
+    void Integrate() { Reset(); _symbolic = Symbolic.Integrate(_expression); }
+    void Solve() { Reset(); _solution = Symbolic.Solve(_expression); }
+    void Plot()
+    {
+        Reset();
+        _svg = Charts.FunctionPlot([("f(x)", "#38bdf8", x => Symbolic.Evaluate(_expression, x))], -10, 10);
+    }
+    async Task ExportSvg() => await JS.InvokeVoidAsync("compendioExport.downloadText",
+        "grafico-compendiocalc.svg", _svg, "image/svg+xml");
+}

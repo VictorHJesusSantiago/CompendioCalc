@@ -1,0 +1,85 @@
+@page "/unidades"
+@inject UnitConversionService Units
+
+<div class="section-header">
+    <div class="section-title">Conversor de unidades</div>
+    <div class="section-sub">Conversão dimensional totalmente offline</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label" for="conversion-value">Valor</label>
+    <input id="conversion-value" class="calc-input" inputmode="decimal" @bind="_inputText" />
+
+    <label class="input-label" for="conversion-from">De</label>
+    <select id="conversion-from" class="calc-input" @bind="_from">
+        @foreach (var unit in Units.Units)
+        {
+            <option value="@unit.Symbol">@unit.Symbol — @unit.Name (@unit.Dimension)</option>
+        }
+    </select>
+
+    <label class="input-label" for="conversion-to">Para</label>
+    <select id="conversion-to" class="calc-input" @bind="_to">
+        @foreach (var unit in CompatibleUnits)
+        {
+            <option value="@unit.Symbol">@unit.Symbol — @unit.Name</option>
+        }
+    </select>
+
+    <button class="calc-btn" @onclick="Convert">Converter</button>
+
+    @if (_result is not null)
+    {
+        <div class="result-card" aria-live="polite">
+            <div class="result-label">Resultado</div>
+            <div class="result-value">@_result.Output.ToString("G15") <span class="result-unit">@_result.To</span></div>
+            @foreach (var step in _result.Steps)
+            {
+                <div class="input-desc">@step</div>
+            }
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(_error))
+    {
+        <div class="error-msg" role="alert">@_error</div>
+    }
+</div>
+
+@code {
+    string _inputText = "1";
+    string _from = "m";
+    string _to = "km";
+    string _error = "";
+    ConversionResult? _result;
+
+    IEnumerable<UnitDefinition> CompatibleUnits
+    {
+        get
+        {
+            var selected = Units.Units.FirstOrDefault(unit => unit.Symbol == _from);
+            return selected is null ? Units.Units : Units.Units.Where(unit => unit.Dimension == selected.Dimension);
+        }
+    }
+
+    void Convert()
+    {
+        _error = "";
+        _result = null;
+        try
+        {
+            var normalized = _inputText.Trim().Replace(',', '.');
+            if (!double.TryParse(normalized, System.Globalization.NumberStyles.Float,
+                    System.Globalization.CultureInfo.InvariantCulture, out var value))
+                throw new FormatException("Informe um número válido.");
+            if (!Units.AreCompatible(_from, _to))
+            {
+                _to = CompatibleUnits.First().Symbol;
+            }
+            _result = Units.Convert(value, _from, _to);
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+    }
+}
