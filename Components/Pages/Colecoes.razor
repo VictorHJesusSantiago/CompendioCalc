@@ -1,0 +1,61 @@
+@page "/colecoes"
+@implements IDisposable
+@inject PersonalDataService PersonalData
+@inject FormulaService Formulas
+@inject NavigationManager Nav
+
+<div class="section-header">
+    <div class="section-title">Coleções e estudos</div>
+    <div class="section-sub">Organização local, sem conta e sem internet</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Nova coleção</label>
+    <input class="calc-input" @bind="_name" placeholder="Ex.: Prova de Termodinâmica" />
+    <input class="calc-input" @bind="_description" placeholder="Descrição opcional" />
+    <button class="calc-btn" @onclick="Create">Criar coleção</button>
+</div>
+
+@if (Data.Collections.Count == 0)
+{
+    <div class="empty-state"><div class="empty-icon">▤</div><div class="empty-title">Nenhuma coleção</div></div>
+}
+else
+{
+    <div class="formula-list">
+        @foreach (var collection in Data.Collections.OrderByDescending(item => item.Pinned).ThenBy(item => item.Name))
+        {
+            <div class="formula-card">
+                <div class="formula-name">@collection.Name</div>
+                <div class="formula-author">@collection.Description</div>
+                <div class="formula-tag">@collection.FormulaIds.Count fórmula(s)</div>
+                @foreach (var formulaId in collection.FormulaIds.Take(10))
+                {
+                    var formula = Formulas.ObterPorId(formulaId);
+                    if (formula is not null)
+                    {
+                        <button class="info-tab" @onclick='() => Nav.NavigateTo($"/formula/{formula.Id}")'>@formula.Nome</button>
+                    }
+                }
+                <button class="formula-fav-btn" @onclick="() => Delete(collection.Id)">Excluir coleção</button>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    string _name = "";
+    string _description = "";
+    PersonalDataDocument Data => PersonalData.Snapshot;
+
+    protected override void OnInitialized() => PersonalData.Changed += Refresh;
+    void Refresh() => InvokeAsync(StateHasChanged);
+    void Create()
+    {
+        if (string.IsNullOrWhiteSpace(_name)) return;
+        PersonalData.CreateCollection(_name, _description);
+        _name = _description = "";
+    }
+    void Delete(string id) => PersonalData.DeleteCollection(id);
+    public void Dispose() => PersonalData.Changed -= Refresh;
+}

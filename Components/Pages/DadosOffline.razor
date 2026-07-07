@@ -1,0 +1,55 @@
+@page "/dados-offline"
+@inject OfflineBackupService Backup
+@inject PersonalDataService PersonalData
+@inject IJSRuntime JS
+
+<div class="section-header">
+    <div class="section-title">Dados offline</div>
+    <div class="section-sub">Backup, restauração e portabilidade local</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Senha opcional do backup</label>
+    <input class="calc-input" type="password" @bind="_password" autocomplete="new-password" />
+    <button class="calc-btn" @onclick="ExportBackup">Exportar backup</button>
+    <button class="calc-btn" @onclick="ExportPersonalJson">Exportar dados pessoais JSON</button>
+    <label class="input-label" style="margin-top:12px">Restaurar backup</label>
+    <InputFile OnChange="RestoreBackup" accept=".ccbackup" />
+    <label><input type="checkbox" @bind="_merge" /> Mesclar com dados atuais</label>
+    @if (!string.IsNullOrWhiteSpace(_status))
+    {
+        <div class="result-card" aria-live="polite">@_status</div>
+    }
+</div>
+
+@code {
+    string _password = "";
+    string _status = "";
+    bool _merge = true;
+
+    async Task ExportBackup()
+    {
+        var bytes = Backup.Create(string.IsNullOrEmpty(_password) ? null : _password);
+        await JS.InvokeVoidAsync("compendioExport.downloadBase64", $"compendiocalc-{DateTime.Now:yyyyMMdd-HHmm}.ccbackup",
+            Convert.ToBase64String(bytes), "application/octet-stream");
+        _status = "Backup criado e verificado.";
+    }
+
+    async Task ExportPersonalJson() =>
+        await JS.InvokeVoidAsync("compendioExport.downloadJson", "compendiocalc-dados-pessoais.json", PersonalData.ExportJson());
+
+    async Task RestoreBackup(InputFileChangeEventArgs args)
+    {
+        try
+        {
+            await using var stream = args.File.OpenReadStream(128L * 1024 * 1024);
+            using var memory = new MemoryStream();
+            await stream.CopyToAsync(memory);
+            var preview = Backup.Preview(memory.ToArray(), string.IsNullOrEmpty(_password) ? null : _password);
+            Backup.Restore(memory.ToArray(), string.IsNullOrEmpty(_password) ? null : _password, _merge);
+            PersonalData.Load();
+            _status = $"Backup de {preview.Manifest.CreatedAt.LocalDateTime:g} restaurado: {string.Join(", ", preview.Files)}.";
+        }
+        catch (Exception ex) { _status = "Falha: " + ex.Message; }
+    }
+}

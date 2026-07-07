@@ -1,0 +1,36 @@
+@page "/diagnostico"
+@inject OfflineDiagnosticService Diagnostics
+@inject IJSRuntime JS
+
+<div class="section-header">
+    <div class="section-title">Diagnóstico offline</div>
+    <div class="section-sub">Integridade, armazenamento e testes rápidos locais</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <button class="calc-btn" @onclick="Run">Executar diagnóstico</button>
+    @if (_report is not null)
+    {
+        <div class="input-desc">Catálogo: @_report.CatalogHash</div>
+        <div class="input-desc">Dados: @_report.AppDataBytes bytes</div>
+        @foreach (var check in _report.Checks)
+        {
+            <div class="result-card">
+                <strong>@check.Status — @check.Name</strong>
+                <div class="input-desc">@check.Detail</div>
+            </div>
+        }
+        <button class="calc-btn" @onclick="Export">Exportar diagnóstico</button>
+    }
+</div>
+
+@code {
+    DiagnosticReport? _report;
+    void Run() => _report = Diagnostics.Run();
+    async Task Export()
+    {
+        if (_report is null) return;
+        await JS.InvokeVoidAsync("compendioExport.downloadText", "compendiocalc-diagnostico.txt",
+            Diagnostics.ToText(_report), "text/plain;charset=utf-8");
+    }
+}
