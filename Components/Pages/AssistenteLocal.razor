@@ -1,0 +1,48 @@
+@page "/assistente-local"
+@inject LocalAssistantService Assistant
+@inject LocalSpeechService Speech
+@inject NavigationManager Nav
+
+<div class="section-header">
+    <div class="section-title">Assistente local</div>
+    <div class="section-sub">Respostas fundamentadas exclusivamente no catálogo instalado</div>
+</div>
+
+<div class="calc-card" style="margin:16px">
+    <label class="input-label">Problema ou conceito</label>
+    <textarea class="calc-input" rows="4" @bind="_question"
+              placeholder="Ex.: Como calcular energia cinética?"></textarea>
+    <button class="calc-btn" @onclick="Ask">Consultar catálogo</button>
+    @if (_answer is not null)
+    {
+        <div class="result-card" aria-live="polite">
+            <div class="result-label">Resposta — @_answer.Engine</div>
+            <p>@_answer.Text</p>
+            @if (_answer.RequiresHumanReview)
+            {
+                <div class="error-msg">A fonte possui baixa pontuação de confiança; revise antes do uso profissional.</div>
+            }
+            <button class="info-tab" @onclick="SpeakAnswer">Ouvir resposta</button>
+        </div>
+        <div class="formula-list">
+            @foreach (var citation in _answer.Citations)
+            {
+                <div class="formula-card" @onclick='() => Nav.NavigateTo($"/formula/{citation.FormulaId}")'>
+                    <div class="formula-name">@citation.FormulaName</div>
+                    <div class="formula-expr">@citation.Expression</div>
+                    <div class="input-desc">@citation.Reference</div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    string _question = "";
+    AssistantAnswer? _answer;
+    void Ask() => _answer = Assistant.Ask(_question);
+    async Task SpeakAnswer()
+    {
+        if (_answer is not null) await Speech.SpeakAsync(_answer.Text);
+    }
+}
