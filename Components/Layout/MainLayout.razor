@@ -13,6 +13,24 @@
             <div class="top-bar-sub">Volume I · Equações</div>
         </div>
         <div class="top-bar-actions">
+            <button class="accessibility-btn" @onclick='() => Go("/numerico-avancado")'
+                    aria-label="Abrir laboratório numérico avançado" title="Numérico avançado">ℂ</button>
+            <button class="accessibility-btn" @onclick='() => Go("/assistente-local")'
+                    aria-label="Abrir assistente local" title="Assistente local">◈</button>
+            <button class="accessibility-btn" @onclick='() => Go("/reconhecer")'
+                    aria-label="Abrir reconhecimento matemático" title="Reconhecimento">▣</button>
+            <button class="accessibility-btn" @onclick='() => Go("/diagnostico")'
+                    aria-label="Abrir diagnóstico" title="Diagnóstico">⚙</button>
+            <button class="accessibility-btn" @onclick='() => Go("/simbolico")'
+                    aria-label="Abrir álgebra simbólica e gráficos" title="Álgebra e gráficos">∫</button>
+            <button class="accessibility-btn" @onclick='() => Go("/colecoes")'
+                    aria-label="Abrir coleções" title="Coleções">▤</button>
+            <button class="accessibility-btn" @onclick='() => Go("/dados-offline")'
+                    aria-label="Abrir dados offline" title="Backup offline">⛁</button>
+            <button class="accessibility-btn" @onclick='() => Go("/laboratorio")'
+                    aria-label="Abrir laboratório matemático" title="Laboratório matemático">ƒ</button>
+            <button class="accessibility-btn" @onclick='() => Go("/unidades")'
+                    aria-label="Abrir conversor de unidades" title="Conversor de unidades">⇄</button>
             <button class="accessibility-btn" @onclick='() => Go("/acessibilidade")' 
                     aria-label="Abrir configurações de acessibilidade" 
                     title="Acessibilidade (Alt+Shift+A)">
