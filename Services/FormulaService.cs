@@ -1,5 +1,6 @@
 using CompendioCalc.Models;
 using System.Reflection;
+using System.Text.Json;
 
 namespace CompendioCalc.Services;
 
@@ -7,12 +8,14 @@ public partial class FormulaService
 {
     private readonly List<Formula> _formulas = [];
     private readonly List<CategoriaInfo> _categorias = [];
+    private readonly HashSet<string> _favoriteIds = new(StringComparer.OrdinalIgnoreCase);
 
     public FormulaService()
     {
         InicializarCategorias();
         InicializarFormulas();
         InicializarCodigosCompendio();
+        LoadFavorites();
     }
 
     public IEnumerable<Formula> ObterTodas() => EnumerarTodasFormulas();
@@ -230,9 +233,14 @@ public partial class FormulaService
         return Enumerable.Empty<Formula>();
     }
     public IEnumerable<Formula> ObterFavoritas() =>
-        _formulas.Where(f => f.Favorita);
-    public Formula? ObterPorId(string id) =>
-        _formulas.FirstOrDefault(f => f.Id == id) ?? ObterFormulaProceduralPorId(id);
+        _favoriteIds.Select(ObterPorId).Where(f => f is not null).Cast<Formula>();
+    public Formula? ObterPorId(string id)
+    {
+        var formula = _formulas.FirstOrDefault(f => f.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+                      ?? ObterFormulaProceduralPorId(id);
+        if (formula is not null) formula.Favorita = _favoriteIds.Contains(formula.Id);
+        return formula;
+    }
     public IEnumerable<CategoriaInfo> ObterCategorias() => _categorias;
     public int ObterTotalFormulas() => _formulas.Count + _totalFormulasProcedurais;
     public IEnumerable<Formula> Buscar(string termo) =>
@@ -282,7 +290,34 @@ public partial class FormulaService
     public void ToggleFavorita(string id)
     {
         var f = ObterPorId(id);
-        if (f != null) f.Favorita = !f.Favorita;
+        if (f is null) return;
+        if (!_favoriteIds.Add(f.Id)) _favoriteIds.Remove(f.Id);
+        f.Favorita = _favoriteIds.Contains(f.Id);
+        SaveFavorites();
+    }
+
+    private void LoadFavorites()
+    {
+        try
+        {
+            var path = Path.Combine(FileSystem.AppDataDirectory, "favoritos.json");
+            if (!File.Exists(path)) return;
+            var ids = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path)) ?? [];
+            foreach (var id in ids.Where(id => !string.IsNullOrWhiteSpace(id))) _favoriteIds.Add(id);
+            foreach (var formula in _formulas) formula.Favorita = _favoriteIds.Contains(formula.Id);
+        }
+        catch
+        {
+            _favoriteIds.Clear();
+        }
+    }
+
+    private void SaveFavorites()
+    {
+        var path = Path.Combine(FileSystem.AppDataDirectory, "favoritos.json");
+        var temporary = path + ".tmp";
+        File.WriteAllText(temporary, JsonSerializer.Serialize(_favoriteIds.OrderBy(id => id)));
+        File.Move(temporary, path, true);
     }
 
     private void InicializarCategorias()
@@ -971,8 +1006,9 @@ public partial class FormulaService
             cat.TotalFormulas = _formulas.Count(f => f.Categoria == cat.Nome);
         }
 
-        // Restabelece a expansao canonica para o total historico esperado do compendio.
-        InicializarExpansaoCanonica(6620);
+        // Expansao canonica (fórmulas sintéticas de preenchimento) desativada: o catálogo deve
+        // conter apenas fórmulas reais e curadas. Ver FormulaService.MillionCanonical.cs.
+        InicializarExpansaoCanonica(0);
     }
 
     private void AdicionarFormulasFactoryV8()
@@ -1015,6 +1051,14 @@ public partial class FormulaService
                 categoria = subCategoria;
             }
 
+            // Remove prefixos de volume de importacao (ex.: "Vol2: ", "Vol3: ") que fragmentam
+            // a mesma area em categorias distintas sem motivo real.
+            var prefixoVolume = System.Text.RegularExpressions.Regex.Match(categoria, @"^Vol\d+:\s*");
+            if (prefixoVolume.Success)
+            {
+                categoria = categoria[prefixoVolume.Length..].Trim();
+            }
+
             if (aliases.TryGetValue(categoria, out var canonica))
             {
                 categoria = canonica;
@@ -1034,8 +1078,14 @@ public partial class FormulaService
 
     private void AplicarCuradoriaBibliograficaEstrita()
     {
+        // Remove apenas fórmulas sintéticas/procedurais (preenchimento artificial) e duplicatas
+        // bibliográficas reais. NÃO exige mais referência/fonte obrigatórias: milhares de fórmulas
+        // clássicas legítimas (Bhaskara, PA/PG, trigonometria básica etc.) não têm esses campos
+        // preenchidos mas são cientificamente corretas — descartá-las por metadado ausente
+        // esvaziava o catálogo sem motivo real.
         var aprovadas = new List<Formula>(_formulas.Count);
         var chavesBibliograficas = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var idsVistos = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var formula in _formulas)
         {
@@ -1047,15 +1097,26 @@ public partial class FormulaService
             var sintetica = procedencia.Contains("sintet", StringComparison.OrdinalIgnoreCase)
                 || status.Contains("nao auditada", StringComparison.OrdinalIgnoreCase);
 
-            if (sintetica || string.IsNullOrWhiteSpace(referencia) || string.IsNullOrWhiteSpace(fonte))
+            if (sintetica)
             {
                 continue;
             }
 
-            var chave = $"{referencia}||{fonte}";
-            if (!chavesBibliograficas.Add(chave))
+            if (!string.IsNullOrWhiteSpace(referencia) && !string.IsNullOrWhiteSpace(fonte))
             {
-                continue;
+                var chave = $"{referencia}||{fonte}";
+                if (!chavesBibliograficas.Add(chave))
+                {
+                    continue;
+                }
+            }
+            else
+            {
+                var id = (formula.Id ?? string.Empty).Trim();
+                if (string.IsNullOrWhiteSpace(id) || !idsVistos.Add(id))
+                {
+                    continue;
+                }
             }
 
             aprovadas.Add(formula);
