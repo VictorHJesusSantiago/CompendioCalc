@@ -1,0 +1,77 @@
+@page "/estudar/{FormulaId}"
+@inject FormulaService Formulas
+@inject EducationService Education
+
+<div class="section-header">
+    <div class="section-title">Modo de estudo</div>
+    <div class="section-sub">Exercícios reproduzíveis e repetição espaçada local</div>
+</div>
+
+@if (_formula is null)
+{
+    <div class="empty-state"><div class="empty-title">Fórmula não encontrada</div></div>
+}
+else
+{
+    <div class="calc-card" style="margin:16px">
+        <div class="formula-name">@_formula.Nome</div>
+        <button class="calc-btn" @onclick="Generate">Gerar exercício</button>
+        @if (_exercise is not null)
+        {
+            <p>@_exercise.Prompt</p>
+            @foreach (var input in _exercise.Inputs)
+            {
+                <div class="input-desc">@input.Key = @input.Value.ToString("G8")</div>
+            }
+            <input class="calc-input" @bind="_answerText" inputmode="decimal" placeholder="Sua resposta" />
+            <button class="calc-btn" @onclick="Check">Conferir</button>
+            @if (!string.IsNullOrWhiteSpace(_feedback)) { <div class="result-card">@_feedback</div> }
+            @if (_showSolution)
+            {
+                @foreach (var step in _exercise.SolutionSteps) { <div class="input-desc">@step</div> }
+            }
+        }
+        <div style="margin-top:16px">
+            <div class="input-label">Qualidade da revisão</div>
+            @for (var quality = 0; quality <= 5; quality++)
+            {
+                var q = quality;
+                <button class="info-tab" @onclick="() => Review(q)">@quality</button>
+            }
+            @if (_progress is not null)
+            {
+                <div class="input-desc">Próxima revisão: @_progress.DueAt.LocalDateTime:g · facilidade @_progress.EaseFactor.ToString("0.00")</div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string FormulaId { get; set; } = "";
+    Formula? _formula;
+    Exercise? _exercise;
+    FlashcardProgress? _progress;
+    string _answerText = "";
+    string _feedback = "";
+    bool _showSolution;
+    int _seed;
+
+    protected override void OnParametersSet() => _formula = Formulas.ObterPorId(FormulaId);
+    void Generate()
+    {
+        if (_formula is null) return;
+        _exercise = Education.GenerateExercise(_formula, ++_seed);
+        _answerText = _feedback = "";
+        _showSolution = false;
+    }
+    void Check()
+    {
+        if (_exercise is null || !double.TryParse(_answerText.Replace(',', '.'),
+                System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var answer))
+        { _feedback = "Digite um número válido."; return; }
+        var correct = Education.CheckAnswer(_exercise, answer);
+        _feedback = correct ? "Resposta correta." : $"Resposta diferente. Tolerância: {_exercise.Tolerance:G4}.";
+        _showSolution = true;
+    }
+    void Review(int quality) => _progress = Education.Review(FormulaId, quality);
+}

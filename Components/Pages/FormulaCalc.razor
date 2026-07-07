@@ -1,6 +1,7 @@
 @page "/formula/{FormulaId}"
 @inject FormulaService Fs
 @inject CalculadoraService Calc
+@inject LocalSpeechService Speech
 @inject NavigationManager Nav
 
 @if (_formula == null)
@@ -54,6 +55,11 @@
             <button class="info-tab @(_activeTab == tab ? "active" : "")"
                     @onclick="() => _activeTab = tab">@tab</button>
         }
+    </div>
+    <div style="padding:0 16px 8px">
+        <a class="info-tab" href="@($"/estudar/{_formula.Id}")">Estudar esta fórmula</a>
+        <button class="info-tab" @onclick="ReadFormula">Ouvir fórmula</button>
+        <button class="info-tab" @onclick="Speech.Stop">Parar voz</button>
     </div>
 
     <!-- Tab Content -->
@@ -285,6 +291,14 @@
     void ToggleFav()
     {
         if (_formula != null) Fs.ToggleFavorita(_formula.Id);
+    }
+
+    async Task ReadFormula()
+    {
+        if (_formula is null) return;
+        var expression = LocalSpeechService.MathToSpeech(
+            string.IsNullOrWhiteSpace(_formula.ExprTexto) ? _formula.Expressao : _formula.ExprTexto);
+        await Speech.SpeakAsync($"{_formula.Nome}. {expression}. {_formula.Descricao}");
     }
 
     bool HasExtraResult() => _formula?.Id == "alg001" && _calculado && !double.IsNaN(_resultado);
